@@ -161,10 +161,14 @@ def m4a_open_move(a: Asset, g: Grid) -> pd.DataFrame:
     return simple_trades(g, sig, a.open_min + 30, a.close_min)
 
 
-def m4b_gap_fade(a: Asset, g: Grid) -> pd.DataFrame:
+def gap_z(a: Asset, g: Grid) -> pd.Series:
     gap = g.price_at(a.open_min)[0] / _prev_close(g, a) - 1
-    z = gap / past_std(gap)
-    sig = (-np.sign(z)).where(z.abs() > 2, 0)
+    return gap / past_std(gap)
+
+
+def m4b_gap_fade(a: Asset, g: Grid, zmin: float = 2, zmax: float = np.inf) -> pd.DataFrame:
+    z = gap_z(a, g)
+    sig = (-np.sign(z)).where((z.abs() > zmin) & (z.abs() <= zmax), 0)
     return simple_trades(g, sig, a.open_min + 1, a.close_min)
 
 

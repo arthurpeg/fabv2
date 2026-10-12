@@ -1,0 +1,19 @@
+## A. Fade de gap — indices
+
+A1 — gaps 1<|z|≤2 (jours jamais tradés), portefeuille ES/NQ/YM : Sharpe net IS=-0.62  OOS=+0.54
+     ES: IS=-0.53  OOS=+0.71
+     NQ: IS=-0.27  OOS=+0.22
+     YM: IS=-0.90  OOS=+0.43
+A2 — trades |z|>1 poolés : moyenne pré-2023=-5.6 pb (n=1330), post=+8.8 pb (n=698), Welch t=2.89, p=0.002
+A3 — dose-réponse post-2023 (pb par trade net) : (1.0, 1.5]: +5.5 (n=354.0), (1.5, 2.0]: +6.4 (n=178.0), (2.0, inf]: +18.3 (n=166.0)
+
+→ A1 OK · A2 OK · A3 OK ⇒ piste A SURVIT
+
+## B. M2 bande de bruit NQ — correction des tests multiples
+
+B1 — DSR : SR annualisé=1.14, SR0 attendu du max de 96 essais=1.68 (annualisé), skew=2.72, kurt=36.6 → DSR=0.027
+B2 — Reality Check de White : max t-stat=3.76 (M2_noise|NQ), p=0.0184
+B3 — PBO (CSCV, S=16, 12870 combinaisons) = 0.053 ; P(Sharpe OOS de la stratégie choisie < 0) = 0.140
+B4 — Sharpe NQ M2 2024-09→2026-08 = 0.81, IC 95 % bootstrap = [-0.54 ; 1.78]
+
+→ B1 ÉCHEC · B2 OK ⇒ piste B REJETÉE

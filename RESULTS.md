@@ -76,3 +76,47 @@ uv sync
 uv run python run_backtests.py        # les 93 tests → results/summary.csv
 uv run python diagnostics.py          # diagnostics post-hoc M2
 ```
+
+---
+
+# Suite : les deux pistes (pré-enregistrement n° 2)
+
+*Protocole : [PREREGISTRATION_2.md](PREREGISTRATION_2.md), commit `7733a53`, antérieur à l'exécution. Script : `followup.py`. Sortie : `results/followup.log`. Le compteur global passe à **96 tests**.*
+
+## Piste A : fade de gap sur les indices. **SURVIT aux 3 critères**, avec réserves
+
+| Test | Résultat | Critère |
+|---|---|---|
+| A1 : gaps intermédiaires 1 < \|z\| ≤ 2, **jours jamais tradés**, portefeuille ES/NQ/YM | Sharpe net IS **−0,62**, OOS **+0,54** (ES +0,71, NQ +0,22, YM +0,43) | OOS > 0,5 ✅ |
+| A2 : rupture 2023, trades poolés \|z\| > 1 | Avant 2023 : **−5,6 pb**/trade (n = 1 330). Depuis 2023 : **+8,8 pb** (n = 698). Welch t = 2,89, **p = 0,002** | p < 0,05 ✅ |
+| A3 : dose-réponse depuis 2023 | \|z\| (1 ; 1,5] : +5,5 pb · (1,5 ; 2] : +6,4 pb · > 2 : **+18,3 pb** | monotone ✅ |
+
+Descriptif post-hoc, sur le portefeuille \|z\| > 1 : Sharpe net IS −0,42, OOS **+0,79** (340 jours actifs). Par année : 2016 −1,30 · 2017 −0,87 · 2018 +0,71 · 2019 −1,33 · 2020 −1,47 · 2021 −0,66 · **2022 +0,31 · 2023 +0,70 · 2024 +0,16 · 2025 +1,33 · 2026 +0,64**. Corrélation avec M2 sur NQ : **0,01**.
+
+Lecture :
+- Le passage de la continuation (avant 2022) au **reversal** (depuis 2022) a lieu sur des jours qu'aucun test précédent n'avait tradés. Il est statistiquement net, l'effet croît avec la taille du gap, et le basculement coïncide avec la généralisation des 0DTE (mai 2022). C'est exactement la prédiction de Ladia 2026. Parmi tout ce qui a été testé, c'est **le seul résultat qui relie un signal OHLCV à un changement causal daté**.
+- **Réserves** : (1) la stratégie était **perdante** sur 2016-2021. La trader, c'est parier que le régime 0DTE dure, et le jour où il change, elle se retourne. (2) Le choix de 2023 comme frontière n'a pas été optimisé : c'est la coupure IS/OOS initiale. Mais l'idée de regarder le fade de gap est venue de l'OOS. (3) La validation par nouvelles observations reste sur la **même période** 2023-2026 et sur des indices très corrélés.
+- Usage raisonnable : en paper trading **avec un interrupteur de régime** (couper si le Sharpe glissant sur 12 mois redevient négatif), et en complément de M2, puisque les deux sont non corrélés.
+
+## Piste B : M2 bande de bruit sur NQ. **REJETÉE** selon le critère pré-enregistré, verdict partagé
+
+| Test | Résultat | Critère |
+|---|---|---|
+| B1 : Deflated Sharpe Ratio (N = 96) | SR 1,14 contre SR₀ attendu du meilleur de 96 essais = 1,68. Asymétrie +2,7, kurtosis 36,6. **DSR = 0,03** | > 0,95 ❌ |
+| B2 : Reality Check de White (93 séries, bootstrap stationnaire) | Meilleure t-stat = 3,76 (c'est bien M2 sur NQ), **p = 0,018** | < 0,05 ✅ |
+| B3 : PBO (CSCV, 12 870 combinaisons) | **PBO = 0,05**. P(Sharpe OOS < 0 pour la stratégie choisie en IS) = 0,14 | rapporté |
+| B4 : Sharpe sur 2024-09 → 2026-08 | 0,81, IC 95 % = **[−0,54 ; 1,78]** | rapporté |
+
+Lecture :
+- Les deux corrections disent des choses différentes. Le **Reality Check** et la **PBO** indiquent que la sélection de M2 sur NQ n'est pas un pur artefact : le meilleur des 93 bat le hasard (p = 0,018), et choisir le meilleur en IS donne rarement un perdant OOS. Le **DSR** échoue pour deux raisons. D'abord, la dispersion des Sharpe entre les 93 essais est **gonflée par les coûts** : beaucoup de stratégies sont très négatives, ce qui élève SR₀. Ensuite, les rendements sont très asymétriques et leptokurtiques, parce que la stratégie gagne gros sur quelques jours de crise (avril 2025).
+- Selon la règle fixée à l'avance (B1 **et** B2), la piste est rejetée. On ne déplace pas la barre après coup.
+- Sur deux ans, l'intervalle de confiance du Sharpe contient 0 : les données récentes ne permettent ni de confirmer ni d'infirmer la stratégie.
+
+## Bilan après 96 tests
+
+| Candidat | Statut | Ce qui le soutient | Ce qui l'affaiblit |
+|---|---|---|---|
+| Fade de gap sur indices, \|z\| > 1, régime post-0DTE | Survit au pré-enregistrement n° 2 | Nouvelles observations, rupture datée, dose-réponse, mécanisme publié (Ladia) | Perdant de 2016 à 2021 ; dépend d'un régime ; 3,7 ans de preuve |
+| M2 bande de bruit sur NQ | Rejeté (DSR), mais Reality Check OK | 10 ans, IS ≈ OOS, robuste aux coûts × 2 | Asymétrie de crise, plus d'avantage depuis 12 mois, DSR = 0,03 |
+
+Aucun des deux n'est un signal validé. Les deux justifient du paper trading. Les données postérieures au 2026-08-28 constituent le seul vrai holdout restant, et il ne faudra l'ouvrir qu'une fois.
