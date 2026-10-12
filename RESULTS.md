@@ -120,3 +120,41 @@ Lecture :
 | M2 bande de bruit sur NQ | Rejeté (DSR), mais Reality Check OK | 10 ans, IS ≈ OOS, robuste aux coûts × 2 | Asymétrie de crise, plus d'avantage depuis 12 mois, DSR = 0,03 |
 
 Aucun des deux n'est un signal validé. Les deux justifient du paper trading. Les données postérieures au 2026-08-28 constituent le seul vrai holdout restant, et il ne faudra l'ouvrir qu'une fois.
+
+---
+
+# Réplications fidèles (pré-enregistrement n° 3)
+
+*Les règles viennent des textes intégraux : [PAPER_SPECS.md](PAPER_SPECS.md). Le protocole est [PREREGISTRATION_3.md](PREREGISTRATION_3.md), commit `c480de3`, antérieur à l'exécution. Code : `fab/replications.py` et `run_replications.py`. Sorties : `results/replications.csv`, `results/replications.log`. **42 nouveaux tests, compteur à 138.***
+
+**Une survivante au filtre de base** (R3, bande de bruit avec volatilité cible sur NQ : Sharpe net +0,80 en IS, +1,07 en OOS), **rejetée par le DSR** (N = 138 : SR 0,89 contre SR₀ = 1,84, DSR = 0,000). La volatilité cible **dégrade** le résultat sur NQ (Sharpe de 0,89 sur toute la période, contre 1,14 à 1×) : elle augmente le levier dans les périodes calmes, qui sont justement celles où la stratégie ne gagne rien.
+
+## L'effet brut est-il retrouvé ? Survit-il aux coûts ?
+
+| Réplication | Ce que le papier annonçait | Sharpe **brut** IS / OOS | Sharpe **net** IS / OOS | Lecture |
+|---|---|---|---|---|
+| R1 Gao, version jointe (ES, NQ, YM) | Meilleure que η(r₁) | ≈ 0 / négatif | négatif | ❌ Effet absent depuis 2016 |
+| **R2a/b Baltussen sur FX, avec la bonne session (8:20-15:00 ET)** | Momentum intraday sur les futures FX | **6E +0,81/+1,12 · 6J +0,36/+1,34 · 6B +0,59/+0,92** (ROD) ; ONFH : 6E +0,87/+1,42, 6J +0,18/+1,63 | toutes négatives | ✅ **Effet brut retrouvé, et même plus fort depuis 2023.** ❌ Mouvement moyen de 0,5 à 1,3 tick pour 1,8 tick de coût. Avec ma mauvaise session (Londres), M1 sur FX était souvent négatif même en brut : **la spécification exacte comptait**. |
+| R2c Baltussen joint (9 actifs) | — | FX positif en brut ; indices et CL ≈ 0 ou négatifs | négatif | Même conclusion |
+| **R3 Bande de bruit + volatilité cible** | Sharpe 1,33 (SPY 2007-2024) | NQ +0,99/+1,13 ; ES +0,96/+0,33 ; YM ≈ 0 | **NQ +0,80/+1,07** ; ES +0,54/+0,13 | ✅ sur NQ, mais DSR = 0 |
+| **R4 ORB de Zarattini** (bougie de 5 minutes, objectif 10R, levier ≤ 4) | Alpha de 33 %/an, QQQ 2016-2023 | **NQ +1,16 / +0,26** ; ES +0,59 / −0,34 | **NQ +0,96 / +0,17** | ✅ **Reproduit sur sa propre période** (IS ≈ 2016-2022). ❌ S'effondre ensuite, comme dans la réplication indépendante sur MQL5. |
+| R5a Krohn, Tokyo | Rendements de 6 à 14 %/an hors coûts, en baisse en fin d'échantillon | **6E +1,37 / −0,53 · 6J +1,49 / +0,28 · 6A +0,98 / +0,26** | négatif (6J IS +0,40) | ✅ en IS brut. Puis **déclin** après 2023, que les auteurs observaient déjà en 2019. |
+| R5b Krohn, Europe | EUR et GBP les plus forts | 6E +0,88 / +0,09 ; 6B +0,45 / +0,51 ; 6J négatif (comme dans le papier) | négatif | ✅ partiel en brut, ❌ net |
+| **R6 Breedon & Ranaldo** | **Seul EUR/USD rentable après coûts** (Sharpe 1,3 et 0,9) | **6E +1,25 / +0,57** ; 6B +0,62 / +0,75 ; 6A et 6J négatifs | **6E +0,70 / −0,07** | ✅ **Tout le schéma du papier est retrouvé** (EUR oui, JPY et AUD non), et 6E reste rentable net en IS. ❌ Plus d'avantage net depuis 2023. |
+| R7a Caporale, stratégie 1 (or, pétrole) | ~70 % de trades gagnants, sans coûts | GC +0,17/+0,19 ; CL +0,18/−0,31 | ≈ pareil (environ 200 trades) | ≈ Effet faible, pas les 70 % annoncés |
+| R7b Caporale, stratégie 2 | Contrarien sur l'or, momentum sur le pétrole le lendemain | GC **−0,68/−0,88** (le contrarien perd) ; CL +0,66/−0,26 | idem | ❌ Or : on observe l'inverse du papier. Pétrole : ne tient pas hors échantillon |
+
+## Ce que la lecture des papiers a changé
+
+1. **Les effets bruts existent.** Avec la bonne spécification, on retrouve l'effet brut annoncé pour Baltussen en FX, la bande de bruit, l'ORB de Zarattini sur sa période, Krohn sur Tokyo et Breedon & Ranaldo sur EUR/USD. Mes premiers tests en avaient sous-estimé plusieurs, faute de spécification exacte. Sur FX en particulier, la bonne session fait passer M1 d'un brut négatif à un brut de +0,8 à +1,6.
+2. **Mais leur taille est d'environ 0,5 à 3 ticks par trade**, pour un coût de 1,4 à 2 ticks. Les papiers qui ignorent les coûts (Baltussen, Krohn, Caporale) ou qui supposent des coûts institutionnels (Breedon : spread EBS interbancaire) décrivent des effets **réels mais non tradables** avec 1 tick + 5 $.
+3. **Plusieurs effets s'affaiblissent après leur publication** : Krohn (déjà noté par les auteurs), l'ORB de Zarattini (publié en 2023, OOS +0,17), Breedon sur EUR/USD (de +0,70 à −0,07 net), et la bande de bruit sur ES.
+4. **Un résultat contredit le papier** : le contrarien sur l'or le lendemain d'un jour anormal (Caporale & Plastun) perd de l'argent sur nos données.
+
+## Bilan global après 138 tests
+
+| Candidat | Statut |
+|---|---|
+| Fade de gap sur indices (\|z\| > 1, régime post-0DTE) | Seule piste qui a passé un test pré-enregistré sur des **observations nouvelles**. Dépend du régime. |
+| Bande de bruit sur NQ (1× ou avec volatilité cible) | Robuste en IS comme en OOS, mais **rejetée par le DSR** à N = 96 et à N = 138. Plus faible sur les 12 derniers mois. |
+| Effets bruts FX (Baltussen avec la bonne session, Krohn sur Tokyo, Breedon sur EUR) | Réels, mais **inférieurs au coût d'un tick**. À utiliser seulement pour **choisir quand exécuter** des ordres FX nécessaires de toute façon, ou avec des coûts institutionnels. |
