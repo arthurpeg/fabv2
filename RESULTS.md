@@ -158,3 +158,37 @@ Aucun des deux n'est un signal validé. Les deux justifient du paper trading. Le
 | Fade de gap sur indices (\|z\| > 1, régime post-0DTE) | Seule piste qui a passé un test pré-enregistré sur des **observations nouvelles**. Dépend du régime. |
 | Bande de bruit sur NQ (1× ou avec volatilité cible) | Robuste en IS comme en OOS, mais **rejetée par le DSR** à N = 96 et à N = 138. Plus faible sur les 12 derniers mois. |
 | Effets bruts FX (Baltussen avec la bonne session, Krohn sur Tokyo, Breedon sur EUR) | Réels, mais **inférieurs au coût d'un tick**. À utiliser seulement pour **choisir quand exécuter** des ordres FX nécessaires de toute façon, ou avec des coûts institutionnels. |
+
+---
+
+# Timing d'exécution FX (pré-enregistrement n° 4)
+
+*Protocole : [PREREGISTRATION_4.md](PREREGISTRATION_4.md), commit `7502b53`. Script : `execution_timing.py`. Sorties : `results/execution_timing.csv` et `.log`. **12 tests, compteur à 150.** Rappel : ces effets avaient déjà été mesurés en brut, OOS compris. On estime ici leur valeur pour quelqu'un qui doit exécuter de toute façon ; ce n'est pas une découverte.*
+
+Métrique : économie moyenne par ordre, moyennée entre un acheteur et un vendeur de la devise (ce qui neutralise la tendance), en points de base (pb) du prix, par rapport à un benchmark naïf.
+
+| Règle | Actif | pb IS | pb OOS | Ticks | $ par M$ exécuté | t (bootstrap) | Utile ? |
+|---|---|---|---|---|---|---|---|
+| **X3 Baltussen** : décider entre 14:30 et 15:00 ET selon le signe de r_ROD | 6E | +0,19 | +0,24 | 0,47 | 21 | 3,06 | ✅ |
+| | 6J | +0,09 | +0,32 | 0,25 | 17 | 2,14 | ✅ |
+| | 6B | +0,17 | +0,20 | 0,23 | 18 | 2,22 | ✅ |
+| | 6A | +0,30 | −0,01 | 0,29 | 19 | 2,02 | ❌ (OOS ≈ 0) |
+| **X2 Krohn Tokyo** : acheter la devise au fix de 9:55 JST, la vendre à 15:00 JST (benchmark : TWAP 8:00-15:00 JST) | 6A | +0,89 | +0,22 | 0,93 | 66 | 2,54 | ✅ |
+| | 6J | +1,02 | −0,04 | 1,18 | 66 | 2,75 | ❌ (effet disparu depuis 2023) |
+| | 6E | +0,53 | −0,11 | 0,70 | 31 | 2,34 | ❌ (idem) |
+| | 6B | +0,17 | −0,18 | 0,05 | 5 | 0,27 | ❌ |
+| **X1 Breedon/Krohn Europe** : acheter la devise à 08:00 ET, la vendre à 16:00 ET (benchmark : TWAP 2:00-16:00 ET) | 6E | +0,66 | +0,27 | 1,11 | 52 | 1,66 | ❌ (t < 2) |
+| | 6B | +0,37 | +0,80 | 0,64 | 52 | 1,37 | ❌ (t < 2) |
+| | 6A | +0,16 | +0,50 | 0,36 | 28 | 0,71 | ❌ |
+| | 6J | −0,11 | −0,90 | −0,61 | −39 | −1,07 | ❌ |
+
+## Lecture
+
+- **X3 (Baltussen) est la seule règle stable** : de 0,2 à 0,3 pb par ordre, positive en IS et en OOS sur 6E, 6J et 6B, de façon régulière depuis 2018. Elle ne demande que **30 minutes de flexibilité** sur l'heure d'exécution. Avec une correction de Bonferroni sur les 12 tests (t > 2,87), **seul 6E passe**.
+- **Krohn sur Tokyo** valait 0,5 à 1 pb par ordre avant 2023 sur 6E, 6J et 6A. Il ne reste aujourd'hui que sur 6A. Le déclin observé par les auteurs se confirme.
+- **X1 (Europe)** : l'économie est la plus grande en points de base (jusqu'à 0,8), mais trop bruitée pour être significative, car la fenêtre de 14 heures est très volatile.
+- **Ordre de grandeur** : 0,2 pb, c'est **environ un demi-tick, soit 20 $ par million exécuté**. Pour une trésorerie qui exécute 500 M$ par an, ça fait environ 10 000 $ par an : une optimisation gratuite d'exécution, pas une source de rendement.
+
+## Conclusion opérationnelle
+
+Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de marge avant 15:00 ET (fin du settlement CME), applique X3. **Exécute tout de suite si le mouvement du jour va contre toi, attends 15:00 s'il va dans ton sens.** C'est gratuit, ça vaut environ un demi-tick par ordre, et c'est la seule utilisation des effets FX intraday qui tienne sur nos données. Le reste (Krohn, Breedon) a décliné, ou bien il est trop bruité pour être certain.

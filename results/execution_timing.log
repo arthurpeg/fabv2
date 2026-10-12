@@ -1,0 +1,30 @@
+             règle actif  jours  pb_IS  pb_OOS  pb_acheteur  pb_vendeur  ticks  $_par_M  t_boot  utile
+  X1_europe_8h_16h    6E   2695   0.66    0.27         1.19       -0.14   1.11    52.45    1.66  False
+  X1_europe_8h_16h    6J   2694  -0.11   -0.90         0.38       -1.15  -0.61   -38.76   -1.07  False
+  X1_europe_8h_16h    6B   2692   0.37    0.80         0.56        0.49   0.64    52.04    1.37  False
+  X1_europe_8h_16h    6A   2692   0.16    0.50         0.38        0.18   0.36    27.79    0.71  False
+      X2_tokyo_fix    6E   2751   0.53   -0.11         0.41        0.21   0.70    31.17    2.34  False
+      X2_tokyo_fix    6J   2751   1.02   -0.04         1.34       -0.02   1.18    65.88    2.75  False
+      X2_tokyo_fix    6B   2743   0.17   -0.18         0.17       -0.07   0.05     5.05    0.27  False
+      X2_tokyo_fix    6A   2750   0.89    0.22         0.96        0.37   0.93    66.29    2.54   True
+X3_baltussen_close    6E   2642   0.19    0.24         0.14        0.28   0.47    20.98    3.06   True
+X3_baltussen_close    6J   2640   0.09    0.32         0.12        0.22   0.25    17.06    2.14   True
+X3_baltussen_close    6B   2638   0.17    0.20         0.16        0.20   0.23    18.10    2.22   True
+X3_baltussen_close    6A   2633   0.30   -0.01         0.10        0.29   0.29    19.30    2.02  False
+
+4 / 12 règles utiles
+
+Économie moyenne (pb) par année :
+      X2_tokyo_fix|6A  X3_baltussen_close|6E  X3_baltussen_close|6J  X3_baltussen_close|6B
+d                                                                                         
+2016             0.90                  -0.03                  -0.64                  -0.15
+2017             1.45                   0.10                  -0.07                  -0.21
+2018             0.34                   0.28                  -0.09                   0.15
+2019             0.27                   0.38                   0.52                  -0.22
+2020             1.95                  -0.08                   0.12                   0.30
+2021             0.09                   0.22                   0.21                   0.30
+2022             1.24                   0.45                   0.54                   0.98
+2023             0.62                   0.73                   0.67                   0.45
+2024            -0.56                   0.06                   0.31                   0.24
+2025             0.96                   0.08                   0.02                   0.12
+2026            -0.29                   0.03                   0.29                  -0.13
