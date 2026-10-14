@@ -130,3 +130,27 @@ Un échec ne prouvera donc pas l'absence d'effet. Il dira qu'un effet, s'il exis
 - tableaux de prévision (MSE, erreur de signe, couverture du CPI) et de trading (rendement, Sharpe, drawdown maximal, taux de réussite, nombre de trades, rotation, exposition) ;
 - découpage par année (2025, 2026) et par tercile de volatilité réalisée passée du FDAX (20 jours, calculée sans regarder le futur) ;
 - courbes de capital, limites, conclusion.
+
+---
+
+## Amendement 1 (2026-10-14, avant tout code de modélisation et toute exécution) : 10 ans
+
+À la demande de l'utilisateur, l'étude passe à **2016-01 → 2026-08**. Le FDAX n'existant chez Databento que depuis 2025-03, la cible devient le **DAX en CFD (HistData GRX/EUR)**.
+
+**Validation du proxy, faite avant ce choix** (seuls des prix ont été comparés, aucun modèle n'a été estimé), sur la période commune 2025-03 → 2026-08 :
+- corrélation des rendements 5 min avec le FDAX : 0,91 ;
+- corrélation de la cible A′ : 0,994 ;
+- corrélation de la cible B (08:55 → 09:15) : 0,999, avec le même signe 98 % des jours ;
+- aucun décalage temporel.
+
+La règle de fuseau HistData (heure brute + 7 h = `Europe/Athens`) est vérifiée chaque année de 2016 à 2026 sur les ouvertures de Hong Kong (09:15), de Sydney (09:50) et du DAX (08:00 et 09:00).
+
+Changements, et seulement ceux-ci :
+- **Cibles A′ et B** : calculées sur le CFD DAX, avec le coût du FDAX (0,7 point aller-retour) exprimé en fraction du prix. Les prix CFD sont des cotations de courtier, pas des prix exécutables sur Eurex. C'est une limite qui sera rappelée dans le rapport.
+- **Validation sur le vrai future** : sur 2025-03 → 2026-08, les mêmes prévisions sont exécutées sur les prix FDAX. C'est rapporté à côté, sans compter comme des essais supplémentaires.
+- **Validation glissante** : fenêtre expansive, **500 jours d'entraînement initial** (environ 2 ans), réestimation tous les 20 jours. Environ 1 900 prévisions hors échantillon. Rapport aussi découpé avant et après le 2022-12-31, la coupure IS / OOS habituelle du dépôt.
+- **Jours exclus en plus** : séances écourtées (fermeture du calendrier avant la fin de la fenêtre d'une courbe) et jours où plus de 20 % des points d'une courbe manquent.
+- **Nikkei** : les minutes de reprise quotidienne du CFD (07:00 et 08:00 JST) sont hors de la fenêtre 09:00-15:30 et ne sont donc pas utilisées.
+- **Puissance révisée** : avec environ 1 900 jours, l'erreur type d'un Sharpe annualisé est d'environ 0,36. Un Sharpe ne devient significatif qu'au-dessus d'environ 0,6, et un taux de bon signe au-dessus d'environ 52 %.
+
+Tout le reste est inchangé : grille de 24 candidats, configuration principale (NP-FDA, mode, `c12`, k = 15), filtres, critères et compteur (150 → 174). Les critères de B s'appliquent à la série CFD sur toute la période hors échantillon.

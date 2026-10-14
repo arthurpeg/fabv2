@@ -3,10 +3,12 @@
 # doit être signalée dans le rapport.
 
 [data]
-start = "2025-03-12"
+start = "2016-01-04"
 end = "2026-08-28"
-target = "FDAX"
+target = "histdata:GRXEUR"     # DAX CFD (amendement 1)
+validation = "databento:FDAX"  # mêmes prévisions sur le vrai future, 2025-03 → 2026-08
 histdata_dir = "cache/histdata/csv"
+max_missing = 0.2          # jour exclu si > 20 % de points manquants sur une courbe
 
 [timing]
 target_tz = "Europe/Berlin"
@@ -70,8 +72,8 @@ cpi_level = 0.90
 
 [walkforward]
 scheme = "expanding"       # "expanding" | "rolling"
-initial_train = 120
-rolling_train = 120        # utilisé si scheme = "rolling"
+initial_train = 500
+rolling_train = 500        # utilisé si scheme = "rolling"
 refit_every = 20
 
 [signals]
