@@ -24,7 +24,7 @@ source = "histdata:JPXJPY"
 calendar = "XTKS"
 tz = "Asia/Tokyo"
 start = "09:00"
-end = "15:30"
+end = "15:00"            # TSE fermait à 15:00 avant 2024-11-05 (amendement 2)
 
 [markets.HSI]
 source = "histdata:HKXHKD"

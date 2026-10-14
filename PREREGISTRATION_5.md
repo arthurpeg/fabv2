@@ -154,3 +154,7 @@ Changements, et seulement ceux-ci :
 - **Puissance révisée** : avec environ 1 900 jours, l'erreur type d'un Sharpe annualisé est d'environ 0,36. Un Sharpe ne devient significatif qu'au-dessus d'environ 0,6, et un taux de bon signe au-dessus d'environ 52 %.
 
 Tout le reste est inchangé : grille de 24 candidats, configuration principale (NP-FDA, mode, `c12`, k = 15), filtres, critères et compteur (150 → 174). Les critères de B s'appliquent à la série CFD sur toute la période hors échantillon.
+
+## Amendement 2 (2026-10-14, avant toute estimation de modèle) : fenêtre du Nikkei
+
+Le calendrier XTKS montre que la Bourse de Tokyo fermait à **15:00 JST jusqu'au 2024-11-04**, et ne ferme à 15:30 que depuis. Avec la fenêtre 09:00-15:30 prévue, 85 % des jours seraient exclus comme séances écourtées. Pour garder une grille identique sur toute la période, la fenêtre du Nikkei devient **09:00-15:00 JST** (00:00-06:00 UTC). Rien d'autre ne change.
