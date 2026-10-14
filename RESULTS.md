@@ -192,3 +192,14 @@ Métrique : économie moyenne par ordre, moyennée entre un acheteur et un vende
 ## Conclusion opérationnelle
 
 Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de marge avant 15:00 ET (fin du settlement CME), applique X3. **Exécute tout de suite si le mouvement du jour va contre toi, attends 15:00 s'il va dans ton sens.** C'est gratuit, ça vaut environ un demi-tick par ordre, et c'est la seule utilisation des effets FX intraday qui tienne sur nos données. Le reste (Krohn, Breedon) a décliné, ou bien il est trop bruité pour être certain.
+
+---
+
+# Gap d'ouverture du DAX prédit par les courbes étrangères (De Gooijer, Diks & Gątarek 2009)
+
+*Protocole : [PREREGISTRATION_5.md](PREREGISTRATION_5.md), commit `2df0d45`, et amendements 1 à 3 (10 ans via HistData, fenêtre du Nikkei, exclusion de 2020-06 → 2023-12), tous antérieurs à l'exécution. Code : `gap/`, `run_opening_gap.py`. Rapport complet : [reports/opening_gap_report.md](reports/opening_gap_report.md). **24 nouveaux tests, compteur à 174.***
+
+- **B, tradable (FDAX / CFD DAX, entrée à 08:55, sortie à 09:00 + k)** : ❌. La configuration principale (NP-FDA, mode, Asie + US, k = 15) a un Sharpe net de −0,71, un p de permutation de 0,90 et un DSR de 0,0002. Le meilleur des 24 (NP-FDA US, k = 0, Sharpe de 0,58) est rejeté par le DSR (0,27 à N = 24, 0,09 à N = 174). Sur le vrai FDAX en 2025-2026, les P&L sont corrélés à 0,98-1,00 avec le CFD : la conclusion ne change pas.
+- **A′, prévision du gap 17:30 → 09:00 (non tradable)** : le gap est prévisible (MCO Asie + US : R² d'environ 28 %, 70 % de bons signes), mais **linéairement**. NP-FDA ne bat le MCO nulle part, contrairement à l'article.
+- **Piste exploratoire** : le signe de 08:55 → 09:00 se prévoit à 55 % (p = 0,0008, stable avant et après 2023), mais Sharpe brut de 0,38 seulement, et net de 0,13.
+- **Données** : la FAQ HistData se trompe de fuseau (règles d'heure d'été européennes, pas EST fixe), et le fichier DAX contient un autre indice de mi-2020 à fin 2023. Les deux points sont documentés et testés.
