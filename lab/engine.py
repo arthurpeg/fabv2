@@ -75,26 +75,40 @@ def _shift(s: pd.Series | None, idx: pd.Index) -> pd.Series:
     return s.reindex(idx).fillna(False).astype(bool).shift(1, fill_value=False)
 
 
+def freq_of(tf: str) -> str:
+    return "1D" if tf.upper() in ("1D", "D") else tf
+
+
+def portfolio(b: pd.DataFrame, asset: str, tf: str, sigs: dict) -> vbt.Portfolio:
+    """Un portefeuille vectorbt à une colonne par entrée de `sigs` (clé → Signals),
+    simulé en un seul appel."""
+    def frame(attr):
+        return pd.DataFrame({k: _shift(getattr(s, attr), b.index) for k, s in sigs.items()})
+
+    cols = frame("long_entries").columns
+    if isinstance(cols[0], tuple):
+        cols = pd.MultiIndex.from_tuples(cols)
+    a = ASSETS[asset]
+    raw_open = b["open"] / b["factor"]
+    fees = ((a.rt_cost / 2) / raw_open).values[:, None]
+    return vbt.Portfolio.from_signals(
+        close=b["close"],
+        price=b["open"],  # exécution à l'open de la barre suivant le signal
+        entries=frame("long_entries").set_axis(cols, axis=1),
+        exits=frame("long_exits").set_axis(cols, axis=1),
+        short_entries=frame("short_entries").set_axis(cols, axis=1),
+        short_exits=frame("short_exits").set_axis(cols, axis=1),
+        fees=fees,
+        init_cash=1_000_000.0,
+        freq=freq_of(tf),
+    )
+
+
 def run(strategy: Strategy, asset: str, tf: str = "1h", start: str | None = None, **params) -> Run:
     b = bars(asset, tf)
     if start:
         b = b[b.index >= pd.Timestamp(start, tz=b.index.tz)]
-    sig = strategy(b, **params)
-    a = ASSETS[asset]
-    raw_open = b["open"] / b["factor"]
-    fees = (a.rt_cost / 2) / raw_open
-    freq = "1D" if tf.upper() in ("1D", "D") else tf
-    pf = vbt.Portfolio.from_signals(
-        close=b["close"],
-        price=b["open"],  # exécution à l'open de la barre suivant le signal
-        entries=_shift(sig.long_entries, b.index),
-        exits=_shift(sig.long_exits, b.index),
-        short_entries=_shift(sig.short_entries, b.index),
-        short_exits=_shift(sig.short_exits, b.index),
-        fees=fees,
-        init_cash=1_000_000.0,
-        freq=freq,
-    )
+    pf = portfolio(b, asset, tf, {"_": strategy(b, **params)})["_"]
     name = getattr(strategy, "__name__", "strategy")
     return Run(name, asset, tf, params, pf, b)
 
@@ -102,11 +116,14 @@ def run(strategy: Strategy, asset: str, tf: str = "1h", start: str | None = None
 # --------------------------------------------------------------------------- métriques
 
 
-def _daily(r: Run) -> pd.Series:
-    val = r.pf.value()
+def daily_returns(val: pd.Series | pd.DataFrame) -> pd.Series | pd.DataFrame:
+    """Valeur du portefeuille (barres) → rendements journaliers (date UTC, ou session en 1D)."""
     idx = val.index.tz_localize(None) if val.index.tz is not None else val.index
-    d = pd.Series(val.values, index=idx.normalize()).groupby(level=0).last()
-    return d.pct_change().dropna()
+    return val.groupby(idx.normalize()).last().pct_change().iloc[1:]
+
+
+def _daily(r: Run) -> pd.Series:
+    return daily_returns(r.pf.value())
 
 
 def _sharpe(x: pd.Series) -> float:
