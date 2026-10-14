@@ -1,0 +1,94 @@
+# Gap d'ouverture du DAX prédit par les courbes étrangères.
+# Protocole figé : PREREGISTRATION_5.md. Toute modification après exécution
+# doit être signalée dans le rapport.
+
+[data]
+start = "2025-03-12"
+end = "2026-08-28"
+target = "FDAX"
+histdata_dir = "cache/histdata/csv"
+
+[timing]
+target_tz = "Europe/Berlin"
+decision = "08:55"        # t_decision, heure de Berlin
+cash_open = "09:00"
+prev_close = "17:30"       # clôture de référence de la veille (A′)
+exit_k = [0, 15, 30, 60]   # sortie à cash_open + k minutes (B)
+slack_min = 5              # première barre dans les 5 minutes, sinon jour exclu
+
+# fenêtres des courbes : (fuseau, début, fin) ; fin_utc borne la fin en UTC
+[markets.NIKKEI]
+source = "histdata:JPXJPY"
+calendar = "XTKS"
+tz = "Asia/Tokyo"
+start = "09:00"
+end = "15:30"
+
+[markets.HSI]
+source = "histdata:HKXHKD"
+calendar = "XHKG"
+tz = "Asia/Hong_Kong"
+start = "09:30"
+end_utc = "06:50"          # tronquée : la séance finit après t_decision
+
+[markets.ASX]
+source = "histdata:AUXAUD"
+calendar = "XASX"
+tz = "Australia/Sydney"
+start = "10:00"
+end = "16:00"
+
+[markets.SP500]
+source = "databento:ES"
+calendar = "XNYS"
+tz = "America/New_York"
+start = "09:30"
+end = "16:00"
+previous_day = true
+
+[markets.DOW]
+source = "databento:YM"
+calendar = "XNYS"
+tz = "America/New_York"
+start = "09:30"
+end = "16:00"
+previous_day = true
+
+[specs]
+c1 = ["NIKKEI", "HSI", "ASX"]
+c2 = ["SP500", "DOW"]
+c12 = ["NIKKEI", "HSI", "ASX", "SP500", "DOW"]
+
+[features]
+grid_min = 5
+n_pc = 5
+
+[npfda]
+h_quantiles = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+mode_grid = 200
+cpi_level = 0.90
+
+[walkforward]
+scheme = "expanding"       # "expanding" | "rolling"
+initial_train = 120
+rolling_train = 120        # utilisé si scheme = "rolling"
+refit_every = 20
+
+[signals]
+direction = "mode"         # "mode" | "mean" | "median"
+p_min = 0.55
+cost_mult = 1.0
+agreement = false
+
+[costs]
+tick = 0.5
+point_value = 25.0
+commission_rt = 5.0        # €, aller-retour
+cost_stress = 2.0          # sensibilité : coûts × 2
+
+[evaluation]
+n_permutations = 1000
+seed = 20261014
+prior_trials = 150         # compteur global avant cette étude
+primary = { model = "npfda", spec = "c12", k = 15 }
+vol_window = 20
