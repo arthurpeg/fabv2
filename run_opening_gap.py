@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -36,6 +37,7 @@ def periods(index: pd.DatetimeIndex) -> dict[str, np.ndarray]:
 
 
 def main() -> None:
+    sys.stdout.reconfigure(encoding="utf-8")  # console Windows cp1252
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default=str(ROOT / "config" / "opening_gap.toml"))
     cfg = load_config(ap.parse_args().config)
