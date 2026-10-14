@@ -8,6 +8,9 @@ end = "2026-08-28"
 target = "histdata:GRXEUR"     # DAX CFD (amendement 1)
 validation = "databento:FDAX"  # mêmes prévisions sur le vrai future, 2025-03 → 2026-08
 histdata_dir = "cache/histdata/csv"
+# GRX/EUR contient un autre indice sur cet intervalle (amendement 3) : jours cibles exclus
+exclude = [["2020-06-15", "2023-12-01"]]
+min_target_price = 7500.0  # garde-fou : le DAX n'est jamais passé sous ~8 200 depuis 2016
 max_missing = 0.2          # jour exclu si > 20 % de points manquants sur une courbe
 
 [timing]

@@ -158,3 +158,15 @@ Tout le reste est inchangé : grille de 24 candidats, configuration principale (
 ## Amendement 2 (2026-10-14, avant toute estimation de modèle) : fenêtre du Nikkei
 
 Le calendrier XTKS montre que la Bourse de Tokyo fermait à **15:00 JST jusqu'au 2024-11-04**, et ne ferme à 15:30 que depuis. Avec la fenêtre 09:00-15:30 prévue, 85 % des jours seraient exclus comme séances écourtées. Pour garder une grille identique sur toute la période, la fenêtre du Nikkei devient **09:00-15:00 JST** (00:00-06:00 UTC). Rien d'autre ne change.
+
+## Amendement 3 (2026-10-14, avant toute estimation de modèle) : trou dans le DAX HistData
+
+Le contrôle des prix montre que le fichier HistData GRX/EUR contient **un autre indice du 2020-06-15 au 2023-12-01** (896 jours entiers, niveaux 3 000-4 400, vraisemblablement l'Euro Stoxx 50). Avant et après, c'est bien le DAX : niveaux cohérents, et collé au FDAX sur 2025-2026. Le fichier ETX/EUR 2021 n'est pas proposé par HistData, ce qui empêche de vérifier une éventuelle interversion des fichiers.
+
+Décision (validée par l'utilisateur) :
+- **exclusion** de tout jour cible D dont la date ou la veille Xetra tombe dans cet intervalle ;
+- garde-fou automatique : aucun prix CFD retenu sous 7 500 points (le plus bas du DAX depuis 2016 est d'environ 8 200).
+
+Il reste environ 7 ans de DAX (2016-01 → 2020-06 et 2023-12 → 2026-08). La validation glissante continue par-dessus le trou : l'entraînement d'après 2023 inclut les jours d'avant 2020.
+
+**Puissance révisée** : environ 1 000 prévisions hors échantillon. L'erreur type d'un Sharpe annualisé est d'environ 0,5 : un Sharpe ne devient significatif qu'au-dessus d'environ 0,85, et un taux de bon signe au-dessus d'environ 52,6 %. Le reste est inchangé.
