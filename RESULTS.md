@@ -216,3 +216,15 @@ Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de mar
 - Les prédictions de structure du papier sont confirmées en brut : rien aux autres heures, PF plus bas si l'on garde la position jusqu'au close. Mais le Reality Check sur 18 règles donne p = 0,72, contre p < 0,0005 dans le papier.
 - Explication probable de l'écart, non testée : des barres de courtier au bid et l'élargissement du spread à 17:00 NY créent un « gap puis retour » qu'aucun trader ne peut capter. Le test décisif demanderait des données bid et ask au comptant autour de 17:00 NY.
 - **Backtest vectorbt** (`run_fx_reopen_vbt.py`, `vbt.Portfolio.from_orders` sur 4 colonnes à 1/4 du capital chacune) : configuration principale à **−11,7 % sur 2016-2026** (Sharpe −2,11, drawdown max −11,8 %), soit 146 615 $ de frais pour environ 29 800 $ de gain brut. Brut, le meilleur fade de reprise rapporte environ +1 % par an à 1×. Les Sharpe sont identiques au calcul arithmétique.
+
+---
+
+# Le fix de Londres à 16h en fin de mois (Melvin et Prins, SSRN 2019274)
+
+*Protocole : [PREREGISTRATION_7.md](PREREGISTRATION_7.md), commit `e2a4428`, antérieur à tout calcul de P&L. Code : `fxfix/`, `run_fx_fix.py` (commit `4f1b080`). Rapport complet : [reports/fx_fix_report.md](reports/fx_fix_report.md). **9 nouveaux tests, compteur à 201.** Données : futures CME 6E, 6B, 6A et 6J, 2016-2026, tous postérieurs à la réforme du fix de 2015. Backtest vectorbt.*
+
+- **Verdict : ❌ pour les deux hypothèses.**
+- **Retournement après le fix (A\*)** : fin de mois, entrée à 16:05, sortie à 12:00 le lendemain. Gain de **+2,41 pips nets par trade** (n = 502), mais négatif sur 2016-2020 (−2,39) et positif sur 2021-2026 (+6,60). Les tests ne sont pas significatifs : bootstrap p = 0,28, permutation p = 0,16, DSR de 0,09. vectorbt : +0,19 %/an, Sharpe 0,17.
+- **Structure du retournement** : il est nul hors fin de mois (+0,01 pip brut), contre +3,7 pips en fin de mois, ce qui correspond à la prédiction du papier. Mais la régression du papier donne un coefficient tous jours de −0,000 (contre −0,178) et un coefficient de fin de mois de −0,254, p = 0,13 (contre −0,518). Après 2015, il en reste environ la moitié en fin de mois, noyée dans un bruit d'environ 55 pips par trade.
+- **Flux de couverture avant le fix (B\*)** : position 13:00 → 16:00 selon la performance relative des actions sur le mois. Résultat : **−3,08 pips nets**, R² de 0,05 % (2 % dans le papier), et ce n'est pas plus fort qu'hors fin de mois. Limite : CFD d'indices, pas de GBP/FTSE, référence aux seuls États-Unis.
+- Reality Check sur les 9 règles : p = 0,46.

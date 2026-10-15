@@ -1,0 +1,115 @@
+# Pré-enregistrement n° 7 — fix de Londres à 16h (Melvin et Prins), futures CME
+
+## Anatomie : |m| = |open 16:00 − open 15:00| (pips), jours de fin de mois (FDM) et autres
+6E: FDM n=127 |m| moyen=20.0 | autres n=2162 |m| moyen=12.4
+6B: FDM n=126 |m| moyen=28.6 | autres n=2176 |m| moyen=17.1
+6A: FDM n=123 |m| moyen=14.3 | autres n=2157 |m| moyen=10.4
+6J: FDM n=126 |m| moyen=18.5 | autres n=2165 |m| moyen=14.2
+B : jours FDM avec signal actions = 373 (6E/6A/6J), |x| moyen = 2.61 %
+
+## Réplication des régressions du papier (lecture secondaire)
+A : r(16→12 J+1) = a + b·m + c·m·FDM, n=9162 : b=-0.000 (p=0.996), c=-0.254 (p=0.131), R²=0.10 % | papier : b=−0,178, c=−0,518
+B : r_devise(13→16) = a + b·x, FDM, n=373 : b=-0.0019 (p=0.675), R²=0.05 % | papier : b < 0, R² = 2 %
+
+## Par trade, coût principal (1 tick + 5 $), pips
+A_eom_E0         2016-2020: n=  234 PF= 0.96 win= 53.4% net=  -0.81 brut=  +0.38 sd=  52.7 années<0=2/5 | 2021-2026-08: n=  268 PF= 1.46 win= 56.3% net=  +7.64 brut=  +9.00 sd=  58.0 années<0=0/6
+                 tout: n=  502 PF= 1.21 win= 55.0% net=  +3.70 brut=  +4.98 sd=  55.7 années<0=2/11 | point mort = +4.98 pips
+A_noneom_E0      2016-2020: n= 4046 PF= 0.97 win= 50.2% net=  -0.47 brut=  +0.72 sd=  50.0 années<0=3/5 | 2021-2026-08: n= 4614 PF= 0.93 win= 49.2% net=  -1.31 brut=  +0.05 sd=  49.8 années<0=4/6
+                 tout: n= 8660 PF= 0.95 win= 49.7% net=  -0.92 brut=  +0.36 sd=  49.9 années<0=7/11 | point mort = +0.36 pips
+A_eom_E1         2016-2020: n=  234 PF= 1.00 win= 53.0% net=  -0.01 brut=  +1.18 sd=  52.1 années<0=2/5 | 2021-2026-08: n=  268 PF= 1.48 win= 56.0% net=  +7.97 brut=  +9.34 sd=  58.0 années<0=0/6
+                 tout: n=  502 PF= 1.24 win= 54.6% net=  +4.25 brut=  +5.54 sd=  55.4 années<0=2/11 | point mort = +5.54 pips
+A_noneom_E1      2016-2020: n= 4046 PF= 0.97 win= 50.0% net=  -0.53 brut=  +0.66 sd=  50.0 années<0=3/5 | 2021-2026-08: n= 4614 PF= 0.93 win= 49.2% net=  -1.30 brut=  +0.07 sd=  49.8 années<0=4/6
+                 tout: n= 8660 PF= 0.95 win= 49.6% net=  -0.94 brut=  +0.35 sd=  49.9 années<0=7/11 | point mort = +0.35 pips
+A_eom_E5         2016-2020: n=  234 PF= 0.88 win= 49.1% net=  -2.39 brut=  -1.19 sd=  52.1 années<0=2/5 | 2021-2026-08: n=  268 PF= 1.38 win= 56.0% net=  +6.60 brut=  +7.97 sd=  58.3 années<0=0/6
+                 tout: n=  502 PF= 1.13 win= 52.8% net=  +2.41 brut=  +3.70 sd=  55.6 années<0=2/11 | point mort = +3.70 pips
+A_noneom_E5      2016-2020: n= 4046 PF= 0.94 win= 49.8% net=  -1.07 brut=  +0.13 sd=  49.7 années<0=3/5 | 2021-2026-08: n= 4614 PF= 0.92 win= 49.2% net=  -1.46 brut=  -0.09 sd=  49.5 années<0=5/6
+                 tout: n= 8660 PF= 0.93 win= 49.5% net=  -1.27 brut=  +0.01 sd=  49.6 années<0=8/11 | point mort = +0.01 pips
+B_eom_16:00      2016-2020: n=  176 PF= 1.08 win= 54.0% net=  +0.82 brut=  +1.81 sd=  30.0 années<0=2/5 | 2021-2026-08: n=  197 PF= 0.57 win= 43.7% net=  -6.55 brut=  -5.34 sd=  31.0 années<0=5/6
+                 tout: n=  373 PF= 0.77 win= 48.5% net=  -3.08 brut=  -1.97 sd=  30.7 années<0=7/11 | point mort = -1.97 pips
+B_eom_16:05      2016-2020: n=  176 PF= 0.98 win= 53.4% net=  -0.21 brut=  +0.78 sd=  30.5 années<0=3/5 | 2021-2026-08: n=  197 PF= 0.58 win= 44.2% net=  -6.30 brut=  -5.08 sd=  30.8 années<0=5/6
+                 tout: n=  373 PF= 0.74 win= 48.5% net=  -3.42 brut=  -2.31 sd=  30.7 années<0=8/11 | point mort = -2.31 pips
+B_noneom_16:00   2016-2020: n= 3419 PF= 1.02 win= 49.7% net=  +0.21 brut=  +1.20 sd=  26.6 années<0=2/5 | 2021-2026-08: n= 3938 PF= 0.86 win= 49.0% net=  -1.74 brut=  -0.52 sd=  34.9 années<0=5/6
+                 tout: n= 7357 PF= 0.92 win= 49.3% net=  -0.83 brut=  +0.28 sd=  31.4 années<0=7/11 | point mort = +0.28 pips
+
+A_eom_E5 par paire (tout) :
+  6A: n=  123 PF= 0.96 win= 52.0% net=  -0.58 brut=  +0.42 sd=  38.9 années<0=5/11
+  6B: n=  126 PF= 1.19 win= 50.0% net=  +4.36 brut=  +6.16 sd=  64.3 années<0=3/11
+  6E: n=  127 PF= 1.10 win= 57.5% net=  +1.64 brut=  +2.54 sd=  47.9 années<0=4/11
+  6J: n=  126 PF= 1.20 win= 51.6% net=  +4.18 brut=  +5.61 sd=  66.7 années<0=6/11
+
+B_eom_16:00 par paire (tout) :
+  6A: n=  125 PF= 0.96 win= 54.4% net=  -0.40 brut=  +0.60 sd=  23.1 années<0=5/11
+  6E: n=  123 PF= 0.79 win= 43.9% net=  -3.06 brut=  -2.16 sd=  32.7 années<0=6/11
+  6J: n=  125 PF= 0.64 win= 47.2% net=  -5.77 brut=  -4.34 sd=  35.2 années<0=7/11
+
+Descriptif : A_eom_E5, fins de trimestre seulement : n=  165 PF= 1.11 win= 53.3% net=  +2.00 brut=  +3.29 sd=  49.9 années<0=4/11
+Exécutabilité A (FDM) : brut moyen E0=+4.98, E1=+5.54, E5=+3.70 pips
+
+## Backtest vectorbt (1/4 du capital par paire, sans levier)
+A_eom_E0         coût std | trades=  502 total=  +3.64% annuel= +0.33% Sharpe=+0.29 DDmax= -2.17% PF=1.17
+A_eom_E0         coût   0 | trades=  502 total=  +5.19% annuel= +0.47% Sharpe=+0.41 DDmax= -1.90% PF=1.25
+A_eom_E0         coût   1 | trades=  502 total=  +3.91% annuel= +0.36% Sharpe=+0.31 DDmax= -2.12% PF=1.19
+A_eom_E0         coût   2 | trades=  502 total=  +2.66% annuel= +0.25% Sharpe=+0.22 DDmax= -2.47% PF=1.12
+A_eom_E0         coût   3 | trades=  502 total=  +1.42% annuel= +0.14% Sharpe=+0.12 DDmax= -2.83% PF=1.06
+A_noneom_E0      coût std | trades= 8660 total= -14.15% annuel= -1.31% Sharpe=-0.33 DDmax=-15.76% PF=0.96
+A_noneom_E0      coût   0 | trades= 8660 total= +11.35% annuel= +1.07% Sharpe=+0.26 DDmax= -7.14% PF=1.03
+A_noneom_E0      coût   1 | trades= 8660 total= -10.53% annuel= -0.94% Sharpe=-0.23 DDmax=-12.23% PF=0.97
+A_noneom_E0      coût   2 | trades= 8660 total= -27.86% annuel= -2.91% Sharpe=-0.73 DDmax=-29.11% PF=0.91
+A_noneom_E0      coût   3 | trades= 8660 total= -41.64% annuel= -4.85% Sharpe=-1.22 DDmax=-42.56% PF=0.86
+A_eom_E1         coût std | trades=  502 total=  +4.23% annuel= +0.39% Sharpe=+0.34 DDmax= -1.90% PF=1.20
+A_eom_E1         coût   0 | trades=  502 total=  +5.79% annuel= +0.52% Sharpe=+0.45 DDmax= -1.66% PF=1.28
+A_eom_E1         coût   1 | trades=  502 total=  +4.51% annuel= +0.41% Sharpe=+0.36 DDmax= -1.85% PF=1.22
+A_eom_E1         coût   2 | trades=  502 total=  +3.25% annuel= +0.30% Sharpe=+0.26 DDmax= -2.18% PF=1.15
+A_eom_E1         coût   3 | trades=  502 total=  +2.00% annuel= +0.19% Sharpe=+0.16 DDmax= -2.52% PF=1.09
+A_noneom_E1      coût std | trades= 8660 total= -14.57% annuel= -1.36% Sharpe=-0.34 DDmax=-16.04% PF=0.96
+A_noneom_E1      coût   0 | trades= 8660 total= +10.78% annuel= +1.02% Sharpe=+0.25 DDmax= -7.52% PF=1.03
+A_noneom_E1      coût   1 | trades= 8660 total= -10.97% annuel= -0.98% Sharpe=-0.25 DDmax=-12.57% PF=0.97
+A_noneom_E1      coût   2 | trades= 8660 total= -28.20% annuel= -2.95% Sharpe=-0.74 DDmax=-29.33% PF=0.91
+A_noneom_E1      coût   3 | trades= 8660 total= -41.91% annuel= -4.89% Sharpe=-1.23 DDmax=-42.72% PF=0.85
+A_eom_E5         coût std | trades=  502 total=  +2.05% annuel= +0.19% Sharpe=+0.17 DDmax= -2.65% PF=1.09
+A_eom_E5         coût   0 | trades=  502 total=  +3.57% annuel= +0.33% Sharpe=+0.28 DDmax= -2.26% PF=1.17
+A_eom_E5         coût   1 | trades=  502 total=  +2.32% annuel= +0.22% Sharpe=+0.19 DDmax= -2.59% PF=1.11
+A_eom_E5         coût   2 | trades=  502 total=  +1.09% annuel= +0.11% Sharpe=+0.09 DDmax= -2.93% PF=1.05
+A_eom_E5         coût   3 | trades=  502 total=  -0.13% annuel= -0.01% Sharpe=-0.00 DDmax= -3.29% PF=0.99
+A_noneom_E5      coût std | trades= 8660 total= -20.25% annuel= -1.99% Sharpe=-0.50 DDmax=-21.36% PF=0.93
+A_noneom_E5      coût   0 | trades= 8660 total=  +3.27% annuel= +0.37% Sharpe=+0.09 DDmax= -8.19% PF=1.01
+A_noneom_E5      coût   1 | trades= 8660 total= -16.93% annuel= -1.62% Sharpe=-0.41 DDmax=-18.34% PF=0.95
+A_noneom_E5      coût   2 | trades= 8660 total= -32.95% annuel= -3.58% Sharpe=-0.91 DDmax=-33.75% PF=0.89
+A_noneom_E5      coût   3 | trades= 8660 total= -45.71% annuel= -5.51% Sharpe=-1.40 DDmax=-46.27% PF=0.83
+B_eom_16:00      coût std | trades=  373 total=  -2.26% annuel= -0.21% Sharpe=-0.44 DDmax= -3.24% PF=0.81
+B_eom_16:00      coût   0 | trades=  373 total=  -1.24% annuel= -0.11% Sharpe=-0.24 DDmax= -2.80% PF=0.89
+B_eom_16:00      coût   1 | trades=  373 total=  -2.20% annuel= -0.20% Sharpe=-0.43 DDmax= -3.20% PF=0.81
+B_eom_16:00      coût   2 | trades=  373 total=  -3.14% annuel= -0.29% Sharpe=-0.62 DDmax= -3.67% PF=0.74
+B_eom_16:00      coût   3 | trades=  373 total=  -4.08% annuel= -0.38% Sharpe=-0.80 DDmax= -4.22% PF=0.68
+B_eom_16:05      coût std | trades=  373 total=  -2.64% annuel= -0.24% Sharpe=-0.50 DDmax= -3.24% PF=0.78
+B_eom_16:05      coût   0 | trades=  373 total=  -1.62% annuel= -0.15% Sharpe=-0.31 DDmax= -2.78% PF=0.86
+B_eom_16:05      coût   1 | trades=  373 total=  -2.57% annuel= -0.24% Sharpe=-0.49 DDmax= -3.20% PF=0.78
+B_eom_16:05      coût   2 | trades=  373 total=  -3.51% annuel= -0.33% Sharpe=-0.66 DDmax= -3.80% PF=0.71
+B_eom_16:05      coût   3 | trades=  373 total=  -4.44% annuel= -0.41% Sharpe=-0.84 DDmax= -4.65% PF=0.65
+B_noneom_16:00   coût std | trades= 7357 total= -12.80% annuel= -1.23% Sharpe=-0.53 DDmax=-16.61% PF=0.93
+B_noneom_16:00   coût   0 | trades= 7357 total=  +7.30% annuel= +0.67% Sharpe=+0.28 DDmax=-11.20% PF=1.03
+B_noneom_16:00   coût   1 | trades= 7357 total= -11.71% annuel= -1.11% Sharpe=-0.48 DDmax=-15.61% PF=0.94
+B_noneom_16:00   coût   2 | trades= 7357 total= -26.11% annuel= -2.74% Sharpe=-1.23 DDmax=-27.95% PF=0.85
+B_noneom_16:00   coût   3 | trades= 7357 total= -37.06% annuel= -4.21% Sharpe=-1.97 DDmax=-38.10% PF=0.77
+
+## Tests au coût principal (seuil α = 0.025 par configuration principale)
+A_eom_E0         Sharpe=+0.29 p_boot=0.1608 p_perm=0.0777 DSR9=0.182 DSR201=0.006 (SR0 annualisé=0.55)
+A_noneom_E0      Sharpe=-0.33 p_boot=0.8779 p_perm=0.2444 DSR9=0.002 DSR201=0.000 (SR0 annualisé=0.55)
+A_eom_E1         Sharpe=+0.34 p_boot=0.1274 p_perm=0.0472 DSR9=0.224 DSR201=0.009 (SR0 annualisé=0.55)
+A_noneom_E1      Sharpe=-0.34 p_boot=0.8862 p_perm=0.2545 DSR9=0.002 DSR201=0.000 (SR0 annualisé=0.55)
+A_eom_E5         Sharpe=+0.17 p_boot=0.2816 p_perm=0.1585 DSR9=0.094 DSR201=0.002 (SR0 annualisé=0.55)
+A_noneom_E5      Sharpe=-0.50 p_boot=0.9639 p_perm=0.4725 DSR9=0.000 DSR201=0.000 (SR0 annualisé=0.55)
+B_eom_16:00      Sharpe=-0.44 p_boot=0.9264 p_perm=0.9170 DSR9=0.000 DSR201=0.000 (SR0 annualisé=0.55)
+B_eom_16:05      Sharpe=-0.50 p_boot=0.9461 p_perm=0.9404 DSR9=0.000 DSR201=0.000 (SR0 annualisé=0.55)
+B_noneom_16:00   Sharpe=-0.53 p_boot=0.9523 p_perm=0.2437 DSR9=0.000 DSR201=0.000 (SR0 annualisé=0.55)
+Reality Check (9 règles) : p=0.4594, meilleure=A_eom_E1, t=1.11
+
+## Critères des configurations principales
+A_eom_E5: (1) deux moitiés positives=False (2) bootstrap=False (3) permutation=False (4) DSR=False → REJETÉ
+B_eom_16:00: (1) deux moitiés positives=False (2) bootstrap=False (3) permutation=False (4) DSR=False → REJETÉ
+
+Contrôles :
+A non-FDM vs FDM (E5, brut) : +0.01 vs +3.70 pips
+B non-FDM vs FDM (16:00, brut) : +0.28 vs -1.97 pips
+
+fin.
