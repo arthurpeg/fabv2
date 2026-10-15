@@ -1,0 +1,136 @@
+# Backtest vectorbt — pré-enregistrement n° 6 (futures CME 6E/6B/6A/6J, 1/4 du capital par paire)
+
+reopen_s1_E0    coût   0 | trades= 7718 rendement total= +12.07% annuel= +1.05% Sharpe=+1.47 DDmax= -1.46% gagnants= 53.1% PF=1.25 moyen=+0.58 pb
+reopen_s1_E0    coût   2 | trades= 7718 rendement total= -22.75% annuel= -2.36% Sharpe=-3.34 DDmax=-22.84% gagnants= 39.6% PF=0.60 moyen=-1.35 pb
+reopen_s1_E0    coût   3 | trades= 7718 rendement total= -35.69% annuel= -4.04% Sharpe=-5.69 DDmax=-35.71% gagnants= 32.2% PF=0.42 moyen=-2.31 pb
+reopen_s1_E0    coût   5 | trades= 7718 rendement total= -55.19% annuel= -7.35% Sharpe=-10.12 DDmax=-55.18% gagnants= 20.7% PF=0.22 moyen=-4.24 pb
+reopen_s1_E0    coût   8 | trades= 7718 rendement total= -73.65% annuel=-12.21% Sharpe=-15.83 DDmax=-73.63% gagnants= 10.7% PF=0.10 moyen=-7.13 pb
+reopen_s1_E1    coût   0 | trades= 7690 rendement total=  +3.55% annuel= +0.32% Sharpe=+0.46 DDmax= -1.64% gagnants= 47.6% PF=1.08 moyen=+0.18 pb
+reopen_s1_E1    coût   2 | trades= 7690 rendement total= -28.55% annuel= -3.08% Sharpe=-4.42 DDmax=-28.62% gagnants= 33.2% PF=0.50 moyen=-1.75 pb
+reopen_s1_E1    coût   3 | trades= 7690 rendement total= -40.48% annuel= -4.75% Sharpe=-6.78 DDmax=-40.51% gagnants= 26.2% PF=0.35 moyen=-2.71 pb
+reopen_s1_E1    coût   5 | trades= 7690 rendement total= -58.49% annuel= -8.05% Sharpe=-11.21 DDmax=-58.48% gagnants= 16.4% PF=0.19 moyen=-4.64 pb
+reopen_s1_E1    coût   8 | trades= 7690 rendement total= -75.55% annuel=-12.90% Sharpe=-16.84 DDmax=-75.54% gagnants=  9.1% PF=0.09 moyen=-7.53 pb
+reopen_s1_E5    coût   0 | trades= 7653 rendement total=  +6.00% annuel= +0.54% Sharpe=+0.86 DDmax= -0.98% gagnants= 48.0% PF=1.14 moyen=+0.30 pb
+reopen_s1_E5    coût   2 | trades= 7653 rendement total= -26.68% annuel= -2.84% Sharpe=-4.57 DDmax=-26.85% gagnants= 32.7% PF=0.51 moyen=-1.63 pb
+reopen_s1_E5    coût   3 | trades= 7653 rendement total= -38.86% annuel= -4.51% Sharpe=-7.19 DDmax=-38.96% gagnants= 26.4% PF=0.35 moyen=-2.59 pb
+reopen_s1_E5    coût   5 | trades= 7653 rendement total= -57.25% annuel= -7.79% Sharpe=-12.02 DDmax=-57.28% gagnants= 16.9% PF=0.18 moyen=-4.52 pb
+reopen_s1_E5    coût   8 | trades= 7653 rendement total= -74.73% annuel=-12.60% Sharpe=-17.97 DDmax=-74.72% gagnants=  9.4% PF=0.08 moyen=-7.41 pb
+reopen_s1_E15   coût   0 | trades= 7638 rendement total=  +7.12% annuel= +0.63% Sharpe=+0.93 DDmax= -1.12% gagnants= 48.5% PF=1.16 moyen=+0.36 pb
+reopen_s1_E15   coût   2 | trades= 7638 rendement total= -25.71% annuel= -2.72% Sharpe=-4.00 DDmax=-25.79% gagnants= 34.6% PF=0.54 moyen=-1.57 pb
+reopen_s1_E15   coût   3 | trades= 7638 rendement total= -37.96% annuel= -4.37% Sharpe=-6.37 DDmax=-37.97% gagnants= 28.0% PF=0.38 moyen=-2.53 pb
+reopen_s1_E15   coût   5 | trades= 7638 rendement total= -56.53% annuel= -7.63% Sharpe=-10.80 DDmax=-56.51% gagnants= 17.8% PF=0.20 moyen=-4.46 pb
+reopen_s1_E15   coût   8 | trades= 7638 rendement total= -74.22% annuel=-12.42% Sharpe=-16.40 DDmax=-74.20% gagnants=  9.3% PF=0.10 moyen=-7.36 pb
+reopen_s2_E0    coût   0 | trades= 5472 rendement total= +10.82% annuel= +0.94% Sharpe=+1.51 DDmax= -1.10% gagnants= 54.9% PF=1.30 moyen=+0.74 pb
+reopen_s2_E0    coût   2 | trades= 5472 rendement total= -14.58% annuel= -1.44% Sharpe=-2.30 DDmax=-14.68% gagnants= 42.2% PF=0.67 moyen=-1.15 pb
+reopen_s2_E0    coût   3 | trades= 5472 rendement total= -24.93% annuel= -2.63% Sharpe=-4.14 DDmax=-24.98% gagnants= 35.1% PF=0.48 moyen=-2.10 pb
+reopen_s2_E0    coût   5 | trades= 5472 rendement total= -41.91% annuel= -4.97% Sharpe=-7.54 DDmax=-41.89% gagnants= 23.7% PF=0.26 moyen=-4.00 pb
+reopen_s2_E0    coût   8 | trades= 5472 rendement total= -60.27% annuel= -8.45% Sharpe=-11.73 DDmax=-60.24% gagnants= 12.6% PF=0.12 moyen=-6.84 pb
+reopen_s2_E1    coût   0 | trades= 5452 rendement total=  +3.58% annuel= +0.32% Sharpe=+0.52 DDmax= -1.64% gagnants= 48.1% PF=1.10 moyen=+0.25 pb
+reopen_s2_E1    coût   2 | trades= 5452 rendement total= -20.09% annuel= -2.05% Sharpe=-3.26 DDmax=-20.19% gagnants= 34.8% PF=0.54 moyen=-1.64 pb
+reopen_s2_E1    coût   3 | trades= 5452 rendement total= -29.74% annuel= -3.23% Sharpe=-5.07 DDmax=-29.79% gagnants= 27.9% PF=0.39 moyen=-2.59 pb
+reopen_s2_E1    coût   5 | trades= 5452 rendement total= -45.57% annuel= -5.57% Sharpe=-8.41 DDmax=-45.56% gagnants= 18.5% PF=0.21 moyen=-4.49 pb
+reopen_s2_E1    coût   8 | trades= 5452 rendement total= -62.72% annuel= -9.04% Sharpe=-12.50 DDmax=-62.70% gagnants= 10.8% PF=0.10 moyen=-7.33 pb
+reopen_s2_E5    coût   0 | trades= 5432 rendement total=  +5.90% annuel= +0.53% Sharpe=+0.94 DDmax= -1.01% gagnants= 48.5% PF=1.18 moyen=+0.42 pb
+reopen_s2_E5    coût   2 | trades= 5432 rendement total= -18.21% annuel= -1.84% Sharpe=-3.26 DDmax=-18.40% gagnants= 34.8% PF=0.56 moyen=-1.48 pb
+reopen_s2_E5    coût   3 | trades= 5432 rendement total= -28.04% annuel= -3.01% Sharpe=-5.27 DDmax=-28.18% gagnants= 28.1% PF=0.40 moyen=-2.43 pb
+reopen_s2_E5    coût   5 | trades= 5432 rendement total= -44.19% annuel= -5.34% Sharpe=-8.93 DDmax=-44.24% gagnants= 18.7% PF=0.21 moyen=-4.33 pb
+reopen_s2_E5    coût   8 | trades= 5432 rendement total= -61.70% annuel= -8.79% Sharpe=-13.24 DDmax=-61.68% gagnants= 11.0% PF=0.10 moyen=-7.17 pb
+reopen_s2_E15   coût   0 | trades= 5408 rendement total=  +5.68% annuel= +0.51% Sharpe=+0.89 DDmax= -1.01% gagnants= 49.1% PF=1.17 moyen=+0.40 pb
+reopen_s2_E15   coût   2 | trades= 5408 rendement total= -18.23% annuel= -1.84% Sharpe=-3.23 DDmax=-18.33% gagnants= 36.1% PF=0.57 moyen=-1.50 pb
+reopen_s2_E15   coût   3 | trades= 5408 rendement total= -28.00% annuel= -3.01% Sharpe=-5.20 DDmax=-28.02% gagnants= 29.7% PF=0.40 moyen=-2.45 pb
+reopen_s2_E15   coût   5 | trades= 5408 rendement total= -44.07% annuel= -5.32% Sharpe=-8.77 DDmax=-44.05% gagnants= 19.3% PF=0.22 moyen=-4.35 pb
+reopen_s2_E15   coût   8 | trades= 5408 rendement total= -61.53% annuel= -8.75% Sharpe=-12.99 DDmax=-61.50% gagnants= 10.8% PF=0.10 moyen=-7.19 pb
+reopen_s5_E0    coût   0 | trades= 2256 rendement total=  +6.39% annuel= +0.57% Sharpe=+1.11 DDmax= -0.87% gagnants= 55.8% PF=1.34 moyen=+1.09 pb
+reopen_s5_E0    coût   2 | trades= 2256 rendement total=  -4.19% annuel= -0.39% Sharpe=-0.77 DDmax= -4.46% gagnants= 47.1% PF=0.81 moyen=-0.76 pb
+reopen_s5_E0    coût   3 | trades= 2256 rendement total=  -9.07% annuel= -0.87% Sharpe=-1.68 DDmax= -9.20% gagnants= 41.0% PF=0.63 moyen=-1.69 pb
+reopen_s5_E0    coût   5 | trades= 2256 rendement total= -18.05% annuel= -1.82% Sharpe=-3.40 DDmax=-18.10% gagnants= 31.2% PF=0.38 moyen=-3.54 pb
+reopen_s5_E0    coût   8 | trades= 2256 rendement total= -29.82% annuel= -3.24% Sharpe=-5.53 DDmax=-29.78% gagnants= 19.1% PF=0.19 moyen=-6.32 pb
+reopen_s5_E1    coût   0 | trades= 2241 rendement total=  +3.19% annuel= +0.29% Sharpe=+0.54 DDmax= -1.19% gagnants= 49.1% PF=1.18 moyen=+0.56 pb
+reopen_s5_E1    coût   2 | trades= 2241 rendement total=  -6.99% annuel= -0.66% Sharpe=-1.24 DDmax= -7.29% gagnants= 39.6% PF=0.69 moyen=-1.29 pb
+reopen_s5_E1    coût   3 | trades= 2241 rendement total= -11.68% annuel= -1.14% Sharpe=-2.11 DDmax=-11.83% gagnants= 33.5% PF=0.53 moyen=-2.22 pb
+reopen_s5_E1    coût   5 | trades= 2241 rendement total= -20.33% annuel= -2.08% Sharpe=-3.73 DDmax=-20.38% gagnants= 24.0% PF=0.33 moyen=-4.07 pb
+reopen_s5_E1    coût   8 | trades= 2241 rendement total= -31.67% annuel= -3.49% Sharpe=-5.77 DDmax=-31.65% gagnants= 15.4% PF=0.17 moyen=-6.85 pb
+
+pf.stats() vbt, reopen_s5_E1 à 3 pips :
+Start Value                  1000000.0
+End Value                 883220.58329
+Total Return [%]            -11.677942
+Max Drawdown [%]             11.840827
+Total Fees Paid          146614.533296
+Total Trades                      2241
+Win Rate [%]                 33.511825
+Best Trade [%]                1.483017
+Worst Trade [%]              -1.167451
+Avg Winning Trade [%]         0.074452
+Avg Losing Trade [%]         -0.070931
+Profit Factor                 0.529227
+Expectancy                  -52.110405
+
+reopen_s5_E5    coût   0 | trades= 2246 rendement total=  +5.00% annuel= +0.45% Sharpe=+0.96 DDmax= -0.64% gagnants= 49.9% PF=1.31 moyen=+0.87 pb
+reopen_s5_E5    coût   2 | trades= 2246 rendement total=  -5.37% annuel= -0.51% Sharpe=-1.09 DDmax= -5.76% gagnants= 39.9% PF=0.74 moyen=-0.99 pb
+reopen_s5_E5    coût   3 | trades= 2246 rendement total= -10.15% annuel= -0.98% Sharpe=-2.10 DDmax=-10.39% gagnants= 34.0% PF=0.56 moyen=-1.91 pb
+reopen_s5_E5    coût   5 | trades= 2246 rendement total= -18.96% annuel= -1.93% Sharpe=-3.97 DDmax=-19.10% gagnants= 24.5% PF=0.33 moyen=-3.77 pb
+reopen_s5_E5    coût   8 | trades= 2246 rendement total= -30.51% annuel= -3.33% Sharpe=-6.25 DDmax=-30.55% gagnants= 16.1% PF=0.17 moyen=-6.55 pb
+reopen_s5_E15   coût   0 | trades= 2229 rendement total=  +4.98% annuel= +0.45% Sharpe=+0.99 DDmax= -0.66% gagnants= 51.8% PF=1.31 moyen=+0.87 pb
+reopen_s5_E15   coût   2 | trades= 2229 rendement total=  -5.31% annuel= -0.50% Sharpe=-1.11 DDmax= -5.64% gagnants= 40.7% PF=0.74 moyen=-0.98 pb
+reopen_s5_E15   coût   3 | trades= 2229 rendement total= -10.06% annuel= -0.97% Sharpe=-2.14 DDmax=-10.18% gagnants= 35.3% PF=0.56 moyen=-1.91 pb
+reopen_s5_E15   coût   5 | trades= 2229 rendement total= -18.81% annuel= -1.91% Sharpe=-4.04 DDmax=-18.84% gagnants= 25.4% PF=0.33 moyen=-3.77 pb
+reopen_s5_E15   coût   8 | trades= 2229 rendement total= -30.30% annuel= -3.31% Sharpe=-6.30 DDmax=-30.27% gagnants= 16.0% PF=0.17 moyen=-6.55 pb
+intra_s1        coût std | trades=45441 rendement total= -63.36% annuel= -9.17% Sharpe=-3.80 DDmax=-63.59% gagnants= 42.6% PF=0.77 moyen=-1.92 pb
+intra_s1        coût   0 | trades=45209 rendement total=  +3.66% annuel= +0.37% Sharpe=+0.13 DDmax= -6.74% gagnants= 46.3% PF=1.01 moyen=-0.54 pb
+intra_s2        coût std | trades= 3051 rendement total= -13.55% annuel= -1.33% Sharpe=-1.12 DDmax=-13.74% gagnants= 45.0% PF=0.72 moyen=-2.27 pb
+intra_s2        coût   0 | trades= 3049 rendement total=  -5.07% annuel= -0.47% Sharpe=-0.39 DDmax= -5.80% gagnants= 47.9% PF=0.89 moyen=-0.92 pb
+intra_s5        coût std | trades=   87 rendement total=  -3.06% annuel= -0.28% Sharpe=-0.48 DDmax= -3.25% gagnants= 43.7% PF=0.36 moyen=-16.75 pb
+intra_s5        coût   0 | trades=   87 rendement total=  -2.79% annuel= -0.26% Sharpe=-0.44 DDmax= -3.03% gagnants= 46.0% PF=0.40 moyen=-15.44 pb
+close_s1_E0     coût   0 | trades= 6388 rendement total= +14.62% annuel= +1.33% Sharpe=+0.33 DDmax= -8.56% gagnants= 50.8% PF=1.04 moyen=+0.93 pb
+close_s1_E0     coût   2 | trades= 6388 rendement total= -15.38% annuel= -1.45% Sharpe=-0.37 DDmax=-21.19% gagnants= 49.5% PF=0.95 moyen=-1.00 pb
+close_s1_E0     coût   3 | trades= 6388 rendement total= -27.16% annuel= -2.82% Sharpe=-0.71 DDmax=-31.51% gagnants= 48.5% PF=0.91 moyen=-1.96 pb
+close_s1_E0     coût   5 | trades= 6388 rendement total= -45.84% annuel= -5.54% Sharpe=-1.39 DDmax=-48.12% gagnants= 46.8% PF=0.83 moyen=-3.89 pb
+close_s1_E0     coût   8 | trades= 6388 rendement total= -65.02% annuel= -9.54% Sharpe=-2.39 DDmax=-65.99% gagnants= 44.0% PF=0.72 moyen=-6.78 pb
+close_s2_E0     coût   0 | trades= 4554 rendement total= +19.48% annuel= +1.69% Sharpe=+0.48 DDmax= -5.84% gagnants= 51.1% PF=1.08 moyen=+1.60 pb
+close_s2_E0     coût   2 | trades= 4554 rendement total=  -3.87% annuel= -0.30% Sharpe=-0.08 DDmax=-14.16% gagnants= 49.7% PF=0.98 moyen=-0.30 pb
+close_s2_E0     coût   3 | trades= 4554 rendement total= -13.71% annuel= -1.29% Sharpe=-0.37 DDmax=-19.56% gagnants= 48.8% PF=0.94 moyen=-1.25 pb
+close_s2_E0     coût   5 | trades= 4554 rendement total= -30.36% annuel= -3.25% Sharpe=-0.92 DDmax=-33.52% gagnants= 46.8% PF=0.86 moyen=-3.16 pb
+close_s2_E0     coût   8 | trades= 4554 rendement total= -49.33% annuel= -6.17% Sharpe=-1.74 DDmax=-50.78% gagnants= 44.2% PF=0.75 moyen=-6.01 pb
+close_s5_E0     coût   0 | trades= 1861 rendement total= +24.56% annuel= +2.05% Sharpe=+0.77 DDmax= -4.12% gagnants= 52.8% PF=1.23 moyen=+4.65 pb
+close_s5_E0     coût   2 | trades= 1861 rendement total= +13.98% annuel= +1.23% Sharpe=+0.47 DDmax= -4.52% gagnants= 51.5% PF=1.13 moyen=+2.79 pb
+close_s5_E0     coût   3 | trades= 1861 rendement total=  +9.05% annuel= +0.83% Sharpe=+0.31 DDmax= -4.73% gagnants= 50.6% PF=1.09 moyen=+1.87 pb
+close_s5_E0     coût   5 | trades= 1861 rendement total=  -0.17% annuel= +0.02% Sharpe=+0.01 DDmax= -7.63% gagnants= 48.8% PF=1.00 moyen=+0.01 pb
+close_s5_E0     coût   8 | trades= 1861 rendement total= -12.50% annuel= -1.19% Sharpe=-0.45 DDmax=-16.73% gagnants= 46.3% PF=0.88 moyen=-2.77 pb
+
+## Configuration principale reopen_s5_E1, par fenêtre (vbt)
+cost       window  trades  total_ret_%  ann_ret_%  sharpe  max_dd_%  win_%   pf  mean_trade_bp
+   0    2016-2018     912         1.88       0.61    0.94     -0.59  50.00 1.31           0.82
+   0 2019-2026-01    1209         1.29       0.18    0.37     -1.19  48.39 1.12           0.42
+   0     2026-02+     120        -0.00      -0.01   -0.01     -0.44  50.00 0.99          -0.08
+   0         tout    2241         3.19       0.29    0.54     -1.19  49.13 1.18           0.56
+   3    2016-2018     912        -4.48      -1.49   -2.29     -4.65  32.68 0.54          -2.00
+   3 2019-2026-01    1209        -6.82      -0.97   -1.99     -7.53  33.83 0.53          -2.35
+   3     2026-02+     120        -0.77      -1.30   -2.67     -0.82  36.67 0.43          -2.62
+   3         tout    2241       -11.68      -1.14   -2.11    -11.83  33.51 0.53          -2.22
+   5    2016-2018     912        -8.48      -2.89   -4.33     -8.55  22.59 0.32          -3.89
+   5 2019-2026-01    1209       -11.82      -1.73   -3.42    -12.40  24.57 0.34          -4.19
+   5     2026-02+     120        -1.27      -2.15   -4.23     -1.30  29.17 0.24          -4.31
+   5         tout    2241       -20.33      -2.08   -3.73    -20.38  24.01 0.33          -4.07
+
+## Tests sur les rendements vbt au coût principal
+reopen_s1_E0    Sharpe=-5.69 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s1_E1    Sharpe=-6.78 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s1_E5    Sharpe=-7.19 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s1_E15   Sharpe=-6.37 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s2_E0    Sharpe=-4.14 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s2_E1    Sharpe=-5.07 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s2_E5    Sharpe=-5.27 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s2_E15   Sharpe=-5.20 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s5_E0    Sharpe=-1.68 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s5_E1    Sharpe=-2.11 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s5_E5    Sharpe=-2.10 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+reopen_s5_E15   Sharpe=-2.14 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+intra_s1        Sharpe=-3.80 p_boot=1.0000 DSR18=0.000 DSR192=0.000
+intra_s2        Sharpe=-1.12 p_boot=0.9990 DSR18=0.000 DSR192=0.000
+intra_s5        Sharpe=-0.48 p_boot=0.9270 DSR18=0.000 DSR192=0.000
+close_s1_E0     Sharpe=-0.71 p_boot=0.9950 DSR18=0.000 DSR192=0.000
+close_s2_E0     Sharpe=-0.37 p_boot=0.9180 DSR18=0.000 DSR192=0.000
+close_s5_E0     Sharpe=+0.31 p_boot=0.1105 DSR18=0.000 DSR192=0.000
+
+fin.

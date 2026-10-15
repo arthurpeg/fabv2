@@ -170,10 +170,49 @@ Sorties : `results/fx_reopen/vbt_check.csv`, `vbt_check.log` et `daily_net_vbt.p
 
 La conclusion du contrôle (a) reste la même : le Sharpe est négatif dans les deux moteurs.
 
+## 10. Backtest vectorbt
+
+[run_fx_reopen_vbt.py](../run_fx_reopen_vbt.py) et [fxreopen/backtest.py](../fxreopen/backtest.py) exécutent les 18 règles dans un seul `vbt.Portfolio.from_orders` :
+- 4 colonnes, une par paire, chacune avec 1/4 du capital (1 M$ au total) et sans partage de cash, regroupées en un seul portefeuille ;
+- ordres `targetpercent` à 1× ;
+- frais = demi-coût aller-retour / prix à chaque ordre ;
+- rendements par séance CME.
+
+Sorties : `results/fx_reopen/vbt_summary.csv`, `vbt_run.log`, `vbt_daily_net.parquet`, `vbt_equity.png`.
+
+![Courbes de capital vbt](../results/fx_reopen/vbt_equity.png)
+
+Sur toute la période, 2016-01 → 2026-08 :
+
+| Règle | Rendement total brut | Sharpe brut | Rendement total à 3 pips | Sharpe à 3 pips | Drawdown max à 3 pips | PF à 3 pips |
+|---|---|---|---|---|---|---|
+| s1 E0 | +12,1 % | +1,47 | −35,7 % | −5,69 | −35,7 % | 0,42 |
+| s1 E1 | +3,6 % | +0,46 | −40,5 % | −6,78 | −40,5 % | 0,35 |
+| s2 E0 | +10,8 % | +1,51 | −24,9 % | −4,14 | −25,0 % | 0,48 |
+| s2 E1 | +3,6 % | +0,52 | −29,7 % | −5,07 | −29,8 % | 0,39 |
+| s5 E0 | +6,4 % | +1,11 | −9,1 % | −1,68 | −9,2 % | 0,63 |
+| **s5 E1 (principale)** | **+3,2 %** | **+0,54** | **−11,7 %** | **−2,11** | **−11,8 %** | **0,53** |
+| s5 E5 | +5,0 % | +0,96 | −10,2 % | −2,10 | −10,4 % | 0,56 |
+| s5 E15 | +5,0 % | +0,99 | −10,1 % | −2,14 | −10,2 % | 0,56 |
+| close s5 (E0) | +24,6 % | +0,77 | +9,1 % | +0,31 | −4,7 % | 1,09 |
+| intrajournalier s1 (coût standard) | +3,7 % | +0,13 | — | −3,80 | −63,6 % | 0,77 |
+
+`pf.stats()` de la configuration principale à 3 pips : 1 M$ → 883 221 $ (−11,7 %), **146 615 $ de frais payés pour environ +29 800 $ de gain brut**, 2 241 trades, 33,5 % de gagnants, PF de 0,53.
+
+Configuration principale par fenêtre, à 3 pips : 2016-2018 −4,5 % (Sharpe −2,29) ; 2019-2026-01 −6,8 % (−1,99) ; 2026-02+ −0,8 % (−2,67). À 5 pips : −20,3 % sur la période.
+
+Lecture :
+- Les Sharpe vbt sont identiques au calcul arithmétique pour toutes les règles de reprise. Le verdict ne change pas.
+- **Même en brut, l'enjeu est minuscule** : à 1× sans levier, le meilleur fade de reprise rapporte environ +1 % par an (s1 E0, +12 % en 10,6 ans), et la règle principale +0,3 % par an. Le levier multiplie le gain brut, mais les coûts aussi.
+- Seule la détention jusqu'au close au seuil de 5 pips finit positive à 3 pips (+9,1 %, Sharpe 0,31). Elle est rejetée par le DSR (0,000), le bootstrap (p = 0,11) et le Reality Check (p = 0,72), et elle est nulle sur 2019-2026.
+- Le Sharpe intrajournalier diffère du contrôle croisé de la section 9 (−3,80 contre −4,61). Ici, chaque paire garde sa propre poche de capital sans rééquilibrage ; là, les rendements étaient moyennés chaque jour. Avec −63 %, les poches dérivent.
+- Dans `pf.stats()`, l'index est fait des instants d'ordre (fréquence fictive de 1 minute) : les Sharpe, durées et Calmar natifs de vbt n'ont donc pas de sens ici. Seules les statistiques de trades et de valeur sont rapportées dans `vbt_run.log`.
+
 ## Reproduire
 
 ```bash
 uv run pytest tests/test_fx_reopen.py
 uv run python run_fx_reopen.py      # environ 10 min → results/fx_reopen/
 uv run python check_fx_reopen_vbt.py  # contrôle croisé vectorbt
+uv run python run_fx_reopen_vbt.py    # backtest vectorbt (18 règles × 5 coûts)
 ```
