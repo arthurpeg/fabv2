@@ -148,9 +148,32 @@ Hypothèses, non testées ici faute de données au comptant :
 - Le DSR utilise la variance des Sharpe des 18 essais. Le SR₀ obtenu (4,65) est gonflé par les variantes très négatives, mais tous les Sharpe sont de toute façon négatifs au coût principal, sauf celui du close au seuil de 5 pips (+0,30).
 - Détail d'implémentation non précisé dans le pré-enregistrement : une entrée décalée ne réutilise jamais la barre de reprise (si le premier échange a lieu à 18:02, E1 entre sur la barre suivante). En hiver, E0 sort sur la barre de 00:00 UTC ; les séances d'hiver des fenêtres de roulement (du 1er au 21 décembre, début mars) sont donc exclues pour E0, comme le prévoit la règle des roulements.
 
+## 9. Contrôle croisé vectorbt
+
+Le P&L de `fxreopen/` est calculé directement en pandas et numpy (sens × variation de prix − coût). Le script [check_fx_reopen_vbt.py](../check_fx_reopen_vbt.py) rejoue les 18 règles, paire par paire, dans `vbt.Portfolio.from_orders`, avec la convention de `fab/core.py` :
+- `targetpercent` ;
+- une sortie et une entrée au même instant fusionnent en un seul ordre ;
+- frais = demi-coût aller-retour / prix, à chaque ordre.
+
+Sorties : `results/fx_reopen/vbt_check.csv`, `vbt_check.log` et `daily_net_vbt.parquet`.
+
+| Règles | Écart max par trade | Écart max par jour | Sharpe journalier, arithmétique / vbt |
+|---|---|---|---|
+| 12 règles de reprise, 3 de détention jusqu'au close | ≤ 4·10⁻¹⁶ | ≤ 3·10⁻⁶ | identiques (principale : −2,11 / −2,11) |
+| Intrajournalier, seuil 1 pip | — | 2,9·10⁻³ | −5,79 / −4,61 |
+| Intrajournalier, seuil 2 pips | — | 2,4·10⁻⁴ | −1,17 / −1,14 |
+| Intrajournalier, seuil 5 pips | 2·10⁻² (3 retournements) | 2,4·10⁻⁴ | −0,48 / −0,48 |
+
+**Les règles de reprise et de détention jusqu'au close sont identiques dans les deux moteurs.** Pour le contrôle intrajournalier, il y a deux écarts :
+- quand deux trades consécutifs ont le même sens (8 205 cas au seuil de 1 pip), vbt garde la position au lieu de payer un aller-retour, ce qui le rend moins perdant ;
+- lors d'un retournement, vbt répartit les frais autrement entre les deux trades (l'écart par trade de 2·10⁻² vient de là), mais le P&L journalier est le même.
+
+La conclusion du contrôle (a) reste la même : le Sharpe est négatif dans les deux moteurs.
+
 ## Reproduire
 
 ```bash
 uv run pytest tests/test_fx_reopen.py
 uv run python run_fx_reopen.py      # environ 10 min → results/fx_reopen/
+uv run python check_fx_reopen_vbt.py  # contrôle croisé vectorbt
 ```
