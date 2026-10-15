@@ -1,0 +1,365 @@
+# Pré-enregistrement n° 6 — fade de la reprise FX (futures CME)
+
+## Contrôle des roulements (sauts > 0,15 % sur une barre de 00:00 UTC)
+6E: 41 dans les fenêtres (41 trimestres sur ~43), 0 hors fenêtres (max |saut| hors fenêtre = 0.0000)
+6B: 13 dans les fenêtres (13 trimestres sur ~43), 0 hors fenêtres (max |saut| hors fenêtre = 0.0000)
+6A: 17 dans les fenêtres (17 trimestres sur ~43), 0 hors fenêtres (max |saut| hors fenêtre = 0.0000)
+6J: 35 dans les fenêtres (35 trimestres sur ~43), 0 hors fenêtres (max |saut| hors fenêtre = 0.0000)
+
+## Anatomie du gap (pips) — papier : reprise 4,8 pips, 74 % > 1 pip ; autres heures 0,12, 0,9 %
+6E (EURUSD) : reprise n=2726 |gap| moyen=3.62 médian=1.50 >1=59% >2=39% >5=14% | intrajournalier (gaps non nuls, n=30440) moyen=0.55 >1=7.8%
+6B (GBPUSD) : reprise n=2731 |gap| moyen=5.82 médian=3.00 >1=68% >2=53% >5=25% | intrajournalier (gaps non nuls, n=28335) moyen=1.09 >1=100.0%
+6A (AUDUSD) : reprise n=2725 |gap| moyen=3.26 médian=2.00 >1=58% >2=39% >5=17% | intrajournalier (gaps non nuls, n=27976) moyen=0.75 >1=45.7%
+6J (USDJPY) : reprise n=2736 |gap| moyen=6.87 médian=2.51 >1=78% >2=58% >5=29% | intrajournalier (gaps non nuls, n=28632) moyen=0.86 >1=35.4%
+
+## Famille principale : fade de la reprise, sortie +60 min
+
+### reopen_s1_E0
+coût 0 | 2016-2018     n= 2362 PF= 1.30 win= 51.3% net= +0.71 brut= +0.71 SRpap= +2.28 années<0=1/3 SRj=+1.98
+coût 0 | 2019-2026-01  n= 4937 PF= 1.23 win= 54.3% net= +0.59 brut= +0.59 SRpap= +1.60 années<0=0/8 SRj=+1.50
+coût 0 | 2026-02+      n=  419 PF= 0.87 win= 49.4% net= -0.44 brut= -0.44 SRpap= -1.05 années<0=1/1 SRj=-0.48
+coût 0 | tout          n= 7718 PF= 1.22 win= 53.1% net= +0.57 brut= +0.57 SRpap= +1.61 années<0=2/11 SRj=+1.46
+coût 2 | 2019-2026-01  n= 4937 PF= 0.61 win= 38.8% net= -1.41 brut= +0.59 SRpap= -3.80 années<0=8/8 SRj=-3.25
+coût 3 | 2016-2018     n= 2362 PF= 0.43 win= 30.5% net= -2.29 brut= +0.71 SRpap= -7.37 années<0=3/3 SRj=-6.35
+coût 3 | 2019-2026-01  n= 4937 PF= 0.43 win= 31.5% net= -2.41 brut= +0.59 SRpap= -6.50 années<0=8/8 SRj=-5.56
+coût 3 | 2026-02+      n=  419 PF= 0.33 win= 27.7% net= -3.44 brut= -0.44 SRpap= -8.27 années<0=1/1 SRj=-4.99
+coût 3 | tout          n= 7718 PF= 0.43 win= 31.0% net= -2.43 brut= +0.57 SRpap= -6.83 années<0=11/11 SRj=-5.69
+coût 5 | 2016-2018     n= 2362 PF= 0.22 win= 19.9% net= -4.29 brut= +0.71 SRpap=-13.81 années<0=3/3 SRj=-11.54
+coût 5 | 2019-2026-01  n= 4937 PF= 0.23 win= 20.6% net= -4.41 brut= +0.59 SRpap=-11.89 années<0=8/8 SRj=-9.89
+coût 5 | 2026-02+      n=  419 PF= 0.18 win= 20.5% net= -5.44 brut= -0.44 SRpap=-13.09 années<0=1/1 SRj=-7.83
+coût 5 | tout          n= 7718 PF= 0.23 win= 20.4% net= -4.43 brut= +0.57 SRpap=-12.46 années<0=11/11 SRj=-10.10
+coût 8 | 2019-2026-01  n= 4937 PF= 0.10 win= 10.8% net= -7.41 brut= +0.59 SRpap=-19.99 années<0=8/8 SRj=-15.40
+
+### reopen_s1_E1
+coût 0 | 2016-2018     n= 2357 PF= 1.19 win= 48.1% net= +0.44 brut= +0.44 SRpap= +1.37 années<0=1/3 SRj=+1.13
+coût 0 | 2019-2026-01  n= 4918 PF= 1.01 win= 47.2% net= +0.02 brut= +0.02 SRpap= +0.06 années<0=4/8 SRj=+0.24
+coût 0 | 2026-02+      n=  415 PF= 0.80 win= 48.4% net= -0.58 brut= -0.58 SRpap= -1.61 années<0=1/1 SRj=-0.63
+coût 0 | tout          n= 7690 PF= 1.05 win= 47.6% net= +0.12 brut= +0.12 SRpap= +0.35 années<0=6/11 SRj=+0.45
+coût 2 | 2019-2026-01  n= 4918 PF= 0.47 win= 31.1% net= -1.98 brut= +0.02 SRpap= -5.77 années<0=8/8 SRj=-4.72
+coût 3 | 2016-2018     n= 2357 PF= 0.39 win= 26.3% net= -2.56 brut= +0.44 SRpap= -7.93 années<0=3/3 SRj=-6.25
+coût 3 | 2019-2026-01  n= 4918 PF= 0.33 win= 24.5% net= -2.98 brut= +0.02 SRpap= -8.68 années<0=8/8 SRj=-7.11
+coût 3 | 2026-02+      n=  415 PF= 0.26 win= 24.3% net= -3.58 brut= -0.58 SRpap= -9.93 années<0=1/1 SRj=-5.97
+coût 3 | tout          n= 7690 PF= 0.35 win= 25.0% net= -2.88 brut= +0.12 SRpap= -8.52 années<0=11/11 SRj=-6.75
+coût 5 | 2016-2018     n= 2357 PF= 0.21 win= 17.3% net= -4.56 brut= +0.44 SRpap=-14.13 années<0=3/3 SRj=-10.88
+coût 5 | 2019-2026-01  n= 4918 PF= 0.18 win= 15.6% net= -4.98 brut= +0.02 SRpap=-14.51 années<0=8/8 SRj=-11.52
+coût 5 | 2026-02+      n=  415 PF= 0.14 win= 17.3% net= -5.58 brut= -0.58 SRpap=-15.48 années<0=1/1 SRj=-9.31
+coût 5 | tout          n= 7690 PF= 0.18 win= 16.2% net= -4.88 brut= +0.12 SRpap=-14.43 années<0=11/11 SRj=-11.15
+coût 8 | 2019-2026-01  n= 4918 PF= 0.08 win=  8.6% net= -7.98 brut= +0.02 SRpap=-23.25 années<0=8/8 SRj=-17.00
+
+### reopen_s1_E5
+coût 0 | 2016-2018     n= 2349 PF= 1.20 win= 48.2% net= +0.46 brut= +0.46 SRpap= +1.52 années<0=1/3 SRj=+1.29
+coût 0 | 2019-2026-01  n= 4887 PF= 1.09 win= 47.9% net= +0.21 brut= +0.21 SRpap= +0.67 années<0=2/8 SRj=+0.77
+coût 0 | 2026-02+      n=  417 PF= 0.94 win= 48.2% net= -0.18 brut= -0.18 SRpap= -0.45 années<0=1/1 SRj=+0.03
+coût 0 | tout          n= 7653 PF= 1.11 win= 48.0% net= +0.27 brut= +0.27 SRpap= +0.84 années<0=4/11 SRj=+0.86
+coût 2 | 2019-2026-01  n= 4887 PF= 0.50 win= 30.2% net= -1.79 brut= +0.21 SRpap= -5.61 années<0=8/8 SRj=-4.91
+coût 3 | 2016-2018     n= 2349 PF= 0.38 win= 26.7% net= -2.54 brut= +0.46 SRpap= -8.51 années<0=3/3 SRj=-7.05
+coût 3 | 2019-2026-01  n= 4887 PF= 0.35 win= 24.5% net= -2.79 brut= +0.21 SRpap= -8.74 années<0=8/8 SRj=-7.62
+coût 3 | 2026-02+      n=  417 PF= 0.34 win= 26.1% net= -3.18 brut= -0.18 SRpap= -8.08 années<0=1/1 SRj=-4.95
+coût 3 | tout          n= 7653 PF= 0.36 win= 25.3% net= -2.73 brut= +0.27 SRpap= -8.60 années<0=11/11 SRj=-7.17
+coût 5 | 2016-2018     n= 2349 PF= 0.20 win= 17.5% net= -4.54 brut= +0.46 SRpap=-15.20 années<0=3/3 SRj=-12.20
+coût 5 | 2019-2026-01  n= 4887 PF= 0.18 win= 15.9% net= -4.79 brut= +0.21 SRpap=-15.02 années<0=8/8 SRj=-12.55
+coût 5 | 2026-02+      n=  417 PF= 0.18 win= 18.5% net= -5.18 brut= -0.18 SRpap=-13.16 années<0=1/1 SRj=-8.13
+coût 5 | tout          n= 7653 PF= 0.19 win= 16.5% net= -4.73 brut= +0.27 SRpap=-14.90 années<0=11/11 SRj=-12.00
+coût 8 | 2019-2026-01  n= 4887 PF= 0.08 win=  9.0% net= -7.79 brut= +0.21 SRpap=-24.44 années<0=8/8 SRj=-18.41
+
+### reopen_s1_E15
+coût 0 | 2016-2018     n= 2344 PF= 1.28 win= 48.6% net= +0.67 brut= +0.67 SRpap= +1.49 années<0=0/3 SRj=+1.55
+coût 0 | 2019-2026-01  n= 4882 PF= 1.09 win= 48.3% net= +0.23 brut= +0.23 SRpap= +0.72 années<0=2/8 SRj=+0.65
+coût 0 | 2026-02+      n=  412 PF= 1.12 win= 50.5% net= +0.34 brut= +0.34 SRpap= +0.76 années<0=0/1 SRj=+0.51
+coût 0 | tout          n= 7638 PF= 1.15 win= 48.5% net= +0.37 brut= +0.37 SRpap= +0.98 années<0=2/11 SRj=+0.93
+coût 2 | 2019-2026-01  n= 4882 PF= 0.51 win= 32.6% net= -1.77 brut= +0.23 SRpap= -5.46 années<0=7/8 SRj=-4.92
+coût 3 | 2016-2018     n= 2344 PF= 0.44 win= 28.8% net= -2.33 brut= +0.67 SRpap= -5.16 années<0=3/3 SRj=-5.28
+coût 3 | 2019-2026-01  n= 4882 PF= 0.36 win= 26.2% net= -2.77 brut= +0.23 SRpap= -8.56 années<0=8/8 SRj=-7.58
+coût 3 | 2026-02+      n=  412 PF= 0.42 win= 23.5% net= -2.66 brut= +0.34 SRpap= -6.04 années<0=1/1 SRj=-4.15
+coût 3 | tout          n= 7638 PF= 0.39 win= 26.9% net= -2.63 brut= +0.37 SRpap= -6.94 années<0=11/11 SRj=-6.42
+coût 5 | 2016-2018     n= 2344 PF= 0.24 win= 18.7% net= -4.33 brut= +0.67 SRpap= -9.60 années<0=3/3 SRj=-9.63
+coût 5 | 2019-2026-01  n= 4882 PF= 0.19 win= 16.9% net= -4.77 brut= +0.23 SRpap=-14.74 années<0=8/8 SRj=-12.41
+coût 5 | 2026-02+      n=  412 PF= 0.25 win= 15.8% net= -4.66 brut= +0.34 SRpap=-10.58 années<0=1/1 SRj=-7.14
+coût 5 | tout          n= 7638 PF= 0.21 win= 17.4% net= -4.63 brut= +0.37 SRpap=-12.23 années<0=11/11 SRj=-10.92
+coût 8 | 2019-2026-01  n= 4882 PF= 0.09 win=  9.1% net= -7.77 brut= +0.23 SRpap=-24.01 années<0=8/8 SRj=-18.16
+
+### reopen_s2_E0
+coût 0 | 2016-2018     n= 1877 PF= 1.34 win= 52.7% net= +0.82 brut= +0.82 SRpap= +2.32 années<0=1/3 SRj=+1.90
+coût 0 | 2019-2026-01  n= 3326 PF= 1.27 win= 56.3% net= +0.79 brut= +0.79 SRpap= +1.56 années<0=0/8 SRj=+1.47
+coût 0 | 2026-02+      n=  269 PF= 0.92 win= 52.8% net= -0.32 brut= -0.32 SRpap= -0.55 années<0=1/1 SRj=+0.01
+coût 0 | tout          n= 5472 PF= 1.27 win= 54.9% net= +0.75 brut= +0.75 SRpap= +1.62 années<0=1/11 SRj=+1.50
+coût 2 | 2019-2026-01  n= 3326 PF= 0.69 win= 42.0% net= -1.21 brut= +0.79 SRpap= -2.39 années<0=7/8 SRj=-2.06
+coût 3 | 2016-2018     n= 1877 PF= 0.47 win= 32.0% net= -2.18 brut= +0.82 SRpap= -6.17 années<0=3/3 SRj=-5.08
+coût 3 | 2019-2026-01  n= 3326 PF= 0.51 win= 35.2% net= -2.21 brut= +0.79 SRpap= -4.36 années<0=7/8 SRj=-3.76
+coût 3 | 2026-02+      n=  269 PF= 0.40 win= 32.3% net= -3.32 brut= -0.32 SRpap= -5.71 années<0=1/1 SRj=-3.87
+coût 3 | tout          n= 5472 PF= 0.49 win= 34.0% net= -2.25 brut= +0.75 SRpap= -4.91 années<0=11/11 SRj=-4.13
+coût 5 | 2016-2018     n= 1877 PF= 0.25 win= 21.4% net= -4.18 brut= +0.82 SRpap=-11.83 années<0=3/3 SRj=-9.37
+coût 5 | 2019-2026-01  n= 3326 PF= 0.28 win= 24.2% net= -4.21 brut= +0.79 SRpap= -8.30 années<0=8/8 SRj=-6.91
+coût 5 | 2026-02+      n=  269 PF= 0.23 win= 25.7% net= -5.32 brut= -0.32 SRpap= -9.16 années<0=1/1 SRj=-6.21
+coût 5 | tout          n= 5472 PF= 0.27 win= 23.3% net= -4.25 brut= +0.75 SRpap= -9.27 années<0=11/11 SRj=-7.53
+coût 8 | 2019-2026-01  n= 3326 PF= 0.13 win= 13.2% net= -7.21 brut= +0.79 SRpap=-14.21 années<0=8/8 SRj=-10.78
+
+### reopen_s2_E1
+coût 0 | 2016-2018     n= 1874 PF= 1.21 win= 48.7% net= +0.51 brut= +0.51 SRpap= +1.35 années<0=1/3 SRj=+1.07
+coût 0 | 2019-2026-01  n= 3313 PF= 1.01 win= 47.4% net= +0.04 brut= +0.04 SRpap= +0.09 années<0=3/8 SRj=+0.25
+coût 0 | 2026-02+      n=  265 PF= 0.88 win= 52.8% net= -0.37 brut= -0.37 SRpap= -0.75 années<0=1/1 SRj=+0.06
+coût 0 | tout          n= 5452 PF= 1.07 win= 48.1% net= +0.18 brut= +0.18 SRpap= +0.41 années<0=5/11 SRj=+0.51
+coût 2 | 2019-2026-01  n= 3313 PF= 0.52 win= 32.9% net= -1.96 brut= +0.04 SRpap= -4.17 années<0=8/8 SRj=-3.41
+coût 3 | 2016-2018     n= 1874 PF= 0.42 win= 27.4% net= -2.49 brut= +0.51 SRpap= -6.64 années<0=3/3 SRj=-5.01
+coût 3 | 2019-2026-01  n= 3313 PF= 0.38 win= 26.5% net= -2.96 brut= +0.04 SRpap= -6.30 années<0=8/8 SRj=-5.16
+coût 3 | 2026-02+      n=  265 PF= 0.33 win= 27.5% net= -3.37 brut= -0.37 SRpap= -6.75 années<0=1/1 SRj=-4.55
+coût 3 | tout          n= 5452 PF= 0.39 win= 26.9% net= -2.82 brut= +0.18 SRpap= -6.41 années<0=11/11 SRj=-5.06
+coût 5 | 2016-2018     n= 1874 PF= 0.23 win= 18.3% net= -4.49 brut= +0.51 SRpap=-11.97 années<0=3/3 SRj=-8.79
+coût 5 | 2019-2026-01  n= 3313 PF= 0.21 win= 18.0% net= -4.96 brut= +0.04 SRpap=-10.55 années<0=8/8 SRj=-8.33
+coût 5 | 2026-02+      n=  265 PF= 0.18 win= 20.8% net= -5.37 brut= -0.37 SRpap=-10.74 années<0=1/1 SRj=-7.34
+coût 5 | tout          n= 5452 PF= 0.22 win= 18.2% net= -4.82 brut= +0.18 SRpap=-10.96 années<0=11/11 SRj=-8.39
+coût 8 | 2019-2026-01  n= 3313 PF= 0.11 win= 10.4% net= -7.96 brut= +0.04 SRpap=-16.94 années<0=8/8 SRj=-12.13
+
+### reopen_s2_E5
+coût 0 | 2016-2018     n= 1868 PF= 1.22 win= 48.9% net= +0.52 brut= +0.52 SRpap= +1.53 années<0=1/3 SRj=+1.26
+coût 0 | 2019-2026-01  n= 3296 PF= 1.11 win= 48.0% net= +0.28 brut= +0.28 SRpap= +0.64 années<0=3/8 SRj=+0.74
+coût 0 | 2026-02+      n=  268 PF= 1.13 win= 53.0% net= +0.39 brut= +0.39 SRpap= +0.72 années<0=0/1 SRj=+1.15
+coût 0 | tout          n= 5432 PF= 1.14 win= 48.5% net= +0.37 brut= +0.37 SRpap= +0.90 années<0=4/11 SRj=+0.93
+coût 2 | 2019-2026-01  n= 3296 PF= 0.55 win= 32.1% net= -1.72 brut= +0.28 SRpap= -3.97 années<0=8/8 SRj=-3.35
+coût 3 | 2016-2018     n= 1868 PF= 0.41 win= 27.6% net= -2.48 brut= +0.52 SRpap= -7.20 années<0=3/3 SRj=-5.65
+coût 3 | 2019-2026-01  n= 3296 PF= 0.39 win= 26.5% net= -2.72 brut= +0.28 SRpap= -6.28 années<0=8/8 SRj=-5.30
+coût 3 | 2026-02+      n=  268 PF= 0.45 win= 31.7% net= -2.61 brut= +0.39 SRpap= -4.92 années<0=1/1 SRj=-3.33
+coût 3 | tout          n= 5432 PF= 0.40 win= 27.1% net= -2.63 brut= +0.37 SRpap= -6.45 années<0=11/11 SRj=-5.26
+coût 5 | 2016-2018     n= 1868 PF= 0.22 win= 18.8% net= -4.48 brut= +0.52 SRpap=-13.02 années<0=3/3 SRj=-9.88
+coût 5 | 2019-2026-01  n= 3296 PF= 0.22 win= 17.9% net= -4.72 brut= +0.28 SRpap=-10.90 années<0=8/8 SRj=-8.79
+coût 5 | 2026-02+      n=  268 PF= 0.25 win= 23.1% net= -4.61 brut= +0.39 SRpap= -8.68 années<0=1/1 SRj=-6.16
+coût 5 | tout          n= 5432 PF= 0.22 win= 18.5% net= -4.63 brut= +0.37 SRpap=-11.35 années<0=11/11 SRj=-8.91
+coût 8 | 2019-2026-01  n= 3296 PF= 0.10 win= 10.7% net= -7.72 brut= +0.28 SRpap=-17.83 années<0=8/8 SRj=-12.81
+
+### reopen_s2_E15
+coût 0 | 2016-2018     n= 1860 PF= 1.17 win= 49.1% net= +0.45 brut= +0.45 SRpap= +1.24 années<0=0/3 SRj=+1.23
+coût 0 | 2019-2026-01  n= 3283 PF= 1.11 win= 48.7% net= +0.30 brut= +0.30 SRpap= +0.67 années<0=2/8 SRj=+0.66
+coût 0 | 2026-02+      n=  265 PF= 1.32 win= 53.6% net= +0.92 brut= +0.92 SRpap= +1.54 années<0=0/1 SRj=+1.45
+coût 0 | tout          n= 5408 PF= 1.14 win= 49.1% net= +0.38 brut= +0.38 SRpap= +0.90 années<0=2/11 SRj=+0.88
+coût 2 | 2019-2026-01  n= 3283 PF= 0.56 win= 34.3% net= -1.70 brut= +0.30 SRpap= -3.87 années<0=7/8 SRj=-3.32
+coût 3 | 2016-2018     n= 1860 PF= 0.41 win= 29.2% net= -2.55 brut= +0.45 SRpap= -7.08 années<0=3/3 SRj=-5.91
+coût 3 | 2019-2026-01  n= 3283 PF= 0.40 win= 28.2% net= -2.70 brut= +0.30 SRpap= -6.15 années<0=7/8 SRj=-5.21
+coût 3 | 2026-02+      n=  265 PF= 0.55 win= 28.7% net= -2.08 brut= +0.92 SRpap= -3.47 années<0=1/1 SRj=-2.75
+coût 3 | tout          n= 5408 PF= 0.41 win= 28.6% net= -2.62 brut= +0.38 SRpap= -6.21 années<0=11/11 SRj=-5.24
+coût 5 | 2016-2018     n= 1860 PF= 0.22 win= 19.2% net= -4.55 brut= +0.45 SRpap=-12.62 années<0=3/3 SRj=-10.20
+coût 5 | 2019-2026-01  n= 3283 PF= 0.22 win= 18.9% net= -4.70 brut= +0.30 SRpap=-10.70 années<0=8/8 SRj=-8.59
+coût 5 | 2026-02+      n=  265 PF= 0.33 win= 19.6% net= -4.08 brut= +0.92 SRpap= -6.82 années<0=1/1 SRj=-5.46
+coût 5 | tout          n= 5408 PF= 0.23 win= 19.1% net= -4.62 brut= +0.38 SRpap=-10.95 années<0=11/11 SRj=-8.83
+coût 8 | 2019-2026-01  n= 3283 PF= 0.11 win= 10.8% net= -7.70 brut= +0.30 SRpap=-17.52 années<0=8/8 SRj=-12.52
+
+### reopen_s5_E0
+coût 0 | 2016-2018     n=  916 PF= 1.46 win= 54.6% net= +1.28 brut= +1.28 SRpap= +2.11 années<0=1/3 SRj=+1.64
+coût 0 | 2019-2026-01  n= 1217 PF= 1.29 win= 57.5% net= +1.16 brut= +1.16 SRpap= +1.05 années<0=1/8 SRj=+1.01
+coût 0 | 2026-02+      n=  123 PF= 0.83 win= 47.2% net= -0.92 brut= -0.92 SRpap= -0.98 années<0=1/1 SRj=-0.49
+coût 0 | tout          n= 2256 PF= 1.31 win= 55.8% net= +1.10 brut= +1.10 SRpap= +1.22 années<0=2/11 SRj=+1.11
+coût 2 | 2019-2026-01  n= 1217 PF= 0.83 win= 48.5% net= -0.84 brut= +1.16 SRpap= -0.76 années<0=7/8 SRj=-0.56
+coût 3 | 2016-2018     n=  916 PF= 0.61 win= 36.7% net= -1.72 brut= +1.28 SRpap= -2.81 années<0=3/3 SRj=-2.27
+coût 3 | 2019-2026-01  n= 1217 PF= 0.66 win= 42.6% net= -1.84 brut= +1.16 SRpap= -1.66 années<0=7/8 SRj=-1.32
+coût 3 | 2026-02+      n=  123 PF= 0.44 win= 38.2% net= -3.92 brut= -0.92 SRpap= -4.18 années<0=1/1 SRj=-2.71
+coût 3 | tout          n= 2256 PF= 0.63 win= 40.0% net= -1.90 brut= +1.10 SRpap= -2.12 années<0=11/11 SRj=-1.69
+coût 5 | 2016-2018     n=  916 PF= 0.35 win= 27.1% net= -3.72 brut= +1.28 SRpap= -6.09 années<0=3/3 SRj=-4.73
+coût 5 | 2019-2026-01  n= 1217 PF= 0.42 win= 33.6% net= -3.84 brut= +1.16 SRpap= -3.46 années<0=7/8 SRj=-2.76
+coût 5 | 2026-02+      n=  123 PF= 0.28 win= 31.7% net= -5.92 brut= -0.92 SRpap= -6.32 années<0=1/1 SRj=-3.97
+coût 5 | tout          n= 2256 PF= 0.39 win= 30.9% net= -3.90 brut= +1.10 SRpap= -4.35 années<0=11/11 SRj=-3.40
+coût 8 | 2019-2026-01  n= 1217 PF= 0.23 win= 20.5% net= -6.84 brut= +1.16 SRpap= -6.17 années<0=7/8 SRj=-4.57
+
+### reopen_s5_E1
+coût 0 | 2016-2018     n=  912 PF= 1.30 win= 50.0% net= +0.89 brut= +0.89 SRpap= +1.32 années<0=1/3 SRj=+0.94
+coût 0 | 2019-2026-01  n= 1209 PF= 1.06 win= 48.4% net= +0.24 brut= +0.24 SRpap= +0.23 années<0=5/8 SRj=+0.36
+coût 0 | 2026-02+      n=  120 PF= 0.82 win= 50.0% net= -0.79 brut= -0.79 SRpap= -0.93 années<0=1/1 SRj=-0.08
+coût 0 | tout          n= 2241 PF= 1.13 win= 49.1% net= +0.45 brut= +0.45 SRpap= +0.51 années<0=6/11 SRj=+0.53
+coût 2 | 2019-2026-01  n= 1209 PF= 0.65 win= 39.2% net= -1.76 brut= +0.24 SRpap= -1.70 années<0=7/8 SRj=-1.22
+coût 3 | 2016-2018     n=  912 PF= 0.55 win= 31.4% net= -2.11 brut= +0.89 SRpap= -3.14 années<0=3/3 SRj=-2.29
+coût 3 | 2019-2026-01  n= 1209 PF= 0.51 win= 33.2% net= -2.76 brut= +0.24 SRpap= -2.66 années<0=7/8 SRj=-1.99
+coût 3 | 2026-02+      n=  120 PF= 0.37 win= 35.0% net= -3.79 brut= -0.79 SRpap= -4.49 années<0=1/1 SRj=-2.70
+coût 3 | tout          n= 2241 PF= 0.52 win= 32.5% net= -2.55 brut= +0.45 SRpap= -2.90 années<0=11/11 SRj=-2.11
+coût 5 | 2016-2018     n=  912 PF= 0.33 win= 22.5% net= -4.11 brut= +0.89 SRpap= -6.11 années<0=3/3 SRj=-4.33
+coût 5 | 2019-2026-01  n= 1209 PF= 0.33 win= 24.2% net= -4.76 brut= +0.24 SRpap= -4.59 années<0=7/8 SRj=-3.43
+coût 5 | 2026-02+      n=  120 PF= 0.21 win= 27.5% net= -5.79 brut= -0.79 SRpap= -6.86 années<0=1/1 SRj=-4.26
+coût 5 | tout          n= 2241 PF= 0.32 win= 23.7% net= -4.55 brut= +0.45 SRpap= -5.17 années<0=11/11 SRj=-3.74
+coût 8 | 2019-2026-01  n= 1209 PF= 0.18 win= 15.5% net= -7.76 brut= +0.24 SRpap= -7.49 années<0=7/8 SRj=-5.21
+
+### reopen_s5_E5
+coût 0 | 2016-2018     n=  913 PF= 1.31 win= 49.8% net= +0.88 brut= +0.88 SRpap= +1.45 années<0=1/3 SRj=+1.11
+coût 0 | 2019-2026-01  n= 1210 PF= 1.23 win= 49.6% net= +0.77 brut= +0.77 SRpap= +0.86 années<0=2/8 SRj=+0.88
+coût 0 | 2026-02+      n=  123 PF= 1.09 win= 52.8% net= +0.35 brut= +0.35 SRpap= +0.38 années<0=0/1 SRj=+0.87
+coût 0 | tout          n= 2246 PF= 1.25 win= 49.9% net= +0.79 brut= +0.79 SRpap= +1.01 années<0=3/11 SRj=+0.95
+coût 2 | 2019-2026-01  n= 1210 PF= 0.72 win= 39.0% net= -1.23 brut= +0.77 SRpap= -1.36 années<0=6/8 SRj=-0.95
+coût 3 | 2016-2018     n=  913 PF= 0.53 win= 32.2% net= -2.12 brut= +0.88 SRpap= -3.49 années<0=3/3 SRj=-2.65
+coût 3 | 2019-2026-01  n= 1210 PF= 0.56 win= 33.4% net= -2.23 brut= +0.77 SRpap= -2.47 années<0=6/8 SRj=-1.85
+coût 3 | 2026-02+      n=  123 PF= 0.51 win= 38.2% net= -2.65 brut= +0.35 SRpap= -2.94 années<0=1/1 SRj=-1.82
+coût 3 | tout          n= 2246 PF= 0.55 win= 33.2% net= -2.21 brut= +0.79 SRpap= -2.81 années<0=10/11 SRj=-2.10
+coût 5 | 2016-2018     n=  913 PF= 0.31 win= 23.0% net= -4.12 brut= +0.88 SRpap= -6.78 années<0=3/3 SRj=-5.00
+coût 5 | 2019-2026-01  n= 1210 PF= 0.35 win= 24.2% net= -4.23 brut= +0.77 SRpap= -4.69 années<0=7/8 SRj=-3.53
+coût 5 | 2026-02+      n=  123 PF= 0.31 win= 27.6% net= -4.65 brut= +0.35 SRpap= -5.16 années<0=1/1 SRj=-3.52
+coût 5 | tout          n= 2246 PF= 0.33 win= 23.9% net= -4.21 brut= +0.79 SRpap= -5.35 années<0=11/11 SRj=-3.98
+coût 8 | 2019-2026-01  n= 1210 PF= 0.18 win= 16.9% net= -7.23 brut= +0.77 SRpap= -8.01 années<0=8/8 SRj=-5.55
+
+### reopen_s5_E15
+coût 0 | 2016-2018     n=  908 PF= 1.29 win= 51.3% net= +0.88 brut= +0.88 SRpap= +1.36 années<0=0/3 SRj=+1.24
+coût 0 | 2019-2026-01  n= 1200 PF= 1.23 win= 51.7% net= +0.76 brut= +0.76 SRpap= +0.86 années<0=2/8 SRj=+0.80
+coût 0 | 2026-02+      n=  121 PF= 1.43 win= 57.0% net= +1.40 brut= +1.40 SRpap= +1.36 années<0=0/1 SRj=+1.54
+coût 0 | tout          n= 2229 PF= 1.26 win= 51.8% net= +0.85 brut= +0.85 SRpap= +1.05 années<0=2/11 SRj=+0.98
+coût 2 | 2019-2026-01  n= 1200 PF= 0.72 win= 40.1% net= -1.24 brut= +0.76 SRpap= -1.39 années<0=7/8 SRj=-1.08
+coût 3 | 2016-2018     n=  908 PF= 0.55 win= 33.7% net= -2.12 brut= +0.88 SRpap= -3.28 années<0=3/3 SRj=-2.62
+coût 3 | 2019-2026-01  n= 1200 PF= 0.56 win= 34.7% net= -2.24 brut= +0.76 SRpap= -2.51 années<0=7/8 SRj=-2.01
+coût 3 | 2026-02+      n=  121 PF= 0.67 win= 33.1% net= -1.60 brut= +1.40 SRpap= -1.55 années<0=1/1 SRj=-1.22
+coût 3 | tout          n= 2229 PF= 0.56 win= 34.2% net= -2.15 brut= +0.85 SRpap= -2.67 années<0=11/11 SRj=-2.15
+coût 5 | 2016-2018     n=  908 PF= 0.33 win= 24.8% net= -4.12 brut= +0.88 SRpap= -6.38 années<0=3/3 SRj=-4.99
+coût 5 | 2019-2026-01  n= 1200 PF= 0.34 win= 25.9% net= -4.24 brut= +0.76 SRpap= -4.76 années<0=7/8 SRj=-3.70
+coût 5 | 2026-02+      n=  121 PF= 0.43 win= 22.3% net= -3.60 brut= +1.40 SRpap= -3.49 années<0=1/1 SRj=-3.02
+coût 5 | tout          n= 2229 PF= 0.34 win= 25.3% net= -4.15 brut= +0.85 SRpap= -5.15 années<0=11/11 SRj=-4.05
+coût 8 | 2019-2026-01  n= 1200 PF= 0.18 win= 17.1% net= -7.24 brut= +0.76 SRpap= -8.13 années<0=7/8 SRj=-5.70
+
+## Spread de point mort aller-retour (= gain brut moyen, pips)
+window   2016-2018  2019-2026-01  2026-02+  tout
+s entry                                         
+1 0           0.71          0.59     -0.44  0.57
+  1           0.44          0.02     -0.58  0.12
+  5           0.46          0.21     -0.18  0.27
+  15          0.67          0.23      0.34  0.37
+2 0           0.82          0.79     -0.32  0.75
+  1           0.51          0.04     -0.37  0.18
+  5           0.52          0.28      0.39  0.37
+  15          0.45          0.30      0.92  0.38
+5 0           1.28          1.16     -0.92  1.10
+  1           0.89          0.24     -0.79  0.45
+  5           0.88          0.77      0.35  0.79
+  15          0.88          0.76      1.40  0.85
+
+Par paire (toute la période) :
+s=1 E0: 6A=+0.71 (n=1855)  6B=+1.03 (n=2143)  6E=+0.36 (n=1792)  6J=+0.13 (n=1928)
+s=1 E1: 6A=+0.44 (n=1847)  6B=+0.26 (n=2132)  6E=+0.02 (n=1785)  6J=-0.25 (n=1926)
+s=1 E5: 6A=+0.47 (n=1845)  6B=+0.20 (n=2108)  6E=+0.19 (n=1779)  6J=+0.21 (n=1921)
+s=1 E15: 6A=+0.38 (n=1842)  6B=+0.19 (n=2094)  6E=+0.24 (n=1781)  6J=+0.69 (n=1921)
+s=2 E0: 6A=+0.94 (n=1220)  6B=+1.17 (n=1667)  6E=+0.50 (n=1140)  6J=+0.28 (n=1445)
+s=2 E1: 6A=+0.64 (n=1215)  6B=+0.27 (n=1658)  6E=+0.09 (n=1136)  6J=-0.23 (n=1443)
+s=2 E5: 6A=+0.73 (n=1217)  6B=+0.16 (n=1643)  6E=+0.35 (n=1130)  6J=+0.32 (n=1442)
+s=2 E15: 6A=+0.63 (n=1211)  6B=-0.24 (n=1625)  6E=+0.35 (n=1132)  6J=+0.89 (n=1440)
+s=5 E0: 6A=+1.57 (n=439)  6B=+1.73 (n=757)  6E=+0.71 (n=368)  6J=+0.31 (n=692)
+s=5 E1: 6A=+1.26 (n=436)  6B=+0.66 (n=751)  6E=+0.48 (n=364)  6J=-0.31 (n=690)
+s=5 E5: 6A=+1.46 (n=439)  6B=+0.57 (n=752)  6E=+1.25 (n=364)  6J=+0.38 (n=691)
+s=5 E15: 6A=+1.28 (n=436)  6B=-0.01 (n=739)  6E=+1.37 (n=364)  6J=+1.22 (n=690)
+
+## Exécutabilité : mouvement dans le sens du fade entre l'open de 18:00 et l'entrée décalée (pips)
+E1, s=1: perdu en moyenne +0.58 pips (n=7684) sur un gain brut E0 de +0.57
+E1, s=2: perdu en moyenne +0.73 pips (n=5449) sur un gain brut E0 de +0.74
+E1, s=5: perdu en moyenne +0.97 pips (n=2240) sur un gain brut E0 de +1.08
+E5, s=1: perdu en moyenne +0.58 pips (n=7634) sur un gain brut E0 de +0.56
+E5, s=2: perdu en moyenne +0.72 pips (n=5418) sur un gain brut E0 de +0.73
+E5, s=5: perdu en moyenne +0.98 pips (n=2236) sur un gain brut E0 de +1.06
+E15, s=1: perdu en moyenne +0.48 pips (n=7623) sur un gain brut E0 de +0.57
+E15, s=2: perdu en moyenne +0.62 pips (n=5399) sur un gain brut E0 de +0.74
+E15, s=5: perdu en moyenne +0.82 pips (n=2223) sur un gain brut E0 de +1.08
+
+## Contrôle (a) : heures intrajournalières (coût standard 1 tick + 5 $)
+s=1 2016-2018     brut: n=16843 PF= 1.00 win= 48.7% net= +0.02 brut= +0.02 SRpap= +0.09 années<0=1/3
+s=1 2016-2018     net : n=16843 PF= 0.75 win= 44.5% net= -1.36 brut= +0.02 SRpap= -6.22 années<0=3/3
+s=1 2019-2026-01  brut: n=33468 PF= 1.00 win= 48.4% net= +0.02 brut= +0.02 SRpap= +0.09 années<0=4/8
+s=1 2019-2026-01  net : n=33468 PF= 0.72 win= 44.1% net= -1.64 brut= +0.02 SRpap= -7.02 années<0=8/8
+s=1 tout          brut: n=53646 PF= 1.01 win= 48.5% net= +0.03 brut= +0.03 SRpap= +0.13 années<0=4/11
+s=1 tout          net : n=53646 PF= 0.73 win= 44.1% net= -1.56 brut= +0.03 SRpap= -6.92 années<0=11/11
+s=2 2016-2018     brut: n= 1081 PF= 0.79 win= 48.4% net= -1.75 brut= -1.75 SRpap= -0.94 années<0=1/3
+s=2 2016-2018     net : n= 1081 PF= 0.64 win= 45.9% net= -3.35 brut= -1.75 SRpap= -1.81 années<0=3/3
+s=2 2019-2026-01  brut: n= 1876 PF= 0.95 win= 48.5% net= -0.42 brut= -0.42 SRpap= -0.28 années<0=4/8
+s=2 2019-2026-01  net : n= 1876 PF= 0.76 win= 45.1% net= -2.14 brut= -0.42 SRpap= -1.43 années<0=7/8
+s=2 tout          brut: n= 3135 PF= 0.90 win= 48.5% net= -0.82 brut= -0.82 SRpap= -0.50 années<0=4/11
+s=2 tout          net : n= 3135 PF= 0.71 win= 45.4% net= -2.51 brut= -0.82 SRpap= -1.53 années<0=10/11
+s=5 2016-2018     brut: n=   37 PF= 0.35 win= 48.6% net=-30.06 brut=-30.06 SRpap= -0.75 années<0=1/3
+s=5 2016-2018     net : n=   37 PF= 0.32 win= 45.9% net=-31.66 brut=-30.06 SRpap= -0.79 années<0=2/3
+s=5 2019-2026-01  brut: n=   50 PF= 0.57 win= 46.0% net= -6.70 brut= -6.70 SRpap= -0.57 années<0=5/7
+s=5 2019-2026-01  net : n=   50 PF= 0.49 win= 44.0% net= -8.31 brut= -6.70 SRpap= -0.71 années<0=5/7
+s=5 tout          brut: n=   87 PF= 0.42 win= 47.1% net=-16.64 brut=-16.64 SRpap= -0.49 années<0=6/10
+s=5 tout          net : n=   87 PF= 0.38 win= 44.8% net=-18.24 brut=-16.64 SRpap= -0.54 années<0=7/10
+
+## Contrôle (b) : même entrée E0, détention jusqu'au close du jour (16:59 ET) vs sortie +60 min
+s=1 coût 0 2016-2018     PF 1h=1.30 (net +0.71) → PF close=1.00 (net +0.08, n=1957)
+s=1 coût 0 2019-2026-01  PF 1h=1.23 (net +0.59) → PF close=1.05 (net +1.13, n=4094)
+s=1 coût 0 tout          PF 1h=1.22 (net +0.57) → PF close=1.05 (net +1.12, n=6388)
+s=1 coût 3 2016-2018     PF 1h=0.43 (net -2.29) → PF close=0.88 (net -2.92, n=1957)
+s=1 coût 3 2019-2026-01  PF 1h=0.43 (net -2.41) → PF close=0.92 (net -1.87, n=4094)
+s=1 coût 3 tout          PF 1h=0.43 (net -2.43) → PF close=0.92 (net -1.88, n=6388)
+s=2 coût 0 2016-2018     PF 1h=1.34 (net +0.82) → PF close=1.02 (net +0.39, n=1567)
+s=2 coût 0 2019-2026-01  PF 1h=1.27 (net +0.79) → PF close=1.09 (net +2.06, n=2767)
+s=2 coût 0 tout          PF 1h=1.27 (net +0.75) → PF close=1.08 (net +1.83, n=4554)
+s=2 coût 3 2016-2018     PF 1h=0.47 (net -2.18) → PF close=0.90 (net -2.61, n=1567)
+s=2 coût 3 2019-2026-01  PF 1h=0.51 (net -2.21) → PF close=0.96 (net -0.94, n=2767)
+s=2 coût 3 tout          PF 1h=0.49 (net -2.25) → PF close=0.95 (net -1.17, n=4554)
+s=5 coût 0 2016-2018     PF 1h=1.46 (net +1.28) → PF close=1.19 (net +4.57, n=749)
+s=5 coût 0 2019-2026-01  PF 1h=1.29 (net +1.16) → PF close=1.12 (net +2.91, n=1014)
+s=5 coût 0 tout          PF 1h=1.31 (net +1.10) → PF close=1.19 (net +4.43, n=1861)
+s=5 coût 3 2016-2018     PF 1h=0.61 (net -1.72) → PF close=1.06 (net +1.57, n=749)
+s=5 coût 3 2019-2026-01  PF 1h=0.66 (net -1.84) → PF close=1.00 (net -0.09, n=1014)
+s=5 coût 3 tout          PF 1h=0.63 (net -1.90) → PF close=1.06 (net +1.43, n=1861)
+
+## Tests au coût principal (3 pips ; intrajournalier au coût standard)
+reopen_s1_E0     n= 7718 net= -2.43 SRj=-5.69 p_boot=1.0000 p_perm=0.0000 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s1_E1     n= 7690 net= -2.88 SRj=-6.75 p_boot=1.0000 p_perm=0.1719 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s1_E5     n= 7653 net= -2.73 SRj=-7.17 p_boot=1.0000 p_perm=0.0047 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s1_E15    n= 7638 net= -2.63 SRj=-6.42 p_boot=1.0000 p_perm=0.0016 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s2_E0     n= 5472 net= -2.25 SRj=-4.13 p_boot=1.0000 p_perm=0.0000 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s2_E1     n= 5452 net= -2.82 SRj=-5.06 p_boot=1.0000 p_perm=0.1199 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s2_E5     n= 5432 net= -2.63 SRj=-5.26 p_boot=1.0000 p_perm=0.0031 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s2_E15    n= 5408 net= -2.62 SRj=-5.24 p_boot=1.0000 p_perm=0.0040 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s5_E0     n= 2256 net= -1.90 SRj=-1.69 p_boot=1.0000 p_perm=0.0000 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s5_E1     n= 2241 net= -2.55 SRj=-2.11 p_boot=1.0000 p_perm=0.0568 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s5_E5     n= 2246 net= -2.21 SRj=-2.10 p_boot=1.0000 p_perm=0.0010 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s5_E15    n= 2229 net= -2.15 SRj=-2.15 p_boot=1.0000 p_perm=0.0014 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+intra_s1         n=53646 net= -1.56 SRj=-5.79 p_boot=1.0000 p_perm=0.3514 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+intra_s2         n= 3135 net= -2.51 SRj=-1.17 p_boot=0.9996 p_perm=0.9620 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+intra_s5         n=   87 net=-18.24 SRj=-0.48 p_boot=0.9232 p_perm=0.9638 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+close_s1_E0      n= 6388 net= -1.88 SRj=-0.73 p_boot=0.9952 p_perm=0.1039 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+close_s2_E0      n= 4554 net= -1.17 SRj=-0.38 p_boot=0.9140 p_perm=0.0401 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+close_s5_E0      n= 1861 net= +1.43 SRj=+0.30 p_boot=0.1237 p_perm=0.0069 DSR18=0.000 DSR192=0.000 (SR0=4.65) DSR18 alt=0.000
+reopen_s5_E1 à 5 pips : net=-4.55 SRj=-3.74 p_boot=1.0000
+reopen_s5_E1 à 8 pips : net=-7.55 SRj=-5.79 p_boot=1.0000
+
+Reality Check de White (18 règles) : max t=1.00 (close_s5_E0), p=0.7226
+Reality Check 2019-2026-01 : max t=0.63 (close_s5_E0), p=0.8976
+
+## Configuration principale reopen_s5_E1 à 3 pips
+Par paire :
+  6A: n=  436 PF= 0.58 win= 34.2% net= -1.74 brut= +1.26 SRpap= -1.06 années<0=9/11
+  6B: n=  751 PF= 0.54 win= 30.2% net= -2.34 brut= +0.66 SRpap= -1.47 années<0=11/11
+  6E: n=  364 PF= 0.48 win= 30.5% net= -2.52 brut= +0.48 SRpap= -1.31 années<0=10/11
+  6J: n=  690 PF= 0.49 win= 35.1% net= -3.31 brut= -0.31 SRpap= -1.90 années<0=11/11
+Par année :
+        n   net  gross      tot
+date                           
+2016  362 -1.66   1.34  -601.49
+2017  310 -3.39  -0.39 -1052.00
+2018  240 -1.14   1.86  -273.89
+2019  196 -1.85   1.15  -362.87
+2020  266 -3.57  -0.57  -948.99
+2021  107 -3.32  -0.32  -355.50
+2022  177 -1.67   1.33  -295.51
+2023  132 -3.41  -0.41  -450.24
+2024  109 -3.53  -0.53  -384.73
+2025  202 -3.20  -0.20  -645.55
+2026  140 -2.47   0.53  -345.95
+  1. net>0 et PF>1 sur 2016-2018 et 2019-2026-01: NON
+  2. bootstrap p<0,05: NON
+  3. permutation p<0,05: NON
+  4. DSR(N=18)>0,95: NON
+  → REJETÉE
+
+## Entrées décalées E5 et E15 à 3 pips (lecture secondaire)
+reopen_s1_E5: net 2016-18=-2.54 2019-26=-2.79 p_perm=0.0047 → ne tient pas
+reopen_s1_E15: net 2016-18=-2.33 2019-26=-2.77 p_perm=0.0016 → ne tient pas
+reopen_s2_E5: net 2016-18=-2.48 2019-26=-2.72 p_perm=0.0031 → ne tient pas
+reopen_s2_E15: net 2016-18=-2.55 2019-26=-2.70 p_perm=0.0040 → ne tient pas
+reopen_s5_E5: net 2016-18=-2.12 2019-26=-2.23 p_perm=0.0010 → ne tient pas
+reopen_s5_E15: net 2016-18=-2.12 2019-26=-2.24 p_perm=0.0014 → ne tient pas
+
+Garde-fou (PF>4, win>75 %, SRj>3 à 3 pips, toute la période) : aucun
+
+## Spread effectif Abdi-Ranaldo (pips, moyenne des années)
+window  18:00-18:04  18:05-18:59  02:00-16:00
+pair                                         
+6A             0.59         0.41         0.36
+6B             0.84         0.66         0.50
+6E             0.56         0.31         0.27
+6J             0.56         0.47         0.33
+
+Volume médian par minute (contrats) :
+  6E: 18:00=138  18:01=38  18:05=21  18:15=17  19:00=39  03:00=501  09:00=284
+  6B: 18:00=81  18:01=21  18:05=12  18:15=10  19:00=21  03:00=361  09:00=142
+  6A: 18:00=141  18:01=41  18:05=20  18:15=17  19:00=50  03:00=139  09:00=122
+  6J: 18:00=127  18:01=47  18:05=23  18:15=21  19:00=69  03:00=231  09:00=172
+
+fin.

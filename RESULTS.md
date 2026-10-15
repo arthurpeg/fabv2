@@ -203,3 +203,15 @@ Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de mar
 - **A′, prévision du gap 17:30 → 09:00 (non tradable)** : le gap est prévisible (MCO Asie + US : R² d'environ 28 %, 70 % de bons signes), mais **linéairement**. NP-FDA ne bat le MCO nulle part, contrairement à l'article.
 - **Piste exploratoire** : le signe de 08:55 → 09:00 se prévoit à 55 % (p = 0,0008, stable avant et après 2023), mais Sharpe brut de 0,38 seulement, et net de 0,13.
 - **Données** : la FAQ HistData se trompe de fuseau (règles d'heure d'été européennes, pas EST fixe), et le fichier DAX contient un autre indice de mi-2020 à fin 2023. Les deux points sont documentés et testés.
+
+---
+
+# La première heure FX après la reprise (Tolušić 2026, SSRN 7135159)
+
+*Protocole : [PREREGISTRATION_6.md](PREREGISTRATION_6.md), commit `06ff89d`, antérieur à tout calcul de P&L. Code : `fxreopen/`, `run_fx_reopen.py`. Rapport complet : [reports/fx_reopen_report.md](reports/fx_reopen_report.md). **18 nouveaux tests, compteur à 192.** Données : futures CME 6E, 6B, 6A et 6J (prix de transactions) ; reprise de Globex à 18:00 ET. La première heure au comptant du papier (17:00-18:00) tombe dans la pause du future.*
+
+- **Verdict : ❌.** Au seuil de 5 pips, avec une entrée à 18:01 et 3 pips aller-retour, on perd **−2,55 pips par trade** (PF de 0,52), toutes les années (11 sur 11) et sur les 4 paires. Les 4 critères échouent (DSR de 0,000, permutation p = 0,057). Même chose à 2 pips de coût, quels que soient le seuil et l'entrée.
+- **L'effet brut existe, mais il vaut environ un tiers de ce qu'annonce le papier.** À l'open de 18:00, au seuil de 5 pips : +1,10 pip brut (PF 1,31), contre +3,82 pips nets et un PF de 4,69 dans le papier.
+- **Presque tout l'effet se joue dans la première minute.** Le prix d'enchère de 18:00 revient de 0,97 pip dès 18:01. En entrant à 18:01, 18:05 ou 18:15, le spread de point mort tombe à **0,45 à 0,85 pip**, sous le coût d'un aller-retour sur le future (environ 1 à 1,5 pip à la reprise) et très en dessous d'un spread au comptant au rollover.
+- Les prédictions de structure du papier sont confirmées en brut : rien aux autres heures, PF plus bas si l'on garde la position jusqu'au close. Mais le Reality Check sur 18 règles donne p = 0,72, contre p < 0,0005 dans le papier.
+- Explication probable de l'écart, non testée : des barres de courtier au bid et l'élargissement du spread à 17:00 NY créent un « gap puis retour » qu'aucun trader ne peut capter. Le test décisif demanderait des données bid et ask au comptant autour de 17:00 NY.
