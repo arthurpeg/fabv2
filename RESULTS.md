@@ -228,3 +228,20 @@ Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de mar
 - **Structure du retournement** : il est nul hors fin de mois (+0,01 pip brut), contre +3,7 pips en fin de mois, ce qui correspond à la prédiction du papier. Mais la régression du papier donne un coefficient tous jours de −0,000 (contre −0,178) et un coefficient de fin de mois de −0,254, p = 0,13 (contre −0,518). Après 2015, il en reste environ la moitié en fin de mois, noyée dans un bruit d'environ 55 pips par trade.
 - **Flux de couverture avant le fix (B\*)** : position 13:00 → 16:00 selon la performance relative des actions sur le mois. Résultat : **−3,08 pips nets**, R² de 0,05 % (2 % dans le papier), et ce n'est pas plus fort qu'hors fin de mois. Limite : CFD d'indices, pas de GBP/FTSE, référence aux seuls États-Unis.
 - Reality Check sur les 9 règles : p = 0,46.
+
+---
+
+# Asymétrie intraday ancrée sur l'ouverture (Valenti 2026, SSRN 6074846)
+
+*Protocole : [PREREGISTRATION_8.md](PREREGISTRATION_8.md), commit `3da7b75`, antérieur à tout calcul de P&L. Code : `asym/`, `run_asym.py` (commit `05bb9d5`). Rapport complet : [reports/asym_report.md](reports/asym_report.md). **7 nouveaux tests, compteur à 208.** Données : ES 1 minute (séance régulière) comme proxy de SPY, 2016-2026, et DAX en CFD. Backtest vectorbt.*
+
+- **Verdict : ❌, mais c'est le meilleur des trois papiers testés.**
+- **ES_asym** : long si Asym_O < 0, short sinon, de l'ouverture à la clôture du lendemain, au coût de 1 tick + 5 $. Résultat : **+3,35 pb/trade**, positif sur les deux moitiés (+3,98 / +2,79). Bootstrap p = 0,021, permutation p = 0,005. vectorbt : **+8,2 %/an, Sharpe 0,61**, drawdown max −23 %.
+- **Rejeté sur deux critères :**
+  - **DSR de 0,58** (N = 7) ;
+  - **aucun apport par rapport au contrariant ouverture → clôture** : b(Asym) = +0,006, t = 0,05 dans la régression avec ln(C/O). Les deux signaux sont corrélés à 0,90.
+- **Gains concentrés** sur 2020 (+55 %) et 2025 (+25 %). Les 9 autres années font environ +14 % au total.
+- **Le DAX ne réplique pas** : −0,8 pb/trade à 2 pb de coût.
+- Les prédictions de structure du papier sont vérifiées (jambe longue plus forte, ancrage sur la clôture du jour perdant). La jambe courte est bien plus faible que dans le papier (2,3 %/an sur les jours actifs, contre 8,9 %).
+- La jambe longue seule fait +7,1 %/an, Sharpe 0,70, mais elle encaisse aussi la dérive haussière de l'indice. C'est une piste à pré-enregistrer à part, contre le long inconditionnel.
+- Reality Check sur les 7 règles : p = 0,062.
