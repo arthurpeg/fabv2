@@ -245,3 +245,14 @@ Si tu exécutes régulièrement des ordres FX et que tu as une demi-heure de mar
 - Les prédictions de structure du papier sont vérifiées (jambe longue plus forte, ancrage sur la clôture du jour perdant). La jambe courte est bien plus faible que dans le papier (2,3 %/an sur les jours actifs, contre 8,9 %).
 - La jambe longue seule fait +7,1 %/an, Sharpe 0,70, mais elle encaisse aussi la dérive haussière de l'indice. C'est une piste à pré-enregistrer à part, contre le long inconditionnel.
 - Reality Check sur les 7 règles : p = 0,062.
+
+---
+
+# Momentum de fin de séance après un grand mouvement (ETF à levier, Shum et al., SSRN 2161057)
+
+*Protocole : [PREREGISTRATION_9.md](PREREGISTRATION_9.md), commit `d2a1956`, antérieur à tout calcul de P&L. Code : `letf/`, `run_letf.py` (commits `9d370df`, `59d2493`). Rapport complet : [reports/letf_report.md](reports/letf_report.md). **16 nouveaux tests, compteur à 224.** Données : ES et NQ 1 minute ajustés aux roulements, 2016-2026, entièrement hors échantillon du papier. Backtest vectorbt.*
+
+- **Verdict : ❌ pour la configuration principale (ES, décision à 14:30, |r| ≥ 2 %)**. Gain de +6,6 pb/trade (n = 122), bootstrap p = 0,25, permutation p = 0,17, DSR de 0,24. Tout vient de 2020 : **hors 2020, −4,0 pb/trade**.
+- **Réplication sur NQ, même règle** : **+12,2 pb/trade** (n = 255), positif sur les deux moitiés et hors 2020 (+6,4 pb). Bootstrap p = 0,048, permutation p = 0,017, mais **DSR de 0,75** : rejeté. vectorbt : +2,9 %/an à 1×, Sharpe 0,61, drawdown max −8,6 %, avec 9,6 % d'exposition.
+- **Profil du papier confirmé** : décider tôt vaut mieux que décider à 15:30, le seuil de 2 % vaut mieux que celui de 1 %, et l'effet est plus fort sur NQ, où l'encours d'ETF à levier est le plus gros. Le coût est négligeable (environ 0,3 pb). Les limites sont la rareté des déclenchements et leur concentration sur 2020 et 2022.
+- Reality Check sur les 16 règles : p = 0,13.
