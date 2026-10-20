@@ -45,3 +45,13 @@ def daily_returns(pf: vbt.Portfolio, T: pd.DataFrame, calendar: pd.DatetimeIndex
 def net_returns(T: pd.DataFrame, cost) -> np.ndarray:
     """Rendement net par trade (arithmétique, 1×) : sens × (p_out/p_in − 1) − coût."""
     return T["gross"].values - cost_frac(T, cost)
+
+
+def permutation_p(T: pd.DataFrame, cost, reps: int = 10_000, seed: int = 0) -> float:
+    """Permute le sens (±1) entre les trades ; statistique = rendement moyen net par trade."""
+    rng = np.random.default_rng(seed)
+    move = (T["p_out"] / T["p_in"] - 1).values
+    c = -cost_frac(T, cost)
+    obs = (T["dir"].values * move + c).mean()
+    perm = rng.permuted(np.tile(T["dir"].values, (reps, 1)), axis=1)
+    return float((((perm @ move) + c.sum()) / len(move) >= obs).mean())

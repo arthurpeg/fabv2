@@ -15,11 +15,11 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
-from asym.backtest import daily_returns, net_returns, simulate  # noqa: E402
+from asym.backtest import daily_returns, net_returns, permutation_p, simulate  # noqa: E402
 from asym.metrics import full_metrics  # noqa: E402
 from fxreopen.evaluate import bootstrap_p, dsr, reality_check, sharpe  # noqa: E402
 from letf.rules import days, load, trades  # noqa: E402
-from run_asym import permutation_p  # noqa: E402
+
 
 sys.stdout.reconfigure(encoding="utf-8")
 OUT = Path("results/letf")
