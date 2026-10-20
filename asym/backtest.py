@@ -12,8 +12,8 @@ INIT_CASH = 1_000_000.0
 
 def cost_frac(T: pd.DataFrame, cost) -> np.ndarray:
     """Coût aller-retour en fraction du prix : nombre = points de base ; ("pts", x) = points."""
-    if isinstance(cost, tuple):
-        return cost[1] / T["p_in"].values
+    if isinstance(cost, tuple):  # prix réel si les prix sont ajustés (colonne raw_in)
+        return cost[1] / (T["raw_in"].values if "raw_in" in T else T["p_in"].values)
     return np.full(len(T), cost / 1e4)
 
 
