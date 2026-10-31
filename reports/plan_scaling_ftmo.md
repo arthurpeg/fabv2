@@ -80,3 +80,27 @@ Même simulation ([run_propfirm_paths.py](../run_propfirm_paths.py)) : trio en 1
 | Rappel : 100k dès le départ | — | 0 ; 100 % | +29 378 $ / −1 452 $ / −2 075 $ | +86 533 $ / +18 739 $ | +147 908 $ / +65 627 $ / +40 415 $ | 1 374 $ |
 
 Face aux paliers, sur le même départ, la bascule à 1 trio atteint 3 × 100k plus tôt dans 76 % des cas et gagne plus à 3 ans dans 81 % ; à 2 trios : 70 % et 76 % ; à 3 trios : 54 % et 59 %. **Ta règle est donc plus rapide que les paliers**, et d'autant plus que le seuil est bas ; le seuil à 2 trios (3 293 $) garde presque toujours l'argent personnel à 1 750 $ (99 % des départs). Commencer directement en 100k reste le plus rapide, avec un peu plus d'apport et de risque la première année.
+
+## Démarrer avec un seul compte 10k
+
+Code : [run_propfirm_start1.py](../run_propfirm_start1.py), sorties `results/propfirm_start1/` (reserve.csv, paths.csv). Mêmes rendements vectorbt et mêmes règles FTMO ; 612 départs (2011-07 → 2023-08), horizon 3 ans.
+
+**Réserve pour un seul 10k racheté à chaque échec** (argent sorti avant que les rewards remboursent) :
+
+| Signal | Médiane | 90e centile | 95e centile | Pire | Premier reward (médiane / 90e c. / pire) | Pire série d'évals ratées |
+|---|---|---|---|---|---|---|
+| **20:00** | 174 $ (2 évals) | 348 $ | 434 $ | **608 $ (7 évals)** | ~2,6 mois / 131 nuits / 239 nuits (~11 mois) | 6 |
+| 19:00 | 174 $ | 434 $ | 521 $ | 782 $ (9 évals) | ~3,0 mois / 182 / 299 nuits | 6 |
+| 21:00 | 174 $ | 521 $ | 608 $ | 782 $ (9 évals) | ~2,8 mois / 163 / 341 nuits | 7 |
+
+→ Avec le signal 20:00, **650 $ de côté** couvrent le pire départ historique (800 $ pour une marge de deux évals de plus).
+
+**Trois chemins depuis ce seul compte** (départ avec 650 $ ; chaque palier franchi quand les gains couvrent 2 évals par compte à la nouvelle configuration) :
+
+| Chemin | Premier 100k (médiane) | Trio en 100k (médiane ; % des départs en 3 ans) | Gain à 1 an (médiane / 5e c. / pire) | À 2 ans (médiane / 5e c. / pire) | À 3 ans (médiane / 5e c. / pire) | Apport en plus des 650 $ (nul dans… / 95e c. / pire) |
+|---|---|---|---|---|---|---|
+| **A. 1 × 10k → 1 × 100k (à 1 098 $ de gains) → trio 100k (2e compte à 2 196 $, 3e à 3 293 $)** | ~10 mois | **~17 mois ; 100 %** | +1 736 $ / −154 $ / −4 077 $ | +43 411 $ / +275 $ / −3 807 $ | **+99 867 $** / +50 257 $ / +7 670 $ | 72 % / 2 779 $ / 3 514 $ |
+| B. 1 × 10k → trio 10k (à 348 $ et 522 $) → trio 100k (à 3 293 $) | ~18 mois | ~22 mois ; 88 % | +3 103 $ / −144 $ / −3 783 $ | +19 664 $ / +2 521 $ / −3 171 $ | +75 694 $ / +20 213 $ / +6 002 $ | **93 % / 311 $** / 3 186 $ |
+| C. 1 × 10k → trio 100k (à 3 293 $) | ~19 mois | ~25 mois ; 88 % | +1 894 $ / +285 $ / −2 664 $ | +9 775 $ / +154 $ / −2 712 $ | +66 977 $ / +6 506 $ / −661 $ | 83 % / 1 762 $ / 3 721 $ |
+
+Sur le même départ, A gagne plus à 3 ans que B dans 65 % des cas et que C dans 96 % ; C fait mieux que B dans 31 % seulement. **Passer d'un 10k directement à un 100k, puis compléter le trio en 100k (A) est le chemin le plus rapide et le plus rentable en médiane**, mais le plus exposé : dans 28 % des départs il faut remettre de l'argent (jusqu'à ~3 500 $), parce qu'un seul 100k financé par 1 098 $ de gains peut rater plusieurs fois de suite. B (trio de 10k d'abord) est plus lent mais demande presque jamais d'apport (95e centile 311 $). C, attendre 3 293 $ avec un seul 10k, est le moins bon : le seul compte gagne trop lentement.
