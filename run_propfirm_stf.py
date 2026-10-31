@@ -39,6 +39,7 @@ HOURS = ("19:00", "20:00", "21:00")
 H, STEP, HORIZON_EV = 756, 5, 504
 F10, F100 = S.PRICES_USD[10_000], S.PRICES_USD[100_000]
 R_E, TP_E, R_F, TP_F = 2.0, 5, 1.0, 4
+SFX = "_n"  # sections 2 et 3 : variante à plat avant les annonces ("" = règle d'origine)
 
 R = pd.read_csv("results/propfirm_farm_heures/returns.csv", index_col=0, parse_dates=True)
 NT = len(R)
@@ -65,32 +66,42 @@ def exits() -> pd.DataFrame:
     for h in HOURS:
         e, _ = V.nights(h, df)
         cols[f"entry_{h}"] = pd.Series(idx[e.p_in.to_numpy()].tz_localize(None).normalize(), index=e.night.values)
+        # variante « à plat » : les jours d'annonce 8:30, sortie à la clôture de la barre 8:18 ET (≈ 8:19)
+        e2 = e.copy()
+        on = e2.night.dt.normalize().isin(NEWS).to_numpy()
+        t19 = pd.to_datetime(e2.night.dt.strftime("%Y-%m-%d") + " 08:19").dt.tz_localize(V.NY).dt.tz_convert("UTC")
+        p19 = V.A.bar_pos(df.index.as_unit("ns"), t19)
+        e2.loc[on & (p19 > e2.p_in.to_numpy()), "p_out"] = p19[on & (p19 > e2.p_in.to_numpy())]
         for tp in (5.0, 4.0):
-            _, rec = V.run_vbt(df, e, np.arange(len(e)), tp, 1e4)
-            ok = rec["exit_idx"].notna().to_numpy()
-            t = np.full(len(e), np.datetime64("NaT"), "datetime64[ns]")
-            t[ok] = idx[rec["exit_idx"].to_numpy()[ok].astype(int)].tz_localize(None).to_numpy()
-            cols[f"exit_{h}_tp{tp:g}"] = pd.Series(t, index=e.night.values)
-            cols[f"chk_{h}_tp{tp:g}"] = pd.Series((rec["pnl"] / 1e4).to_numpy(), index=e.night.values)
+            for sfx, ee in (("", e), ("_n", e2)):
+                _, rec = V.run_vbt(df, ee, np.arange(len(ee)), tp, 1e4)
+                ok = rec["exit_idx"].notna().to_numpy()
+                t = np.full(len(ee), np.datetime64("NaT", "ns"))
+                t[ok] = idx[rec["exit_idx"].to_numpy()[ok].astype(int)].tz_localize(None).to_numpy()
+                cols[f"exit_{h}_tp{tp:g}{sfx}"] = pd.Series(t, index=ee.night.values)
+                cols[f"{'chk' if not sfx else 'ret'}_{h}_tp{tp:g}{sfx}"] = pd.Series((rec["pnl"] / 1e4).to_numpy(), index=ee.night.values)
     X = pd.DataFrame(cols).reindex(DATES)
     X.to_csv(f)
     return X
 
 
+_CAL = pd.read_csv("config/calendrier_macro_us.csv", parse_dates=["date"])
+NEWS = set(_CAL.loc[_CAL.heure_ET == "08:30", "date"].dt.normalize())
+
+
 def flags(X: pd.DataFrame):
-    cal = pd.read_csv("config/calendrier_macro_us.csv", parse_dates=["date"])
-    news = set(cal.loc[cal.heure_ET == "08:30", "date"].dt.normalize())
     sessions = set(xc.get_calendar("XNYS").sessions_in_range("2011-01-01", "2026-12-31").tz_localize(None).normalize())
     viol, hol = {}, {}
     for h in HOURS:
         ent = pd.to_datetime(X[f"entry_{h}"])
         hol[h] = (ent.dt.dayofweek < 5) & ~ent.isin(sessions) & ent.notna()
         for tp in (5, 4):
-            t = pd.to_datetime(X[f"exit_{h}_tp{tp}"])
-            on_news = t.dt.normalize().isin(news)
-            mins = t.dt.hour * 60 + t.dt.minute - (8 * 60 + 30)
-            for w in (5, 10):
-                viol[(h, tp, w)] = (on_news & (mins.abs() <= w)).to_numpy()
+            for sfx in ("", "_n"):
+                t = pd.to_datetime(X[f"exit_{h}_tp{tp}{sfx}"])
+                on_news = t.dt.normalize().isin(NEWS)
+                mins = t.dt.hour * 60 + t.dt.minute - (8 * 60 + 30)
+                for w in (5, 10):
+                    viol[(h, tp, w, sfx)] = (on_news & (mins.abs() <= w)).to_numpy()
     return viol, {h: v.to_numpy() for h, v in hol.items()}
 
 
@@ -98,8 +109,10 @@ X = exits()
 VIOL, HOL = flags(X)
 
 
-def pnl_fn(hour: str, tp_e: int, tp_f: int):
-    re_, rf_, s = R[f"ret_{hour}_tp{tp_e}"].to_numpy(), R[f"ret_{hour}_tp{tp_f}"].to_numpy(), R[f"stop_{hour}"].to_numpy()
+def pnl_fn(hour: str, tp_e: int, tp_f: int, sfx: str):
+    src = X if sfx else R
+    re_, rf_ = src[f"ret_{hour}_tp{tp_e}{sfx}"].to_numpy(), src[f"ret_{hour}_tp{tp_f}{sfx}"].to_numpy()
+    s = R[f"stop_{hour}"].to_numpy()
     hol = HOL[hour]
 
     def pnl(i, ph, risk):
@@ -111,19 +124,20 @@ def pnl_fn(hour: str, tp_e: int, tp_f: int):
 
 @lru_cache(maxsize=None)
 def events(hour: str, start: int, end: int, size: int, r_e: float = R_E, tp_e: int = TP_E, r_f: float = R_F,
-           tp_f: int = TP_F, news: bool = True, once: bool = False):
-    ve = VIOL[(hour, tp_e, 5)] if news else np.zeros(NT, bool)
-    vf = VIOL[(hour, tp_f, 10)] if news else np.zeros(NT, bool)
-    return tuple(S.replay(pnl_fn(hour, tp_e, tp_f), DATES, end, start, size, r_e, r_f, ve, vf, once))
+           tp_f: int = TP_F, news: bool = True, once: bool = False, sfx: str = None):
+    sfx = SFX if sfx is None else sfx
+    ve = VIOL[(hour, tp_e, 5, sfx)] if news else np.zeros(NT, bool)
+    vf = VIOL[(hour, tp_f, 10, sfx)] if news else np.zeros(NT, bool)
+    return tuple(S.replay(pnl_fn(hour, tp_e, tp_f, sfx), DATES, end, start, size, r_e, r_f, ve, vf, once))
 
 
-def contract(hour="20:00", r_e=R_E, tp_e=TP_E, r_f=R_F, tp_f=TP_F, news=True) -> dict:
+def contract(hour="20:00", r_e=R_E, tp_e=TP_E, r_f=R_F, tp_f=TP_F, news=True, sfx="") -> dict:
     """Une tentative par nuit de départ (jusqu'à HORIZON_EV nuits avant la fin), 10k et 100k."""
     out = {}
     for size, fee in ((10_000, F10), (100_000, F100)):
         rows = []
         for s0 in range(0, NT - HORIZON_EV):
-            ev = events(hour, s0, NT, size, r_e, tp_e, r_f, tp_f, news, True)
+            ev = events(hour, s0, NT, size, r_e, tp_e, r_f, tp_f, news, True, sfx)
             res = ev[1]
             paid = sum(x[2] for x in ev if x[0] == "reward") / 100 * size
             refund = fee if any(x[0] == "reward" and x[3] for x in ev) else 0.0
@@ -225,39 +239,46 @@ def main() -> None:
     for h in HOURS:
         n = R[f"ret_{h}_tp5"].notna()
         say(f"  {h} : {n.sum()} nuits tradées ; nuits d'entrée un jour férié (non tradées) {int(HOL[h][n].sum())} ; "
-            f"sortie dans la fenêtre d'une annonce 8:30 : éval ±5 min {int(VIOL[(h, 5, 5)][n].sum())} "
-            f"({VIOL[(h, 5, 5)][n].mean():.2%}), financé ±10 min {int(VIOL[(h, 4, 10)][n].sum())} ({VIOL[(h, 4, 10)][n].mean():.2%})")
+            f"sortie dans la fenêtre d'une annonce 8:30 : éval ±5 min {int(VIOL[(h, 5, 5, '')][n].sum())} "
+            f"({VIOL[(h, 5, 5, '')][n].mean():.2%}), financé ±10 min {int(VIOL[(h, 4, 10, '')][n].sum())} "
+            f"({VIOL[(h, 4, 10, '')][n].mean():.2%}) ; à plat à 8:19 : {int(VIOL[(h, 5, 5, '_n')][n].sum())} / "
+            f"{int(VIOL[(h, 4, 10, '_n')][n].sum())}")
+        cut = (X[f"exit_{h}_tp5_n"] != X[f"exit_{h}_tp5"]) & n
+        say(f"    nuits raccourcies (annonce 8:30) : {int(cut.sum())}, R moyen {(R[f'ret_{h}_tp5'] / R[f'stop_{h}'] * 2)[cut].mean():+.3f} "
+            f"→ {(X[f'ret_{h}_tp5_n'] / R[f'stop_{h}'] * 2)[cut].mean():+.3f} ATR (TP 5)")
     lev = (R_E / 100 / (R["stop_20:00"] + V.COST))
     say(f"  levier à 2 % de risque (notionnel / capital) : médiane {lev.median():.1f}, max {lev.max():.1f} (plafond STF 50)")
 
     say("\n1. Contrat STF 1 Phase, une tentative par nuit de départ (2011-07 → 2024-08), signal 20:00")
-    show(contract(), f"réglage FTMO (éval {R_E:g} % TP {TP_E}, financé {R_F:g} % TP {TP_F})")
-    c = contract(news=False)
-    show(c, "même réglage, règle des annonces ignorée")
-    base = contract()
-    a = base[10_000]
-    say("  causes d'échec de l'éval : " + ", ".join(f"{k} {v:.0%}" for k, v in a["causes"].items())
-        + " ; fin du financé : " + ", ".join(f"{k} {v:.0%}" for k, v in a["fin"].items()))
+    for lab, kw in ((f"réglage FTMO (éval {R_E:g} % TP {TP_E}, financé {R_F:g} % TP {TP_F}), règle d'origine", {}),
+                    ("même réglage, règle des annonces ignorée", dict(news=False)),
+                    ("même réglage, à plat à 8:19 les jours d'annonce 8:30", dict(sfx="_n"))):
+        c = contract(**kw)
+        show(c, lab)
+        a = c[10_000]
+        say("    causes d'échec de l'éval : " + ", ".join(f"{k} {v:.0%}" for k, v in a["causes"].items())
+            + " ; fin du financé : " + ", ".join(f"{k} {v:.0%}" for k, v in a["fin"].items()))
     for h in ("19:00", "21:00"):
-        show(contract(h), f"signal {h}")
+        show(contract(h, sfx=SFX), f"signal {h}, à plat")
     rows = []
     for r_e in (1.0, 1.5, 2.0):
         for tp_e in (4, 5):
             for r_f in (0.5, 0.75, 1.0):
                 for tp_f in (4, 5):
-                    cc = contract("20:00", r_e, tp_e, r_f, tp_f)
+                    cc = contract("20:00", r_e, tp_e, r_f, tp_f, sfx=SFX)
                     rows.append(dict(r_eval=r_e, tp_eval=tp_e, r_fund=r_f, tp_fund=tp_f, p=cc[10_000]["p"],
                                      nuits=cc[10_000]["nuits_ok"], v10=cc[10_000]["v"], ev10=cc[10_000]["ev"],
                                      ev100=cc[100_000]["ev"]))
     G = pd.DataFrame(rows).sort_values("ev100", ascending=False)
     G.to_csv(OUT / "grid.csv", index=False)
-    say("\n  Grille (36 réglages, choisis sur les mêmes données : le meilleur est optimiste) — 5 meilleurs en EV 100k :")
+    say("\n  Grille, à plat (36 réglages, choisis sur les mêmes données : le meilleur est optimiste) — 5 meilleurs en EV 100k :")
     for _, g in G.head(5).iterrows():
         say(f"    éval {g.r_eval:g} % TP {g.tp_eval:g}, financé {g.r_fund:g} % TP {g.tp_fund:g} : passage {g.p:.1%}, "
             f"{g.nuits:.0f} nuits, EV {g.ev10:+,.0f} $ (10k) / {g.ev100:+,.0f} $ (100k)".replace(",", " "))
     say(f"    réglages à EV 100k > 0 : {(G.ev100 > 0).sum()} sur {len(G)} ; pire {G.ev100.min():+,.0f} $".replace(",", " "))
 
     starts = np.arange(0, NT - H, STEP)
+    say(f"\nSections 2 et 3 : {'à plat à 8:19 les jours d’annonce 8:30' if SFX else 'règle d’origine'}, réglage FTMO")
     say(f"\n2. Un seul compte 10k racheté à chaque échec, {len(starts)} départs {DATES[starts[0]].date()} → "
         f"{DATES[starts[-1]].date()}, 3 ans")
     rs = []
