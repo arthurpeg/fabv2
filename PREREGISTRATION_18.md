@@ -71,3 +71,19 @@ Demande de l'utilisateur : refaire la simulation FTMO avec la stratégie NQ de n
 - **Grille** : éval r ∈ {0,5 ; 1 ; 1,5 ; 2 ; 2,5} % ; financé r ∈ {0,25 ; 0,5 ; 1 ; 1,5 ; 2} %.
 - **Résultat principal** : éval 2 %, financé 1 %, coût 1,5 point, remise à zéro de la perte max, 2011-07 → 2026-08.
 - **Contrôles** : (a) mêmes trades avec R − moyenne(R) (même distribution, edge retirée) ; (b) trades de 2011-07 à 2015-12 seulement (période hors échantillon de la règle ; 2016-2026 a servi à la choisir, donc les chiffres complets sont optimistes).
+
+## Avenant D (2026-10-31, avant calcul) : la règle NQ de nuit sur un compte LucidFlex 50K
+
+Demande de l'utilisateur. Règles relevées le 31 octobre 2026 sur lucidtrading.com et support.lucidtrading.com (collection « LucidFlex », articles Evaluation, Funded, Payouts, Consistency, Scaling Plan, Drawdown, Customization, Allowed Trading Times) :
+
+- **Éval 50K** : objectif +3 000 $ ; perte max (MLL) 2 000 $ en fin de séance sous le plus haut solde de clôture, **bloquée à +100 $** dès que le solde dépasse +2 100 $ ; consistance : meilleur jour ≤ 40 % du profit (50 % en option) ; 4 minis ou 40 micros max ; pas de limite de temps. Prix affiché 115 $ (80,50 $ avec coupon) ; option 50 % supposée à +15 $ (prix non lu).
+- **Financé** : même MLL (2 000 $, bloquée à +100 $ au-delà de +2 100 $, et ramenée à +100 $ dès le premier payout) ; pas de consistance ; scaling : 2 minis / 20 micros sous 1 000 $ de profit, 3 / 30 de 1 000 à 1 999 $, 4 / 40 au-delà (mis à jour en fin de séance). Payout : 5 jours à ≥ 150 $ de profit dans le cycle et profit net du cycle > 0 ; montant = 50 % du profit, plafonné à 2 000 $, minimum 500 $ ; 90 % au trader ; 5 payouts puis passage en réel (**le compte réel n'est pas valorisé** : la simulation s'arrête au 5e payout, prudent).
+- Limite journalière (DLL 1 200 $) : option « ON » retenue (moins chère, payouts à la demande) ; elle ne mord pas avec un seul trade par nuit dont le risque est ≤ 1 000 $.
+- Horaires : positions fermées à 16:45 ET, reprise à 18:00 ET ; le trade 20:00 → 9:30 tient dans une séance, il est autorisé.
+
+Simulation :
+- Mêmes 3 787 trades qu'à l'avenant C, en **MNQ** (2 $ le point) : nombre de contrats = plancher(risque visé / (stop en points × 2 $)), plafonné par la taille max (éval 40, financé selon le scaling) et par la marge avant la MLL ; nuit sautée si 0 contrat ; éval ou compte abandonné si la marge ne permet plus 1 contrat. Stop en points = distance du stop × prix brut d'entrée (série `recolte1.engine.load`, historique 2010 activé).
+- Coût par MNQ et par aller-retour : demi-spread d'entrée + demi-spread de sortie réels (bbo-1m, colonnes MNQ, sinon NQ ; 0,50 $ le tick) + **1,50 $ de commission** (hypothèse de la session précédente, non publiée par Lucid).
+- Grille : risque visé par trade en éval ∈ {200 ; 400 ; 600 ; 800 ; 1 000} $, en financé ∈ {200 ; 400 ; 600 ; 800 ; 1 000} $. **Résultat principal** : éval 400 $, financé 200 $ (même proportion de la perte max que l'éval 2 % / financé 1 % de FTMO), consistance 40 %, 2011-07 → 2026-08.
+- Contrôles : R − moyenne (sans edge) et 2011-2015 seul, comme à l'avenant C ; variante consistance 50 % à 130 $.
+- 20 000 comptes par réglage, départ tiré au hasard dans l'historique, trades enchaînés dans l'ordre.
