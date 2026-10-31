@@ -60,3 +60,14 @@ Remarque de l'utilisateur : chez FTMO, le spread de l'US100 est beaucoup plus la
 - **Entrée à l'open de la première barre ≥ 9:50 ET** (après l'ouverture et l'annonce de 9:45). Stop 1 ATR M15 lu sur la barre 9:30-9:45 (dernière terminée à 9:50). Sortie inchangée (15:54 ET au plus tard).
 - **Coût = 1,5 point** par aller-retour (cas principal) et **1 point** (variante), exprimé en fraction du prix au niveau actuel : 1,5 / 25 684 = 0,58 pb et 1 / 25 684 = 0,39 pb (25 684 = médiane du NQ du 2025-08-29 au 2026-08-28). Raison : le spread en points d'un CFD suit le niveau de l'indice ; appliquer 1,5 point au NQ de 2016 (≈ 4 500) le gonflerait 5 fois.
 - **Nouveau résultat principal** : entrée 9:50, stop 1 ATR M15, coût 1,5 point, éval 2 % / 4,9 %, financé 1 % / 2 %, remise à zéro. Même grille, mêmes règles, simulé après toutes les variantes précédentes (dont les chiffres ne changent pas).
+
+## Avenant C (2026-10-31, avant calcul) : la règle NQ de nuit au lieu de trades au hasard
+
+Demande de l'utilisateur : refaire la simulation FTMO avec la stratégie NQ de nuit ([[wiki/experiments/nq-nuit-momentum]] : compte 20:00 ET, momentum 12-1, SL 2 ATR / TP 5 ATR en M15, sortie 9:30 ET). Évaluation d'un contrat : compteur d'essais inchangé, la règle n'est pas modifiée.
+
+- **Trades** : les 3 787 trades de `results/couts_reels_nq_nuit/trades.csv` (2011-07-01 → 2026-08-28), colonne `R_brut` (1 R = distance du stop, 2 ATR) et `risk` (distance du stop en fraction du prix). Entrées du dimanche au jeudi à 20:00 ET, sorties avant 9:30 ET : pas de position le week-end, chaque trade tient dans une journée FTMO (minuit serveur = 17:00 ET), pas de swap.
+- **Moteur** : celui du n° 18 ; chaque compte part d'un trade tiré au hasard et enchaîne les trades suivants dans l'ordre (bouclage). Un trade = une journée FTMO. Objectif et stop **non modifiés** (pas de réduction de l'objectif près des 10 %) : la règle est tradée telle quelle, seule la taille change. Risque net de coût, comme avant.
+- **Coût CFD** : 1,5 point par aller-retour au niveau actuel du NQ (1,5 / 25 684 du prix), variante 3 points (spreads de nuit plus larges).
+- **Grille** : éval r ∈ {0,5 ; 1 ; 1,5 ; 2 ; 2,5} % ; financé r ∈ {0,25 ; 0,5 ; 1 ; 1,5 ; 2} %.
+- **Résultat principal** : éval 2 %, financé 1 %, coût 1,5 point, remise à zéro de la perte max, 2011-07 → 2026-08.
+- **Contrôles** : (a) mêmes trades avec R − moyenne(R) (même distribution, edge retirée) ; (b) trades de 2011-07 à 2015-12 seulement (période hors échantillon de la règle ; 2016-2026 a servi à la choisir, donc les chiffres complets sont optimistes).
