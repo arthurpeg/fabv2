@@ -3,8 +3,8 @@
 uv run python run_propfirm_ftmo.py [N]  → results/propfirm/ (run.log, eval.csv, funded.csv, ev.csv)
 
 Modes : binaire (pile ou face gain t % / perte r %) et NQ réel (trajectoires 1 min du NQ,
-entrée 9:35 ET, sortie 15:54 ET au plus tard, stop s % du prix). Voir propfirm/.
-Bibliothèque de journées en cache : cache/propfirm/nq_days_<s>.pkl.
+entrée 9:35 ET, sortie 15:54 ET au plus tard, stop s % du prix ou 1 ATR M15 (avenant A,
+résultat principal)). Voir propfirm/. Bibliothèque de journées en cache : cache/propfirm/nq_days_<s>.pkl.
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from propfirm.days import build, session_bars
+from propfirm.days import build, entry_atr, session_bars
 from propfirm.ftmo import PRICES_EUR, Market, ev, refusal_breakeven, run_eval, run_funded
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -30,8 +30,12 @@ SEED = 18
 
 EVAL_GRID = [(r, t) for r in (1.0, 2.0, 2.9) for t in (2.0, 3.0, 4.9)]
 FUNDED_GRID = [(0.5, 1.0), (0.5, 2.0), (0.75, 1.5), (1.0, 1.0), (1.0, 2.0)]
-STOPS = (0.0025, 0.005, 0.01)
-MAIN = dict(s=0.005, ev=(2.0, 4.9), fd=(1.0, 2.0))
+STOPS = (0.0025, 0.005, 0.01, "atr")  # "atr" = 1 ATR M15 (avenant A), simulé en dernier
+MAIN = dict(s="atr", ev=(2.0, 4.9), fd=(1.0, 2.0))
+
+
+def label(s) -> str:
+    return "1 ATR M15" if s == "atr" else f"{s:.2%}"
 
 
 def say(s: str = "") -> None:
@@ -43,12 +47,12 @@ def say(s: str = "") -> None:
 def libs() -> dict[float, object]:
     out, bars = {}, None
     for s in STOPS:
-        f = CACHE / f"nq_days_{s:g}.pkl"
+        f = CACHE / f"nq_days_{s if s == 'atr' else format(s, 'g')}.pkl"
         if f.exists():
             out[s] = pickle.loads(f.read_bytes())
             continue
         bars = bars or session_bars("NQ")
-        out[s] = build(bars, s)
+        out[s] = build(bars, entry_atr("NQ", bars) if s == "atr" else s)
         f.write_bytes(pickle.dumps(out[s]))
     return out
 
@@ -90,14 +94,15 @@ def main() -> None:
         lib = L[s]
         win = (lib.tp_bar[:, :, 19] < lib.stop_bar).mean()
         stop = (lib.stop_bar < np.iinfo(np.int16).max).mean()
-        say(f"  s = {s:.2%} : stop touché {stop:.0%} des jours, 1 R touché avant le stop {win:.0%}, "
+        say(f"  stop {label(s)} (médiane {np.median(lib.s):.3%} du prix, coût médian {np.median(1e-4 / lib.s):.3f} R) : stop touché {stop:.0%} des jours, 1 R touché avant le stop {win:.0%}, "
             f"glissement moyen au stop {lib.stop_R[lib.stop_bar < 32767].mean() - 1:.3f} R")
 
-    markets = {"binaire": {0.005: Market(None, 0.005)}, "NQ": {s: Market(L[s], s) for s in STOPS}}
+    markets = {"binaire": {0.005: Market(None, 0.005)},
+               "NQ": {s: Market(L[s], np.nan if s == "atr" else s) for s in STOPS}}
     E, F = [], []
     for mode, ms in markets.items():
         for s, m in ms.items():
-            say(f"\n=== {mode}, stop {s:.2%} (coût {m.cost_R:.3f} R) ===")
+            say(f"\n=== {mode}, stop {label(s)} ===")
             for row in eval_stats(m, rng):
                 E.append(dict(mode=mode, s=s, **row))
                 say(f"  éval  {row['r']:>3} / {row['t']:<3} : passage {row['p_pass']:.1%} ± {1.96 * row['se_p']:.1%}, "
@@ -113,10 +118,12 @@ def main() -> None:
     F.to_csv(OUT / "funded.csv", index=False)
 
     rows = []
-    for (mode, s), e in E.groupby(["mode", "s"]):
+    E["s"], F["s"] = E.s.astype(str), F.s.astype(str)
+    for (mode, s), e in E.groupby(["mode", "s"], sort=False):
         for reset in (True, False):
             f = F[(F["mode"] == mode) & (F.s == s) & (F.reset == reset)]
-            picks = {"principal": (e[(e.r == MAIN["ev"][0]) & (e.t == MAIN["ev"][1])].iloc[0],
+            main = "principal" if s == str(MAIN["s"]) else "même réglage"
+            picks = {main: (e[(e.r == MAIN["ev"][0]) & (e.t == MAIN["ev"][1])].iloc[0],
                                    f[(f.r == MAIN["fd"][0]) & (f.t == MAIN["fd"][1])].iloc[0]),
                      "meilleur de la grille": (e.loc[e.p_pass.idxmax()], f.loc[f.v_pct.idxmax()])}
             for which, (ee, ff) in picks.items():
@@ -130,7 +137,7 @@ def main() -> None:
     V.to_csv(OUT / "ev.csv", index=False)
     say("\n=== Espérance par tentative (10k et 100k) ===")
     for _, x in V[V["size"].isin([10_000, 100_000])].iterrows():
-        say(f"  {x['mode']:<7} s {x.s:.2%} {'RAZ' if x.reset else 'sans RAZ':<8} {x.choix:<22} éval {x['eval']:<8} "
+        say(f"  {x['mode']:<7} s {x.s:<6} {'RAZ' if x.reset else 'sans RAZ':<8} {x.choix:<22} éval {x['eval']:<8} "
             f"financé {x.funded:<8} {x['size'] // 1000:>3}k : EV {x.ev_usd:+8,.0f} $ ± {x.ci95:,.0f} "
             f"(passage {x.p_pass:.1%}, financé {x.v_pct:.2f} %, refus max {x.refus_max:.0%})".replace(",", " "))
 

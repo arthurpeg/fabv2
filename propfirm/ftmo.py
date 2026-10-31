@@ -30,11 +30,11 @@ MIN_RISK = 0.05
 @dataclass
 class Market:
     lib: DayLib | None  # None = binaire
-    s: float            # stop en fraction du prix
+    s: float            # stop en fraction du prix (binaire ; en NQ réel : lib.s, propre à chaque jour)
 
-    @property
-    def cost_R(self) -> float:
-        return COST_FRAC / self.s
+    def cost_R(self, day: np.ndarray) -> np.ndarray:
+        s = self.s if self.lib is None else self.lib.s[day]
+        return COST_FRAC / s * np.ones(len(day))
 
     @property
     def n_days(self) -> int:
@@ -73,9 +73,11 @@ def run_eval(m: Market, r: float, t: float, n: int, rng: np.random.Generator, ma
         st[a[dead]] = -1
         a, floor, risk = a[~dead], floor[~dead], risk[~dead]
         need = np.maximum(np.maximum(TARGET - P[a], 2 * best[a] - P[a]), 0.01)
-        kidx = _k_index(np.minimum(t, need) / risk * (1 + m.cost_R) + m.cost_R)
-        R = _outcome(m, (start[a] + days[a]) % m.n_days, kidx, rng)
-        pnl = risk * (R - m.cost_R) / (1 + m.cost_R)
+        day = (start[a] + days[a]) % m.n_days
+        c = m.cost_R(day)
+        kidx = _k_index(np.minimum(t, need) / risk * (1 + c) + c)
+        R = _outcome(m, day, kidx, rng)
+        pnl = risk * (R - c) / (1 + c)
         days[a] += 1
         P[a] += pnl
         fail = (P[a] <= floor + 1e-9) | (pnl <= -DAILY)
@@ -103,9 +105,11 @@ def run_funded(m: Market, r: float, t: float, n: int, rng: np.random.Generator,
         dead = risk < MIN_RISK
         alive[a[dead]] = False
         a, floor, risk = a[~dead], floor[~dead], risk[~dead]
-        kidx = _k_index(t / risk * (1 + m.cost_R) + m.cost_R)
-        R = _outcome(m, (start[a] + days[a]) % m.n_days, kidx, rng)
-        pnl = risk * (R - m.cost_R) / (1 + m.cost_R)
+        day = (start[a] + days[a]) % m.n_days
+        c = m.cost_R(day)
+        kidx = _k_index(t / risk * (1 + c) + c)
+        R = _outcome(m, day, kidx, rng)
+        pnl = risk * (R - c) / (1 + c)
         days[a] += 1; cyc[a] += 1
         P[a] += pnl
         fail = (P[a] <= floor + 1e-9) | (pnl <= -DAILY)

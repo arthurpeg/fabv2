@@ -2,9 +2,29 @@
 
 *2026-10-31. Protocole : [[PREREGISTRATION_18]]. Code : [run_propfirm_ftmo.py](../run_propfirm_ftmo.py), [propfirm/](../propfirm/). Sorties : `results/propfirm/` (run.log, eval.csv, funded.csv, ev.csv). Compteur d'essais inchangé (1 482) : on évalue un contrat, pas une règle de marché.*
 
-## Réponse
+## Avenant A : stop à 1 ATR M15 (résultat principal depuis l'avenant)
 
-**Oui, l'espérance est positive sans aucune edge, à condition que FTMO verse les rewards.** Résultat principal (fixé à l'avance : NQ réel, stop 0,5 % du prix, éval 2 % de risque / 4,9 % visés, financé 1 % / 2 %, perte max remise à −10 % après chaque reward) :
+Même réglage (éval 2 % / 4,9 %, financé 1 % / 2 %, RAZ), stop à 1 ATR M15 lu à 9:30 ET. Cet ATR vaut **0,12 % du prix en médiane** (~25 points à 20 000), 4 fois moins que 0,5 % : le stop est touché 86 % des jours et le coût de 1 pb pèse **0,083 R par trade** (contre 0,020 R).
+
+| Compte | Passage | Valeur du financé | **EV par tentative** | Refus tolérés | Sans RAZ de la perte max |
+|---|---|---|---|---|---|
+| 10k | 36,4 % ± 0,7 | 4,35 % ± 0,09 | **+71 $ ± 4** | 45 % | +37 $ |
+| 100k | 36,4 % | 4,35 % | **+1 035 $ ± 43** | 65 % | +688 $ |
+
+Éval ~8,7 jours par tentative (8,1 si validée) ; financé : P(≥ 1 reward) 50 %, 0,95 reward en moyenne, vie ~46 jours. Meilleur de la grille (éval 1 / 4,9, financé 0,5 / 2 ; sélectionné, donc optimiste) : +95 $ (10k), +1 275 $ (100k). **Toutes les cases restent positives**, mais l'EV est environ divisée par deux par rapport au stop à 0,5 % du prix (+178 $ / +2 098 $).
+
+**Pourquoi : c'est le spread, pas les trajectoires.** Diagnostic exploratoire (non pré-enregistré, même graine, 20 000 comptes) sur le réglage principal ATR :
+
+| Coût par aller-retour | Passage | Financé | EV 10k | EV 100k |
+|---|---|---|---|---|
+| 1 pb (hypothèse du protocole) | 37,0 % | 4,41 % | +76 $ | +1 083 $ |
+| 0 | 44,2 % | 8,08 % | +270 $ | +3 023 $ |
+
+Avec un stop aussi serré, chaque trade paie ~8 % de son risque en spread, et un compte financé en fait des dizaines. Sans coût, le stop ATR serait au contraire le meilleur réglage. **L'hypothèse de coût devient donc décisive** : 1 pb ≈ 2 points sur US100 ; le spread réel FTMO en séance US est à mesurer (le spread du future NQ est de 2 à 4 ticks, soit 0,5 à 1 point, d'après les données bbo-1m achetées le 31 octobre).
+
+## Réponse (stop en % du prix, protocole initial)
+
+**Oui, l'espérance est positive sans aucune edge, à condition que FTMO verse les rewards.** Résultat principal du protocole initial (NQ réel, stop 0,5 % du prix, éval 2 % de risque / 4,9 % visés, financé 1 % / 2 %, perte max remise à −10 % après chaque reward) :
 
 | Compte | Prix | Passage | Valeur du financé | **EV par tentative** | Refus de reward tolérés |
 |---|---|---|---|---|---|

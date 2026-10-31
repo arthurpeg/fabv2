@@ -2,7 +2,8 @@
 
 Pour chaque séance NYSE : entrée à l'open de la première barre >= 9:35 ET, sortie au plus
 tard à la clôture de la dernière barre démarrant <= 15:54 ET (13:00 en demi-séance).
-Pour chaque sens et chaque distance de stop s (fraction du prix) on garde, en minutes
+Pour chaque sens et une distance de stop s (fraction du prix, fixe ou propre à chaque
+jour, par exemple 1 ATR M15 / prix d'entrée : `entry_atr`) on garde, en minutes
 depuis l'entrée : la barre où le stop est touché, la barre où chaque niveau d'objectif
 k * s est touché (k = 0,05, 0,10, … en R), le R réellement perdu au stop (pire de stop
 et open de la barre) et le R de sortie en fin de journée.
@@ -32,7 +33,7 @@ NEVER = np.iinfo(np.int16).max
 class DayLib:
     """Issues d'un trade par jour ; tableaux indexés [jour, sens (0 long, 1 short), ...]."""
     dates: pd.DatetimeIndex
-    s: float
+    s: np.ndarray         # [jour] distance du stop en fraction du prix
     tp_bar: np.ndarray    # [jour, sens, K_N] int16, NEVER si jamais touché
     stop_bar: np.ndarray  # [jour, sens] int16
     stop_R: np.ndarray    # [jour, sens] R perdu au stop (>= 1)
@@ -82,10 +83,25 @@ def _one_side(e: float, O, H, L, C, s: float, sign: int, levels: np.ndarray):
     return tp.astype(np.int16), stop_bar, stop_R, end / s
 
 
-def build(bars: dict[pd.Timestamp, pd.DataFrame], s: float) -> DayLib:
+def entry_atr(name: str, bars: dict[pd.Timestamp, pd.DataFrame]) -> np.ndarray:
+    """1 ATR M15 / prix d'entrée pour chaque séance (ordre de sorted(bars)) : ATR de Wilder
+    14 barres sur la série 1 min complète, dernière barre M15 terminée à l'entrée."""
+    from coinflip.rules import atr_tf
+
+    df = pd.read_parquet(DATA / f"{name}_v0_1m.parquet")
+    df = df[~df.index.duplicated()].sort_index()
+    atr = atr_tf(df, "15min")
+    dates = sorted(bars)
+    t_in = pd.DatetimeIndex([bars[d].index[0] for d in dates])
+    a = atr.reindex(t_in.floor("15min"), method="ffill").to_numpy()
+    return a / np.array([bars[d]["open"].iloc[0] for d in dates])
+
+
+def build(bars: dict[pd.Timestamp, pd.DataFrame], s: float | np.ndarray) -> DayLib:
     levels = K_STEP * np.arange(1, K_N + 1)
     dates = sorted(bars)
     n = len(dates)
+    s = np.broadcast_to(np.asarray(s, float), (n,)).copy()
     tp = np.empty((n, 2, K_N), np.int16)
     sb = np.empty((n, 2), np.int16)
     sr = np.empty((n, 2))
@@ -95,5 +111,5 @@ def build(bars: dict[pd.Timestamp, pd.DataFrame], s: float) -> DayLib:
         O, H, L, C = (b[c].to_numpy() for c in ("open", "high", "low", "close"))
         e = O[0]
         for k, sign in enumerate((1, -1)):
-            tp[i, k], sb[i, k], sr[i, k], er[i, k] = _one_side(e, O, H, L, C, s, sign, levels)
+            tp[i, k], sb[i, k], sr[i, k], er[i, k] = _one_side(e, O, H, L, C, s[i], sign, levels)
     return DayLib(pd.DatetimeIndex(dates), s, tp, sb, sr, er)
