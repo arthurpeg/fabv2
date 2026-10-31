@@ -26,3 +26,4 @@ Historique antérieur au wiki (repris de git et des rapports) :
 ## [2026-10-31] query | Exploratoire : règle NQ de nuit limitée aux nuits d'annonce rouge | aucun avantage : +0,087 R/trade contre +0,089 sans annonce ; 2016-2026 +0,048, DD −40 R ; compteur 1 475
 ## [2026-10-31] ingest | Historiques VIX et VIX3M du CBOE dans config/ | pour le n° 15
 ## [2026-10-31] prereg | N° 15 : filtres VIX (Donninger 0,87, Vojtko MM20) et taille selon σ20 sur la règle NQ de nuit | ❌ les 3 ; 9 filtres anti-DD rejetés au total ; compteur 1 478
+## [2026-10-31] prereg | N° 16 : clôture sous VWAP 15:15-16:15 (pression vendeuse) sur règle de nuit, sélection ES+YM, confirmation NQ | ❌ H et filtre ; compteur 1 480
