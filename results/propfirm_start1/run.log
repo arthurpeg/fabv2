@@ -1,0 +1,34 @@
+Démarrage avec un seul compte FTMO 10k (éval 87 $), règle NQ de nuit, 612 départs de 2011-07-01 à 2023-08-23, horizon 3 ans
+
+1. Argent à sortir avant que les rewards remboursent (un compte 10k, rachat à chaque échec) :
+  19:00 : médiane 174 $  90e centile 434 $  95e 521 $  pire 782 $ (9 évals) ; 1er reward médiane 64 nuits (~3.0 mois)  90e centile 182  pire 299 ; pire série d'évals ratées 6 ; net à 3 ans médiane +6 365 $
+  20:00 : médiane 174 $  90e centile 348 $  95e 434 $  pire 608 $ (7 évals) ; 1er reward médiane 54 nuits (~2.6 mois)  90e centile 131  pire 239 ; pire série d'évals ratées 6 ; net à 3 ans médiane +6 918 $
+  21:00 : médiane 174 $  90e centile 521 $  95e 608 $  pire 782 $ (9 évals) ; 1er reward médiane 58 nuits (~2.8 mois)  90e centile 163  pire 341 ; pire série d'évals ratées 7 ; net à 3 ans médiane +5 271 $
+
+2. Chemins depuis un seul compte 10k (20:00), départ avec 650 $ (pire mise historique du compte 20:00, arrondie)
+
+=== A. 1 × 10k → 1 × 100k → trio 100k ===
+  premier passage en 100k : médiane 205 nuits (~10 mois), 75e centile 280, atteint dans 100% des départs
+  trio en 100k : médiane 348 nuits (~17 mois), 75e centile 470, atteint en 3 ans dans 100% des départs
+  gain net à 1 an  : médiane +1 736 $  5e centile -154 $  pire -4 077 $
+  à 2 ans          : médiane +43 411 $  5e centile +275 $  pire -3 807 $
+  à 3 ans          : médiane +99 867 $  5e centile +50 257 $  pire +7 670 $
+  apport en plus des 650 $ : nul dans 72% des départs  95e centile 2 779 $  pire 3 514 $
+
+=== B. 1 × 10k → trio 10k → trio 100k ===
+  premier passage en 100k : médiane 371 nuits (~18 mois), 75e centile 469, atteint dans 100% des départs
+  trio en 100k : médiane 464 nuits (~22 mois), 75e centile 560, atteint en 3 ans dans 88% des départs
+  gain net à 1 an  : médiane +3 103 $  5e centile -144 $  pire -3 783 $
+  à 2 ans          : médiane +19 664 $  5e centile +2 521 $  pire -3 171 $
+  à 3 ans          : médiane +75 694 $  5e centile +20 213 $  pire +6 002 $
+  apport en plus des 650 $ : nul dans 93% des départs  95e centile 311 $  pire 3 186 $
+
+=== C. 1 × 10k → trio 100k ===
+  premier passage en 100k : médiane 394 nuits (~19 mois), 75e centile 523, atteint dans 99% des départs
+  trio en 100k : médiane 528 nuits (~25 mois), 75e centile 635, atteint en 3 ans dans 88% des départs
+  gain net à 1 an  : médiane +1 894 $  5e centile +285 $  pire -2 664 $
+  à 2 ans          : médiane +9 775 $  5e centile +154 $  pire -2 712 $
+  à 3 ans          : médiane +66 977 $  5e centile +6 506 $  pire -661 $
+  apport en plus des 650 $ : nul dans 83% des départs  95e centile 1 762 $  pire 3 721 $
+
+Même départ, gain à 3 ans : A > B dans 65%, A > C dans 96%, C > B dans 31% des cas
