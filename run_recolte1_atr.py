@@ -152,7 +152,7 @@ def simulate(asset: str, e: pd.DataFrame) -> pd.DataFrame:
                 out.append(pd.DataFrame({
                     "asset": asset, "clock": clock, "variant": vname, "cost": label,
                     "night": m["night"].values, "dir": np.where(rec["direction"] == 0, 1, -1),
-                    "ret": ret, "reason": reason, "entry_idx": p_in,
+                    "ret": ret, "reason": reason, "entry_idx": p_in, "exit_idx": rec["exit_idx"],
                 }))
     return pd.concat(out, ignore_index=True)
 
