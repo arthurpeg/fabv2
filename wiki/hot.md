@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 16:07
+updated: 2026-10-31 16:16
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 16:07
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] prereg | N° 18 avenant E : FTMO, financé en RR 2 (TP 4 ATR, 1 %) sur la règle NQ de nuit | EV +1 009 $ ± 21 (10k), +10 408 $ (100k), +14 % contre RR 2,5 ; pires séries : 6 évals ratées, 239 nuits sans reward (2022) ; hors compteur
 - [2026-10-31] query | Exploratoire : pires séries FTMO + règle NQ de nuit (run_propfirm_streaks.py, 657 départs) | 6 évals ratées d'affilée au pire (521 $ sur 10k) ; 11 mois sans reward (2018-03 → 2019-01) ; creux de trésorerie −608 $ (10k) / −3 842 $ (100k) ; cause : meilleur jour 50 % avec des TP de +2,5 %
 - [2026-10-31] prereg | N° 18 avenant D : règle NQ de nuit sur LucidFlex 50K en MNQ (règles lues sur lucidtrading.com), éval 400 $ / financé 200 $ | EV +157 $ ± 6 par éval au prix actuel du NQ (+65 $ en points historiques, protocole) ; sans edge −55 $ ; hors compteur
 - [2026-10-31] query | Exploratoire : 5 comptes FTMO 10k décalés de 1 ou 3 mois sur la règle NQ de nuit (run_propfirm_farm.py) | ne lisse pas : écart-type ~2 000 $/compte sur 2 ans (indépendants : 873 $) ; 4,1/5 rachètent la même nuit, corrélation 0,97
@@ -29,7 +30,6 @@ updated: 2026-10-31 16:07
 - [2026-10-31] prereg | N° 18 avenant C : règle NQ de nuit (3 787 trades 2011-2026) sur FTMO 1-Step, éval 2 % / financé 1 %, spread 1,5 pt | passage 50,8 %, EV +853 $ (10k), +8 849 $ (100k) ; sans edge +98 $ / +1 295 $ ; sans RAZ +307 $ / +3 390 $ ; hors compteur
 - [2026-10-31] fix | Renommage costs18 → couts_reels_nq_nuit (script, rapport, résultats) pour éviter la confusion avec le pré-enregistrement n° 18 (FTMO) | liens mis à jour
 - [2026-10-31] prereg | N° 18 avenant B : entrée 9:50 ET, stop 1 ATR M15, spread 1,5 pt (0,041 R) / 1 pt | EV +161 $ ± 6 (10k), +1 933 $ ± 61 (100k) à 1,5 pt ; +187 $ / +2 187 $ à 1 pt ; hors compteur
-- [2026-10-31] experiment | Règle NQ de nuit recalculée avec les spreads réels bbo-1m (NQ 2011-2026, MNQ 2019-2026) | +0,076 R/trade contre +0,088 au coût fixe ; MNQ +0,067 à 1,24 $ A/R ; compteur inchangé
 
 ## Prochaines actions
 
