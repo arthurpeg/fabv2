@@ -160,8 +160,8 @@ def show(c: dict, lab: str) -> None:
     a, b = c[10_000], c[100_000]
     say(f"  {lab} : passage {a['p']:.1%} ({a['nuits_ok']:.0f} nuits médiane si validée, {a['nuits_ko']:.0f} si ratée) ; "
         f"financé : P(≥ 1 retrait) {a['p_rew']:.0%}, {a['nrew']:.1f} retraits, vie médiane {a['vie']:.0f} nuits, "
-        f"valeur {a['v']:,.0f} $ (10k) / {b['v']:,.0f} $ (100k) remboursement compris ; "
-        f"EV par éval {a['ev']:+,.0f} $ (10k, ±{1.96 * a['se']:,.0f}) / {b['ev']:+,.0f} $ (100k, ±{1.96 * b['se']:,.0f})".replace(",", " "))
+        f"valeur {a['v']:_.0f} $ (10k) / {b['v']:_.0f} $ (100k) remboursement compris ; "
+        f"EV par éval {a['ev']:+_.0f} $ (10k, ±{1.96 * a['se']:_.0f}) / {b['ev']:+_.0f} $ (100k, ±{1.96 * b['se']:_.0f})".replace("_", " "))
 
 
 def cash_series(config, s0: int) -> np.ndarray:
@@ -260,6 +260,7 @@ def main() -> None:
             + " ; fin du financé : " + ", ".join(f"{k} {v:.0%}" for k, v in a["fin"].items()))
     for h in ("19:00", "21:00"):
         show(contract(h, sfx=SFX), f"signal {h}, à plat")
+    show(contract(r_e=1.2, r_f=0.6, sfx=SFX), "risques × 0,6 (perte max 6 % / 10 %, fixé a priori) : éval 1,2 % TP 5, financé 0,6 % TP 4, à plat")
     rows = []
     for r_e in (1.0, 1.5, 2.0):
         for tp_e in (4, 5):
@@ -308,10 +309,14 @@ def main() -> None:
     configs = {"1x10k": [("20:00", 10_000)], "1x100k": [("20:00", 100_000)],
                "2x100k": [("20:00", 100_000), ("19:00", 100_000)],
                "3x100k": [(h, 100_000) for h in HOURS], "3x10k": [(h, 10_000) for h in HOURS]}
-    M = {k: np.array([max(0.0, -np.cumsum(cash_series(cfg, s0)).min()) for s0 in starts]) for k, cfg in configs.items()}
-    say("\n3. Argent sorti avant remboursement par configuration (3 ans) : médiane / 90e / 95e centile / pire")
+    C = {k: np.array([np.cumsum(cash_series(cfg, s0)) for s0 in starts]) for k, cfg in configs.items()}
+    M = {k: np.maximum(0.0, -c.min(axis=1)) for k, c in C.items()}
+    say("\n3. Configuration fixe dès le départ, rachat à chaque échec (3 ans) : argent sorti avant remboursement "
+        "médiane / 90e / 95e centile / pire ; gain net à 3 ans médiane / 5e centile / pire")
     for k, m in M.items():
-        say(f"  {k:<7} : {np.median(m):,.0f} / {np.quantile(m, 0.9):,.0f} / {np.quantile(m, 0.95):,.0f} / {m.max():,.0f} $".replace(",", " "))
+        net = C[k][:, -1]
+        say(f"  {k:<7} : {np.median(m):,.0f} / {np.quantile(m, 0.9):,.0f} / {np.quantile(m, 0.95):,.0f} / {m.max():,.0f} $ ; "
+            f"{np.median(net):+,.0f} / {np.quantile(net, 0.05):+,.0f} / {net.min():+,.0f} $".replace(",", " "))
     for lab, fname, q in (("pire chemin", "paths_pire_chemin.csv", None), ("95e centile", "paths_p95.csv", 0.95)):
         for k, m in M.items():
             THR[k] = float(m.max() if q is None else np.quantile(m, q))

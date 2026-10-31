@@ -10,3 +10,74 @@ Smart Trader Funds 1 Phase, règle NQ de nuit ; 3812 nuits 2011-07-01 → 2026-0
   levier à 2 % de risque (notionnel / capital) : médiane 7.7, max 39.9 (plafond STF 50)
 
 1. Contrat STF 1 Phase, une tentative par nuit de départ (2011-07 → 2024-08), signal 20:00
+  réglage FTMO (éval 2 % TP 5, financé 1 % TP 4), règle d'origine : passage 30.6% (10 nuits médiane si validée, 7 si ratée) ; financé : P(≥ 1 retrait) 31%, 0.5 retraits, vie médiane 25 nuits, valeur 253 $ (10k) / 2 443 $ (100k) remboursement compris ; EV par éval -62 $ (10k, ±41) / +148 $ (100k, ±390)
+    causes d'échec de l'éval : perte max 62%, annonce 36%, marge épuisée 2% ; fin du financé : annonce 58%, perte max 40%, marge épuisée 2%
+  même réglage, règle des annonces ignorée : passage 46.9% (13 nuits médiane si validée, 8 si ratée) ; financé : P(≥ 1 retrait) 71%, 2.1 retraits, vie médiane 60 nuits, valeur 1 018 $ (10k) / 9 798 $ (100k) remboursement compris ; EV par éval +339 $ (10k, ±138) / +4 001 $ (100k, ±1 341)
+    causes d'échec de l'éval : perte max 96%, marge épuisée 4% ; fin du financé : perte max 92%, marge épuisée 8%
+  même réglage, à plat à 8:19 les jours d'annonce 8:30 : passage 44.8% (13 nuits médiane si validée, 8 si ratée) ; financé : P(≥ 1 retrait) 71%, 2.5 retraits, vie médiane 68 nuits, valeur 1 179 $ (10k) / 11 400 $ (100k) remboursement compris ; EV par éval +390 $ (10k, ±167) / +4 512 $ (100k, ±1 632)
+    causes d'échec de l'éval : perte max 97%, marge épuisée 3% ; fin du financé : perte max 92%, marge épuisée 8%
+  signal 19:00, à plat : passage 46.8% (15 nuits médiane si validée, 9 si ratée) ; financé : P(≥ 1 retrait) 69%, 3.4 retraits, vie médiane 72 nuits, valeur 1 612 $ (10k) / 15 701 $ (100k) remboursement compris ; EV par éval +615 $ (10k, ±235) / +6 748 $ (100k, ±2 308)
+  signal 21:00, à plat : passage 41.4% (12 nuits médiane si validée, 8 si ratée) ; financé : P(≥ 1 retrait) 63%, 2.4 retraits, vie médiane 59 nuits, valeur 1 143 $ (10k) / 11 095 $ (100k) remboursement compris ; EV par éval +334 $ (10k, ±186) / +3 989 $ (100k, ±1 825)
+  risques × 0,6 (perte max 6 % / 10 %, fixé a priori) : éval 1,2 % TP 5, financé 0,6 % TP 4, à plat : passage 60.5% (28 nuits médiane si validée, 17 si ratée) ; financé : P(≥ 1 retrait) 88%, 4.8 retraits, vie médiane 161 nuits, valeur 1 351 $ (10k) / 12 901 $ (100k) remboursement compris ; EV par éval +678 $ (10k, ±176) / +7 209 $ (100k, ±1 718)
+
+  Grille, à plat (36 réglages, choisis sur les mêmes données : le meilleur est optimiste) — 5 meilleurs en EV 100k :
+    éval 1 % TP 4  financé 0.5 % TP 4 : passage 72.8%  44 nuits  EV +1 179 $ (10k) / +12 118 $ (100k)
+    éval 1 % TP 5  financé 0.5 % TP 4 : passage 66.9%  39 nuits  EV +1 091 $ (10k) / +11 267 $ (100k)
+    éval 1.5 % TP 4  financé 0.5 % TP 4 : passage 57.6%  19 nuits  EV +1 034 $ (10k) / +10 733 $ (100k)
+    éval 1.5 % TP 5  financé 0.5 % TP 4 : passage 54.0%  18 nuits  EV +932 $ (10k) / +9 745 $ (100k)
+    éval 1 % TP 4  financé 0.5 % TP 5 : passage 72.8%  44 nuits  EV +885 $ (10k) / +9 220 $ (100k)
+    réglages à EV 100k > 0 : 36 sur 36 ; pire +3 925 $
+
+Sections 2 et 3 : à plat à 8:19 les jours d’annonce 8:30, réglage FTMO
+
+2. Un seul compte 10k racheté à chaque échec, 612 départs 2011-07-01 → 2023-08-23, 3 ans
+  19:00 : mise médiane 417 $  95e centile 1251 $  pire 1807 $ (13 évals) ; 1er retrait médiane 71 nuits  pire 330 (sans retrait en 3 ans : 0%) ; pire série d'évals ratées 7 ; net à 3 ans médiane +4 524 $  5e centile +538 $
+  20:00 : mise médiane 316 $  95e centile 973 $  pire 1668 $ (12 évals) ; 1er retrait médiane 67 nuits  pire 312 (sans retrait en 3 ans : 0%) ; pire série d'évals ratées 7 ; net à 3 ans médiane +3 173 $  5e centile +1 370 $
+  21:00 : mise médiane 417 $  95e centile 1529 $  pire 2085 $ (15 évals) ; 1er retrait médiane 73 nuits  pire 370 (sans retrait en 3 ans : 0%) ; pire série d'évals ratées 9 ; net à 3 ans médiane +3 685 $  5e centile +486 $
+
+3. Configuration fixe dès le départ, rachat à chaque échec (3 ans) : argent sorti avant remboursement médiane / 90e / 95e centile / pire ; gain net à 3 ans médiane / 5e centile / pire
+  1x10k   : 316 / 834 / 973 / 1 668 $ ; +3 173 / +1 370 / +665 $
+  1x100k  : 1 198 / 3 594 / 4 193 / 7 188 $ ; +44 663 / +26 654 / +16 929 $
+  2x100k  : 2 396 / 6 589 / 8 386 / 12 579 $ ; +100 930 / +45 399 / +32 948 $
+  3x100k  : 3 866 / 9 584 / 11 183 / 18 569 $ ; +141 837 / +86 129 / +69 605 $
+  3x10k   : 1 108 / 2 496 / 2 919 / 4 309 $ ; +10 821 / +4 242 / +2 135 $
+
+  Seuils au pire chemin : 1x10k 1 668 $  1x100k 7 188 $  2x100k 12 579 $  3x100k 18 569 $  3x10k 4 309 $ ; départ avec 1700 $
+  === A2. 1 × 10k → 1 × 100k → 2 × 100k → trio 100k ===
+    premier 100k : médiane 675 nuits, atteint en 3 ans dans 14% des départs ; trio 100k : médiane 723 nuits, atteint dans 2%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 284 $  5e centile +179 $  pire -784 $
+    à 3 ans          : médiane +3 173 $  5e centile +1 370 $  pire +665 $
+    apport en plus des 1700 $ : nul dans 100% des départs  pire 0 $
+  === B2. 1 × 10k → trio 10k → trio 100k ===
+    premier 100k : médiane 738 nuits, atteint en 3 ans dans 2% des départs ; trio 100k : médiane 740 nuits, atteint dans 0%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 284 $  5e centile +179 $  pire -784 $
+    à 3 ans          : médiane +2 820 $  5e centile +1 370 $  pire +665 $
+    apport en plus des 1700 $ : nul dans 100% des départs  pire 0 $
+  === C2. 1 × 10k → trio 100k ===
+    premier 100k : médiane nan nuits, atteint en 3 ans dans 0% des départs ; trio 100k : médiane nan nuits, atteint dans 0%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 284 $  5e centile +179 $  pire -784 $
+    à 3 ans          : médiane +3 173 $  5e centile +1 370 $  pire +665 $
+    apport en plus des 1700 $ : nul dans 100% des départs  pire 0 $
+
+  Seuils au 95e centile : 1x10k 973 $  1x100k 4 193 $  2x100k 8 386 $  3x100k 11 183 $  3x10k 2 919 $ ; départ avec 1000 $
+  === A2. 1 × 10k → 1 × 100k → 2 × 100k → trio 100k ===
+    premier 100k : médiane 512 nuits, atteint en 3 ans dans 41% des départs ; trio 100k : médiane 541 nuits, atteint dans 29%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 235 $  5e centile +179 $  pire -784 $
+    à 3 ans          : médiane +2 844 $  5e centile +1 333 $  pire +40 $
+    apport en plus des 1000 $ : nul dans 95% des départs  pire 668 $
+  === B2. 1 × 10k → trio 10k → trio 100k ===
+    premier 100k : médiane 556 nuits, atteint en 3 ans dans 20% des départs ; trio 100k : médiane 670 nuits, atteint dans 11%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 142 $  5e centile +123 $  pire -784 $
+    à 3 ans          : médiane +3 518 $  5e centile +1 333 $  pire +665 $
+    apport en plus des 1000 $ : nul dans 95% des départs  pire 668 $
+  === C2. 1 × 10k → trio 100k ===
+    premier 100k : médiane nan nuits, atteint en 3 ans dans 0% des départs ; trio 100k : médiane nan nuits, atteint dans 0%
+    gain net à 1 an  : médiane +1 175 $  5e centile -374 $  pire -1 390 $
+    à 2 ans          : médiane +2 284 $  5e centile +179 $  pire -784 $
+    à 3 ans          : médiane +3 173 $  5e centile +1 370 $  pire +665 $
+    apport en plus des 1000 $ : nul dans 95% des départs  pire 668 $
