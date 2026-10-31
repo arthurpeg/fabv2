@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 14:17
+updated: 2026-10-31 14:43
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 14:17
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] ingest | Achat Databento bbo-1m NQ 2010-2026 + MNQ 2019-2026 (11,20 $) dans cache/databento_bbo | spread NQ médian 2-4 ticks (pas 1) ; copie vers D: refusée (accès Windows), préparée dans cache/a_copier_vers_D
 - [2026-10-31] prereg | N° 17 : exécution au VWAP (entrée 20:00-21:00, sortie au temps 9:00-9:30) pour la règle de nuit | non retenue (NQ +0,005 R IC inclut 0 ; ES/YM +0,013 R) ; compteur 1 482
 - [2026-10-31] prereg | N° 16 : clôture sous VWAP 15:15-16:15 (pression vendeuse) sur règle de nuit, sélection ES+YM, confirmation NQ | ❌ H et filtre ; compteur 1 480
 - [2026-10-31] prereg | N° 15 : filtres VIX (Donninger 0,87, Vojtko MM20) et taille selon σ20 sur la règle NQ de nuit | ❌ les 3 ; 9 filtres anti-DD rejetés au total ; compteur 1 478
@@ -29,7 +30,6 @@ updated: 2026-10-31 14:17
 - [2026-10-31] query | Exploratoire : règle NQ de nuit limitée aux nuits d'annonce rouge | aucun avantage : +0,087 R/trade contre +0,089 sans annonce ; 2016-2026 +0,048, DD −40 R ; compteur 1 475
 - [2026-10-31] ingest | Calendrier US « rouge » 2010-2026 (NFP, CPI, PPI, JOLTS, ventes au détail, PIB avancé, PCE, ISM ×2, FOMC décision et minutes) : build_calendar_macro.py → config/calendrier_macro_us.csv (BLS, FRED/ALFRED, Fed ; ISM par règle) | complet 2011-2026
 - [2026-10-31] query | Exploratoire, non pré-enregistré : règle NQ de nuit limitée aux nuits NFP/CPI (2011-2026) | +0,27 R/trade [+0,13 ; +0,41], 23 trades/an, +6,3 R/an (contre +22 toutes nuits) ; NFP +0,41, CPI +0,13 (IC inclut 0) ; compteur 1 474
-- [2026-10-31] prereg | N° 14 : éviter les annonces NFP/CPI de 8:30 dans la règle NQ de nuit | ❌ ; nuits d'annonce = meilleures nuits (~40 % des R 2016-2026) ; compteur 1 473
 
 ## Prochaines actions
 
