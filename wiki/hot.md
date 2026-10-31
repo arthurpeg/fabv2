@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 15:16
+updated: 2026-10-31 15:17
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 15:16
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] fix | Renommage costs18 → couts_reels_nq_nuit (script, rapport, résultats) pour éviter la confusion avec le pré-enregistrement n° 18 (FTMO) | liens mis à jour
 - [2026-10-31] prereg | N° 18 avenant B : entrée 9:50 ET, stop 1 ATR M15, spread 1,5 pt (0,041 R) / 1 pt | EV +161 $ ± 6 (10k), +1 933 $ ± 61 (100k) à 1,5 pt ; +187 $ / +2 187 $ à 1 pt ; hors compteur
 - [2026-10-31] experiment | Règle NQ de nuit recalculée avec les spreads réels bbo-1m (NQ 2011-2026, MNQ 2019-2026) | +0,076 R/trade contre +0,088 au coût fixe ; MNQ +0,067 à 1,24 $ A/R ; compteur inchangé
 - [2026-10-31] prereg | N° 18 avenant A : stop 1 ATR M15 (≈ 0,12 % du prix) au lieu de 0,5 % | EV +71 $ ± 4 (10k), +1 035 $ ± 43 (100k) ; le spread 1 pb (0,083 R/trade) explique tout l'écart (sans coût +3 023 $) ; hors compteur
@@ -29,7 +30,6 @@ updated: 2026-10-31 15:16
 - [2026-10-31] ingest | Achat Databento bbo-1m NQ 2010-2026 + MNQ 2019-2026 (11,20 $) dans cache/databento_bbo | spread NQ médian 2-4 ticks (pas 1) ; copie vers D: refusée (accès Windows), préparée dans cache/a_copier_vers_D
 - [2026-10-31] prereg | N° 17 : exécution au VWAP (entrée 20:00-21:00, sortie au temps 9:00-9:30) pour la règle de nuit | non retenue (NQ +0,005 R IC inclut 0 ; ES/YM +0,013 R) ; compteur 1 482
 - [2026-10-31] prereg | N° 16 : clôture sous VWAP 15:15-16:15 (pression vendeuse) sur règle de nuit, sélection ES+YM, confirmation NQ | ❌ H et filtre ; compteur 1 480
-- [2026-10-31] prereg | N° 15 : filtres VIX (Donninger 0,87, Vojtko MM20) et taille selon σ20 sur la règle NQ de nuit | ❌ les 3 ; 9 filtres anti-DD rejetés au total ; compteur 1 478
 
 ## Prochaines actions
 
