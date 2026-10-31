@@ -7,16 +7,73 @@
   "showOrphans": true,
   "collapse-color-groups": false,
   "colorGroups": [
-    { "query": "path:\"wiki/Failed Ideas\"", "color": { "a": 1, "rgb": 4853776 } },
-    { "query": "path:wiki/experiments", "color": { "a": 1, "rgb": 14711609 } },
-    { "query": "path:wiki/concepts", "color": { "a": 1, "rgb": 3900150 } },
-    { "query": "path:wiki/research", "color": { "a": 1, "rgb": 2269291 } },
-    { "query": "path:wiki/reference", "color": { "a": 1, "rgb": 10265519 } },
-    { "query": "path:wiki", "color": { "a": 1, "rgb": 11032055 } },
-    { "query": "file:PREREGISTRATION", "color": { "a": 1, "rgb": 16006974 } },
-    { "query": "path:reports", "color": { "a": 1, "rgb": 15381256 } }
+    {
+      "query": "path:\"wiki/Failed Ideas\"",
+      "color": {
+        "a": 1,
+        "rgb": 4853776
+      }
+    },
+    {
+      "query": "path:wiki/experiments",
+      "color": {
+        "a": 1,
+        "rgb": 14711609
+      }
+    },
+    {
+      "query": "path:wiki/concepts",
+      "color": {
+        "a": 1,
+        "rgb": 3900150
+      }
+    },
+    {
+      "query": "path:wiki/research",
+      "color": {
+        "a": 1,
+        "rgb": 2269291
+      }
+    },
+    {
+      "query": "path:wiki/reference",
+      "color": {
+        "a": 1,
+        "rgb": 10265519
+      }
+    },
+    {
+      "query": "path:wiki",
+      "color": {
+        "a": 1,
+        "rgb": 11032055
+      }
+    },
+    {
+      "query": "file:PREREGISTRATION",
+      "color": {
+        "a": 1,
+        "rgb": 16006974
+      }
+    },
+    {
+      "query": "path:reports",
+      "color": {
+        "a": 1,
+        "rgb": 15381256
+      }
+    }
   ],
   "collapse-display": true,
   "showArrow": false,
-  "collapse-forces": true
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.7132754626224413,
+  "close": false
 }
