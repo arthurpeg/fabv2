@@ -2,7 +2,28 @@
 
 *2026-10-31. Protocole : [[PREREGISTRATION_18]]. Code : [run_propfirm_ftmo.py](../run_propfirm_ftmo.py), [propfirm/](../propfirm/). Sorties : `results/propfirm/` (run.log, eval.csv, funded.csv, ev.csv). Compteur d'essais inchangé (1 482) : on évalue un contrat, pas une règle de marché.*
 
-## Avenant B : entrée 9:50 ET, spread 1 à 1,5 point (résultat principal actuel)
+## Avenant C : la règle NQ de nuit sur FTMO 1-Step
+
+Code : [run_propfirm_nq_nuit.py](../run_propfirm_nq_nuit.py). Sorties : `results/propfirm_nq_nuit/`. Trades : les 3 787 de [[reports/couts_reels_nq_nuit_report]] (compte 20:00 ET, momentum 12-1, SL 2 ATR / TP 5 ATR, sortie 9:30 ET ; 2011-07 → 2026-08), R brut moyen +0,125. Stop médian 0,254 % du prix : 1,5 point coûte 0,023 R par trade, 3 points 0,046 R. Un trade par nuit, du dimanche au jeudi, rien le week-end, pas de swap. Deux trades sans distance de stop (R = 0, 2014-05-28 et 2016-12-15) reçoivent le stop médian (seul leur coût en dépend).
+
+**Résultat principal** (éval 2 % de risque par trade, financé 1 %, 1,5 point, remise à zéro de la perte max) :
+
+| | Passage | Trades par éval | Valeur du financé | **EV 10k** | **EV 100k** | Refus tolérés (10k / 100k) |
+|---|---|---|---|---|---|---|
+| **Règle 2011-2026** | **50,8 % ± 0,7** | 13,5 | **18,5 %** (P(reward) 80 %, 3,4 rewards, vie ~120 trades) | **+853 $ ± 21** | **+8 849 $ ± 207** | 91 % / 94 % |
+| Même chose à 3 points | 47,3 % | 13,8 | 15,3 % | +638 $ | +6 700 $ | 88 % / 92 % |
+| Sans RAZ de la perte max | 50,8 % | 13,5 | 7,75 % | +307 $ | +3 390 $ | 78 % / 86 % |
+| **Contrôle sans edge** (R − moyenne) | 34,5 % | 12,9 | 5,3 % | +98 $ | +1 295 $ | 53 % / 70 % |
+| Règle 2011-2015 seulement (hors échantillon) | 60,7 % | 13,6 | 34,8 % | +2 023 $ | +20 551 $ | 96 % / 97 % |
+
+Lecture :
+- **L'edge multiplie l'EV par ~9** par rapport au même flux de trades sans edge (+853 $ contre +98 $ sur 10k) : le passage monte de 35 à 51 %, et surtout le compte financé vaut 3,5 fois plus (18,5 % contre 5,3 % du capital), parce qu'il encaisse ~0,12 R net par nuit pendant des mois.
+- **Moins de risque, plus d'EV** : à 0,5 % de risque, le passage monte à 81 % et l'EV à +1 580 $ (10k) / +16 121 $ (100k), mais l'éval prend ~160 nuits (~8 mois) et le financé tourne jusqu'au plafond de 500 nuits (sélectionné dans la grille, donc optimiste ; valeur non actualisée). À 2 %, l'éval se décide en ~13 nuits.
+- **La remise à zéro de la perte max pèse encore plus qu'avec des trades au hasard** (18,5 % → 7,75 %) : avec une edge, le compte monte, et sans remise à zéro chaque reward retiré rapproche le solde du plancher. **C'est l'hypothèse à vérifier en premier chez FTMO.**
+- **Biais** : 2016-2026 a servi à choisir la règle ; les chiffres complets sont donc optimistes. La période 2011-2015 (hors échantillon, n° 11) donne encore plus, mais c'est un marché haussier où la règle était longue à 100 %. Le DD historique de la règle (−26 R) dépasse 10 % du capital dès 0,4 % de risque par trade : une année comme 2022 tue le compte, ce que la simulation compte déjà.
+- **Non modélisé** : spread de nuit réel du CFD FTMO (variante 3 points seulement), écart entre le CFD et le future à 20:00 et 9:30, et le risque de refus (bien moins probable ici : la règle est documentée et testée, ce n'est pas du pile ou face).
+
+## Avenant B : entrée 9:50 ET, spread 1 à 1,5 point (trades au hasard)
 
 Stop 1 ATR M15 lu sur la barre 9:30-9:45 : **0,144 % du prix en médiane** (plus large qu'à 9:30, car l'ATR inclut le premier quart d'heure), stop touché 83 % des jours. Spread exprimé au niveau actuel du NQ (25 684) : 1,5 point = 0,58 pb = **0,041 R par trade** ; 1 point = 0,027 R (contre 0,083 R pour l'avenant A).
 

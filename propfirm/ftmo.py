@@ -6,7 +6,8 @@ chaque compte part d'un jour tiré au hasard dans la bibliothèque et avance jou
 Issue d'un trade, en R brut (1 R = distance du stop) :
 - mode « NQ réel » (lib = DayLib) : objectif touché avant le stop (strictement) → +k ;
   stop touché → −stop_R (>= 1, glissement) ; sinon R de clôture en fin de journée ;
-- mode binaire (lib = None) : +k avec probabilité 1 / (1 + k), sinon −1.
+- mode binaire (lib = None) : +k avec probabilité 1 / (1 + k), sinon −1 ;
+- mode stratégie (lib = TradeLib) : R du trade historique, objectif ignoré.
 Le risque r est net : la taille est choisie pour qu'un stop sans glissement coûte r, coût
 compris (comme dans la session précédente). P&L net = r × (R − c) / (1 + c), c = coût en R.
 """
@@ -28,8 +29,20 @@ MIN_RISK = 0.05
 
 
 @dataclass
+class TradeLib:
+    """Trades d'une stratégie, dans l'ordre : R brut fixé (l'objectif n'est pas modifiable)."""
+    dates: object
+    s: np.ndarray  # distance du stop en fraction du prix
+    R: np.ndarray  # R brut de chaque trade
+
+    @property
+    def n(self) -> int:
+        return len(self.R)
+
+
+@dataclass
 class Market:
-    lib: DayLib | None  # None = binaire
+    lib: DayLib | TradeLib | None  # None = binaire
     s: float            # stop en fraction du prix (binaire ; en NQ réel : lib.s, propre à chaque jour)
     cost_frac: float = COST_FRAC  # coût aller-retour en fraction du prix
 
@@ -50,6 +63,8 @@ def _outcome(m: Market, day: np.ndarray, kidx: np.ndarray, rng: np.random.Genera
     k = K_STEP * (kidx + 1)
     if m.lib is None:
         return np.where(rng.random(len(k)) < 1 / (1 + k), k, -1.0)
+    if isinstance(m.lib, TradeLib):
+        return m.lib.R[day]
     side = rng.integers(0, 2, len(k))
     lib = m.lib
     tpb = lib.tp_bar[day, side, kidx]

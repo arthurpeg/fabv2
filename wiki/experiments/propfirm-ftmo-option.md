@@ -12,6 +12,7 @@ trials: 0
 **Une phrase** : la perte d'une tentative est plafonnée au prix de l'éval alors que le compte financé paie sans plafond ; avec des trades NQ au sens tiré au hasard, entrée 9:50 ET, stop 1 ATR M15 et spread 1,5 point (avenant B), l'EV vaut ≈ +161 $ par éval 10k et ≈ +1 933 $ par éval 100k (41 % de passage, financé 6 % du capital, éval ~8,5 jours).
 
 ## Résultat
+- **Avenant C, règle NQ de nuit** (éval 2 %, financé 1 %, 1,5 pt) : passage 50,8 %, financé 18,5 % du capital, EV **+853 $ (10k), +8 849 $ (100k)** ; même flux sans edge : +98 $ / +1 295 $. Sans RAZ de la perte max : +307 $ / +3 390 $. Chiffres 2011-2026 optimistes (règle choisie sur 2016-2026). [run_propfirm_nq_nuit.py](../../run_propfirm_nq_nuit.py), `results/propfirm_nq_nuit/`.
 - Avenant B : à 9:50, 1 ATR M15 ≈ 0,144 % du prix ; spread 1,5 pt = 0,041 R/trade (1 pt : +187 $ / +2 187 $). Spread du CFD après 9:30 non mesurable ici (le future NQ reste à 0,5 pt).
 - Avenant A, entrée 9:35 et coût 1 pb : stop 1 ATR M15 (≈ 0,12 % du prix à 9:30) : le spread (1 pb) coûte 0,083 R par trade et divise l'EV par ~2 ; sans coût, ce stop ferait +3 000 $ sur 100k (diagnostic exploratoire). **Le spread réel FTMO US100 est l'hypothèse décisive.**
 - Vraies trajectoires NQ ≈ pile ou face binaire : la convexité ne dépend que du rapport perte max / objectif (10 % / 10 %).
