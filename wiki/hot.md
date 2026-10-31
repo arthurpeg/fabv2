@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 18:07
+updated: 2026-10-31 18:14
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 18:07
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] query | Plan FTMO, seuils au 95e centile de l'argent sorti avant remboursement (run_propfirm_start1.py, section 4) | départ 450 $ ; A (10k→100k→trio 100k) +54,9 k$ médiane à 3 ans, pire +550 $ ; B (10k→trio 10k→trio 100k) +31,9 k$, pire +5,95 k$ ; apport au pire 158 $
 - [2026-10-31] query | Plan FTMO, règle stricte du pire chemin (run_propfirm_start1.py, section 3) | pires chemins 608 / 1 738 / 3 842 / 7 685 / 10 978 $ ; B2 (1×10k → 3×10k → 3×100k) +15,7 k$ médiane à 3 ans, pire +5,1 k$, aucun apport ; trio 100k en 3 ans dans 24 % des départs
 - [2026-10-31] query | Démarrer FTMO avec un seul 10k (run_propfirm_start1.py) : réserve et 3 chemins | réserve 650 $ (pire : 7 évals, 20:00) ; A 10k→100k→trio 100k +99,9 k$ médiane à 3 ans, apport dans 28 % ; B trio 10k→trio 100k +75,7 k$, apport dans 7 % ; C 10k→trio 100k +67 k$
 - [2026-10-31] query | Plan FTMO : 10k puis 100k dès que les gains des 10k paient 1, 2 ou 3 trios d'évals 100k (run_propfirm_paths.py) | bascule ~10 / 13 / 18 mois ; +104 / +93 / +78 k$ médiane à 3 ans contre +67 k$ en paliers et +148 k$ en 100k d'emblée
@@ -29,7 +30,6 @@ updated: 2026-10-31 18:07
 - [2026-10-31] query | Plan de montée en taille FTMO (reports/plan_scaling_ftmo.md, run_propfirm_scaling.py) ; règles lues sur ftmo.com : 400 k$ max par trader ou stratégie, Scaling Plan +25 %/4 mois jusqu'à 2 M$ | trio 10k → 100k en 1,5 à 3 ans ; trio 100k +134 k$ sur 2 ans en moyenne, pire creux −11 k$
 - [2026-10-31] prereg | N° 19 : S1 + stop dur 1R (plancher 0,5 %, 1 NQ) hors échantillon, trades 2010-09 → 2015-12 (run_prereg19.py) | ÉCHEC : +0,030 R/trade [−0,026 ; +0,090], p = 0,15 ; sous-périodes +0,005 / +0,052 ; Sharpe $ 0,57 (2016–2026 : 1,12) ; le stop n'apporte rien (S1 d'origine 0,55) ; au coût MNQ +0,004 R ; compteur 1 485
 - [2026-10-31] query | Exploratoire : ferme FTMO 10k, un signal par compte (19:00 / 20:00 / 21:00), vectorbt + règles FTMO (run_propfirm_farm_heures.py) | mois sans reward 58 % → 42 %, corr. trimestrielle 1,00 → 0,56, creux moyen −300 → −238 $ ; écart-type sur 2 ans inchangé (1 885 → 1 880 $/compte) ; gain moyen 4 766 → 4 270 $
-- [2026-10-31] query | S1 Noise Area NQ + stop dur 1R (fichier S1_R_stop.py transmis) refait avec vectorbt (run_s1_r_stop_vbt.py), 2016-01 → 2026-08-28 | S1 d'origine 1 827 trades (1 828 annoncés), Sharpe $ 1,03 ; plancher 0,5 % + stop 1R, 1 MNQ : +0,106 R/trade (t 4,0), Sharpe en R 1,26, +2 406 $/an, pire baisse 2 521 $ ; risque 500 $ : +7 932 $/an, pire baisse 5 800 $ ; boucle d'origine reproduite trade par trade (écarts ≤ 0,09 $) ; plancher choisi après coup, hors compteur, M2 reste rejetée
 
 ## Prochaines actions
 
