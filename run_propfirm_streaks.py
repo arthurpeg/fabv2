@@ -31,6 +31,7 @@ TP_F = sys.argv[1] if len(sys.argv) > 1 else None
 OUT = Path("results/propfirm_streaks" + (f"_tp{TP_F}" if TP_F else ""))
 R_EVAL, R_FUND, CYCLE, REVIEW = 2.0, 1.0, 10, 3
 COST = 1.5 / 25_684.0
+TOL = 1e-3  # % du capital (0,10 $ sur 10k) : tolérance sur tous les seuils (perte max, objectif, meilleur jour)
 STEP = 5
 MIN_NIGHTS = 504  # au moins 2 ans d'historique après le départ
 
@@ -65,12 +66,14 @@ def trace(start: int) -> list[tuple[str, int, float]]:
         while i < NT:
             floor = hi - MAXLOSS
             risk = min(R_EVAL, P - floor)
+            if risk < 0.05:  # marge épuisée : éval abandonnée, comme propfirm.ftmo.run_eval (MIN_RISK)
+                break
             pnl = risk * (R[i] - C[i]) / (1 + C[i])
             P += pnl; i += 1
-            if P <= floor + 1e-9 or pnl <= -DAILY:
+            if P <= floor + TOL or pnl <= -DAILY:
                 break
             best = max(best, pnl); hi = max(hi, P)
-            if P >= TARGET and best <= 0.5 * P:
+            if P >= TARGET - TOL and best <= 0.5 * P + TOL:
                 passed = True
                 break
         ev.append(("validée" if passed else "ratée", i - 1, 0.0))
@@ -86,10 +89,10 @@ def trace(start: int) -> list[tuple[str, int, float]]:
                 break
             pnl = risk * (RF[i] - CF[i]) / (1 + CF[i])
             P += pnl; i += 1; cyc += 1
-            if P <= floor + 1e-9 or pnl <= -DAILY:
+            if P <= floor + TOL or pnl <= -DAILY:
                 break
             best = max(best, pnl); hi = max(hi, P)
-            if cyc >= CYCLE and P > 0 and best <= 0.5 * P:
+            if cyc >= CYCLE and P > TOL and best <= 0.5 * P + TOL:
                 ev.append(("reward", i - 1, SPLIT * P))
                 P = hi = best = 0.0; cyc = 0
         ev.append(("financé perdu", i - 1, 0.0))
