@@ -15,7 +15,7 @@ Page d'aiguillage : un module par famille de tests, un `run_*.py` par exécution
 | `asym/`, `letf/` | Valenti, ETF à levier ; `asym.backtest` contient le test de permutation | [run_asym.py](../../run_asym.py), [run_letf.py](../../run_letf.py) |
 | `recolte1/` | moteur et règles des papiers overnight, IC bootstrap | [run_recolte1.py](../../run_recolte1.py), [run_prereg10.py](../../run_prereg10.py) → 12, [run_robust13.py](../../run_robust13.py) |
 | `coinflip/` | contrôle sans edge | [run_coinflip.py](../../run_coinflip.py) |
-| `propfirm/` | prop firm comme option : journées NQ, moteur FTMO 1-Step | [run_propfirm_ftmo.py](../../run_propfirm_ftmo.py) |
+| `propfirm/` | prop firm comme option : moteurs FTMO 1-Step (`ftmo.py`) et LucidFlex (`lucid.py`) | [run_propfirm_ftmo.py](../../run_propfirm_ftmo.py), [run_propfirm_nq_nuit.py](../../run_propfirm_nq_nuit.py), [run_propfirm_lucid.py](../../run_propfirm_lucid.py), [run_propfirm_rr2.py](../../run_propfirm_rr2.py), [run_propfirm_streaks.py](../../run_propfirm_streaks.py), [build_nq_nuit_tp.py](../../build_nq_nuit_tp.py) |
 | `tests/` | pytest (`uv run pytest`) | — |
 
 Lancer : `uv run python <script>.py`.

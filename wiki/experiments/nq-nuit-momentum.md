@@ -29,6 +29,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | coûts réels | Spreads bbo-1m au lieu de 1 tick fixe | ✅ reste positif : +0,076 R/trade [+0,033 ; +0,116], +19 R/an ; MNQ dépend de la commission | [[reports/couts_reels_nq_nuit_report]] |
 | 18 avenant C | Sur un compte FTMO 1-Step (éval 2 %, financé 1 %, spread CFD 1,5 pt) ? | EV +853 $ / éval 10k, +8 849 $ / 100k (sans edge : +98 $ / +1 295 $) ; dépend de la RAZ de la perte max | [[reports/prereg18_report]] |
 | 18 avenant D | Sur un compte LucidFlex 50K en MNQ (éval 400 $, financé 200 $) ? | EV +157 $ / éval au niveau de prix actuel (sans edge −55 $) ; 5 fois moins que FTMO | [[reports/prereg18_report]] |
+| 18 avenant E | FTMO, financé en RR 2 (TP 4 ATR, 1 %) ? | EV +1 009 $ / 10k (+14 % contre TP 5) ; R moyen TP 4 = +0,126 ; pire : 11 mois sans reward en 2022 | [[reports/prereg18_report]] |
 
 ## Ce qu'on sait
 - Hors échantillon temporel (n° 11), **100 % des trades étaient longs** : c'est « long NQ la nuit » qui est validé, pas le filtre momentum.

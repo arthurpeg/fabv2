@@ -46,6 +46,38 @@ Lecture :
 - **Biais** : 2016-2026 a servi à choisir la règle ; les chiffres complets sont donc optimistes. La période 2011-2015 (hors échantillon, n° 11) donne encore plus, mais c'est un marché haussier où la règle était longue à 100 %. Le DD historique de la règle (−26 R) dépasse 10 % du capital dès 0,4 % de risque par trade : une année comme 2022 tue le compte, ce que la simulation compte déjà.
 - **Non modélisé** : spread de nuit réel du CFD FTMO (variante 3 points seulement), écart entre le CFD et le future à 20:00 et 9:30, et le risque de refus (bien moins probable ici : la règle est documentée et testée, ce n'est pas du pile ou face).
 
+## Avenant E : financé FTMO en RR 2 (1 % risqué, 2 % visés)
+
+Code : [build_nq_nuit_tp.py](../build_nq_nuit_tp.py) (trades TP 4 ATR ; contrôle TP 5 identique à 4e-16), [run_propfirm_rr2.py](../run_propfirm_rr2.py), séries : `run_propfirm_streaks.py 4`. Sorties : `results/propfirm_rr2/`, `results/propfirm_streaks_tp4/`. Éval inchangée (TP 5 ATR, 2 %) ; financé : SL 2 ATR, TP 4 ATR = 2 R, 1 % de risque ; spread 1,5 point ; RAZ de la perte max.
+
+| Métrique (20 000 comptes) | **Financé RR 2** | Financé RR 2,5 (avenant C) | RR 2, spread 3 pt | RR 2 sans edge | RR 2, 2011-2015 |
+|---|---|---|---|---|---|
+| Passage de l'éval | 51,6 % | 51,6 % | 47,8 % | 34,6 % | 60,9 % |
+| Nuits par tentative (si validée) | 13,3 (12,4) | 13,5 (12,7) | 13,8 (12,9) | 12,8 | 13,5 |
+| **Valeur du financé** (% du capital) | **21,2 %** | 18,8 % | 16,7 % | 6,9 % | 33,3 % |
+| P(≥ 1 reward) | **86 %** | 80 % | 82 % | 63 % | 90 % |
+| Rewards par compte | 4,84 | 3,45 | 3,92 | 1,71 | 7,48 |
+| Reward moyen | 4,39 % | 5,45 % | 4,26 % | 4,06 % | 4,45 % |
+| Premier reward (médiane) | 17 nuits | 18 | 17 | 17 | 15 |
+| Vie du compte (moy. / méd.) | 148 / 112 nuits | 121 / 84 | 134 / 101 | 89 / 57 | 178 / 124 |
+| Gain par nuit de compte financé | 14,3 pb | 15,6 pb | 12,5 pb | 7,8 pb | 18,7 pb |
+| **EV 10k** (refus tolérés) | **+1 009 $ ± 21** (92 %) | +883 $ (91 %) | +711 $ (89 %) | +153 $ (64 %) | +1 944 $ |
+| **EV 100k** (refus tolérés) | **+10 408 $ ± 212** (95 %) | +9 152 $ (94 %) | +7 428 $ (93 %) | +1 855 $ (77 %) | +19 762 $ |
+
+Le RR 2 en financé rapporte **+14 %** par rapport au RR 2,5 (+1 009 $ contre +883 $ sur 10k, même graine pour l'éval) : rewards un peu plus petits (4,4 % contre 5,5 %) mais plus nombreux (4,8 contre 3,5) et le compte vit plus longtemps. Un TP ne fait plus que +2 % en une nuit, donc la règle du meilleur jour exige +4 % (au lieu de +5 %) avant un reward. Par nuit de compte vivant, le RR 2,5 reste un peu plus rapide (15,6 pb contre 14,3).
+
+**Pires séries sur l'historique réel** (657 départs, même méthode que l'exploratoire « pires séries ») :
+
+| | Financé RR 2 | Financé RR 2,5 |
+|---|---|---|
+| Pire série d'évals ratées | **6** (2023-08-04 → 2023-11-07 ; 521 $ sur 10k, 3 293 $ sur 100k) | 6 (mêmes dates) |
+| **Plus longue période sans reward** | **239 nuits ≈ 11 mois** (2022-01-11 → 2022-12-22) | 223 nuits (2018-03 → 2019-01) |
+| Pire creux de trésorerie | −608 $ (10k) / −3 842 $ (100k) | idem |
+| Plus longue durée sous le pic de trésorerie (pire) | 239 nuits | 223 nuits |
+| Par départ (médiane) | 28 évals, 40 rewards, +16 100 $ (10k) | 36 évals, 37 rewards, +17 100 $ |
+
+Trace qui démarre le 2011-07-01 (40 évals, 20 validées, 97 rewards) : sans reward 2023-05-18 → 2024-02-23 (192 nuits ; 5 évals dont 4 ratées), 2021-10-26 → 2022-07-05 (172), 2018-04-13 → 2018-11-13 (149), 2020-02 → 2020-09 (142) ; rewards par an de 2 (2022) à 11 (2012, 2014, 2017). Le RR 2 raccourcit l'épisode 2018 (de 200 à 149 nuits) mais pas 2022, la pire année de la règle (marché baissier). Le gain net médian par départ est un peu plus bas (16 100 $ contre 17 100 $) alors que l'EV Monte-Carlo est plus haute : sur l'unique historique, un emplacement reste plus longtemps sur chaque financé et achète moins d'évals ; les deux mesures ne répondent pas à la même question.
+
 ## Exploratoire (non pré-enregistré) : pires séries sans validation et sans reward, FTMO + règle de nuit
 
 Code : [run_propfirm_streaks.py](../run_propfirm_streaks.py), sorties `results/propfirm_streaks/` (starts_10k.csv, starts_100k.csv, events_2011.csv). Réglage de l'avenant C (éval 2 %, financé 1 %, 1,5 point), un seul emplacement qui rachète une éval dès qu'un compte saute, suivi sur l'historique réel sans bouclage depuis 657 nuits de départ (2011-07 → 2024-08).

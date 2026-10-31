@@ -1,7 +1,10 @@
 """Exploratoire (non pré-enregistré) : pires séries d'évals ratées et plus longues périodes sans reward,
 règle NQ de nuit sur FTMO 1-Step (réglage principal de l'avenant C du n° 18).
 
-uv run python run_propfirm_streaks.py  → results/propfirm_streaks/ (run.log, starts.csv, events_2011.csv)
+uv run python run_propfirm_streaks.py [TP_FINANCÉ]  → results/propfirm_streaks[_tp<TP>]/ (run.log, starts_*.csv, events_2011.csv)
+
+TP_FINANCÉ (ATR) : en financé, trades de la règle avec cet objectif (cache/propfirm/nq_nuit_tp<TP>.parquet,
+build_nq_nuit_tp.py) ; par défaut, mêmes trades qu'en éval (TP 5 ATR).
 
 Un emplacement suit l'historique réel sans bouclage : achat d'une éval, validation ou échec, 3 nuits de
 vérification, compte financé jusqu'à la perte max, rachat le lendemain. Éval 2 % de risque, financé 1 %,
@@ -24,9 +27,8 @@ import pandas as pd
 from propfirm.ftmo import DAILY, EUR, MAXLOSS, PRICES_EUR, SPLIT, TARGET
 
 sys.stdout.reconfigure(encoding="utf-8")
-OUT = Path("results/propfirm_streaks")
-OUT.mkdir(parents=True, exist_ok=True)
-LOG = open(OUT / "run.log", "w", encoding="utf-8")
+TP_F = sys.argv[1] if len(sys.argv) > 1 else None
+OUT = Path("results/propfirm_streaks" + (f"_tp{TP_F}" if TP_F else ""))
 R_EVAL, R_FUND, CYCLE, REVIEW = 2.0, 1.0, 10, 3
 COST = 1.5 / 25_684.0
 STEP = 5
@@ -37,6 +39,13 @@ R = t.R_brut.to_numpy()
 C = COST / t.risk.fillna(t.risk.median()).to_numpy()
 NIGHT = t.night.dt.date.to_numpy()
 NT = len(R)
+RF, CF = R, C  # trades du compte financé
+if TP_F:
+    f = pd.read_parquet(f"cache/propfirm/nq_nuit_tp{TP_F}.parquet").sort_values("entry_idx")
+    assert (f.entry_idx.to_numpy() == t.entry_idx.to_numpy()).all()
+    RF = f.R_brut.to_numpy()
+    CF = COST / f.risk.fillna(f.risk.median()).to_numpy()
+LOG = None
 
 
 def say(s: str = "") -> None:
@@ -75,7 +84,7 @@ def trace(start: int) -> list[tuple[str, int, float]]:
             risk = min(R_FUND, P - floor)
             if risk < 0.05:
                 break
-            pnl = risk * (R[i] - C[i]) / (1 + C[i])
+            pnl = risk * (RF[i] - CF[i]) / (1 + CF[i])
             P += pnl; i += 1; cyc += 1
             if P <= floor + 1e-9 or pnl <= -DAILY:
                 break
@@ -130,6 +139,10 @@ def stats(ev, start: int, size: int) -> dict:
 
 
 def main() -> None:
+    global LOG
+    OUT.mkdir(parents=True, exist_ok=True)
+    LOG = open(OUT / "run.log", "w", encoding="utf-8")
+    say(f"financé : TP {TP_F or 5} ATR")
     say("Exploratoire — règle NQ de nuit sur FTMO 1-Step (éval 2 %, financé 1 %, 1,5 pt) ; séries sur l'historique réel")
     starts = np.arange(0, NT - MIN_NIGHTS, STEP)
     for size in (10_000, 100_000):
