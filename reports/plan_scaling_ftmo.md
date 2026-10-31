@@ -122,3 +122,15 @@ Départ avec 650 $ ; on ne passe au palier suivant que quand les **gains nets** 
 | C2. 1 × 10k → 3 × 100k (10 978 $) | ~32 mois ; 10 % | ~34 mois ; 3 % | +1 991 $ / −154 $ | +4 217 $ / +2 025 $ / +1 622 $ | +6 880 $ / +3 904 $ / +3 291 $ | 0 $ |
 
 Sur le même départ, B2 gagne plus à 3 ans que A2 dans 64 % des cas et que C2 dans 96 %. Avec cette règle, **aucun départ historique ne demande d'argent en plus des 650 $**, mais la montée est lente : il faut ~2 ans et demi pour réunir 10 978 $ avec des comptes 10k, et le trio de 100k n'est atteint en 3 ans que dans un quart (B2) à la moitié (A2) des départs. **B2 (trois 10k dès 1 738 $ de gains, puis trois 100k dès 10 978 $) est le meilleur compromis sous cette règle** : meilleur gain médian et meilleur pire cas. Le prix de la sécurité : environ +16 000 $ à 3 ans en médiane, contre +76 000 à +100 000 $ pour les chemins qui avançaient avec seulement deux évals d'avance (et un apport possible jusqu'à ~3 500 $).
+
+### Même règle avec le 95e centile au lieu du pire cas
+
+Même script (section 4 du run.log, `results/propfirm_start1/paths_p95.csv`). Argent sorti avant remboursement par configuration, sur 612 départs et 3 ans (médiane / 90e / 95e centile / pire) : 1 × 10k 174 / 348 / **434** / 608 $ ; 3 × 10k 435 / 956 / **1 043** / 1 738 $ ; 1 × 100k 1 098 / 2 196 / **2 745** / 3 842 $ ; 2 × 100k 1 647 / 4 391 / **4 940** / 7 685 $ ; 3 × 100k 2 745 / 6 038 / **6 587** / 10 978 $. Départ avec 450 $.
+
+| Chemin (seuils au 95e centile) | Premier 100k (médiane ; % en 3 ans) | Trio 100k (médiane ; % en 3 ans) | Gain à 1 an (médiane / pire) | À 2 ans (médiane / 5e c. / pire) | À 3 ans (médiane / 5e c. / pire) | Apport en plus des 450 $ |
+|---|---|---|---|---|---|---|
+| A. 1 × 10k → 1 × 100k (2 745 $) → 2 × 100k (4 940 $) → 3 × 100k (6 587 $) | ~19 mois ; 96 % | ~25 mois ; 86 % | +1 990 $ / −154 $ | +5 281 $ / +1 873 $ / +166 $ | **+54 864 $** / +3 555 $ / +550 $ | nul dans 96 % ; pire 158 $ |
+| **B. 1 × 10k → 3 × 10k (1 043 $) → 3 × 100k (6 587 $)** | ~26 mois ; 92 % | ~29 mois ; 67 % | +2 466 $ / −154 $ | +7 940 $ / +3 519 $ / +1 883 $ | +31 912 $ / **+8 742 $ / +5 951 $** | nul dans 96 % ; pire 158 $ |
+| C. 1 × 10k → 3 × 100k (6 587 $) | ~27 mois ; 55 % | ~30 mois ; 31 % | +1 991 $ / −154 $ | +4 126 $ / +2 025 $ / +1 622 $ | +6 106 $ / +3 731 $ / +53 $ | nul dans 95 % ; pire 619 $ |
+
+Sur le même départ, A gagne plus à 3 ans que B dans 57 % des cas et que C dans 88 % ; B bat C dans 80 %. Avec le 95e centile, l'apport reste quasi nul (au pire 158 $ en plus des 450 $ pour A et B) et la montée est bien plus rapide qu'avec le pire cas : gain médian à 3 ans de +55 k$ (A) ou +32 k$ (B) au lieu de +14 k$ et +16 k$. **A rapporte le plus en médiane, B protège mieux le bas de la distribution** (5e centile +8,7 k$ contre +3,6 k$ ; pire +6,0 k$ contre +0,6 k$). C reste le moins bon.

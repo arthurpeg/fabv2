@@ -79,10 +79,10 @@ def reserve(starts) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def worst_mise(config: list[tuple[str, int]], starts) -> float:
-    """Pire argent sorti avant remboursement (−min de la trésorerie cumulée) pour des comptes (heure, taille)
-    démarrés le même soir, rachetés à chaque échec, sur 3 ans, tous départs confondus."""
-    worst = 0.0
+def mises(config: list[tuple[str, int]], starts) -> np.ndarray:
+    """Argent sorti avant remboursement (−min de la trésorerie cumulée), par départ, pour des comptes (heure, taille)
+    démarrés le même soir, rachetés à chaque échec, sur 3 ans."""
+    out = []
     for s0 in starts:
         cash = np.zeros(H)
         for h, size in config:
@@ -92,8 +92,8 @@ def worst_mise(config: list[tuple[str, int]], starts) -> float:
                     cash[j - s0] -= fee
                 elif k == "reward":
                     cash[j - s0] += x[0] / 100 * size
-        worst = max(worst, -np.cumsum(cash).min())
-    return worst
+        out.append(max(0.0, -np.cumsum(cash).min()))
+    return np.array(out)
 
 
 THR: dict[str, float] = {}  # pires chemins, remplis dans main()
@@ -182,37 +182,41 @@ def main() -> None:
     W = P.pivot(index="start", columns="politique", values="net_3ans")
     say(f"\nMême départ, gain à 3 ans : A > B dans {(W.A > W.B).mean():.0%}, A > C dans {(W.A > W.C).mean():.0%}, C > B dans {(W.C > W.B).mean():.0%} des cas")
 
-    # 3. Seuils = pire chemin historique de la configuration suivante, payé par les rewards déjà reçus
+    # 3-4. Seuils = argent sorti avant remboursement pour la configuration suivante (pire cas, puis 95e centile),
+    # payé par les rewards déjà reçus
     configs = {"1x10k": [("20:00", 10_000)], "1x100k": [("20:00", 100_000)],
                "2x100k": [("20:00", 100_000), ("19:00", 100_000)],
                "3x100k": [(h, 100_000) for h in ("19:00", "20:00", "21:00")],
                "3x10k": [(h, 10_000) for h in ("19:00", "20:00", "21:00")]}
-    say("\n3. Pire chemin historique (argent sorti avant remboursement, 3 ans, tous départs) par configuration :")
-    for k, cfg in configs.items():
-        THR[k] = worst_mise(cfg, starts)
-        say(f"  {k:<7} : {THR[k]:,.0f} $".replace(",", " "))
-    cash0 = float(np.ceil(THR["1x10k"] / 50) * 50)
-    say(f"  départ avec {cash0:.0f} $ ; un palier ne se franchit que quand les gains nets (trésorerie − {cash0:.0f} $) "
-        f"couvrent le pire chemin de la configuration suivante")
-    names2 = {"A2": f"1 × 10k → 1 × 100k (à {THR['1x100k']:,.0f} $) → 2 × 100k (à {THR['2x100k']:,.0f} $) → trio 100k (à {THR['3x100k']:,.0f} $)",
-              "B2": f"1 × 10k → trio 10k (à {THR['3x10k']:,.0f} $) → trio 100k (à {THR['3x100k']:,.0f} $)",
-              "C2": f"1 × 10k → trio 100k (à {THR['3x100k']:,.0f} $)"}
-    P2 = pd.DataFrame([path(p, s0, cash0) for s0 in starts for p in ("A2", "B2", "C2")])
-    P2.to_csv(OUT / "paths_pire_chemin.csv", index=False)
-    for p, g in P2.groupby("politique"):
-        say(f"\n=== {p}. {names2[p]} ===".replace(",", " "))
-        say(f"  premier passage en 100k : médiane {g.bascule.median():.0f} nuits (~{g.bascule.median() / 21:.0f} mois), "
-            f"75e centile {g.bascule.quantile(0.75):.0f}, atteint en 3 ans dans {g.bascule.notna().mean():.0%} des départs")
-        say(f"  trio en 100k : médiane {g.trio_100k.median():.0f} nuits (~{g.trio_100k.median() / 21:.0f} mois), "
-            f"75e centile {g.trio_100k.quantile(0.75):.0f}, atteint en 3 ans dans {g.trio_100k.notna().mean():.0%} des départs")
-        for c, lab in (("net_1an", "gain net à 1 an"), ("net_2ans", "à 2 ans"), ("net_3ans", "à 3 ans")):
-            say(f"  {lab:<16} : médiane {g[c].median():+,.0f} $, 5e centile {g[c].quantile(0.05):+,.0f} $, pire {g[c].min():+,.0f} $".replace(",", " "))
-        say(f"  apport en plus des {cash0:.0f} $ : nul dans {(g.apport == 0).mean():.0%} des départs, 95e centile "
-            f"{g.apport.quantile(0.95):,.0f} $, pire {g.apport.max():,.0f} $".replace(",", " "))
-    W2 = P2.pivot(index="start", columns="politique", values="net_3ans")
-    say(f"\nMême départ, gain à 3 ans : A2 > B2 dans {(W2.A2 > W2.B2).mean():.0%}, A2 > C2 dans {(W2.A2 > W2.C2).mean():.0%}, "
-        f"B2 > C2 dans {(W2.B2 > W2.C2).mean():.0%} des cas")
-
+    M = {k: mises(cfg, starts) for k, cfg in configs.items()}
+    say("\nArgent sorti avant remboursement par configuration (3 ans, 612 départs) : médiane / 90e / 95e centile / pire")
+    for k, m in M.items():
+        say(f"  {k:<7} : {np.median(m):,.0f} / {np.quantile(m, 0.9):,.0f} / {np.quantile(m, 0.95):,.0f} / {m.max():,.0f} $".replace(",", " "))
+    for num, lab, fname, q in (("3", "pire chemin", "paths_pire_chemin.csv", None), ("4", "95e centile", "paths_p95.csv", 0.95)):
+        for k, m in M.items():
+            THR[k] = float(m.max() if q is None else np.quantile(m, q))
+        cash0 = float(np.ceil(THR["1x10k"] / 50) * 50)
+        say(f"\n{num}. Seuils au {lab} : " + ", ".join(f"{k} {v:,.0f} $" for k, v in THR.items()).replace(",", " ")
+            + f" ; départ avec {cash0:.0f} $ ; un palier ne se franchit que quand les gains nets (trésorerie − {cash0:.0f} $) "
+            f"couvrent le seuil de la configuration suivante")
+        names2 = {"A2": f"1 × 10k → 1 × 100k (à {THR['1x100k']:,.0f} $) → 2 × 100k (à {THR['2x100k']:,.0f} $) → trio 100k (à {THR['3x100k']:,.0f} $)",
+                  "B2": f"1 × 10k → trio 10k (à {THR['3x10k']:,.0f} $) → trio 100k (à {THR['3x100k']:,.0f} $)",
+                  "C2": f"1 × 10k → trio 100k (à {THR['3x100k']:,.0f} $)"}
+        P2 = pd.DataFrame([path(p, s0, cash0) for s0 in starts for p in ("A2", "B2", "C2")])
+        P2.to_csv(OUT / fname, index=False)
+        for p, g in P2.groupby("politique"):
+            say(f"\n=== {p}. {names2[p]} ===".replace(",", " "))
+            say(f"  premier passage en 100k : médiane {g.bascule.median():.0f} nuits (~{g.bascule.median() / 21:.0f} mois), "
+                f"75e centile {g.bascule.quantile(0.75):.0f}, atteint en 3 ans dans {g.bascule.notna().mean():.0%} des départs")
+            say(f"  trio en 100k : médiane {g.trio_100k.median():.0f} nuits (~{g.trio_100k.median() / 21:.0f} mois), "
+                f"75e centile {g.trio_100k.quantile(0.75):.0f}, atteint en 3 ans dans {g.trio_100k.notna().mean():.0%} des départs")
+            for c, lab2 in (("net_1an", "gain net à 1 an"), ("net_2ans", "à 2 ans"), ("net_3ans", "à 3 ans")):
+                say(f"  {lab2:<16} : médiane {g[c].median():+,.0f} $, 5e centile {g[c].quantile(0.05):+,.0f} $, pire {g[c].min():+,.0f} $".replace(",", " "))
+            say(f"  apport en plus des {cash0:.0f} $ : nul dans {(g.apport == 0).mean():.0%} des départs, 95e centile "
+                f"{g.apport.quantile(0.95):,.0f} $, pire {g.apport.max():,.0f} $".replace(",", " "))
+        W2 = P2.pivot(index="start", columns="politique", values="net_3ans")
+        say(f"\nMême départ, gain à 3 ans : A2 > B2 dans {(W2.A2 > W2.B2).mean():.0%}, A2 > C2 dans {(W2.A2 > W2.C2).mean():.0%}, "
+            f"B2 > C2 dans {(W2.B2 > W2.C2).mean():.0%} des cas")
 
 if __name__ == "__main__":
     main()

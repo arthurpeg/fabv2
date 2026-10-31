@@ -33,13 +33,14 @@ Démarrage avec un seul compte FTMO 10k (éval 87 $), règle NQ de nuit, 612 dé
 
 Même départ, gain à 3 ans : A > B dans 65%, A > C dans 96%, C > B dans 31% des cas
 
-3. Pire chemin historique (argent sorti avant remboursement, 3 ans, tous départs) par configuration :
-  1x10k   : 608 $
-  1x100k  : 3 842 $
-  2x100k  : 7 685 $
-  3x100k  : 10 978 $
-  3x10k   : 1 738 $
-  départ avec 650 $ ; un palier ne se franchit que quand les gains nets (trésorerie − 650 $) couvrent le pire chemin de la configuration suivante
+Argent sorti avant remboursement par configuration (3 ans, 612 départs) : médiane / 90e / 95e centile / pire
+  1x10k   : 174 / 348 / 434 / 608 $
+  1x100k  : 1 098 / 2 196 / 2 745 / 3 842 $
+  2x100k  : 1 647 / 4 391 / 4 940 / 7 685 $
+  3x100k  : 2 745 / 6 038 / 6 587 / 10 978 $
+  3x10k   : 435 / 956 / 1 043 / 1 738 $
+
+3. Seuils au pire chemin : 1x10k 608 $  1x100k 3 842 $  2x100k 7 685 $  3x100k 10 978 $  3x10k 1 738 $ ; départ avec 650 $ ; un palier ne se franchit que quand les gains nets (trésorerie − 650 $) couvrent le seuil de la configuration suivante
 
 === A2. 1 × 10k → 1 × 100k (à 3 842 $) → 2 × 100k (à 7 685 $) → trio 100k (à 10 978 $) ===
   premier passage en 100k : médiane 552 nuits (~26 mois), 75e centile 650, atteint en 3 ans dans 86% des départs
@@ -66,3 +67,31 @@ Même départ, gain à 3 ans : A > B dans 65%, A > C dans 96%, C > B dans 31% de
   apport en plus des 650 $ : nul dans 100% des départs  95e centile 0 $  pire 0 $
 
 Même départ, gain à 3 ans : A2 > B2 dans 36%, A2 > C2 dans 71%, B2 > C2 dans 96% des cas
+
+4. Seuils au 95e centile : 1x10k 434 $  1x100k 2 745 $  2x100k 4 940 $  3x100k 6 587 $  3x10k 1 043 $ ; départ avec 450 $ ; un palier ne se franchit que quand les gains nets (trésorerie − 450 $) couvrent le seuil de la configuration suivante
+
+=== A2. 1 × 10k → 1 × 100k (à 2 745 $) → 2 × 100k (à 4 940 $) → trio 100k (à 6 587 $) ===
+  premier passage en 100k : médiane 404 nuits (~19 mois), 75e centile 512, atteint en 3 ans dans 96% des départs
+  trio en 100k : médiane 517 nuits (~25 mois), 75e centile 633, atteint en 3 ans dans 86% des départs
+  gain net à 1 an  : médiane +1 990 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +5 281 $  5e centile +1 873 $  pire +166 $
+  à 3 ans          : médiane +54 864 $  5e centile +3 555 $  pire +550 $
+  apport en plus des 450 $ : nul dans 96% des départs  95e centile 0 $  pire 158 $
+
+=== B2. 1 × 10k → trio 10k (à 1 043 $) → trio 100k (à 6 587 $) ===
+  premier passage en 100k : médiane 536 nuits (~26 mois), 75e centile 623, atteint en 3 ans dans 92% des départs
+  trio en 100k : médiane 617 nuits (~29 mois), 75e centile 684, atteint en 3 ans dans 67% des départs
+  gain net à 1 an  : médiane +2 466 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +7 940 $  5e centile +3 519 $  pire +1 883 $
+  à 3 ans          : médiane +31 912 $  5e centile +8 742 $  pire +5 951 $
+  apport en plus des 450 $ : nul dans 96% des départs  95e centile 0 $  pire 158 $
+
+=== C2. 1 × 10k → trio 100k (à 6 587 $) ===
+  premier passage en 100k : médiane 571 nuits (~27 mois), 75e centile 675, atteint en 3 ans dans 55% des départs
+  trio en 100k : médiane 629 nuits (~30 mois), 75e centile 704, atteint en 3 ans dans 31% des départs
+  gain net à 1 an  : médiane +1 991 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +4 126 $  5e centile +2 025 $  pire +1 622 $
+  à 3 ans          : médiane +6 106 $  5e centile +3 731 $  pire +53 $
+  apport en plus des 450 $ : nul dans 95% des départs  95e centile 71 $  pire 619 $
+
+Même départ, gain à 3 ans : A2 > B2 dans 57%, A2 > C2 dans 88%, B2 > C2 dans 80% des cas
