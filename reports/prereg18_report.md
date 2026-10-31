@@ -23,6 +23,20 @@ Lecture :
 - **Biais** : 2016-2026 a servi à choisir la règle ; les chiffres complets sont donc optimistes. La période 2011-2015 (hors échantillon, n° 11) donne encore plus, mais c'est un marché haussier où la règle était longue à 100 %. Le DD historique de la règle (−26 R) dépasse 10 % du capital dès 0,4 % de risque par trade : une année comme 2022 tue le compte, ce que la simulation compte déjà.
 - **Non modélisé** : spread de nuit réel du CFD FTMO (variante 3 points seulement), écart entre le CFD et le future à 20:00 et 9:30, et le risque de refus (bien moins probable ici : la règle est documentée et testée, ce n'est pas du pile ou face).
 
+## Exploratoire (non pré-enregistré) : plusieurs comptes décalés dans le temps
+
+Question : avoir plusieurs comptes à des moments différents de leur vie, tous sur la règle NQ de nuit, lisse-t-il la variance ? Code : [run_propfirm_farm.py](../run_propfirm_farm.py), sorties `results/propfirm_farm/`. Comptes 10k, éval 2 %, financé 1 %, 1,5 point, 3 nuits de vérification ; chaque emplacement rachète une éval le lendemain de la perte d'un compte. 758 fenêtres de 2 ans (504 nuits) sur l'historique réel ; un emplacement « décalé de k mois » a démarré k mois avant la fenêtre.
+
+| 5 emplacements | Gain net moyen par emplacement (2 ans) | Écart-type | 5e centile | Pire fenêtre | Mois sans aucun reward (médiane) |
+|---|---|---|---|---|---|
+| 1 seul (référence) | +4 877 $ | 1 985 $ | +2 247 $ | +1 211 $ | 67 % |
+| Synchrones | +4 877 $ | 1 985 $ | +2 247 $ | +1 211 $ | 67 % |
+| Décalés de 1 mois | +5 179 $ | 2 023 $ | +2 455 $ | +1 754 $ | 62 % |
+| Décalés de 3 mois | +5 202 $ | 2 037 $ | +2 475 $ | +1 751 $ | 62 % |
+| Indépendants (histoires de marché différentes, borne théorique) | +4 886 $ | 873 $ | +3 576 $ | +2 809 $ | 12 % |
+
+**Décaler les comptes ne lisse presque rien** : l'écart-type par emplacement reste ~2 000 $, contre ~870 $ si les comptes étaient vraiment indépendants. Les comptes prennent les mêmes trades les mêmes nuits ; un mauvais passage de la règle les fait sauter ensemble, ils rachètent leur éval le même jour et se resynchronisent : en moyenne **4,1 emplacements sur 5 rachètent la même nuit**, et leurs flux trimestriels sont corrélés à **0,97**. Le décalage ne sert qu'au début (un peu plus de rewards répartis, pire fenêtre +1 750 $ au lieu de +1 210 $). Pour lisser vraiment, il faut des flux différents (autre actif, autre règle, autre horizon), pas des dates différentes. Résultats sur 2011-2026, optimistes pour la même raison qu'à l'avenant C (aucune fenêtre de 2 ans n'est perdante).
+
 ## Avenant B : entrée 9:50 ET, spread 1 à 1,5 point (trades au hasard)
 
 Stop 1 ATR M15 lu sur la barre 9:30-9:45 : **0,144 % du prix en médiane** (plus large qu'à 9:30, car l'ATR inclut le premier quart d'heure), stop touché 83 % des jours. Spread exprimé au niveau actuel du NQ (25 684) : 1,5 point = 0,58 pb = **0,041 R par trade** ; 1 point = 0,027 R (contre 0,083 R pour l'avenant A).
