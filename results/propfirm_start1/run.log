@@ -32,3 +32,37 @@ Démarrage avec un seul compte FTMO 10k (éval 87 $), règle NQ de nuit, 612 dé
   apport en plus des 650 $ : nul dans 83% des départs  95e centile 1 762 $  pire 3 721 $
 
 Même départ, gain à 3 ans : A > B dans 65%, A > C dans 96%, C > B dans 31% des cas
+
+3. Pire chemin historique (argent sorti avant remboursement, 3 ans, tous départs) par configuration :
+  1x10k   : 608 $
+  1x100k  : 3 842 $
+  2x100k  : 7 685 $
+  3x100k  : 10 978 $
+  3x10k   : 1 738 $
+  départ avec 650 $ ; un palier ne se franchit que quand les gains nets (trésorerie − 650 $) couvrent le pire chemin de la configuration suivante
+
+=== A2. 1 × 10k → 1 × 100k (à 3 842 $) → 2 × 100k (à 7 685 $) → trio 100k (à 10 978 $) ===
+  premier passage en 100k : médiane 552 nuits (~26 mois), 75e centile 650, atteint en 3 ans dans 86% des départs
+  trio en 100k : médiane 592 nuits (~28 mois), 75e centile 688, atteint en 3 ans dans 56% des départs
+  gain net à 1 an  : médiane +1 991 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +4 125 $  5e centile +2 025 $  pire +1 622 $
+  à 3 ans          : médiane +13 805 $  5e centile +3 399 $  pire +1 307 $
+  apport en plus des 650 $ : nul dans 100% des départs  95e centile 0 $  pire 0 $
+
+=== B2. 1 × 10k → trio 10k (à 1 738 $) → trio 100k (à 10 978 $) ===
+  premier passage en 100k : médiane 614 nuits (~29 mois), 75e centile 704, atteint en 3 ans dans 45% des départs
+  trio en 100k : médiane 658 nuits (~31 mois), 75e centile 705, atteint en 3 ans dans 24% des départs
+  gain net à 1 an  : médiane +1 731 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +6 561 $  5e centile +2 152 $  pire +1 160 $
+  à 3 ans          : médiane +15 703 $  5e centile +7 002 $  pire +5 115 $
+  apport en plus des 650 $ : nul dans 100% des départs  95e centile 0 $  pire 0 $
+
+=== C2. 1 × 10k → trio 100k (à 10 978 $) ===
+  premier passage en 100k : médiane 679 nuits (~32 mois), 75e centile 702, atteint en 3 ans dans 10% des départs
+  trio en 100k : médiane 710 nuits (~34 mois), 75e centile 732, atteint en 3 ans dans 3% des départs
+  gain net à 1 an  : médiane +1 991 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +4 217 $  5e centile +2 025 $  pire +1 622 $
+  à 3 ans          : médiane +6 880 $  5e centile +3 904 $  pire +3 291 $
+  apport en plus des 650 $ : nul dans 100% des départs  95e centile 0 $  pire 0 $
+
+Même départ, gain à 3 ans : A2 > B2 dans 36%, A2 > C2 dans 71%, B2 > C2 dans 96% des cas

@@ -104,3 +104,21 @@ Code : [run_propfirm_start1.py](../run_propfirm_start1.py), sorties `results/pro
 | C. 1 × 10k → trio 100k (à 3 293 $) | ~19 mois | ~25 mois ; 88 % | +1 894 $ / +285 $ / −2 664 $ | +9 775 $ / +154 $ / −2 712 $ | +66 977 $ / +6 506 $ / −661 $ | 83 % / 1 762 $ / 3 721 $ |
 
 Sur le même départ, A gagne plus à 3 ans que B dans 65 % des cas et que C dans 96 % ; C fait mieux que B dans 31 % seulement. **Passer d'un 10k directement à un 100k, puis compléter le trio en 100k (A) est le chemin le plus rapide et le plus rentable en médiane**, mais le plus exposé : dans 28 % des départs il faut remettre de l'argent (jusqu'à ~3 500 $), parce qu'un seul 100k financé par 1 098 $ de gains peut rater plusieurs fois de suite. B (trio de 10k d'abord) est plus lent mais demande presque jamais d'apport (95e centile 311 $). C, attendre 3 293 $ avec un seul 10k, est le moins bon : le seul compte gagne trop lentement.
+
+### Règle stricte : un palier seulement quand les rewards couvrent le pire chemin de la configuration suivante
+
+Même script (section 3 du run.log, `results/propfirm_start1/paths_pire_chemin.csv`). Pire argent sorti avant remboursement, sur 612 départs et 3 ans, par configuration (comptes démarrés le même soir, rachetés à chaque échec) :
+
+| Configuration | 1 × 10k (20:00) | 3 × 10k | 1 × 100k (20:00) | 2 × 100k (20:00 + 19:00) | 3 × 100k |
+|---|---|---|---|---|---|
+| Pire chemin | **608 $** | 1 738 $ | 3 842 $ | 7 685 $ | 10 978 $ |
+
+Départ avec 650 $ ; on ne passe au palier suivant que quand les **gains nets** (trésorerie − 650 $) couvrent le pire chemin du palier visé.
+
+| Chemin | Premier 100k (médiane ; % en 3 ans) | Trio 100k (médiane ; % en 3 ans) | Gain à 1 an (médiane / pire) | À 2 ans (médiane / 5e c. / pire) | À 3 ans (médiane / 5e c. / pire) | Apport en plus des 650 $ |
+|---|---|---|---|---|---|---|
+| A2. 1 × 10k → 1 × 100k (3 842 $) → 2 × 100k (7 685 $) → 3 × 100k (10 978 $) | ~26 mois ; 86 % | ~28 mois ; 56 % | +1 991 $ / −154 $ | +4 125 $ / +2 025 $ / +1 622 $ | +13 805 $ / +3 399 $ / +1 307 $ | 0 $ |
+| **B2. 1 × 10k → 3 × 10k (1 738 $) → 3 × 100k (10 978 $)** | ~29 mois ; 45 % | ~31 mois ; 24 % | +1 731 $ / −154 $ | +6 561 $ / +2 152 $ / +1 160 $ | **+15 703 $ / +7 002 $ / +5 115 $** | 0 $ |
+| C2. 1 × 10k → 3 × 100k (10 978 $) | ~32 mois ; 10 % | ~34 mois ; 3 % | +1 991 $ / −154 $ | +4 217 $ / +2 025 $ / +1 622 $ | +6 880 $ / +3 904 $ / +3 291 $ | 0 $ |
+
+Sur le même départ, B2 gagne plus à 3 ans que A2 dans 64 % des cas et que C2 dans 96 %. Avec cette règle, **aucun départ historique ne demande d'argent en plus des 650 $**, mais la montée est lente : il faut ~2 ans et demi pour réunir 10 978 $ avec des comptes 10k, et le trio de 100k n'est atteint en 3 ans que dans un quart (B2) à la moitié (A2) des départs. **B2 (trois 10k dès 1 738 $ de gains, puis trois 100k dès 10 978 $) est le meilleur compromis sous cette règle** : meilleur gain médian et meilleur pire cas. Le prix de la sécurité : environ +16 000 $ à 3 ans en médiane, contre +76 000 à +100 000 $ pour les chemins qui avançaient avec seulement deux évals d'avance (et un apport possible jusqu'à ~3 500 $).
