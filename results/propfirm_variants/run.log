@@ -1,0 +1,79 @@
+Variantes de montée en taille FTMO depuis 1 × 10k, seuils au 95% centile ; 612 départs 2011-07-01 → 2023-08-23, horizon 3 ans
+Seuils (95e centile de l'argent sorti avant remboursement) : 1×10k 434 $ ; 1×100k 2 745 $ ; 2×100k 4 940 $ ; 3×100k 6 587 $ ; 3×10k 1 043 $ ; 2×10k 782 $ ; 1×100k + 2×10k 3 065 $ ; 2×100k + 1×10k 5 104 $ ; 1×100k + 1×10k 3 092 $
+Départ avec 450 $
+
+=== A. 1×10k → 1×100k → 2×100k → 3×100k ===  seuils 2 745 $ → 4 940 $ → 6 587 $
+  3 × 100k en place : 86% des départs en 3 ans, médiane 517 nuits (~25 mois)
+  gain net à 1 an  : médiane +1 990 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +5 281 $  5e centile +1 873 $  pire +166 $
+  à 3 ans          : médiane +54 864 $  5e centile +3 555 $  pire +550 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== B. 1×10k → 3×10k → 3×100k ===  seuils 1 043 $ → 6 587 $
+  3 × 100k en place : 67% des départs en 3 ans, médiane 617 nuits (~29 mois)
+  gain net à 1 an  : médiane +2 466 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +7 940 $  5e centile +3 519 $  pire +1 883 $
+  à 3 ans          : médiane +31 912 $  5e centile +8 742 $  pire +5 951 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== C. 1×10k → 2×10k → 1×100k → 3×100k ===  seuils 782 $ → 2 745 $ → 6 587 $
+  3 × 100k en place : 88% des départs en 3 ans, médiane 545 nuits (~26 mois)
+  gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
+  à 2 ans          : médiane +12 374 $  5e centile +2 095 $  pire +72 $
+  à 3 ans          : médiane +59 025 $  5e centile +6 091 $  pire -476 $
+  apport en plus des 450 $ : nul dans 95% des départs  pire 158 $
+
+=== D. 1×10k → 2×10k → 1×100k → 2×100k → 3×100k ===  seuils 782 $ → 2 745 $ → 4 940 $ → 6 587 $
+  3 × 100k en place : 88% des départs en 3 ans, médiane 543 nuits (~26 mois)
+  gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
+  à 2 ans          : médiane +12 691 $  5e centile +2 095 $  pire +72 $
+  à 3 ans          : médiane +62 660 $  5e centile +9 768 $  pire +1 432 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== E. 1×10k → 2×10k → 2×100k → 3×100k ===  seuils 782 $ → 4 940 $ → 6 587 $
+  3 × 100k en place : 68% des départs en 3 ans, médiane 602 nuits (~29 mois)
+  gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
+  à 2 ans          : médiane +7 785 $  5e centile +2 382 $  pire +1 275 $
+  à 3 ans          : médiane +39 853 $  5e centile +4 902 $  pire +1 432 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== F. 1×10k → 2×10k → 3×10k → 1×100k → 2×100k → 3×100k ===  seuils 782 $ → 1 043 $ → 2 745 $ → 4 940 $ → 6 587 $
+  3 × 100k en place : 92% des départs en 3 ans, médiane 495 nuits (~24 mois)
+  gain net à 1 an  : médiane +2 576 $  5e centile +301 $  pire -154 $
+  à 2 ans          : médiane +15 649 $  5e centile +3 061 $  pire +546 $
+  à 3 ans          : médiane +69 583 $  5e centile +20 246 $  pire +5 058 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== G. 1×10k → 3×10k → 1×100k + 2×10k → 2×100k + 1×10k → 3×100k ===  seuils 1 043 $ → 3 065 $ → 5 104 $ → 6 587 $
+  3 × 100k en place : 83% des départs en 3 ans, médiane 538 nuits (~26 mois)
+  gain net à 1 an  : médiane +2 443 $  5e centile +274 $  pire -277 $
+  à 2 ans          : médiane +13 790 $  5e centile +2 845 $  pire -119 $
+  à 3 ans          : médiane +61 776 $  5e centile +18 519 $  pire +7 731 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== H. 1×10k → 2×10k → 1×100k + 1×10k → 2×100k → 3×100k ===  seuils 782 $ → 3 092 $ → 4 940 $ → 6 587 $
+  3 × 100k en place : 77% des départs en 3 ans, médiane 560 nuits (~27 mois)
+  gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
+  à 2 ans          : médiane +13 056 $  5e centile +2 303 $  pire +1 175 $
+  à 3 ans          : médiane +61 427 $  5e centile +5 788 $  pire +1 432 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+=== I. 1×10k → 1×100k + 1×10k → 2×100k + 1×10k → 3×100k ===  seuils 3 092 $ → 5 104 $ → 6 587 $
+  3 × 100k en place : 52% des départs en 3 ans, médiane 597 nuits (~28 mois)
+  gain net à 1 an  : médiane +1 989 $  5e centile +315 $  pire -154 $
+  à 2 ans          : médiane +5 913 $  5e centile +1 985 $  pire +1 622 $
+  à 3 ans          : médiane +32 756 $  5e centile +3 431 $  pire +946 $
+  apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
+
+Résumé (gains en $ ; « meilleure » = part des départs où la variante gagne le plus à 3 ans) :
+                                                             trio_pct  trio_mois     net1      net2      net3   net3_p5  net3_min  apport_max  meilleure_à_3ans
+variante                                                                                                                                                       
+A. 1×10k → 1×100k → 2×100k → 3×100k                              0.86      24.62  1989.85   5280.74  54864.46   3554.77    549.55       158.3              0.16
+B. 1×10k → 3×10k → 3×100k                                        0.67      29.38  2465.84   7939.85  31912.33   8742.05   5951.16       158.3              0.05
+C. 1×10k → 2×10k → 1×100k → 3×100k                               0.88      25.95  2291.58  12374.19  59024.73   6090.99   -475.65       158.3              0.13
+D. 1×10k → 2×10k → 1×100k → 2×100k → 3×100k                      0.88      25.86  2291.58  12691.46  62659.63   9768.38   1432.12       158.3              0.10
+E. 1×10k → 2×10k → 2×100k → 3×100k                               0.68      28.67  2291.58   7784.69  39852.98   4901.60   1432.12       158.3              0.08
+F. 1×10k → 2×10k → 3×10k → 1×100k → 2×100k → 3×100k              0.92      23.57  2575.59  15648.98  69582.90  20246.40   5058.37       158.3              0.27
+G. 1×10k → 3×10k → 1×100k + 2×10k → 2×100k + 1×10k → 3×100k      0.83      25.62  2442.74  13790.34  61776.34  18518.99   7730.63       158.3              0.42
+H. 1×10k → 2×10k → 1×100k + 1×10k → 2×100k → 3×100k              0.77      26.69  2291.58  13056.21  61427.01   5788.39   1432.12       158.3              0.12
+I. 1×10k → 1×100k + 1×10k → 2×100k + 1×10k → 3×100k              0.52      28.43  1988.83   5912.88  32756.23   3430.92    946.01       158.3              0.01

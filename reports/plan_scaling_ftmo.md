@@ -134,3 +134,25 @@ Même script (section 4 du run.log, `results/propfirm_start1/paths_p95.csv`). Ar
 | C. 1 × 10k → 3 × 100k (6 587 $) | ~27 mois ; 55 % | ~30 mois ; 31 % | +1 991 $ / −154 $ | +4 126 $ / +2 025 $ / +1 622 $ | +6 106 $ / +3 731 $ / +53 $ | nul dans 95 % ; pire 619 $ |
 
 Sur le même départ, A gagne plus à 3 ans que B dans 57 % des cas et que C dans 88 % ; B bat C dans 80 %. Avec le 95e centile, l'apport reste quasi nul (au pire 158 $ en plus des 450 $ pour A et B) et la montée est bien plus rapide qu'avec le pire cas : gain médian à 3 ans de +55 k$ (A) ou +32 k$ (B) au lieu de +14 k$ et +16 k$. **A rapporte le plus en médiane, B protège mieux le bas de la distribution** (5e centile +8,7 k$ contre +3,6 k$ ; pire +6,0 k$ contre +0,6 k$). C reste le moins bon.
+
+### Neuf variantes au 95e centile
+
+Code : [run_propfirm_variants.py](../run_propfirm_variants.py), sorties `results/propfirm_variants/` (thresholds.csv, paths.csv). Même règle : on passe à la configuration suivante quand les gains nets couvrent le 95e centile de l'argent sorti avant remboursement par cette configuration ; départ avec 450 $ ; comptes affectés dans l'ordre 20:00, 19:00, 21:00 ; un compte absent de la nouvelle configuration n'est plus racheté. Contrôle : A et B redonnent exactement les chiffres de la section précédente.
+
+Seuils : 2 × 10k 782 $ ; 3 × 10k 1 043 $ ; 1 × 100k 2 745 $ ; 1 × 100k + 1 × 10k 3 092 $ ; 1 × 100k + 2 × 10k 3 065 $ ; 2 × 100k 4 940 $ ; 2 × 100k + 1 × 10k 5 104 $ ; 3 × 100k 6 587 $.
+
+| Variante | 3 × 100k en 3 ans (part ; médiane) | Gain à 1 an (médiane) | À 2 ans (médiane) | **À 3 ans : médiane / 5e centile / pire** | Meilleure à 3 ans* |
+|---|---|---|---|---|---|
+| **F. 1×10k → 2×10k → 3×10k → 1×100k → 2×100k → 3×100k** | **92 % ; ~24 mois** | +2 576 $ | **+15 649 $** | **+69 583 $ / +20 246 $ / +5 058 $** | 27 % |
+| **G. 1×10k → 3×10k → 1×100k+2×10k → 2×100k+1×10k → 3×100k** | 83 % ; ~26 mois | +2 443 $ | +13 790 $ | +61 776 $ / +18 519 $ / **+7 731 $** | **42 %** |
+| D. 1×10k → 2×10k → 1×100k → 2×100k → 3×100k | 88 % ; ~26 mois | +2 292 $ | +12 691 $ | +62 660 $ / +9 768 $ / +1 432 $ | 10 % |
+| H. 1×10k → 2×10k → 1×100k+1×10k → 2×100k → 3×100k | 77 % ; ~27 mois | +2 292 $ | +13 056 $ | +61 427 $ / +5 788 $ / +1 432 $ | 12 % |
+| C. 1×10k → 2×10k → 1×100k → 3×100k | 88 % ; ~26 mois | +2 292 $ | +12 374 $ | +59 025 $ / +6 091 $ / −476 $ | 13 % |
+| A. 1×10k → 1×100k → 2×100k → 3×100k | 86 % ; ~25 mois | +1 990 $ | +5 281 $ | +54 864 $ / +3 555 $ / +550 $ | 16 % |
+| E. 1×10k → 2×10k → 2×100k → 3×100k | 68 % ; ~29 mois | +2 292 $ | +7 785 $ | +39 853 $ / +4 902 $ / +1 432 $ | 8 % |
+| I. 1×10k → 1×100k+1×10k → 2×100k+1×10k → 3×100k | 52 % ; ~28 mois | +1 989 $ | +5 913 $ | +32 756 $ / +3 431 $ / +946 $ | 1 % |
+| B. 1×10k → 3×10k → 3×100k | 67 % ; ~29 mois | +2 466 $ | +7 940 $ | +31 912 $ / +8 742 $ / +5 951 $ | 5 % |
+
+\* Part des départs où la variante gagne le plus à 3 ans ; plusieurs variantes peuvent être à égalité (mêmes premiers paliers), d'où un total supérieur à 100 %. Apport en plus des 450 $ : nul dans 95 à 96 % des départs, 158 $ au pire, pour toutes les variantes.
+
+**Les montées progressives gagnent** : ajouter un compte à la fois, d'abord en 10k puis en 100k (F), donne le meilleur gain médian, le meilleur 5e centile et le trio de 100k le plus tôt. Remplacer les 10k par des 100k un par un (G) protège le mieux le pire cas et gagne le plus souvent. Les grands sauts (B : 3 × 10k → 3 × 100k d'un coup ; I et E) attendent un seuil élevé avec peu de comptes qui produisent, et finissent derrière. Raison : chaque petit palier a un seuil bas, donc on augmente le capital qui travaille plus tôt.
