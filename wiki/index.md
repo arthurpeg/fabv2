@@ -18,7 +18,7 @@ updated: 2026-10-31
 - [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD (prix, annonces, VIX, taille) rejetés · `active` · 2026-10-31
 - [[wiki/experiments/fade-gap-indices|Fade de gap sur indices]] — n° 2 ; reversal depuis 2022 (régime 0DTE) · `paper-trading` · 2026-10-31
 - [[wiki/experiments/m2-bande-bruit-nq|Bande de bruit M2 sur NQ]] — n° 1–3, 19 ; Sharpe 1,1 mais DSR 0,03 ; variante stop 1R ratée hors échantillon 2010–15 · `paper-trading` · 2026-10-31
-- [[wiki/experiments/propfirm-ftmo-option|Prop firm comme option (FTMO 1-Step)]] — n° 18 ; trades au hasard sur NQ, entrée 9:50, stop 1 ATR M15, spread 1,5 pt : EV ≈ +161 $ / éval 10k, +1 933 $ / 100k si les rewards sont versés ; avec la règle NQ de nuit : +853 $ / +8 849 $ ; LucidFlex 50K : +157 $ (plan « 2 coups » : +66 $ / +234 $) ; Smart Trader Funds 1 Phase (à plat avant les annonces 8:30) : +390 $ / +4 512 $ · `done` · 2026-10-31
+- [[wiki/experiments/propfirm-ftmo-option|Prop firm comme option (FTMO 1-Step)]] — n° 18 ; trades au hasard sur NQ, entrée 9:50, stop 1 ATR M15, spread 1,5 pt : EV ≈ +161 $ / éval 10k, +1 933 $ / 100k si les rewards sont versés ; avec la règle NQ de nuit : +853 $ / +8 849 $ ; LucidFlex 50K : +157 $ (plan « 2 coups » : +66 $ / +234 $) ; Smart Trader Funds 1 Phase (à plat avant les annonces 8:30) : +390 $ / +4 512 $ ; 10 prop firms comparées : FundingPips et FTMO en tête · `done` · 2026-10-31
 - [[wiki/experiments/fx-timing-execution|Timing d'exécution FX (X3)]] — n° 4 ; ≈ 0,2 pb par ordre, pas un alpha · `done` · 2026-10-31
 - Expériences abandonnées (n° 5 à 9, récolte 1, contrôle pile ou face…) : voir [[wiki/Failed Ideas/ledger]]
 
