@@ -3,8 +3,8 @@ type: experiment
 updated: 2026-10-31
 status: active
 verdict: candidat
-prereg: [10, 11, 12]
-trials: 1467
+prereg: [10, 11, 12, 13]
+trials: 1471
 ---
 
 # Règle NQ de nuit : momentum 12-1, entrée 20:00 ET
@@ -21,6 +21,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | 11 | Tient-elle sur 2011–2015, jamais vu ? | ✅ +0,116 R/trade, p = 0,0015 | [[reports/prereg11_report]] |
 | 12 | Plus que du bêta ? Mieux que des références simples ? | ✅ α +6,2 % [+2,5 ; +9,7] ; config exacte apporte peu | [[reports/prereg12_report]] |
 | 13 (descriptif) | Régimes, pertes extrêmes | robuste ; stops = gain sur la queue | [[reports/robust13_report]] |
+| 13 (pré-enregistré) | Un filtre « à plat » (Jones, Abdi, Berkman, Vojtko) réduit-il le drawdown ? | ❌ aucun ne bat un filtre aléatoire de même taille | [[reports/prereg13_report]] |
 
 ## Ce qu'on sait
 - Hors échantillon temporel (n° 11), **100 % des trades étaient longs** : c'est « long NQ la nuit » qui est validé, pas le filtre momentum.
@@ -28,6 +29,8 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 - Les stops ne changent pas le Sharpe, mais réduisent à 1 le nombre de nuits sous −2 % (32 sans stop).
 
 ## Ouvert
+- Lisser le drawdown par la taille de position ou la diversification, pas par un filtre (n° 13).
+- Hypothèse non validée : F2 (après une nuit baissière) améliore le R par trade sur 2016–2026 et 2011–2015 ; à pré-enregistrer séparément sur le holdout.
 - Comportement en marché baissier prolongé (seule vraie phase : 2022).
 - Holdout unique : données postérieures au 2026-08-28.
 

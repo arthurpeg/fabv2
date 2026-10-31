@@ -15,7 +15,7 @@ updated: 2026-10-31
 - [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 18 idées, avec la raison et la condition de réouverture · 2026-10-31
 
 ## Expériences
-- [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 · `active` · 2026-10-31
+- [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD rejetés · `active` · 2026-10-31
 - [[wiki/experiments/fade-gap-indices|Fade de gap sur indices]] — n° 2 ; reversal depuis 2022 (régime 0DTE) · `paper-trading` · 2026-10-31
 - [[wiki/experiments/m2-bande-bruit-nq|Bande de bruit M2 sur NQ]] — n° 1–3 ; Sharpe 1,1 mais DSR 0,03 · `paper-trading` · 2026-10-31
 - [[wiki/experiments/fx-timing-execution|Timing d'exécution FX (X3)]] — n° 4 ; ≈ 0,2 pb par ordre, pas un alpha · `done` · 2026-10-31
@@ -23,7 +23,7 @@ updated: 2026-10-31
 
 ## Concepts
 - [[wiki/concepts/pre-enregistrement|Pré-enregistrement]] — protocole : tout est figé et commité avant calcul
-- [[wiki/concepts/compteur-essais|Compteur d'essais]] — N cumulé, sert au DSR ; 1 467 au n° 12
+- [[wiki/concepts/compteur-essais|Compteur d'essais]] — N cumulé, sert au DSR ; 1 471 au n° 13
 - [[wiki/concepts/dsr|Deflated Sharpe Ratio]] — critère > 0,95
 - [[wiki/concepts/reality-check|Reality Check, PBO, permutation, bootstrap]] — autres tests de multiplicité
 - [[wiki/concepts/cout-standard|Coût standard]] — 1 tick + 5 $ aller-retour
