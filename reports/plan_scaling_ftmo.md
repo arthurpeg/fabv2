@@ -51,3 +51,18 @@ Valables à toutes les tailles : ~32 rewards en 2 ans pour le trio ; jusqu'à 7 
 - **Biais de sélection** : la règle a été choisie sur 2016-2026 ; le holdout (après le 2026-08-28) n'a pas encore été ouvert. Le test pré-enregistré sur ce holdout devrait précéder le palier 1.
 - **FTMO** : revue des comptes avant chaque reward, interprétation de « trading identique » sur plusieurs comptes, changement des règles (prix, perte max, Scaling Plan).
 - **Corrélation** : les comptes sautent ensemble les mauvaises semaines (6 financés perdus la même nuit le 2026-07-28 dans l'exploratoire 2026). La réserve sert à racheter sans s'arrêter.
+
+## Mise à jour : paliers ou 100k directement ? (chemin complet simulé)
+
+Code : [run_propfirm_paths.py](../run_propfirm_paths.py), sorties `results/propfirm_paths/`. Trio 19h/20h/21h, mêmes règles, départ avec 1 750 $, 612 départs de 2011-07 à 2023-08, horizon 3 ans. À chaque achat d'éval, la taille dépend de la trésorerie du moment ; un achat se fait toujours, quitte à demander un apport personnel. En % du capital, la vie d'un compte ne dépend pas de sa taille.
+
+| Politique | 3 × 100k atteints en 3 ans | Délai médian (si atteint) | Gain net à 1 an (médiane / 5e centile) | À 3 ans (médiane / 5e centile / pire) | Apport en plus des 1 750 $ (pire) | Frais sur 3 ans (médiane) |
+|---|---|---|---|---|---|---|
+| Paliers (taille dont la réserve est couverte) | 80 % | ~27 mois | +5 020 $ / +958 $ | +66 734 $ / +26 625 $ / +19 172 $ | 0 $ | 8 915 $ |
+| 10k puis 100k quand 10 978 $ sont couverts | 62 % | ~30 mois | +4 907 $ / +958 $ | +29 568 $ / +10 433 $ / +8 691 $ | 0 $ | 5 640 $ |
+| **100k dès que l'éval (549 $) est payable, sinon 10k** | 100 % (dès le départ) | 0 | +29 378 $ / **−1 452 $** | **+147 908 $ / +65 627 $ / +40 415 $** | **1 374 $** (0 $ dans 40 % des départs) | 13 809 $ |
+
+- **Passer de 10k à 100k avec la même règle de réserve est plus lent que les paliers** dans 100 % des départs, et rapporte moins à 3 ans dans 100 % des cas : il faut réunir 10 978 $ avec le seul débit des comptes 10k.
+- **Commencer directement en 100k** (en retombant en 10k quand la trésorerie ne paie plus une éval 100k) rapporte plus que les paliers dans **97 %** des départs. Le prix : jusqu'à **3 124 $** de ta poche au total dans le pire départ historique (1 750 $ + 1 374 $), et un an sur vingt environ fini en perte (5e centile à 1 an : −1 452 $).
+- La raison : le prix d'une éval croît moins vite que sa taille (100k coûte 6,3 fois un 10k pour 10 fois le capital) et le taux de passage ne dépend pas de la taille. La règle de réserve du plan initial (« pire creux du palier suivant ») était donc **trop prudente** : ce pire creux mesure une baisse après des gains, pas l'argent à engager au départ.
+- Les mêmes réserves que plus haut s'appliquent (biais de sélection, holdout non ouvert, spread réel FTMO, revue des comptes). Commencer en 100k n'est raisonnable qu'après avoir vérifié l'exécution réelle, ce qui peut se faire sur un seul 10k quelques semaines.
