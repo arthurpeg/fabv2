@@ -1,0 +1,33 @@
+paper,relation,asset,corr,lo,hi,n
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",NQ,0.8073649349449843,0.7785731022730245,0.8318952562117056,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",NQ,0.8060968368354215,0.7765109980276355,0.8292853733238663,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",NQ,-0.1551803376829348,-0.24927744236179408,-0.08283920743227075,2676
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),NQ,0.32249398025190545,,,2672
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",ES,0.819849654697543,0.7884814257339592,0.8458572098184629,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",ES,0.8142053826672959,0.7829051338356373,0.8401670779548891,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",ES,-0.14789140068908663,-0.24637544711196246,-0.053266648254761746,2676
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),ES,0.3181192590752896,,,2671
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",YM,0.8144205566582736,0.778714528778697,0.8444535837310384,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",YM,0.8050197672727162,0.7682753728399826,0.8350564296655433,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",YM,-0.09666245084178389,-0.2369298328906336,0.018263241850315505,2672
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),YM,0.3201443353422883,,,2669
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",GC,0.7073472044111826,0.65854311149476,0.7467275107848773,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",GC,0.697418473355263,0.6490009663981264,0.739129844940042,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",GC,-0.007394531064875019,-0.11029511971233094,0.08193413472558175,2644
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),GC,0.5940399536157632,,,2658
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",6E,0.6675562734175725,0.6222341623766966,0.7055170867798528,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",6E,0.6337227864991046,0.5883725525919318,0.6715936658005078,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",6E,0.015332269209376345,-0.05400655003745655,0.0812535354368949,2672
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),6E,0.6446287333703435,,,2675
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",6B,0.6819539508075713,0.631548060901294,0.7263848914807476,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",6B,0.6427839718430407,0.5862767918305666,0.69025597974588,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",6B,-0.09049091421630237,-0.18769675044482081,0.02436382000481202,2672
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),6B,0.6613807873016221,,,2675
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",6J,0.6910820083799851,0.6568103965726325,0.7234837343200873,2677
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",6J,0.6705224965401002,0.6315228192740567,0.7036358333433799,2676
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",6J,0.07349130943736765,0.01781087570906727,0.14192743411777253,2674
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),6J,0.6883295632393415,,,2676
+[17] Zhang-Zhao,"corr(log RV nuit t, log RV jour t)",6A,0.6660385690270716,0.6118748271174733,0.7140515112248019,2676
+[17] Zhang-Zhao,"corr(log RV jour t-1, log RV nuit t)",6A,0.6190295536391639,0.5635016075787073,0.6692543590490502,2675
+[18] Ahoniemi-Lanne,"levier : corr(r close-close t-1, RV jour t)",6A,-0.10911492570460883,-0.21505008554125551,0.0030472294753700183,2667
+[17] Zhang-Zhao,part de variance nuit Var(r_N)/Var(r),6A,0.651777690498199,,,2672

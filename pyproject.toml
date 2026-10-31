@@ -4,6 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "cryptography>=50.0.2",
+    "databento>=0.89.0",
     "exchange-calendars>=4.13.2",
     "matplotlib>=3.11.2",
     "numpy>=2.5.4",

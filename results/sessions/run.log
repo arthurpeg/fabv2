@@ -1,0 +1,24 @@
+ES : 42 roulements, |écart| min 6.7 bp, max 126.0 bp
+
+=== ES : 2016-01-05 → 2026-08-28, 2670 jours (sur 2678 jours ouvrés ; 8 exclus), roulements en Asie : 41
+  asia            moy    1.99 bp  méd    2.99  t   2.13  %>0  54.3  cum     4994 bp  ann   4.83%
+  europe          moy    1.48 bp  méd    2.64  t   1.69  %>0  53.3  cum     3671 bp  ann   3.53%
+  us              moy    2.11 bp  méd    5.59  t   1.31  %>0  54.0  cum     4716 bp  ann   4.55%
+  close_to_open   moy    3.45 bp  méd    5.89  t   2.80  %>0  55.5  cum     8665 bp  ann   8.52%
+  close_to_close  moy    5.55 bp  méd    6.54  t   2.78  %>0  54.6  cum    13381 bp  ann  13.46%
+NQ : 42 roulements, |écart| min 0.8 bp, max 139.3 bp
+
+=== NQ : 2016-01-05 → 2026-08-28, 2671 jours (sur 2678 jours ouvrés ; 7 exclus), roulements en Asie : 41
+  asia            moy    4.35 bp  méd    5.48  t   3.66  %>0  55.5  cum    11104 bp  ann  11.05%
+  europe          moy    0.49 bp  méd    1.28  t   0.46  %>0  51.5  cum      904 bp  ann   0.86%
+  us              moy    3.02 bp  méd    7.92  t   1.42  %>0  54.3  cum     6465 bp  ann   6.29%
+  close_to_open   moy    4.81 bp  méd    7.35  t   3.12  %>0  56.3  cum    12008 bp  ann  12.00%
+  close_to_close  moy    7.83 bp  méd   12.60  t   3.00  %>0  56.0  cum    18473 bp  ann  19.04%
+YM : 42 roulements, |écart| min 0.7 bp, max 114.5 bp
+
+=== YM : 2016-01-05 → 2026-08-28, 2666 jours (sur 2678 jours ouvrés ; 12 exclus), roulements en Asie : 41
+  asia            moy    1.99 bp  méd    2.67  t   2.27  %>0  54.5  cum     5028 bp  ann   4.87%
+  europe          moy    1.30 bp  méd    2.23  t   1.51  %>0  53.4  cum     3212 bp  ann   3.08%
+  us              moy    1.92 bp  méd    3.93  t   1.26  %>0  53.5  cum     4296 bp  ann   4.14%
+  close_to_open   moy    3.28 bp  méd    4.25  t   2.74  %>0  54.2  cum     8240 bp  ann   8.10%
+  close_to_close  moy    5.19 bp  méd    6.51  t   2.73  %>0  54.6  cum    12535 bp  ann  12.58%

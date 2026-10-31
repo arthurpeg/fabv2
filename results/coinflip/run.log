@@ -1,0 +1,39 @@
+# Pile ou face NQ 01:00 Paris, stop 1 ATR M15, objectif 1 ATR (RR 1), sans coûts
+taux de réussite théorique sans edge : 1 / (1 + RR) = 50.00%
+
+Barres : 3,728,989, 2016-01-03 → 2026-08-28
+Jours tradés : 2751 (entrées décalées de 1–4 min faute de barre à 01:00 : 22)
+ATR M15 à l'entrée : médiane 23.5 pts (15.5 pb)
+durée médiane : long 83 min, short 83 min ; > 24 h : long 0, short 0
+stop et objectif touchés dans la même barre 1 min (comptés perdants) : long 0, short 0
+
+## Issue si on prenait toujours le même côté
+toujours long  : 53.04%
+toujours short : 46.96%
+jours où les deux côtés perdent : 0.00%
+
+## Tirage seed=42 — vectorbt
+trades : 2751 (longs 1386, shorts 1365 tirés), gagnants : 1416, taux de réussite : 51.47%
+IC 95 % : [49.59%, 53.36%], p-value binomiale vs 50.00% : 0.127
+PnL total : +1827.1 pts NQ ajustés, moyenne par trade +0.66 pts
+contrôle numpy (même tirage) : 51.47% sur 2751 trades (0 trades sautés par vectorbt car une position était encore ouverte)
+
+## Monte Carlo : 10000 tirages pile ou face sur les mêmes 2751 jours
+taux de réussite moyen 49.99%, écart-type 0.96%, 5e–95e centile [48.42%, 51.58%]
+écart-type binomial théorique √(p(1−p)/n) = 0.95%
+moyenne Monte Carlo vs 50.00% : z ≈ -0.02 (2n issues long + short)
+
+## Par année (tirage seed=42)
+            trades  winrate  long_wr  short_wr
+entry_time                                    
+2016           257    0.510    0.514     0.486
+2017           257    0.482    0.549     0.451
+2018           258    0.500    0.578     0.422
+2019           258    0.547    0.496     0.504
+2020           258    0.512    0.547     0.453
+2021           259    0.568    0.498     0.502
+2022           258    0.504    0.457     0.543
+2023           258    0.450    0.554     0.446
+2024           259    0.556    0.525     0.475
+2025           258    0.550    0.543     0.457
+2026           171    0.468    0.596     0.404

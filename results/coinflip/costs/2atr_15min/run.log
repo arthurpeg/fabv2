@@ -1,0 +1,56 @@
+# Pile ou face NQ 01:00 Paris, RR 1, stop = objectif = 2 ATR M15, avec coûts
+
+Jours : 2751, ATR M15 médian 23.5 pts ajustés, stop médian 41.2 pts bruts, facteur d'ajustement médian 1.193
+
+## sans coûts
+vectorbt (seed 42) : 2739 trades (12 jours sautés, position encore ouverte), win rate 50.75%, +0.015 R / trade
+numpy, tous les jours : 2751 trades, win rate 50.71%, +0.014 R, +0.02 pts bruts / trade ; coût moyen 0.000 R ; durée médiane 420 min, > 24 h : 12
+Monte Carlo 10000 tirages : win rate 49.96% [48.38%, 51.51%], -0.001 R / trade, tirages à PnL total > 0 : 48.7%
+
+## CFD FTMO : spread 2 pts
+vectorbt (seed 42) : 2738 trades (13 jours sautés, position encore ouverte), win rate 46.86%, -0.063 R / trade
+numpy, tous les jours : 2751 trades, win rate 46.78%, -0.065 R, -2.16 pts bruts / trade ; coût moyen 0.078 R ; durée médiane 417 min, > 24 h : 13
+Monte Carlo 10000 tirages : win rate 46.36% [44.86%, 47.87%], -0.073 R / trade, tirages à PnL total > 0 : 4.6%
+trades encore ouverts à 23:00 Paris (swap FTMO non modélisé) : 16
+
+par année (CFD, seed 42, tous les jours) :
+        win      R  coût R
+année                     
+2016  0.385 -0.230   0.181
+2017  0.401 -0.198   0.204
+2018  0.508  0.015   0.091
+2019  0.481 -0.039   0.102
+2020  0.426 -0.152   0.045
+2021  0.521  0.042   0.052
+2022  0.504  0.007   0.031
+2023  0.469 -0.062   0.048
+2024  0.517  0.035   0.038
+2025  0.446 -0.109   0.030
+2026  0.497 -0.006   0.022
+
+## futures NQ : 1 tick + 5 $ AR
+vectorbt (seed 42) : 2738 trades (13 jours sautés, position encore ouverte), win rate 50.11%, -0.008 R / trade
+numpy, tous les jours : 2751 trades, win rate 50.05%, -0.009 R, -0.64 pts bruts / trade ; coût moyen 0.020 R ; durée médiane 420 min, > 24 h : 13
+Monte Carlo 10000 tirages : win rate 49.40% [47.84%, 50.93%], -0.022 R / trade, tirages à PnL total > 0 : 30.1%
+par contrat : -12.87 $ / trade
+
+## futures MNQ : 1 tick + 1,50 $ AR
+vectorbt (seed 42) : 2738 trades (13 jours sautés, position encore ouverte), win rate 50.11%, -0.027 R / trade
+numpy, tous les jours : 2751 trades, win rate 50.05%, -0.028 R, -1.14 pts bruts / trade ; coût moyen 0.039 R ; durée médiane 420 min, > 24 h : 13
+Monte Carlo 10000 tirages : win rate 49.40% [47.84%, 50.93%], -0.041 R / trade, tirages à PnL total > 0 : 17.2%
+par contrat : -2.29 $ / trade
+
+## Résumé
+scénario                     sans coûts  CFD FTMO : spread 2 pts  futures NQ : 1 tick + 5 $ AR  futures MNQ : 1 tick + 1,50 $ AR
+trades vbt                    2739.0000                2738.0000                     2738.0000                         2738.0000
+win rate vbt                     0.5075                   0.4686                        0.5011                            0.5011
+R moyen vbt                      0.0148                  -0.0633                       -0.0077                           -0.0271
+trades numpy                  2751.0000                2751.0000                     2751.0000                         2751.0000
+win rate numpy                   0.5071                   0.4678                        0.5005                            0.5005
+R moyen numpy                    0.0140                  -0.0648                       -0.0088                           -0.0284
+pts bruts / trade                0.0153                  -2.1605                       -0.6435                           -1.1435
+MC win rate                      0.4996                   0.4636                        0.4940                            0.4940
+MC R moyen                      -0.0008                  -0.0729                       -0.0219                           -0.0414
+MC part de tirages gagnants      0.4870                   0.0464                        0.3009                            0.1716
+coût moyen (R)                   0.0000                   0.0784                        0.0196                            0.0392
+$ / trade / contrat                 NaN                      NaN                      -12.8701                           -2.2870

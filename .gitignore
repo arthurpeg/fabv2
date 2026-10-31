@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 cache/
 papers/
+.env
+papiers overnight ssrn/
+.obsidian/workspace*.json
+.obsidian/cache
