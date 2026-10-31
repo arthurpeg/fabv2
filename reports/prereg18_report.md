@@ -2,6 +2,29 @@
 
 *2026-10-31. Protocole : [[PREREGISTRATION_18]]. Code : [run_propfirm_ftmo.py](../run_propfirm_ftmo.py), [propfirm/](../propfirm/). Sorties : `results/propfirm/` (run.log, eval.csv, funded.csv, ev.csv). Compteur d'essais inchangé (1 482) : on évalue un contrat, pas une règle de marché.*
 
+## Avenant D : la règle NQ de nuit sur LucidFlex 50K (MNQ)
+
+Code : [run_propfirm_lucid.py](../run_propfirm_lucid.py), [propfirm/lucid.py](../propfirm/lucid.py). Sorties : `results/propfirm_lucid/`. Règles relevées le 31 octobre sur lucidtrading.com et support.lucidtrading.com (voir l'avenant D). Mêmes 3 787 trades qu'à l'avenant C, exécutés en MNQ ; coût réel par MNQ ≈ 2,00 $ (demi-spreads bbo-1m + 1,50 $ de commission supposée).
+
+**Écart au protocole.** Le protocole convertit le stop en points avec le prix historique. Sur un premier passage de 1 000 comptes, cela donne un stop médian de 21 points (42 $ par MNQ ; 7 points et 14 $ en 2011-2015), où la commission pèse 5 à 14 % du risque. Au niveau actuel du NQ (25 684), le même stop vaut ~65 points (131 $ par MNQ) et le coût 1,7 % du risque. Les deux sont rapportés ; **la version « prix actuels » est celle qui décrit un compte ouvert aujourd'hui** (même convention que le spread FTMO aux avenants B et C).
+
+| Éval 400 $ de risque, financé 200 $, consistance 40 %, 115 $ | Passage | Séances par tentative | Valeur du financé | **EV par éval** | Refus tolérés |
+|---|---|---|---|---|---|
+| **Règle, prix actuels** | **39,5 %** | 26 | **690 $** (P(payout) 76 %, 1,2 payout, vie ~70 séances) | **+157 $ ± 6** | 58 % |
+| Règle, prix historiques (résultat principal du protocole) | 29,8 % | 30 | 603 $ | +65 $ ± 5 | 36 % |
+| Sans edge, prix actuels | 18,2 % | 22 | 330 $ | −55 $ | — |
+| Sans edge, prix historiques | 13,1 % | 24 | 261 $ | −81 $ | — |
+| Règle 2011-2015 seulement (prix historiques) | 30,7 % | 19 | 671 $ | +91 $ | 44 % |
+| Consistance 50 % (130 $ supposés), prix actuels | 39,2 % | 26 | 690 $ | +140 $ | 52 % |
+
+Meilleur de la grille (sélectionné, donc optimiste), prix actuels : éval 200 $ / financé 800 $ → passage 50,5 %, financé 1 039 $, **EV +410 $**, mais l'éval prend ~125 séances (~6 mois) à 200 $ de risque.
+
+Lecture :
+- **Lucid rapporte beaucoup moins que FTMO avec la même règle** : +157 $ par éval 50K contre +853 $ par éval FTMO 10k (prix comparables, 115 $ contre 87 $). Trois raisons : l'objectif (3 000 $) dépasse la perte max (2 000 $), alors que FTMO les égalise (10 % / 10 %) ; la consistance de 40 % bloque les gros jours (un TP à 2,5 R pèse lourd) ; surtout, **le financé Lucid meurt vite** : chaque payout ne rend que 50 % du profit (plafond 2 000 $) et ramène le plancher à +100 $, donc le coussin restant est mince, alors que FTMO remet la perte max à −10 % après chaque reward.
+- **Sans edge, Lucid est négatif avec cette façon de trader** (−55 $ par éval), contrairement à FTMO (+98 $). Une règle à objectif fixe (2,5 R) ne s'adapte pas aux barrières du contrat ; la session précédente obtenait ~+58 $ sans edge chez Lucid grâce à un sizing taillé pour la marge (gros paris puis reliquat), pas avec une règle de marché.
+- **L'edge fait toute la valeur ici** : de −55 $ à +157 $ par éval (prix actuels). Le passage en réel (5 payouts) n'arrive que dans 1 à 5 % des comptes, il n'est pas valorisé.
+- Hypothèses : commission MNQ 1,50 $ (non publiée), prix de l'option 50 % (non lu), DLL de 1 200 $ jamais atteinte avec un trade par nuit (non simulée).
+
 ## Avenant C : la règle NQ de nuit sur FTMO 1-Step
 
 Code : [run_propfirm_nq_nuit.py](../run_propfirm_nq_nuit.py). Sorties : `results/propfirm_nq_nuit/`. Trades : les 3 787 de [[reports/couts_reels_nq_nuit_report]] (compte 20:00 ET, momentum 12-1, SL 2 ATR / TP 5 ATR, sortie 9:30 ET ; 2011-07 → 2026-08), R brut moyen +0,125. Stop médian 0,254 % du prix : 1,5 point coûte 0,023 R par trade, 3 points 0,046 R. Un trade par nuit, du dimanche au jeudi, rien le week-end, pas de swap. Deux trades sans distance de stop (R = 0, 2014-05-28 et 2016-12-15) reçoivent le stop médian (seul leur coût en dépend).
