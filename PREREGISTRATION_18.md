@@ -52,3 +52,11 @@ Demande de l'utilisateur après le premier rapport : le stop n'est plus à `s` %
 - Nouveau **résultat principal** : NQ réel, stop 1 ATR M15, éval 2 % / 4,9 %, financé 1 % / 2 %, remise à zéro de la perte max. Même grille éval et financé, même période, même coût, mêmes règles FTMO, même graine.
 - Les variantes en % du prix (0,25 ; 0,5 ; 1 %) restent rapportées pour comparaison ; leurs chiffres ne changent pas (la variante ATR est simulée après elles).
 - Le roulement `.v.0` à 00:00 UTC peut gonfler une barre M15 ; à 9:30 ET son poids dans l'ATR de Wilder est ≤ (13/14)^50 ≈ 2,5 %, négligé.
+
+## Avenant B (2026-10-31, avant calcul de la variante) : entrée 9:50 ET, spread 1 à 1,5 point
+
+Remarque de l'utilisateur : chez FTMO, le spread de l'US100 est beaucoup plus large juste après 9:30 et revient ensuite à **1 à 1,5 point**. Le bbo-1m du future NQ ne montre pas cet élargissement (médiane 0,5 point de 9:20 à 10:30 sur 2016-2026, pics de moyenne à 9:45 et 10:00 = annonces macro), c'est donc un effet propre au CFD, non mesurable ici. On suit la remarque :
+
+- **Entrée à l'open de la première barre ≥ 9:50 ET** (après l'ouverture et l'annonce de 9:45). Stop 1 ATR M15 lu sur la barre 9:30-9:45 (dernière terminée à 9:50). Sortie inchangée (15:54 ET au plus tard).
+- **Coût = 1,5 point** par aller-retour (cas principal) et **1 point** (variante), exprimé en fraction du prix au niveau actuel : 1,5 / 25 684 = 0,58 pb et 1 / 25 684 = 0,39 pb (25 684 = médiane du NQ du 2025-08-29 au 2026-08-28). Raison : le spread en points d'un CFD suit le niveau de l'indice ; appliquer 1,5 point au NQ de 2016 (≈ 4 500) le gonflerait 5 fois.
+- **Nouveau résultat principal** : entrée 9:50, stop 1 ATR M15, coût 1,5 point, éval 2 % / 4,9 %, financé 1 % / 2 %, remise à zéro. Même grille, mêmes règles, simulé après toutes les variantes précédentes (dont les chiffres ne changent pas).
