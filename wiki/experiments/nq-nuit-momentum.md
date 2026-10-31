@@ -3,8 +3,8 @@ type: experiment
 updated: 2026-10-31
 status: active
 verdict: candidat
-prereg: [10, 11, 12, 13, 14]
-trials: 1475
+prereg: [10, 11, 12, 13, 14, 15]
+trials: 1478
 ---
 
 # Règle NQ de nuit : momentum 12-1, entrée 20:00 ET
@@ -23,6 +23,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | 13 (descriptif) | Régimes, pertes extrêmes | robuste ; stops = gain sur la queue | [[reports/robust13_report]] |
 | 13 (pré-enregistré) | Un filtre « à plat » (Jones, Abdi, Berkman, Vojtko) réduit-il le drawdown ? | ❌ aucun ne bat un filtre aléatoire de même taille | [[reports/prereg13_report]] |
 | 14 | Éviter les annonces NFP/CPI de 8:30 ? | ❌ inversé : ce sont les meilleures nuits (+0,30 R contre +0,05) | [[reports/prereg14_report]] |
+| 15 | Filtres VIX (Donninger, Vojtko) et taille selon la volatilité ? | ❌ aucun des 3 ; la taille ne change rien (1 R suit déjà l'ATR) | [[reports/prereg15_report]] |
 
 ## Ce qu'on sait
 - Hors échantillon temporel (n° 11), **100 % des trades étaient longs** : c'est « long NQ la nuit » qui est validé, pas le filtre momentum.

@@ -1,0 +1,23 @@
+NQ simulé
+ES simulé
+YM simulé
+marché                période essai  nuits  R_par_an  max_dd_R  ratio  participation_%  R_an_vs_base_%  reduction_dd_%    c1    c2  aleatoire_p95_%    c3  taille_moyenne  ratio_vs_base_%
+    NQ    sélection 2016-2026  base   2672    19.293   -25.403  0.759              NaN             NaN             NaN   NaN   NaN              NaN   NaN             NaN              NaN
+    NQ    sélection 2016-2026    F5   1416     7.715   -25.012  0.308           52.994          39.991           1.538 False False           29.286 False             NaN              NaN
+    NQ    sélection 2016-2026    F6   1575    10.349   -30.052  0.344           58.945          53.642         -18.302 False False           28.235 False             NaN              NaN
+    NQ    sélection 2016-2026    T1   2672    16.524   -25.153  0.657              NaN          85.649           0.981 False False              NaN   NaN           0.802          -13.503
+    NQ confirmation 2011-2015  base   1115    28.605   -22.359  1.279              NaN             NaN             NaN   NaN   NaN              NaN   NaN             NaN              NaN
+    NQ confirmation 2011-2015    F5    745    25.556   -14.840  1.722           66.816          89.342          33.628  True  True              NaN   NaN             NaN              NaN
+    NQ confirmation 2011-2015    F6    652    12.639   -20.855  0.606           58.475          44.186           6.726 False False              NaN   NaN             NaN              NaN
+    NQ confirmation 2011-2015    T1   1115    27.017   -22.113  1.222              NaN          94.449           1.099 False False              NaN   NaN           0.914           -4.501
+    ES confirmation 2011-2026  base   3788     2.244   -61.810  0.036              NaN             NaN             NaN   NaN   NaN              NaN   NaN             NaN              NaN
+    ES confirmation 2011-2026    F5   2161     5.125   -44.366  0.116           57.049         228.347          28.222 False  True              NaN   NaN             NaN              NaN
+    ES confirmation 2011-2026    F6   2228    -0.633   -75.019 -0.008           58.817         -28.217         -21.370 False False              NaN   NaN             NaN              NaN
+    ES confirmation 2011-2026    T1   3788    -0.225   -59.714 -0.004              NaN         -10.019           3.392 False False              NaN   NaN           0.852         -110.371
+    YM confirmation 2011-2026  base   3787     6.516  -129.076  0.050              NaN             NaN             NaN   NaN   NaN              NaN   NaN             NaN              NaN
+    YM confirmation 2011-2026    F5   2163     5.025   -69.868  0.072           57.116          77.118          45.871  True False              NaN   NaN             NaN              NaN
+    YM confirmation 2011-2026    F6   2225     4.125   -66.338  0.062           58.754          63.296          48.605  True False              NaN   NaN             NaN              NaN
+    YM confirmation 2011-2026    T1   3787     5.515  -115.427  0.048              NaN          84.635          10.575 False False              NaN   NaN           0.855           -5.356
+F5 : retenu en sélection = False ; confirmé = False
+F6 : retenu en sélection = False ; confirmé = False
+T1 : retenu en sélection = False ; confirmé = False
