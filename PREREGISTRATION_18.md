@@ -87,3 +87,12 @@ Simulation :
 - Grille : risque visé par trade en éval ∈ {200 ; 400 ; 600 ; 800 ; 1 000} $, en financé ∈ {200 ; 400 ; 600 ; 800 ; 1 000} $. **Résultat principal** : éval 400 $, financé 200 $ (même proportion de la perte max que l'éval 2 % / financé 1 % de FTMO), consistance 40 %, 2011-07 → 2026-08.
 - Contrôles : R − moyenne (sans edge) et 2011-2015 seul, comme à l'avenant C ; variante consistance 50 % à 130 $.
 - 20 000 comptes par réglage, départ tiré au hasard dans l'historique, trades enchaînés dans l'ordre.
+
+## Avenant E (2026-10-31, avant calcul) : compte financé FTMO en RR 2 (1 % risqué pour 2 % visés)
+
+Demande de l'utilisateur. Éval inchangée (règle NQ de nuit SL 2 ATR / TP 5 ATR, 2 % de risque). **En financé, la même règle avec un objectif à 4 ATR = 2 R** (SL 2 ATR inchangé, sortie 9:30 si ni l'un ni l'autre), 1 % de risque, donc +2 % visés. Trades recalculés par [build_nq_nuit_tp.py](build_nq_nuit_tp.py) avec la même chaîne que `run_couts_reels_nq_nuit.py` (contrôle : TP 5 redonne les 3 787 R à 4e-16 près). TP 4 ATR : R brut moyen +0,126 (TP 5 : +0,125), 926 TP / 1 937 SL / 924 sorties au temps. Ce chiffre a été vu avant ce texte ; il ne décide rien.
+
+- Résultat principal : EV par éval 10k et 100k avec éval 2 % (TP 5) et financé 1 % (TP 4), spread 1,5 point, RAZ de la perte max (vérifiée), 2011-07 → 2026-08. Comparaison : financé 1 % avec TP 5 (avenant C).
+- Rapportés : passage, valeur du financé, P(≥ 1 reward), nombre et montant moyen des rewards, premier reward (médiane), vie du compte, EV, refus tolérés ; variante 3 points ; contrôle sans edge (R − moyenne) ; 2011-2015 seul.
+- Puis, comme l'exploratoire « pires séries » : pire série d'évals ratées et plus longue période sans reward sur l'historique réel avec ce réglage.
+- Hors compteur : évaluation d'un contrat, l'objectif n'est pas sélectionné sur une grille.
