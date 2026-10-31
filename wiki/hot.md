@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 17:40
+updated: 2026-10-31 17:47
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 17:40
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] query | Chemin complet du plan FTMO (run_propfirm_paths.py, 612 départs, 3 ans) : paliers / 10k→100k / 100k d'emblée | 10k→100k jamais plus rapide ; 100k d'emblée : +148 k$ médiane à 3 ans contre +67 k$, meilleur dans 97 % des départs, apport max 1 374 $ en plus des 1 750 $ ; règle de réserve du plan initial trop prudente
 - [2026-10-31] query | Plan de montée en taille FTMO (reports/plan_scaling_ftmo.md, run_propfirm_scaling.py) ; règles lues sur ftmo.com : 400 k$ max par trader ou stratégie, Scaling Plan +25 %/4 mois jusqu'à 2 M$ | trio 10k → 100k en 1,5 à 3 ans ; trio 100k +134 k$ sur 2 ans en moyenne, pire creux −11 k$
 - [2026-10-31] prereg | N° 19 : S1 + stop dur 1R (plancher 0,5 %, 1 NQ) hors échantillon, trades 2010-09 → 2015-12 (run_prereg19.py) | ÉCHEC : +0,030 R/trade [−0,026 ; +0,090], p = 0,15 ; sous-périodes +0,005 / +0,052 ; Sharpe $ 0,57 (2016–2026 : 1,12) ; le stop n'apporte rien (S1 d'origine 0,55) ; au coût MNQ +0,004 R ; compteur 1 485
 - [2026-10-31] query | Exploratoire : ferme FTMO 10k, un signal par compte (19:00 / 20:00 / 21:00), vectorbt + règles FTMO (run_propfirm_farm_heures.py) | mois sans reward 58 % → 42 %, corr. trimestrielle 1,00 → 0,56, creux moyen −300 → −238 $ ; écart-type sur 2 ans inchangé (1 885 → 1 880 $/compte) ; gain moyen 4 766 → 4 270 $
@@ -29,7 +30,6 @@ updated: 2026-10-31 17:40
 - [2026-10-31] query | Règle NQ de nuit, entrée 19:00 / 20:00 / 21:00 ET recalculée avec vectorbt (run_nq_nuit_heures.py), corrélations | R net +0,076 / +0,088 / +0,083, Sharpe 0,91 / 1,00 / 0,87 ; corr. par nuit 0,85 / 0,78 / 0,70 ; panier égal Sharpe 1,01 ; descriptif, hors compteur
 - [2026-10-31] query | Exploratoire 2026 (run_propfirm_2026.py) : FTMO 10k, règle NQ de nuit, 1 éval puis 1 de plus par reward, du 2026-01-02 au 2026-08-28 | à la lettre : 2 évals, 1 reward, net +346 $ ; avec rachat après échec : 29 évals, 7 rewards, net +1 574 $ (8 financés ouverts à −3,68 %)
 - [2026-10-31] query | Avenant E refait avec vectorbt (run_propfirm_vbt.py) : rendements de chaque nuit par Portfolio.from_signals, règles FTMO en Python | Monte-Carlo identique (EV +1 009 $ 10k, +10 408 $ 100k) ; pires séries identiques (6 évals ratées, 239 nuits sans reward) ; contrôle tailles réelles à 3e-11 $ ; tolérance 0,001 % et marge mini 0,05 % ajoutées aux scripts de trace, pires valeurs inchangées
-- [2026-10-31] query | En cours : contrôle vectorbt de la trace FTMO avenant E (run_propfirm_vbt.py) | vectorbt exécute les 3 708 trades prévus, P&L à ≤ 0,0145 $ du calcul Python ; le rejeu des règles bifurque encore sur des seuils à quelques millionièmes (MIN_RISK 0,05 % le 2023-11-01) ; tolérances ajoutées aussi à run_propfirm_streaks.py, ses résultats sont à relancer
 
 ## Prochaines actions
 
