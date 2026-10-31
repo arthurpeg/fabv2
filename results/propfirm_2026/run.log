@@ -1,0 +1,101 @@
+FTMO 1-Step 10k, règle NQ de nuit (rendements vectorbt), du 2026-01-01 au 2026-08-28 ; éval 87 $
+
+=== à la lettre (1 éval de plus par reward) ===
+  évals achetées 2 (174 $)  validées 1  ratées 1  financés perdus 1
+  rewards 1 pour 520 $ ; net +346 $
+  en cours au 2026-08-28 : aucun
+  flux net par mois : 2026-01 +346 $ ; 2026-03 +0 $
+  journal :
+    2026-01-02  compte  1  achat éval  -87 $
+    2026-01-06  compte  1  éval validée
+    2026-01-27  compte  1  reward  +520 $
+    2026-01-28  compte  2  achat éval  -87 $
+    2026-03-02  compte  2  éval ratée
+    2026-03-11  compte  1  financé perdu
+
+=== + rachat après échec ou compte perdu ===
+  évals achetées 29 (2 520 $)  validées 15  ratées 14  financés perdus 7
+  rewards 7 pour 4 094 $ ; net +1 574 $
+  en cours au 2026-08-28 : financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré), financé en cours (-3.68 % non retiré)
+  flux net par mois : 2026-01 +346 $ ; 2026-03 -434 $ ; 2026-04 +1 674 $ ; 2026-05 +482 $ ; 2026-06 +549 $ ; 2026-07 -1 043 $ ; 2026-08 +0 $
+  journal :
+    2026-01-02  compte  1  achat éval  -87 $
+    2026-01-06  compte  1  éval validée
+    2026-01-27  compte  1  reward  +520 $
+    2026-01-28  compte  2  achat éval  -87 $
+    2026-03-02  compte  2  éval ratée
+    2026-03-03  compte  4  achat éval  -87 $
+    2026-03-09  compte  4  éval ratée
+    2026-03-10  compte  6  achat éval  -87 $
+    2026-03-11  compte  1  financé perdu
+    2026-03-12  compte  3  achat éval  -87 $
+    2026-03-27  compte  3  éval ratée
+    2026-03-27  compte  6  éval ratée
+    2026-03-30  compte  5  achat éval  -87 $
+    2026-03-30  compte 10  achat éval  -87 $
+    2026-04-01  compte  5  éval validée
+    2026-04-01  compte 10  éval validée
+    2026-04-21  compte  5  reward  +924 $
+    2026-04-21  compte 10  reward  +924 $
+    2026-04-22  compte  7  achat éval  -87 $
+    2026-04-22  compte 14  achat éval  -87 $
+    2026-05-08  compte  5  reward  +415 $
+    2026-05-08  compte 10  reward  +415 $
+    2026-05-11  compte  8  achat éval  -87 $
+    2026-05-11  compte 15  achat éval  -87 $
+    2026-05-13  compte  7  éval validée
+    2026-05-13  compte 14  éval validée
+    2026-05-20  compte  8  éval ratée
+    2026-05-20  compte 15  éval ratée
+    2026-05-21  compte 13  achat éval  -87 $
+    2026-05-21  compte 21  achat éval  -87 $
+    2026-06-05  compte 13  éval ratée
+    2026-06-05  compte 21  éval ratée
+    2026-06-08  compte 18  achat éval  -87 $
+    2026-06-08  compte 25  achat éval  -87 $
+    2026-06-11  compte 18  éval validée
+    2026-06-11  compte 25  éval validée
+    2026-06-22  compte  7  reward  +448 $
+    2026-06-22  compte 14  reward  +448 $
+    2026-06-23  compte 11  achat éval  -87 $
+    2026-06-23  compte 19  achat éval  -87 $
+    2026-07-02  compte 11  éval ratée
+    2026-07-02  compte 19  éval ratée
+    2026-07-06  compte 17  achat éval  -87 $
+    2026-07-06  compte 24  achat éval  -87 $
+    2026-07-17  compte 17  éval ratée
+    2026-07-17  compte 24  éval ratée
+    2026-07-20  compte 22  achat éval  -87 $
+    2026-07-20  compte 27  achat éval  -87 $
+    2026-07-28  compte  5  financé perdu
+    2026-07-28  compte  7  financé perdu
+    2026-07-28  compte 10  financé perdu
+    2026-07-28  compte 14  financé perdu
+    2026-07-28  compte 18  financé perdu
+    2026-07-28  compte 22  éval ratée
+    2026-07-28  compte 25  financé perdu
+    2026-07-28  compte 27  éval ratée
+    2026-07-29  compte  9  achat éval  -87 $
+    2026-07-29  compte 12  achat éval  -87 $
+    2026-07-29  compte 16  achat éval  -87 $
+    2026-07-29  compte 20  achat éval  -87 $
+    2026-07-29  compte 23  achat éval  -87 $
+    2026-07-29  compte 26  achat éval  -87 $
+    2026-07-29  compte 28  achat éval  -87 $
+    2026-07-29  compte 29  achat éval  -87 $
+    2026-08-13  compte  9  éval validée
+    2026-08-13  compte 12  éval validée
+    2026-08-13  compte 16  éval validée
+    2026-08-13  compte 20  éval validée
+    2026-08-13  compte 23  éval validée
+    2026-08-13  compte 26  éval validée
+    2026-08-13  compte 28  éval validée
+    2026-08-13  compte 29  éval validée
+    2026-08-28  compte  9  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 12  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 16  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 20  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 23  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 26  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 28  financé en cours (-3.68 % non retiré)
+    2026-08-28  compte 29  financé en cours (-3.68 % non retiré)

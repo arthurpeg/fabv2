@@ -237,3 +237,14 @@ Relu sur [Trading Objectives](https://ftmo.com/en/trading-objectives/), [1-Step 
 | Objectif | +10 %, pas de limite de temps, pas de vérification | identique |
 
 Le texte « Your Maximum Loss Limit does not reset when you withdraw a Reward » existe sur la même page, mais dans la section de l'**FTMO Instant Account**, pas du 1-Step. La variante « sans RAZ » ne correspond donc à aucune règle du 1-Step. Non vérifié : les prix (absents des pages lues) et une mention d'une limite de 30 % pour le meilleur jour, citée par un résumé de recherche mais introuvable sur les pages officielles lues.
+
+## Exploratoire : 2026 avec une éval au départ et une éval de plus par reward (10k)
+
+Code : [run_propfirm_2026.py](../run_propfirm_2026.py), sorties `results/propfirm_2026/` (journal daté de chaque compte). Rendements de chaque nuit calculés par vectorbt (`results/propfirm_vbt/returns.csv`), réglage de l'avenant E (éval 2 %, TP 5 ATR ; financé 1 %, TP 4 ATR ; spread 1,5 point), du 2026-01-02 au **2026-08-28, fin des données** (après : holdout, non chargé). Période dans l'échantillon qui a servi à choisir la règle.
+
+| Politique | Évals achetées | Validées / ratées | Rewards | **Net** | Fin août |
+|---|---|---|---|---|---|
+| À la lettre : chaque reward paie une éval de plus ; un compte raté ou perdu n'est pas remplacé | 2 (174 $) | 1 / 1 | 1 (520 $, 2026-01-27) | **+346 $** | plus aucun compte : l'éval achetée avec le reward rate le 2026-03-02, le financé saute le 2026-03-11 |
+| En plus, rachat après chaque échec ou compte perdu | 29 (2 520 $) | 15 / 14 | 7 (4 094 $) | **+1 574 $** | 8 financés validés le 2026-08-13, tous à −3,68 % (non compté) |
+
+Avec rachat, flux nets par mois : janvier +346 $, mars −434 $, avril +1 674 $, mai +482 $, juin +549 $, juillet −1 043 $, août 0 $. Les comptes se synchronisent (même trade chaque nuit) : le 2026-07-28, six financés sautent la même nuit.
