@@ -78,6 +78,29 @@ Le RR 2 en financé rapporte **+14 %** par rapport au RR 2,5 (+1 009 $ contre +8
 
 Trace qui démarre le 2011-07-01 (40 évals, 20 validées, 97 rewards) : sans reward 2023-05-18 → 2024-02-23 (192 nuits ; 5 évals dont 4 ratées), 2021-10-26 → 2022-07-05 (172), 2018-04-13 → 2018-11-13 (149), 2020-02 → 2020-09 (142) ; rewards par an de 2 (2022) à 11 (2012, 2014, 2017). Le RR 2 raccourcit l'épisode 2018 (de 200 à 149 nuits) mais pas 2022, la pire année de la règle (marché baissier). Le gain net médian par départ est un peu plus bas (16 100 $ contre 17 100 $) alors que l'EV Monte-Carlo est plus haute : sur l'unique historique, un emplacement reste plus longtemps sur chaque financé et achète moins d'évals ; les deux mesures ne répondent pas à la même question.
 
+### Avenant E refait avec vectorbt
+
+Code : [run_propfirm_vbt.py](../run_propfirm_vbt.py), sorties `results/propfirm_vbt/`. vectorbt n'a pas de règles de prop firm. Il calcule le marché : `Portfolio.from_signals` sur les 5 498 560 barres 1 minute du NQ, une position par nuit (entrée 20:00 ET, sortie 9:30 ET, `sl_stop` 2 ATR, `tp_stop` 5 ou 4 ATR), le spread de 1,5 point compté en frais, moitié à l'entrée et moitié à la sortie. Les règles FTMO tournent en Python sur les rendements nets que vectorbt rend pour chaque nuit. Les trades du moteur maison venaient déjà de vectorbt (`run_recolte1_atr.simulate`), mais avec un coût forfaitaire ajouté après coup ; ici, le coût est payé dans vectorbt.
+
+| Contrôle | Résultat |
+|---|---|
+| Trades calculés par vectorbt | 3 787 nuits sur 3 787, pour TP 5 comme pour TP 4 ; R brut moyen +0,1253 (TP 5) et +0,1261 (TP 4) |
+| Écart de R avec le moteur maison | au plus 7,4e-5 R par trade (le spread est payé sur le prix de sortie dans vectorbt) |
+| vectorbt rejoue la trace avec les vraies tailles en $ | 3 708 trades sur 3 708, P&L identique à l'étape précédente à 3e-11 $ près ; 42 565,23 $ au total |
+| Trace historique depuis 2011-07-01 | 40 évals, 20 validées, 97 rewards (43 506 $ reçus sur 10k), comme le moteur maison, **sauf un événement** : une éval de novembre 2023 a 0,0502 % de marge avec vectorbt et 0,0499 % avec le moteur maison ; elle continue avec un risque minuscule et rate le 2023-11-07 au lieu du 2023-11-01 |
+
+Les résultats avec vectorbt :
+
+| | vectorbt | moteur maison |
+|---|---|---|
+| Monte-Carlo (20 000 comptes, même graine) | passage 51,6 %, financé 21,24 %, P(≥ 1 reward) 86 %, 4,84 rewards de 4,39 %, 1er reward à 17 nuits, vie 148 nuits ; **EV +1 009 $ ± 21 (10k), +10 408 $ ± 212 (100k)** | identique à l'affichage |
+| Pire série d'évals ratées | **6** (2023-08-04 → 2023-11-07), 521 $ sur 10k | 6 (2023-08-04 → 2023-11-01) |
+| Plus longue période sans reward | **239 nuits ≈ 11,4 mois** (2022-01-11 → 2022-12-22) ; médiane 192 | 239 nuits, mêmes dates ; médiane 172 |
+| Pire creux de trésorerie | −608 $ (10k) | −608 $ |
+| Par départ (médianes) | 28 évals, 40 rewards, +16 081 $ | 28 évals, 41 rewards, +16 375 $ |
+
+**Correction faite pendant ce contrôle** : les scripts de trace (`run_propfirm_streaks.py` et celui-ci) n'abandonnaient pas une éval sous 0,05 % de marge, alors que le moteur Monte-Carlo le fait, et comparaient les seuils sans tolérance ; des écarts d'un centime faisaient bifurquer la trace. Les deux appliquent maintenant la marge minimale de 0,05 % et une tolérance de 0,001 % du capital sur chaque seuil. Relancés, ils redonnent les mêmes pires valeurs qu'avant (6 évals ratées ; 223 nuits sans reward en TP 5, 239 en TP 4 ; −608 $). Seules changent la fin de la série d'échecs (2023-11-01 au lieu du 2023-11-07) et la médiane sans reward en TP 4 (172 nuits au lieu de 192).
+
 ## Exploratoire (non pré-enregistré) : pires séries sans validation et sans reward, FTMO + règle de nuit
 
 Code : [run_propfirm_streaks.py](../run_propfirm_streaks.py), sorties `results/propfirm_streaks/` (starts_10k.csv, starts_100k.csv, events_2011.csv). Réglage de l'avenant C (éval 2 %, financé 1 %, 1,5 point), un seul emplacement qui rachète une éval dès qu'un compte saute, suivi sur l'historique réel sans bouclage depuis 657 nuits de départ (2011-07 → 2024-08).
