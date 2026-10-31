@@ -87,7 +87,7 @@ def path(seq: list[dict], thr: list[float], s0: int, cash0: float) -> dict:
     end = s0 + H
     cash, low, k = cash0, cash0, 0
     slots: dict = {}
-    t_final, marks = None, {252: None, 504: None}
+    t_final, t100, marks = None, None, {252: None, 504: None}
 
     def add(h, j):
         slots[h] = dict(evs=events(h, j, end), ptr=0, size=None, alive=True)
@@ -115,6 +115,8 @@ def path(seq: list[dict], thr: list[float], s0: int, cash0: float) -> dict:
                     sl["alive"] = False  # plus dans la configuration : pas de rachat
                     continue
                 sl["size"] = target
+                if target == 100_000 and t100 is None:
+                    t100 = j - s0
                 cash -= FEE[target]
                 low = min(low, cash)
         while k + 1 < len(seq) and cash - cash0 >= thr[k + 1]:
@@ -125,7 +127,7 @@ def path(seq: list[dict], thr: list[float], s0: int, cash0: float) -> dict:
         if t_final is None and k == len(seq) - 1 and all(
                 h in slots and slots[h]["alive"] and slots[h]["size"] == v for h, v in seq[-1].items()):
             t_final = j - s0
-    return dict(final=t_final, net_1an=marks[252], net_2ans=marks[504], net_3ans=cash - cash0, apport=max(0.0, -low))
+    return dict(premier_100k=t100, final=t_final, net_1an=marks[252], net_2ans=marks[504], net_3ans=cash - cash0, apport=max(0.0, -low))
 
 
 VARIANTS = {
@@ -158,6 +160,9 @@ def main() -> None:
             rows.append(dict(variante=name, start=R.index[s0].date(), **path(seq, t, s0, cash0)))
         g = pd.DataFrame([r for r in rows if r["variante"] == name])
         say(f"\n=== {name} ===  seuils " + " → ".join(f"{x:,.0f} $" for x in t[1:]).replace(",", " "))
+        say(f"  premier achat d'une éval 100k : {g.premier_100k.notna().mean():.0%} des départs en 3 ans, moyenne "
+            f"{g.premier_100k.mean():.0f} nuits (~{g.premier_100k.mean() / 21:.1f} mois), médiane {g.premier_100k.median():.0f}, "
+            f"25e-75e centile {g.premier_100k.quantile(0.25):.0f}-{g.premier_100k.quantile(0.75):.0f}, 90e {g.premier_100k.quantile(0.9):.0f}, pire {g.premier_100k.max():.0f}")
         say(f"  3 × 100k en place : {g.final.notna().mean():.0%} des départs en 3 ans, médiane {g.final.median():.0f} nuits "
             f"(~{g.final.median() / 21:.0f} mois)")
         for c, lab in (("net_1an", "gain net à 1 an"), ("net_2ans", "à 2 ans"), ("net_3ans", "à 3 ans")):

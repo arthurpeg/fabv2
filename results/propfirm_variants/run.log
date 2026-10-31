@@ -3,6 +3,7 @@ Seuils (95e centile de l'argent sorti avant remboursement) : 1×10k 434 $ ; 1×1
 Départ avec 450 $
 
 === A. 1×10k → 1×100k → 2×100k → 3×100k ===  seuils 2 745 $ → 4 940 $ → 6 587 $
+  premier achat d'une éval 100k : 96% des départs en 3 ans, moyenne 420 nuits (~20.0 mois), médiane 404, 25e-75e centile 308-512, 90e 604, pire 755
   3 × 100k en place : 86% des départs en 3 ans, médiane 517 nuits (~25 mois)
   gain net à 1 an  : médiane +1 990 $  5e centile +315 $  pire -154 $
   à 2 ans          : médiane +5 281 $  5e centile +1 873 $  pire +166 $
@@ -10,6 +11,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === B. 1×10k → 3×10k → 3×100k ===  seuils 1 043 $ → 6 587 $
+  premier achat d'une éval 100k : 92% des départs en 3 ans, moyenne 518 nuits (~24.7 mois), médiane 536, 25e-75e centile 414-623, 90e 696, pire 755
   3 × 100k en place : 67% des départs en 3 ans, médiane 617 nuits (~29 mois)
   gain net à 1 an  : médiane +2 466 $  5e centile +315 $  pire -154 $
   à 2 ans          : médiane +7 940 $  5e centile +3 519 $  pire +1 883 $
@@ -17,6 +19,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === C. 1×10k → 2×10k → 1×100k → 3×100k ===  seuils 782 $ → 2 745 $ → 6 587 $
+  premier achat d'une éval 100k : 98% des départs en 3 ans, moyenne 371 nuits (~17.7 mois), médiane 342, 25e-75e centile 257-482, 90e 585, pire 680
   3 × 100k en place : 88% des départs en 3 ans, médiane 545 nuits (~26 mois)
   gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
   à 2 ans          : médiane +12 374 $  5e centile +2 095 $  pire +72 $
@@ -24,6 +27,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 95% des départs  pire 158 $
 
 === D. 1×10k → 2×10k → 1×100k → 2×100k → 3×100k ===  seuils 782 $ → 2 745 $ → 4 940 $ → 6 587 $
+  premier achat d'une éval 100k : 99% des départs en 3 ans, moyenne 367 nuits (~17.5 mois), médiane 342, 25e-75e centile 257-470, 90e 565, pire 751
   3 × 100k en place : 88% des départs en 3 ans, médiane 543 nuits (~26 mois)
   gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
   à 2 ans          : médiane +12 691 $  5e centile +2 095 $  pire +72 $
@@ -31,6 +35,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === E. 1×10k → 2×10k → 2×100k → 3×100k ===  seuils 782 $ → 4 940 $ → 6 587 $
+  premier achat d'une éval 100k : 94% des départs en 3 ans, moyenne 439 nuits (~20.9 mois), médiane 434, 25e-75e centile 301-569, 90e 648, pire 754
   3 × 100k en place : 68% des départs en 3 ans, médiane 602 nuits (~29 mois)
   gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
   à 2 ans          : médiane +7 785 $  5e centile +2 382 $  pire +1 275 $
@@ -38,6 +43,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === F. 1×10k → 2×10k → 3×10k → 1×100k → 2×100k → 3×100k ===  seuils 782 $ → 1 043 $ → 2 745 $ → 4 940 $ → 6 587 $
+  premier achat d'une éval 100k : 100% des départs en 3 ans, moyenne 379 nuits (~18.1 mois), médiane 375, 25e-75e centile 281-466, 90e 533, pire 753
   3 × 100k en place : 92% des départs en 3 ans, médiane 495 nuits (~24 mois)
   gain net à 1 an  : médiane +2 576 $  5e centile +301 $  pire -154 $
   à 2 ans          : médiane +15 649 $  5e centile +3 061 $  pire +546 $
@@ -45,6 +51,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === G. 1×10k → 3×10k → 1×100k + 2×10k → 2×100k + 1×10k → 3×100k ===  seuils 1 043 $ → 3 065 $ → 5 104 $ → 6 587 $
+  premier achat d'une éval 100k : 100% des départs en 3 ans, moyenne 410 nuits (~19.5 mois), médiane 402, 25e-75e centile 308-499, 90e 578, pire 753
   3 × 100k en place : 83% des départs en 3 ans, médiane 538 nuits (~26 mois)
   gain net à 1 an  : médiane +2 443 $  5e centile +274 $  pire -277 $
   à 2 ans          : médiane +13 790 $  5e centile +2 845 $  pire -119 $
@@ -52,6 +59,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === H. 1×10k → 2×10k → 1×100k + 1×10k → 2×100k → 3×100k ===  seuils 782 $ → 3 092 $ → 4 940 $ → 6 587 $
+  premier achat d'une éval 100k : 98% des départs en 3 ans, moyenne 385 nuits (~18.3 mois), médiane 352, 25e-75e centile 259-497, 90e 606, pire 751
   3 × 100k en place : 77% des départs en 3 ans, médiane 560 nuits (~27 mois)
   gain net à 1 an  : médiane +2 292 $  5e centile +310 $  pire -154 $
   à 2 ans          : médiane +13 056 $  5e centile +2 303 $  pire +1 175 $
@@ -59,6 +67,7 @@ Départ avec 450 $
   apport en plus des 450 $ : nul dans 96% des départs  pire 158 $
 
 === I. 1×10k → 1×100k + 1×10k → 2×100k + 1×10k → 3×100k ===  seuils 3 092 $ → 5 104 $ → 6 587 $
+  premier achat d'une éval 100k : 92% des départs en 3 ans, moyenne 499 nuits (~23.8 mois), médiane 520, 25e-75e centile 369-622, 90e 687, pire 755
   3 × 100k en place : 52% des départs en 3 ans, médiane 597 nuits (~28 mois)
   gain net à 1 an  : médiane +1 989 $  5e centile +315 $  pire -154 $
   à 2 ans          : médiane +5 913 $  5e centile +1 985 $  pire +1 622 $
