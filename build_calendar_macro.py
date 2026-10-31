@@ -5,16 +5,18 @@ uv run python build_calendar_macro.py
 
 Sources (dates de publication, une ligne par annonce) :
 - BLS, pages d'archives (date dans le nom du fichier) : NFP (empsit), CPI, PPI à 8:30 ; JOLTS à 10:00.
-- BEA, archives de communiqués : PIB estimation avancée (8:30), revenus et dépenses des ménages / PCE (8:30).
+- FRED / ALFRED (Fed de Saint-Louis, `FRED_API_KEY` dans .env) : date de première publication de chaque
+  observation (`output_type=4`) de GDPC1 (PIB avancé), PCEPI (revenus et dépenses des ménages, PCE) et RSAFS
+  (ventes au détail, Census) ; toutes à 8:30. Les archives BEA et le site du Census, incomplets ou bloqués, ne servent pas.
 - Réserve fédérale : décisions FOMC (communiqué 14:00) et minutes (14:00).
 - ISM manufacturier (1er jour ouvré du mois, 10:00) et services (3e jour ouvré, 10:00) : règle de
   calendrier publiée par l'ISM, appliquée au calendrier NYSE (approximation, signalée dans la colonne `source`).
-- Ventes au détail (Census, 8:30) : `RETAIL_FILE` si fourni (le site du Census refuse les requêtes scriptées).
 Les requêtes BLS/BEA portent une adresse de contact dans l'en-tête, comme ces sites l'exigent (accord du 2026-10-31).
 """
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 import time
@@ -28,7 +30,6 @@ sys.stdout.reconfigure(encoding="utf-8")
 UA = {"User-Agent": "fabv2-research arthur.peg2@gmail.com"}
 START, END = "2010-06-01", "2026-08-28"
 OUT = Path("config/calendrier_macro_us.csv")
-RETAIL_FILE = Path("config/ventes_detail_dates.csv")  # colonne `date`, optionnel
 
 
 def get(url: str) -> str:
@@ -47,29 +48,15 @@ def bls(slug: str, label: str, hour: str) -> list[tuple]:
     return out
 
 
-def bea(product: int, keep, label: str, hour: str) -> list[tuple]:
-    out, page = [], 0
-    while True:
-        h = get(f"https://www.bea.gov/news/archive?field_related_product_target_id={product}&page={page}")
-        items = re.findall(r'<time[^>]*datetime="(\d{4}-\d{2}-\d{2})[^"]*"[^>]*>.*?</time>.*?<a href="(/news/[^"]+)"[^>]*>([^<]+)</a>', h, re.S)
-        if not items:
-            items = [(None, a, t) for a, t in re.findall(r'<a href="(/news/20\d\d/[^"]+)"[^>]*>([^<]+)</a>', h)]
-        new = 0
-        for d, href, title in items:
-            if not keep(title):
-                continue
-            if d is None:
-                page_h = get("https://www.bea.gov" + href)
-                mm = re.search(r'datetime="(\d{4}-\d{2}-\d{2})', page_h)
-                d = mm.group(1) if mm else None
-            if d:
-                out.append((pd.Timestamp(d), label, hour, "https://www.bea.gov" + href))
-                new += 1
-        dates = [x[0] for x in out]
-        if not items or (dates and min(dates) < pd.Timestamp(START)) or page > 40:
-            break
-        page += 1
-    return out
+def fred_first_release(series: str, label: str) -> list[tuple]:
+    """Date de première publication de chaque observation (ALFRED, initial release only)."""
+    key = os.environ["FRED_API_KEY"]
+    r = requests.get("https://api.stlouisfed.org/fred/series/observations", timeout=60, params=dict(
+        series_id=series, api_key=key, file_type="json", output_type=4, observation_start="2009-10-01",
+        realtime_start="1776-07-04", realtime_end="9999-12-31"))
+    r.raise_for_status()
+    return [(pd.Timestamp(o["realtime_start"]), label, "08:30", f"FRED {series} (première publication)")
+            for o in r.json()["observations"]]
 
 
 def fomc() -> list[tuple]:
@@ -101,22 +88,21 @@ def ism() -> list[tuple]:
 
 
 def main():
+    for line in open(".env", encoding="utf-8"):
+        if "=" in line and not line.lstrip().startswith("#"):
+            k, v = line.strip().split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
     rows = []
     for slug, lab, hr in [("empsit", "NFP", "08:30"), ("cpi", "CPI", "08:30"), ("ppi", "PPI", "08:30"), ("jolts", "JOLTS", "10:00")]:
         rows += bls(slug, lab, hr)
         print(lab, "ok", flush=True)
-    rows += bea(451, lambda t: "Advance" in t, "PIB avancé", "08:30")
-    print("PIB ok", flush=True)
-    rows += bea(476, lambda t: "Personal Income and Outlays" in t, "PCE (revenus et dépenses)", "08:30")
-    print("PCE ok", flush=True)
+    rows += fred_first_release("GDPC1", "PIB avancé")
+    rows += fred_first_release("PCEPI", "PCE (revenus et dépenses)")
+    rows += fred_first_release("RSAFS", "Ventes au détail")
+    print("FRED ok", flush=True)
     rows += fomc()
     print("FOMC ok", flush=True)
     rows += ism()
-    if RETAIL_FILE.exists():
-        r = pd.read_csv(RETAIL_FILE, parse_dates=["date"])
-        rows += [(d, "Ventes au détail", "08:30", str(RETAIL_FILE)) for d in r["date"]]
-    else:
-        print("ventes au détail : fichier absent, non incluses")
     d = pd.DataFrame(rows, columns=["date", "annonce", "heure_ET", "source"])
     d["date"] = pd.to_datetime(d["date"]).dt.normalize()
     d = d[(d["date"] >= START) & (d["date"] <= END)].drop_duplicates(["date", "annonce"]).sort_values(["date", "annonce"])

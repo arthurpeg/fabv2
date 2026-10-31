@@ -4,7 +4,7 @@ updated: 2026-10-31
 status: active
 verdict: candidat
 prereg: [10, 11, 12, 13, 14]
-trials: 1474
+trials: 1475
 ---
 
 # Règle NQ de nuit : momentum 12-1, entrée 20:00 ET
