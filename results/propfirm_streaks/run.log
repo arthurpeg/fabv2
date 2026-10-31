@@ -1,0 +1,29 @@
+Exploratoire — règle NQ de nuit sur FTMO 1-Step (éval 2 %, financé 1 %, 1,5 pt) ; séries sur l'historique réel
+
+=== 10k (éval 87 $) : 657 départs de 2011-07-01 à 2024-08-21 ===
+  évals ratées d'affilée                               médiane         4   95e centile         4   pire         6
+  frais perdus dans cette série                        médiane       348 $   95e centile       348 $   pire       521 $
+  durée de cette série (nuits)                         médiane        33   95e centile        42   pire        90
+  plus longue période sans reward (nuits)              médiane       198   95e centile       200   pire       223
+  creux de trésorerie cumulée                          médiane      -435 $   95e centile      -435 $   pire      -608 $
+  plus longue durée sous le pic de trésorerie (nuits)  médiane       172   95e centile       172   pire       223
+  pire série d'échecs : 6 évals ratées du 2023-08-04 au 2023-11-07 (66 nuits  521 $)
+  plus longue période sans reward : 223 nuits (~11 mois), du 2018-03-12 au 2019-01-30
+  pire creux de trésorerie : -608 $ atteint le 2023-11-08 (départ 2023-04-28)
+  par départ : 36 évals achetées et 37 rewards (médianes)  gain net médian 17 092 $
+  5 plus longues périodes sans reward (dates distinctes) : 2018-03-12 → 2019-01-30 (223 n.) ; 2018-03-19 → 2019-01-30 (218 n.) ; 2018-03-26 → 2019-01-30 (213 n.) ; 2018-04-03 → 2019-01-30 (208 n.) ; 2018-04-10 → 2019-01-30 (203 n.)
+  5 pires séries d'échecs (dates distinctes) : 2023-08-04 → 2023-11-07 (6 évals) ; 2023-08-18 → 2023-11-07 (6 évals) ; 2012-04-05 → 2012-07-26 (5 évals) ; 2015-02-25 → 2015-06-05 (5 évals) ; 2012-03-27 → 2012-07-26 (5 évals)
+
+=== 100k (éval 549 $) : 657 départs de 2011-07-01 à 2024-08-21 ===
+  évals ratées d'affilée                               médiane         4   95e centile         4   pire         6
+  frais perdus dans cette série                        médiane     2 196 $   95e centile     2 196 $   pire     3 293 $
+  durée de cette série (nuits)                         médiane        33   95e centile        42   pire        90
+  plus longue période sans reward (nuits)              médiane       198   95e centile       200   pire       223
+  creux de trésorerie cumulée                          médiane    -2 745 $   95e centile    -2 745 $   pire    -3 842 $
+  plus longue durée sous le pic de trésorerie (nuits)  médiane       172   95e centile       172   pire       223
+  pire série d'échecs : 6 évals ratées du 2023-08-04 au 2023-11-07 (66 nuits  3 293 $)
+  plus longue période sans reward : 223 nuits (~11 mois), du 2018-03-12 au 2019-01-30
+  pire creux de trésorerie : -3 842 $ atteint le 2023-11-08 (départ 2023-04-28)
+  par départ : 36 évals achetées et 37 rewards (médianes)  gain net médian 182 630 $
+  5 plus longues périodes sans reward (dates distinctes) : 2018-03-12 → 2019-01-30 (223 n.) ; 2018-03-19 → 2019-01-30 (218 n.) ; 2018-03-26 → 2019-01-30 (213 n.) ; 2018-04-03 → 2019-01-30 (208 n.) ; 2018-04-10 → 2019-01-30 (203 n.)
+  5 pires séries d'échecs (dates distinctes) : 2023-08-04 → 2023-11-07 (6 évals) ; 2023-08-18 → 2023-11-07 (6 évals) ; 2012-04-05 → 2012-07-26 (5 évals) ; 2015-02-25 → 2015-06-05 (5 évals) ; 2012-03-27 → 2012-07-26 (5 évals)

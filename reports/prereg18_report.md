@@ -46,6 +46,35 @@ Lecture :
 - **Biais** : 2016-2026 a servi à choisir la règle ; les chiffres complets sont donc optimistes. La période 2011-2015 (hors échantillon, n° 11) donne encore plus, mais c'est un marché haussier où la règle était longue à 100 %. Le DD historique de la règle (−26 R) dépasse 10 % du capital dès 0,4 % de risque par trade : une année comme 2022 tue le compte, ce que la simulation compte déjà.
 - **Non modélisé** : spread de nuit réel du CFD FTMO (variante 3 points seulement), écart entre le CFD et le future à 20:00 et 9:30, et le risque de refus (bien moins probable ici : la règle est documentée et testée, ce n'est pas du pile ou face).
 
+## Exploratoire (non pré-enregistré) : pires séries sans validation et sans reward, FTMO + règle de nuit
+
+Code : [run_propfirm_streaks.py](../run_propfirm_streaks.py), sorties `results/propfirm_streaks/` (starts_10k.csv, starts_100k.csv, events_2011.csv). Réglage de l'avenant C (éval 2 %, financé 1 %, 1,5 point), un seul emplacement qui rachète une éval dès qu'un compte saute, suivi sur l'historique réel sans bouclage depuis 657 nuits de départ (2011-07 → 2024-08).
+
+**Les départs convergent** : quel que soit le jour de départ, l'emplacement finit sur le même enchaînement de comptes (même trade chaque nuit, mêmes barrières), donc la médiane et le 95e centile sont presque identiques. Ce sont les épisodes **datés** de l'unique historique qui comptent, et l'avenir peut faire pire.
+
+| | 10k (éval 87 $) | 100k (éval 549 $) |
+|---|---|---|
+| Pire série d'évals ratées d'affilée | **6** (4 dans la trace 2011 ; 2023-08 → 2023-11, ~3 mois) | 6 |
+| Frais perdus dans cette série | 521 $ | 3 293 $ |
+| **Plus longue période sans reward** | **223 nuits ≈ 11 mois** (2018-03 → 2019-01-30) | idem |
+| Pire creux de trésorerie (frais payés depuis le dernier pic) | −608 $ | −3 842 $ |
+| Plus longue durée sous le pic de trésorerie | 223 nuits (~11 mois) | idem |
+| Par départ (médiane) | 36 évals, 37 rewards, gain net +17 100 $ | +182 600 $ |
+
+Épisodes distincts (trace qui démarre le 2011-07-01 ; 52 évals, 29 validées, 82 rewards) :
+
+| Sans reward | Durée | Évals achetées / ratées |
+|---|---|---|
+| 2018-04-13 → 2019-01-30 | 200 nuits (~9,5 mois) | 2 / 0 |
+| 2015-08-10 → 2016-04-05 | 163 nuits (~7,8 mois) | 1 / 0 |
+| 2020-02-14 → 2020-10-09 | 159 nuits (~7,6 mois) | 1 / 0 |
+| 2021-11-22 → 2022-07-12 | 158 nuits (~7,5 mois) | 3 / 1 |
+| 2019-01-30 → 2019-08-27 | 144 nuits (~6,9 mois) | 2 / 1 |
+
+Séries d'évals ratées : 4 (2025-04-02 → 2025-06-03), 4 (2023-09-21 → 2023-11-07), 3 (2019-10 → 2019-11), puis des séries de 2.
+
+**Ce qui fait les longues attentes, ce ne sont pas les évals ratées** (frais faibles : quelques centaines de dollars sur 10k), **mais les comptes financés qui ne paient pas** : en 2018, un financé validé le 2018-06-05 saute le 2018-08-13 sans reward, le suivant met cinq mois à verser le premier (2019-01-30). La cause est la règle du meilleur jour : un TP de la règle fait +2,5 % du capital en une nuit (1 % de risque × 2,5 R), donc un reward exige au moins +5 % de profit sur le cycle. Rewards par an dans la trace : de 2 (2022) à 9 (2012, 2014). Prévoir de la trésorerie pour ~6 évals ratées et un an sans rentrée.
+
 ## Exploratoire (non pré-enregistré) : plusieurs comptes décalés dans le temps
 
 Question : avoir plusieurs comptes à des moments différents de leur vie, tous sur la règle NQ de nuit, lisse-t-il la variance ? Code : [run_propfirm_farm.py](../run_propfirm_farm.py), sorties `results/propfirm_farm/`. Comptes 10k, éval 2 %, financé 1 %, 1,5 point, 3 nuits de vérification ; chaque emplacement rachète une éval le lendemain de la perte d'un compte. 758 fenêtres de 2 ans (504 nuits) sur l'historique réel ; un emplacement « décalé de k mois » a démarré k mois avant la fenêtre.
