@@ -35,7 +35,7 @@ from recolte1.rules import at
 sys.stdout.reconfigure(encoding="utf-8")
 OUT = Path("results/propfirm_vbt")
 OUT.mkdir(parents=True, exist_ok=True)
-LOG = open(OUT / "run.log", "w", encoding="utf-8")
+LOG = None  # ouvert dans main() : le module peut être importé sans écraser run.log
 N_MC = int(sys.argv[1]) if len(sys.argv) > 1 else 20_000
 SEED = 1820
 SIZE = 10_000.0
@@ -52,10 +52,10 @@ def say(s: str = "") -> None:
     LOG.flush()
 
 
-def nights():
+def nights(hour: str = "20:00", df=None):
     """Une ligne par nuit tradée de la règle : barre d'entrée, de sortie, sens, ATR / prix (comme A.simulate)."""
-    e = Q.table(at(Q.D, "20:00", NY, -1), Q.B["t_open"], Q.MOM, "R0")
-    df = load("NQ").copy()
+    e = Q.table(at(Q.D, hour, NY, -1), Q.B["t_open"], Q.MOM, "R0")
+    df = load("NQ").copy() if df is None else df
     df.attrs = {}
     idx = df.index.as_unit("ns")
     e = e.copy()
@@ -171,6 +171,8 @@ def streaks(pnl_of, nt: int, nights: pd.Series, size: int = 10_000) -> pd.DataFr
 
 
 def main() -> None:
+    global LOG
+    LOG = open(OUT / "run.log", "w", encoding="utf-8")
     e, df = nights()
     nt = len(e)
     s = 2 * e["atr_frac"].to_numpy()

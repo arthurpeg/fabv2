@@ -26,4 +26,4 @@ Synthèse de ce qui a été appris sur l'ensemble des expériences. Chaque leço
 
 ## Ce qui tient
 La seule chose robuste trouvée à ce jour : la [[wiki/concepts/prime-de-nuit|prime de nuit]] de NQ ([[wiki/experiments/nq-nuit-momentum]]). Candidats secondaires : [[wiki/experiments/fade-gap-indices]] (régime 0DTE) et [[wiki/experiments/m2-bande-bruit-nq]] (rejeté, surveillé).
-- Plusieurs comptes de prop firm sur la même règle ne se diversifient pas en les décalant dans le temps : ils meurent dans le même drawdown et se resynchronisent (corrélation 0,97). Il faut des flux différents. ([[reports/prereg18_report]], 2026-10-31)
+- Plusieurs comptes de prop firm sur la même règle ne se diversifient pas en les décalant dans le temps : ils meurent dans le même drawdown et se resynchronisent (corrélation 0,97). Il faut des flux différents : trois heures d'entrée de la même règle lissent les rentrées mensuelles (corrélation trimestrielle 0,56) mais pas le résultat sur deux ans, dominé par le régime de marché. ([[reports/prereg18_report]], 2026-10-31)

@@ -248,3 +248,18 @@ Code : [run_propfirm_2026.py](../run_propfirm_2026.py), sorties `results/propfir
 | En plus, rachat après chaque échec ou compte perdu | 29 (2 520 $) | 15 / 14 | 7 (4 094 $) | **+1 574 $** | 8 financés validés le 2026-08-13, tous à −3,68 % (non compté) |
 
 Avec rachat, flux nets par mois : janvier +346 $, mars −434 $, avril +1 674 $, mai +482 $, juin +549 $, juillet −1 043 $, août 0 $. Les comptes se synchronisent (même trade chaque nuit) : le 2026-07-28, six financés sautent la même nuit.
+
+## Exploratoire : ferme de comptes avec un signal différent par compte (19:00 / 20:00 / 21:00)
+
+Code : [run_propfirm_farm_heures.py](../run_propfirm_farm_heures.py), sorties `results/propfirm_farm_heures/`. Rendements de chaque nuit par vectorbt pour chaque heure (TP 5 en éval, TP 4 en financé, spread 1,5 point dans les frais) ; règles FTMO de l'avenant E (éval 2 %, financé 1 % RR 2), rachat dès qu'un compte est raté ou perdu ; comptes 10k ; 662 fenêtres de 2 ans, tous les comptes démarrent le même jour. Corrélation des rendements par nuit (TP 4) : 0,82 (19/20), 0,74 (20/21), 0,66 (19/21).
+
+| Par compte, sur 2 ans | Gain moyen | Écart-type | 5e centile | Pire fenêtre | Creux moyen | Pire creux | Mois sans aucun reward (médiane) | Corrélation trimestrielle entre comptes |
+|---|---|---|---|---|---|---|---|---|
+| 3 comptes, même signal (20:00) | +4 766 $ | 1 885 $ | +2 087 $ | +1 622 $ | −300 $ | −608 $ | 58 % | 1,00 |
+| **3 comptes, 19:00 / 20:00 / 21:00** | +4 270 $ | **1 880 $** | +2 076 $ | +1 271 $ | **−238 $** | **−579 $** | **42 %** | **0,56** |
+| 6 comptes, deux par signal | +4 270 $ | 1 880 $ | +2 076 $ | +1 271 $ | −238 $ | −579 $ | 42 % | 0,65 |
+| 3 comptes indépendants (borne théorique) | +4 733 $ | 1 101 $ | +3 092 $ | +1 738 $ | −164 $ | −435 $ | 21 % | 0,06 |
+
+Historique complet, un compte par heure depuis le 2011-07-01 : 19:00 +33 518 $, 20:00 +40 046 $, 21:00 +34 618 $ ; corrélation des flux mensuels 0,44 à 0,59, des flux annuels 0,48 à 0,84 ; mois sans aucun reward : 56 % avec le seul compte 20:00, 38 % avec les trois. Aucune année n'est négative pour la somme des trois (la plus faible : 2016, +1 947 $ ; 2022 : 19:00 −77 $, 21:00 +2 491 $).
+
+Lecture : des signaux différents **lissent les rentrées mois par mois** (mois sans reward de 58 % à 42 %, creux de trésorerie plus faibles, corrélation trimestrielle des comptes de 1,00 à 0,56), mais **pas le résultat sur deux ans** (écart-type par compte inchangé, ~1 880 $) : les trois heures traversent les mêmes régimes de marché, et c'est le régime qui fait l'essentiel de la variance sur deux ans. Le gain moyen baisse un peu (19:00 et 21:00 font moins que 20:00 sur cet historique, sans que la différence soit démontrée). Doubler les comptes sur les mêmes signaux (6 comptes) ne change rien par compte. La borne de comptes vraiment indépendants (écart-type 1 101 $, 21 % de mois sans reward) montre ce qu'il faudrait : des flux portés par d'autres marchés ou d'autres règles.
