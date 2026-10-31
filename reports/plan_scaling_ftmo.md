@@ -66,3 +66,17 @@ Code : [run_propfirm_paths.py](../run_propfirm_paths.py), sorties `results/propf
 - **Commencer directement en 100k** (en retombant en 10k quand la trésorerie ne paie plus une éval 100k) rapporte plus que les paliers dans **97 %** des départs. Le prix : jusqu'à **3 124 $** de ta poche au total dans le pire départ historique (1 750 $ + 1 374 $), et un an sur vingt environ fini en perte (5e centile à 1 an : −1 452 $).
 - La raison : le prix d'une éval croît moins vite que sa taille (100k coûte 6,3 fois un 10k pour 10 fois le capital) et le taux de passage ne dépend pas de la taille. La règle de réserve du plan initial (« pire creux du palier suivant ») était donc **trop prudente** : ce pire creux mesure une baisse après des gains, pas l'argent à engager au départ.
 - Les mêmes réserves que plus haut s'appliquent (biais de sélection, holdout non ouvert, spread réel FTMO, revue des comptes). Commencer en 100k n'est raisonnable qu'après avoir vérifié l'exécution réelle, ce qui peut se faire sur un seul 10k quelques semaines.
+
+### Ta règle : 10k, puis 100k dès que les 10k ont rapporté de quoi payer les évals 100k
+
+Même simulation ([run_propfirm_paths.py](../run_propfirm_paths.py)) : trio en 10k au départ ; dès que le gain net des 10k atteint le seuil, **toutes les évals suivantes sont achetées en 100k** (sans 25k ni 50k, sans retour en 10k) ; les financés 10k déjà ouverts continuent jusqu'à leur perte.
+
+| Seuil de bascule (gain des 10k) | Bascule (médiane) | 3 comptes en 100k (médiane ; % des départs en 3 ans) | Gain à 1 an (médiane / 5e centile / pire) | À 2 ans (médiane / 5e c.) | À 3 ans (médiane / 5e c. / pire) | Apport en plus des 1 750 $ (pire) |
+|---|---|---|---|---|---|---|
+| **1 trio d'évals 100k (1 647 $)** | **~10 mois** | ~15 mois ; 96 % | +7 395 $ / +23 $ / −1 615 $ | +52 149 $ / +13 191 $ | **+103 777 $ / +55 494 $ / +21 807 $** | 3 418 $ (0 $ dans 92 % des départs) |
+| 2 trios (3 293 $) | ~13 mois | ~19 mois ; 95 % | +5 029 $ / +865 $ / −401 $ | +41 937 $ / +6 788 $ | +92 836 $ / +32 354 $ / +19 172 $ | 2 165 $ (0 $ dans 99 %) |
+| 3 trios (4 940 $) | ~18 mois | ~22 mois ; 90 % | +4 627 $ / +786 $ / −2 163 $ | +22 225 $ / +5 347 $ | +78 088 $ / +20 674 $ / +12 916 $ | 413 $ (0 $ dans 98 %) |
+| Rappel : paliers 25k / 50k | — | ~27 mois ; 80 % | +5 020 $ / +958 $ / −198 $ | +19 850 $ / +5 325 $ | +66 734 $ / +26 625 $ / +19 172 $ | 0 $ |
+| Rappel : 100k dès le départ | — | 0 ; 100 % | +29 378 $ / −1 452 $ / −2 075 $ | +86 533 $ / +18 739 $ | +147 908 $ / +65 627 $ / +40 415 $ | 1 374 $ |
+
+Face aux paliers, sur le même départ, la bascule à 1 trio atteint 3 × 100k plus tôt dans 76 % des cas et gagne plus à 3 ans dans 81 % ; à 2 trios : 70 % et 76 % ; à 3 trios : 54 % et 59 %. **Ta règle est donc plus rapide que les paliers**, et d'autant plus que le seuil est bas ; le seuil à 2 trios (3 293 $) garde presque toujours l'argent personnel à 1 750 $ (99 % des départs). Commencer directement en 100k reste le plus rapide, avec un peu plus d'apport et de risque la première année.

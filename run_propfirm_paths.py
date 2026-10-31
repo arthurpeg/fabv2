@@ -12,7 +12,9 @@ du moment, en passant les rewards avant les achats de la même nuit :
 - paliers : la plus grande taille dont la réserve (pire creux historique du trio) est couverte :
   10k 0 $, 25k 4 378 $, 50k 7 018 $, 100k 10 978 $ (results/propfirm_scaling/sizes.csv) ;
 - direct : 100k si la trésorerie couvre 10 978 $, sinon 10k ;
-- direct agressif : 100k dès que la trésorerie couvre le prix d'une éval 100k (549 $), sinon 10k.
+- direct agressif : 100k dès que la trésorerie couvre le prix d'une éval 100k (549 $), sinon 10k ;
+- 10k → 100k au seuil T : trio en 10k, puis toutes les évals suivantes en 100k (sans retour) dès que le gain
+  net des 10k (trésorerie − 1 750 $) atteint T = 1, 2 ou 3 trios d'évals 100k (1 647, 3 294, 4 941 $).
 Un achat se fait même si la trésorerie ne le couvre pas : on mesure alors l'apport personnel nécessaire.
 Départs tous les 5 nuits sur 2011-07 → 2023-08 (au moins 3 ans de données après).
 """
@@ -66,6 +68,10 @@ def size_for(policy: str, cash: float) -> int:
     return max(k for k, v in RESERVE.items() if cash >= v)
 
 
+SWITCH = {f"10k → 100k à {n} trio{'s' if n > 1 else ''} ({3 * n * FEE[100_000]:,.0f} $)".replace(",", " "): 3 * n * FEE[100_000]
+          for n in (1, 2, 3)}
+
+
 def path(policy: str, evs: dict) -> dict:
     # (nuit, ordre, compte) : rewards (0) avant achats (1) la même nuit
     q = []
@@ -77,7 +83,8 @@ def path(policy: str, evs: dict) -> dict:
                 q.append((j, 0, h, "reward", x[0]))
     q.sort()
     cash, low, fees, cur = CASH0, CASH0, 0.0, {}
-    t_full = None
+    t_full = t_switch = None
+    switched = False
     marks = {252: None, 504: None, 756: None}
     for j, _, h, k, x in q:
         for m in marks:
@@ -86,7 +93,12 @@ def path(policy: str, evs: dict) -> dict:
         if k == "reward":
             cash += x / 100 * cur[h]
         else:
-            size = size_for(policy, cash)
+            if policy in SWITCH:
+                if not switched and cash - CASH0 >= SWITCH[policy]:
+                    switched, t_switch = True, j - q[0][0]
+                size = 100_000 if switched else 10_000
+            else:
+                size = size_for(policy, cash)
             cur[h] = size
             cash -= FEE[size]; fees += FEE[size]
             low = min(low, cash)
@@ -94,7 +106,7 @@ def path(policy: str, evs: dict) -> dict:
                 t_full = j - q[0][0]
     for m in marks:
         marks[m] = cash - CASH0 if marks[m] is None else marks[m]
-    return dict(nuits_jusqu_a_3x100k=t_full, net_1an=marks[252], net_2ans=marks[504], net_3ans=marks[756],
+    return dict(nuits_jusqu_a_bascule=t_switch, nuits_jusqu_a_3x100k=t_full, net_1an=marks[252], net_2ans=marks[504], net_3ans=marks[756],
                 apport_max=max(0.0, -low), frais=fees, tréso_min=low)
 
 
@@ -103,7 +115,7 @@ def main() -> None:
     rows = []
     for s0 in starts:
         evs = {h: slot_events(h, s0) for h in HOURS}
-        for policy in ("paliers", "direct", "direct agressif"):
+        for policy in ("paliers", "direct", "direct agressif", *SWITCH):
             rows.append(dict(start=R.index[s0].date(), politique=policy, **path(policy, evs)))
     P = pd.DataFrame(rows)
     P.to_csv(OUT / "paths.csv", index=False)
@@ -112,6 +124,10 @@ def main() -> None:
         t = g.nuits_jusqu_a_3x100k
         reached = t.notna().mean()
         say(f"\n=== {policy} ===")
+        if policy in SWITCH:
+            b = g.nuits_jusqu_a_bascule
+            say(f"  bascule en 100k dans les 3 ans : {b.notna().mean():.0%} des départs ; délai médian {b.median():.0f} nuits "
+                f"(~{b.median() / 21:.0f} mois), 75e centile {b.quantile(0.75):.0f}, pire {b.max():.0f}")
         say(f"  3 comptes en 100k atteints dans les 3 ans : {reached:.0%} des départs ; délai médian {t.median():.0f} nuits "
             f"(~{t.median() / 21:.0f} mois), 75e centile {t.quantile(0.75):.0f}, pire {t.max():.0f}")
         for c, lab in (("net_1an", "gain net à 1 an"), ("net_2ans", "à 2 ans"), ("net_3ans", "à 3 ans")):
@@ -119,7 +135,7 @@ def main() -> None:
         say(f"  apport personnel en plus des {CASH0:,.0f} $ : nul dans {(g.apport_max == 0).mean():.0%} des départs, "
             f"95e centile {g.apport_max.quantile(0.95):,.0f} $, pire {g.apport_max.max():,.0f} $ ; frais sur 3 ans médiane {g.frais.median():,.0f} $".replace(",", " "))
     W = P.pivot(index="start", columns="politique", values=["nuits_jusqu_a_3x100k", "net_3ans"])
-    for pol in ("direct", "direct agressif"):
+    for pol in ("direct", "direct agressif", *SWITCH):
         t_d, t_p = W[("nuits_jusqu_a_3x100k", pol)], W[("nuits_jusqu_a_3x100k", "paliers")]
         faster = ((t_d < t_p) | (t_d.notna() & t_p.isna())).mean()
         richer = (W[("net_3ans", pol)] > W[("net_3ans", "paliers")]).mean()
