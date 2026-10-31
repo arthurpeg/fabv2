@@ -44,3 +44,11 @@ Changer l'heure d'entrée, le coût, la grille, la période, ou chercher un « m
 ## Ce que ce numéro ne dit pas
 
 L'EV suppose que FTMO verse les rewards. Ses règles interdisent l'« account rolling » et le trading assimilé à du jeu, et les comptes sont relus avant chaque reward : le risque de refus n'est pas modélisé autrement que par le seuil du point 3.
+
+## Avenant A (2026-10-31, avant calcul de la variante) : stop à 1 ATR M15
+
+Demande de l'utilisateur après le premier rapport : le stop n'est plus à `s` % du prix mais à **1 ATR M15** (ATR de Wilder sur 14 barres de 15 minutes, série 1 min complète 24 h, lu sur la dernière barre terminée à l'entrée, soit la barre 9:15-9:30 ET ; même calcul que `coinflip.rules.atr_tf`). Distance du stop du jour = ATR / prix d'entrée ; le coût de 1 pb du prix vaut donc 1 pb / (ATR / prix) en R, variable selon les jours.
+
+- Nouveau **résultat principal** : NQ réel, stop 1 ATR M15, éval 2 % / 4,9 %, financé 1 % / 2 %, remise à zéro de la perte max. Même grille éval et financé, même période, même coût, mêmes règles FTMO, même graine.
+- Les variantes en % du prix (0,25 ; 0,5 ; 1 %) restent rapportées pour comparaison ; leurs chiffres ne changent pas (la variante ATR est simulée après elles).
+- Le roulement `.v.0` à 00:00 UTC peut gonfler une barre M15 ; à 9:30 ET son poids dans l'ATR de Wilder est ≤ (13/14)^50 ≈ 2,5 %, négligé.
