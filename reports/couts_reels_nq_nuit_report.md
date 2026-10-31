@@ -1,6 +1,6 @@
 # Règle NQ de nuit avec les spreads réels (bbo-1m Databento)
 
-*2026-10-31. Code : [run_costs18.py](../run_costs18.py). Résultats : [results/costs18/](../results/costs18/). Données : bbo-1m NQ 2010–2026 et MNQ 2019–2026 (achat de 11,20 $). Re-estimation de coût sur les mêmes trades (compte 20:00, momentum 12-1, SL 2 / TP 5 ATR, sortie 9:30) : ce n'est pas une sélection, le compteur d'essais ne change pas.*
+*2026-10-31. Code : [run_couts_reels_nq_nuit.py](../run_couts_reels_nq_nuit.py). Résultats : [results/couts_reels_nq_nuit/](../results/couts_reels_nq_nuit/). Données : bbo-1m NQ 2010–2026 et MNQ 2019–2026 (achat de 11,20 $). Re-estimation de coût sur les mêmes trades (compte 20:00, momentum 12-1, SL 2 / TP 5 ATR, sortie 9:30) : ce n'est pas une sélection, le compteur d'essais ne change pas.*
 
 Coût d'un trade = demi-spread affiché à l'entrée + demi-spread à la sortie (meilleur bid/ask à la fin de la minute d'exécution) + commission. Spreads nuls, négatifs ou absents remplacés par 1 tick (aucun absent sur NQ, 0,06 % sur MNQ).
 

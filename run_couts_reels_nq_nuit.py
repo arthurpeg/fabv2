@@ -1,6 +1,6 @@
 """Règle NQ de nuit avec les spreads réels (bbo-1m Databento) au lieu du coût fixe de 1 tick.
 
-uv run python run_costs18.py   → results/costs18/ (trades.csv, summary.csv, by_year.csv, run.log)
+uv run python run_couts_reels_nq_nuit.py   → results/couts_reels_nq_nuit/ (trades.csv, summary.csv, by_year.csv, run.log)
 
 Coût d'un trade = demi-spread à l'entrée + demi-spread à la sortie (meilleur bid/ask relevé à la fin
 de la minute d'exécution) + commission. Spreads nuls, négatifs (carnet croisé) ou absents → 1 tick.
@@ -25,7 +25,7 @@ from recolte1.engine import NY, ci_mean, ci_sharpe, load
 from recolte1.rules import at
 
 sys.stdout.reconfigure(encoding="utf-8")
-OUT = Path("results/costs18")
+OUT = Path("results/couts_reels_nq_nuit")
 OUT.mkdir(parents=True, exist_ok=True)
 LOG = open(OUT / "run.log", "w", encoding="utf-8")
 TICK = 0.25
