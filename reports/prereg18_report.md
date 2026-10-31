@@ -2,7 +2,24 @@
 
 *2026-10-31. Protocole : [[PREREGISTRATION_18]]. Code : [run_propfirm_ftmo.py](../run_propfirm_ftmo.py), [propfirm/](../propfirm/). Sorties : `results/propfirm/` (run.log, eval.csv, funded.csv, ev.csv). Compteur d'essais inchangé (1 482) : on évalue un contrat, pas une règle de marché.*
 
-## Avenant A : stop à 1 ATR M15 (résultat principal depuis l'avenant)
+## Avenant B : entrée 9:50 ET, spread 1 à 1,5 point (résultat principal actuel)
+
+Stop 1 ATR M15 lu sur la barre 9:30-9:45 : **0,144 % du prix en médiane** (plus large qu'à 9:30, car l'ATR inclut le premier quart d'heure), stop touché 83 % des jours. Spread exprimé au niveau actuel du NQ (25 684) : 1,5 point = 0,58 pb = **0,041 R par trade** ; 1 point = 0,027 R (contre 0,083 R pour l'avenant A).
+
+Éval 2 % / 4,9 %, financé 1 % / 2 %, remise à zéro de la perte max :
+
+| Spread | Compte | Passage | Valeur du financé | **EV par tentative** | Refus tolérés | Sans RAZ |
+|---|---|---|---|---|---|---|
+| **1,5 pt** | 10k | 41,1 % ± 0,7 | 6,04 % ± 0,11 | **+161 $ ± 6** | 65 % | +93 $ |
+| **1,5 pt** | 100k | 41,1 % | 6,04 % | **+1 933 $ ± 61** | 78 % | +1 246 $ |
+| 1 pt | 10k | 41,9 % | 6,53 % | +187 $ ± 7 | 68 % | +104 $ |
+| 1 pt | 100k | 41,9 % | 6,53 % | +2 187 $ ± 68 | 80 % | +1 364 $ |
+
+Éval ~8,5 jours par tentative (7,9 si validée). Financé (1,5 pt) : P(≥ 1 reward) 57 %, 1,29 reward en moyenne, premier vers le 14e jour de bourse, vie ~52 jours. Meilleur de la grille (éval 1 / 4,9, financé 0,5 / 2 ; sélectionné, donc optimiste) : +206 $ / +2 376 $ à 1,5 pt.
+
+Lecture : en attendant 9:50 et avec un spread de 1-1,5 point, le stop ATR retrouve à peu près l'espérance du stop à 0,5 % du prix (+178 $ / +2 098 $), avec des évals deux fois plus courtes (8,5 jours au lieu de 15). Le spread du CFD juste après 9:30 n'a pas pu être mesuré : le future NQ (bbo-1m) reste à 0,5 point médian de 9:20 à 10:30.
+
+## Avenant A : stop à 1 ATR M15, entrée 9:35, coût 1 pb
 
 Même réglage (éval 2 % / 4,9 %, financé 1 % / 2 %, RAZ), stop à 1 ATR M15 lu à 9:30 ET. Cet ATR vaut **0,12 % du prix en médiane** (~25 points à 20 000), 4 fois moins que 0,5 % : le stop est touché 86 % des jours et le coût de 1 pb pèse **0,083 R par trade** (contre 0,020 R).
 

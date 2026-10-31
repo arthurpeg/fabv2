@@ -30,8 +30,11 @@ SEED = 18
 
 EVAL_GRID = [(r, t) for r in (1.0, 2.0, 2.9) for t in (2.0, 3.0, 4.9)]
 FUNDED_GRID = [(0.5, 1.0), (0.5, 2.0), (0.75, 1.5), (1.0, 1.0), (1.0, 2.0)]
-STOPS = (0.0025, 0.005, 0.01, "atr")  # "atr" = 1 ATR M15 (avenant A), simulé en dernier
-MAIN = dict(s="atr", ev=(2.0, 4.9), fd=(1.0, 2.0))
+STOPS = (0.0025, 0.005, 0.01, "atr")  # "atr" = 1 ATR M15 (avenant A)
+# Avenant B (simulé après tout le reste) : entrée 9:50 ET, spread en points au niveau actuel du NQ
+B_ENTRY, P_REF = "09:50", 25_684.0
+B_COSTS = {"1,5 pt": 1.5 / P_REF, "1 pt": 1.0 / P_REF}
+MAIN = dict(mode="NQ 9:50 1,5 pt", s="atr", ev=(2.0, 4.9), fd=(1.0, 2.0))
 
 
 def label(s) -> str:
@@ -97,8 +100,20 @@ def main() -> None:
         say(f"  stop {label(s)} (médiane {np.median(lib.s):.3%} du prix, coût médian {np.median(1e-4 / lib.s):.3f} R) : stop touché {stop:.0%} des jours, 1 R touché avant le stop {win:.0%}, "
             f"glissement moyen au stop {lib.stop_R[lib.stop_bar < 32767].mean() - 1:.3f} R")
 
+    f = CACHE / f"nq_days_atr_{B_ENTRY.replace(':', '')}.pkl"
+    if f.exists():
+        lb = pickle.loads(f.read_bytes())
+    else:
+        bars = session_bars("NQ", B_ENTRY)
+        lb = build(bars, entry_atr("NQ", bars))
+        f.write_bytes(pickle.dumps(lb))
+    stop = (lb.stop_bar < np.iinfo(np.int16).max).mean()
+    say(f"  avenant B, entrée {B_ENTRY} : 1 ATR M15 médian {np.median(lb.s):.3%} du prix, coût médian "
+        + ", ".join(f"{k} {np.median(c / lb.s):.3f} R" for k, c in B_COSTS.items()) + f", stop touché {stop:.0%} des jours")
+
     markets = {"binaire": {0.005: Market(None, 0.005)},
-               "NQ": {s: Market(L[s], np.nan if s == "atr" else s) for s in STOPS}}
+               "NQ": {s: Market(L[s], np.nan if s == "atr" else s) for s in STOPS},
+               **{f"NQ 9:50 {k}": {"atr": Market(lb, np.nan, c)} for k, c in B_COSTS.items()}}
     E, F = [], []
     for mode, ms in markets.items():
         for s, m in ms.items():
@@ -122,7 +137,7 @@ def main() -> None:
     for (mode, s), e in E.groupby(["mode", "s"], sort=False):
         for reset in (True, False):
             f = F[(F["mode"] == mode) & (F.s == s) & (F.reset == reset)]
-            main = "principal" if s == str(MAIN["s"]) else "même réglage"
+            main = "principal" if (mode, s) == (MAIN["mode"], MAIN["s"]) else "même réglage"
             picks = {main: (e[(e.r == MAIN["ev"][0]) & (e.t == MAIN["ev"][1])].iloc[0],
                                    f[(f.r == MAIN["fd"][0]) & (f.t == MAIN["fd"][1])].iloc[0]),
                      "meilleur de la grille": (e.loc[e.p_pass.idxmax()], f.loc[f.v_pct.idxmax()])}
@@ -137,9 +152,9 @@ def main() -> None:
     V.to_csv(OUT / "ev.csv", index=False)
     say("\n=== Espérance par tentative (10k et 100k) ===")
     for _, x in V[V["size"].isin([10_000, 100_000])].iterrows():
-        say(f"  {x['mode']:<7} s {x.s:<6} {'RAZ' if x.reset else 'sans RAZ':<8} {x.choix:<22} éval {x['eval']:<8} "
-            f"financé {x.funded:<8} {x['size'] // 1000:>3}k : EV {x.ev_usd:+8,.0f} $ ± {x.ci95:,.0f} "
-            f"(passage {x.p_pass:.1%}, financé {x.v_pct:.2f} %, refus max {x.refus_max:.0%})".replace(",", " "))
+        say(f"  {x['mode']:<15} s {x.s:<6} {'RAZ' if x.reset else 'sans RAZ':<8} {x.choix:<22} éval {x['eval']:<8} "
+            f"financé {x.funded:<8} {x['size'] // 1000:>3}k : EV {x.ev_usd:+8_.0f} $ ± {x.ci95:_.0f} "
+            f"(passage {x.p_pass:.1%}, financé {x.v_pct:.2f} %, refus max {x.refus_max:.0%})".replace("_", " "))
 
 
 if __name__ == "__main__":

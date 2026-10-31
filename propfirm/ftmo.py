@@ -31,10 +31,11 @@ MIN_RISK = 0.05
 class Market:
     lib: DayLib | None  # None = binaire
     s: float            # stop en fraction du prix (binaire ; en NQ réel : lib.s, propre à chaque jour)
+    cost_frac: float = COST_FRAC  # coût aller-retour en fraction du prix
 
     def cost_R(self, day: np.ndarray) -> np.ndarray:
         s = self.s if self.lib is None else self.lib.s[day]
-        return COST_FRAC / s * np.ones(len(day))
+        return self.cost_frac / s * np.ones(len(day))
 
     @property
     def n_days(self) -> int:

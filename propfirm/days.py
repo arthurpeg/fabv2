@@ -1,6 +1,6 @@
 """Bibliothèque de journées NQ pour un trade intraday au hasard (PREREGISTRATION_18).
 
-Pour chaque séance NYSE : entrée à l'open de la première barre >= 9:35 ET, sortie au plus
+Pour chaque séance NYSE : entrée à l'open de la première barre >= 9:35 ET (ou `entry`), sortie au plus
 tard à la clôture de la dernière barre démarrant <= 15:54 ET (13:00 en demi-séance).
 Pour chaque sens et une distance de stop s (fraction du prix, fixe ou propre à chaque
 jour, par exemple 1 ATR M15 / prix d'entrée : `entry_atr`) on garde, en minutes
@@ -44,8 +44,8 @@ class DayLib:
         return len(self.dates)
 
 
-def session_bars(name: str = "NQ") -> dict[pd.Timestamp, pd.DataFrame]:
-    """Barres 1 min de chaque séance NYSE, de 9:35 ET à la dernière barre <= clôture - 6 min."""
+def session_bars(name: str = "NQ", entry: str = "09:35") -> dict[pd.Timestamp, pd.DataFrame]:
+    """Barres 1 min de chaque séance NYSE, de `entry` ET à la dernière barre <= clôture - 6 min."""
     df = pd.read_parquet(DATA / f"{name}_v0_1m.parquet")
     df = df[~df.index.duplicated()].sort_index()
     loc = df.index.tz_convert(NY)
@@ -58,7 +58,7 @@ def session_bars(name: str = "NQ") -> dict[pd.Timestamp, pd.DataFrame]:
         if d not in groups.groups:
             continue
         ix = groups.get_group(d).to_numpy()
-        t0 = pd.Timestamp(d.strftime("%Y-%m-%d") + " 09:35", tz=NY)
+        t0 = pd.Timestamp(d.strftime("%Y-%m-%d") + " " + entry, tz=NY)
         t1 = row["close"].tz_convert(NY) - pd.Timedelta(minutes=6)
         sel = ix[(loc[ix] >= t0) & (loc[ix] <= t1)]
         if len(sel) < 60 or loc[sel[0]] > t0 + pd.Timedelta(minutes=5):

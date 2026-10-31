@@ -6,6 +6,7 @@ NQ : 2678 séances, 2016-01-04 → 2026-08-28
   stop 0.50% (médiane 0.500% du prix, coût médian 0.020 R) : stop touché 50% des jours, 1 R touché avant le stop 41%, glissement moyen au stop 0.000 R
   stop 1.00% (médiane 1.000% du prix, coût médian 0.010 R) : stop touché 24% des jours, 1 R touché avant le stop 22%, glissement moyen au stop 0.000 R
   stop 1 ATR M15 (médiane 0.121% du prix, coût médian 0.083 R) : stop touché 86% des jours, 1 R touché avant le stop 50%, glissement moyen au stop 0.000 R
+  avenant B, entrée 09:50 : 1 ATR M15 médian 0.144% du prix, coût médian 1,5 pt 0.041 R, 1 pt 0.027 R, stop touché 83% des jours
 
 === binaire, stop 0.50% ===
   éval  1.0 / 2.0 : passage 35.9% ± 0.7%, 33.8 j si validé, 34.9 j par tentative
@@ -112,44 +113,102 @@ NQ : 2678 séances, 2016-01-04 → 2026-08-28
   financé  1.0 / 1.0 sans RAZ : valeur 3.05 % ± 0.05, P(reward) 58%, 1.23 rewards, vie 54 j, 1er reward méd. 12 j
   financé  1.0 / 2.0 sans RAZ : valeur 3.40 % ± 0.06, P(reward) 49%, 0.74 rewards, vie 33 j, 1er reward méd. 13 j
 
+=== NQ 9:50 1,5 pt, stop 1 ATR M15 ===
+  éval  1.0 / 2.0 : passage 34.2% ± 0.7%, 33.5 j si validé, 34.3 j par tentative
+  éval  1.0 / 3.0 : passage 39.4% ± 0.7%, 22.0 j si validé, 23.9 j par tentative
+  éval  1.0 / 4.9 : passage 41.4% ± 0.7%, 15.6 j si validé, 17.8 j par tentative
+  éval  2.0 / 2.0 : passage 31.4% ± 0.6%, 18.1 j si validé, 17.6 j par tentative
+  éval  2.0 / 3.0 : passage 35.3% ± 0.7%, 12.3 j si validé, 12.5 j par tentative
+  éval  2.0 / 4.9 : passage 41.1% ± 0.7%, 7.9 j si validé, 8.5 j par tentative
+  éval  2.9 / 2.0 : passage 31.3% ± 0.6%, 13.3 j si validé, 12.3 j par tentative
+  éval  2.9 / 3.0 : passage 34.6% ± 0.7%, 9.3 j si validé, 9.2 j par tentative
+  éval  2.9 / 4.9 : passage 39.7% ± 0.7%, 5.9 j si validé, 6.4 j par tentative
+  financé  0.5 / 1.0 RAZ : valeur 5.66 % ± 0.09, P(reward) 73%, 2.44 rewards, vie 173 j, 1er reward méd. 17 j
+  financé  0.5 / 2.0 RAZ : valeur 7.07 % ± 0.13, P(reward) 61%, 1.60 rewards, vie 113 j, 1er reward méd. 22 j
+  financé 0.75 / 1.5 RAZ : valeur 6.05 % ± 0.10, P(reward) 64%, 1.73 rewards, vie 86 j, 1er reward méd. 14 j
+  financé  1.0 / 1.0 RAZ : valeur 4.98 % ± 0.09, P(reward) 66%, 1.98 rewards, vie 84 j, 1er reward méd. 12 j
+  financé  1.0 / 2.0 RAZ : valeur 6.04 % ± 0.11, P(reward) 57%, 1.29 rewards, vie 52 j, 1er reward méd. 14 j
+  financé  0.5 / 1.0 sans RAZ : valeur 4.86 % ± 0.07, P(reward) 72%, 2.10 rewards, vie 127 j, 1er reward méd. 17 j
+  financé  0.5 / 2.0 sans RAZ : valeur 5.29 % ± 0.09, P(reward) 62%, 1.19 rewards, vie 73 j, 1er reward méd. 22 j
+  financé 0.75 / 1.5 sans RAZ : valeur 4.66 % ± 0.07, P(reward) 65%, 1.32 rewards, vie 58 j, 1er reward méd. 14 j
+  financé  1.0 / 1.0 sans RAZ : valeur 4.11 % ± 0.07, P(reward) 66%, 1.62 rewards, vie 60 j, 1er reward méd. 12 j
+  financé  1.0 / 2.0 sans RAZ : valeur 4.37 % ± 0.07, P(reward) 57%, 0.92 rewards, vie 34 j, 1er reward méd. 14 j
+
+=== NQ 9:50 1 pt, stop 1 ATR M15 ===
+  éval  1.0 / 2.0 : passage 36.2% ± 0.7%, 33.6 j si validé, 34.8 j par tentative
+  éval  1.0 / 3.0 : passage 40.2% ± 0.7%, 22.0 j si validé, 24.1 j par tentative
+  éval  1.0 / 4.9 : passage 43.3% ± 0.7%, 15.3 j si validé, 17.7 j par tentative
+  éval  2.0 / 2.0 : passage 34.3% ± 0.7%, 18.4 j si validé, 17.9 j par tentative
+  éval  2.0 / 3.0 : passage 38.2% ± 0.7%, 12.2 j si validé, 12.6 j par tentative
+  éval  2.0 / 4.9 : passage 41.9% ± 0.7%, 7.8 j si validé, 8.4 j par tentative
+  éval  2.9 / 2.0 : passage 33.0% ± 0.7%, 13.1 j si validé, 12.5 j par tentative
+  éval  2.9 / 3.0 : passage 36.2% ± 0.7%, 9.5 j si validé, 9.3 j par tentative
+  éval  2.9 / 4.9 : passage 41.1% ± 0.7%, 5.9 j si validé, 6.4 j par tentative
+  financé  0.5 / 1.0 RAZ : valeur 6.40 % ± 0.10, P(reward) 74%, 2.74 rewards, vie 182 j, 1er reward méd. 17 j
+  financé  0.5 / 2.0 RAZ : valeur 7.91 % ± 0.14, P(reward) 64%, 1.79 rewards, vie 119 j, 1er reward méd. 22 j
+  financé 0.75 / 1.5 RAZ : valeur 6.78 % ± 0.11, P(reward) 67%, 1.94 rewards, vie 91 j, 1er reward méd. 14 j
+  financé  1.0 / 1.0 RAZ : valeur 5.73 % ± 0.10, P(reward) 69%, 2.27 rewards, vie 92 j, 1er reward méd. 12 j
+  financé  1.0 / 2.0 RAZ : valeur 6.53 % ± 0.12, P(reward) 58%, 1.39 rewards, vie 54 j, 1er reward méd. 14 j
+  financé  0.5 / 1.0 sans RAZ : valeur 5.46 % ± 0.08, P(reward) 74%, 2.34 rewards, vie 132 j, 1er reward méd. 17 j
+  financé  0.5 / 2.0 sans RAZ : valeur 5.64 % ± 0.09, P(reward) 64%, 1.27 rewards, vie 73 j, 1er reward méd. 22 j
+  financé 0.75 / 1.5 sans RAZ : valeur 5.02 % ± 0.08, P(reward) 66%, 1.42 rewards, vie 59 j, 1er reward méd. 14 j
+  financé  1.0 / 1.0 sans RAZ : valeur 4.60 % ± 0.07, P(reward) 70%, 1.80 rewards, vie 62 j, 1er reward méd. 12 j
+  financé  1.0 / 2.0 sans RAZ : valeur 4.57 % ± 0.07, P(reward) 59%, 0.96 rewards, vie 34 j, 1er reward méd. 13 j
+
 === Espérance par tentative (10k et 100k) ===
-  binaire s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +179 $ ± 7 (passage 41.0%  financé 6.50 %  refus max 67%)
-  binaire s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 114 $ ± 66 (passage 41.0%  financé 6.50 %  refus max 79%)
-  binaire s 0.005  RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +186 $ ± 7 (passage 41.1%  financé 6.64 %  refus max 68%)
-  binaire s 0.005  RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 178 $ ± 66 (passage 41.1%  financé 6.64 %  refus max 80%)
-  binaire s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +96 $ ± 4 (passage 41.0%  financé 4.47 %  refus max 53%)
-  binaire s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 284 $ ± 42 (passage 41.0%  financé 4.47 %  refus max 70%)
-  binaire s 0.005  sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0   10k : EV     +133 $ ± 5 (passage 41.1%  financé 5.36 %  refus max 61%)
-  binaire s 0.005  sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0  100k : EV   +1 654 $ ± 49 (passage 41.1%  financé 5.36 %  refus max 75%)
-  NQ      s 0.0025 RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +172 $ ± 6 (passage 40.4%  financé 6.41 %  refus max 66%)
-  NQ      s 0.0025 RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 041 $ ± 64 (passage 40.4%  financé 6.41 %  refus max 79%)
-  NQ      s 0.0025 RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +209 $ ± 7 (passage 42.7%  financé 6.94 %  refus max 71%)
-  NQ      s 0.0025 RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 411 $ ± 68 (passage 42.7%  financé 6.94 %  refus max 81%)
-  NQ      s 0.0025 sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +94 $ ± 4 (passage 40.4%  financé 4.49 %  refus max 52%)
-  NQ      s 0.0025 sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 264 $ ± 42 (passage 40.4%  financé 4.49 %  refus max 70%)
-  NQ      s 0.0025 sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0   10k : EV     +140 $ ± 5 (passage 42.7%  financé 5.31 %  refus max 62%)
-  NQ      s 0.0025 sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0  100k : EV   +1 719 $ ± 49 (passage 42.7%  financé 5.31 %  refus max 76%)
-  NQ      s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +178 $ ± 6 (passage 40.7%  financé 6.50 %  refus max 67%)
-  NQ      s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 098 $ ± 64 (passage 40.7%  financé 6.50 %  refus max 79%)
-  NQ      s 0.005  RAZ      meilleur de la grille  éval 2.0/4.9  financé 1.0/2.0   10k : EV     +178 $ ± 6 (passage 40.7%  financé 6.50 %  refus max 67%)
-  NQ      s 0.005  RAZ      meilleur de la grille  éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 098 $ ± 64 (passage 40.7%  financé 6.50 %  refus max 79%)
-  NQ      s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +107 $ ± 4 (passage 40.7%  financé 4.77 %  refus max 55%)
-  NQ      s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 395 $ ± 45 (passage 40.7%  financé 4.77 %  refus max 72%)
-  NQ      s 0.005  sans RAZ meilleur de la grille  éval 2.0/4.9  financé 0.5/2.0   10k : EV     +129 $ ± 5 (passage 40.7%  financé 5.30 %  refus max 60%)
-  NQ      s 0.005  sans RAZ meilleur de la grille  éval 2.0/4.9  financé 0.5/2.0  100k : EV   +1 611 $ ± 49 (passage 40.7%  financé 5.30 %  refus max 75%)
-  NQ      s 0.01   RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +143 $ ± 6 (passage 37.3%  financé 6.16 %  refus max 62%)
-  NQ      s 0.01   RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 745 $ ± 58 (passage 37.3%  financé 6.16 %  refus max 76%)
-  NQ      s 0.01   RAZ      meilleur de la grille  éval 2.9/4.9  financé 1.0/2.0   10k : EV     +152 $ ± 6 (passage 38.8%  financé 6.16 %  refus max 64%)
-  NQ      s 0.01   RAZ      meilleur de la grille  éval 2.9/4.9  financé 1.0/2.0  100k : EV   +1 840 $ ± 59 (passage 38.8%  financé 6.16 %  refus max 77%)
-  NQ      s 0.01   sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +93 $ ± 4 (passage 37.3%  financé 4.82 %  refus max 52%)
-  NQ      s 0.01   sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 249 $ ± 43 (passage 37.3%  financé 4.82 %  refus max 69%)
-  NQ      s 0.01   sans RAZ meilleur de la grille  éval 2.9/4.9  financé 1.0/1.0   10k : EV     +108 $ ± 5 (passage 38.8%  financé 5.04 %  refus max 56%)
-  NQ      s 0.01   sans RAZ meilleur de la grille  éval 2.9/4.9  financé 1.0/1.0  100k : EV   +1 405 $ ± 45 (passage 38.8%  financé 5.04 %  refus max 72%)
-  NQ      s atr    RAZ      principal              éval 2.0/4.9  financé 1.0/2.0   10k : EV      +71 $ ± 4 (passage 36.4%  financé 4.35 %  refus max 45%)
-  NQ      s atr    RAZ      principal              éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 035 $ ± 43 (passage 36.4%  financé 4.35 %  refus max 65%)
-  NQ      s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV      +95 $ ± 5 (passage 38.8%  financé 4.70 %  refus max 52%)
-  NQ      s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +1 275 $ ± 46 (passage 38.8%  financé 4.70 %  refus max 70%)
-  NQ      s atr    sans RAZ principal              éval 2.0/4.9  financé 1.0/2.0   10k : EV      +37 $ ± 3 (passage 36.4%  financé 3.40 %  refus max 30%)
-  NQ      s atr    sans RAZ principal              éval 2.0/4.9  financé 1.0/2.0  100k : EV     +688 $ ± 32 (passage 36.4%  financé 3.40 %  refus max 56%)
-  NQ      s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV      +62 $ ± 4 (passage 38.8%  financé 3.84 %  refus max 42%)
-  NQ      s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV     +942 $ ± 36 (passage 38.8%  financé 3.84 %  refus max 63%)
+  binaire         s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +179 $ ± 7 (passage 41.0%, financé 6.50 %, refus max 67%)
+  binaire         s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 114 $ ± 66 (passage 41.0%, financé 6.50 %, refus max 79%)
+  binaire         s 0.005  RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +186 $ ± 7 (passage 41.1%, financé 6.64 %, refus max 68%)
+  binaire         s 0.005  RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 178 $ ± 66 (passage 41.1%, financé 6.64 %, refus max 80%)
+  binaire         s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +96 $ ± 4 (passage 41.0%, financé 4.47 %, refus max 53%)
+  binaire         s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 284 $ ± 42 (passage 41.0%, financé 4.47 %, refus max 70%)
+  binaire         s 0.005  sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0   10k : EV     +133 $ ± 5 (passage 41.1%, financé 5.36 %, refus max 61%)
+  binaire         s 0.005  sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0  100k : EV   +1 654 $ ± 49 (passage 41.1%, financé 5.36 %, refus max 75%)
+  NQ              s 0.0025 RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +172 $ ± 6 (passage 40.4%, financé 6.41 %, refus max 66%)
+  NQ              s 0.0025 RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 041 $ ± 64 (passage 40.4%, financé 6.41 %, refus max 79%)
+  NQ              s 0.0025 RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +209 $ ± 7 (passage 42.7%, financé 6.94 %, refus max 71%)
+  NQ              s 0.0025 RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 411 $ ± 68 (passage 42.7%, financé 6.94 %, refus max 81%)
+  NQ              s 0.0025 sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +94 $ ± 4 (passage 40.4%, financé 4.49 %, refus max 52%)
+  NQ              s 0.0025 sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 264 $ ± 42 (passage 40.4%, financé 4.49 %, refus max 70%)
+  NQ              s 0.0025 sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0   10k : EV     +140 $ ± 5 (passage 42.7%, financé 5.31 %, refus max 62%)
+  NQ              s 0.0025 sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/1.0  100k : EV   +1 719 $ ± 49 (passage 42.7%, financé 5.31 %, refus max 76%)
+  NQ              s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +178 $ ± 6 (passage 40.7%, financé 6.50 %, refus max 67%)
+  NQ              s 0.005  RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 098 $ ± 64 (passage 40.7%, financé 6.50 %, refus max 79%)
+  NQ              s 0.005  RAZ      meilleur de la grille  éval 2.0/4.9  financé 1.0/2.0   10k : EV     +178 $ ± 6 (passage 40.7%, financé 6.50 %, refus max 67%)
+  NQ              s 0.005  RAZ      meilleur de la grille  éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 098 $ ± 64 (passage 40.7%, financé 6.50 %, refus max 79%)
+  NQ              s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +107 $ ± 4 (passage 40.7%, financé 4.77 %, refus max 55%)
+  NQ              s 0.005  sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 395 $ ± 45 (passage 40.7%, financé 4.77 %, refus max 72%)
+  NQ              s 0.005  sans RAZ meilleur de la grille  éval 2.0/4.9  financé 0.5/2.0   10k : EV     +129 $ ± 5 (passage 40.7%, financé 5.30 %, refus max 60%)
+  NQ              s 0.005  sans RAZ meilleur de la grille  éval 2.0/4.9  financé 0.5/2.0  100k : EV   +1 611 $ ± 49 (passage 40.7%, financé 5.30 %, refus max 75%)
+  NQ              s 0.01   RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +143 $ ± 6 (passage 37.3%, financé 6.16 %, refus max 62%)
+  NQ              s 0.01   RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 745 $ ± 58 (passage 37.3%, financé 6.16 %, refus max 76%)
+  NQ              s 0.01   RAZ      meilleur de la grille  éval 2.9/4.9  financé 1.0/2.0   10k : EV     +152 $ ± 6 (passage 38.8%, financé 6.16 %, refus max 64%)
+  NQ              s 0.01   RAZ      meilleur de la grille  éval 2.9/4.9  financé 1.0/2.0  100k : EV   +1 840 $ ± 59 (passage 38.8%, financé 6.16 %, refus max 77%)
+  NQ              s 0.01   sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +93 $ ± 4 (passage 37.3%, financé 4.82 %, refus max 52%)
+  NQ              s 0.01   sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 249 $ ± 43 (passage 37.3%, financé 4.82 %, refus max 69%)
+  NQ              s 0.01   sans RAZ meilleur de la grille  éval 2.9/4.9  financé 1.0/1.0   10k : EV     +108 $ ± 5 (passage 38.8%, financé 5.04 %, refus max 56%)
+  NQ              s 0.01   sans RAZ meilleur de la grille  éval 2.9/4.9  financé 1.0/1.0  100k : EV   +1 405 $ ± 45 (passage 38.8%, financé 5.04 %, refus max 72%)
+  NQ              s atr    RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +71 $ ± 4 (passage 36.4%, financé 4.35 %, refus max 45%)
+  NQ              s atr    RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 035 $ ± 43 (passage 36.4%, financé 4.35 %, refus max 65%)
+  NQ              s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV      +95 $ ± 5 (passage 38.8%, financé 4.70 %, refus max 52%)
+  NQ              s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +1 275 $ ± 46 (passage 38.8%, financé 4.70 %, refus max 70%)
+  NQ              s atr    sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV      +37 $ ± 3 (passage 36.4%, financé 3.40 %, refus max 30%)
+  NQ              s atr    sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV     +688 $ ± 32 (passage 36.4%, financé 3.40 %, refus max 56%)
+  NQ              s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV      +62 $ ± 4 (passage 38.8%, financé 3.84 %, refus max 42%)
+  NQ              s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV     +942 $ ± 36 (passage 38.8%, financé 3.84 %, refus max 63%)
+  NQ 9:50 1,5 pt  s atr    RAZ      principal              éval 2.0/4.9  financé 1.0/2.0   10k : EV     +161 $ ± 6 (passage 41.1%, financé 6.04 %, refus max 65%)
+  NQ 9:50 1,5 pt  s atr    RAZ      principal              éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 933 $ ± 61 (passage 41.1%, financé 6.04 %, refus max 78%)
+  NQ 9:50 1,5 pt  s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +206 $ ± 7 (passage 41.4%, financé 7.07 %, refus max 70%)
+  NQ 9:50 1,5 pt  s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 376 $ ± 71 (passage 41.4%, financé 7.07 %, refus max 81%)
+  NQ 9:50 1,5 pt  s atr    sans RAZ principal              éval 2.0/4.9  financé 1.0/2.0   10k : EV      +93 $ ± 4 (passage 41.1%, financé 4.37 %, refus max 52%)
+  NQ 9:50 1,5 pt  s atr    sans RAZ principal              éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 246 $ ± 41 (passage 41.1%, financé 4.37 %, refus max 69%)
+  NQ 9:50 1,5 pt  s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +132 $ ± 5 (passage 41.4%, financé 5.29 %, refus max 60%)
+  NQ 9:50 1,5 pt  s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +1 639 $ ± 51 (passage 41.4%, financé 5.29 %, refus max 75%)
+  NQ 9:50 1 pt    s atr    RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +187 $ ± 7 (passage 41.9%, financé 6.53 %, refus max 68%)
+  NQ 9:50 1 pt    s atr    RAZ      même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +2 187 $ ± 68 (passage 41.9%, financé 6.53 %, refus max 80%)
+  NQ 9:50 1 pt    s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +255 $ ± 8 (passage 43.3%, financé 7.91 %, refus max 75%)
+  NQ 9:50 1 pt    s atr    RAZ      meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +2 872 $ ± 80 (passage 43.3%, financé 7.91 %, refus max 84%)
+  NQ 9:50 1 pt    s atr    sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0   10k : EV     +104 $ ± 4 (passage 41.9%, financé 4.57 %, refus max 55%)
+  NQ 9:50 1 pt    s atr    sans RAZ même réglage           éval 2.0/4.9  financé 1.0/2.0  100k : EV   +1 364 $ ± 43 (passage 41.9%, financé 4.57 %, refus max 71%)
+  NQ 9:50 1 pt    s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0   10k : EV     +157 $ ± 5 (passage 43.3%, financé 5.64 %, refus max 64%)
+  NQ 9:50 1 pt    s atr    sans RAZ meilleur de la grille  éval 1.0/4.9  financé 0.5/2.0  100k : EV   +1 890 $ ± 55 (passage 43.3%, financé 5.64 %, refus max 77%)

@@ -32,3 +32,4 @@ Historique antérieur au wiki (repris de git et des rapports) :
 ## [2026-10-31] prereg | N° 18 : prop firm comme option, FTMO 1-Step avec trades NQ au hasard (branche propfirm-ftmo) | EV +178 $ ± 6 (10k), +2 098 $ ± 64 (100k) ; sans RAZ de la perte max −34 % ; hors compteur (1 482)
 ## [2026-10-31] prereg | N° 18 avenant A : stop 1 ATR M15 (≈ 0,12 % du prix) au lieu de 0,5 % | EV +71 $ ± 4 (10k), +1 035 $ ± 43 (100k) ; le spread 1 pb (0,083 R/trade) explique tout l'écart (sans coût +3 023 $) ; hors compteur
 ## [2026-10-31] experiment | Règle NQ de nuit recalculée avec les spreads réels bbo-1m (NQ 2011-2026, MNQ 2019-2026) | +0,076 R/trade contre +0,088 au coût fixe ; MNQ +0,067 à 1,24 $ A/R ; compteur inchangé
+## [2026-10-31] prereg | N° 18 avenant B : entrée 9:50 ET, stop 1 ATR M15, spread 1,5 pt (0,041 R) / 1 pt | EV +161 $ ± 6 (10k), +1 933 $ ± 61 (100k) à 1,5 pt ; +187 $ / +2 187 $ à 1 pt ; hors compteur
