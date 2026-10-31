@@ -30,6 +30,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | 18 avenant C | Sur un compte FTMO 1-Step (éval 2 %, financé 1 %, spread CFD 1,5 pt) ? | EV +853 $ / éval 10k, +8 849 $ / 100k (sans edge : +98 $ / +1 295 $) ; dépend de la RAZ de la perte max | [[reports/prereg18_report]] |
 | 18 avenant D | Sur un compte LucidFlex 50K en MNQ (éval 400 $, financé 200 $) ? | EV +157 $ / éval au niveau de prix actuel (sans edge −55 $) ; 5 fois moins que FTMO | [[reports/prereg18_report]] |
 | 18 avenant E | FTMO, financé en RR 2 (TP 4 ATR, 1 %) ? | EV +1 009 $ / 10k (+14 % contre TP 5) ; R moyen TP 4 = +0,126 ; pire : 11 mois sans reward en 2022 | [[reports/prereg18_report]] |
+| heures (descriptif) | Entrée 19:00 / 20:00 / 21:00 recalculée avec vectorbt, corrélations | +0,076 / +0,088 / +0,083 R net, Sharpe 0,91 / 1,00 / 0,87 ; corrélation par nuit 0,85 (19/20), 0,78 (20/21), 0,70 (19/21) ; panier égal Sharpe 1,01 | [[reports/nq_nuit_heures_report]] |
 
 ## Ce qu'on sait
 - Hors échantillon temporel (n° 11), **100 % des trades étaient longs** : c'est « long NQ la nuit » qui est validé, pas le filtre momentum.
