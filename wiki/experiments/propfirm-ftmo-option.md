@@ -17,7 +17,7 @@ trials: 0
 - Avenant A, entrée 9:35 et coût 1 pb : stop 1 ATR M15 (≈ 0,12 % du prix à 9:30) : le spread (1 pb) coûte 0,083 R par trade et divise l'EV par ~2 ; sans coût, ce stop ferait +3 000 $ sur 100k (diagnostic exploratoire). **Le spread réel FTMO US100 est l'hypothèse décisive.**
 - Vraies trajectoires NQ ≈ pile ou face binaire : la convexité ne dépend que du rapport perte max / objectif (10 % / 10 %).
 - Le stop en % du prix fixe la durée (0,5 % → ~15 jours par éval ; 1 % → ~35 jours et moins de passage).
-- Hypothèse la plus lourde : remise à zéro de la perte max après un reward (sinon EV −34 %).
+- Remise à zéro de la perte max après un reward : **vérifiée sur ftmo.com le 31 octobre**, c'est la règle du 1-Step (« fully resets ») ; le « does not reset » de la même page concerne l'Instant Account. Les autres règles du simulateur correspondent aussi (voir le rapport, section « Règles FTMO vérifiées »).
 - Risque non modélisé : refus de reward / bannissement (account rolling interdit chez FTMO). Seuil de refus qui annule l'EV : 65 % (10k), 78 % (100k) avec l'avenant B.
 - Branche git `propfirm-ftmo`. Hors compteur d'essais (évaluation d'un contrat, pas d'une règle de marché).
 

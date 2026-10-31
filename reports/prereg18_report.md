@@ -19,7 +19,7 @@ Code : [run_propfirm_nq_nuit.py](../run_propfirm_nq_nuit.py). Sorties : `results
 Lecture :
 - **L'edge multiplie l'EV par ~9** par rapport au même flux de trades sans edge (+853 $ contre +98 $ sur 10k) : le passage monte de 35 à 51 %, et surtout le compte financé vaut 3,5 fois plus (18,5 % contre 5,3 % du capital), parce qu'il encaisse ~0,12 R net par nuit pendant des mois.
 - **Moins de risque, plus d'EV** : à 0,5 % de risque, le passage monte à 81 % et l'EV à +1 580 $ (10k) / +16 121 $ (100k), mais l'éval prend ~160 nuits (~8 mois) et le financé tourne jusqu'au plafond de 500 nuits (sélectionné dans la grille, donc optimiste ; valeur non actualisée). À 2 %, l'éval se décide en ~13 nuits.
-- **La remise à zéro de la perte max pèse encore plus qu'avec des trades au hasard** (18,5 % → 7,75 %) : avec une edge, le compte monte, et sans remise à zéro chaque reward retiré rapproche le solde du plancher. **C'est l'hypothèse à vérifier en premier chez FTMO.**
+- **La remise à zéro de la perte max pèse encore plus qu'avec des trades au hasard** (18,5 % → 7,75 %) : avec une edge, le compte monte, et sans remise à zéro chaque reward retiré rapproche le solde du plancher. **Vérifié le 31 octobre : sur le 1-Step, la remise à zéro est la règle** (voir « Règles FTMO vérifiées »), la ligne « sans RAZ » ne sert que de borne basse.
 - **Biais** : 2016-2026 a servi à choisir la règle ; les chiffres complets sont donc optimistes. La période 2011-2015 (hors échantillon, n° 11) donne encore plus, mais c'est un marché haussier où la règle était longue à 100 %. Le DD historique de la règle (−26 R) dépasse 10 % du capital dès 0,4 % de risque par trade : une année comme 2022 tue le compte, ce que la simulation compte déjà.
 - **Non modélisé** : spread de nuit réel du CFD FTMO (variante 3 points seulement), écart entre le CFD et le future à 20:00 et 9:30, et le risque de refus (bien moins probable ici : la règle est documentée et testée, ce n'est pas du pile ou face).
 
@@ -90,7 +90,7 @@ Mécanisme : sans edge, P(+10 % avant −10 %) ≈ 50 % ; la perte max qui suit 
 | **Sans remise à zéro de la perte max après un reward** | **+1 395 $** (financé 4,77 %) |
 | Meilleur de la grille, s 0,25 % (éval 1/4,9, financé 0,5/2 ; sélectionné, donc optimiste) | +2 411 $ |
 
-10k : principal +178 $, sans remise à zéro +107 $, pire case de la grille sans RAZ +93 $. **Aucune case de la grille n'a une EV négative.** L'hypothèse la plus lourde est la remise à zéro de la perte max après un reward (−34 % d'EV si elle est fausse) : à vérifier chez FTMO.
+10k : principal +178 $, sans remise à zéro +107 $, pire case de la grille sans RAZ +93 $. **Aucune case de la grille n'a une EV négative.** L'hypothèse la plus lourde est la remise à zéro de la perte max après un reward (−34 % d'EV si elle était fausse) : vérifiée le 31 octobre, c'est bien la règle du 1-Step.
 
 ## Écart au protocole
 
@@ -99,5 +99,20 @@ Le pré-enregistrement dit « risque = r % du capital » sans préciser brut ou 
 ## Limites
 
 - **Le vrai risque n'est pas modélisé** : FTMO interdit l'« account rolling » et le trading assimilé à du jeu, et relit les comptes avant chaque reward. L'EV reste positive tant que moins de 67 % (10k) à 79 % (100k) des rewards sont refusés, mais un bannissement coupe toute la suite.
-- Règles FTMO relevées en octobre 2026 dans la session précédente, pas revérifiées ici.
+- Règles FTMO revérifiées le 31 octobre 2026 : voir la section suivante.
 - Un seul actif (NQ), séance US uniquement, un trade par jour ; 1 € = 1,10 $.
+
+## Règles FTMO vérifiées (ftmo.com, 31 octobre 2026)
+
+Relu sur [Trading Objectives](https://ftmo.com/en/trading-objectives/), [1-Step Challenge](https://ftmo.com/en/1-step-challenge/) et [How do I withdraw my reward?](https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/) :
+
+| Règle | Texte FTMO (1-Step) | Dans le simulateur |
+|---|---|---|
+| Perte max | 10 % du capital initial, « end-of-day trailing » sous le plus haut solde de 00:00 CE(S)T, « can only increase, but never decrease » | identique (plancher suiveur au solde de fin de journée, jamais bloqué) |
+| **Après un reward** | « when a Reward is withdrawn and a new FTMO Account is provided, the Maximum Loss Limit fully resets, returning the first-day limit to 90% of the Initial Simulated Capital » | **identique (hypothèse RAZ = règle réelle)** |
+| Perte journalière | solde de minuit CE(S)T − 3 % du capital initial | identique |
+| Meilleur jour (comptes commandés depuis le 12/10/2026) | meilleur jour ≤ 50 % du profit total ; dépassement = pas une violation, il faut continuer à trader ; condition du reward sur le compte financé | identique |
+| Reward | « on the 14th or any following day after the first trade is placed on the specific account », positions fermées, 90 % | 10 jours de bourse après le premier trade de chaque compte (un nouveau compte après chaque reward) |
+| Objectif | +10 %, pas de limite de temps, pas de vérification | identique |
+
+Le texte « Your Maximum Loss Limit does not reset when you withdraw a Reward » existe sur la même page, mais dans la section de l'**FTMO Instant Account**, pas du 1-Step. La variante « sans RAZ » ne correspond donc à aucune règle du 1-Step. Non vérifié : les prix (absents des pages lues) et une mention d'une limite de 30 % pour le meilleur jour, citée par un résumé de recherche mais introuvable sur les pages officielles lues.
