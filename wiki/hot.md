@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 15:28
+updated: 2026-10-31 15:53
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 15:28
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] query | Exploratoire : 5 comptes FTMO 10k décalés de 1 ou 3 mois sur la règle NQ de nuit (run_propfirm_farm.py) | ne lisse pas : écart-type ~2 000 $/compte sur 2 ans (indépendants : 873 $) ; 4,1/5 rachètent la même nuit, corrélation 0,97
 - [2026-10-31] query | Vérification des règles FTMO 1-Step sur ftmo.com (perte max, RAZ après reward, perte journalière, meilleur jour, reward au 14e jour) | toutes conformes au simulateur du n° 18 ; RAZ confirmée (« fully resets ») ; « does not reset » = Instant Account
 - [2026-10-31] prereg | N° 18 avenant C : règle NQ de nuit (3 787 trades 2011-2026) sur FTMO 1-Step, éval 2 % / financé 1 %, spread 1,5 pt | passage 50,8 %, EV +853 $ (10k), +8 849 $ (100k) ; sans edge +98 $ / +1 295 $ ; sans RAZ +307 $ / +3 390 $ ; hors compteur
 - [2026-10-31] fix | Renommage costs18 → couts_reels_nq_nuit (script, rapport, résultats) pour éviter la confusion avec le pré-enregistrement n° 18 (FTMO) | liens mis à jour
@@ -29,7 +30,6 @@ updated: 2026-10-31 15:28
 - [2026-10-31] experiment | Règle NQ de nuit recalculée avec les spreads réels bbo-1m (NQ 2011-2026, MNQ 2019-2026) | +0,076 R/trade contre +0,088 au coût fixe ; MNQ +0,067 à 1,24 $ A/R ; compteur inchangé
 - [2026-10-31] prereg | N° 18 avenant A : stop 1 ATR M15 (≈ 0,12 % du prix) au lieu de 0,5 % | EV +71 $ ± 4 (10k), +1 035 $ ± 43 (100k) ; le spread 1 pb (0,083 R/trade) explique tout l'écart (sans coût +3 023 $) ; hors compteur
 - [2026-10-31] prereg | N° 18 : prop firm comme option, FTMO 1-Step avec trades NQ au hasard (branche propfirm-ftmo) | EV +178 $ ± 6 (10k), +2 098 $ ± 64 (100k) ; sans RAZ de la perte max −34 % ; hors compteur (1 482)
-- [2026-10-31] ingest | Achat Databento bbo-1m NQ 2010-2026 + MNQ 2019-2026 (11,20 $) dans cache/databento_bbo | spread NQ médian 2-4 ticks (pas 1) ; copie vers D: refusée (accès Windows), préparée dans cache/a_copier_vers_D
 
 ## Prochaines actions
 
