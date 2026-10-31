@@ -19,3 +19,5 @@ Historique antérieur au wiki (repris de git et des rapports) :
 ## [2026-10-31] setup | Création du wiki (hubs, SCHEMA, ledger rempli, 4 expériences, 9 concepts, hooks, Obsidian) | wiki opérationnel
 ## [2026-10-31] query | Chiffrage Databento des coûts d'exécution NQ/MNQ (bbo-1m, bbo-1s, tbbo) | bbo-1m NQ 2010-2026 7,71 $ + MNQ 2019-2026 3,49 $ ; tbbo > 1 600 $ ; rien acheté
 ## [2026-10-31] prereg | N° 13 : 4 filtres « à plat » anti-drawdown sur la règle NQ de nuit, contrôle aléatoire | ❌ aucun retenu ; règle inchangée ; compteur 1 471
+## [2026-10-31] ingest | Calendrier BLS NFP/CPI 2010-2026 (388 dates) dans config/calendrier_macro_bls.csv | figé avant le n° 14
+## [2026-10-31] prereg | N° 14 : éviter les annonces NFP/CPI de 8:30 dans la règle NQ de nuit | ❌ ; nuits d'annonce = meilleures nuits (~40 % des R 2016-2026) ; compteur 1 473

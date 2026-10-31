@@ -1,0 +1,10 @@
+sélection 2016-2026 : 2672 nuits, 249 d'annonce ; R/trade annonce +0.299 contre +0.054 ailleurs ; 0/10 des pires nuits sont des nuits d'annonce
+confirmation 2011-2015 : 1115 nuits, 106 d'annonce ; R/trade annonce +0.191 contre +0.108 ailleurs ; 0/10 des pires nuits sont des nuits d'annonce
+               période        variante  nuits  R_par_an  max_dd_R  R_an_vs_base_%  reduction_dd_%  aleatoire_p95_%  rang_vs_aleatoire_%  gain_9h30_vs_8h25_R  gain_lo  gain_hi    c1    c2    c3
+   sélection 2016-2026            base   2672    19.293   -25.403             NaN             NaN              NaN                  NaN                  NaN      NaN      NaN   NaN   NaN   NaN
+   sélection 2016-2026 V1 pas de trade   2423    12.289   -33.230          63.698         -30.814           14.420                  2.6                  NaN      NaN      NaN False False False
+   sélection 2016-2026  V2 sortie 8:25   2672    14.284   -26.918          74.040          -5.964            1.908                  3.4                0.214    0.131    0.301 False False False
+confirmation 2011-2015            base   1115    28.605   -22.359             NaN             NaN              NaN                  NaN                  NaN      NaN      NaN   NaN   NaN   NaN
+confirmation 2011-2015 V1 pas de trade   1009    24.111   -20.399          84.291           8.766           16.565                 76.4                  NaN      NaN      NaN False  True False
+confirmation 2011-2015  V2 sortie 8:25   1115    27.885   -21.208          97.485           5.147            4.590                 96.6                0.031   -0.105    0.164 False  True  True
+retenues : aucune ; confirmées : aucune
