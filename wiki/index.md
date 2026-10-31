@@ -23,7 +23,7 @@ updated: 2026-10-31
 
 ## Concepts
 - [[wiki/concepts/pre-enregistrement|Pré-enregistrement]] — protocole : tout est figé et commité avant calcul
-- [[wiki/concepts/compteur-essais|Compteur d'essais]] — N cumulé, sert au DSR ; 1 480 au n° 16
+- [[wiki/concepts/compteur-essais|Compteur d'essais]] — N cumulé, sert au DSR ; 1 482 au n° 17
 - [[wiki/concepts/dsr|Deflated Sharpe Ratio]] — critère > 0,95
 - [[wiki/concepts/reality-check|Reality Check, PBO, permutation, bootstrap]] — autres tests de multiplicité
 - [[wiki/concepts/cout-standard|Coût standard]] — 1 tick + 5 $ aller-retour

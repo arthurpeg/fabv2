@@ -3,8 +3,8 @@ type: experiment
 updated: 2026-10-31
 status: active
 verdict: candidat
-prereg: [10, 11, 12, 13, 14, 15, 16]
-trials: 1480
+prereg: [10, 11, 12, 13, 14, 15, 16, 17]
+trials: 1482
 ---
 
 # Règle NQ de nuit : momentum 12-1, entrée 20:00 ET
@@ -25,6 +25,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | 14 | Éviter les annonces NFP/CPI de 8:30 ? | ❌ inversé : ce sont les meilleures nuits (+0,30 R contre +0,05) | [[reports/prereg14_report]] |
 | 15 | Filtres VIX (Donninger, Vojtko) et taille selon la volatilité ? | ❌ aucun des 3 ; la taille ne change rien (1 R suit déjà l'ATR) | [[reports/prereg15_report]] |
 | 16 | Clôture sous le VWAP 15:15–16:15 (pression vendeuse, BLW) ? | ❌ ES p = 0,30, YM inversé ; NQ +0,05 R p = 0,11 | [[reports/prereg16_report]] |
+| 17 | Exécution au VWAP (entrée 20:00–21:00, sortie 9:00–9:30) ? | non retenue : entrée +0,005 R sur NQ (IC inclut 0), sortie nulle | [[reports/prereg17_report]] |
 
 ## Ce qu'on sait
 - Hors échantillon temporel (n° 11), **100 % des trades étaient longs** : c'est « long NQ la nuit » qui est validé, pas le filtre momentum.
