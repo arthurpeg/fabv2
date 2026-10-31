@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-10-31 19:23
+updated: 2026-10-31 20:06
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-10-31 19:23
 
 ## Dernières entrées du journal (8)
 
+- [2026-10-31] query | 10 prop firms (FTMO, STF, FundedNext, FundingPips, The5ers, Topstep, Apex, MFFU, Tradeify, Lucid), règles relevées sur les sites, grille risque × rr, choix 2011-2018 (run_propfirm_multi.py) | EV OOS 2019-2025 : FundingPips +12,1 k$, FTMO +7,6 k$, STF +6,9 k$, FundedNext +6,1 k$, The5ers +0,9 k$, futures 50K +0,2 à +0,5 k$, Topstep −53 $ ; risque bas (k 0,1) meilleur sauf Apex
 - [2026-10-31] query | Plan « 2 coups » LucidFlex 50K, DLL OFF + 50 %, 130 $ (run_propfirm_lucid_plan.py, règles relues sur support.lucidtrading.com) | passage 34,5 % ; EV +66 $ (1 payout) / +234 $ (cycle répété) ; sans edge +32 / +147 $ ; rachat permanent 1 an +3,7 k$ médiane, pire −5,2 k$, ~60 évals/an
 - [2026-10-31] query | Plan prop firm refait chez Smart Trader Funds, challenge 1 Phase (run_propfirm_stf.py, règles lues sur smartraderfunds.com) | position gardée pendant les annonces 8:30 : EV −62 $ (10k) / +148 $ (100k) ; à plat à 8:19 : +390 $ / +4 512 $ (FTMO +1 009 / +10 408) ; 1×10k → 100k au 95e centile +2,8 k$ à 3 ans (FTMO +54,9 k$) ; 1×100k d'emblée +44,7 k$ médiane, pire +16,9 k$
 - [2026-10-31] query | Variante F (1→2→3×10k puis 100k) : délai jusqu'au premier achat d'une éval 100k (run_propfirm_variants.py) | moyenne ~18 mois (379 nuits), médiane 375, 25e-75e centile 281-466 nuits, 90e 533, 3 départs sur 612 sans 100k en 3 ans
@@ -29,7 +30,6 @@ updated: 2026-10-31 19:23
 - [2026-10-31] query | Plan FTMO, seuils au 95e centile de l'argent sorti avant remboursement (run_propfirm_start1.py, section 4) | départ 450 $ ; A (10k→100k→trio 100k) +54,9 k$ médiane à 3 ans, pire +550 $ ; B (10k→trio 10k→trio 100k) +31,9 k$, pire +5,95 k$ ; apport au pire 158 $
 - [2026-10-31] query | Plan FTMO, règle stricte du pire chemin (run_propfirm_start1.py, section 3) | pires chemins 608 / 1 738 / 3 842 / 7 685 / 10 978 $ ; B2 (1×10k → 3×10k → 3×100k) +15,7 k$ médiane à 3 ans, pire +5,1 k$, aucun apport ; trio 100k en 3 ans dans 24 % des départs
 - [2026-10-31] query | Démarrer FTMO avec un seul 10k (run_propfirm_start1.py) : réserve et 3 chemins | réserve 650 $ (pire : 7 évals, 20:00) ; A 10k→100k→trio 100k +99,9 k$ médiane à 3 ans, apport dans 28 % ; B trio 10k→trio 100k +75,7 k$, apport dans 7 % ; C 10k→trio 100k +67 k$
-- [2026-10-31] query | Plan FTMO : 10k puis 100k dès que les gains des 10k paient 1, 2 ou 3 trios d'évals 100k (run_propfirm_paths.py) | bascule ~10 / 13 / 18 mois ; +104 / +93 / +78 k$ médiane à 3 ans contre +67 k$ en paliers et +148 k$ en 100k d'emblée
 
 ## Prochaines actions
 
