@@ -16,7 +16,7 @@ Page d'aiguillage : un module par famille de tests, un `run_*.py` par exécution
 | `recolte1/` | moteur et règles des papiers overnight, IC bootstrap | [run_recolte1.py](../../run_recolte1.py), [run_prereg10.py](../../run_prereg10.py) → 12, [run_robust13.py](../../run_robust13.py) |
 | `coinflip/` | contrôle sans edge | [run_coinflip.py](../../run_coinflip.py) |
 | `propfirm/` | prop firm comme option : moteurs FTMO 1-Step (`ftmo.py`) et LucidFlex (`lucid.py`) | [run_propfirm_ftmo.py](../../run_propfirm_ftmo.py), [run_propfirm_nq_nuit.py](../../run_propfirm_nq_nuit.py), [run_propfirm_lucid.py](../../run_propfirm_lucid.py), [run_propfirm_rr2.py](../../run_propfirm_rr2.py), [run_propfirm_streaks.py](../../run_propfirm_streaks.py), [build_nq_nuit_tp.py](../../build_nq_nuit_tp.py) |
-| (racine) | S1 Noise Area NQ + stop 1R, vectorbt contre boucle d'origine (exploratoire) | [run_s1_r_stop_vbt.py](../../run_s1_r_stop_vbt.py) |
+| (racine) | S1 Noise Area NQ + stop 1R, vectorbt contre boucle d'origine (exploratoire), puis n° 19 sur 2010-2015 | [run_s1_r_stop_vbt.py](../../run_s1_r_stop_vbt.py), [run_prereg19.py](../../run_prereg19.py) |
 | `tests/` | pytest (`uv run pytest`) | — |
 
 Lancer : `uv run python <script>.py`.

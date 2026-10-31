@@ -1,0 +1,43 @@
+N° 19 : S1 + stop 1R hors échantillon. Séances test 2010-09-01 → 2015-12-31 (1343)
+
+== stop1R_p0.5_NQ (PRINCIPAL) : stop dur 1R, plancher 0.5%, NQ 2.25 $ + 1 tick par côté
+Trades        885 (166 par an) ; sorties : stop suiveur 513, fin de seance 307, stop 1R 65
+En R          espérance +0.030 R/trade (t +1.03), +4.9 R/an, gagnants 35% (moyenne +0.87 R), perdants -0.43 R, pire trade -1.11 R
+Sharpe en R   0.44 (avant 2021 0.44 | 2021-2026 nan) ; pire baisse 20.8 R ; pire jour -3.2 R
+En dollars    +10,729 $ (+2,013 $/an) ; pire baisse 5,315 $ ; pire jour -939 $ ; contrats médian 1
+R par année   2010:-15 2011:-4 2012:+21 2013:+5 2014:+7 2015:+13
+Test          R net +0.0297 IC [-0.0262 ; +0.0901], p unilatéral 0.1540 ; brut +0.0794 ; 2010-09→2012 +0.0053 | 2013-2015 +0.0516
+              Sharpe R 0.44 [-0.37 ; 1.23] ; Sharpe $ 0.57 [-0.19 ; 1.33] ; DSR $ approché (N = 1485) 0.000
+Contrôle      vbt 885 trades / boucle 885 ; écart de P&L total +0.05 $ ; entrées au-delà du stop 0
+
+== s1_origine_NQ : sans stop dur, plancher 0.0%, NQ 2.25 $ + 1 tick par côté
+Trades        878 (165 par an) ; sorties : stop suiveur 566, fin de seance 312
+En R          espérance -0.174 R/trade (t -0.12), -28.7 R/an, gagnants 36% (moyenne +12.06 R), perdants -6.99 R, pire trade -837.62 R
+Sharpe en R   -0.05 (avant 2021 -0.05 | 2021-2026 nan) ; pire baisse 1151.2 R ; pire jour -838.6 R
+En dollars    +10,709 $ (+2,009 $/an) ; pire baisse 5,339 $ ; pire jour -1,598 $ ; contrats médian 1
+R par année   2010:-257 2011:-329 2012:+101 2013:-461 2014:+75 2015:+717
+Test          R net -0.1744 IC [-2.9474 ; +2.3481], p unilatéral 0.5540 ; brut +0.8392 ; 2010-09→2012 -1.1750 | 2013-2015 +0.7103
+              Sharpe R -0.05 [-0.78 ; 0.78] ; Sharpe $ 0.55 [-0.21 ; 1.33] ; DSR $ approché (N = 1485) 0.000
+Contrôle      vbt 878 trades / boucle 878 ; écart de P&L total -0.00 $ ; entrées au-delà du stop 0
+
+== stop1R_p0.3_NQ : stop dur 1R, plancher 0.3%, NQ 2.25 $ + 1 tick par côté
+Trades        899 (169 par an) ; sorties : stop suiveur 403, fin de seance 292, stop 1R 204
+En R          espérance +0.052 R/trade (t +1.17), +8.7 R/an, gagnants 35% (moyenne +1.38 R), perdants -0.66 R, pire trade -1.28 R
+Sharpe en R   0.51 (avant 2021 0.51 | 2021-2026 nan) ; pire baisse 27.1 R ; pire jour -4.3 R
+En dollars    +11,156 $ (+2,093 $/an) ; pire baisse 4,834 $ ; pire jour -1,017 $ ; contrats médian 1
+R par année   2010:-19 2011:-3 2012:+34 2013:+8 2014:+4 2015:+23
+Test          R net +0.0519 IC [-0.0349 ; +0.1466], p unilatéral 0.1405 ; brut +0.1324 ; 2010-09→2012 +0.0271 | 2013-2015 +0.0742
+              Sharpe R 0.51 [-0.32 ; 1.30] ; Sharpe $ 0.60 [-0.20 ; 1.39] ; DSR $ approché (N = 1485) 0.000
+Contrôle      vbt 899 trades / boucle 899 ; écart de P&L total +0.06 $ ; entrées au-delà du stop 0
+
+== stop1R_p0.5_MNQ : stop dur 1R, plancher 0.5%, MNQ 0.60 $ + 1 tick par côté
+Trades        885 (166 par an) ; sorties : stop suiveur 513, fin de seance 307, stop 1R 65
+En R          espérance +0.004 R/trade (t +0.14), +0.7 R/an, gagnants 34% (moyenne +0.89 R), perdants -0.45 R, pire trade -1.15 R
+Sharpe en R   0.06 (avant 2021 0.06 | 2021-2026 nan) ; pire baisse 29.0 R ; pire jour -3.3 R
+En dollars    +409 $ (+77 $/an) ; pire baisse 719 $ ; pire jour -95 $ ; contrats médian 1
+R par année   2010:-17 2011:-11 2012:+17 2013:+1 2014:+4 2015:+10
+Test          R net +0.0041 IC [-0.0522 ; +0.0650], p unilatéral 0.4345 ; brut +0.0794 ; 2010-09→2012 -0.0259 | 2013-2015 +0.0309
+              Sharpe R 0.06 [-0.77 ; 0.87] ; Sharpe $ 0.22 [-0.57 ; 1.00] ; DSR $ approché (N = 1485) 0.000
+Contrôle      vbt 885 trades / boucle 885 ; écart de P&L total +0.01 $ ; entrées au-delà du stop 0
+
+VERDICT n° 19 : ÉCHEC (R net +0.0297, p 0.1540, sous-périodes +0.0053 / +0.0516). Compteur d'essais : 1485.

@@ -43,8 +43,7 @@ from recolte1.engine import NY, load
 
 sys.stdout.reconfigure(encoding="utf-8")
 OUT = Path("results/s1_r_stop")
-OUT.mkdir(parents=True, exist_ok=True)
-LOG = open(OUT / "run.log", "w", encoding="utf-8")
+LOG = None  # ouvert par main() : importer ce module n'écrase pas run.log
 
 SIGMA_SEANCES, VOL_SEANCES, BANDE, CONTROLE_MIN = 30, 14, 1.2, 30
 CONTRATS = {"MNQ": dict(point=2.0, commission=0.60), "NQ": dict(point=20.0, commission=2.25)}
@@ -60,8 +59,9 @@ CONFIGS = [  # nom, plancher, stop dur, risque $, contrat, ticks
 
 def say(s: str = "") -> None:
     print(s, flush=True)
-    LOG.write(s + "\n")
-    LOG.flush()
+    if LOG is not None:
+        LOG.write(s + "\n")
+        LOG.flush()
 
 
 def seance_cash():
@@ -279,6 +279,9 @@ def resume(jours, t: pd.DataFrame) -> str:
 
 
 def main():
+    global LOG
+    OUT.mkdir(parents=True, exist_ok=True)
+    LOG = open(OUT / "run.log", "w", encoding="utf-8")
     say("S1 Noise Area NQ + stop dur 1R, vectorbt — EXPLORATOIRE, hors compteur, données ≤ 2026-08-28")
     g = entrees(*seance_cash())
     jours = g["jours"]
