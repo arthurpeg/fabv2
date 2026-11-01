@@ -1,0 +1,98 @@
+NQ, 4048 séances NYSE pleines, 2010-06-08 → 2026-08-28
+Clôture HK ≠ ouverture Europe : 60 % des jours (heure d'été britannique)
+Clôture Europe 16:30 Londres en heure NY : {'11:30': 3773, '12:30': 275}
+
+Sessions (bp) : moyenne, écart-type, % positifs
+  asia_A      n  4029  moy  +3.77  σ   57.0  pos 55.4 %
+  asia_B      n  4029  moy  +3.74  σ   58.9  pos 55.5 %
+  eu_A        n  4027  moy  +1.13  σ   52.7  pos 52.3 %
+  eu_rest_B   n  4027  moy  +1.16  σ   50.0  pos 52.3 %
+  eu_B        n  4031  moy  +1.96  σ   84.0  pos 53.3 %
+  us          n  4036  moy  +2.75  σ  102.4  pos 54.1 %
+  us_overlap  n  4036  moy  +1.01  σ   67.2  pos 52.8 %
+  us_rest_B   n  4042  moy  +1.61  σ   74.6  pos 55.4 %
+
+=== Paires (toute la période) ===
+                                paire variante    n  pearson  spearman   beta  t_beta_hc  P(Y>0)  P(Y>0|X>0)  P(Y>0|X<0)  z_prop  Y_bp|X>0  Y_bp|X<0  diff_bp  t_diff
+                        Asie → Europe        A 4003   -0.052    -0.035 -0.049     -2.017  52.211      50.538      54.320  -2.379    -0.344     2.878   -3.222  -1.898
+                            Asie → US        A 4003   -0.003     0.030 -0.006     -0.112  54.009      54.749      53.077   1.054     4.541    -0.013    4.555   1.384
+                     Asie → Europe+US        A 4007   -0.006     0.011 -0.011     -0.174  54.530      54.456      54.622  -0.105     4.423     2.424    1.999   0.537
+     Asie (clôture HK) → reste Europe        B 4008   -0.045    -0.049 -0.040     -1.809  52.345      49.955      55.361  -3.403    -1.082     3.997   -5.079  -3.150
+               Asie (clôture HK) → US        B 4008    0.003     0.033  0.006      0.123  54.167      55.546      52.427   1.968     5.802    -1.233    7.035   2.157
+                          Europe → US        A 4008   -0.003     0.006 -0.007     -0.130  54.042      53.587      54.545  -0.608     3.377     1.506    1.871   0.576
+Europe (clôture 16:30 Ldn) → reste US        B 4018    0.066     0.067  0.058      2.700  55.276      57.349      52.891   2.835     3.950    -1.050    5.001   2.122
+              Nuit (Asie+Europe) → US        A 4022   -0.000     0.011 -0.000     -0.012  54.078      53.491      54.842  -0.852     3.104     2.277    0.828   0.250
+
+=== Par sous-période : Pearson, P(Y>0|X>0) - P(Y>0|X<0), écart de moyenne ===
+période                                2010-2015  2016-2019  2020-2022  2023-2026
+paire                                                                            
+Asie (clôture HK) → US                     0.015      0.002      0.038     -0.053
+Asie (clôture HK) → reste Europe           0.003     -0.065     -0.116      0.028
+Asie → Europe                             -0.014     -0.075     -0.108      0.011
+Asie → Europe+US                           0.046     -0.032      0.038     -0.092
+Asie → US                                  0.059     -0.001      0.036     -0.107
+Europe (clôture 16:30 Ldn) → reste US      0.042      0.052      0.070      0.097
+Europe → US                               -0.019     -0.018      0.001      0.019
+Nuit (Asie+Europe) → US                    0.026     -0.013      0.040     -0.072
+période                                2010-2015  2016-2019  2020-2022  2023-2026
+paire                                                                            
+Asie (clôture HK) → US                       2.1        3.2        9.2       -0.5
+Asie (clôture HK) → reste Europe            -3.7       -5.5      -11.9       -2.7
+Asie → Europe                               -2.5       -5.5       -8.0       -0.5
+Asie → Europe+US                            -1.5       -1.4        1.9        1.3
+Asie → US                                    1.9        1.5        7.5       -3.3
+Europe (clôture 16:30 Ldn) → reste US        1.8        2.7        8.8        6.9
+Europe → US                                 -1.9       -4.0        2.4        1.0
+Nuit (Asie+Europe) → US                     -2.7       -3.0        5.2       -2.9
+période                                2010-2015  2016-2019  2020-2022  2023-2026
+paire                                                                            
+Asie (clôture HK) → US                       4.5        8.0       19.4       -0.4
+Asie (clôture HK) → reste Europe            -1.9       -6.7      -15.9        0.8
+Asie → Europe                               -1.9       -5.7      -11.0        4.0
+Asie → Europe+US                             4.7       -1.7        7.3       -2.1
+Asie → US                                    6.6        3.9       14.8       -6.0
+Europe (clôture 16:30 Ldn) → reste US        2.8        1.5        7.1       10.5
+Europe → US                                  0.5       -3.9        7.1        6.0
+Nuit (Asie+Europe) → US                      2.7        0.5        6.6       -6.3
+période                                2010-2015  2016-2019  2020-2022  2023-2026
+paire                                                                            
+Asie (clôture HK) → US                      0.34       0.04       0.63      -1.08
+Asie (clôture HK) → reste Europe            0.08      -1.34      -2.33       0.56
+Asie → Europe                              -0.34      -1.63      -2.17       0.18
+Asie → Europe+US                            1.18      -0.76       0.56      -1.47
+Asie → US                                   1.45      -0.03       0.59      -2.04
+Europe (clôture 16:30 Ldn) → reste US       1.04       1.12       1.48       1.79
+Europe → US                                -0.44      -0.40       0.01       0.37
+Nuit (Asie+Europe) → US                     0.61      -0.30       0.75      -1.55
+
+=== Moyenne de Y (bp) par quintile de X ===
+                                paire   Q1   Q2  Q3   Q4   Q5  Q1_pos%  Q2_pos%  Q3_pos%  Q4_pos%  Q5_pos%
+                        Asie → Europe  3.6  1.7 2.3  1.0 -2.9     55.0     53.4     52.8     50.4     49.7
+                            Asie → US  1.1  0.3 1.4  5.5  5.0     52.8     54.4     51.3     56.0     55.8
+                     Asie → Europe+US  3.7  1.9 3.7  6.5  2.7     53.6     56.3     52.3     56.2     54.5
+     Asie (clôture HK) → reste Europe  4.3  3.6 1.8 -1.2 -2.6     54.2     56.5     53.7     48.6     48.8
+               Asie (clôture HK) → US  0.3 -4.1 5.0  6.3  5.7     52.2     52.8     53.3     56.5     55.5
+                          Europe → US  0.8  1.9 9.0 -0.7  2.2     52.4     56.6     56.4     51.2     53.7
+Europe (clôture 16:30 Ldn) → reste US -4.2  2.2 2.1  0.8  7.7     49.6     56.1     56.5     53.7     60.9
+              Nuit (Asie+Europe) → US  3.1  3.8 2.9  0.1  3.8     53.8     56.6     52.9     51.7     55.4
+
+=== Suivre le signe de X sur Y (vectorbt, net 1 tick + 5 $) ===
+                                paire    n  gross_bp  net_bp  t_net  sharpe_net  long_net_bp  sharpe_long_net  net_2016_26_bp  net_2023_26_bp
+                        Asie → Europe 4003     -1.47   -2.40  -2.87       -0.72         0.15             0.04           -2.39            1.89
+                            Asie → US 4003      2.54    1.61   0.99        0.25         1.59             0.25            1.58           -2.92
+                     Asie → Europe+US 4007      1.39    0.46   0.25        0.06         2.61             0.36            0.18           -0.83
+     Asie (clôture HK) → reste Europe 4008     -2.37   -3.30  -4.18       -1.05         0.23             0.07           -3.76            0.26
+               Asie (clôture HK) → US 4008      3.78    2.85   1.76        0.44         1.76             0.27            3.97           -0.03
+                          Europe → US 4008      1.06    0.13   0.08        0.02         1.56             0.24            0.87            2.89
+Europe (clôture 16:30 Ldn) → reste US 4018      2.60    1.67   1.43        0.36         0.69             0.15            2.68            5.18
+              Nuit (Asie+Europe) → US 4022      0.77   -0.16  -0.10       -0.03         1.81             0.28           -0.17           -2.88
+
+=== Décomposition : reste US (16:30 Ldn → 16:00 NY) sur Europe pré-US et début US ===
+  eu_A β +0.040 t +1.12
+  us_overlap β +0.073 t +2.98
+  eu_A β +0.043 t +1.23 ; us_overlap β +0.074 t +3.03
+  asia_A β +0.037 t +1.08 ; eu_A β +0.045 t +1.29 ; us_overlap β +0.075 t +3.09
+  2010-2015 : r(eu_A, reste US) +0.028 ; r(début US, reste US) +0.032
+  2016-2019 : r(eu_A, reste US) -0.026 ; r(début US, reste US) +0.081
+  2020-2022 : r(eu_A, reste US) +0.041 ; r(début US, reste US) +0.076
+  2023-2026 : r(eu_A, reste US) +0.049 ; r(début US, reste US) +0.082
