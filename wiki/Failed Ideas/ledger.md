@@ -1,6 +1,6 @@
 ---
 type: ledger
-updated: 2026-10-31
+updated: 2026-11-01
 ---
 
 # Registre des idées abandonnées
@@ -36,3 +36,4 @@ updated: 2026-10-31
 | 2026-10-31 | Réduire la taille de la règle NQ de nuit quand la volatilité 20 j dépasse sa médiane | [[PREREGISTRATION_15]], [[reports/prereg15_report]] | ❌ | DD −1 % seulement, ratio −14 % : le stop en ATR M15 normalise déjà le risque | Jamais tant que le risque est mesuré en R d'ATR |
 | 2026-10-31 | S1 Noise Area NQ + stop dur 1R avec plancher de R (variante de la bande de bruit M2, fichier S1_R_stop.py) | [[PREREGISTRATION_19]], [[reports/prereg19_report]] | ❌ | Plancher choisi après coup sur 2016–2026 (+0,106 R) ; sur 2010–2015, +0,030 R/trade, p = 0,15 ; le stop n'apporte rien face à S1 sans stop ; coût MNQ l'annule | Seulement sur le holdout post-2026-08-28, règle figée telle que dans le n° 19 (voir ligne M2 NQ) |
 | 2026-10-31 | Pression vendeuse de fin de séance approchée par clôture 16:15 < VWAP 15:15-16:15 (mécanisme BLW) pour la règle de nuit | [[PREREGISTRATION_16]], [[reports/prereg16_report]] | ❌ | ES +0,025 R p = 0,30 ; YM signe contraire ; NQ +0,051 R p = 0,11 ; filtre ne bat pas le hasard | Avec le vrai volume signé (trades tick par tick, ~1 275 $ NQ) plutôt qu'une approximation par le VWAP |
+| 2026-11-01 | Stop de la règle NQ de nuit au bord du range du soir 17:00→20:00 (low si long, high si short), TP 1 à 2,5 R | [[reports/nq_nuit_sl_range_report]] (exploratoire) | ❌ | Stop médian 0,86 ATR (8 points) : 60 % de SL, coûts ≈ 0,13 R/trade ; net −0,10 à −0,03 R contre +0,088 pour SL 2 / TP 5 ATR ; DD −157 à −366 R | Coût proche de zéro, ou plancher de distance fixé à l'avance et testé sur le holdout post-2026-08-28 |
