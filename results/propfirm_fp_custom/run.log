@@ -2,3 +2,25 @@ FundingPips 1 Step Flex 100k (+Swing), règles sur mesure ; 607 départs de 3 an
   référence plan FTMO (2,4 % à 2,5 R ; 1,2 % à 2 R ; 2 semaines), 2011-2018 : médiane +68 494 $, 5e c. +51 957 $, pire +47 827 $
   référence plan FTMO (2,4 % à 2,5 R ; 1,2 % à 2 R ; 2 semaines), 2019-2023 : médiane +59 511 $, 5e c. +52 924 $, pire +43 423 $
   référence plan FTMO (2,4 % à 2,5 R ; 1,2 % à 2 R ; 2 semaines), tout : médiane +64 053 $, 5e c. +52 230 $, pire +43 423 $
+
+Grille : 3600 réglages. 10 meilleurs en médiane 2011-2018 :
+  éval 3.0% à 2 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +87 814 $ (pire +58 840) | OOS médiane +72 668 $, 5e c. +56 023 $, pire +49 787 $, mise max 5 128 $
+  éval 3.0% à 3 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +86 991 $ (pire +53 576) | OOS médiane +79 289 $, 5e c. +58 787 $, pire +50 065 $, mise max 4 396 $
+  éval 2.0% à 3 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +86 518 $ (pire +56 648) | OOS médiane +67 810 $, 5e c. +51 650 $, pire +43 671 $, mise max 2 930 $
+  éval 2.5% à 2.5 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +86 350 $ (pire +46 448) | OOS médiane +72 536 $, 5e c. +51 849 $, pire +47 354 $, mise max 3 663 $
+  éval 2.5% à 2 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +86 208 $ (pire +58 108) | OOS médiane +70 715 $, 5e c. +58 435 $, pire +51 219 $, mise max 3 663 $
+  éval 3.0% à 2.5 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +85 576 $ (pire +57 381) | OOS médiane +78 491 $, 5e c. +60 012 $, pire +50 184 $, mise max 4 396 $
+  éval 2.5% à 3 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +84 869 $ (pire +52 984) | OOS médiane +79 945 $, 5e c. +64 819 $, pire +51 574 $, mise max 3 663 $
+  éval 3.0% à 2 R ; financé 1.25% à 2.5 R, protection —, retraits à la demande : IS médiane +84 299 $ (pire +50 540) | OOS médiane +77 975 $, 5e c. +54 964 $, pire +53 549 $, mise max 5 128 $
+  éval 3.0% à 2.5 R ; financé 1.25% à 2.5 R, protection —, retraits à la demande : IS médiane +83 221 $ (pire +50 540) | OOS médiane +81 893 $, 5e c. +69 604 $, pire +52 715 $, mise max 4 396 $
+  éval 3.0% à 1.5 R ; financé 1.25% à 2 R, protection —, retraits à la demande : IS médiane +83 163 $ (pire +53 176) | OOS médiane +70 328 $, 5e c. +49 737 $, pire +38 845 $, mise max 4 396 $
+
+Effet de chaque choix (médiane OOS du meilleur réglage quand on ne fait varier que ce paramètre) :
+  e_risk : 0.01 → IS +60 522 / OOS +40 870 ; 0.015 → IS +69 990 / OOS +60 862 ; 0.02 → IS +81 654 / OOS +69 966 ; 0.025 → IS +86 208 / OOS +70 715 ; 0.03 → IS +87 814 / OOS +72 668
+  e_rr : 0.75 → IS +77 352 / OOS +69 366 ; 1.0 → IS +82 025 / OOS +65 311 ; 1.5 → IS +83 163 / OOS +70 328 ; 2.0 → IS +87 814 / OOS +72 668 ; 2.5 → IS +85 576 / OOS +78 491 ; 3.0 → IS +86 991 / OOS +79 289
+  f_risk : 0.005 → IS +39 565 / OOS +26 549 ; 0.0075 → IS +58 028 / OOS +44 486 ; 0.01 → IS +74 011 / OOS +60 758 ; 0.0125 → IS +87 814 / OOS +72 668
+  f_rr : 1.0 → IS +50 197 / OOS +40 833 ; 1.5 → IS +75 826 / OOS +75 207 ; 2.0 → IS +87 814 / OOS +72 668 ; 2.5 → IS +84 299 / OOS +77 975 ; 3.0 → IS +80 628 / OOS +79 031
+  protection : 0.02 → IS +72 885 / OOS +62 953 ; 0.04 → IS +79 933 / OOS +71 340 ; nan → IS +87 814 / OOS +72 668
+  retraits : 2 semaines → IS +74 708 / OOS +70 436 ; à la demande → IS +87 814 / OOS +72 668
+
+Sensibilité, même réglage avec levier 1:20 en financé : OOS médiane +88 712 $, pire +58 436 $

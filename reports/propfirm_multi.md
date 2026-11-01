@@ -96,3 +96,27 @@ Chiffres : [run_propfirm_metrics.py](../run_propfirm_metrics.py) → `results/pr
 | Évals achetées en 3 ans (médiane), pire série ratée | 3, 2 | 9, 6 | 4, 2 | 4, 4 |
 
 **Le meilleur réglage par éval n'est pas le meilleur dans le temps.** À 1 % de risque, l'EV par éval est plus haute, mais l'éval dure 2 à 3 mois et le financé paie lentement. Sur 3 ans avec un seul compte racheté à chaque échec, le réglage plus agressif du plan FTMO rapporte 2,3 fois plus chez FTMO (+73 k$ contre +31 k$) et 1,4 fois plus chez FundingPips. Pour un compte unique, c'est le gain par unité de temps qui compte, pas l'EV par éval. Ces chaînes couvrent 2011-2023 : en partie dans l'échantillon, et optimistes comme le reste.
+
+## FundingPips : gestion du risque sur mesure (2026-11-01)
+
+Chiffres : [run_propfirm_fp_custom.py](../run_propfirm_fp_custom.py) → `results/propfirm_fp_custom/run.log`, `grid.csv`. Critère : un compte racheté à chaque échec pendant 3 ans (607 départs toutes les 5 nuits). Choix sur les départs 2011-2018, vérification sur 2019-2023. 3 600 réglages testés.
+
+- **Éval** : risque de 1 à 3 % (3 % = plafond de la perte du jour), objectif de 0,75 à 3 R ramené au reste à faire.
+- **Financé** : risque de 0,5 à 1,25 % (le levier 1:5 supposé plafonne vers 1,3 %), objectif de 1 à 3 R.
+- **Protection** : risque divisé par 2 au-delà de +2 % ou +4 % de profit dans le cycle.
+- **Retraits** : toutes les 2 semaines (80 %) ou à la demande (100 %, meilleur jour ≤ 35 %, 7 jours ≥ 0,5 %).
+
+| Réglage | 2011-2018 médiane | **2019-2023 médiane / 5e c. / pire** | Argent sorti max (2019-2023) |
+|---|---|---|---|
+| Plan FTMO (2,4 % à 2,5 R ; 1,2 % à 2 R ; 2 semaines) | +68 494 $ | +59 511 / +52 924 / +43 423 $ | — |
+| **Choisi : éval 3 % à 2 R ; financé 1,25 % à 2 R ; sans protection ; retraits à la demande** | +87 814 $ | **+72 668 / +56 023 / +49 787 $** | 5 128 $ |
+| Même réglage, retraits toutes les 2 semaines | +74 708 $ | +70 436 $ (médiane) | — |
+| Même réglage, levier 1:20 en financé (si 1:5 est faux) | — | +88 712 / — / +58 436 $ | — |
+
+Lecture (en ne faisant varier qu'un paramètre autour du réglage choisi, médiane 2019-2023) :
+- **Éval : plus de risque, c'est mieux, jusqu'au plafond.** 1 % → +40,9 k$, 2 % → +70,0 k$, 3 % → +72,7 k$. Un objectif de 2 à 3 R vaut mieux que 0,75 à 1 R.
+- **Financé : le risque est le levier principal.** 0,5 % → +26,5 k$, 1 % → +60,8 k$, 1,25 % → +72,7 k$. Le réglage est au bord de la grille, mais le levier 1:5 bloque de toute façon vers 1,3 %. Un objectif de 1,5 à 3 R va bien ; 1 R est nettement moins bon (+40,8 k$).
+- **Protéger le gain avant le retrait fait perdre** (+63,0 k$ à 2 %, +71,3 k$ à 4 %).
+- **Retraits à la demande** : +2 k$ sur 2019-2023, +13 k$ sur 2011-2018 ; le coût éventuel de cette formule n'est pas connu.
+
+Le gain sur mesure (+13 k$ en médiane sur 2019-2023 par rapport au plan FTMO) vient surtout du risque en éval porté à 3 % et du risque en financé porté au maximum que permet le levier. Ces deux choix se tiennent hors échantillon. Le réglage reste choisi parmi 3 600, avec une règle de nuit choisie sur 2016-2026 : optimiste.
