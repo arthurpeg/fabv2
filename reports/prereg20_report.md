@@ -34,3 +34,5 @@ Source : `results/prereg20/results.csv`, `run.log`.
 ## Conséquence (fixée à l'avance)
 
 Ligne au [[wiki/Failed Ideas/ledger|registre des échecs]]. La règle n'est rouverte qu'avec une donnée de mécanisme (gamma des vendeurs d'options, OPRA, disponible depuis 2013), et pas pour un simple test sur le holdout NQ.
+
+*Suite exploratoire sur NQ avec SL/TP en ATR M15 : [[reports/nq_matin_sltp_report]].*
