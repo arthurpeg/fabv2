@@ -29,7 +29,7 @@ from propfirm.nights import build
 sys.stdout.reconfigure(encoding="utf-8")
 OUT = Path("results/propfirm_multi")
 OUT.mkdir(parents=True, exist_ok=True)
-LOG = open(OUT / "run.log", "w", encoding="utf-8")
+LOG = None  # ouvert dans main() : le module peut être importé sans écraser run.log
 INF = -1e18
 SPLIT_DATE = pd.Timestamp("2019-01-01")
 E_K, E_RR = (0.1, 0.2, 0.33, 0.5, 1.0), (0.75, 1.0, 1.5, 2.0, 2.5, 3.0)
@@ -103,6 +103,8 @@ def ev(f, re, rf, m_e=slice(None), m_f=slice(None)):
 
 
 def main() -> None:
+    global LOG
+    LOG = open(OUT / "run.log", "w", encoding="utf-8")
     say(f"10 prop firms, règle NQ de nuit ; {L.n} nuits {L.dates[0].date()} → {L.dates[-1].date()} ; départs d'éval {NE}, "
         f"de financé {NF} ; IS < {SPLIT_DATE.date()} ≤ OOS")
     rows_e, rows_f, summ = [], [], []

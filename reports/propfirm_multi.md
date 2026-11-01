@@ -77,3 +77,22 @@ Points supposés (non écrits sur le site) : Tradeify, blocage de la perte max �
 - Règles supposées (voir plus haut) ; FTMO et STF sans la limite de taille ni les refus de retraits ; aucun risque de faillite ni de bannissement (« account rolling », positions anormalement grosses).
 - Éval et financé simulés séparément : la corrélation entre le moment du passage et la suite est ignorée.
 - Grille de 30 × 20 réglages choisie sur les mêmes données pour la colonne « toute la période » ; seul le chiffre hors échantillon échappe à ce biais de sélection, pas au choix de la règle sur 2016-2026.
+
+## Métriques détaillées FTMO et FundingPips (2026-11-01)
+
+Chiffres : [run_propfirm_metrics.py](../run_propfirm_metrics.py) → `results/propfirm_multi/metrics.log`, `metrics_chain.csv`. Deux réglages chacun : « choisi » (risque 0,1 × perte max, choisi sur 2011-2018) et « plan FTMO » (éval 0,2 × perte max à 2,5 R, financé 0,1 à 2 R).
+
+| | FTMO choisi | FTMO plan | FundingPips choisi | FundingPips plan |
+|---|---|---|---|---|
+| Risque éval / financé | 1 000 $ à 2 R / 1 000 $ à 1 R | 2 000 $ à 2,5 R / 1 000 $ à 2 R | 1 200 $ à 1,5 R / 1 200 $ à 2 R | 2 400 $ à 2,5 R / 1 200 $ à 2 R |
+| Passage (2011-2018 / 2019-2025) | 76 % (84 / 67) | 51 % (54 / 48) | 88 % (95 / 81) | 67 % (69 / 63) |
+| Nuits pour valider (médiane / 90e) | 43 / 90 | 11 / 24 | 60 / 152 | 15 / 39 |
+| Financé : P(≥ 1 retrait), retraits sur 2 ans | 92 %, 8,5 | 87 %, 5,2 | 94 %, 11,9 | 94 %, 11,9 |
+| Versé sur 2 ans (moyenne / médiane / 10e c.) | 22,5 / 16,8 / 1,9 k$ | 22,7 / 15,8 / 0 k$ | 27,5 / 22,8 / 4,4 k$ | idem |
+| 1er retrait (nuits, médiane) | 15 | 17 | 11 | 11 |
+| EV par éval : tout / 2019-2025 / sans edge | +16,6 / +7,6 / +1,7 k$ | +11,1 / +6,2 / +2,0 k$ | +23,5 / +12,1 / +3,5 k$ | +17,6 / +9,3 / +3,5 k$ |
+| **Un compte racheté 3 ans : gain net médiane / 5e c. / pire** | +31,2 / +20,4 / +14,7 k$ | **+73,1 / +51,5 / +43,7 k$** | +43,8 / +23,7 / +10,2 k$ | **+61,6 / +48,5 / +38,2 k$** |
+| Argent sorti avant remboursement (médiane / pire) | 549 / 2 196 $ | 1 098 / 3 843 $ | 733 / 2 198 $ | 733 / 3 663 $ |
+| Évals achetées en 3 ans (médiane), pire série ratée | 3, 2 | 9, 6 | 4, 2 | 4, 4 |
+
+**Le meilleur réglage par éval n'est pas le meilleur dans le temps.** À 1 % de risque, l'EV par éval est plus haute, mais l'éval dure 2 à 3 mois et le financé paie lentement. Sur 3 ans avec un seul compte racheté à chaque échec, le réglage plus agressif du plan FTMO rapporte 2,3 fois plus chez FTMO (+73 k$ contre +31 k$) et 1,4 fois plus chez FundingPips. Pour un compte unique, c'est le gain par unité de temps qui compte, pas l'EV par éval. Ces chaînes couvrent 2011-2023 : en partie dans l'échantillon, et optimistes comme le reste.
