@@ -1,15 +1,15 @@
 ---
 type: hot
-updated: 2026-11-01 21:57
+updated: 2026-11-01 21:59
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 501** (source : [[reports/nq_matin_aprem_report]])
-- Dernier pré-enregistrement : n° 19 ([[PREREGISTRATION_19]])
-- Idées abandonnées au registre : 27 ([[wiki/Failed Ideas/ledger]])
+- Compteur global d'essais : **1 520** (source : [[reports/gc_sessions_report]])
+- Dernier pré-enregistrement : n° 20 ([[PREREGISTRATION_20]])
+- Idées abandonnées au registre : 28 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-01
 
 ## Expériences ouvertes
@@ -22,6 +22,7 @@ updated: 2026-11-01 21:57
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-01] query | Rendement de l'or (GC) par session, 2016-2026 : reprise, Asie SGE, Londres (fix AM), COMEX (fix PM), post-règlement, puis heure par heure (run_gc_sessions.py, exploratoire, compteur 1 553) | seule la reprise 17:00 → 9:00 Shanghai est significative (+2,0 bp brut, t 3,5, Holm 0,003 ; +1,1 bp net, Sharpe 0,60) ; autres sessions nulles ; 16:00 → 20:00 NY porte ≈ 3 des 4 bp/jour ; 16:00 → 19:00 a posteriori +1,4 bp net, nul en 2016-19
 - [2026-11-01] query | Pouvoir prédictif de la matinée US (9:30 → 10:00…13:00) sur le reste de séance et la dernière 1/2 h, NQ 2010-2026 (run_nq_matin_aprem.py, exploratoire, compteur 1 520) | reste de séance : r +0,03 à +0,07, positif dans les 24 cases fenêtre × période, nul en vol basse ; dernière 1/2 h ≈ rien ; suivre 9:30→11:30 si |z| > 1 : +5,8 bp/trade net (t 2,4, ~75/an), sélection après coup, à tester seulement sur le holdout
 - [2026-11-01] experiment | Corrélation entre sessions NQ Asie → Europe → US, coupe à l'ouverture suivante (A) ou à la vraie clôture (B) (run_nq_sessions_corr.py, exploratoire, 2010-2026, compteur 1 501) | rejeté : Europe → US r −0,003, nuit → US r 0,000 ; Asie → Europe r −0,05 (retournement, éteint depuis 2023) ; Europe jusqu'à 16:30 Ldn → reste US r +0,066 mais porté par 9:30-11:30 NY (momentum intraday US), pas par l'Europe
 - [2026-11-01] experiment | Règle NQ de nuit, SL au bord du range 17:00→20:00 au lieu de 2 ATR, TP 1 à 2,5 R (run_nq_nuit_sl_range.py, exploratoire, compteur 1 493) | rejeté : net −0,10 (TP 1 R) à −0,03 R/trade (TP 2,5 R), brut +0,03 à +0,10 ; stop médian 0,86 ATR, 60 % de SL ; réf. +0,088 R, Sharpe 1,00
@@ -29,7 +30,6 @@ updated: 2026-11-01 21:57
 - [2026-11-01] query | Correction FTMO : règle des annonces en financé (±2 min, stop/objectif compris) ajoutée, sortie à 8:19 (run_propfirm_multi, metrics, ftmo_custom) | plan FTMO EV +9,9 k$ (contre +11,1 k$), compte racheté 3 ans +63,2 k$ (contre +73,1 k$) ; sur mesure 2019-2023 +59,3 k$ (choix 1,5 R) / +66,3 k$ (2 R) ; anciens chiffres FTMO ≈ 10 % trop optimistes
 - [2026-11-01] query | FTMO et FundingPips sur mesure avec financé ≤ 1 % et éval ≤ 2,5 % (filtre des grilles) | FTMO éval 2,5 % à 2 R, financé 1 % à 2,5 R, protection +4 % : 2019-2023 médiane +69,2 k$, pire +50,1 k$ (plan +48,9 k$) ; FundingPips +56,9 k$ (2 semaines : +49,4 k$)
 - [2026-11-01] query | FTMO 1-Step sur mesure + plafond 2,5 % par trade (run_propfirm_ftmo_custom.py ; FundingPips refiltré) | 2019-2023, compte racheté 3 ans : FTMO éval 2 % à 2 R, financé 2,5 % à 1,5 R médiane +92,9 k$ (pire +30,2 k$, 31 évals, 9,9 k$ sortis au max) contre plan +48,9 k$ ; FundingPips éval 2 % à 3 R, financé 1,25 % à 2 R +67,8 k$
-- [2026-11-01] query | FundingPips 1 Step Flex, gestion du risque sur mesure, 3 600 réglages, compte racheté 3 ans (run_propfirm_fp_custom.py) | choisi sur 2011-2018 : éval 3 % à 2 R, financé 1,25 % à 2 R, retraits à la demande ; 2019-2023 médiane +72,7 k$, 5e c. +56,0 k$, pire +49,8 k$ (plan FTMO +59,5 k$) ; protection avant retrait nuisible
 
 ## Prochaines actions
 
@@ -37,5 +37,6 @@ updated: 2026-11-01 21:57
 - Reprendre les n° 10 à 13 dans `RESULTS.md` (les rapports existent, la synthèse s'arrête au n° 9).
 - Règle NQ de nuit : pré-enregistrer le test sur le holdout postérieur au 2026-08-28 (à ouvrir une seule fois).
 - Matinée US → reste de séance NQ (9:30→11:30, |z| > 1, sortie 16:00) : candidat à pré-enregistrer sur le holdout, voir [[reports/nq_matin_aprem_report]].
+- Or : fenêtre 16:00 → 19:00 NY autour de l'arrêt (+1,4 bp net, choisie après coup, nulle en 2016-19) : candidate au holdout, voir [[reports/gc_sessions_report]].
 - Paper trading : fade de gap indices (avec interrupteur de régime) et M2 NQ.
 <!-- NEXT-ACTIONS:END -->

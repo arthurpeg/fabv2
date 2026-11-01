@@ -131,8 +131,9 @@ def describe(x: pd.Series, y: pd.Series) -> dict:
     }
 
 
-def follow(b: pd.DataFrame, xs: tuple, ys: tuple) -> dict:
-    """Position sur Y = signe de X ; backtest vectorbt aux bornes de Y, net du coût standard."""
+def follow(b: pd.DataFrame, xs: tuple, ys: tuple, cost_pts: float = COST_PTS, series: bool = False):
+    """Position sur Y = signe de X ; backtest vectorbt aux bornes de Y, net du coût standard.
+    Avec `series`, renvoie aussi le rendement net de chaque trade."""
     x = ret(b, *xs)
     s = b[(x != 0) & x.notna() & b[[f"p_{ys[0]}", f"p_{ys[1]}"]].notna().all(axis=1)]
     side = np.sign(x.loc[s.index])
@@ -152,21 +153,22 @@ def follow(b: pd.DataFrame, xs: tuple, ys: tuple) -> dict:
     gross = pd.Series(tr["Return"].values, index=ev.loc[tr["Entry Timestamp"], "day"].values).sort_index()
     # coût en points rapporté au prix réel du contrat (prix ajusté / facteur)
     raw_px = (s[f"p_{ys[0]}"] / s[f"f_{ys[0]}"]).reindex(gross.index)
-    net = gross - COST_PTS / raw_px
-    long_net = ret(s, *ys) - COST_PTS / raw_px
+    net = gross - cost_pts / raw_px
+    long_net = ret(s, *ys) - cost_pts / raw_px
     # contrôle indépendant de vectorbt
     assert np.allclose(gross.values, (side * ret(s, *ys)).reindex(gross.index).values, atol=1e-9)
 
     def sh(r):
         return r.mean() / r.std() * np.sqrt(252)
 
-    return {
+    out = {
         "n": len(net), "gross_bp": gross.mean() * 1e4, "net_bp": net.mean() * 1e4,
         "t_net": net.mean() / net.std() * np.sqrt(len(net)),
         "sharpe_net": sh(net), "long_net_bp": long_net.mean() * 1e4, "sharpe_long_net": sh(long_net),
         "net_2016_26_bp": net[net.index >= "2016"].mean() * 1e4,
         "net_2023_26_bp": net[net.index >= "2023"].mean() * 1e4,
     }
+    return (out, net) if series else out
 
 
 def main():
