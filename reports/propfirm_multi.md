@@ -120,3 +120,26 @@ Lecture (en ne faisant varier qu'un paramètre autour du réglage choisi, média
 - **Retraits à la demande** : +2 k$ sur 2019-2023, +13 k$ sur 2011-2018 ; le coût éventuel de cette formule n'est pas connu.
 
 Le gain sur mesure (+13 k$ en médiane sur 2019-2023 par rapport au plan FTMO) vient surtout du risque en éval porté à 3 % et du risque en financé porté au maximum que permet le levier. Ces deux choix se tiennent hors échantillon. Le réglage reste choisi parmi 3 600, avec une règle de nuit choisie sur 2016-2026 : optimiste.
+
+## FTMO sur mesure, et les deux comparés avec un risque plafonné à 2,5 % (2026-11-01)
+
+Chiffres : [run_propfirm_ftmo_custom.py](../run_propfirm_ftmo_custom.py) → `results/propfirm_ftmo_custom/run.log`, `grid.csv`. Même critère que pour FundingPips : compte racheté 3 ans, choix sur 2011-2018, vérification sur 2019-2023. 3 600 réglages : éval de 1 à 3 %, objectif de 0,75 à 3 R ; financé de 0,5 à 3 %, objectif de 1 à 3 R ; protection à 2 ou 4 % ou aucune.
+
+**Plafond de 2,5 % par trade** (demande de l'utilisateur) : à 3 %, le moindre glissement au-delà du stop atteint la perte du jour de 3 % et le compte est perdu au premier stop. Le moteur ne compte la perte qu'à la sortie, donc il sous-estimait ce risque. Les choix ci-dessous sont faits parmi les réglages ≤ 2,5 %.
+
+Contrôle de la chaîne vectorisée contre la chaîne pas à pas (run_propfirm_metrics) : médianes proches (plan +72,1 k$ contre +73,1 k$ ; réglage 0,1 : +28,8 k$ contre +31,2 k$). Les pires cas diffèrent (+32 k$ contre +44 k$) à cause d'une nuit d'écart dans l'enchaînement éval → financé. **Les queues dépendent donc du calendrier exact.**
+
+| Gain net d'un compte racheté 3 ans, départs 2019-2023 | Médiane | 5e c. | Pire | Argent sorti max | Évals achetées (médiane) |
+|---|---|---|---|---|---|
+| FTMO, plan (2 % à 2,5 R ; 1 % à 2 R) | +48 916 $ | +36 680 $ | +32 303 $ | 3 843 $ | 10 |
+| **FTMO sur mesure : éval 2 % à 2 R ; financé 2,5 % à 1,5 R ; sans protection** | **+92 910 $** | +50 627 $ | +30 208 $ | 9 882 $ | 31 |
+| FundingPips, plan (2,4 % à 2,5 R ; 1,2 % à 2 R ; 2 semaines) | +59 511 $ | +52 924 $ | +43 423 $ | — | — |
+| FundingPips sur mesure : éval 2 % à 3 R ; financé 1,25 % à 2 R ; retraits à la demande | +67 810 $ | +51 650 $ | +43 671 $ | 2 930 $ | 5 |
+| Même réglage FundingPips, retraits toutes les 2 semaines | +61 459 $ | — | +46 089 $ | — | — |
+
+Lecture :
+- **FTMO devient le meilleur des deux** (+93 k$ contre +68 k$ de médiane). Il n'a pas de plafond de levier dans la simulation, donc le financé peut risquer 2,5 % par trade. Chez FundingPips, le levier 1:5 supposé bloque vers 1,3 %.
+- **FTMO, risque en financé** (médiane 2019-2023, le reste fixé) : 0,5 % → +26 k$, 1 % → +60 k$, 1,5 % → +89 k$, 2 % → +97 k$, 2,5 % → +93 k$. Le plateau va de 1,5 à 2,5 %. Un objectif court en financé (1 à 1,5 R) vaut nettement mieux que 2 à 3 R (+63 k$ à 2 R).
+- **FTMO, éval** : 1 % → +35 k$, 1,5 % → +79 k$, 2 % → +93 k$, 2,5 % → +104 k$, avec un objectif de 2 à 2,5 R.
+- **Le prix d'un financé agressif** : 31 évals rachetées en 3 ans (≈ 17 k$ de frais) contre 10 avec le plan ; jusqu'à ~10 k$ sortis de sa poche avant remboursement ; pire cas pas meilleur que le plan (+30 k$). Les variantes avec protection à 4 % ont des queues bien meilleures hors échantillon (par exemple éval 2,5 % à 2 R, financé 2 % à 1,5 R, protection 4 % : médiane +126 k$, pire +99 k$). Elles n'ont pas été choisies sur 2011-2018 : à traiter comme une piste, pas comme un résultat.
+- **Risques non modélisés, plus lourds ici** : racheter souvent des comptes FTMO perdus ressemble à l'« account rolling » interdit ; le levier réel des indices chez FTMO plafonne peut-être le risque de 2,5 % les nuits calmes (stop serré) ; le refus de rewards n'est pas compté.
