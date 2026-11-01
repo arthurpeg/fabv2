@@ -1,29 +1,29 @@
 FTMO 1-Step 100k, règles sur mesure ; 607 départs de 3 ans (374 en 2011-2018, 233 en 2019-2023)
-  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), 2011-2018 : médiane +84 418 $, 5e c. +51 907 $, pire +43 853 $, argent sorti max 3 294 $, évals 8, rewards 21
-  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), 2019-2023 : médiane +48 916 $, 5e c. +36 680 $, pire +32 303 $, argent sorti max 3 843 $, évals 10, rewards 12
-  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), tout : médiane +72 136 $, 5e c. +39 356 $, pire +32 303 $, argent sorti max 3 843 $, évals 9, rewards 18
-  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), 2011-2018 : médiane +33 997 $, 5e c. +16 237 $, pire +13 609 $, argent sorti max 2 196 $, évals 3, rewards 15
-  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), 2019-2023 : médiane +25 281 $, 5e c. +18 288 $, pire +12 161 $, argent sorti max 2 196 $, évals 4, rewards 9
-  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), tout : médiane +28 793 $, 5e c. +18 004 $, pire +12 161 $, argent sorti max 2 196 $, évals 3, rewards 12
+  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), 2011-2018 : médiane +71 222 $, 5e c. +42 532 $, pire +38 175 $, argent sorti max 3 294 $, évals 8, rewards 17
+  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), 2019-2023 : médiane +51 390 $, 5e c. +43 295 $, pire +39 084 $, argent sorti max 3 843 $, évals 10, rewards 13
+  référence plan FTMO (2 % à 2,5 R, objectif fixe ; 1 % à 2 R), tout : médiane +59 829 $, 5e c. +42 837 $, pire +38 175 $, argent sorti max 3 843 $, évals 9, rewards 15
+  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), 2011-2018 : médiane +34 406 $, 5e c. +20 159 $, pire +17 537 $, argent sorti max 2 196 $, évals 3, rewards 15
+  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), 2019-2023 : médiane +29 101 $, 5e c. +20 169 $, pire +16 798 $, argent sorti max 2 196 $, évals 4, rewards 12
+  référence réglage 0,1 × perte max (1 % à 2 R ; 1 % à 1 R), tout : médiane +30 739 $, 5e c. +20 169 $, pire +16 798 $, argent sorti max 2 196 $, évals 3, rewards 13
 
-Grille : 3600 réglages. 10 meilleurs en médiane 2011-2018 :
-  éval 3.0% à 1.5 R ; financé 2.00% à 2 R, protection 4% : IS médiane +144 232 $ (pire +93 333) | OOS médiane +113 960 $, 5e c. +96 444 $, pire +79 197 $, argent sorti max 5 490 $, évals 27, rewards 16
-  éval 2.0% à 2 R ; financé 2.50% à 1.5 R, protection — : IS médiane +141 474 $ (pire +97 399) | OOS médiane +92 910 $, 5e c. +50 627 $, pire +30 208 $, argent sorti max 9 882 $, évals 31, rewards 10
-  éval 2.5% à 2 R ; financé 2.50% à 1.5 R, protection — : IS médiane +139 438 $ (pire +87 877) | OOS médiane +104 287 $, 5e c. +63 744 $, pire +40 775 $, argent sorti max 8 235 $, évals 36, rewards 12
-  éval 3.0% à 2 R ; financé 2.50% à 1.5 R, protection 4% : IS médiane +139 252 $ (pire +97 840) | OOS médiane +120 285 $, 5e c. +83 623 $, pire +75 183 $, argent sorti max 7 686 $, évals 37, rewards 17
-  éval 3.0% à 1.5 R ; financé 3.00% à 1.5 R, protection 2% : IS médiane +139 058 $ (pire +87 297) | OOS médiane +162 305 $, 5e c. +131 985 $, pire +120 378 $, argent sorti max 6 588 $, évals 30, rewards 19
-  éval 2.5% à 2 R ; financé 2.50% à 2 R, protection 4% : IS médiane +139 006 $ (pire +85 475) | OOS médiane +113 608 $, 5e c. +88 347 $, pire +73 931 $, argent sorti max 6 588 $, évals 30, rewards 13
-  éval 2.5% à 2 R ; financé 2.00% à 1.5 R, protection 4% : IS médiane +137 678 $ (pire +97 248) | OOS médiane +125 908 $, 5e c. +101 051 $, pire +99 177 $, argent sorti max 5 490 $, évals 20, rewards 21
-  éval 2.5% à 2 R ; financé 2.00% à 2 R, protection 4% : IS médiane +136 405 $ (pire +87 818) | OOS médiane +104 590 $, 5e c. +79 567 $, pire +62 206 $, argent sorti max 5 490 $, évals 24, rewards 15
-  éval 2.5% à 2.5 R ; financé 3.00% à 1.5 R, protection 4% : IS médiane +136 400 $ (pire +77 297) | OOS médiane +125 460 $, 5e c. +70 417 $, pire +49 992 $, argent sorti max 5 490 $, évals 36, rewards 14
-  éval 3.0% à 2 R ; financé 2.50% à 2 R, protection — : IS médiane +134 501 $ (pire +88 620) | OOS médiane +87 149 $, 5e c. +41 515 $, pire +19 794 $, argent sorti max 13 725 $, évals 44, rewards 9
+Grille : 1080 réglages. 10 meilleurs en médiane 2011-2018 :
+  éval 2.5% à 1.5 R ; financé 1.00% à 2.5 R, protection 4% : IS médiane +83 052 $ (pire +41 389) | OOS médiane +59 317 $, 5e c. +49 288 $, pire +39 858 $, argent sorti max 4 392 $, évals 11, rewards 13
+  éval 2.5% à 2 R ; financé 1.00% à 2.5 R, protection 4% : IS médiane +82 392 $ (pire +41 290) | OOS médiane +66 306 $, 5e c. +55 076 $, pire +45 155 $, argent sorti max 3 843 $, évals 11, rewards 15
+  éval 2.5% à 1.5 R ; financé 1.00% à 2.5 R, protection — : IS médiane +82 370 $ (pire +37 105) | OOS médiane +52 002 $, 5e c. +42 973 $, pire +35 964 $, argent sorti max 4 941 $, évals 12, rewards 12
+  éval 2.5% à 2 R ; financé 1.00% à 2 R, protection 4% : IS médiane +81 990 $ (pire +53 121) | OOS médiane +58 663 $, 5e c. +47 925 $, pire +42 965 $, argent sorti max 3 843 $, évals 11, rewards 15
+  éval 2.0% à 2.5 R ; financé 1.00% à 2.5 R, protection — : IS médiane +81 643 $ (pire +37 044) | OOS médiane +51 092 $, 5e c. +40 952 $, pire +29 325 $, argent sorti max 3 843 $, évals 10, rewards 11
+  éval 2.5% à 2.5 R ; financé 1.00% à 2.5 R, protection 4% : IS médiane +80 635 $ (pire +30 472) | OOS médiane +63 419 $, 5e c. +45 851 $, pire +40 440 $, argent sorti max 3 843 $, évals 12, rewards 14
+  éval 2.0% à 2.5 R ; financé 1.00% à 2.5 R, protection 4% : IS médiane +80 261 $ (pire +37 860) | OOS médiane +59 067 $, 5e c. +45 608 $, pire +34 622 $, argent sorti max 3 843 $, évals 10, rewards 13
+  éval 2.5% à 2 R ; financé 1.00% à 3 R, protection 4% : IS médiane +80 036 $ (pire +37 064) | OOS médiane +63 936 $, 5e c. +38 668 $, pire +37 075 $, argent sorti max 3 843 $, évals 8, rewards 12
+  éval 2.5% à 2 R ; financé 1.00% à 2 R, protection — : IS médiane +79 777 $ (pire +53 071) | OOS médiane +56 954 $, 5e c. +47 540 $, pire +41 508 $, argent sorti max 3 843 $, évals 11, rewards 14
+  éval 2.5% à 2.5 R ; financé 1.00% à 2.5 R, protection — : IS médiane +79 585 $ (pire +28 567) | OOS médiane +58 000 $, 5e c. +39 831 $, pire +35 859 $, argent sorti max 3 843 $, évals 12, rewards 12
 
 Effet de chaque choix autour du réglage retenu (médianes IS / OOS) :
-  e_risk : 0.01 → IS +44 226 / OOS +35 559 ; 0.015 → IS +59 464 / OOS +55 437 ; 0.02 → IS +76 978 / OOS +78 076 ; 0.025 → IS +133 032 / OOS +84 346 ; 0.03 → IS +144 232 / OOS +113 960
-  e_rr : 0.75 → IS +97 498 / OOS +73 842 ; 1.0 → IS +119 380 / OOS +56 302 ; 1.5 → IS +144 232 / OOS +113 960 ; 2.0 → IS +131 278 / OOS +88 505 ; 2.5 → IS +121 807 / OOS +98 928 ; 3.0 → IS +110 444 / OOS +100 157
-  f_risk : 0.005 → IS +36 593 / OOS +26 595 ; 0.0075 → IS +59 259 / OOS +43 284 ; 0.01 → IS +85 771 / OOS +61 479 ; 0.0125 → IS +102 556 / OOS +90 676 ; 0.015 → IS +109 219 / OOS +102 378 ; 0.02 → IS +144 232 / OOS +113 960 ; 0.025 → IS +119 573 / OOS +120 037 ; 0.03 → IS +114 808 / OOS +119 020
-  f_rr : 1.0 → IS +100 784 / OOS +97 622 ; 1.5 → IS +119 276 / OOS +139 404 ; 2.0 → IS +144 232 / OOS +113 960 ; 2.5 → IS +102 358 / OOS +110 595 ; 3.0 → IS +77 285 / OOS +114 062
-  protection : 0.02 → IS +104 007 / OOS +120 279 ; 0.04 → IS +144 232 / OOS +113 960 ; nan → IS +115 351 / OOS +126 050
+  e_risk : 0.01 → IS +36 830 / OOS +37 092 ; 0.015 → IS +54 993 / OOS +50 437 ; 0.02 → IS +71 092 / OOS +55 963 ; 0.025 → IS +83 052 / OOS +59 317
+  e_rr : 0.75 → IS +63 094 / OOS +52 598 ; 1.0 → IS +76 375 / OOS +52 073 ; 1.5 → IS +83 052 / OOS +59 317 ; 2.0 → IS +82 392 / OOS +66 306 ; 2.5 → IS +80 635 / OOS +63 419 ; 3.0 → IS +71 025 / OOS +60 060
+  f_risk : 0.005 → IS +31 374 / OOS +25 173 ; 0.0075 → IS +54 238 / OOS +37 684 ; 0.01 → IS +83 052 / OOS +59 317
+  f_rr : 1.0 → IS +39 205 / OOS +32 765 ; 1.5 → IS +62 863 / OOS +51 531 ; 2.0 → IS +71 078 / OOS +50 460 ; 2.5 → IS +83 052 / OOS +59 317 ; 3.0 → IS +74 236 / OOS +62 853
+  protection : 0.02 → IS +64 510 / OOS +51 757 ; 0.04 → IS +83 052 / OOS +59 317 ; nan → IS +82 370 / OOS +52 002
 
-Meilleur réglage hors échantillon (pour mémoire, choisi après coup) :  e_risk  e_rr  f_risk  f_rr  protection       oos_med
-   0.03   1.5    0.03   3.0         NaN 162836.768543
+Meilleur réglage hors échantillon (pour mémoire, choisi après coup) :  e_risk  e_rr  f_risk  f_rr  protection      oos_med
+  0.025   2.0    0.01   2.5        0.04 66306.207008

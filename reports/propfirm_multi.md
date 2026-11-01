@@ -158,3 +158,23 @@ Demande de l'utilisateur : un risque de 2,5 % en financé ferait courir un risqu
 - **FTMO garde la tête** et le réglage sur mesure bat le plan sur tous les plans (médiane +20 k$, pire +18 k$) à risque financé égal (1 %). Le gain vient de l'éval à 2,5 %, d'un objectif financé plus long (2,5 R) et de la protection à +4 %.
 - FundingPips limité à 1 % en financé fait moins bien que son propre plan à 1,2 % (+59,5 k$) : à ce niveau de risque, chaque dixième de pourcent compte (0,75 % → +43,9 k$, 1 % → +56,9 k$).
 - FTMO autour du réglage retenu (médianes 2019-2023) : éval 1 % → +40,6 k$, 2 % → +62,7 k$, 2,5 % → +69,2 k$ ; objectif financé 1 R → +35,5 k$, 2 R → +64,1 k$, 2,5 R → +69,2 k$, 3 R → +70,3 k$ ; protection à 2 % → +59,2 k$, à 4 % → +69,2 k$, aucune → +65,1 k$.
+
+## Correction : règle FTMO des annonces en financé (2026-11-01)
+
+Relu sur ftmo.com (FAQ « Can I trade news? ») : sur le compte financé (FTMO Account, hors comptes Swing), aucun ordre ne peut s'exécuter 2 min avant ou après certaines annonces, y compris un stop ou un objectif. Pour l'US100 : emploi américain (NFP, chômage, salaires), CPI, PIB avancé, décision et minutes de la Fed. Sinon, le compte peut être fermé. L'éval (Challenge) n'est pas concernée. Garder une position ouverte plus de 2 min avant l'annonce reste permis, mais la volatilité de 8:30 déclenche souvent le stop ou l'objectif dans la fenêtre. **Toutes les simulations FTMO précédentes ignoraient cette règle.**
+
+Correction appliquée : en financé, position fermée à 8:19 ET les jours d'annonce 8:30 (`news_f=True` dans run_propfirm_multi ; variante 1 de propfirm.nights dans run_propfirm_ftmo_custom). C'est prudent : le calendrier compte toutes les annonces de 8:30, une liste plus large que celle de FTMO. La grille sur mesure est limitée à éval ≤ 2,5 % et financé ≤ 1 % (1 080 réglages).
+
+| FTMO 1-Step 100k | Sans la règle | **Avec la règle (à plat à 8:19)** |
+|---|---|---|
+| EV par éval, plan FTMO (toute la période) | +11 095 $ | +9 940 $ |
+| EV par éval, réglage 0,1 choisi, 2019-2025 | +7 633 $ | +8 386 $ |
+| Compte racheté 3 ans, plan, toute la période (chaîne pas à pas) | +73 132 $ (pire +43 741 $) | +63 181 $ (pire +40 004 $) |
+| Compte racheté 3 ans, plan, 2019-2023 (chaîne vectorisée) | +48 916 $ | +51 390 $ (pire +39 084 $) |
+| Sur mesure choisi sur 2011-2018, 2019-2023 | éval 2,5 % à 2 R ; financé 1 % à 2,5 R ; protection 4 % : +69 217 $ (pire +50 077 $) | éval 2,5 % à 1,5 R ; financé 1 % à 2,5 R ; protection 4 % : **+59 317 $** (5e c. +49 288 $, pire +39 858 $) |
+| Même réglage qu'avant (objectif d'éval 2 R) | +69 217 $ | +66 306 $ (pire +45 155 $) |
+
+- La règle coûte ~10 % sur toute la période (le financé perd des nuits d'annonce, les meilleures de la règle selon le n° 14). Sur 2019-2023, l'effet est faible et de signe variable selon le réglage.
+- Le choix sur 2011-2018 hésite entre un objectif d'éval de 1,5 R (+83,1 k$) et de 2 R (+82,4 k$) : l'écart est du bruit. Les deux battent le plan hors échantillon (+59,3 k$ et +66,3 k$ contre +51,4 k$).
+- **FTMO et FundingPips sont maintenant au coude à coude** sous les mêmes limites : FTMO +59 à +66 k$, FundingPips +56,9 k$ (retraits à la demande) ou +49,4 k$ (toutes les 2 semaines). FundingPips n'a pas ce problème : un trade ouvert plus de 5 h avant l'annonce est exclu de sa règle.
+- Les anciens chiffres FTMO du wiki (plans de montée, avenants C à E, run_propfirm_start1 / paths / variants / vbt / rr2) ignorent aussi cette règle : ils sont trop optimistes d'environ 10 %.

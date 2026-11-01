@@ -5,11 +5,11 @@ Métriques FTMO et FundingPips, règle NQ de nuit ; départs d'éval 3535, de fi
   trade financé (1 R) : objectif 51.3%, stop 43.5%, sortie 9:30 5.1% ; R net moyen +0.057 ; pire série de stops 8
   éval : passage 76.3% (2011-2018 84.3%, 2019-2025 67.3%) ; nuits pour valider médiane / 75e / 90e : 43 / 66 / 90 ; jours calendaires 62 / 95 / 129 ; nuits d'une éval ratée 38 / 53 / 71
     échecs : plancher 87%, marge épuisée 13% ; évals achetées par financé en moyenne 1.31 → 720 $
-  financé (2 ans) : P(≥ 1 retrait) 92% ; retraits 8.49 en moyenne (médiane 6, 90e 24) ; versé 22 466 $ en moyenne, médiane / 75e / 90e 16 815 / 30 170 / 61 163 $, 10e centile 1 921 $ ; P(versé > prix de l'éval) 92%
-    montant moyen d'un retrait 2 647 $ ; 1er retrait après 15 / 31 / 59 nuits ; vie 266 / 504 / 504 nuits ; versé 2011-2018 30 263 $, 2019-2025 12 160 $
-    fin : plancher 69%, encore en vie à 2 ans 27%, marge épuisée 4%
-  EV par éval : toute la période +16 591 $ (×30.2 le prix), 2011-2018 +24 970 $, 2019-2025 +7 633 $ (×13.9), sans edge +1 712 $ ; refus de retraits tolérés 97%
-  un compte racheté à chaque échec, 3 ans (607 départs) : gain net médiane +31 198 $, 5e centile +20 442 $, pire +14 655 $, meilleur +92 225 $ ; argent sorti avant remboursement médiane 549 $, 95e 1 647 $, pire 2 196 $
+  financé (2 ans) : P(≥ 1 retrait) 92% ; retraits 8.67 en moyenne (médiane 6, 90e 23) ; versé 22 472 $ en moyenne, médiane / 75e / 90e 17 819 / 29 203 / 59 297 $, 10e centile 2 040 $ ; P(versé > prix de l'éval) 92%
+    montant moyen d'un retrait 2 592 $ ; 1er retrait après 15 / 30 / 58 nuits ; vie 266 / 504 / 504 nuits ; versé 2011-2018 29 427 $, 2019-2025 13 279 $
+    fin : plancher 69%, encore en vie à 2 ans 27%, marge épuisée 5%
+  EV par éval : toute la période +16 596 $ (×30.2 le prix), 2011-2018 +24 265 $, 2019-2025 +8 386 $ (×15.3), sans edge +1 724 $ ; refus de retraits tolérés 97%
+  un compte racheté à chaque échec, 3 ans (607 départs) : gain net médiane +31 106 $, 5e centile +20 660 $, pire +17 747 $, meilleur +91 979 $ ; argent sorti avant remboursement médiane 549 $, 95e 1 647 $, pire 2 196 $
     évals achetées 3 médiane (max 7), pire série d'évals ratées 2 ; retraits en 3 ans 13 médiane ; plus longue période sans retrait médiane 176 jours, pire 580 jours
 
 === FTMO 1-Step 100k — plan FTMO : éval risque 0.2 × 10 000 $ = 2 000 $ à 2.5 R ; financé 1 000 $ à 2 R ===
@@ -17,12 +17,12 @@ Métriques FTMO et FundingPips, règle NQ de nuit ; départs d'éval 3535, de fi
   trade financé (2 R) : objectif 24.5%, stop 51.2%, sortie 9:30 24.3% ; R net moyen +0.099 ; pire série de stops 15
   éval : passage 51.2% (2011-2018 53.8%, 2019-2025 48.3%) ; nuits pour valider médiane / 75e / 90e : 11 / 17 / 24 ; jours calendaires 14 / 24 / 34 ; nuits d'une éval ratée 12 / 19 / 26
     échecs : plancher 99%, marge épuisée 1% ; évals achetées par financé en moyenne 1.95 → 1 072 $
-  financé (2 ans) : P(≥ 1 retrait) 87% ; retraits 5.22 en moyenne (médiane 3, 90e 13) ; versé 22 741 $ en moyenne, médiane / 75e / 90e 15 767 / 30 329 / 57 034 $, 10e centile 0 $ ; P(versé > prix de l'éval) 87%
-    montant moyen d'un retrait 4 359 $ ; 1er retrait après 17 / 33 / 54 nuits ; vie 122 / 222 / 346 nuits ; versé 2011-2018 29 310 $, 2019-2025 14 058 $
-    fin : plancher 93%, marge épuisée 6%, encore en vie à 2 ans 1%
-  EV par éval : toute la période +11 095 $ (×20.2 le prix), 2011-2018 +15 227 $, 2019-2025 +6 235 $ (×11.4), sans edge +2 028 $ ; refus de retraits tolérés 95%
-  un compte racheté à chaque échec, 3 ans (607 départs) : gain net médiane +73 132 $, 5e centile +51 461 $, pire +43 741 $, meilleur +135 447 $ ; argent sorti avant remboursement médiane 1 098 $, 95e 2 745 $, pire 3 843 $
-    évals achetées 9 médiane (max 15), pire série d'évals ratées 6 ; retraits en 3 ans 18 médiane ; plus longue période sans retrait médiane 164 jours, pire 302 jours
+  financé (2 ans) : P(≥ 1 retrait) 87% ; retraits 4.76 en moyenne (médiane 3, 90e 12) ; versé 20 486 $ en moyenne, médiane / 75e / 90e 14 159 / 29 013 / 50 195 $, 10e centile 0 $ ; P(versé > prix de l'éval) 87%
+    montant moyen d'un retrait 4 303 $ ; 1er retrait après 18 / 34 / 56 nuits ; vie 120 / 218 / 351 nuits ; versé 2011-2018 26 326 $, 2019-2025 12 767 $
+    fin : plancher 89%, marge épuisée 10%, encore en vie à 2 ans 2%
+  EV par éval : toute la période +9 940 $ (×18.1 le prix), 2011-2018 +13 621 $, 2019-2025 +5 612 $ (×10.2), sans edge +2 056 $ ; refus de retraits tolérés 95%
+  un compte racheté à chaque échec, 3 ans (607 départs) : gain net médiane +63 181 $, 5e centile +47 172 $, pire +40 004 $, meilleur +118 117 $ ; argent sorti avant remboursement médiane 1 098 $, 95e 2 745 $, pire 3 843 $
+    évals achetées 9 médiane (max 15), pire série d'évals ratées 6 ; retraits en 3 ans 16 médiane ; plus longue période sans retrait médiane 166 jours, pire 294 jours
 
 === FundingPips 1 Step Flex 100k (+Swing) — choisi (2011-2018) : éval risque 0.1 × 12 000 $ = 1 200 $ à 1.5 R (objectif ramené au reste à faire) ; financé 1 200 $ à 2 R ===
   trade éval (1.5 R) : objectif 36.5%, stop 49.3%, sortie 9:30 14.2% ; R net moyen +0.080 ; pire série de stops 15
