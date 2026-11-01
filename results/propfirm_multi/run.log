@@ -1,0 +1,11 @@
+10 prop firms, règle NQ de nuit ; 3787 nuits 2011-07-01 → 2026-08-28 ; départs d'éval 3535, de financé 3283 ; IS < 2019-01-01 ≤ OOS
+
+=== FTMO 1-Step 100k (éval 549 $) ===
+  réglage du plan FTMO (éval 0,2 × perte max, 2,5 R ; financé 0,1, 2 R) : passage 51.2%, financé 20 486 $ (4.76 retraits), EV +9 940 $
+  choisi sur IS : éval k 0.1 rr 2, financé k 0.1 rr 1
+    IS : passage 84.3%, financé 29 427 $, EV +24 265 $ | OOS : passage 67.3%, financé 13 279 $, EV +8 386 $ | toute la période : EV +16 596 $ (8.67 retraits, P(≥ 1) 92%)
+    sans edge (sens au hasard) : passage 40.3%, financé 5 646 $, EV +1 724 $ ; meilleur réglage choisi sur toute la période : éval (0.1, 2.0), financé (0.1, 1.0), EV +16 596 $
+    échecs d'éval : plancher 87%, marge 13% ; fin du financé : plancher 69%, en vie 27%, marge 5%
+
+=== Smart Trader Funds 1 Phase 100k (éval 599 $) ===
+  réglage du plan FTMO (éval 0,2 × perte max, 2,5 R ; financé 0,1, 2 R) : passage 60.4%, financé 15 911 $ (5.76 retraits), EV +9 011 $

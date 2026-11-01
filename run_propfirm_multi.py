@@ -39,7 +39,7 @@ FIVE_LADDER = (20e3, 25e3, 30e3, 40e3, 50e3, 60e3, 70e3, 80e3, 100e3, 125e3, 150
 
 FIRMS = [
     Firm("FTMO 1-Step 100k", "cfd", 100e3, 549.0, target=10e3, dd=10e3, dd_type="eod", dll=3e3, consist=0.5,
-         review=3, pay_min_days=10, f_consist=0.5, split=(0.9,), after="reset"),
+         review=3, news_f=True, pay_min_days=10, f_consist=0.5, split=(0.9,), after="reset"),
     Firm("Smart Trader Funds 1 Phase 100k", "cfd", 100e3, 599.0, target=9e3, dd=6e3, dd_type="static", dll=4e3,
          consist=0.45, min_days=5, news_e=True, news_f=True, pay_first_days=30, pay_every_days=14, pay_min_days=5,
          f_consist=0.45, pay_min=100, split=(0.8, 0.8, 0.8, 0.9), refund_at=2, after="reset"),

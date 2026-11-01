@@ -7,9 +7,12 @@ départs 2011-07 → 2018-12 (médiane du gain net), vérification sur 2019-01 �
 run_propfirm_multi : objectif +10 %, perte max 10 % suiveuse (sous le plus haut solde de clôture), perte du jour 3 %,
 meilleur jour ≤ 50 % du profit pour valider ; financé 3 nuits après la validation ; reward après ≥ 10 jours tradés
 dans le cycle avec meilleur jour ≤ 50 % du profit du cycle, 90 %, puis solde et perte max remis à zéro. Pas de plafond
-de levier (comme dans les simulations FTMO précédentes).
-Grille : éval risque 1 / 1,5 / 2 / 2,5 / 3 %, objectif 0,75 … 3 R ramené au reste à faire (cible et consistance) ;
-financé risque 0,5 / 0,75 / 1 / 1,25 / 1,5 / 2 / 2,5 / 3 %, objectif 1 … 3 R ; protection : risque divisé par 2 dès que
+de levier (comme dans les simulations FTMO précédentes). Financé : règle FTMO des annonces (aucune exécution, stop et
+objectif compris, 2 min autour du NFP, du CPI, du PIB avancé…) respectée en fermant la position à 8:19 ET les jours
+d'annonce 8:30 (propfirm.nights, variante 1 : tous les jours d'annonce 8:30 du calendrier, liste plus large que celle
+de FTMO, donc prudent). L'éval n'est pas concernée.
+Grille (limites de l'utilisateur : éval ≤ 2,5 %, financé ≤ 1 %) : éval risque 1 / 1,5 / 2 / 2,5 %, objectif 0,75 … 3 R ramené au reste à faire (cible et consistance) ;
+financé risque 0,5 / 0,75 / 1 %, objectif 1 … 3 R ; protection : risque divisé par 2 dès que
 le profit du cycle dépasse 2 % ou 4 % (ou jamais).
 """
 
@@ -34,8 +37,8 @@ SIZE, FEE, TARGET, DD, DLL, CONS, REVIEW, CYCLE, SPLIT = 100e3, 549.0, 10e3, 10e
 H3, STEP = 756, 5
 STARTS = np.arange(0, L.n - H3, STEP)
 IS = L.dates[STARTS] < pd.Timestamp("2019-01-01")
-E_R, E_RR = (0.01, 0.015, 0.02, 0.025, 0.03), (0.75, 1.0, 1.5, 2.0, 2.5, 3.0)
-F_R, F_RR, F_PROT = (0.005, 0.0075, 0.01, 0.0125, 0.015, 0.02, 0.025, 0.03), (1.0, 1.5, 2.0, 2.5, 3.0), (None, 0.02, 0.04)
+E_R, E_RR = (0.01, 0.015, 0.02, 0.025), (0.75, 1.0, 1.5, 2.0, 2.5, 3.0)
+F_R, F_RR, F_PROT = (0.005, 0.0075, 0.01), (1.0, 1.5, 2.0, 2.5, 3.0), (None, 0.02, 0.04)
 
 
 def say(s: str = "") -> None:
@@ -66,7 +69,7 @@ def chain(re_, rre, rf, rrf, prot, cap_tp=True):
         _, _, _, perR, cost = _trade(L, "cfd", i, side, 0, risk, np.full(n, 1.0), None, None)
         tp_e = np.minimum(rre, (need + cost) / np.maximum(perR, 1e-9)) if cap_tp else np.full(n, rre)
         tp = np.where(e, tp_e, rrf)
-        pnl, _, _, _, _ = _trade(L, "cfd", i, side, 0, risk, tp, None, None)
+        pnl, _, _, _, _ = _trade(L, "cfd", i, side, np.where(e, 0, 1), risk, tp, None, None)  # financé : à plat avant 8:30
         pnl = np.where(act, pnl, 0.0)
         wait = np.maximum(wait - 1, 0)
         P += pnl
