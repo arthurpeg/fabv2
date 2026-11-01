@@ -143,3 +143,18 @@ Lecture :
 - **FTMO, éval** : 1 % → +35 k$, 1,5 % → +79 k$, 2 % → +93 k$, 2,5 % → +104 k$, avec un objectif de 2 à 2,5 R.
 - **Le prix d'un financé agressif** : 31 évals rachetées en 3 ans (≈ 17 k$ de frais) contre 10 avec le plan ; jusqu'à ~10 k$ sortis de sa poche avant remboursement ; pire cas pas meilleur que le plan (+30 k$). Les variantes avec protection à 4 % ont des queues bien meilleures hors échantillon (par exemple éval 2,5 % à 2 R, financé 2 % à 1,5 R, protection 4 % : médiane +126 k$, pire +99 k$). Elles n'ont pas été choisies sur 2011-2018 : à traiter comme une piste, pas comme un résultat.
 - **Risques non modélisés, plus lourds ici** : racheter souvent des comptes FTMO perdus ressemble à l'« account rolling » interdit ; le levier réel des indices chez FTMO plafonne peut-être le risque de 2,5 % les nuits calmes (stop serré) ; le refus de rewards n'est pas compté.
+
+### Avec un risque financé limité à 1 % (2026-11-01)
+
+Demande de l'utilisateur : un risque de 2,5 % en financé ferait courir un risque de refus de retraits. Même grilles, choix sur 2011-2018 parmi les réglages éval ≤ 2,5 % et financé ≤ 1 %. Aucun calcul nouveau : filtre de `grid.csv`.
+
+| Gain net d'un compte racheté 3 ans, départs 2019-2023 | Médiane | 5e c. | Pire | Argent sorti max | Évals |
+|---|---|---|---|---|---|
+| **FTMO : éval 2,5 % à 2 R ; financé 1 % à 2,5 R ; risque ÷ 2 au-delà de +4 % dans le cycle** | **+69 217 $** | +55 809 $ | +50 077 $ | 3 843 $ | 12 |
+| FTMO, plan (2 % à 2,5 R ; 1 % à 2 R) | +48 916 $ | +36 680 $ | +32 303 $ | 3 843 $ | 10 |
+| FundingPips : éval 2,5 % à 2,5 R ; financé 1 % à 2 R ; retraits à la demande | +56 925 $ | +46 088 $ | +36 614 $ | 3 663 $ | 4 |
+| Même réglage FundingPips, retraits toutes les 2 semaines | +49 430 $ | +41 447 $ | +36 174 $ | 3 663 $ | 5 |
+
+- **FTMO garde la tête** et le réglage sur mesure bat le plan sur tous les plans (médiane +20 k$, pire +18 k$) à risque financé égal (1 %). Le gain vient de l'éval à 2,5 %, d'un objectif financé plus long (2,5 R) et de la protection à +4 %.
+- FundingPips limité à 1 % en financé fait moins bien que son propre plan à 1,2 % (+59,5 k$) : à ce niveau de risque, chaque dixième de pourcent compte (0,75 % → +43,9 k$, 1 % → +56,9 k$).
+- FTMO autour du réglage retenu (médianes 2019-2023) : éval 1 % → +40,6 k$, 2 % → +62,7 k$, 2,5 % → +69,2 k$ ; objectif financé 1 R → +35,5 k$, 2 R → +64,1 k$, 2,5 R → +69,2 k$, 3 R → +70,3 k$ ; protection à 2 % → +59,2 k$, à 4 % → +69,2 k$, aucune → +65,1 k$.
