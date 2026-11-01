@@ -12,7 +12,7 @@ updated: 2026-10-31
 - [[wiki/hot|État courant]] — généré par `update_hot.py` : compteur, expériences ouvertes, journal récent, prochaines actions
 - [[wiki/log|Journal]] — chronologie append-only
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
-- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 28 idées, avec la raison et la condition de réouverture · 2026-11-01
+- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 29 idées, avec la raison et la condition de réouverture · 2026-11-01
 
 ## Expériences
 - [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD (prix, annonces, VIX, taille) et stop au range du soir rejetés · `active` · 2026-11-01

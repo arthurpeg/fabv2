@@ -65,3 +65,5 @@ Source : `follow.csv` ; les 7 lignes sont dans `run.log`. Le « Sharpe 1,08 » d
 ## Conclusion
 
 La matinée US a un pouvoir prédictif réel mais faible sur le reste de la séance NQ : même sens, corrélation ≈ +0,05, environ 5 points d'écart dans la probabilité de hausse de l'après-midi. Il est concentré sur les matinées marquées (\|z\| > 1) et sur les régimes de volatilité moyenne à haute, et il porte sur le reste de séance, pas sur la dernière demi-heure. Ce n'est pas une stratégie démontrée. Le seul test honnête serait une règle figée à l'avance (9:30 → 11:30, \|z\| > 1, sortie 16:00), pré-enregistrée et jouée une seule fois sur le holdout postérieur au 2026-08-28, qui doit d'abord s'allonger.
+
+*Suite : la règle figée a échoué sur ES et YM, voir [[reports/prereg20_report]].*

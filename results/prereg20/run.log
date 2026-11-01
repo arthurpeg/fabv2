@@ -1,0 +1,46 @@
+ES : 4049 séances pleines, 2010-06-07 → 2026-08-28, coût 0.35 point A/R
+YM : 4049 séances pleines, 2010-06-07 → 2026-08-28, coût 2.0 point A/R
+
+                              0          1
+actif                        ES         YM
+n_trades                   1196       1220
+trades_par_an           74.0907    75.5903
+net_bp                   2.0685    -1.1104
+ic_lo                   -1.7282    -4.7359
+ic_hi                    6.6693     2.8473
+p_unilatéral              0.174      0.708
+net_2010_2017_bp        -0.5703    -3.7141
+net_2018_2026_bp         4.3456     1.2108
+brut_bp                  3.5222    -0.1645
+sharpe_reel              0.2461    -0.1491
+bp_par_an              156.9567   -66.6367
+annees_pos_2011_2025          8          5
+max_dd_bp            -1721.7733 -3584.5348
+sans_seuil_net_bp        0.8529    -0.5912
+sans_seuil_t              0.868    -0.6497
+pearson_X_Y              0.0445     0.0085
+t_pente_HC               1.5737     0.2809
+p_holm                    0.348      0.708
+critère                   False      False
+
+bp nets par année (somme des trades)
+          ES      YM
+2010   223.3   -80.8
+2011   401.9  -668.7
+2012  -140.9  -223.9
+2013     2.4  -267.3
+2014    97.9   120.8
+2015  -327.7  -267.4
+2016  -362.9  -508.8
+2017  -209.9  -239.5
+2018   355.6   245.1
+2019   -34.1  -372.8
+2020   368.0   346.4
+2021  -542.6  -852.7
+2022   790.1   328.9
+2023   418.5  -280.0
+2024  -309.7  -123.4
+2025  1847.8  1763.9
+2026  -103.7  -274.3
+
+Verdict pré-enregistré : ÉCHEC (0 marché(s) sur 2 remplissent les critères 1 et 2)
