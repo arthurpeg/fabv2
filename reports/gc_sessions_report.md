@@ -66,3 +66,23 @@ Net, 16:00 → 19:00 garde un IC hors de 0. Mais c'est une sélection après cou
 - **Non significatif** : Asie (séance SGE), Londres (avant et après le fix AM), COMEX (avant et après le fix PM), post-règlement hors dernière heure.
 - **Tradable ?** Non démontré : net, la reprise ne vaut que +1,1 bp (t 2,0) ; la fenêtre 16:00 → 19:00 (+1,4 bp net) a été choisie après coup et ne marche pas en 2016-2019. Elle est candidate à un pré-enregistrement sur le holdout postérieur au 2026-08-28, avec un contrôle de régime (long de l'or seul sur la même durée, pour séparer l'effet d'heure de la tendance).
 - Cohérent avec les résultats déjà obtenus sur GC : [[reports/recolte1_report]] (nuit longue GC +3,7 à +4,0 bp net ; session US de GC nulle ; Asie de Wei nulle) et le registre (close-to-open GC avec stops ATR négatif net).
+
+## Anatomie de la reprise (suite, même jour)
+
+*Compteur 1 559 → 1 577 (4 jambes, 5 jours de semaine, 7 états conditionnels, roulements, queues). Code : [run_gc_reprise.py](../run_gc_reprise.py). Sorties : `results/gc_reprise/`. 2 486 jours complets.*
+
+| Jambe | Brut (bp) | t NW | 2016-19 / 2020-22 / 2023-26 |
+|---|---|---|---|
+| Gap 17:00 → 18:05 (arrêt + 5 premières minutes) | +1,22 | +3,6 | +0,8 / +2,3 / +0,8 |
+| 18:05 → 19:00 | +0,25 | +0,8 | +0,4 / −1,1 / +1,2 |
+| 19:00 → 20:00 (ouverture de Tokyo en hiver) | +0,97 | +3,2 | +0,8 / +1,0 / +1,2 |
+| 20:00 → 9:00 Shanghai (0 h en hiver, 1 h en été) | −0,42 | −1,4 | — |
+| Reprise entière | +2,01 | +3,5 | +1,6 / +1,2 / +3,1 |
+
+- **Deux moments portent tout** : le gap de l'arrêt (le cours de 18:05 au-dessus de la clôture de 17:00) et l'heure 19:00 → 20:00 NY. Les deux sont positifs dans les trois sous-périodes.
+- **Pas le lundi** : lundi (week-end inclus) +0,1 bp, σ 48 bp ; mardi +2,5, mercredi +2,6, jeudi +3,5 (t 3,5), vendredi +1,1. Hors lundis : +2,5 bp, t 4,1 (lecture a posteriori).
+- **Pas un artefact de roulement** : les roulements tombent à 00:00 UTC, dans la session, mais seuls 22 jours de séance sont concernés ; sans les jours de roulement (± 1 j) : +2,05 bp, t 3,6.
+- **Pas seulement les queues** : médiane +0,7 bp, moyenne tronquée à 5 % +1,3 bp, sans les 1 % de chaque queue +1,9 bp (t 4,3). Mais les 20 meilleurs jours font 62 % de la somme, et les plus gros mouvements datent de 2026 (±200 à 300 bp).
+- **Pas de conditionnement utile** : séance précédente > 0 : +2,7 bp contre +1,3 (écart t 1,1) ; tendance 20 j : aucun écart (t 0,1) ; vol haute +2,9 contre +1,5 à +1,7 (IC larges).
+- **Liquidité faible** : 46 contrats/minute vers 18-20 h NY contre 288 en séance COMEX (8-13 h) et 39 à 16 h. Le coût standard (1 tick) est probablement optimiste le soir ; aucune donnée bid/ask GC dans `cache/databento_bbo/` pour le vérifier.
+- **Lecture** : c'est une prime de nuit « de reprise » sur l'or, concentrée sur la réouverture et l'heure suivante, pas un effet asiatique (la séance SGE elle-même est nulle). Net du coût standard, elle reste sous 1,5 bp et dépend de l'hypothèse de coût. À pré-enregistrer sur le holdout seulement, idéalement avec des données bid/ask du soir.

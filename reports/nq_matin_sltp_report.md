@@ -30,6 +30,24 @@ La référence sans stop donne +4,8 bp net contre +5,8 bp dans [[reports/nq_mati
 
 Le Sharpe est annualisé avec le vrai nombre de trades par an (≈ 78 avec le filtre, ≈ 250 sans). En brut, SL 1 / TP 1 avec le filtre fait +2,2 bp : le coût mange 0,9 bp par trade, soit 40 % du gain. Source : `results/nq_matin_sltp/summary.csv`, `run.log`.
 
+## Résultats en R (net)
+
+1 R = la distance du SL : 1 ATR pour SL 1 / TP 1, 2 ATR pour SL 2 / TP 2. Pour la version sans stop, les deux unités sont données. Calcul à partir de `results/nq_matin_sltp/trades.csv`, colonne R ; IC par bootstrap par blocs (`recolte1.engine.ci_mean`).
+
+| Réglage | Filtre | R/trade [IC 95 %] | R/an | Max DD (R) | R/an ÷ DD | Gagnants | Gain / perte moyens (R) | PF | 2010-17 / 2018-26 | Années + (2011-25) | Pire année (R) | Pire série de pertes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| SL 1 / TP 1 ATR | \|z\| > 1 | +0,039 [−0,011 ; +0,088] | +3,0 | −29,4 | 0,10 | 54 % | +0,95 / −1,04 | 1,08 | +0,001 / +0,069 | 10 / 15 | −11,1 | 10 |
+| **SL 2 / TP 2 ATR** | \|z\| > 1 | **+0,079 [+0,029 ; +0,128]** | **+6,1** | **−30,9** | **0,20** | 56 % | +0,85 / −0,90 | 1,20 | −0,011 / +0,151 | 9 / 15 | −5,2 | 9 |
+| sans stop (1 R = 2 ATR) | \|z\| > 1 | +0,064 [−0,016 ; +0,142] | +5,0 | −47,4 | 0,11 | 55 % | +1,09 / −1,18 | 1,12 | −0,015 / +0,128 | 10 / 15 | −16,2 | 10 |
+| sans stop (1 R = 1 ATR) | \|z\| > 1 | +0,128 [−0,031 ; +0,284] | +10,0 | −94,7 | 0,11 | 55 % | +2,19 / −2,37 | 1,12 | −0,029 / +0,255 | 10 / 15 | −32,3 | 10 |
+| SL 1 / TP 1 ATR | aucun | +0,003 [−0,028 ; +0,034] | +0,7 | −86,2 | 0,01 | 53 % | +0,94 / −1,05 | 1,01 | −0,033 / +0,033 | 7 / 15 | −17,9 | 11 |
+| SL 2 / TP 2 ATR | aucun | +0,022 [−0,008 ; +0,050] | +5,4 | −88,1 | 0,06 | 53 % | +0,85 / −0,91 | 1,05 | −0,034 / +0,069 | 10 / 15 | −33,5 | 10 |
+| sans stop (1 R = 2 ATR) | aucun | +0,028 [−0,016 ; +0,074] | +6,9 | −104,6 | 0,07 | 52 % | +1,10 / −1,13 | 1,05 | −0,024 / +0,072 | 10 / 15 | −39,8 | 16 |
+
+Pour comparaison, la règle NQ de nuit (SL 2 / TP 5 ATR) fait +0,088 R/trade, +22 R/an et un max DD de −25 R ([[reports/nq_nuit_sl_range_report]]).
+
+En R, le gain moyen ne dépasse jamais la perte moyenne (+0,85 R contre −0,90 R en SL 2 / TP 2) : un TP au même niveau que le SL rapporte un peu moins d'1 R, et le stop coûte un peu plus d'1 R, à cause des frais et des sorties à 16:00. Tout l'edge tient au taux de réussite (56 % contre 50 % attendu pour un RR 1 au hasard). Le drawdown de −31 R vaut 5 ans de gains (+6,1 R/an), et tout le gain en R vient de 2018-2026.
+
 ## Lecture
 
 1. **RR 1 (SL 1 / TP 1 ATR) : non.** Le stop d'1 ATR (≈ 12 points) est touché dans l'heure, et 99 % des trades sortent sur un stop. On ne garde plus que la direction des premières minutes après 11:30, alors que l'effet se construit sur tout l'après-midi. Le gain brut tombe à +2,2 bp, et le coût fixe pèse plus lourd sur un stop serré : +1,3 bp net, non significatif.

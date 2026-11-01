@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-01 22:05
+updated: 2026-11-01 22:08
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 555** (source : [[reports/nq_matin_sltp_report]])
+- Compteur global d'essais : **1 559** (source : [[reports/gc_sessions_report]])
 - Dernier pré-enregistrement : n° 20 ([[PREREGISTRATION_20]])
 - Idées abandonnées au registre : 29 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-01
@@ -22,14 +22,14 @@ updated: 2026-11-01 22:05
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-01] query | Règle matinée US NQ avec SL/TP ATR, performances en R (reports/nq_matin_sltp_report.md) | SL 2/TP 2 + |z| > 1 : +0,079 R/trade [+0,029 ; +0,128], +6,1 R/an, max DD −31 R, 56 % gagnants, 2010-2017 −0,011 R ; RR 1 : +0,039 R, +3,0 R/an ; règle de nuit pour mémoire +22 R/an, DD −25 R
+- [2026-11-01] query | Anatomie de la reprise de l'or 17:00 NY → 9:00 Shanghai : jambes, jour de semaine, roulements, queues, conditionnement, volume (run_gc_reprise.py, exploratoire, compteur 1 577) | portée par le gap de l'arrêt 17:00 → 18:05 (+1,2 bp, t 3,6) et 19:00 → 20:00 NY (+1,0 bp, t 3,2) ; nulle le lundi, +2,5 bp hors lundis ; pas un artefact de roulement ni des queues ; aucun conditionnement utile ; volume 46 contrats/min contre 288 au COMEX, coût 1 tick probablement optimiste
 - [2026-11-01] query | Règle matinée US sur NQ (9:30→11:30, |z| > 1, sortie 16:00) avec SL/TP 1/1 et 2/2 ATR M15 (run_nq_matin_sltp.py, exploratoire, compteur 1 559) | SL 1/TP 1 : +1,3 bp/trade net (t 1,6), 99 % sorties sur stop ; SL 2/TP 2 : +4,8 bp (t 3,3, Sharpe 0,83) contre +4,8 sans stop (t 2,0, Sharpe 0,49), DD divisé par ~2 ; 2010-2017 ≈ 0 partout ; règle toujours au registre (n° 20)
 - [2026-11-01] abandon | Matinée US → reste de séance (règle n° 20) | rouverte seulement avec une donnée de gamma des options (OPRA)
 - [2026-11-01] experiment | n° 20 sur ES et YM, 2010-2026 (run_prereg20.py) | ÉCHEC : ES +2,1 bp/trade net p Holm 0,35, YM −1,1 bp p 0,71 ; les deux négatifs sur 2010-2017 ; ES et YM portés par 2025
 - [2026-11-01] prereg | n° 20 : matinée US 9:30→11:30 (|z| > 1) → position 11:30→16:00 sur ES et YM (PREREGISTRATION_20.md, commit 035a8bb) | compteur 1 553 → 1 555 (annoncé 1 520 → 1 522, essais de l'or comptés entre-temps)
 - [2026-11-01] query | Rendement de l'or (GC) par session, 2016-2026 : reprise, Asie SGE, Londres (fix AM), COMEX (fix PM), post-règlement, puis heure par heure (run_gc_sessions.py, exploratoire, compteur 1 553) | seule la reprise 17:00 → 9:00 Shanghai est significative (+2,0 bp brut, t 3,5, Holm 0,003 ; +1,1 bp net, Sharpe 0,60) ; autres sessions nulles ; 16:00 → 20:00 NY porte ≈ 3 des 4 bp/jour ; 16:00 → 19:00 a posteriori +1,4 bp net, nul en 2016-19
 - [2026-11-01] query | Pouvoir prédictif de la matinée US (9:30 → 10:00…13:00) sur le reste de séance et la dernière 1/2 h, NQ 2010-2026 (run_nq_matin_aprem.py, exploratoire, compteur 1 520) | reste de séance : r +0,03 à +0,07, positif dans les 24 cases fenêtre × période, nul en vol basse ; dernière 1/2 h ≈ rien ; suivre 9:30→11:30 si |z| > 1 : +5,8 bp/trade net (t 2,4, ~75/an), sélection après coup, à tester seulement sur le holdout
-- [2026-11-01] experiment | Corrélation entre sessions NQ Asie → Europe → US, coupe à l'ouverture suivante (A) ou à la vraie clôture (B) (run_nq_sessions_corr.py, exploratoire, 2010-2026, compteur 1 501) | rejeté : Europe → US r −0,003, nuit → US r 0,000 ; Asie → Europe r −0,05 (retournement, éteint depuis 2023) ; Europe jusqu'à 16:30 Ldn → reste US r +0,066 mais porté par 9:30-11:30 NY (momentum intraday US), pas par l'Europe
-- [2026-11-01] experiment | Règle NQ de nuit, SL au bord du range 17:00→20:00 au lieu de 2 ATR, TP 1 à 2,5 R (run_nq_nuit_sl_range.py, exploratoire, compteur 1 493) | rejeté : net −0,10 (TP 1 R) à −0,03 R/trade (TP 2,5 R), brut +0,03 à +0,10 ; stop médian 0,86 ATR, 60 % de SL ; réf. +0,088 R, Sharpe 1,00
 
 ## Prochaines actions
 
