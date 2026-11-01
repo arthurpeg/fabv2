@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-01 14:44
+updated: 2026-11-01 14:48
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-01 14:44
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-01] query | FundingPips 1 Step Flex, gestion du risque sur mesure, 3 600 réglages, compte racheté 3 ans (run_propfirm_fp_custom.py) | choisi sur 2011-2018 : éval 3 % à 2 R, financé 1,25 % à 2 R, retraits à la demande ; 2019-2023 médiane +72,7 k$, 5e c. +56,0 k$, pire +49,8 k$ (plan FTMO +59,5 k$) ; protection avant retrait nuisible
 - [2026-11-01] query | Métriques complètes FTMO et FundingPips, réglage 0,1 × perte max contre plan FTMO (run_propfirm_metrics.py) | EV par éval meilleure à 0,1 (FTMO +16,6 k$, FP +23,5 k$) mais compte racheté 3 ans meilleur avec le plan : FTMO +73,1 k$ médiane (pire +43,7 k$) contre +31,2 k$, FP +61,6 k$ contre +43,8 k$
 - [2026-10-31] query | 10 prop firms (FTMO, STF, FundedNext, FundingPips, The5ers, Topstep, Apex, MFFU, Tradeify, Lucid), règles relevées sur les sites, grille risque × rr, choix 2011-2018 (run_propfirm_multi.py) | EV OOS 2019-2025 : FundingPips +12,1 k$, FTMO +7,6 k$, STF +6,9 k$, FundedNext +6,1 k$, The5ers +0,9 k$, futures 50K +0,2 à +0,5 k$, Topstep −53 $ ; risque bas (k 0,1) meilleur sauf Apex
 - [2026-10-31] query | Plan « 2 coups » LucidFlex 50K, DLL OFF + 50 %, 130 $ (run_propfirm_lucid_plan.py, règles relues sur support.lucidtrading.com) | passage 34,5 % ; EV +66 $ (1 payout) / +234 $ (cycle répété) ; sans edge +32 / +147 $ ; rachat permanent 1 an +3,7 k$ médiane, pire −5,2 k$, ~60 évals/an
@@ -29,7 +30,6 @@ updated: 2026-11-01 14:44
 - [2026-10-31] query | Variante F (1→2→3×10k puis 100k) : délai jusqu'au premier achat d'une éval 100k (run_propfirm_variants.py) | moyenne ~18 mois (379 nuits), médiane 375, 25e-75e centile 281-466 nuits, 90e 533, 3 départs sur 612 sans 100k en 3 ans
 - [2026-10-31] query | Neuf variantes de montée FTMO au 95e centile (run_propfirm_variants.py) | meilleure : 1→2→3×10k puis 1→2→3×100k, +69,6 k$ médiane à 3 ans (5e c. +20,2 k$, pire +5,1 k$) ; remplacement un par un : pire +7,7 k$ ; grands sauts derniers
 - [2026-10-31] query | Plan FTMO, seuils au 95e centile de l'argent sorti avant remboursement (run_propfirm_start1.py, section 4) | départ 450 $ ; A (10k→100k→trio 100k) +54,9 k$ médiane à 3 ans, pire +550 $ ; B (10k→trio 10k→trio 100k) +31,9 k$, pire +5,95 k$ ; apport au pire 158 $
-- [2026-10-31] query | Plan FTMO, règle stricte du pire chemin (run_propfirm_start1.py, section 3) | pires chemins 608 / 1 738 / 3 842 / 7 685 / 10 978 $ ; B2 (1×10k → 3×10k → 3×100k) +15,7 k$ médiane à 3 ans, pire +5,1 k$, aucun apport ; trio 100k en 3 ans dans 24 % des départs
 
 ## Prochaines actions
 
