@@ -12,7 +12,7 @@ updated: 2026-10-31
 - [[wiki/hot|État courant]] — généré par `update_hot.py` : compteur, expériences ouvertes, journal récent, prochaines actions
 - [[wiki/log|Journal]] — chronologie append-only
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
-- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 29 idées, avec la raison et la condition de réouverture · 2026-11-01
+- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 30 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
 - [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD (prix, annonces, VIX, taille) et stop au range du soir rejetés · `active` · 2026-11-01
@@ -35,6 +35,7 @@ updated: 2026-10-31
 
 ## Recherche
 - [[wiki/research/recoltes-ssrn|Revues de papiers SSRN]] — lots du 13 au 29 octobre et ce qu'ils ont donné · `ingested`
+- [[wiki/research/fattinger-ziegler-or|Fattinger-Ziegler sur l'or]] — découverte du prix sur 24 h (SSRN 2606706) testée sur GC 2016-2026 : microstructure reproduite, « pas de prix avant l'Europe » contredit · `tested` · 2026-11-02
 - [[wiki/research/litterature-intraday|Littérature intraday M1–M5]] — mécanismes, papiers, contradictions · `ingested`
 
 ## Référence (aiguillage)

@@ -1,0 +1,149 @@
+GC 5 minutes, 2329 jours gardés 2016-01-05 → 2026-08-28 (écart NY/CET = 6 h, séances complètes) ; 277 intervalles par jour (gap + 276)
+Rendement journalier moyen +3.96 bp, σ 102.5 bp ; part d'intervalles sans volume (hors gap) 0.2 %
+Jours d'annonce : 8:30 546, 10:00 301, FOMC (décision ou minutes) 145
+
+=== A. Contribution au prix et à la variance, 8 périodes du papier (heures NY) ===
+              période          NY  PC_papier%  PC_wins%  t_PC_wins  WPC%  WPC_lo  WPC_hi   VC%  WPC-VC%  diff_lo  diff_hi  p_diff  moy_bp  t_moy  p_diff_holm
+         P1 00-01 CET 18:00-19:00        1.62      2.56       1.49  4.34    3.01    5.68  3.77     0.57    -0.62     1.80    0.36    1.61   3.40          1.0
+       P2 01-08 Japon 19:00-02:00       22.18     11.31       2.57 19.13   16.51   21.69 17.64     1.49    -0.97     3.96    0.26    0.69   0.76          1.0
+  P3 08-09 pré-Europe 02:00-03:00        8.51      8.22       3.49  3.07    2.05    4.13  3.67    -0.61    -1.61     0.45    0.26    0.41   1.09          1.0
+      P4 09-13 Europe 03:00-07:00        7.66      9.95       2.79 13.36   11.27   15.40 13.82    -0.46    -2.44     1.52    0.66    0.81   1.12          1.0
+ P5 13-15:30 macro US 07:00-09:30       10.20     25.07       6.03 19.63   17.42   22.04 20.77    -1.14    -3.13     0.99    0.29    0.14   0.16          1.0
+P6 15:30-17:30 Eur+US 09:30-11:30       14.68     19.59       4.98 22.47   20.25   24.76 22.13     0.34    -1.73     2.45    0.74    0.55   0.61          1.0
+       P7 17:30-22 US 11:30-16:00       35.82     25.93       5.80 16.73   14.67   18.97 16.85    -0.12    -2.05     1.93    0.88   -0.79  -1.05          1.0
+       P8 22-23 après 16:00-17:00       -0.66      0.85       0.77  1.26    0.63    1.87  1.35    -0.08    -0.71     0.51    0.82    0.53   2.24          1.0
+PC_papier = moyenne de r_période / r_jour (mesure du papier, instable quand r_jour ≈ 0) ; PC_wins = idem winsorisé 1 % ; WPC = Σ sign(r)·r_période / Σ|r| (robuste) ; VC = part de Σr².
+
+H1 nuit 17:00 → 3:00 NY (avant l'Europe) : WPC 26.5 % [23.3 ; 29.7], p(=0) 0.0005 ; part de variance 25.1 % ; rendement moyen +2.72 bp (t 2.74)
+   2016-2019 : WPC nuit 24.0 %, part de variance 24.6 %
+   2020-2022 : WPC nuit 19.2 %, part de variance 22.3 %
+   2023-2026 : WPC nuit 33.3 %, part de variance 27.9 %
+
+=== B. Régressions d'absence de biais r_jour = a + b·r_(17:00 → coupure) ===
+coupure_NY   CET  beta    se   t_b1  p_b1  p_b1_holm  beta_wins  t_b1_wins    R2  var_share  delta  delta_lo  delta_hi
+     18:00 00:00 1.001 0.226  0.003 0.998      1.000      1.105      0.377 0.016      0.016  0.000    -0.011     0.016
+     19:00 01:00 0.676 0.173 -1.875 0.061      0.974      0.863     -0.909 0.026      0.057 -0.031    -0.052    -0.008
+     20:00 02:00 0.893 0.128 -0.838 0.402      1.000      0.916     -0.735 0.052      0.066 -0.013    -0.041     0.015
+     21:00 03:00 1.082 0.100  0.820 0.412      1.000      1.024      0.296 0.113      0.096  0.016    -0.027     0.069
+     22:00 04:00 1.145 0.090  1.610 0.107      1.000      1.081      1.188 0.178      0.135  0.042    -0.014     0.110
+     23:00 05:00 1.109 0.086  1.262 0.207      1.000      1.085      1.378 0.204      0.166  0.038    -0.022     0.101
+     00:00 06:00 1.062 0.087  0.710 0.477      1.000      1.093      1.591 0.208      0.185  0.024    -0.043     0.092
+     01:00 07:00 1.049 0.082  0.591 0.555      1.000      1.113      2.063 0.236      0.214  0.021    -0.032     0.073
+     02:00 08:00 1.058 0.081  0.711 0.477      1.000      1.133      2.730 0.274      0.245  0.029    -0.020     0.079
+     03:00 09:00 1.087 0.059  1.469 0.142      1.000      1.109      2.519 0.306      0.259  0.047    -0.005     0.097
+     04:00 10:00 1.132 0.050  2.620 0.009      0.184      1.119      3.047 0.364      0.284  0.080     0.025     0.132
+     05:00 11:00 1.129 0.039  3.304 0.001      0.021      1.102      3.024 0.408      0.320  0.088     0.030     0.143
+     06:00 12:00 1.105 0.045  2.317 0.021      0.369      1.079      2.526 0.419      0.343  0.076     0.009     0.142
+     07:00 13:00 1.106 0.042  2.522 0.012      0.234      1.080      2.730 0.445      0.364  0.081     0.016     0.148
+     08:00 14:00 1.089 0.038  2.337 0.019      0.369      1.066      2.401 0.482      0.407  0.075     0.008     0.143
+     09:00 15:00 1.049 0.028  1.773 0.076      1.000      1.031      1.452 0.595      0.541  0.054    -0.007     0.110
+     10:00 16:00 1.043 0.021  2.064 0.039      0.663      1.020      1.274 0.699      0.643  0.056    -0.003     0.117
+     11:00 17:00 1.027 0.018  1.504 0.133      1.000      1.008      0.607 0.796      0.756  0.041    -0.008     0.087
+     12:00 18:00 1.022 0.013  1.677 0.094      1.000      1.012      1.278 0.858      0.822  0.036    -0.005     0.077
+     13:00 19:00 1.009 0.010  0.910 0.363      1.000      1.010      1.210 0.892      0.876  0.016    -0.009     0.040
+     14:00 20:00 1.013 0.008  1.582 0.114      1.000      1.014      2.086 0.924      0.900  0.023    -0.006     0.050
+     15:00 21:00 1.023 0.007  3.341 0.001      0.019      1.010      1.914 0.963      0.920  0.043     0.011     0.077
+     16:00 22:00 1.000 0.005 -0.080 0.936      1.000      1.000      0.043 0.988      0.989 -0.001    -0.016     0.015
+b < 1 ⇔ le mouvement jusqu'à la coupure est en partie défait ensuite (cov(r_c, reste) < 0).
+
+H4 Δ(3:00) − Δ(1:00) = +0.0254 [-0.0078 ; +0.0583], p 0.1385
+   2016-2019 : b(19:00) 0.671 (t vs 1 -1.97) ; b(20:00) 0.912 (t vs 1 -0.45) ; b(22:00) 0.908 (t vs 1 -0.73) ; b(03:00) 0.871 (t vs 1 -1.92) ; b(05:00) 0.972 (t vs 1 -0.48) ; b(12:00) 0.987 (t vs 1 -0.73) ; b(15:00) 1.009 (t vs 1 +1.04)
+   2020-2022 : b(19:00) 0.436 (t vs 1 -3.20) ; b(20:00) 0.469 (t vs 1 -2.92) ; b(22:00) 0.827 (t vs 1 -1.38) ; b(03:00) 1.103 (t vs 1 +0.93) ; b(05:00) 1.073 (t vs 1 +0.80) ; b(12:00) 1.015 (t vs 1 +0.70) ; b(15:00) 1.021 (t vs 1 +1.96)
+   2023-2026 : b(19:00) 0.755 (t vs 1 -0.93) ; b(20:00) 1.043 (t vs 1 +0.23) ; b(22:00) 1.322 (t vs 1 +2.47) ; b(03:00) 1.164 (t vs 1 +1.81) ; b(05:00) 1.206 (t vs 1 +4.06) ; b(12:00) 1.040 (t vs 1 +1.93) ; b(15:00) 1.030 (t vs 1 +2.62)
+
+=== C. Pics de volatilité : E[r²] à l'intervalle / E[r²] des voisins ([T-30, T) et [T+15, T+45)) ===
+code                                                    événement    n  rapport    lo    hi     p  p_holm
+H5.1                                  ouverture de Tokyo 9:00 JST 2329    1.985 1.673 2.300 0.000   0.005
+H5.2         montée pendant l'Asie : 2:00-3:00 contre 20:00-21:00 2329    0.827 0.702 0.980 0.028   0.055
+H5.3            ouverture européenne : 3:00-4:00 contre 2:00-3:00 2329    1.219 1.143 1.302 0.000   0.005
+H5.4                 8:20 NY (ancienne ouverture de la corbeille) 2329    1.877 1.698 2.057 0.000   0.005
+H5.5                           8:30 NY (macro US, tous les jours) 2329    4.778 4.019 5.702 0.000   0.005
+H5.6                          10:00 NY (macro US, tous les jours) 2329    1.890 1.674 2.148 0.000   0.005
+H5.7 13:30 NY (règlement COMEX, ancienne clôture de la corbeille) 2329    1.358 1.069 1.749 0.010   0.028
+H5.8                                          14:00 NY jours FOMC  145    7.299 4.969 9.650 0.000   0.005
+H5.9                            16:00 NY (clôture des actions US) 2329    1.116 0.964 1.292 0.152   0.152
+
+15 intervalles les plus volatils (hors gap), RMS en bp par 5 min : 08:30 18.2, 10:00 13.4, 09:35 11.5, 09:45 11.3, 09:30 11.2, 08:20 10.8, 18:00 10.8, 09:40 10.5, 10:05 10.3, 08:35 10.0, 09:00 9.5, 09:50 9.4, 10:10 9.4, 08:40 9.4, 10:15 9.3
+Gap de l'arrêt : RMS 12.9 bp ; médiane des intervalles 5.2 bp
+Volatilité horaire (RMS moyen des intervalles de 5 min, bp ; descriptif) : 18:00 5.6, 19:00 4.4, 20:00 5.8, 21:00 6.2, 22:00 4.6, 23:00 4.0, 00:00 3.8, 01:00 5.0, 02:00 5.3, 03:00 5.8, 04:00 5.4, 05:00 4.7, 06:00 4.9, 07:00 5.4, 08:00 9.6, 09:00 9.5, 10:00 9.3, 11:00 7.2, 12:00 5.7, 13:00 5.8, 14:00 5.8, 15:00 4.9, 16:00 3.5
+
+=== D. Diffusion et sauts (MedRV + Lee-Mykland, K = 277, seuil 99,9 %) ===
+H7 part des sauts dans la variance : 8.98 % de ΣTV [7.80 ; 10.20] (8.74 % de Σr²) ; sauts détectés : 0.218 % des intervalles, 0.60 par jour
+   sans le gap : 8.04 % ; gap seul : 0.94 %
+   2016-2019 : sauts 11.75 % ; 8:30 2.63 %
+   2020-2022 : sauts 8.52 % ; 8:30 1.66 %
+   2023-2026 : sauts 7.97 % ; 8:30 1.91 %
+Plus gros contributeurs de sauts (hors réouverture), % de la variance totale : 08:30 2.00, 10:00 0.50, 14:00 0.32, 11:10 0.25, 09:45 0.19, 08:40 0.16, 09:35 0.14, 09:40 0.14, 08:35 0.13, 10:05 0.12
+H8 8:30 : 2.00 % [1.48 ; 2.64] (papier : or 1,22 %), rang 1
+   8:30 au rang 1 dans 100 % de 500 tirages bootstrap
+H9 10:00 − max(14:00-14:45) : -0.013 pts [-0.283 ; +0.285], p 0.9685 (10:00 0.50 %, Fed 0.52 %)
+H10 saut moyen à 8:30 : jours d'annonce 760.08 contre 21.90 (bp²) ; 91 % de la variance de saut de 8:30 tombe les jours d'annonce (23 % des jours)
+
+H6 U en séance COMEX (diffusion, 1414 jours sans annonce) : (8:20-9:20 + 12:30-13:30)/2 ÷ 10:50-11:50 = 0.893 [0.833 ; 0.958], p 0.0015 ; début/milieu 1.23, fin/milieu 0.55
+
+=== E. Volume et volatilité (parts journalières, gap exclu) ===
+H11 hors séance COMEX : part de volatilité − part de volume = +15.5 pts [+15.2 ; +15.8], p 0.0005 (volume hors séance 50.9 %, volatilité 66.4 %)
+ code heure  pic_volume×  pic_volatilité×  excès_pts    lo    hi   p  p_holm
+H12.1  8:30        2.104            1.913      0.366 0.327 0.407 0.0   0.002
+H12.2 10:00        1.742            1.379      0.524 0.491 0.561 0.0   0.002
+H13.1  8:20        1.448            1.476      0.076 0.050 0.103 0.0   0.002
+H13.2 13:30        1.252            1.179      0.043 0.030 0.057 0.0   0.002
+H13.3  9:30        1.262            1.213      0.138 0.112 0.165 0.0   0.002
+H14 nuit 18:00 → 3:00 : WPC / part de volume = 1.29 [1.14 ; 1.43] (part de volume 20.6 %)
+
+=== Synthèse : 54 tests ===
+    code                                                                       affirmation   valeur    ic_lo    ic_hi      p  p_holm_famille        attendu  conforme_brut
+    H2.1                                                     prix = variance, P1 00-01 CET   0.5729  -0.6151   1.8028 0.3595          1.0000            ≈ 0           True
+    H2.2                                                   prix = variance, P2 01-08 Japon   1.4891  -0.9704   3.9584 0.2605          1.0000            ≈ 0           True
+    H2.3                                              prix = variance, P3 08-09 pré-Europe  -0.6050  -1.6064   0.4462 0.2595          1.0000            ≈ 0           True
+    H2.4                                                  prix = variance, P4 09-13 Europe  -0.4569  -2.4413   1.5226 0.6575          1.0000            ≈ 0           True
+    H2.5                                             prix = variance, P5 13-15:30 macro US  -1.1383  -3.1264   0.9887 0.2915          1.0000            ≈ 0           True
+    H2.6                                            prix = variance, P6 15:30-17:30 Eur+US   0.3393  -1.7269   2.4541 0.7415          1.0000            ≈ 0           True
+    H2.7                                                   prix = variance, P7 17:30-22 US  -0.1192  -2.0516   1.9309 0.8825          1.0000            ≈ 0           True
+    H2.8                                                   prix = variance, P8 22-23 après  -0.0819  -0.7081   0.5139 0.8205          1.0000            ≈ 0           True
+      H1             contribution au prix ≈ 0 avant l'ouverture européenne (17:00→3:00 NY)  26.5375  23.2595  29.7007 0.0005          0.0045            ≈ 0          False
+H3 18:00                                                                     b ≈ 1 ensuite   1.0007   0.5572   1.4441 0.9976          1.0000            ≈ 1           True
+H3 19:00                                            b < 1 (bruit) les 2-5 premières heures   0.6761   0.3374   1.0148 0.0609          1.0000            < 1          False
+H3 20:00                                            b < 1 (bruit) les 2-5 premières heures   0.8930   0.6425   1.1435 0.4023          1.0000            < 1          False
+H3 21:00                                            b < 1 (bruit) les 2-5 premières heures   1.0821   0.8860   1.2782 0.4120          1.0000            < 1          False
+H3 22:00                                            b < 1 (bruit) les 2-5 premières heures   1.1452   0.9684   1.3221 0.1074          1.0000            < 1          False
+H3 23:00                                            b < 1 (bruit) les 2-5 premières heures   1.1086   0.9400   1.2772 0.2069          1.0000            < 1          False
+H3 00:00                                                                     b ≈ 1 ensuite   1.0620   0.8909   1.2331 0.4775          1.0000            ≈ 1           True
+H3 01:00                                                                     b ≈ 1 ensuite   1.0487   0.8872   1.2102 0.5545          1.0000            ≈ 1           True
+H3 02:00                                                                     b ≈ 1 ensuite   1.0576   0.8988   1.2164 0.4771          1.0000            ≈ 1           True
+H3 03:00                                                                     b ≈ 1 ensuite   1.0866   0.9710   1.2021 0.1419          1.0000            ≈ 1           True
+H3 04:00                                                                     b ≈ 1 ensuite   1.1318   1.0332   1.2305 0.0088          0.1932            ≈ 1          False
+H3 05:00                                                                     b ≈ 1 ensuite   1.1286   1.0523   1.2049 0.0010          0.0219            ≈ 1          False
+H3 06:00                                                                     b ≈ 1 ensuite   1.1052   1.0162   1.1942 0.0205          0.3900            ≈ 1          False
+H3 07:00                                                                     b ≈ 1 ensuite   1.1058   1.0236   1.1880 0.0117          0.2453            ≈ 1          False
+H3 08:00                                                                     b ≈ 1 ensuite   1.0887   1.0143   1.1632 0.0194          0.3885            ≈ 1          False
+H3 09:00                                                                     b ≈ 1 ensuite   1.0489   0.9948   1.1030 0.0762          1.0000            ≈ 1           True
+H3 10:00                                                                     b ≈ 1 ensuite   1.0429   1.0022   1.0836 0.0390          0.7020            ≈ 1          False
+H3 11:00                                                                     b ≈ 1 ensuite   1.0266   0.9919   1.0612 0.1327          1.0000            ≈ 1           True
+H3 12:00                                                                     b ≈ 1 ensuite   1.0219   0.9963   1.0474 0.0935          1.0000            ≈ 1           True
+H3 13:00                                                                     b ≈ 1 ensuite   1.0089   0.9898   1.0279 0.3630          1.0000            ≈ 1           True
+H3 14:00                                                                     b ≈ 1 ensuite   1.0128   0.9969   1.0286 0.1136          1.0000            ≈ 1           True
+H3 15:00                                                                     b ≈ 1 ensuite   1.0230   1.0095   1.0365 0.0008          0.0201            ≈ 1          False
+H3 16:00                                                                     b ≈ 1 ensuite   0.9996   0.9898   1.0094 0.9359          1.0000            ≈ 1           True
+      H4 l'efficience baisse entre clôture asiatique (1:00) et ouverture européenne (3:00)   0.0254  -0.0078   0.0583 0.1385          1.0000            < 0          False
+    H5.1                                   pic de volatilité : ouverture de Tokyo 9:00 JST   1.9849   1.6727   2.3000 0.0005          0.0050            > 1           True
+    H5.4                  pic de volatilité : 8:20 NY (ancienne ouverture de la corbeille)   1.8772   1.6985   2.0572 0.0005          0.0050            > 1           True
+    H5.5                            pic de volatilité : 8:30 NY (macro US, tous les jours)   4.7778   4.0188   5.7025 0.0005          0.0050            > 1           True
+    H5.6                           pic de volatilité : 10:00 NY (macro US, tous les jours)   1.8902   1.6745   2.1479 0.0005          0.0050            > 1           True
+    H5.7  pic de volatilité : 13:30 NY (règlement COMEX, ancienne clôture de la corbeille)   1.3581   1.0690   1.7495 0.0095          0.0285            > 1           True
+    H5.8                                           pic de volatilité : 14:00 NY jours FOMC   7.2990   4.9687   9.6498 0.0005          0.0050            > 1           True
+    H5.9                             pic de volatilité : 16:00 NY (clôture des actions US)   1.1163   0.9644   1.2922 0.1515          0.1515            > 1          False
+    H5.2                              montée pendant l'Asie : 2:00-3:00 contre 20:00-21:00   0.8269   0.7018   0.9799 0.0275          0.0550            > 1          False
+    H5.3                                 ouverture européenne : 3:00-4:00 contre 2:00-3:00   1.2191   1.1433   1.3022 0.0005          0.0050            > 1           True
+      H7                                       sauts = 5 à 13 % de la variance journalière   8.9768   7.7963  10.2010    NaN             NaN         5-13 %           True
+      H8                         8:30 = plus gros contributeur de sauts (hors réouverture)   1.9960   1.4786   2.6411 0.0000          0.0000         rang 1           True
+      H9                           métaux : sauts de 10:00 > sauts de la Fed (14:00-14:45)  -0.0133  -0.2830   0.2849 0.9685          0.9685            > 0          False
+     H10                                                le saut de 8:30 vient des annonces 738.1807 553.1737 974.9263 0.0005          0.0010            > 0           True
+      H6                                                     pas de U en séance COMEX (or)   0.8927   0.8330   0.9584 0.0015          0.0060 ≈ 1 (pas de U)           True
+     H11                                volume < volatilité hors séance COMEX (8:20-13:30)  15.4842  15.1635  15.7942 0.0005          0.0035            > 0           True
+   H12.1                                    à 8:30, le volume monte plus que la volatilité   0.3656   0.3274   0.4066 0.0005          0.0035            > 0           True
+   H12.2                                   à 10:00, le volume monte plus que la volatilité   0.5240   0.4910   0.5607 0.0005          0.0035            > 0           True
+   H13.1                                    à 8:20, le volume monte plus que la volatilité   0.0762   0.0497   0.1033 0.0005          0.0035            > 0           True
+   H13.2                                   à 13:30, le volume monte plus que la volatilité   0.0435   0.0295   0.0573 0.0005          0.0035            > 0           True
+   H13.3                                    à 9:30, le volume monte plus que la volatilité   0.1375   0.1125   0.1655 0.0005          0.0035            > 0           True
+     H14                                       plus de prix par contrat la nuit (VWPC > 1)   1.2894   1.1442   1.4252 0.0005          0.0035            > 1           True
