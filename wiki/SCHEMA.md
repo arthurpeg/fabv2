@@ -1,6 +1,6 @@
 ---
 type: schema
-updated: 2026-10-31
+updated: 2026-11-02
 ---
 
 # SCHEMA : règles du wiki
@@ -28,6 +28,7 @@ Le wiki est la mémoire de travail de l'agent sur ce dépôt. L'agent l'écrit e
 | `research/` | Papiers et revues ingérés. |
 | `reference/` | Pages d'aiguillage : liens vers la source qui fait foi, rien d'autre. |
 | `Failed Ideas/ledger.md` | Registre des idées abandonnées, avec la raison. |
+| `phenomenes.md` | Registre des phénomènes confirmés sur nos données (briques à combiner), et « À surveiller ». |
 
 ## 2. Modèles de page
 
@@ -112,13 +113,14 @@ Tableau « question → source qui fait foi ». Aucun chiffre recopié.
 2. Si nouvelle page : ligne dans `index.md`.
 3. Entrée `experiment` dans `log.md`.
 4. Si abandon : ligne dans `Failed Ideas/ledger.md` + entrée `abandon` dans le log + `status: abandoned` sur la page.
+4 bis. Si une règle ou hypothèse se vérifie (même non tradable seule, même dans un test exploratoire) : ligne dans `phenomenes.md`, section « Confirmés » si elle passe la correction pour tests multiples de sa famille, sinon « À surveiller ». Si un test contredit une ligne existante, l'annoter (jamais supprimer).
 5. Si un nouveau terme apparaît : page `concepts/`. Si une leçon générale apparaît ou est contredite : `lessons.md`.
 6. Mettre à jour le compteur d'essais si le rapport ne le fait pas.
 
 **Ingestion d'un papier ou d'une revue**
 1. Vérifier et enrichir `papers/seen_papers.json`.
 2. Page `research/` (ou ligne dans une page de lot existante), avec les affirmations chiffrées du papier.
-3. Relier aux concepts et expériences touchés ; signaler toute contradiction avec nos résultats.
+3. Relier aux concepts et expériences touchés ; signaler toute contradiction avec nos résultats. Quand une affirmation du papier est testée et se vérifie : ligne dans `phenomenes.md`.
 4. Entrée `ingest` dans le log.
 
 **Réponse à une question qui mérite d'être gardée**
@@ -135,6 +137,6 @@ Page concernée à jour, entrée datée dans `log.md`, ligne au registre en cas 
 4. **Obsolètes** : pages dont `updated` est antérieur à un rapport plus récent sur le même sujet ; status `running` depuis plus de deux semaines.
 5. **Contradictions** : chiffres d'une page qui diffèrent du rapport source ; deux pages qui se contredisent ; une leçon contredite par une expérience récente.
 6. **Concepts manquants** : termes employés dans plusieurs pages sans page `concepts/`.
-7. **Registre** : chaque page `status: abandoned` a sa ligne au registre.
+7. **Registres** : chaque page `status: abandoned` a sa ligne au registre des échecs ; chaque rapport qui confirme une hypothèse a sa ligne dans `phenomenes.md`.
 8. **Compteur** : `hot.md` et la dernière page d'expérience donnent le même compteur.
 Consigner le résultat : `## [date] lint | <n> problèmes trouvés | <n> corrigés`.

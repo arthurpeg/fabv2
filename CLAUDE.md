@@ -8,6 +8,7 @@ Recherche quantitative : backtests intraday et de nuit sur futures (indices, FX,
 
 1. **Avant tout travail substantiel** : lire `wiki/index.md` ET `wiki/Failed Ideas/ledger.md`. Ne relancer aucune idée du registre sans que sa condition de réouverture soit remplie.
 2. **Avant de terminer** : mettre à jour la page de wiki concernée, ajouter une ligne datée à `wiki/log.md` (`## [AAAA-MM-JJ] <type> | <quoi> | <résultat>`), et ajouter une ligne au registre des échecs pour toute idée abandonnée.
+3. **Phénomènes confirmés** : chaque fois qu'une règle ou hypothèse (d'un papier ou à nous) se vérifie sur nos données, même non tradable seule, l'ajouter à `wiki/phenomenes.md` (critère d'entrée et colonnes en tête du fichier ; « À surveiller » si significatif en brut seulement). But : amasser des phénomènes à combiner en stratégies. Avant de combiner, vérifier qu'ils ne sont pas le même effet compté deux fois, et pré-enregistrer la combinaison.
 
 Règle d'immuabilité : le wiki **pointe** vers les sources brutes (pré-enregistrements, `RESULTS.md`, `reports/`, `results/`, code, données) et n'en recopie jamais le contenu comme source de vérité. En cas d'écart, la source a raison.
 

@@ -5,13 +5,14 @@ updated: 2026-10-31
 
 # Index du wiki
 
-> **Premier fichier à lire à chaque session**, puis [[wiki/Failed Ideas/ledger|le registre des échecs]] et [[wiki/hot|l'état courant]]. Une ligne par page : lien, résumé, statut, date. Règles et modèles : [[wiki/SCHEMA]].
+> **Premier fichier à lire à chaque session**, puis [[wiki/Failed Ideas/ledger|le registre des échecs]], [[wiki/phenomenes|le registre des phénomènes]] et [[wiki/hot|l'état courant]]. Une ligne par page : lien, résumé, statut, date. Règles et modèles : [[wiki/SCHEMA]].
 
 ## Hubs
 - [[wiki/SCHEMA|SCHEMA]] — règles, modèles de page, procédures, lint · 2026-10-31
 - [[wiki/hot|État courant]] — généré par `update_hot.py` : compteur, expériences ouvertes, journal récent, prochaines actions
 - [[wiki/log|Journal]] — chronologie append-only
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
+- [[wiki/phenomenes|Registre des phénomènes confirmés]] — ce qui se vérifie sur nos données, tradable seul ou non, pour combiner en stratégies · 2026-11-02
 - [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 30 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
