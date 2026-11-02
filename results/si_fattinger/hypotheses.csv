@@ -1,0 +1,55 @@
+famille,code,affirmation,statistique,valeur,ic_lo,ic_hi,p,attendu,conforme_brut,p_holm_famille
+A,H2.1,"prix = variance, P1 00-01 CET",WPC − VC (pts de %),0.0683,-1.1558,1.312,0.9225,≈ 0,True,1.0
+A,H2.2,"prix = variance, P2 01-08 Japon",WPC − VC (pts de %),2.5849,-0.525,5.7293,0.1015,≈ 0,True,0.7105
+A,H2.3,"prix = variance, P3 08-09 pré-Europe",WPC − VC (pts de %),-1.1005,-2.4757,0.2884,0.1315,≈ 0,True,0.789
+A,H2.4,"prix = variance, P4 09-13 Europe",WPC − VC (pts de %),-1.4972,-3.5693,0.5047,0.1625,≈ 0,True,0.789
+A,H2.5,"prix = variance, P5 13-15:30 macro US",WPC − VC (pts de %),-0.9222,-3.5052,1.506,0.4705,≈ 0,True,1.0
+A,H2.6,"prix = variance, P6 15:30-17:30 Eur+US",WPC − VC (pts de %),2.8603,0.4169,5.6734,0.0235,≈ 0,False,0.188
+A,H2.7,"prix = variance, P7 17:30-22 US",WPC − VC (pts de %),-1.6866,-3.8039,0.5378,0.1325,≈ 0,True,0.789
+A,H2.8,"prix = variance, P8 22-23 après",WPC − VC (pts de %),-0.3071,-1.0703,0.4285,0.3985,≈ 0,True,1.0
+A,H1,contribution au prix ≈ 0 avant l'ouverture européenne (17:00→3:00 NY),WPC nuit (%),28.5309,25.028,32.1583,0.0005,≈ 0,False,0.0045
+B,H3 18:00,b ≈ 1 ensuite,b (pente),1.1253,0.5552,1.6955,0.6666,≈ 1,True,1.0
+B,H3 19:00,b < 1 (bruit) les 2-5 premières heures,b (pente),0.5937,0.0866,1.1007,0.1162,< 1,False,1.0
+B,H3 20:00,b < 1 (bruit) les 2-5 premières heures,b (pente),0.8268,0.4747,1.1789,0.3351,< 1,False,1.0
+B,H3 21:00,b < 1 (bruit) les 2-5 premières heures,b (pente),1.1924,0.9039,1.4809,0.1911,< 1,False,1.0
+B,H3 22:00,b < 1 (bruit) les 2-5 premières heures,b (pente),1.228,1.0262,1.4297,0.0268,< 1,False,0.4824
+B,H3 23:00,b < 1 (bruit) les 2-5 premières heures,b (pente),1.1957,0.9611,1.4304,0.1021,< 1,False,1.0
+B,H3 00:00,b ≈ 1 ensuite,b (pente),1.2225,1.0299,1.4151,0.0236,≈ 1,False,0.4576
+B,H3 01:00,b ≈ 1 ensuite,b (pente),1.1975,0.9924,1.4025,0.0591,≈ 1,True,0.8865
+B,H3 02:00,b ≈ 1 ensuite,b (pente),1.1991,0.9846,1.4136,0.0689,≈ 1,True,0.9645
+B,H3 03:00,b ≈ 1 ensuite,b (pente),1.2089,1.0161,1.4016,0.0337,≈ 1,False,0.5385
+B,H3 04:00,b ≈ 1 ensuite,b (pente),1.2092,1.029,1.3894,0.0229,≈ 1,False,0.4576
+B,H3 05:00,b ≈ 1 ensuite,b (pente),1.2154,1.0657,1.3651,0.0048,≈ 1,False,0.1151
+B,H3 06:00,b ≈ 1 ensuite,b (pente),1.1952,1.0411,1.3493,0.0131,≈ 1,False,0.2872
+B,H3 07:00,b ≈ 1 ensuite,b (pente),1.1718,1.0251,1.3185,0.0217,≈ 1,False,0.456
+B,H3 08:00,b ≈ 1 ensuite,b (pente),1.1624,1.0355,1.2893,0.0122,≈ 1,False,0.2796
+B,H3 09:00,b ≈ 1 ensuite,b (pente),1.0891,0.9833,1.195,0.0989,≈ 1,True,1.0
+B,H3 10:00,b ≈ 1 ensuite,b (pente),1.0726,0.98,1.1653,0.1243,≈ 1,True,1.0
+B,H3 11:00,b ≈ 1 ensuite,b (pente),1.0527,0.9734,1.1319,0.1927,≈ 1,True,1.0
+B,H3 12:00,b ≈ 1 ensuite,b (pente),1.0537,0.9864,1.121,0.1179,≈ 1,True,1.0
+B,H3 13:00,b ≈ 1 ensuite,b (pente),1.0054,0.9554,1.0553,0.8336,≈ 1,True,1.0
+B,H3 14:00,b ≈ 1 ensuite,b (pente),1.0079,0.9726,1.0432,0.6602,≈ 1,True,1.0
+B,H3 15:00,b ≈ 1 ensuite,b (pente),1.0266,1.0025,1.0508,0.0308,≈ 1,False,0.5237
+B,H3 16:00,b ≈ 1 ensuite,b (pente),1.0012,0.9765,1.0259,0.9236,≈ 1,True,1.0
+B,H4,l'efficience baisse entre clôture asiatique (1:00) et ouverture européenne (3:00),ΔΔ,0.0336,-0.0052,0.0784,0.0895,< 0,False,1.0
+C,H5.1,pic de volatilité : ouverture de Tokyo 9:00 JST,rapport de variance,1.7007,1.2708,2.0989,0.0005,> 1,True,0.005
+C,H5.4,pic de volatilité : 8:20 NY (ancienne ouverture de la corbeille),rapport de variance,1.2319,1.0677,1.4144,0.0015,> 1,True,0.009
+C,H5.5,"pic de volatilité : 8:30 NY (macro US, tous les jours)",rapport de variance,3.2247,2.5816,3.9594,0.0005,> 1,True,0.005
+C,H5.6,"pic de volatilité : 10:00 NY (macro US, tous les jours)",rapport de variance,1.3983,1.2588,1.5595,0.0005,> 1,True,0.005
+C,H5.7,"pic de volatilité : 13:30 NY (règlement COMEX, ancienne clôture de la corbeille)",rapport de variance,0.9883,0.7117,1.5154,0.9765,> 1,False,1.0
+C,H5.8,pic de volatilité : 14:00 NY jours FOMC,rapport de variance,6.4397,4.1822,9.0296,0.0005,> 1,True,0.005
+C,H5.9,pic de volatilité : 16:00 NY (clôture des actions US),rapport de variance,1.1008,0.8804,1.3458,0.3625,> 1,False,1.0
+C,H5.2,montée pendant l'Asie : 2:00-3:00 contre 20:00-21:00,rapport de variance,0.8692,0.7147,1.1031,0.2775,> 1,False,1.0
+C,H5.3,ouverture européenne : 3:00-4:00 contre 2:00-3:00,rapport de variance,1.188,0.9536,1.6071,0.1755,> 1,False,0.8775
+D,H7,sauts = 5 à 13 % de la variance journalière,part des sauts (%),7.3194,5.9143,9.1154,,5-13 %,True,
+D,H8,8:30 = plus gros contributeur de sauts (hors réouverture),part 8:30 (%) ; rang,1.1473,0.7404,1.6878,0.0,rang 1,True,0.0
+D,H9,métaux : sauts de 10:00 > sauts de la Fed (14:00-14:45),écart (pts de %),-0.1496,-0.3532,0.0277,0.1035,> 0,False,0.1035
+D,H10,le saut de 8:30 vient des annonces,écart de saut moyen (bp²),2026.4412,1409.8863,2775.7291,0.0005,> 0,True,0.001
+C,H6,pas de U en séance COMEX (or),rapport bords/milieu,0.9728,0.8667,1.0904,0.7065,≈ 1 (pas de U),True,1.0
+E,H11,volume < volatilité hors séance COMEX (8:20-13:30),écart de parts (pts),20.9529,20.4926,21.4122,0.0005,> 0,True,0.0035
+E,H12.1,"à 8:30, le volume monte plus que la volatilité",excès de part (pts),0.4237,0.3712,0.4746,0.0005,> 0,True,0.0035
+E,H12.2,"à 10:00, le volume monte plus que la volatilité",excès de part (pts),0.2125,0.1785,0.2486,0.0005,> 0,True,0.0035
+E,H13.1,"à 8:20, le volume monte plus que la volatilité",excès de part (pts),-0.0951,-0.119,-0.0715,0.0005,> 0,False,0.0035
+E,H13.2,"à 13:30, le volume monte plus que la volatilité",excès de part (pts),-0.0938,-0.1108,-0.0772,0.0005,> 0,False,0.0035
+E,H13.3,"à 9:30, le volume monte plus que la volatilité",excès de part (pts),0.2846,0.2498,0.3196,0.0005,> 0,True,0.0035
+E,H14,plus de prix par contrat la nuit (VWPC > 1),WPC/part de volume,1.4745,1.3059,1.6455,0.0005,> 1,True,0.0035

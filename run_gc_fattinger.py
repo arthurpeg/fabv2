@@ -1,8 +1,11 @@
 """Or (GC) : les affirmations de Fattinger-Ziegler (« Risk and Return around the Clock »,
 SSRN 2606706) testées sur nos données, 5 minutes, 2016-2026.
 
-uv run python run_gc_fattinger.py   → results/gc_fattinger/ (run.log, hypotheses.csv, periods.csv,
-unbiasedness.csv, intervals.csv, by_period.csv)
+uv run python run_gc_fattinger.py      → results/gc_fattinger/ (run.log, hypotheses.csv, periods.csv,
+unbiasedness.csv, intervals.csv)
+uv run python run_gc_fattinger.py SI   → results/si_fattinger/ : argent, série London Strategic Edge
+2017-04 → 2026-08 (recolte1.engine._load_lse) ; séances minces (contrat qui expire) et séances
+de roulement écartées en plus.
 
 Exploratoire, non pré-enregistré, demandé en séance. Le papier couvre 2010-2013 ; nos données
 GC commencent en 2016 : c'est une réplication hors échantillon dans le temps. Arrêt au
@@ -49,6 +52,7 @@ from scipy import stats as st
 import recolte1.engine as E
 from run_gc_sessions import END, NY, START, holm, nw_t
 
+ASSET = "GC"
 OUT = Path("results/gc_fattinger")
 CET, TOKYO = "Europe/Berlin", "Asia/Tokyo"
 NI = 277  # gap + 276 intervalles de 5 minutes
@@ -86,7 +90,7 @@ def p_boot(b: np.ndarray, h0: float) -> float:
 
 
 def build() -> dict:
-    df = E.load("GC")
+    df = E.load(ASSET)
     t_bar = df.index.as_unit("ns").asi8  # ns UTC
     d = pd.bdate_range(START, END)
     c_prev = E.at(d - pd.offsets.BDay(1), "17:00", NY).set_axis(d)
@@ -108,13 +112,19 @@ def build() -> dict:
     i1 = np.searchsorted(t_bar, pd.DatetimeIndex(t_end).as_unit("ns").asi8)
     nbar = i1 - i0
     full = nbar >= 0.85 * np.median(nbar)
-    p0, _ = E.price_at("GC", c_prev)
+    p0, _ = E.price_at(ASSET, c_prev)
     # ouverture : première barre dans [18:00, 18:05)
     o_ok = (i0 < len(t_bar))
     o_t = t_bar[np.minimum(i0, len(t_bar) - 1)]
     o_ok &= (o_t >= to_ns) & (o_t < to_ns + 5 * 60 * 10**9)
     p_open = np.where(o_ok, df["open"].values[np.minimum(i0, len(t_bar) - 1)], np.nan)
     keep = full & o_ok & p0.notna().values
+    if E.SPECS[ASSET].folder == "lse":  # contrat qui expire (séances minces) et séance de roulement
+        ss = E.lse_sessions(pd.read_parquet(E.LSE / f"{ASSET}_lse_1m.parquet"))
+        thin = ss["thin"].reindex(d).astype("boolean").fillna(True).to_numpy(bool)
+        roll = d.isin(pd.DatetimeIndex(df.attrs["roll_table"]["séance"]))
+        print(f"{ASSET} : {(thin & full).sum()} séances minces et {roll.sum()} séances de roulement écartées")
+        keep &= ~thin & ~roll
     d = d[keep]
     p0, p_open = p0.values[keep], p_open[keep]
     t_open = pd.DatetimeIndex(t_open[d]).as_unit("ns").tz_convert(None)
@@ -252,7 +262,7 @@ def main():
     days, R, V, starts, lab = D["days"], D["R"], D["V"], D["starts"], D["lab"]
     n = len(days)
     r = R.sum(1)
-    log(f"GC 5 minutes, {n} jours gardés {days[0].date()} → {days[-1].date()} "
+    log(f"{ASSET} 5 minutes, {n} jours gardés {days[0].date()} → {days[-1].date()} "
         f"(écart NY/CET = 6 h, séances complètes) ; {NI} intervalles par jour (gap + 276)")
     log(f"Rendement journalier moyen {r.mean()*1e4:+.2f} bp, σ {r.std()*1e4:.1f} bp ; "
         f"part d'intervalles sans volume (hors gap) {(V[:, 1:] == 0).mean()*100:.1f} %")
@@ -532,4 +542,8 @@ def main():
 
 
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        ASSET = sys.argv[1]
+        OUT = Path(f"results/{ASSET.lower()}_fattinger")
     main()

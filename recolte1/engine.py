@@ -30,7 +30,7 @@ class Spec:
     folder: str
     tick: float
     point_value: float
-    roll: str  # "quarterly" (mars, juin, sept., déc.) | "gold" (G J M Q V Z)
+    roll: str  # "quarterly" (mars, juin, sept., déc.) | "gold" (G J M Q V Z) | "silver" (H K N U Z, série LSE)
 
     @property
     def rt_cost(self) -> float:
@@ -46,7 +46,10 @@ SPECS = {
     "6B": Spec("forex", 0.0001, 62_500, "quarterly"),
     "6J": Spec("forex", 0.0000005, 12_500_000, "quarterly"),
     "6A": Spec("forex", 0.00005, 100_000, "quarterly"),
+    # argent : London Strategic Edge (fetch_lse.py), 2017-04 → 2026-08, front non ajusté
+    "SI": Spec("lse", 0.005, 5_000, "silver"),
 }
+LSE = Path("cache/lse")
 UNIVERSE = list(SPECS)
 
 
@@ -57,6 +60,8 @@ def load(name: str) -> pd.DataFrame:
     trimestriels → jours 7 à 22 de mars, juin, sept., déc. (règle de run_sessions.py) ;
     or → du 20 d'un mois impair au 5 du mois suivant (bascule de volume avant G J M Q V Z)."""
     s = SPECS[name]
+    if s.folder == "lse":
+        return _load_lse(name)
     df = pd.read_parquet(DATA / s.folder / f"{name}_v0_1m.parquet")
     old = HIST_2010 / f"{name}_v0_1m_2010.parquet"
     if USE_2010 and old.exists():
@@ -87,6 +92,64 @@ def load(name: str) -> pd.DataFrame:
     out["volume"] = df["volume"]
     out["factor"] = factor
     out.attrs["rolls"] = gap.loc[rolls]
+    return out
+
+
+def lse_sessions(df: pd.DataFrame) -> pd.DataFrame:
+    """Une ligne par séance 18:00 → 17:00 NY : première barre, volume, écart d'ouverture."""
+    ix = df.index
+    sess = (ix.tz_convert(NY).tz_localize(None) + pd.Timedelta(hours=6)).normalize()
+    gap = df["open"] / df["close"].shift() - 1
+    g = pd.DataFrame({"t0": ix, "vol": df["volume"].values, "gap": gap.values}).groupby(sess.values)
+    out = g.agg(t0=("t0", "min"), vol=("vol", "sum"), gap=("gap", "first"))
+    out["med"] = out["vol"].rolling(20, min_periods=5).median().shift(1)
+    out["thin"] = out["vol"] < 0.4 * out["med"]
+    return out
+
+
+def lse_rolls(df: pd.DataFrame) -> pd.DataFrame:
+    """Roulements de la série LSE (contrat « front » qui reste sur l'échéance jusqu'au mois de
+    livraison H K N U Z, puis change à une réouverture de 18:00 NY dont la date varie de ± 3 séances).
+    Dans la fenêtre [1er du mois − 10 j, 1er du mois + 5 j] : première séance de volume normal, à
+    partir du 1er du mois − 4 j, qui suit une séance mince (< 40 % de la médiane des 20 séances
+    précédentes) ; à défaut, séance au plus grand |écart d'ouverture|. Vérifié à la main le 2026-11-02."""
+    s = lse_sessions(df)
+    rows = []
+    for y in range(s.index[0].year, s.index[-1].year + 1):
+        for m in (3, 5, 7, 9, 12):
+            m0 = pd.Timestamp(y, m, 1)
+            w = s[(s.index >= m0 - pd.Timedelta(days=10)) & (s.index <= m0 + pd.Timedelta(days=5))]
+            if len(w) < 5:
+                continue
+            # les séances minces de jours fériés (Thanksgiving, Presidents Day…) ne comptent pas :
+            # le roulement suit une séance mince et tombe à moins de 4 jours du 1er du mois
+            after_thin = w["thin"].shift(1, fill_value=False) & ~w["thin"] & (w.index >= m0 - pd.Timedelta(days=4))
+            if after_thin.any() and w["thin"].any():
+                day, how = after_thin[after_thin].index[0], "volume"
+            else:
+                day, how = w["gap"].abs().idxmax(), "écart"
+            rows.append({"séance": day, "t": s.loc[day, "t0"], "gap": s.loc[day, "gap"], "méthode": how})
+    return pd.DataFrame(rows)
+
+
+def _load_lse(name: str) -> pd.DataFrame:
+    """Série LSE ajustée en ratio aux roulements de lse_rolls (l'écart retenu absorbe aussi le gap
+    de l'arrêt ce jour-là : écarter la séance de roulement des études intraday). Les séances minces
+    avant chaque roulement sont sur le contrat qui expire : les filtrer par le volume."""
+    df = pd.read_parquet(LSE / f"{name}_lse_1m.parquet")
+    df = df[~df.index.duplicated()].sort_index()
+    ix = df.index
+    rl = lse_rolls(df)
+    rolls = pd.DatetimeIndex(rl["t"])
+    gap = df["open"] / df["close"].shift() - 1
+    step = pd.Series(1.0, index=ix)
+    step.loc[rolls] = 1 + gap.loc[rolls]
+    factor = step[::-1].cumprod()[::-1].shift(-1).fillna(1.0)
+    out = df[["open", "high", "low", "close"]].mul(factor, axis=0)
+    out["volume"] = df["volume"]
+    out["factor"] = factor
+    out.attrs["rolls"] = gap.loc[rolls]
+    out.attrs["roll_table"] = rl
     return out
 
 

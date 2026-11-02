@@ -35,7 +35,7 @@ updated: 2026-10-31
 
 ## Recherche
 - [[wiki/research/recoltes-ssrn|Revues de papiers SSRN]] — lots du 13 au 29 octobre et ce qu'ils ont donné · `ingested`
-- [[wiki/research/fattinger-ziegler-or|Fattinger-Ziegler sur l'or]] — découverte du prix sur 24 h (SSRN 2606706) testée sur GC 2016-2026 : microstructure reproduite, « pas de prix avant l'Europe » contredit · `tested` · 2026-11-02
+- [[wiki/research/fattinger-ziegler-or|Fattinger-Ziegler sur l'or]] — découverte du prix sur 24 h (SSRN 2606706) testée sur GC 2016-2026 et SI 2017-2026 : microstructure reproduite, « pas de prix avant l'Europe » contredit · `tested` · 2026-11-02
 - [[wiki/research/litterature-intraday|Littérature intraday M1–M5]] — mécanismes, papiers, contradictions · `ingested`
 
 ## Référence (aiguillage)
