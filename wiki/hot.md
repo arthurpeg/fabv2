@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-02 14:33
+updated: 2026-11-02 14:48
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -8,7 +8,7 @@ updated: 2026-11-02 14:33
 # État courant
 
 - Compteur global d'essais : **1 631** (source : [[reports/si_fattinger_report]])
-- Dernier pré-enregistrement : n° 20 ([[PREREGISTRATION_20]])
+- Dernier pré-enregistrement : n° 21 ([[PREREGISTRATION_21]])
 - Idées abandonnées au registre : 30 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-02
 

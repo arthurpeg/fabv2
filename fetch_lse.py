@@ -5,6 +5,7 @@ D:/quant-data depuis les sessions Claude : copier à la main si besoin).
 
 uv run python fetch_lse.py                 → argent (SILVER → SI), 2017-04 → 2026-08-28
 uv run python fetch_lse.py PLATINUM PL     → autre symbole du marché futures, code local PL
+uv run python fetch_lse.py XAU/USD XAU commodities 2003-01-01 2015-12-31   → or au comptant (n° 21)
 
 Clé : LONDONSTRATEGIE_KEY dans .env, envoyée dans l'en-tête X-API-Key (jamais affichée).
 API : GET https://download.londonstrategicedge.com/v3/export (doc : github.com/londonstrategicedge/lse-data,
@@ -44,10 +45,10 @@ def key() -> str:
     return os.environ["LONDONSTRATEGIE_KEY"]
 
 
-def export(sym: str, a: str, b: str, h: dict) -> pd.DataFrame | None:
+def export(sym: str, a: str, b: str, h: dict, market: str = "futures") -> pd.DataFrame | None:
     for _ in range(5):
         r = requests.get(f"{BASE}/v3/export", headers=h, timeout=600, params={
-            "market": "futures", "symbol": sym, "timeframe": "1m", "from": a, "to": b, "format": "csv"})
+            "market": market, "symbol": sym, "timeframe": "1m", "from": a, "to": b, "format": "csv"})
         if r.status_code == 429:
             time.sleep(int(r.headers.get("Retry-After", 30)))
             continue
@@ -58,12 +59,12 @@ def export(sym: str, a: str, b: str, h: dict) -> pd.DataFrame | None:
     raise RuntimeError(f"{sym} {a}→{b} : trop de refus 429")
 
 
-def main(sym: str = "SILVER", code: str = "SI"):
+def main(sym: str = "SILVER", code: str = "SI", market: str = "futures", start: str = START, end: str = END):
     h = {"X-API-Key": key()}
     parts = []
-    for y in range(int(START[:4]), int(END[:4]) + 1):
-        a, b = max(f"{y}-01-01", START), min(f"{y}-12-31", END)
-        d = export(sym, a, b, h)
+    for y in range(int(start[:4]), int(end[:4]) + 1):
+        a, b = max(f"{y}-01-01", start), min(f"{y}-12-31", end)
+        d = export(sym, a, b, h, market)
         n = 0 if d is None else len(d)
         print(f"{sym} {a} → {b} : {n} barres", flush=True)
         if d is not None:
@@ -78,4 +79,4 @@ def main(sym: str = "SILVER", code: str = "SI"):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:3]) if len(sys.argv) >= 3 else main()
+    main(*sys.argv[1:6]) if len(sys.argv) >= 3 else main()
