@@ -13,7 +13,7 @@ updated: 2026-10-31
 - [[wiki/log|Journal]] — chronologie append-only
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
 - [[wiki/phenomenes|Registre des phénomènes confirmés]] — ce qui se vérifie sur nos données, tradable seul ou non, pour combiner en stratégies · 2026-11-02
-- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 30 idées, avec la raison et la condition de réouverture · 2026-11-02
+- [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 32 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
 - [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD (prix, annonces, VIX, taille) et stop au range du soir rejetés · `active` · 2026-11-01
