@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-02 14:09
+updated: 2026-11-02 14:20
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-02 14:09
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-02] ingest | Argent (SI) 1 minute via l'API London Strategic Edge, plan gratuit, marché `futures` (fetch_lse.py → cache/lse/SI_lse_1m.parquet) | 3,02 M barres 2017-04-02 → 2026-08-28 ; rien avant 2017 ; GOLD de la même source = GC Databento à 1 tick près ; série front non ajustée qui roule au 1er jour du mois de livraison : 114 séances quasi vides (2-3 avant chaque roulement), à filtrer et ajuster avant usage ; contrats individuels (marché cme) payants
 - [2026-11-02] query | Affirmations de Fattinger-Ziegler (SSRN 2606706) testées sur l'or GC 5 min 2016-2026 (run_gc_fattinger.py, reports/gc_fattinger_report.md, exploratoire, compteur 1 577 → 1 631, 54 tests) | microstructure reproduite (pic 8:30 × 4,8, Tokyo × 2, Fed × 7, sauts 9 % dont 8:30 = 2 %, pas de U, volume < volatilité la nuit, VWPC nuit 1,29) ; contredit : 26,5 % du prix avant 3:00 NY ; non confirmé : début de Globex bruité, chute d'efficience avant l'Europe ; continuation 17:00→5:00 (b 1,13) seulement 2023-2026
 - [2026-11-02] query | Lecture détaillée de Fattinger-Ziegler « Risk and Return around the Clock » (SSRN 2606706, papiers overnight ssrn/ssrn-2606706.pdf ; résumé existant dans resumes_papiers_overnight_recolte1.md [20]) | papier descriptif, aucune stratégie ; utile pour nos travaux : inefficience de la découverte de prix des métaux pendant les 3-4 premières heures de Globex (≈ 18:00-22:00 NY), cohérente avec la reprise de l'or ; la « contribution au prix » (moyenne de r_i/r) ne mesure pas une dérive exploitable
 - [2026-11-02] ingest | Papiers SSRN overnight sur FX majeurs, or et pétrole via Crossref (papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md) | 17 papiers fournis, 5 doublons écartés, 2 sans résumé ; FX : nuit asiatique bruitée et suiveuse pour EUR/GBP, devise européenne en hausse après Londres ; or : découverte du prix partiellement en Asie depuis 2014 ; pétrole quasi vide ; hypothèses H12 à H15 à pré-enregistrer
@@ -29,7 +30,6 @@ updated: 2026-11-02 14:09
 - [2026-11-01] query | Anatomie de la reprise de l'or 17:00 NY → 9:00 Shanghai : jambes, jour de semaine, roulements, queues, conditionnement, volume (run_gc_reprise.py, exploratoire, compteur 1 577) | portée par le gap de l'arrêt 17:00 → 18:05 (+1,2 bp, t 3,6) et 19:00 → 20:00 NY (+1,0 bp, t 3,2) ; nulle le lundi, +2,5 bp hors lundis ; pas un artefact de roulement ni des queues ; aucun conditionnement utile ; volume 46 contrats/min contre 288 au COMEX, coût 1 tick probablement optimiste
 - [2026-11-01] query | Règle matinée US sur NQ (9:30→11:30, |z| > 1, sortie 16:00) avec SL/TP 1/1 et 2/2 ATR M15 (run_nq_matin_sltp.py, exploratoire, compteur 1 559) | SL 1/TP 1 : +1,3 bp/trade net (t 1,6), 99 % sorties sur stop ; SL 2/TP 2 : +4,8 bp (t 3,3, Sharpe 0,83) contre +4,8 sans stop (t 2,0, Sharpe 0,49), DD divisé par ~2 ; 2010-2017 ≈ 0 partout ; règle toujours au registre (n° 20)
 - [2026-11-01] abandon | Matinée US → reste de séance (règle n° 20) | rouverte seulement avec une donnée de gamma des options (OPRA)
-- [2026-11-01] experiment | n° 20 sur ES et YM, 2010-2026 (run_prereg20.py) | ÉCHEC : ES +2,1 bp/trade net p Holm 0,35, YM −1,1 bp p 0,71 ; les deux négatifs sur 2010-2017 ; ES et YM portés par 2025
 
 ## Prochaines actions
 
