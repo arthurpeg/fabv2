@@ -33,7 +33,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 ## Ouvert
 - Le n° 24 rejette le filtre hors échantillon (2010-2015). Ne rouvrir que sur le holdout postérieur au 2026-08-28 (voir le registre des échecs).
 - Pas indépendante de la [[wiki/experiments/nq-nuit-momentum|règle NQ de nuit]] : même retour à la moyenne (piste F2 du n° 13). Une combinaison doit être pré-enregistrée sur le holdout.
-- Stratégie 2 du zip (EMA 9:30) : pas encore refaite.
+- Stratégie 2 du zip (EMA 9:30 / M2) : refaite, puis rejetée hors échantillon au n° 25 ([[wiki/experiments/nq-ema930-m2]]).
 
 ## Sources brutes
 [run_nq_nuit_3n_vbt.py](../../run_nq_nuit_3n_vbt.py), `results/nq_nuit_3n/` (`run.log`, `comparaison.csv`, trades), `results/nq_nuit_3n/replique/`.
