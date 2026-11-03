@@ -20,6 +20,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip`, scripts `bt_ema
 | Backtest refait avec vectorbt (C, D, M2, taille, stop), comparé au rapport d'origine | Sans stop : **identique** à l'original (C, D, M2, M2 + taille, au dollar près, sur les 4 périodes) ; avec stop : +0,01 à +0,03 de Sharpe (2 trades à stop dans la barre d'entrée, vectorbt sort une barre plus tard) ; Trades M2 par année identiques au post (sauf 2020 : 123 contre 125) ; vectorbt = boucle (2 trades à stop dans la barre d'entrée diffèrent) ; M2 + taille : Sharpe 1,28 IS / 1,86 OOS ; C seul 0,62 / 1,57 | [[reports/nq_ema930_vbt_report]] |
 
 | **N° 25 : hors échantillon NQ 2010-06 → 2012-12 (pré-enregistré)** | ❌ ÉCHEC : M2 +20,7 $/trade (5 bps), p 0,19 ; jours M2 ≈ jours exclus (p 0,45) ; M2 + stop +0,066 R (t 0,91) ; ES / YM p 0,04-0,05 avant correction | [[reports/prereg25_report]] |
+| Prolongement descriptif 2013-2015 (vu par le post) et 2010-2015 | 2013-2015 : 7,6 bps, Sharpe 0,83, t 1,34 ; 2010-2015 : 6,4 bps, Sharpe 0,65, t 1,59 (brut / σ t 2,2) ; environ moitié moins que 2016-2024 ; stop instable | [[reports/prereg25_report]] |
 
 ## Ce qu'on sait
 - C seul (tous les jours) est faible : Sharpe 0,62, t 1,96 sur 2016-2024, cohérent avec les échecs du momentum intraday (voir le registre). Le filtre M2 fait l'essentiel.
