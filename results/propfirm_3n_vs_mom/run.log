@@ -1,0 +1,235 @@
+FTMO 1-Step, 3n contre mom ; 20000 comptes par réglage, graine 1818
+  mom 2011-2026 (avenant C) : 3787 trades (250/an), R brut moyen +0.125, stop médian 0.254%, coût 1,5 pt 0.023 R, P(R <= -1) 26.1%
+  mom 2016-2026 : 2672 trades (251/an), R brut moyen +0.099, stop médian 0.275%, coût 1,5 pt 0.021 R, P(R <= -1) 25.6%
+  mom 2016-2026 sans edge : 2672 trades (251/an), R brut moyen -0.000, stop médian 0.275%, coût 1,5 pt 0.021 R, P(R <= -1) 53.0%
+  3n 03h SL 2016-2026 : 1166 trades (109/an), R brut moyen +0.160, stop médian 0.290%, coût 1,5 pt 0.020 R, P(R <= -1) 12.8%
+  3n 03h SL 2016-2026 sans edge : 1166 trades (109/an), R brut moyen +0.000, stop médian 0.290%, coût 1,5 pt 0.020 R, P(R <= -1) 27.0%
+  3n 03h SL 2025-2026 (OOS) : 182 trades (110/an), R brut moyen +0.154, stop médian 0.331%, coût 1,5 pt 0.018 R, P(R <= -1) 11.5%
+  3n 08h SL 2016-2026 : 1165 trades (109/an), R brut moyen +0.191, stop médian 0.290%, coût 1,5 pt 0.020 R, P(R <= -1) 21.5%
+
+=== mom 2011-2026 (avenant C), coût 1,5 pt ===
+  éval  0.5 % : passage 81.2%, 149.0 trades si validé (≈ 7.2 mois), 160.4 par tentative
+  éval  1.0 % : passage 62.0%, 44.4 trades si validé (≈ 2.1 mois), 45.8 par tentative
+  éval  1.5 % : passage 55.9%, 21.3 trades si validé (≈ 1.0 mois), 22.2 par tentative
+  éval  2.0 % : passage 50.8%, 12.7 trades si validé (≈ 0.6 mois), 13.5 par tentative
+  éval  2.5 % : passage 42.3%, 10.0 trades si validé (≈ 0.5 mois), 10.2 par tentative
+  financé 0.25 % RAZ : valeur 11.88 %, P(reward) 100%, 8.95 rewards, vie 500 trades (≈ 24 mois), 0.49 %/mois de vie
+  financé  0.5 % RAZ : valeur 20.54 %, P(reward) 98%, 7.70 rewards, vie 407 trades (≈ 20 mois), 1.05 %/mois de vie
+  financé  1.0 % RAZ : valeur 18.49 %, P(reward) 80%, 3.39 rewards, vie 120 trades (≈ 6 mois), 3.22 %/mois de vie
+  financé  1.5 % RAZ : valeur 12.53 %, P(reward) 63%, 1.53 rewards, vie 53 trades (≈ 3 mois), 4.94 %/mois de vie
+  financé  2.0 % RAZ : valeur 8.27 %, P(reward) 47%, 0.74 rewards, vie 25 trades (≈ 1 mois), 6.84 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 11.95 %, P(reward) 100%, 9.00 rewards, vie 500 trades (≈ 24 mois), 0.50 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 15.59 %, P(reward) 98%, 5.82 rewards, vie 276 trades (≈ 13 mois), 1.18 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 7.75 %, P(reward) 79%, 1.41 rewards, vie 49 trades (≈ 2 mois), 3.30 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 6.02 %, P(reward) 63%, 0.72 rewards, vie 22 trades (≈ 1 mois), 5.60 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 5.35 %, P(reward) 47%, 0.47 rewards, vie 15 trades (≈ 1 mois), 7.68 %/mois de vie
+
+=== mom 2016-2026, coût 1,5 pt ===
+  éval  0.5 % : passage 69.0%, 164.6 trades si validé (≈ 7.9 mois), 175.8 par tentative
+  éval  1.0 % : passage 55.4%, 48.5 trades si validé (≈ 2.3 mois), 48.1 par tentative
+  éval  1.5 % : passage 51.3%, 21.9 trades si validé (≈ 1.0 mois), 22.5 par tentative
+  éval  2.0 % : passage 47.5%, 12.3 trades si validé (≈ 0.6 mois), 13.4 par tentative
+  éval  2.5 % : passage 38.9%, 9.5 trades si validé (≈ 0.5 mois), 10.0 par tentative
+  financé 0.25 % RAZ : valeur 9.40 %, P(reward) 100%, 7.14 rewards, vie 500 trades (≈ 24 mois), 0.39 %/mois de vie
+  financé  0.5 % RAZ : valeur 13.53 %, P(reward) 96%, 5.13 rewards, vie 337 trades (≈ 16 mois), 0.84 %/mois de vie
+  financé  1.0 % RAZ : valeur 11.67 %, P(reward) 76%, 2.20 rewards, vie 93 trades (≈ 4 mois), 2.62 %/mois de vie
+  financé  1.5 % RAZ : valeur 9.74 %, P(reward) 59%, 1.21 rewards, vie 48 trades (≈ 2 mois), 4.27 %/mois de vie
+  financé  2.0 % RAZ : valeur 6.79 %, P(reward) 43%, 0.62 rewards, vie 23 trades (≈ 1 mois), 6.19 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 9.40 %, P(reward) 100%, 7.14 rewards, vie 500 trades (≈ 24 mois), 0.39 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 11.70 %, P(reward) 96%, 4.45 rewards, vie 267 trades (≈ 13 mois), 0.92 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 6.78 %, P(reward) 77%, 1.26 rewards, vie 49 trades (≈ 2 mois), 2.89 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 5.44 %, P(reward) 59%, 0.66 rewards, vie 22 trades (≈ 1 mois), 5.07 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 4.87 %, P(reward) 43%, 0.43 rewards, vie 14 trades (≈ 1 mois), 7.04 %/mois de vie
+
+=== mom 2016-2026, coût 3 pt ===
+  éval  0.5 % : passage 62.5%, 196.1 trades si validé (≈ 9.4 mois), 200.6 par tentative
+  éval  1.0 % : passage 50.5%, 52.1 trades si validé (≈ 2.5 mois), 49.0 par tentative
+  éval  1.5 % : passage 48.4%, 24.4 trades si validé (≈ 1.2 mois), 23.7 par tentative
+  éval  2.0 % : passage 43.1%, 12.5 trades si validé (≈ 0.6 mois), 13.7 par tentative
+  éval  2.5 % : passage 37.0%, 9.6 trades si validé (≈ 0.5 mois), 10.2 par tentative
+  financé 0.25 % RAZ : valeur 6.96 %, P(reward) 100%, 5.48 rewards, vie 500 trades (≈ 24 mois), 0.29 %/mois de vie
+  financé  0.5 % RAZ : valeur 10.61 %, P(reward) 94%, 4.22 rewards, vie 326 trades (≈ 16 mois), 0.68 %/mois de vie
+  financé  1.0 % RAZ : valeur 10.01 %, P(reward) 73%, 1.96 rewards, vie 89 trades (≈ 4 mois), 2.35 %/mois de vie
+  financé  1.5 % RAZ : valeur 8.21 %, P(reward) 57%, 1.06 rewards, vie 45 trades (≈ 2 mois), 3.84 %/mois de vie
+  financé  2.0 % RAZ : valeur 5.99 %, P(reward) 40%, 0.56 rewards, vie 22 trades (≈ 1 mois), 5.60 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 6.98 %, P(reward) 100%, 5.50 rewards, vie 500 trades (≈ 24 mois), 0.29 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 8.94 %, P(reward) 94%, 3.54 rewards, vie 239 trades (≈ 11 mois), 0.78 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 5.95 %, P(reward) 74%, 1.15 rewards, vie 49 trades (≈ 2 mois), 2.53 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 4.96 %, P(reward) 56%, 0.63 rewards, vie 23 trades (≈ 1 mois), 4.52 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 4.36 %, P(reward) 40%, 0.40 rewards, vie 15 trades (≈ 1 mois), 6.24 %/mois de vie
+
+=== mom 2016-2026 sans edge, coût 1,5 pt ===
+  éval  0.5 % : passage 16.9%, 171.5 trades si validé (≈ 8.2 mois), 171.6 par tentative
+  éval  1.0 % : passage 27.2%, 49.4 trades si validé (≈ 2.4 mois), 47.5 par tentative
+  éval  1.5 % : passage 34.6%, 23.2 trades si validé (≈ 1.1 mois), 22.4 par tentative
+  éval  2.0 % : passage 33.0%, 11.5 trades si validé (≈ 0.6 mois), 12.8 par tentative
+  éval  2.5 % : passage 29.5%, 8.8 trades si validé (≈ 0.4 mois), 9.5 par tentative
+  financé 0.25 % RAZ : valeur 2.30 %, P(reward) 78%, 1.85 rewards, vie 470 trades (≈ 22 mois), 0.10 %/mois de vie
+  financé  0.5 % RAZ : valeur 4.06 %, P(reward) 72%, 1.62 rewards, vie 194 trades (≈ 9 mois), 0.44 %/mois de vie
+  financé  1.0 % RAZ : valeur 5.03 %, P(reward) 57%, 0.99 rewards, vie 65 trades (≈ 3 mois), 1.61 %/mois de vie
+  financé  1.5 % RAZ : valeur 4.95 %, P(reward) 44%, 0.64 rewards, vie 32 trades (≈ 2 mois), 3.20 %/mois de vie
+  financé  2.0 % RAZ : valeur 4.09 %, P(reward) 31%, 0.39 rewards, vie 18 trades (≈ 1 mois), 4.67 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 2.32 %, P(reward) 78%, 1.86 rewards, vie 446 trades (≈ 21 mois), 0.11 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 3.85 %, P(reward) 72%, 1.54 rewards, vie 156 trades (≈ 7 mois), 0.52 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 3.89 %, P(reward) 56%, 0.76 rewards, vie 42 trades (≈ 2 mois), 1.94 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 3.62 %, P(reward) 44%, 0.46 rewards, vie 21 trades (≈ 1 mois), 3.57 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 3.24 %, P(reward) 30%, 0.30 rewards, vie 14 trades (≈ 1 mois), 5.00 %/mois de vie
+
+=== 3n 03h SL 2016-2026, coût 1,5 pt ===
+  éval  0.5 % : passage 100.0%, 157.3 trades si validé (≈ 17.3 mois), 157.3 par tentative
+  éval  1.0 % : passage 82.4%, 56.6 trades si validé (≈ 6.2 mois), 58.2 par tentative
+  éval  1.5 % : passage 78.4%, 39.4 trades si validé (≈ 4.3 mois), 39.8 par tentative
+  éval  2.0 % : passage 62.7%, 22.1 trades si validé (≈ 2.4 mois), 25.6 par tentative
+  éval  2.5 % : passage 57.7%, 17.0 trades si validé (≈ 1.9 mois), 18.9 par tentative
+  financé 0.25 % RAZ : valeur 15.44 %, P(reward) 100%, 12.59 rewards, vie 500 trades (≈ 55 mois), 0.28 %/mois de vie
+  financé  0.5 % RAZ : valeur 30.81 %, P(reward) 100%, 12.58 rewards, vie 500 trades (≈ 55 mois), 0.56 %/mois de vie
+  financé  1.0 % RAZ : valeur 41.22 %, P(reward) 87%, 9.05 rewards, vie 275 trades (≈ 30 mois), 1.37 %/mois de vie
+  financé  1.5 % RAZ : valeur 44.45 %, P(reward) 84%, 6.48 rewards, vie 186 trades (≈ 20 mois), 2.17 %/mois de vie
+  financé  2.0 % RAZ : valeur 18.05 %, P(reward) 69%, 1.91 rewards, vie 64 trades (≈ 7 mois), 2.58 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 15.42 %, P(reward) 100%, 12.57 rewards, vie 500 trades (≈ 55 mois), 0.28 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 29.76 %, P(reward) 100%, 12.28 rewards, vie 441 trades (≈ 48 mois), 0.61 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 12.70 %, P(reward) 86%, 2.61 rewards, vie 85 trades (≈ 9 mois), 1.36 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 10.16 %, P(reward) 85%, 1.42 rewards, vie 44 trades (≈ 5 mois), 2.11 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 7.32 %, P(reward) 68%, 0.81 rewards, vie 27 trades (≈ 3 mois), 2.51 %/mois de vie
+
+=== 3n 03h SL 2016-2026, coût 3 pt ===
+  éval  0.5 % : passage 92.5%, 163.4 trades si validé (≈ 17.9 mois), 167.0 par tentative
+  éval  1.0 % : passage 80.5%, 64.1 trades si validé (≈ 7.0 mois), 64.2 par tentative
+  éval  1.5 % : passage 74.7%, 41.3 trades si validé (≈ 4.5 mois), 41.3 par tentative
+  éval  2.0 % : passage 58.6%, 23.6 trades si validé (≈ 2.6 mois), 26.2 par tentative
+  éval  2.5 % : passage 54.2%, 17.9 trades si validé (≈ 2.0 mois), 19.6 par tentative
+  financé 0.25 % RAZ : valeur 12.99 %, P(reward) 100%, 10.81 rewards, vie 500 trades (≈ 55 mois), 0.24 %/mois de vie
+  financé  0.5 % RAZ : valeur 25.31 %, P(reward) 98%, 10.60 rewards, vie 451 trades (≈ 49 mois), 0.51 %/mois de vie
+  financé  1.0 % RAZ : valeur 35.22 %, P(reward) 86%, 7.83 rewards, vie 275 trades (≈ 30 mois), 1.17 %/mois de vie
+  financé  1.5 % RAZ : valeur 37.86 %, P(reward) 82%, 5.63 rewards, vie 182 trades (≈ 20 mois), 1.90 %/mois de vie
+  financé  2.0 % RAZ : valeur 15.93 %, P(reward) 65%, 1.70 rewards, vie 60 trades (≈ 7 mois), 2.43 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 12.96 %, P(reward) 100%, 10.77 rewards, vie 500 trades (≈ 55 mois), 0.24 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 25.28 %, P(reward) 98%, 10.59 rewards, vie 431 trades (≈ 47 mois), 0.53 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 12.10 %, P(reward) 86%, 2.50 rewards, vie 91 trades (≈ 10 mois), 1.21 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 8.86 %, P(reward) 82%, 1.23 rewards, vie 44 trades (≈ 5 mois), 1.84 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 6.85 %, P(reward) 65%, 0.77 rewards, vie 27 trades (≈ 3 mois), 2.35 %/mois de vie
+
+=== 3n 03h SL 2016-2026 sans edge, coût 1,5 pt ===
+  éval  0.5 % : passage 19.1%, 250.6 trades si validé (≈ 27.5 mois), 237.4 par tentative
+  éval  1.0 % : passage 41.5%, 89.5 trades si validé (≈ 9.8 mois), 78.6 par tentative
+  éval  1.5 % : passage 33.5%, 37.3 trades si validé (≈ 4.1 mois), 35.5 par tentative
+  éval  2.0 % : passage 30.6%, 26.0 trades si validé (≈ 2.8 mois), 25.0 par tentative
+  éval  2.5 % : passage 27.7%, 19.5 trades si validé (≈ 2.1 mois), 18.5 par tentative
+  financé 0.25 % RAZ : valeur 2.53 %, P(reward) 77%, 1.88 rewards, vie 435 trades (≈ 48 mois), 0.05 %/mois de vie
+  financé  0.5 % RAZ : valeur 4.65 %, P(reward) 70%, 1.77 rewards, vie 260 trades (≈ 28 mois), 0.16 %/mois de vie
+  financé  1.0 % RAZ : valeur 5.64 %, P(reward) 60%, 1.09 rewards, vie 111 trades (≈ 12 mois), 0.46 %/mois de vie
+  financé  1.5 % RAZ : valeur 4.73 %, P(reward) 44%, 0.67 rewards, vie 51 trades (≈ 6 mois), 0.85 %/mois de vie
+  financé  2.0 % RAZ : valeur 4.25 %, P(reward) 35%, 0.49 rewards, vie 35 trades (≈ 4 mois), 1.10 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 2.56 %, P(reward) 77%, 1.90 rewards, vie 427 trades (≈ 47 mois), 0.05 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 4.75 %, P(reward) 71%, 1.81 rewards, vie 234 trades (≈ 26 mois), 0.18 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 4.29 %, P(reward) 60%, 0.81 rewards, vie 76 trades (≈ 8 mois), 0.51 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 3.72 %, P(reward) 43%, 0.52 rewards, vie 36 trades (≈ 4 mois), 0.95 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 3.38 %, P(reward) 35%, 0.38 rewards, vie 25 trades (≈ 3 mois), 1.25 %/mois de vie
+
+=== 3n 03h SL 2025-2026 (OOS), coût 1,5 pt ===
+  éval  0.5 % : passage 100.0%, 130.9 trades si validé (≈ 14.3 mois), 130.9 par tentative
+  éval  1.0 % : passage 100.0%, 71.0 trades si validé (≈ 7.7 mois), 71.0 par tentative
+  éval  1.5 % : passage 80.8%, 41.3 trades si validé (≈ 4.5 mois), 42.5 par tentative
+  éval  2.0 % : passage 83.4%, 28.9 trades si validé (≈ 3.1 mois), 27.8 par tentative
+  éval  2.5 % : passage 55.3%, 18.7 trades si validé (≈ 2.0 mois), 22.8 par tentative
+  financé 0.25 % RAZ : valeur 14.86 %, P(reward) 100%, 10.64 rewards, vie 500 trades (≈ 55 mois), 0.27 %/mois de vie
+  financé  0.5 % RAZ : valeur 29.67 %, P(reward) 100%, 10.63 rewards, vie 500 trades (≈ 55 mois), 0.54 %/mois de vie
+  financé  1.0 % RAZ : valeur 59.34 %, P(reward) 100%, 10.63 rewards, vie 500 trades (≈ 55 mois), 1.09 %/mois de vie
+  financé  1.5 % RAZ : valeur 22.12 %, P(reward) 95%, 2.74 rewards, vie 120 trades (≈ 13 mois), 1.69 %/mois de vie
+  financé  2.0 % RAZ : valeur 23.01 %, P(reward) 83%, 2.19 rewards, vie 82 trades (≈ 9 mois), 2.56 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 14.84 %, P(reward) 100%, 10.63 rewards, vie 500 trades (≈ 55 mois), 0.27 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 29.71 %, P(reward) 100%, 10.64 rewards, vie 500 trades (≈ 55 mois), 0.55 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 12.19 %, P(reward) 100%, 2.15 rewards, vie 88 trades (≈ 10 mois), 1.28 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 8.79 %, P(reward) 96%, 1.12 rewards, vie 41 trades (≈ 4 mois), 1.96 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 8.26 %, P(reward) 83%, 0.83 rewards, vie 28 trades (≈ 3 mois), 2.75 %/mois de vie
+
+=== 3n 08h SL 2016-2026, coût 1,5 pt ===
+  éval  0.5 % : passage 86.5%, 96.3 trades si validé (≈ 10.6 mois), 101.5 par tentative
+  éval  1.0 % : passage 77.6%, 43.6 trades si validé (≈ 4.8 mois), 44.5 par tentative
+  éval  1.5 % : passage 68.1%, 24.6 trades si validé (≈ 2.7 mois), 26.5 par tentative
+  éval  2.0 % : passage 56.4%, 16.8 trades si validé (≈ 1.8 mois), 17.9 par tentative
+  éval  2.5 % : passage 45.4%, 12.6 trades si validé (≈ 1.4 mois), 13.0 par tentative
+  financé 0.25 % RAZ : valeur 19.34 %, P(reward) 100%, 11.43 rewards, vie 500 trades (≈ 55 mois), 0.35 %/mois de vie
+  financé  0.5 % RAZ : valeur 35.76 %, P(reward) 91%, 10.67 rewards, vie 410 trades (≈ 45 mois), 0.79 %/mois de vie
+  financé  1.0 % RAZ : valeur 41.99 %, P(reward) 84%, 6.28 rewards, vie 212 trades (≈ 23 mois), 1.80 %/mois de vie
+  financé  1.5 % RAZ : valeur 40.12 %, P(reward) 73%, 4.11 rewards, vie 123 trades (≈ 14 mois), 2.96 %/mois de vie
+  financé  2.0 % RAZ : valeur 13.11 %, P(reward) 57%, 1.07 rewards, vie 37 trades (≈ 4 mois), 3.20 %/mois de vie
+  financé 0.25 % sans RAZ : valeur 19.40 %, P(reward) 100%, 11.45 rewards, vie 500 trades (≈ 55 mois), 0.35 %/mois de vie
+  financé  0.5 % sans RAZ : valeur 26.87 %, P(reward) 91%, 7.98 rewards, vie 283 trades (≈ 31 mois), 0.86 %/mois de vie
+  financé  1.0 % sans RAZ : valeur 9.53 %, P(reward) 84%, 1.45 rewards, vie 51 trades (≈ 6 mois), 1.69 %/mois de vie
+  financé  1.5 % sans RAZ : valeur 7.48 %, P(reward) 72%, 0.80 rewards, vie 27 trades (≈ 3 mois), 2.57 %/mois de vie
+  financé  2.0 % sans RAZ : valeur 7.03 %, P(reward) 57%, 0.57 rewards, vie 19 trades (≈ 2 mois), 3.46 %/mois de vie
+
+=== Espérance par tentative ===
+  mom 2011-2026 (avenant C)      1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +853 $ ± 21 (passage 50.8% en 0.6 mois, financé 18.49 %, vie 6 mois ; +239 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +8 849 $ ± 207 (passage 50.8% en 0.6 mois, financé 18.49 %, vie 6 mois ; +2 481 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +1 580 $ ± 18 (passage 81.2% en 7.2 mois, financé 20.54 %, vie 20 mois ; +67 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +16 121 $ ± 181 (passage 81.2% en 7.2 mois, financé 20.54 %, vie 20 mois ; +684 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +307 $ ± 7 (passage 50.8% en 0.6 mois, financé 7.75 %, vie 2 mois ; +167 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +3 390 $ ± 70 (passage 50.8% en 0.6 mois, financé 7.75 %, vie 2 mois ; +1 841 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +1 178 $ ± 16 (passage 81.2% en 7.2 mois, financé 15.59 %, vie 13 mois ; +64 $ par mois d'emplacement)
+  mom 2011-2026 (avenant C)      1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +12 105 $ ± 160 (passage 81.2% en 7.2 mois, financé 15.59 %, vie 13 mois ; +656 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +468 $ ± 11 (passage 47.5% en 0.6 mois, financé 11.67 %, vie 4 mois ; +170 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +5 000 $ ± 112 (passage 47.5% en 0.6 mois, financé 11.67 %, vie 4 mois ; +1 814 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 0.5   10k : EV     +846 $ ± 12 (passage 69.0% en 7.9 mois, financé 13.53 %, vie 16 mois ; +43 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 0.5  100k : EV   +8 784 $ ± 117 (passage 69.0% en 7.9 mois, financé 13.53 %, vie 16 mois ; +450 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +235 $ ± 6 (passage 47.5% en 0.6 mois, financé 6.78 %, vie 2 mois ; +134 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +2 674 $ ± 60 (passage 47.5% en 0.6 mois, financé 6.78 %, vie 2 mois ; +1 524 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV     +720 $ ± 10 (passage 69.0% en 7.9 mois, financé 11.70 %, vie 13 mois ; +42 $ par mois d'emplacement)
+  mom 2016-2026                  1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV   +7 523 $ ± 103 (passage 69.0% en 7.9 mois, financé 11.70 %, vie 13 mois ; +437 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +345 $ ± 9 (passage 43.1% en 0.6 mois, financé 10.01 %, vie 4 mois ; +138 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +3 767 $ ± 91 (passage 43.1% en 0.6 mois, financé 10.01 %, vie 4 mois ; +1 512 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   RAZ      meilleur de la grille  éval 0.5  fin. 0.5   10k : EV     +577 $ ± 9 (passage 62.5% en 9.4 mois, financé 10.61 %, vie 16 mois ; +30 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   RAZ      meilleur de la grille  éval 0.5  fin. 0.5  100k : EV   +6 088 $ ± 90 (passage 62.5% en 9.4 mois, financé 10.61 %, vie 16 mois ; +315 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +170 $ ± 5 (passage 43.1% en 0.6 mois, financé 5.95 %, vie 2 mois ; +102 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +2 018 $ ± 51 (passage 43.1% en 0.6 mois, financé 5.95 %, vie 2 mois ; +1 209 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV     +472 $ ± 8 (passage 62.5% en 9.4 mois, financé 8.94 %, vie 11 mois ; +28 $ par mois d'emplacement)
+  mom 2016-2026                  3 pt   sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV   +5 038 $ ± 78 (passage 62.5% en 9.4 mois, financé 8.94 %, vie 11 mois ; +301 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV      +79 $ ± 4 (passage 33.0% en 0.6 mois, financé 5.03 %, vie 3 mois ; +48 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +1 110 $ ± 42 (passage 33.0% en 0.6 mois, financé 5.03 %, vie 3 mois ; +675 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt RAZ      meilleur de la grille  éval 1.5  fin. 1.0   10k : EV      +87 $ ± 4 (passage 34.6% en 1.1 mois, financé 5.03 %, vie 3 mois ; +40 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt RAZ      meilleur de la grille  éval 1.5  fin. 1.0  100k : EV   +1 189 $ ± 43 (passage 34.6% en 1.1 mois, financé 5.03 %, vie 3 mois ; +553 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV      +41 $ ± 3 (passage 33.0% en 0.6 mois, financé 3.89 %, vie 2 mois ; +33 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV     +735 $ ± 32 (passage 33.0% en 0.6 mois, financé 3.89 %, vie 2 mois ; +577 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt sans RAZ meilleur de la grille  éval 1.5  fin. 1.0   10k : EV      +48 $ ± 3 (passage 34.6% en 1.1 mois, financé 3.89 %, vie 2 mois ; +27 $ par mois d'emplacement)
+  mom 2016-2026 sans edge        1,5 pt sans RAZ meilleur de la grille  éval 1.5  fin. 1.0  100k : EV     +796 $ ± 33 (passage 34.6% en 1.1 mois, financé 3.89 %, vie 2 mois ; +451 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV   +2 499 $ ± 36 (passage 62.7% en 2.4 mois, financé 41.22 %, vie 30 mois ; +115 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV  +25 307 $ ± 363 (passage 62.7% en 2.4 mois, financé 41.22 %, vie 30 mois ; +1 164 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.5   10k : EV   +4 358 $ ± 52 (passage 100.0% en 17.3 mois, financé 44.45 %, vie 20 mois ; +116 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.5  100k : EV  +43 898 $ ± 521 (passage 100.0% en 17.3 mois, financé 44.45 %, vie 20 mois ; +1 165 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +710 $ ± 11 (passage 62.7% en 2.4 mois, financé 12.70 %, vie 9 mois ; +82 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +7 420 $ ± 112 (passage 62.7% en 2.4 mois, financé 12.70 %, vie 9 mois ; +858 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +2 889 $ ± 14 (passage 100.0% en 17.3 mois, financé 29.76 %, vie 48 mois ; +44 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +29 214 $ ± 137 (passage 100.0% en 17.3 mois, financé 29.76 %, vie 48 mois ; +445 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV   +1 976 $ ± 31 (passage 58.6% en 2.6 mois, financé 35.22 %, vie 30 mois ; +96 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV  +20 080 $ ± 306 (passage 58.6% en 2.6 mois, financé 35.22 %, vie 30 mois ; +978 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   RAZ      meilleur de la grille  éval 0.5  fin. 1.5   10k : EV   +3 415 $ ± 45 (passage 92.5% en 17.9 mois, financé 37.86 %, vie 20 mois ; +93 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   RAZ      meilleur de la grille  éval 0.5  fin. 1.5  100k : EV  +34 473 $ ± 452 (passage 92.5% en 17.9 mois, financé 37.86 %, vie 20 mois ; +937 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +622 $ ± 10 (passage 58.6% en 2.6 mois, financé 12.10 %, vie 10 mois ; +71 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +6 536 $ ± 103 (passage 58.6% en 2.6 mois, financé 12.10 %, vie 10 mois ; +750 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +2 251 $ ± 15 (passage 92.5% en 17.9 mois, financé 25.28 %, vie 47 mois ; +36 $ par mois d'emplacement)
+  3n 03h SL 2016-2026            3 pt   sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +22 834 $ ± 151 (passage 92.5% en 17.9 mois, financé 25.28 %, vie 47 mois ; +368 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV      +85 $ ± 4 (passage 30.6% en 2.8 mois, financé 5.64 %, vie 12 mois ; +13 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +1 174 $ ± 43 (passage 30.6% en 2.8 mois, financé 5.64 %, vie 12 mois ; +182 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt RAZ      meilleur de la grille  éval 1.0  fin. 1.0   10k : EV     +147 $ ± 5 (passage 41.5% en 9.8 mois, financé 5.64 %, vie 12 mois ; +11 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt RAZ      meilleur de la grille  éval 1.0  fin. 1.0  100k : EV   +1 792 $ ± 51 (passage 41.5% en 9.8 mois, financé 5.64 %, vie 12 mois ; +131 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV      +44 $ ± 3 (passage 30.6% en 2.8 mois, financé 4.29 %, vie 8 mois ; +8 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV     +762 $ ± 33 (passage 30.6% en 2.8 mois, financé 4.29 %, vie 8 mois ; +144 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt sans RAZ meilleur de la grille  éval 1.0  fin. 0.5   10k : EV     +110 $ ± 4 (passage 41.5% en 9.8 mois, financé 4.75 %, vie 26 mois ; +6 $ par mois d'emplacement)
+  3n 03h SL 2016-2026 sans edge  1,5 pt sans RAZ meilleur de la grille  éval 1.0  fin. 0.5  100k : EV   +1 421 $ ± 41 (passage 41.5% en 9.8 mois, financé 4.75 %, vie 26 mois ; +74 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV   +4 859 $ ± 31 (passage 83.4% en 3.1 mois, financé 59.34 %, vie 55 mois ; +100 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV  +48 907 $ ± 312 (passage 83.4% en 3.1 mois, financé 59.34 %, vie 55 mois ; +1 009 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.0   10k : EV   +5 847 $ ± 7 (passage 100.0% en 14.3 mois, financé 59.34 %, vie 55 mois ; +85 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.0  100k : EV  +58 786 $ ± 72 (passage 100.0% en 14.3 mois, financé 59.34 %, vie 55 mois ; +855 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +929 $ ± 8 (passage 83.4% en 3.1 mois, financé 12.19 %, vie 10 mois ; +84 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +9 609 $ ± 83 (passage 83.4% en 3.1 mois, financé 12.19 %, vie 10 mois ; +874 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +2 884 $ ± 4 (passage 100.0% en 14.3 mois, financé 29.71 %, vie 55 mois ; +42 $ par mois d'emplacement)
+  3n 03h SL 2025-2026 (OOS)      1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +29 165 $ ± 36 (passage 100.0% en 14.3 mois, financé 29.71 %, vie 55 mois ; +424 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV   +2 279 $ ± 39 (passage 56.4% en 1.8 mois, financé 41.99 %, vie 23 mois ; +151 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt RAZ      éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV  +23 113 $ ± 388 (passage 56.4% en 1.8 mois, financé 41.99 %, vie 23 mois ; +1 530 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.0   10k : EV   +3 546 $ ± 44 (passage 86.5% en 10.6 mois, financé 41.99 %, vie 23 mois ; +113 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt RAZ      meilleur de la grille  éval 0.5  fin. 1.0  100k : EV  +35 783 $ ± 444 (passage 86.5% en 10.6 mois, financé 41.99 %, vie 23 mois ; +1 143 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0   10k : EV     +450 $ ± 8 (passage 56.4% en 1.8 mois, financé 9.53 %, vie 6 mois ; +87 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt sans RAZ éval 2 % / financé 1 % éval 2.0  fin. 1.0  100k : EV   +4 820 $ ± 84 (passage 56.4% en 1.8 mois, financé 9.53 %, vie 6 mois ; +937 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5   10k : EV   +2 238 $ ± 23 (passage 86.5% en 10.6 mois, financé 26.87 %, vie 31 mois ; +59 $ par mois d'emplacement)
+  3n 08h SL 2016-2026            1,5 pt sans RAZ meilleur de la grille  éval 0.5  fin. 0.5  100k : EV  +22 698 $ ± 234 (passage 86.5% en 10.6 mois, financé 26.87 %, vie 31 mois ; +597 $ par mois d'emplacement)

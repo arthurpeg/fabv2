@@ -22,6 +22,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 | Comparaison avec la règle NQ de nuit (même coût, en R) | 2016-2026 : 3n SL Sharpe 1,42 contre 0,90 (mom), mais 0,48 contre 0,83 sur 2022-2024 ; corrélation par nuit +0,35 ; mom fait +7,5 bps les nuits « 3n long » contre −0,8 sinon (2016-2024), inversé en 2025-26 | [[reports/nq_nuit_3n_vs_mom_report]] |
 | Sortie à 08:00 au lieu de 03:00, et contre mom | Chiffres d'origine retrouvés ; 08h SL : +3,7 R/an mais Sharpe 1,24 contre 1,36 (IS), DD +54 % en $ ; tranche 03→08 sans avantage (t 0,9) ; corrélation avec mom +0,39 contre +0,29 : 03h reste la version retenue | [[reports/nq_nuit_3n_8h_report]] |
 | La nuit baisse-t-elle d'autant plus que r3 > 0 est grand ? | ❌ non significatif dans 6 échantillons (Holm 1,0) ; l'effet est asymétrique : rebond après forte baisse (décile bas de r3 positif partout, t 2-3,7), nuit ≈ 0 après des hausses | [[reports/nq_nuit_r3_pente_report]] |
+| FTMO 1-Step (réglages de l'avenant C) contre mom | +2 499 $ / tentative 10k contre +468 $ (mom 2016-26) ; par mois d'emplacement, mom fait plus (+1 814 $ contre +1 164 $ sur 100k), car 3n ne trade que 109 nuits par an ; jamais exposée à la règle des annonces | [[reports/propfirm_3n_vs_mom_report]] |
 
 ## Ce qu'on sait
 - Le signal est intermittent : fort sur 2016-2021 (t 4,3), nul sur 2022-2024 (t 1,1 sans stop), de retour sur 2025-2026 (t 2,1).
