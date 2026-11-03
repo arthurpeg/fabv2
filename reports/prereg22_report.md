@@ -43,4 +43,5 @@ p0 = d_stop / (d_stop + d_cible), probabilité d'atteindre la cible avant le sto
 
 - Une seule traduction de chaque idée. Les ranges de l'auteur sont tracés à la main (consolidations, sessions Globex), et ses zones AVP sont ancrées sur des périodes que la capture ne précise pas. Ce test ne réfute pas toutes les lectures de niveaux possibles. Il montre que les deux formulations standard et objectivables n'ont pas d'avantage.
 - Profil de volume reconstruit à partir de barres 1 min (volume réparti uniformément entre le plus bas et le plus haut), et non tick par tick. C'est l'approximation habituelle des plateformes sur les historiques longs.
+- **Les HVN et LVN eux-mêmes (pics et creux locaux du profil) ne sont pas testés ici** : R2 n'utilise que la POC et la zone de valeur, R1 aucun volume. Voir le n° 23.
 - Ce n'est pas un test d'orderflow : le volume n'est pas signé. Voir la ligne « pression vendeuse de fin de séance » du registre pour le coût d'un vrai volume signé.
