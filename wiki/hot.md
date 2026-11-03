@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-03 20:26
+updated: 2026-11-03 20:32
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-03 20:26
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-03] query | Filtre 3 nuits transmis, variante sortie 08:00 ET refaite avec vectorbt et comparée à notre règle NQ de nuit (run_nq_nuit_3n_8h_vbt.py, reports/nq_nuit_3n_8h_report.md, exploratoire, hors compteur) | chiffres d'origine retrouvés ; 3n 08h SL +3,7 R/an mais Sharpe IS 1,24 contre 1,36 (03h), DD $ +54 %, 44 % de trades stoppés ; tranche 03:00→08:00 sans avantage (+1,3 bps, t 0,9) ; plus corrélée à mom (+0,39 contre +0,29) : 03h reste préférable
 - [2026-11-03] query | Filtre 3 nuits transmis (3n SL, 20:05 → 03:00) comparé à notre règle NQ de nuit (momentum 12-1, 20:00 → 9:30), même coût, en R et en % du notionnel (run_nq_nuit_3n_vs_mom.py, reports/nq_nuit_3n_vs_mom_report.md, descriptif, hors compteur) | 2016-2026 : Sharpe R 1,42 (3n SL) contre 0,90 (mom), mais 0,48 contre 0,83 sur 2022-2024 ; corrélation +0,35 ; mom gagne surtout les nuits « 3n long » (+7,5 contre −0,8 bps, t 3,6, 2016-2024 ; inversé en 2025-26) : pas un effet indépendant
 - [2026-11-03] experiment | Stratégie transmise NQ overnight long 20:05 → 03:00 ET, filtre 3 nuits ≤ 0, stop 2 × ATR M15 (scripts_strategies_NQ.zip), backtest refait avec vectorbt (run_nq_nuit_3n_vbt.py, reports/nq_nuit_3n_vbt_report.md, exploratoire, hors compteur) | réplique exacte des chiffres d'origine (0,01 près) ; 2 défauts corrigés : 11 lundis perdus au passage à l'heure d'hiver (séance tz-aware), stop vectorbt testé sur la barre de sortie avant l'open ; version corrigée 3n SL Sharpe 1,36 IS / 1,59 OOS (orig. 1,36 / 1,63), nulle en 2022-2024
 - [2026-11-02] prereg | N° 22 : lecture de niveaux sur NQ (R1 cassure du range US de la veille, cible measured move ; R2 règle des 80 % de la zone de valeur), ES et YM rapportés (run_prereg22.py, reports/prereg22_report.md), compteur 1 689 → 1 695 ; origine : captures « αλλο research » (pas d'orderflow, flèches = hauteurs de rectangles tracées après coup) | ÉCHEC des deux : R1 NQ +0,018 R [−0,025 ; +0,061], p Holm 0,43 ; R2 NQ −0,014 R, cible atteinte 45 % au lieu de 80 % ; amplitude moyenne de la séance US NQ 2026 = 415 points
@@ -30,7 +31,6 @@ updated: 2026-11-03 20:26
 - [2026-11-02] query | Affirmations de Fattinger-Ziegler testées sur l'argent SI 5 min 2017-2026, données London Strategic Edge ajustées par nos soins (run_gc_fattinger.py SI, reports/si_fattinger_report.md, exploratoire, compteur 1 631 → 1 685, 54 tests ; SI ajouté à recolte1.engine avec détection des roulements par le volume) | même microstructure que l'or en plus bruyante : 8:30 × 3,2, Fed × 6,4, Tokyo × 1,7, sauts 7,3 % ; 28,5 % du prix avant 3:00 NY (contredit le papier) ; pas de pic à 13:30 ; début de Globex non bruité ; continuation de nuit b ≈ 1,2 non significative après Holm, portée par 2023-2026
 - [2026-11-02] ingest | Argent (SI) 1 minute via l'API London Strategic Edge, plan gratuit, marché `futures` (fetch_lse.py → cache/lse/SI_lse_1m.parquet) | 3,02 M barres 2017-04-02 → 2026-08-28 ; rien avant 2017 ; GOLD de la même source = GC Databento à 1 tick près ; série front non ajustée qui roule au 1er jour du mois de livraison : 114 séances quasi vides (2-3 avant chaque roulement), à filtrer et ajuster avant usage ; contrats individuels (marché cme) payants
 - [2026-11-02] query | Affirmations de Fattinger-Ziegler (SSRN 2606706) testées sur l'or GC 5 min 2016-2026 (run_gc_fattinger.py, reports/gc_fattinger_report.md, exploratoire, compteur 1 577 → 1 631, 54 tests) | microstructure reproduite (pic 8:30 × 4,8, Tokyo × 2, Fed × 7, sauts 9 % dont 8:30 = 2 %, pas de U, volume < volatilité la nuit, VWPC nuit 1,29) ; contredit : 26,5 % du prix avant 3:00 NY ; non confirmé : début de Globex bruité, chute d'efficience avant l'Europe ; continuation 17:00→5:00 (b 1,13) seulement 2023-2026
-- [2026-11-02] query | Lecture détaillée de Fattinger-Ziegler « Risk and Return around the Clock » (SSRN 2606706, papiers overnight ssrn/ssrn-2606706.pdf ; résumé existant dans resumes_papiers_overnight_recolte1.md [20]) | papier descriptif, aucune stratégie ; utile pour nos travaux : inefficience de la découverte de prix des métaux pendant les 3-4 premières heures de Globex (≈ 18:00-22:00 NY), cohérente avec la reprise de l'or ; la « contribution au prix » (moyenne de r_i/r) ne mesure pas une dérive exploitable
 
 ## Prochaines actions
 

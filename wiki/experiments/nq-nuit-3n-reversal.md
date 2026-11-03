@@ -20,6 +20,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 | Backtest refait avec vectorbt, réplique exacte | Chiffres d'origine retrouvés à 0,01 près ; sorties vectorbt = boucle sur tous les trades | [[reports/nq_nuit_3n_vbt_report]] |
 | Version corrigée (nuits du changement d'heure, stop vectorbt sur la barre de sortie) | 3n SL : Sharpe 1,36 IS / 1,59 OOS, t NW 4,39 / 2,17, max DD 12 418 $ / 8 301 $ | idem |
 | Comparaison avec la règle NQ de nuit (même coût, en R) | 2016-2026 : 3n SL Sharpe 1,42 contre 0,90 (mom), mais 0,48 contre 0,83 sur 2022-2024 ; corrélation par nuit +0,35 ; mom fait +7,5 bps les nuits « 3n long » contre −0,8 sinon (2016-2024), inversé en 2025-26 | [[reports/nq_nuit_3n_vs_mom_report]] |
+| Sortie à 08:00 au lieu de 03:00, et contre mom | Chiffres d'origine retrouvés ; 08h SL : +3,7 R/an mais Sharpe 1,24 contre 1,36 (IS), DD +54 % en $ ; tranche 03→08 sans avantage (t 0,9) ; corrélation avec mom +0,39 contre +0,29 : 03h reste la version retenue | [[reports/nq_nuit_3n_8h_report]] |
 
 ## Ce qu'on sait
 - Le signal est intermittent : fort sur 2016-2021 (t 4,3), nul sur 2022-2024 (t 1,1 sans stop), de retour sur 2025-2026 (t 2,1).
