@@ -41,7 +41,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 ## Ouvert
 - Concentration : ~40 % des R de 2016–2026 viennent des nuits NFP/CPI (9 % des nuits) ; « prime d'annonce » à tester seulement sur le holdout (n° 14).
 - Lisser le drawdown par la taille de position ou la diversification, pas par un filtre (n° 13).
-- Hypothèse non validée : F2 (après une nuit baissière) améliore le R par trade sur 2016–2026 et 2011–2015 ; à pré-enregistrer séparément sur le holdout.
+- Hypothèse non validée : F2 (après une nuit baissière) améliore le R par trade sur 2016–2026 et 2011–2015 ; à pré-enregistrer séparément sur le holdout. Même lecture avec le filtre 3 nuits de la stratégie transmise : +7,5 bps/nuit les nuits « 3n long » contre −0,8 sinon sur 2016-2024, mais inversé en 2025-26 ([[reports/nq_nuit_3n_vs_mom_report]]).
 - Comportement en marché baissier prolongé (seule vraie phase : 2022).
 - Holdout unique : données postérieures au 2026-08-28.
 
