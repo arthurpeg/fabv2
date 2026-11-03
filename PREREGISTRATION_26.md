@@ -46,3 +46,16 @@ Ce qui est seulement rapporté, sans verdict : les variantes (M2 + taille, M2 + 
 ## Interdit après calcul
 
 On ne change ni les règles, ni les coûts, ni les seuils, ni les dates de lecture, ni la source de données, sauf si Databento est indisponible. On ne fixe pas de nouvelle date de lecture pour une hypothèse en échec, et on n'ajoute aucun filtre.
+
+## Avenant A (2026-11-03, commité avant tout calcul sur le holdout)
+
+À la demande de l'utilisateur, les quatre hypothèses sont calculées dès maintenant sur la fenêtre **du 2026-08-29 au 2026-11-03**, qui compte 47 séances RTH.
+
+- Cette fenêtre est **considérée comme vue**. Le calcul est exploratoire : **aucun verdict**, et il ne compte dans aucune des lectures L1, L2 ou L3.
+- **Le holdout officiel du n° 26 commence désormais le 2026-11-04.** Ce jour-là n'existe pas encore, donc aucune de ces données n'a été vue. Tout le reste ne change pas : hypothèses, règles, coûts, dates de lecture, seuils et source.
+- **Données de ce calcul anticipé.** Databento NQ.v.0 jusqu'au 2026-08-28, puis London Strategic Edge (`NASDAQ100`, `cache/lse/NQ_lse_1m.parquet`) à partir du 2026-08-29. Les deux séries sont sur le même contrat (septembre) à la jonction.
+- **Roulement de la série LSE.** On applique la règle de repli du n° 26 : un saut open / close précédent de plus de 0,6 % à l'ouverture de Globex (18:00 ET), entre le 7 et le 22 septembre. Les barres antérieures sont ajustées en ratio pour H1, qui a besoin de rendements mensuels. Pour H2 à H4, aucune fenêtre de trade ne contient l'ouverture de 18:00.
+- **Code.** Celui de chaque règle, sans changement ; seuls les fichiers d'entrée et la date de fin du calendrier changent.
+- **Puissance attendue.** Environ 47 nuits pour H1, environ 18 trades pour H2, environ 20 pour H3 et environ 5 pour H4. Les intervalles seront très larges.
+
+Compteur : 1 738 → 1 742 (4 essais exploratoires).
