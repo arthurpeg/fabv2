@@ -1,0 +1,32 @@
+FTMO 1-Step, 3n + M2 avec objectif à 2 R, un trade par jour ; éval 2.5 %, financé 1.0 % ; 20000 comptes par réglage, graine 1826
+  2010-06-08 → 2015-12-31 : 3n 567 trades (≠ boucle : 0), M2 457 trades (≠ boucle : 3, stop ou objectif dans la barre d'entrée)
+  2016-01-01 → 2026-08-28 : 3n 1166 trades (≠ boucle : 0), M2 1067 trades (≠ boucle : 3, stop ou objectif dans la barre d'entrée)
+
+Bibliothèques (R brut, objectif à 2 R) :
+  combiné 2010-06 → 2015-12                    840 trades (  151/an), R brut moyen +0.108, objectif atteint 10.1 %, stop 30.5 %, coût CFD 0.020 R
+  combiné 2010-06 → 2015-12, sans edge         840 trades (  151/an), R brut moyen +0.000, objectif atteint  0.0 %, stop 30.5 %, coût CFD 0.020 R
+  3n seul 2010-06 → 2015-12                    567 trades (  102/an), R brut moyen +0.144, objectif atteint  6.0 %, stop 21.5 %, coût CFD 0.025 R
+  M2 seul 2010-06 → 2015-12                    457 trades (   82/an), R brut moyen +0.091, objectif atteint 19.5 %, stop 47.7 %, coût CFD 0.013 R
+  combiné 2016-01 → 2026-08                   1791 trades (  168/an), R brut moyen +0.145, objectif atteint 12.3 %, stop 33.8 %, coût CFD 0.017 R
+  combiné 2016-01 → 2026-08, sans edge        1791 trades (  168/an), R brut moyen +0.000, objectif atteint  0.0 %, stop 34.1 %, coût CFD 0.017 R
+  3n seul 2016-01 → 2026-08                   1166 trades (  110/an), R brut moyen +0.151, objectif atteint  7.5 %, stop 26.8 %, coût CFD 0.020 R
+  M2 seul 2016-01 → 2026-08                   1067 trades (  100/an), R brut moyen +0.153, objectif atteint 23.0 %, stop 46.3 %, coût CFD 0.012 R
+  mom (TP 4 ATR = 2 R) 2016-01 → 2026-08      2672 trades (  251/an), R brut moyen +0.100, objectif atteint 23.7 %, stop 52.1 %, coût CFD 0.021 R
+
+combiné 2010-06 → 2015-12 : passage 52.3% en 14 trades (≈ 1.1 mois) ; financé 18.9 % du capital, P(reward) 93%, 4.8 rewards, vie 18 mois, 1er reward ≈ 1.8 mois ; EV +904 $ (10k) / +9,363 $ (100k) ; par mois d'emplacement +85 / +876 $
+
+combiné 2010-06 → 2015-12, sans edge : passage 31.7% en 15 trades (≈ 1.2 mois) ; financé 4.2 % du capital, P(reward) 70%, 1.1 rewards, vie 8 mois, 1er reward ≈ 2.4 mois ; EV +47 $ (10k) / +793 $ (100k) ; par mois d'emplacement +13 / +210 $
+
+3n seul 2010-06 → 2015-12 : passage 73.0% en 17 trades (≈ 2.0 mois) ; financé 31.1 % du capital, P(reward) 98%, 8.4 rewards, vie 36 mois, 1er reward ≈ 2.1 mois ; EV +2,180 $ (10k) / +22,123 $ (100k) ; par mois d'emplacement +76 / +773 $
+
+M2 seul 2010-06 → 2015-12 : passage 53.6% en 12 trades (≈ 1.7 mois) ; financé 19.6 % du capital, P(reward) 96%, 4.7 rewards, vie 36 mois, 1er reward ≈ 2.9 mois ; EV +963 $ (10k) / +9,953 $ (100k) ; par mois d'emplacement +46 / +474 $
+
+combiné 2016-01 → 2026-08 : passage 60.3% en 13 trades (≈ 0.9 mois) ; financé 36.7 % du capital, P(reward) 95%, 8.4 rewards, vie 22 mois, 1er reward ≈ 1.4 mois ; EV +2,123 $ (10k) / +21,546 $ (100k) ; par mois d'emplacement +146 / +1,477 $
+
+combiné 2016-01 → 2026-08, sans edge : passage 33.5% en 14 trades (≈ 1.0 mois) ; financé 5.4 % du capital, P(reward) 61%, 1.4 rewards, vie 7 mois, 1er reward ≈ 1.5 mois ; EV +95 $ (10k) / +1,270 $ (100k) ; par mois d'emplacement +28 / +372 $
+
+3n seul 2016-01 → 2026-08 : passage 62.7% en 15 trades (≈ 1.7 mois) ; financé 39.8 % du capital, P(reward) 88%, 10.1 rewards, vie 31 mois, 1er reward ≈ 1.8 mois ; EV +2,407 $ (10k) / +24,386 $ (100k) ; par mois d'emplacement +114 / +1,159 $
+
+M2 seul 2016-01 → 2026-08 : passage 54.8% en 10 trades (≈ 1.2 mois) ; financé 21.2 % du capital, P(reward) 84%, 4.6 rewards, vie 15 mois, 1er reward ≈ 1.7 mois ; EV +1,073 $ (10k) / +11,046 $ (100k) ; par mois d'emplacement +113 / +1,164 $
+
+mom (TP 4 ATR = 2 R) 2016-01 → 2026-08 : passage 43.9% en 9 trades (≈ 0.4 mois) ; financé 16.3 % du capital, P(reward) 83%, 3.8 rewards, vie 6 mois, 1er reward ≈ 0.8 mois ; EV +626 $ (10k) / +6,583 $ (100k) ; par mois d'emplacement +189 / +1,989 $
