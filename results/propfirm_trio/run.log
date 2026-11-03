@@ -1,0 +1,25 @@
+FTMO 1-Step, plan à trois (3n plein risque, sinon mom r/2 + M2 r/2) ; éval 2.5 %, financé 1.0 % ; 20000 comptes, graine 1827
+
+2016-01 → 2026-08 · trio : 255 journées tradées/an, R moyen par jour (pondéré) +0.096 ; composition {'3n': 42.9, 'mom': 34.2, 'mom+M2': 22.4, 'M2': 0.6}
+  passage 59.8% en ≈ 1.1 mois ; financé 35.2 % du capital, P(reward) 96%, 9.6 rewards, vie 21 mois ; EV +2,020 $ (10k) / +20,519 $ (100k) ; par mois d'emplacement +145 / +1,478 $
+
+2016-01 → 2026-08 · trio, sans edge : 255 journées tradées/an, R moyen par jour (pondéré) -0.014 ; composition {'3n': 42.9, 'mom': 34.2, 'mom+M2': 22.4, 'M2': 0.6}
+  passage 25.6% en ≈ 0.9 mois ; financé 3.1 % du capital, P(reward) 52%, 0.9 rewards, vie 6 mois ; EV -6 $ (10k) / +256 $ (100k) ; par mois d'emplacement -2 / +97 $
+
+2016-01 → 2026-08 · 3n + M2 (1 / jour) : 168 journées tradées/an, R moyen par jour (pondéré) +0.145 ; composition {'3n': 65.1, 'M2': 34.9}
+  passage 60.0% en ≈ 0.9 mois ; financé 45.0 % du capital, P(reward) 95%, 10.3 rewards, vie 29 mois ; EV +2,618 $ (10k) / +26,500 $ (100k) ; par mois d'emplacement +143 / +1,446 $
+
+2016-01 → 2026-08 · mom seul : 251 journées tradées/an, R moyen par jour (pondéré) +0.100 ; composition {'mom': 100.0}
+  passage 43.9% en ≈ 0.4 mois ; financé 16.2 % du capital, P(reward) 83%, 3.8 rewards, vie 6 mois ; EV +625 $ (10k) / +6,572 $ (100k) ; par mois d'emplacement +189 / +1,989 $
+
+2011-07 → 2015-12 · trio : 252 journées tradées/an, R moyen par jour (pondéré) +0.112 ; composition {'mom': 41.5, '3n': 39.4, 'mom+M2': 18.4, 'M2': 0.8}
+  passage 70.8% en ≈ 1.1 mois ; financé 48.7 % du capital, P(reward) 97%, 13.5 rewards, vie 28 mois ; EV +3,362 $ (10k) / +33,942 $ (100k) ; par mois d'emplacement +160 / +1,616 $
+
+2011-07 → 2015-12 · trio, sans edge : 252 journées tradées/an, R moyen par jour (pondéré) -0.018 ; composition {'mom': 41.5, '3n': 39.4, 'mom+M2': 18.4, 'M2': 0.8}
+  passage 27.0% en ≈ 1.0 mois ; financé 2.1 % du capital, P(reward) 56%, 0.6 rewards, vie 7 mois ; EV -29 $ (10k) / +27 $ (100k) ; par mois d'emplacement -9 / +9 $
+
+2011-07 → 2015-12 · 3n + M2 (1 / jour) : 147 journées tradées/an, R moyen par jour (pondéré) +0.120 ; composition {'3n': 67.3, 'M2': 32.7}
+  passage 54.8% en ≈ 1.2 mois ; financé 17.6 % du capital, P(reward) 91%, 4.5 rewards, vie 15 mois ; EV +879 $ (10k) / +9,113 $ (100k) ; par mois d'emplacement +91 / +948 $
+
+2011-07 → 2015-12 · mom seul : 248 journées tradées/an, R moyen par jour (pondéré) +0.189 ; composition {'mom': 100.0}
+  passage 55.9% en ≈ 0.5 mois ; financé 33.5 % du capital, P(reward) 90%, 7.5 rewards, vie 9 mois ; EV +1,786 $ (10k) / +18,185 $ (100k) ; par mois d'emplacement +334 / +3,397 $
