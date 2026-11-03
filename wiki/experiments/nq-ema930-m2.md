@@ -27,7 +27,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip`, scripts `bt_ema
 - Gains concentrés : les 10 meilleurs trades font 70 à 80 % du net sur 2022-2024 et 2025-2026.
 
 ## Ouvert
-- Le n° 25 rejette M2 sur 2010-06 → 2012-12. Ne rouvrir que sur le holdout postérieur au 2026-08-28 (voir le registre des échecs).
+- Le n° 25 rejette M2 sur 2010-06 → 2012-12. Le holdout est pré-enregistré au [[PREREGISTRATION_26]] (H2 ; lectures 2028-02-29, 2029-08-31, verdict 2031-08-29).
 - Hors échantillon 2025-26, le choix des jours par M2 n'est significatif qu'à 10 % (rapport d'origine).
 
 ## Sources brutes

@@ -31,7 +31,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 - Deux pièges sont documentés dans le rapport : la séance calculée sur un index tz-aware perd le lundi qui suit le passage à l'heure d'hiver, et vectorbt teste le stop sur toute la barre de sortie avant la sortie à l'open.
 
 ## Ouvert
-- Le n° 24 rejette le filtre hors échantillon (2010-2015). Ne rouvrir que sur le holdout postérieur au 2026-08-28 (voir le registre des échecs).
+- Le n° 24 rejette le filtre hors échantillon (2010-2015). Le holdout est pré-enregistré au [[PREREGISTRATION_26]] (H3 3n SL, H4 rebond après forte baisse ; lectures 2028-02-29, 2029-08-31, verdict 2031-08-29).
 - Pas indépendante de la [[wiki/experiments/nq-nuit-momentum|règle NQ de nuit]] : même retour à la moyenne (piste F2 du n° 13). Une combinaison doit être pré-enregistrée sur le holdout.
 - Stratégie 2 du zip (EMA 9:30 / M2) : refaite, puis rejetée hors échantillon au n° 25 ([[wiki/experiments/nq-ema930-m2]]).
 
