@@ -1,10 +1,10 @@
 ---
 type: experiment
 updated: 2026-11-03
-status: running
-verdict: candidat externe (non pré-enregistré)
-prereg: []
-trials: hors compteur
+status: abandoned
+verdict: ❌ hors échantillon 2010-2015 (n° 24)
+prereg: [24]
+trials: 1726
 ---
 
 # NQ overnight long 20:05 → 03:00, filtre 3 nuits (stratégie transmise)
@@ -23,6 +23,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 | Sortie à 08:00 au lieu de 03:00, et contre mom | Chiffres d'origine retrouvés ; 08h SL : +3,7 R/an mais Sharpe 1,24 contre 1,36 (IS), DD +54 % en $ ; tranche 03→08 sans avantage (t 0,9) ; corrélation avec mom +0,39 contre +0,29 : 03h reste la version retenue | [[reports/nq_nuit_3n_8h_report]] |
 | La nuit baisse-t-elle d'autant plus que r3 > 0 est grand ? | ❌ non significatif dans 6 échantillons (Holm 1,0) ; l'effet est asymétrique : rebond après forte baisse (décile bas de r3 positif partout, t 2-3,7), nuit ≈ 0 après des hausses | [[reports/nq_nuit_r3_pente_report]] |
 | FTMO 1-Step (réglages de l'avenant C) contre mom | +2 499 $ / tentative 10k contre +468 $ (mom 2016-26) ; par mois d'emplacement, mom fait plus (+1 814 $ contre +1 164 $ sur 100k), car 3n ne trade que 109 nuits par an ; jamais exposée à la règle des annonces | [[reports/propfirm_3n_vs_mom_report]] |
+| **N° 24 : hors échantillon NQ 2010-2015 (pré-enregistré)** | ❌ ÉCHEC : +0,016 R net (p 0,32), négatif 2010-2012 ; filtre +0,042 R (p 0,19) ; brut +0,128 R (t 3,6), mais nuits sautées +0,092 : prime de nuit, pas le filtre ; ES / YM non significatifs | [[reports/prereg24_report]] |
 
 ## Ce qu'on sait
 - Le signal est intermittent : fort sur 2016-2021 (t 4,3), nul sur 2022-2024 (t 1,1 sans stop), de retour sur 2025-2026 (t 2,1).
@@ -30,7 +31,7 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip` + artefact « Ra
 - Deux pièges sont documentés dans le rapport : la séance calculée sur un index tz-aware perd le lundi qui suit le passage à l'heure d'hiver, et vectorbt teste le stop sur toute la barre de sortie avant la sortie à l'open.
 
 ## Ouvert
-- Rien n'est pré-enregistré, et la sélection du filtre n'est pas corrigée (pas de DSR). À pré-enregistrer sur le holdout postérieur au 2026-08-28 avant tout usage.
+- Le n° 24 rejette le filtre hors échantillon (2010-2015). Ne rouvrir que sur le holdout postérieur au 2026-08-28 (voir le registre des échecs).
 - Pas indépendante de la [[wiki/experiments/nq-nuit-momentum|règle NQ de nuit]] : même retour à la moyenne (piste F2 du n° 13). Une combinaison doit être pré-enregistrée sur le holdout.
 - Stratégie 2 du zip (EMA 9:30) : pas encore refaite.
 
