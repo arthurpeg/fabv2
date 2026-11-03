@@ -38,3 +38,23 @@ P&L net de M2 par année : 2010 −150 $, 2011 +5 480 $, 2012 −575 $.
 3. **Il reste une trace faible du sens du signal.** C (tous les jours) est positif sur les deux moitiés, mais avec t 1,18. ES et YM vont dans le même sens, à p 0,04-0,05 avant correction. Ce n'est pas assez pour une stratégie ; c'est cohérent avec le momentum intraday faible déjà noté au registre (Gao, n° 20).
 4. **Le stop améliore un peu le résultat** (Sharpe 0,68 contre 0,42 pour M2 seul) sans le rendre significatif (p 0,074). Ce n'était pas un critère, et on ne change pas le verdict après coup.
 5. **Les deux stratégies du zip sont désormais testées hors échantillon, et aucune ne passe.** 3n (n° 24) n'y garde que la prime de nuit. M2 (n° 25) n'y garde qu'un signal de sens faible. Notre règle de nuit (mom) reste la seule à avoir passé ce type de test (n° 11).
+
+## Diagnostic après coup : niveau de prix, coût et volatilité
+
+Question posée : le NQ valait environ 2 300 points en 2010-2012, contre 11 000 sur 2016-2024. Faut-il normaliser ? Ce calcul est fait sur les jours M2, sans stop, et ne change pas le verdict.
+
+| | 2010-06 → 2012-12 | 2016-2024 | 2025-08/2026 |
+|---|---|---|---|
+| Prix moyen du NQ | 2 332 | 10 990 | 24 255 |
+| Gain brut (bps) | **8,5** | 15,9 | 20,0 |
+| Coût de 15 $ (bps) | **3,3** | 0,8 | 0,3 |
+| Gain net (bps) | 5,2 | 15,1 | 19,7 |
+| Volatilité du jour : σ 20 j (bps) | 90 | 100 | 97 |
+| Gain brut / σ 20 j | **0,061** (t 0,93) | 0,165 (t 4,4) | 0,202 (t 2,8) |
+| E[R] brut (1 R = 4 ATR M15) | **0,057** (t 0,60) | 0,245 (t 4,0) | 0,321 (t 3,2) |
+
+- **Les bps sont déjà un rendement en % du prix.** Ils ne dépendent pas du niveau du NQ, seuls les $ en dépendent. Ce qui dépend du prix, c'est le **coût** : 15 $ font 3,3 bps à 2 300 points, contre 0,8 à 11 000. Cela explique environ 2,5 des 10 bps d'écart.
+- **En brut, l'avantage est quand même divisé par deux** (8,5 bps contre 15,9), alors que la volatilité du jour en % était la même (σ 90 contre 100 bps).
+- **Normalisé par la volatilité, l'écart est le même ou plus grand.** En σ, on passe de 0,165 à 0,061 ; en R, de 0,245 à 0,057. Aucun de ces deux chiffres n'est significatif sur 2010-2012.
+- **P2 (le choix des jours) compare des jours de la même période**, donc il ne dépend ni du prix ni du coût. Il échoue de toute façon (p 0,45).
+
