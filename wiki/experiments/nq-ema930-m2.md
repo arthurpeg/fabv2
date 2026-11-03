@@ -17,15 +17,15 @@ Stratégie transmise le 2026-11-03 (`scripts_strategies_NQ.zip`, scripts `bt_ema
 ## Tests
 | Test | Résultat | Rapport |
 |---|---|---|
-| Backtest refait avec vectorbt (C, D, M2, taille, stop) | Trades M2 par année identiques au post (sauf 2020 : 123 contre 125) ; vectorbt = boucle (2 trades à stop dans la barre d'entrée diffèrent) ; M2 + taille : Sharpe 1,28 IS / 1,86 OOS ; C seul 0,62 / 1,57 | [[reports/nq_ema930_vbt_report]] |
+| Backtest refait avec vectorbt (C, D, M2, taille, stop), comparé au rapport d'origine | Sans stop : **identique** à l'original (C, D, M2, M2 + taille, au dollar près, sur les 4 périodes) ; avec stop : +0,01 à +0,03 de Sharpe (2 trades à stop dans la barre d'entrée, vectorbt sort une barre plus tard) ; Trades M2 par année identiques au post (sauf 2020 : 123 contre 125) ; vectorbt = boucle (2 trades à stop dans la barre d'entrée diffèrent) ; M2 + taille : Sharpe 1,28 IS / 1,86 OOS ; C seul 0,62 / 1,57 | [[reports/nq_ema930_vbt_report]] |
 
 ## Ce qu'on sait
 - C seul (tous les jours) est faible : Sharpe 0,62, t 1,96 sur 2016-2024, cohérent avec les échecs du momentum intraday (voir le registre). Le filtre M2 fait l'essentiel.
 - Gains concentrés : les 10 meilleurs trades font 70 à 80 % du net sur 2022-2024 et 2025-2026.
 
 ## Ouvert
-- Comparer aux chiffres du rapport d'origine (à transmettre).
-- Hors échantillon NQ 2010-2015 à pré-enregistrer (même protocole que le n° 24), ES et YM en secondaire.
+- Le post a choisi les seuils en voyant 2013-2024 : seul 2010-06 → 2012-12 est vraiment hors échantillon (≈ 250 trades M2). À pré-enregistrer (protocole du n° 24), ES et YM en secondaire.
+- Hors échantillon 2025-26, le choix des jours par M2 n'est significatif qu'à 10 % (rapport d'origine).
 
 ## Sources brutes
 [run_nq_ema930_vbt.py](../../run_nq_ema930_vbt.py), `results/nq_ema930/`.
