@@ -1,0 +1,14 @@
+Jonction : dernier close Databento 29509.5 (2026-08-28 20:59:00+00:00), LSE 29509.75 (2026-08-28 20:59:00+00:00), écart +0.1 bps
+Aucun roulement LSE détecté en septembre (règle de l'avenant A)
+Signe du momentum 12-1 par mois (holdout) : 2026-08 +1, 2026-09 +1, 2026-10 +1, 2026-11 +1
+H1 : 44 nuits, longs 44, shorts 0, sorties {'SL': 28, 'TP': 10, 'fin fenêtre': 6}, R total -1.02
+H2 : 45 séances, 9 trades M2 (longs 4), net +6,440 $, +11.7 bps/trade ; C (tous les jours) +624.8 $/trade
+H3 : 46 nuits, 23 trades 3n, net +13,237 $ (15 $ l'aller-retour)
+H4 : 11 nuits r3 ≤ −50 bps (+15.0 bps net), 35 autres nuits (-4.9 bps net)
+
+===== Lecture anticipée EXPLORATOIRE 2026-08-31 → 2026-11-03 (sans verdict, avenant A du n° 26) =====
+                                        H  n  moyenne       t      p
+                    H1 mom (R net / nuit) 44  -0.0231 -0.1361 0.5541
+              H2 M2 ($ net / trade, 1 NQ)  9 715.5556  3.2543 0.0006
+                 H3 3n SL (R net / trade) 23   0.3786  1.3572 0.0874
+H4 rebond r3 ≤ −50 bps − autres (bps net) 11  19.8262  1.1859 0.1276

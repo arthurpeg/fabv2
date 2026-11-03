@@ -9,7 +9,7 @@ updated: 2026-10-31
 
 **Holdout unique** : les données postérieures au 2026-08-28. On ne les ouvre qu'une fois, pour un test pré-enregistré.
 
-**Plan figé au [[PREREGISTRATION_26]]** (2026-11-03) : mom, M2 (EMA 9:30), 3n SL et le rebond après forte baisse. Lectures le 2028-02-29 et le 2029-08-31 (succès seulement si z ≥ 3,0), puis le 2031-08-29 (verdict, Holm). D'ici là, **aucun calcul de prix, de rendement, de signal ou de paper trading de ces règles sur ces données** ; seuls le téléchargement mensuel et la vérification de couverture sont permis (`cache/lse/NQ_lse_1m.parquet`, voir [[wiki/reference/donnees]]).
+**Plan figé au [[PREREGISTRATION_26]]** (2026-11-03 ; avenant A : la fenêtre 2026-08-29 → 2026-11-03 a été ouverte en lecture anticipée exploratoire, [[reports/holdout_anticipe_report]], donc **le holdout officiel commence le 2026-11-04**) : mom, M2 (EMA 9:30), 3n SL et le rebond après forte baisse. Lectures le 2028-02-29 et le 2029-08-31 (succès seulement si z ≥ 3,0), puis le 2031-08-29 (verdict, Holm). D'ici là, **aucun calcul de prix, de rendement, de signal ou de paper trading de ces règles sur ces données** ; seuls le téléchargement mensuel et la vérification de couverture sont permis (`cache/lse/NQ_lse_1m.parquet`, voir [[wiki/reference/donnees]]).
 
 **Hors échantillon « partiel »** : un autre actif sur la même période (ex. ES/YM au n° 10) ; utile mais faible, car les indices sont corrélés.
 
