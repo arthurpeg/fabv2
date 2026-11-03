@@ -28,3 +28,20 @@ Détails :
 - **mom est plat sur ces deux mois** (−1 R), avec beaucoup de stops. C'est dans sa variance normale : sur 2016-2026, son max DD est de −25 R.
 - **3n et le rebond vont dans le sens attendu**, sans être significatifs. Leurs tests hors échantillon sur 2010-2015 avaient échoué (n° 24) ou n'avaient pas été faits (rebond, « à surveiller »).
 - **Ces deux mois ne comptent pas** pour le verdict du n° 26, qui portera sur les données à partir du 2026-11-04 (lectures 2028-02-29, 2029-08-31 et 2031-08-29).
+
+## Variante rapportée : M2 + stop 4 × ATR M15
+
+Calculée à la demande, avec le même code (`run_nq_ema930_vbt.portefeuille` sur `cache/holdout_anticipe/brut/`). vectorbt donne les mêmes sorties que la boucle. Variante sans verdict.
+
+| | M2 (H2) | M2 + stop |
+|---|---|---|
+| Trades (stoppés) | 9 (0) | 9 (**1**) |
+| Net | +6 440 $ | **+4 331 $** |
+| $/trade (t, p) | +716 (3,25 ; 0,0006) | +481 (1,75 ; 0,040) |
+| bps/trade | +11,7 | +7,8 |
+| Win % | 44 | 44 |
+| E[R] (1 R = 4 ATR M15) | +0,26 | +0,21 |
+| R total | +2,4 | +1,9 |
+
+La seule différence vient du **2026-10-29** (short). Il est stoppé à −1 R (−4 709 $), alors que sans stop il ressortait à −0,55 R (−2 600 $) en fin de séance. Les 8 autres trades sont identiques. Sur 9 trades, on ne peut rien en conclure.
+
