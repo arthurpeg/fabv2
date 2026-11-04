@@ -364,7 +364,7 @@ class Bot:
             self.log(f"mom séance {seance:%Y-%m-%d} : signe {s:+d} (12-1 = {v:+.4f}, {src}) ; ATR M15 {atr:.1f} pts "
                      f"→ stop {2 * atr:.1f} pts")
         else:
-            seance = now.tz_localize(None).normalize() + pd.Timedelta(days=1 if now.hour >= 18 else 0)
+            seance = now.tz_localize(None).normalize() + pd.Timedelta(days=1 if now.hour >= 3 else 0)  # nuit à venir
             sig, r3 = S.signal_3n(m1, seance)
             self.log(f"3n nuit → {seance:%Y-%m-%d} : 3 nuits {r3:+.1f} bps → {'LONG' if sig else 'rien'}")
             jour = now.tz_localize(None).normalize()
