@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 15:15
+updated: 2026-11-04 15:24
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-04 15:15
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | Deux comptes FTMO 10k en même temps : A = mom, B = 3n + M2 (M2 si 3n sort ni au SL ni au TP, taille bornant la journée à −r / +2r) ; éval 2,5 % / financé 1 %, objectif 2 R ramené au reste à faire en éval, règles FTMO actuelles (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md, exploratoire, hors compteur) | 721 départs 2011-2025, 12 mois : net moyen +4 060 $ (A +2 469, B +1 591), 10e c. +2 096 $, aucun départ perdant, pire creux −782 $ ; départ réel 01/09/2026 : A −174 $, B +771 $ (2 rewards en octobre), total +598 $
 - [2026-11-04] query | Contrôle sans edge de la politique « cible + attente » (run_ftmo_payout_policy_sans_edge.py, reports/ftmo_payout_policy_report.md, exploratoire, hors compteur) ; page anglaise complétée avec les métriques sans edge et mom (reports/propfirm_ftmo_overview.html) | sans edge 2016-26 : +107 → +133 $ par tentative 10k, +798 → +886 $ par mois 100k ; 2011-15 : +64 → +86 $ ; la politique gagne aussi sans edge (effet de contrat) ; mom en cible + attente ×6,9 par tentative, ×2,5 par mois
 - [2026-11-04] doc | Page HTML en anglais présentant la branche propfirm-ftmo, sans les règles de trading (reports/propfirm_ftmo_overview.html) | contrat vu comme option, règles FTMO modélisées, simulateur, enseignements, limites
 - [2026-11-04] query | Compte financé FTMO avec mom : viser juste ce qui manque pour la règle des 50 % puis attendre le 14e jour (run_ftmo_payout_policy.py, reports/ftmo_payout_policy_report.md, exploratoire, hors compteur) | septembre 2026 réel (Consistency) : départ 01/09 → objectif réduit le 22/09 (+0,14 %), reward 3,53 % le 28/09, au lieu de 0 ; historique 2016-26 : cible + attente +912 $ contre +707 $ par tentative 10k, +2 201 $ contre +2 044 $ par mois ; 2011-15 : neutre par tentative, −11 % par mois ; l'attente fait l'essentiel
@@ -29,7 +30,6 @@ updated: 2026-11-04 15:15
 - [2026-11-04] query | Correction des simulations FTMO à liste de trades : objectif d'éval ramené au reste à faire avec le MFE de chaque trade (build_mfe_mom.py, run_propfirm_combo.simule, run_propfirm_trio / mix / eval_rapide corrigés ; reports/propfirm_correction_reste_report.md) | passage +1 à +7 points (mom seul 2016-26 : 43,6 → 50,7 % ; trio 59,8 → 64,7 % ; 3n + M2 60,5 → 65,5 %) ; EV par tentative +3 à +17 % ; classements inchangés ; vérification 2019-26 : trio 61 % en 19 séances, mom 2 % + M2 0,5 % 57,5 % en 15
 - [2026-11-04] query | FTMO septembre, correction (run_ftmo_septembre.py, reports/ftmo_septembre_report.md) : coût CFD 0,02-0,035 R par trade (TP = 4,75-4,88 % au lieu de 5 %) ; objectif d'éval ramené au reste à faire avec le MFE de chaque nuit | départ 01/09 validé le 14/09 au lieu du 18/09 (la nuit du 14/09 monte à +0,88 R, il fallait 0,38 R) ; 12 départs sur 21 valident au lieu de 9 ; toujours 0 reward au 03/11 ; les simulations à bibliothèque de trades (TradeLib) gardaient l'objectif fixe en éval : passage un peu sous-estimé
 - [2026-11-04] query | FTMO 1-Step avec mom, départ en septembre 2026, rejeu jour par jour sur les vraies nuits jusqu'au 03/11 (run_ftmo_septembre.py, reports/ftmo_septembre_report.md, descriptif, fenêtre vue du holdout) ; h1_mom de run_holdout_anticipe.py paramétré (tp, cost) | départ 01/09 : éval validée le 18/09, financé perdu le 03/11 sans reward ; 21 départs de septembre : 0 reward, −174 à −348 $ par 10k ; mom −1,1 R brut sur 44 nuits, 61 % de SL
-- [2026-11-04] query | Performances de mom (règle NQ de nuit, compte 20:00) du 2011-07 au 2026-11-03, trades vectorbt existants + fenêtre vue du holdout (run_mom_perf.py, results/mom_perf/, descriptif) ; correction du R de H1 dans run_holdout_anticipe.py (ATR à 20:00, pas 19:59) | 3 831 nuits, +0,087 R/nuit, 21,7 R/an, Sharpe 1,01, max DD −25,4 R, t 4,0 ; 2011-15 +0,115 R, 2016-24 +0,072, 2025-08/2026 +0,102, fenêtre vue −0,023 (44 nuits) ; années négatives : 2011 (−1,0 R, demi-année) et 2022 (−1,7 R)
 
 ## Prochaines actions
 
