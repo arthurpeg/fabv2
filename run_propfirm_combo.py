@@ -10,6 +10,7 @@ uv run python run_propfirm_combo.py [N] → results/propfirm_combo/ (run.log, tr
 1. Trades avec TP à 2 R (TP = 2 x distance du stop : 4 ATR M15 pour 3n, 8 ATR M15 pour M2), recalculés avec vectorbt
    (from_signals, sl_stop + tp_stop, même code de séances que run_nq_nuit_3n_vbt.py / run_nq_ema930_vbt.py). Contrôle :
    boucle à la main, stop prioritaire si stop et objectif tombent dans la même barre, fill à l'open en cas de gap.
+   La boucle donne aussi MFE_R (mouvement favorable maximal avant la sortie, barre du stop exclue).
 2. Un trade par jour : si la nuit qui se termine le matin du jour J a un trade 3n, pas de M2 le jour J.
 3. Moteur propfirm.ftmo (n° 18) : un trade = une journée FTMO, R brut historique, coût CFD 1,5 point au niveau actuel
    du NQ (25 684). Éval : 2,5 % risqués par trade ; financé : 1 % ; perte max 10 %, perte du jour 3 %, règle du meilleur
@@ -73,19 +74,28 @@ def simule(b5: pd.DataFrame, pin: np.ndarray, pout: np.ndarray, side: np.ndarray
     assert len(rec) == len(pin)
     px_vbt = rec["Avg Exit Price"].values
     # contrôle : boucle à la main (3n : barres pin..pout-1 ; M2 : barres pin..pout)
+    # MFE_R : plus grand mouvement favorable avant la sortie, en R ; la barre du stop est exclue (on ne sait pas si le
+    # haut est venu avant le bas dans ces 5 minutes) ; sert à ramener l'objectif d'éval FTMO au reste à faire
     px = np.where(sortie_open, o[x], c[x]).astype(float)
+    mfe = np.zeros(len(e))
     for i, (ei, xi, s, en, d) in enumerate(zip(e, x, side, entry, dist)):
         stop, obj = en - s * d, en + s * TP_R * d
-        for k in range(ei, xi if sortie_open else xi + 1):
+        last = xi - 1 if sortie_open else xi
+        for k in range(ei, last + 1):
             if (s > 0 and l[k] <= stop) or (s < 0 and h[k] >= stop):
                 px[i] = min(stop, o[k]) if s > 0 else max(stop, o[k])
+                last = k - 1
                 break
             if (s > 0 and h[k] >= obj) or (s < 0 and l[k] <= obj):
                 px[i] = max(obj, o[k]) if s > 0 else min(obj, o[k])
+                last = k
                 break
+        if last >= ei:
+            mfe[i] = ((h[ei:last + 1].max() - en) if s > 0 else (en - l[ei:last + 1].min())) / d
     ecart = int((np.abs(px_vbt - px) > 1e-9).sum())
     R = side * (px_vbt - entry) / dist
-    return pd.DataFrame({"entry_px": entry, "exit_px": px_vbt, "side": side, "dist": dist, "R_brut": R}), ecart
+    return pd.DataFrame({"entry_px": entry, "exit_px": px_vbt, "side": side, "dist": dist, "R_brut": R,
+                         "MFE_R": np.maximum(mfe, 0.0)}), ecart
 
 
 def trades(src: str, a: str, z: str, fin: str) -> pd.DataFrame:

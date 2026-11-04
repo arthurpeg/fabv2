@@ -3,7 +3,8 @@ trio une fois financé). EXPLORATOIRE, hors compteur.
 
 uv run python run_propfirm_mix.py [N] → results/propfirm_mix/ (run.log, mix.csv)
 
-Plans et moteur : ceux de run_propfirm_trio.py (mêmes trades, objectif à 2 R, coût CFD 1,5 point). Éval à 2,5 % :
+Plans et moteur : ceux de run_propfirm_trio.py (mêmes trades, objectif à 2 R, coût CFD 1,5 point ; en éval, objectif
+ramené au reste à faire depuis la correction du 2026-11-04, ancienne version dans results/propfirm_mix/mix_objectif_fixe.csv). Éval à 2,5 % :
 « mom » = mom seul à 2,5 % ; « trio » = 3n à 2,5 % si signal, sinon mom 1,25 % + M2 1,25 %. Financé à 1 % : « mom » =
 mom seul à 1 % ; « trio » = 3n 1 %, sinon mom 0,5 % + M2 0,5 %. Les quatre croisements sont simulés.
 EV par tentative = P(passage) x valeur du financé - prix de l'éval ; par mois d'emplacement = EV / (durée moyenne
@@ -40,7 +41,7 @@ def main() -> None:
         tp = t[(t.date >= a) & (t.date <= z)]
         an = (pd.Timestamp(z) - pd.Timestamp(a)).days / 365.25
         J = {k: T.plan(tp, v) for k, v in PLANS.items()}
-        arr = {k: {c: j[c].to_numpy(float) for c in ("R1", "w1", "c1", "R2", "w2", "c2")} for k, j in J.items()}
+        arr = {k: {c: j[c].to_numpy(float) for c in ("R1", "w1", "c1", "M1", "R2", "w2", "c2", "M2")} for k, j in J.items()}
         freq = {k: len(j) / an for k, j in J.items()}
         E = {}
         for k in PLANS:

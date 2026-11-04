@@ -16,7 +16,8 @@ Plans (risque de chaque trade en % du capital initial ; la somme du jour ne dép
   C « 3n + mom »       : nuit 3n -> 3n à r3 et mom à rm ; sinon mom à rm ; M2 à r2 les jours sans 3n.
 Moteur : celui du n° 18 (propfirm/ftmo.py) à plusieurs trades par jour : risque de chaque trade = r x min(1, marge
 jusqu'au plancher / risque total du jour), plancher et perte du jour (3 %) vérifiés après chaque trade, objectif +10 %,
-règle du meilleur jour 50 %. Coût CFD 1,5 point au niveau actuel du NQ, par trade.
+règle du meilleur jour 50 %. Coût CFD 1,5 point au niveau actuel du NQ, par trade. Depuis la correction du 2026-11-04,
+l'objectif de chaque trade d'éval est ramené au reste à faire (MFE_R) ; ancienne version : *_objectif_fixe.* .
 Choix : parmi les réglages qui passent au moins 60 % des évals sur 2011-2018 (5 000 comptes), le plus court en durée
 moyenne d'une éval validée ; on rapporte aussi le front « passage / durée ».
 """
@@ -48,10 +49,10 @@ def say(s: str = "") -> None:
 
 
 def trades() -> pd.DataFrame:
-    t = pd.read_csv("results/propfirm_combo/trades_tp2.csv", parse_dates=["date"])[["date", "strat", "R_brut", "s"]]
-    m = pd.read_parquet("cache/propfirm/nq_nuit_tp4.parquet")
+    t = pd.read_csv("results/propfirm_combo/trades_tp2.csv", parse_dates=["date"])[["date", "strat", "R_brut", "s", "MFE_R"]]
+    m = pd.read_parquet("cache/propfirm/nq_nuit_tp4_mfe.parquet")  # build_mfe_mom.py
     m = pd.DataFrame({"date": pd.to_datetime(m.night), "strat": "mom", "R_brut": m.R_brut,
-                      "s": m.risk.fillna(m.risk.median())})
+                      "s": m.risk.fillna(m.risk.median()), "MFE_R": m.MFE_R})
     return pd.concat([t, m], ignore_index=True)
 
 
@@ -62,12 +63,13 @@ def matrices(t: pd.DataFrame, a: str, z: str) -> dict:
     out = {"n": len(jours)}
     for s in ("3n", "mom", "M2"):
         x = t[t.strat == s].set_index("date").reindex(jours)
-        out[s] = (x.R_brut.fillna(0.0).to_numpy(), (COST / x.s).fillna(0.0).to_numpy(), x.R_brut.notna().to_numpy())
+        out[s] = (x.R_brut.fillna(0.0).to_numpy(), (COST / x.s).fillna(0.0).to_numpy(), x.R_brut.notna().to_numpy(),
+                  x.MFE_R.fillna(0.0).to_numpy())
     return out
 
 
-def plan(M: dict, nom: str, r3: float, rm: float, r2: float) -> tuple[np.ndarray, np.ndarray, np.ndarray] | None:
-    """(R, c, risque) de forme (séances, 3) ; None si un jour peut perdre plus que CAP_JOUR."""
+def plan(M: dict, nom: str, r3: float, rm: float, r2: float):
+    """(R, c, risque, MFE) de forme (séances, 3) ; None si un jour peut perdre plus que CAP_JOUR."""
     h3, hm, h2 = M["3n"][2], M["mom"][2], M["M2"][2]
     w = np.zeros((M["n"], 3))
     if nom == "A":
@@ -85,10 +87,11 @@ def plan(M: dict, nom: str, r3: float, rm: float, r2: float) -> tuple[np.ndarray
         return None
     R = np.column_stack([M[s][0] for s in ("3n", "mom", "M2")])
     c = np.column_stack([M[s][1] for s in ("3n", "mom", "M2")])
-    return R, c, w
+    mfe = np.column_stack([M[s][3] for s in ("3n", "mom", "M2")])
+    return R, c, w, mfe
 
 
-def run_eval(R, c, w, n: int, rng, max_days: int = 3000):
+def run_eval(R, c, w, mfe, n: int, rng, max_days: int = 3000, reste: bool = True):
     nd = len(R)
     tot = w.sum(axis=1)
     P, hi, best = np.zeros(n), np.zeros(n), np.zeros(n)
@@ -108,7 +111,12 @@ def run_eval(R, c, w, n: int, rng, max_days: int = 3000):
         fail = np.zeros(len(a), bool)
         for k in (1, 0, 2):  # ordre horaire : mom 20:00 et 3n 20:05 (nuit), puis M2 9:35
             risk = w[day, k] * scale
-            leg = np.where((risk > 0) & ~fail, risk * (R[day, k] - c[day, k]) / (1 + c[day, k]), 0.0)
+            Rk, ck = R[day, k], c[day, k]
+            if reste:  # objectif ramené au reste à faire (cible et meilleur jour), atteint si le MFE le dépasse
+                need = np.maximum(np.maximum(TARGET - P[a], 2 * np.maximum(best[a], pnl) - P[a]), 0.01)
+                obj = need * (1 + ck) / np.maximum(risk, 1e-12) + ck
+                Rk = np.where((risk > 0) & (obj < 2.0) & (mfe[day, k] >= obj), obj, Rk)
+            leg = np.where((risk > 0) & ~fail, risk * (Rk - ck) / (1 + ck), 0.0)
             P[a] += leg
             pnl += leg
             fail |= (P[a] <= hi[a] - MAXLOSS + 1e-9) | (pnl <= -DAILY)
