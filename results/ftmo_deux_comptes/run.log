@@ -1,31 +1,33 @@
 Calendrier : 3898 séances du 2011-07-01 au 2026-11-03 ; compte B : 3n 1635 nuits, M2 1441 setups
 
+#################### sans règle des annonces, politique actuelle ####################
+
 12 mois à partir de chaque départ (721 départs, 2011-07 → 2025-08), deux comptes 10k :
-  net A     : moyenne +2,469 $ ; médiane +2,333 $, 10e c. +968 $, 90e c. +4,135 $, P(< 0) 0 %
-  net B     : moyenne +1,591 $ ; médiane +1,533 $, 10e c. +488 $, 90e c. +2,833 $, P(< 0) 0 %
-  net total : moyenne +4,060 $ ; médiane +3,856 $, 10e c. +2,096 $, 90e c. +6,197 $, P(< 0) 0 %
-  évals achetées par an : A 3.9, B 2.1 ; rewards : A 6.3, B 4.1
+  net A     : moyenne +2,472 $ ; médiane +2,333 $, 10e c. +968 $, 90e c. +4,135 $, P(< 0) 0 %
+  net B     : moyenne +1,610 $ ; médiane +1,511 $, 10e c. +488 $, 90e c. +2,858 $, P(< 0) 0 %
+  net total : moyenne +4,082 $ ; médiane +3,903 $, 10e c. +2,097 $, 90e c. +6,237 $, P(< 0) 0 %
+  évals achetées par an : A 4.0, B 2.1 ; rewards : A 6.3, B 4.2
   pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane -261 $, pire -782 $ ; A pire -695 $, B pire -521 $
   corrélation des nets A / B entre départs : +0.13
 
 Net moyen sur 12 mois selon l'année de départ ($) :
         net_A   net_B  net_total
 année                           
-2011   3884.0  1604.0     5488.0
-2012   3067.0   711.0     3778.0
-2013   4547.0  1560.0     6107.0
-2014   3368.0  1163.0     4531.0
-2015   1852.0  1189.0     3041.0
-2016   2431.0   648.0     3079.0
-2017   3069.0  1926.0     4995.0
-2018    992.0  1511.0     2503.0
-2019   2759.0  2652.0     5412.0
-2020   1911.0  1992.0     3902.0
-2021   1181.0  1546.0     2727.0
-2022   2037.0   999.0     3036.0
-2023   1219.0  1016.0     2235.0
-2024   2588.0  2975.0     5563.0
-2025   3199.0  2777.0     5975.0
+2011   3884.0  1746.0     5630.0
+2012   3067.0   714.0     3781.0
+2013   4547.0  1545.0     6092.0
+2014   3368.0  1260.0     4628.0
+2015   1852.0  1224.0     3076.0
+2016   2422.0   686.0     3108.0
+2017   3069.0  1949.0     5017.0
+2018    992.0  1474.0     2467.0
+2019   2759.0  2621.0     5381.0
+2020   1911.0  2000.0     3911.0
+2021   1181.0  1539.0     2721.0
+2022   2032.0   999.0     3031.0
+2023   1286.0  1055.0     2340.0
+2024   2586.0  2990.0     5576.0
+2025   3199.0  2819.0     6018.0
 
 Départ réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :
   A mom : évals 2, rewards 0, net -174 $ ; phase au 03/11 éval, solde +0.00 %
@@ -36,3 +38,80 @@ Départ réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :
     15/10 reward 4.90 % (490 $)
     29/10 reward 3.68 % (368 $)
   total des deux comptes : +598 $
+
+#################### règle des annonces, politique actuelle ####################
+
+12 mois à partir de chaque départ (721 départs, 2011-07 → 2025-08), deux comptes 10k :
+  net A     : moyenne +2,213 $ ; médiane +2,140 $, 10e c. +725 $, 90e c. +3,872 $, P(< 0) 0 %
+  net B     : moyenne +1,630 $ ; médiane +1,486 $, 10e c. +611 $, 90e c. +2,797 $, P(< 0) 0 %
+  net total : moyenne +3,843 $ ; médiane +3,714 $, 10e c. +2,108 $, 90e c. +5,741 $, P(< 0) 0 %
+  évals achetées par an : A 4.1, B 2.0 ; rewards : A 5.9, B 4.3
+  pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane -261 $, pire -782 $ ; A pire -695 $, B pire -521 $
+  corrélation des nets A / B entre départs : -0.09
+
+Net moyen sur 12 mois selon l'année de départ ($) :
+        net_A   net_B  net_total
+année                           
+2011   3951.0  1634.0     5584.0
+2012   3217.0   715.0     3932.0
+2013   4007.0  1408.0     5415.0
+2014   3151.0  1151.0     4302.0
+2015   2022.0  1138.0     3160.0
+2016   2098.0   859.0     2957.0
+2017   2791.0  1986.0     4777.0
+2018    932.0  1555.0     2487.0
+2019   2566.0  2697.0     5263.0
+2020   1299.0  1904.0     3203.0
+2021   1025.0  1666.0     2690.0
+2022   1887.0  1248.0     3135.0
+2023    976.0  1178.0     2154.0
+2024   1659.0  2905.0     4563.0
+2025   2793.0  2794.0     5587.0
+
+Départ réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :
+  A mom : évals 1, rewards 0, net -87 $ ; phase au 03/11 financé, solde -5.23 %
+    14/09 éval n° 1 validée
+  B 3n + M2 : évals 1, rewards 2, net +771 $ ; phase au 03/11 financé, solde -2.71 %
+    09/09 éval n° 1 validée
+    15/10 reward 4.90 % (490 $)
+    29/10 reward 3.68 % (368 $)
+  total des deux comptes : +685 $
+
+#################### règle des annonces, cible + attente ####################
+
+12 mois à partir de chaque départ (721 départs, 2011-07 → 2025-08), deux comptes 10k :
+  net A     : moyenne +2,232 $ ; médiane +2,122 $, 10e c. +877 $, 90e c. +3,762 $, P(< 0) 0 %
+  net B     : moyenne +1,632 $ ; médiane +1,605 $, 10e c. +720 $, 90e c. +2,720 $, P(< 0) 0 %
+  net total : moyenne +3,864 $ ; médiane +3,791 $, 10e c. +2,473 $, 90e c. +5,525 $, P(< 0) 0 %
+  évals achetées par an : A 3.8, B 2.0 ; rewards : A 7.5, B 5.4
+  pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane -261 $, pire -695 $ ; A pire -695 $, B pire -521 $
+  corrélation des nets A / B entre départs : -0.24
+
+Net moyen sur 12 mois selon l'année de départ ($) :
+        net_A   net_B  net_total
+année                           
+2011   4136.0  1614.0     5750.0
+2012   3493.0   750.0     4243.0
+2013   3685.0  1512.0     5197.0
+2014   2647.0  1200.0     3847.0
+2015   2464.0  1172.0     3636.0
+2016   2563.0   732.0     3295.0
+2017   3008.0  1779.0     4788.0
+2018    927.0  1585.0     2512.0
+2019   1994.0  2569.0     4562.0
+2020   1620.0  1950.0     3570.0
+2021   1103.0  1794.0     2898.0
+2022   1829.0  1404.0     3233.0
+2023    898.0  1349.0     2248.0
+2024   1668.0  2676.0     4343.0
+2025   2605.0  2744.0     5349.0
+
+Départ réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :
+  A mom : évals 1, rewards 1, net +266 $ ; phase au 03/11 financé, solde -7.95 %
+    14/09 éval n° 1 validée
+    28/09 reward 3.53 % (353 $)
+  B 3n + M2 : évals 1, rewards 2, net +474 $ ; phase au 03/11 financé, solde -1.56 %
+    09/09 éval n° 1 validée
+    28/09 reward 2.10 % (210 $)
+    20/10 reward 3.52 % (352 $)
+  total des deux comptes : +740 $

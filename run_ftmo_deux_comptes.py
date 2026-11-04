@@ -11,7 +11,8 @@ Règles de trading (objectif 2 R partout ; éval 2,5 % de risque par trade, fina
       la nuit (0 sans 3n), r = 2,5 % en éval, 1 % en financé (borné par la marge jusqu'au plancher).
 Règles FTMO (relues le 2026-11-04) : objectif +10 %, perte max 10 % sous le plus haut solde (remise à zéro après un
 reward), perte du jour 3 %, meilleur jour ≤ 50 % du gain net (comptes commandés depuis le 12/10/2026), reward possible
-à partir du 14e jour après le 1er trade du compte (ici 10 jours de bourse ; calendaire dans le rejeu de septembre),
+à partir du 14e jour après le 1er trade du compte (ici 10 jours de bourse, tradés ou non ; calendaire dans le rejeu de
+septembre),
 demandé dès qu'il est permis, 90 % versés, nouveau compte gratuit ensuite. En éval, l'objectif de chaque trade est ramené
 au reste à faire s'il est sous 2 R (atteint si le mouvement favorable maximal du trade le dépasse). Une éval ratée ou un
 compte perdu est racheté le jour suivant (79 € = 86,90 $). Coût CFD 1,5 point par trade au niveau actuel du NQ.
@@ -59,14 +60,20 @@ def bibliotheque() -> pd.DataFrame:
     w = C.trades("cache/holdout_anticipe/brut/NQ_v0_1m.parquet", "2026-08-31", "2026-11-03", "2026-11-04")
     w = w.rename(columns={"R_brut": "R", "MFE_R": "MFE"})[["date", "strat", "R", "s", "MFE"]]
     mw = S.trades().rename(columns={"night": "date", "MFE_R": "MFE"})[["date", "R", "s", "MFE"]].assign(strat="mom")
-    return pd.concat([hist, w, mw], ignore_index=True).sort_values("date").reset_index(drop=True)
+    lib = pd.concat([hist, w, mw], ignore_index=True).sort_values("date").reset_index(drop=True)
+    # règle des annonces en financé (build_news_trades.py) : trades mom coupés à 8:19, M2 coupés à 13:55
+    news = pd.read_parquet("cache/propfirm/news_trades.parquet")[["date", "strat", "R_news", "MFE_news"]]
+    lib = lib.merge(news, on=["date", "strat"], how="left")
+    lib["R_news"] = lib.R_news.fillna(lib.R)
+    lib["MFE_news"] = lib.MFE_news.fillna(lib.MFE)
+    return lib
 
 
 class Compte:
     """Un emplacement FTMO : éval puis financé, racheté après chaque échec."""
 
-    def __init__(self, nom: str, calendaire: bool = False):
-        self.nom, self.calendaire = nom, calendaire
+    def __init__(self, nom: str, calendaire: bool = False, annonces: bool = False, politique: str = "actuel"):
+        self.nom, self.calendaire, self.annonces, self.politique = nom, calendaire, annonces, politique
         self.evals, self.cash, self.rewards, self.events = 1, -FEE, 0, []
         self._nouveau("éval")
 
@@ -92,7 +99,12 @@ class Compte:
         if base < MIN_RISK:
             return self._echec(d)
         pnl, traded = 0.0, False
-        for R, c, mfe, risk in legs(base, r):
+        fin = self.phase == "financé"
+        for R, c, mfe, Rn, mfen, risk in legs(base, r):
+            if fin and self.annonces:  # règle des annonces : trade coupé avant la fenêtre interdite
+                R, mfe = Rn, mfen
+            if fin and "attente" in self.politique and self.f0 is not None and self.P > 0 and                     max(self.best, pnl) <= 0.5 * self.P + 1e-9:
+                break  # règle des 50 % respectée : on attend la date du reward
             risk = min(risk, self.P - floor)
             if risk < MIN_RISK:
                 continue
@@ -102,12 +114,21 @@ class Compte:
                 k = need * (1 + c) / risk + c
                 if k < TP_R and mfe >= k:
                     R = k
+            elif "cible" in self.politique and self.P > 0:  # viser juste ce qui manque pour la règle des 50 %
+                b = max(self.best, pnl)
+                need = 2 * b - self.P + 0.01
+                if b > 0.5 * self.P and need <= b + 1e-9:
+                    k = need * (1 + c) / risk + c
+                    if k < TP_R and mfe >= k:
+                        R = k
             leg = risk * (R - c) / (1 + c)
             self.P += leg
             pnl += leg
             if self.P <= floor + 1e-9 or pnl <= -DAILY:
                 return self._echec(d)
-        if not traded:
+        if not traded:  # jour sans trade (attente, ou pas de signal) : l'horloge du reward avance quand même
+            if self.f0 is not None:
+                self.cyc += 1
             return 0.0
         self.f0 = d if self.f0 is None else self.f0
         self.cyc += 1
@@ -128,7 +149,7 @@ class Compte:
 def jambes_A(row):
     def f(base, r):
         x = row.get("mom")
-        return [] if x is None else [(x[0], x[1], x[2], base)]
+        return [] if x is None else [(*x, base)]
     return f
 
 
@@ -138,7 +159,7 @@ def jambes_B(row):
         n3, m2 = row.get("3n"), row.get("M2")
         x = 0.0
         if n3 is not None:
-            out.append((n3[0], n3[1], n3[2], base))
+            out.append((*n3, base))
             sortie_temps = -0.999 < n3[0] < TP_R - 1e-3
             if not sortie_temps:
                 return out
@@ -146,7 +167,7 @@ def jambes_B(row):
         if m2 is not None:
             rho = max(0.0, min(base + x, (2 * base - x) / 2))
             if rho > 0:
-                out.append((m2[0], m2[1], m2[2], rho))
+                out.append((*m2, rho))
         return out
     return f
 
@@ -154,13 +175,14 @@ def jambes_B(row):
 def tableau(lib: pd.DataFrame) -> list[tuple[pd.Timestamp, dict]]:
     jours = []
     for d, g in lib.groupby("date"):
-        row = {s: (float(x.R), COST / float(x.s), float(x.MFE)) for s, x in g.set_index("strat").iterrows()}
+        row = {s: (float(x.R), COST / float(x.s), float(x.MFE), float(x.R_news), float(x.MFE_news))
+               for s, x in g.set_index("strat").iterrows()}
         jours.append((d, row))
     return jours
 
 
-def simule(jours, i0: int, n: int, calendaire: bool = False):
-    A, B = Compte("A mom", calendaire), Compte("B 3n + M2", calendaire)
+def simule(jours, i0: int, n: int, calendaire: bool = False, annonces: bool = False, politique: str = "actuel"):
+    A, B = Compte("A mom", calendaire, annonces, politique), Compte("B 3n + M2", calendaire, annonces, politique)
     ca, cb = [], []
     for d, row in jours[i0:i0 + n]:
         A.jour(d, jambes_A(row))
@@ -178,42 +200,48 @@ def main() -> None:
     say(f"Calendrier : {len(jours)} séances du {dates[0]:%Y-%m-%d} au {dates[-1]:%Y-%m-%d} ; "
         f"compte B : 3n {int((lib.strat == '3n').sum())} nuits, M2 {int((lib.strat == 'M2').sum())} setups")
 
-    # 1. tous les départs, 12 mois
-    H = 252
-    rows = []
-    hist_end = np.searchsorted(dates, pd.Timestamp("2026-08-29"))
-    for i0 in range(0, hist_end - H, 5):
-        A, B, ca, cb = simule(jours, i0, H)
-        tot = ca + cb
-        rows.append(dict(départ=dates[i0].date(), année=dates[i0].year,
-                         net_A=A.cash, net_B=B.cash, net_total=A.cash + B.cash,
-                         évals_A=A.evals, évals_B=B.evals, rewards_A=A.rewards, rewards_B=B.rewards,
-                         creux_total=min(0.0, tot.min()), creux_A=min(0.0, ca.min()), creux_B=min(0.0, cb.min())))
-    D = pd.DataFrame(rows)
-    D.to_csv(OUT / "departs.csv", index=False)
-    q = lambda s: f"médiane {s.median():+,.0f} $, 10e c. {s.quantile(0.1):+,.0f} $, 90e c. {s.quantile(0.9):+,.0f} $, " \
-                  f"P(< 0) {100 * (s < 0).mean():.0f} %"
-    say(f"\n12 mois à partir de chaque départ ({len(D)} départs, 2011-07 → 2025-08), deux comptes 10k :")
-    for k in ("A", "B", "total"):
-        say(f"  net {k:<5} : moyenne {D[f'net_{k}'].mean():+,.0f} $ ; {q(D[f'net_{k}'])}")
-    say(f"  évals achetées par an : A {D.évals_A.mean():.1f}, B {D.évals_B.mean():.1f} ; rewards : A {D.rewards_A.mean():.1f}, "
-        f"B {D.rewards_B.mean():.1f}")
-    say(f"  pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane {D.creux_total.median():,.0f} $, "
-        f"pire {D.creux_total.min():,.0f} $ ; A pire {D.creux_A.min():,.0f} $, B pire {D.creux_B.min():,.0f} $")
-    say(f"  corrélation des nets A / B entre départs : {D.net_A.corr(D.net_B):+.2f}")
-    par = D.groupby("année")[["net_A", "net_B", "net_total"]].mean().round(0)
-    say(f"\nNet moyen sur 12 mois selon l'année de départ ($) :\n{par.to_string()}")
+    CONFIGS = {"sans règle des annonces, politique actuelle": (False, "actuel"),
+               "règle des annonces, politique actuelle": (True, "actuel"),
+               "règle des annonces, cible + attente": (True, "cible+attente")}
+    for nom_c, (ann, pol) in CONFIGS.items():
+      suffixe = {False: "", True: "_annonces"}[ann] + ("_cible_attente" if pol != "actuel" else "")
+      say(f"\n#################### {nom_c} ####################")
+      # 1. tous les départs, 12 mois
+      H = 252
+      rows = []
+      hist_end = np.searchsorted(dates, pd.Timestamp("2026-08-29"))
+      for i0 in range(0, hist_end - H, 5):
+          A, B, ca, cb = simule(jours, i0, H, False, ann, pol)
+          tot = ca + cb
+          rows.append(dict(départ=dates[i0].date(), année=dates[i0].year,
+                           net_A=A.cash, net_B=B.cash, net_total=A.cash + B.cash,
+                           évals_A=A.evals, évals_B=B.evals, rewards_A=A.rewards, rewards_B=B.rewards,
+                           creux_total=min(0.0, tot.min()), creux_A=min(0.0, ca.min()), creux_B=min(0.0, cb.min())))
+      D = pd.DataFrame(rows)
+      D.to_csv(OUT / f"departs{suffixe}.csv", index=False)
+      q = lambda s: f"médiane {s.median():+,.0f} $, 10e c. {s.quantile(0.1):+,.0f} $, 90e c. {s.quantile(0.9):+,.0f} $, " \
+                    f"P(< 0) {100 * (s < 0).mean():.0f} %"
+      say(f"\n12 mois à partir de chaque départ ({len(D)} départs, 2011-07 → 2025-08), deux comptes 10k :")
+      for k in ("A", "B", "total"):
+          say(f"  net {k:<5} : moyenne {D[f'net_{k}'].mean():+,.0f} $ ; {q(D[f'net_{k}'])}")
+      say(f"  évals achetées par an : A {D.évals_A.mean():.1f}, B {D.évals_B.mean():.1f} ; rewards : A {D.rewards_A.mean():.1f}, "
+          f"B {D.rewards_B.mean():.1f}")
+      say(f"  pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane {D.creux_total.median():,.0f} $, "
+          f"pire {D.creux_total.min():,.0f} $ ; A pire {D.creux_A.min():,.0f} $, B pire {D.creux_B.min():,.0f} $")
+      say(f"  corrélation des nets A / B entre départs : {D.net_A.corr(D.net_B):+.2f}")
+      par = D.groupby("année")[["net_A", "net_B", "net_total"]].mean().round(0)
+      say(f"\nNet moyen sur 12 mois selon l'année de départ ($) :\n{par.to_string()}")
 
-    # 2. départ réel le 1er septembre 2026
-    i0 = int(np.searchsorted(dates, pd.Timestamp("2026-09-01")))
-    A, B, ca, cb = simule(jours, i0, len(jours) - i0, calendaire=True)
-    say(f"\nDépart réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :")
-    for C_ in (A, B):
-        say(f"  {C_.nom} : évals {C_.evals}, rewards {C_.rewards}, net {C_.cash:+,.0f} $ ; phase au 03/11 {C_.phase}, "
-            f"solde {C_.P:+.2f} %")
-        for d, e in C_.events:
-            say(f"    {d:%d/%m} {e}")
-    say(f"  total des deux comptes : {A.cash + B.cash:+,.0f} $")
+      # 2. départ réel le 1er septembre 2026
+      i0 = int(np.searchsorted(dates, pd.Timestamp("2026-09-01")))
+      A, B, ca, cb = simule(jours, i0, len(jours) - i0, True, ann, pol)
+      say(f"\nDépart réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :")
+      for C_ in (A, B):
+          say(f"  {C_.nom} : évals {C_.evals}, rewards {C_.rewards}, net {C_.cash:+,.0f} $ ; phase au 03/11 {C_.phase}, "
+              f"solde {C_.P:+.2f} %")
+          for d, e in C_.events:
+              say(f"    {d:%d/%m} {e}")
+      say(f"  total des deux comptes : {A.cash + B.cash:+,.0f} $")
     (OUT / "run.log").write_text("\n".join(LOG), encoding="utf-8")
 
 

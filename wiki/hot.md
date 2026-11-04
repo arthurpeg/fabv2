@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 15:24
+updated: 2026-11-04 15:33
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-04 15:24
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | Deux comptes FTMO (A mom, B 3n + M2) avec la règle des annonces (build_news_trades.py : mom coupé à 8:19 les jours NFP / CPI / PIB, M2 à 13:55 les jours de Fed ; dates sept.-oct. 2026 relevées sur BLS et Fed, PIB T3 supposé le 29/10) et la politique cible + attente ; horloge du reward corrigée (jours de bourse, tradés ou non) (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md) | 12 mois : +4 082 $ sans la règle, +3 843 $ avec, +3 864 $ avec cible + attente (10e c. +2 473 $, 12,9 rewards par an) ; départ 01/09/2026 : +598 / +685 / +740 $
 - [2026-11-04] query | Deux comptes FTMO 10k en même temps : A = mom, B = 3n + M2 (M2 si 3n sort ni au SL ni au TP, taille bornant la journée à −r / +2r) ; éval 2,5 % / financé 1 %, objectif 2 R ramené au reste à faire en éval, règles FTMO actuelles (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md, exploratoire, hors compteur) | 721 départs 2011-2025, 12 mois : net moyen +4 060 $ (A +2 469, B +1 591), 10e c. +2 096 $, aucun départ perdant, pire creux −782 $ ; départ réel 01/09/2026 : A −174 $, B +771 $ (2 rewards en octobre), total +598 $
 - [2026-11-04] query | Contrôle sans edge de la politique « cible + attente » (run_ftmo_payout_policy_sans_edge.py, reports/ftmo_payout_policy_report.md, exploratoire, hors compteur) ; page anglaise complétée avec les métriques sans edge et mom (reports/propfirm_ftmo_overview.html) | sans edge 2016-26 : +107 → +133 $ par tentative 10k, +798 → +886 $ par mois 100k ; 2011-15 : +64 → +86 $ ; la politique gagne aussi sans edge (effet de contrat) ; mom en cible + attente ×6,9 par tentative, ×2,5 par mois
 - [2026-11-04] doc | Page HTML en anglais présentant la branche propfirm-ftmo, sans les règles de trading (reports/propfirm_ftmo_overview.html) | contrat vu comme option, règles FTMO modélisées, simulateur, enseignements, limites
@@ -29,7 +30,6 @@ updated: 2026-11-04 15:24
 - [2026-11-04] query | Conditions de reward FTMO 1-Step relues sur ftmo.com (Trading Objectives, FAQ reward) et rejeu de septembre avec les règles exactes (run_ftmo_septembre.py, reports/ftmo_septembre_report.md) | meilleur jour ≤ 50 % du gain net pour les comptes commandés depuis le 12/10/2026 (= simulateur), ≤ 50 % des seuls jours gagnants avant (Legacy) ; reward dès le 14e jour après le 1er trade ; départ 01/09 en Legacy : reward 1,55 % le 28/09, net +68 $ / +998 $ ; en Consistency : 0 reward
 - [2026-11-04] query | Correction des simulations FTMO à liste de trades : objectif d'éval ramené au reste à faire avec le MFE de chaque trade (build_mfe_mom.py, run_propfirm_combo.simule, run_propfirm_trio / mix / eval_rapide corrigés ; reports/propfirm_correction_reste_report.md) | passage +1 à +7 points (mom seul 2016-26 : 43,6 → 50,7 % ; trio 59,8 → 64,7 % ; 3n + M2 60,5 → 65,5 %) ; EV par tentative +3 à +17 % ; classements inchangés ; vérification 2019-26 : trio 61 % en 19 séances, mom 2 % + M2 0,5 % 57,5 % en 15
 - [2026-11-04] query | FTMO septembre, correction (run_ftmo_septembre.py, reports/ftmo_septembre_report.md) : coût CFD 0,02-0,035 R par trade (TP = 4,75-4,88 % au lieu de 5 %) ; objectif d'éval ramené au reste à faire avec le MFE de chaque nuit | départ 01/09 validé le 14/09 au lieu du 18/09 (la nuit du 14/09 monte à +0,88 R, il fallait 0,38 R) ; 12 départs sur 21 valident au lieu de 9 ; toujours 0 reward au 03/11 ; les simulations à bibliothèque de trades (TradeLib) gardaient l'objectif fixe en éval : passage un peu sous-estimé
-- [2026-11-04] query | FTMO 1-Step avec mom, départ en septembre 2026, rejeu jour par jour sur les vraies nuits jusqu'au 03/11 (run_ftmo_septembre.py, reports/ftmo_septembre_report.md, descriptif, fenêtre vue du holdout) ; h1_mom de run_holdout_anticipe.py paramétré (tp, cost) | départ 01/09 : éval validée le 18/09, financé perdu le 03/11 sans reward ; 21 départs de septembre : 0 reward, −174 à −348 $ par 10k ; mom −1,1 R brut sur 44 nuits, 61 % de SL
 
 ## Prochaines actions
 

@@ -53,3 +53,41 @@ Net moyen sur 12 mois selon l'année de départ :
    - **La règle FTMO des annonces n'est pas modélisée** : mom traverse 8:30, M2 traverse 10:00 et 14:00.
    - Le compte financé démarre le lendemain de la validation ou du reward, alors que FTMO met 1 à 4 jours ouvrés.
    - Le refus de rewards et l'« account rolling » ne sont pas modélisés. Avec deux comptes sur des stratégies différentes, ce risque est faible.
+
+## Ajout : règle des annonces et politique « cible + attente » (2026-11-04)
+
+**Règle des annonces** ([build_news_trades.py](../build_news_trades.py) → `cache/propfirm/news_trades.parquet`). Sur le compte financé, FTMO n'exécute aucun ordre, stop ou objectif compris, 2 min avant et après une annonce restreinte. Pour l'US100, ce sont NFP, CPI, PIB avancé (8:30) et décision ou minutes de la Fed (14:00).
+- mom est fermé à **8:19** les jours d'annonce de 8:30 (168 nuits coupées sur 2011-2026) ; M2 est fermé à **13:55** les jours de Fed (86 séances) ; 3n n'est pas concerné.
+- Les dates de septembre-octobre 2026 sont relevées sur le BLS et sur federalreserve.gov : NFP 04/09 et 02/10, CPI 11/09 et 14/10, Fed 16/09 et 28/10, minutes 07/10. Le PIB avancé du 3e trimestre est **supposé** le 29/10 (date non trouvée sur bea.gov).
+
+**Politique cible + attente** (voir [[reports/ftmo_payout_policy_report]]) : en financé, si seule la règle des 50 % bloque, le trade vise juste ce qui manque. Dès que la règle est respectée, on ne trade plus jusqu'à la date du reward.
+
+**Correction du moteur.** L'horloge du reward compte maintenant chaque jour de bourse, tradé ou non. Avant, seuls les jours tradés comptaient : un compte en attente restait bloqué, et un compte B sans signal attendait plus que 14 jours calendaires. Les chiffres « sans règle des annonces » du haut de ce rapport ont donc légèrement bougé (total +4 082 $ au lieu de +4 060 $).
+
+| 12 mois, 721 départs (2011-07 → 2025-08) | Sans règle des annonces | Règle des annonces | **Règle des annonces + cible + attente** |
+|---|---|---|---|
+| Net A (mom), moyenne | +2 472 $ | +2 213 $ | +2 232 $ |
+| Net B (3n + M2), moyenne | +1 610 $ | +1 630 $ | +1 632 $ |
+| **Net total, moyenne / médiane** | +4 082 / +3 903 $ | +3 843 / +3 714 $ | **+3 864 / +3 791 $** |
+| 10e centile total | +2 097 $ | +2 108 $ | **+2 473 $** |
+| 90e centile total | +6 237 $ | +5 741 $ | +5 525 $ |
+| Départs perdants à 12 mois | 0 % | 0 % | 0 % |
+| Rewards par an (A / B) | 6,3 / 4,2 | 5,9 / 4,3 | **7,5 / 5,4** |
+| Évals par an (A / B) | 4,0 / 2,1 | 4,1 / 2,0 | 3,8 / 2,0 |
+| Pire creux de frais | −782 $ | −782 $ | −695 $ |
+
+Moyenne selon l'année de départ, règle des annonces avec ou sans cible + attente : 2011-2015 +4 354 → +4 404 $, 2016-2025 +3 609 → +3 615 $.
+
+**Départ réel le 01/09/2026 (jusqu'au 03/11)** :
+
+| | Sans règle des annonces | Règle des annonces | **Règle des annonces + cible + attente** |
+|---|---|---|---|
+| A (mom) | 0 reward, financé perdu le 03/11 → −174 $ | 0 reward ; le financé **survit** (−5,23 % au 03/11) grâce à la sortie à 8:19 du 14/10 (+0,71 R au lieu d'un stop avec gap à −1,68 R) → −87 $ | **reward de 353 $ le 28/09** ; nouveau compte à −7,95 % au 03/11 → **+266 $** |
+| B (3n + M2) | rewards de 490 $ (15/10) et 368 $ (29/10) → +771 $ | identique → +771 $ | rewards de **210 $ (28/09)** et **352 $ (20/10)** ; compte à −1,56 % au 03/11 → +474 $ |
+| **Total** | +598 $ | +685 $ | **+740 $** |
+
+**Lecture.**
+1. **La règle des annonces coûte environ 6 % sur un an** (−239 $ en moyenne), et tout vient de mom : les nuits d'annonce sont les meilleures de la règle (n° 14). B n'est presque pas touché, car M2 n'est coupé qu'environ 6 jours de Fed par an. En septembre-octobre 2026, la règle a même aidé A : la coupe à 8:19 du 14/10 a évité un stop avec gap.
+2. **Cible + attente ne change pas le gain moyen sur un an** (+3 864 $ contre +3 843 $), mais **rend les rentrées plus régulières**. Il y a 12,9 rewards par an au lieu de 10,2, et le 10e centile monte de +2 108 à **+2 473 $**. En contrepartie, le 90e centile baisse : on renonce aux plus gros rewards. Sur septembre-octobre 2026, cette politique est la meilleure (+740 $).
+3. **Version recommandée pour les deux comptes : règle des annonces respectée + cible + attente.** Elle donne environ +3 800 $ par an attendus pour deux comptes 10k et environ 6 évals par an. Aucun départ historique ne perd sur 12 mois, et il faut avancer au plus environ 700 $ de frais. Les réserves du haut de ce rapport restent valables (3n et M2 optimistes ; délais de FTMO non modélisés).
+
