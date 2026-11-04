@@ -334,8 +334,15 @@ class Bot:
             self.ev_m2(now)
         self.ev_fin_jour(now)
 
+    @property
+    def drapeau(self) -> Path:
+        """Fichier posé par live/maj_auto.ps1 après une mise à jour validée : le bot sort proprement entre deux pas,
+        live/lancer.bat le relance avec le nouveau code. L'état est déjà sauvé à chaque changement."""
+        return self.dir.parent / f"redemarrer_{self.book}"
+
     def boucle(self) -> None:
-        self.log(f"démarrage ; compte virtuel {self.compte.phase} {self.compte.P:+.2f} %, "
+        self.drapeau.unlink(missing_ok=True)  # on démarre déjà avec le code à jour
+        self.log(f"démarrage (code {self.version()}) ; compte virtuel {self.compte.phase} {self.compte.P:+.2f} %, "
                  f"{len(self.etat['ouverts'])} position(s) suivie(s)")
         msg = self.b.controle_heure()
         if msg:
@@ -343,6 +350,11 @@ class Bot:
         self.controle_annonces()
         dernier_controle = self.maintenant().date()
         while True:
+            if self.drapeau.exists():
+                self.drapeau.unlink(missing_ok=True)
+                self.log("mise à jour du code reçue : arrêt propre, relance par lancer.bat")
+                self.save()
+                raise SystemExit(0)
             try:
                 self.pas()
                 if self.maintenant().date() != dernier_controle:
@@ -352,6 +364,15 @@ class Bot:
                 self.log("ERREUR\n" + traceback.format_exc())
                 time.sleep(10)
             time.sleep(1)
+
+    @staticmethod
+    def version() -> str:
+        import subprocess
+        try:
+            return subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True,
+                                  timeout=5).stdout.strip() or "?"
+        except Exception:
+            return "?"
 
     def signaux(self) -> None:
         """Calcule et affiche les signaux du moment, sans passer d'ordre."""

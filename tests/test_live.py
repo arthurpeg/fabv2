@@ -142,3 +142,27 @@ def test_compte_virtuel_egal_moteur(graine):
         assert live.P == pytest.approx(ref.P, abs=1e-9), book
         assert live.phase == ref.phase, book
         assert live.rewards_pct / 100 * ref.size == pytest.approx(ref.cash + ref.evals * ref.fee, abs=1e-6), book
+
+
+def test_drapeau_de_mise_a_jour_arrete_le_bot_proprement(tmp_path):
+    """live/maj_auto.ps1 pose live/etat/redemarrer_<book> : le bot sauve son état et sort (code 0) avant tout pas."""
+    from live.bot import Bot
+
+    class Stub:
+        def controle_heure(self):
+            return ""
+
+    bot = Bot(dict(book="A", dossier=str(tmp_path / "A"), annonces="live/annonces.csv"), broker=Stub(),
+              horloge=lambda: pd.Timestamp("2026-11-04 12:00", tz=NY))
+    bot.pas = lambda: (_ for _ in ()).throw(AssertionError("le bot a fait un pas malgré le drapeau"))
+    bot.drapeau.touch()  # drapeau ancien : effacé au démarrage, ne doit pas faire sortir
+    bot.etat["ouverts"] = [{"strat": "mom", "ticket": 1}]
+    import threading
+    t = threading.Timer(0.5, bot.drapeau.touch)
+    t.start()
+    with pytest.raises(SystemExit) as e:
+        bot.pas = lambda: None
+        bot.boucle()
+    t.cancel()
+    assert e.value.code == 0 and not bot.drapeau.exists()
+    assert "ticket" in (tmp_path / "A" / "etat.json").read_text(encoding="utf-8")

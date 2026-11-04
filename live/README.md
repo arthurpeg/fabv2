@@ -56,6 +56,28 @@ Il y a un processus Python par book, et chaque processus a son propre terminal M
 7. **Lancement.** Ouvrir deux fenêtres `cmd` et lancer `live\lancer.bat A` dans l'une, `live\lancer.bat B` dans l'autre. Le script relance le bot s'il s'arrête. Pour un démarrage automatique, créer une tâche planifiée « À l'ouverture de session » pour chaque book, et activer l'ouverture de session automatique de Windows.
 8. **Fermer le RDP sans se déconnecter.** Fermer la fenêtre RDP (croix), mais **ne pas se déconnecter** de la session Windows : MT5 et les bots doivent rester dans une session ouverte.
 
+## Mise à jour automatique depuis GitHub
+
+[maj_auto.ps1](maj_auto.ps1) tourne toutes les 5 minutes, dans une tâche planifiée créée une seule fois. À chaque passage :
+
+1. `git fetch`. Si rien n'est nouveau, il ne fait rien d'autre.
+2. Avance rapide seulement. Si un fichier suivi par git a été modifié à la main sur le VPS, rien n'est fait et l'incident est écrit dans le journal.
+3. `uv sync` si `pyproject.toml` ou `uv.lock` ont changé.
+4. `tests/test_live.py`. En cas d'échec :
+   - retour au commit précédent ;
+   - les bots gardent l'ancien code ;
+   - ce commit n'est plus retenté (il est noté dans `live/etat/maj_refusee.txt`), seul le suivant le sera.
+5. Si le code (`*.py`) ou le calendrier (`annonces.csv`) a changé, il pose les drapeaux `live/etat/redemarrer_A` et `_B`. Chaque bot sauve alors son état, sort entre deux pas de sa boucle, et `lancer.bat` le relance 10 s plus tard avec le nouveau code. Une position ouverte reste suivie après la relance.
+
+Le journal est dans `live/etat/maj_auto.log`. Pour créer la tâche, une fois, dans PowerShell :
+```
+$a = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\fabv2\live\maj_auto.ps1"'; $t = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 5); Register-ScheduledTask -TaskName "fabv2 - mise a jour du bot" -Action $a -Trigger $t -Settings (New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 20))
+```
+Limites :
+- **Fichier `lancer.bat`.** Une modification de ce fichier ne prend effet qu'après une relance à la main des fenêtres.
+- **Branche.** Seule la branche suivie sur le VPS (`propfirm-ftmo`) est mise à jour.
+- **Tests sur le VPS.** Les tests des signaux sur les barres NQ y sont sautés, faute de données. Restent le compte virtuel et le drapeau de redémarrage.
+
 ## Suivi
 
 - **Dossier.** Tout est dans `live/etat/A` et `live/etat/B` (hors git) :

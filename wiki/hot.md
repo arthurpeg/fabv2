@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 19:12
+updated: 2026-11-04 19:20
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-04 19:12
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] build | Mise à jour automatique du bot sur le VPS : tâche planifiée toutes les 5 min (live/maj_auto.ps1), git pull en avance rapide, tests du bot avant d'adopter le code (retour arrière sinon), redémarrage propre des bots par drapeau ; option --test-ordre (ordre test au lot minimum) | testé sur un dépôt simulé : mise à jour valide appliquée, mise à jour cassée refusée et annulée, doc seule sans redémarrage
 - [2026-11-04] build | Bot de démo FTMO sur VPS : MT5 + Python, book A (mom) et B (3n + M2), compte FTMO virtuel, règle des annonces avec calendrier BLS / Fed relu (live/, tests/test_live.py, tests/test_live_bot.py) | signaux et compte identiques au backtest (78 tests verts) ; reste à installer sur le VPS Contabo (Windows requis) et à créer les deux essais FTMO
 - [2026-11-04] decision | Plan FTMO retenu par l'utilisateur : compte A = mom, compte B = 3n + M2 (M2 si 3n n'a pas tradé ou est sorti à 03:00), éval 2,5 % avec objectif réduit, financé 1 %, règle des annonces, cible + attente, scaling 10k → 400k (wiki/experiments/propfirm-ftmo-option.md, section « Plan retenu » ; mémoire ftmo-plan-retenu) | à utiliser par défaut dans les prochaines conversations
 - [2026-11-04] query | Métriques complètes de la montée en taille FTMO 10k → 100k (run_ftmo_scaling_metrics.py, reports/ftmo_scaling_report.md, section métriques) | 400k en 12,0 mois médian (MC historique) / 17,7 (edge / 2) ; ruine 0,2 % / 2,5 % ; cagnotte à 5 ans 375 k$ / 212 k$ ; revenu mensuel à 400k ≈ 7 700 $ / 5 000 $, mois négatifs 11 % / 22 % ; max DD de cagnotte médian −3 293 $ / −5 489 $ ; frais ≈ 18 k$ / 28 k$ sur 5 ans
@@ -30,7 +31,6 @@ updated: 2026-11-04 19:12
 - [2026-11-04] query | Montée en taille FTMO : A mom + B 3n + M2, paliers 1/2/3 × 10k puis 1/2 × 100k par stratégie (400k), palier suivant quand la cagnotte (dépôt 869 $ + rewards − frais) couvre 10 évals par paire ; Compte de run_ftmo_deux_comptes.py paramétré (taille, prix, rachat) (run_ftmo_scaling.py, reports/ftmo_scaling_report.md, exploratoire, hors compteur) | 400k en ≈ 12 mois médian (historique) / 17,7 mois (edge / 2, 96 %) ; cagnotte à 5 ans médiane +375 k$ / +212 k$ ; vrai chemin : 400k le 25/04/2012, 1,31 M$ au 03/11/2026 ; risque concentré sur les 6 premiers mois (cagnotte à 0 dans 1 à 6 % des chemins)
 - [2026-11-04] query | Monte-Carlo des deux comptes FTMO 10k (A mom, B 3n + M2, règle des annonces + cible + attente), bootstrap stationnaire par blocs de 20 séances, 5 000 chemins de 3 ans, scénarios historique / 2019-2026 / espérance divisée par 2 (run_ftmo_monte_carlo.py, reports/ftmo_monte_carlo_report.md, exploratoire, hors compteur) | net à 3 ans médian +12 889 / +12 305 / +7 939 $, P(< 0) 0 % ; à 1 an P(< 0) 0,1 / 0,2 / 2,7 % ; max DD de trésorerie 99e c. −782 / −869 / −1 304 $ ; série d'évals sans reward A 95e c. 7 / 9 / 10, B 4 / 4 / 7
 - [2026-11-04] query | Deux comptes FTMO 10k (A mom, B 3n + M2), un seul chemin du 2011-07-01 au 2026-11-03, règle des annonces + cible + attente (run_ftmo_deux_comptes_historique.py, reports/ftmo_deux_comptes_historique_report.md, exploratoire, hors compteur) | net +68 562 $ (+4 469 $/an), 52 évals, 217 rewards, aucune année négative, max DD de trésorerie −435 $, pire série sans reward 5 évals (A) / 3 (B), corrélation P&L +0,24, flux mensuels +0,01
-- [2026-11-04] query | Deux comptes FTMO (A mom, B 3n + M2) avec la règle des annonces (build_news_trades.py : mom coupé à 8:19 les jours NFP / CPI / PIB, M2 à 13:55 les jours de Fed ; dates sept.-oct. 2026 relevées sur BLS et Fed, PIB T3 supposé le 29/10) et la politique cible + attente ; horloge du reward corrigée (jours de bourse, tradés ou non) (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md) | 12 mois : +4 082 $ sans la règle, +3 843 $ avec, +3 864 $ avec cible + attente (10e c. +2 473 $, 12,9 rewards par an) ; départ 01/09/2026 : +598 / +685 / +740 $
 
 ## Prochaines actions
 
