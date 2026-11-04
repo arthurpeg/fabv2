@@ -7,3 +7,8 @@ papers/
 papiers overnight ssrn/
 .obsidian/workspace*.json
 .obsidian/cache
+
+# bot de démo FTMO : état et journaux du VPS, configs locales
+live/etat/
+live/config_A.toml
+live/config_B.toml

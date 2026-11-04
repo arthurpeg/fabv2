@@ -1,0 +1,10 @@
+# Book A = mom. Copier en live/config_A.toml sur le VPS et adapter `terminal`.
+book = "A"
+terminal = 'C:\MT5_A\terminal64.exe'   # installation MT5 dédiée, connectée à l'essai FTMO du book A
+symbole = "US100.cash"
+magic = 26011
+nominal = 10000                         # tailles calculées sur 10 000 $, quel que soit le solde de l'essai
+decalage_serveur_ny_h = 7               # serveur FTMO = heure de New York + 7 h
+mom_signe = 0                           # 0 = calculé sur le CFD ; +1 / -1 pour forcer (signe du NQ ajusté)
+dossier = "live/etat/A"
+annonces = "live/annonces.csv"

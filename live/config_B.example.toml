@@ -1,0 +1,9 @@
+# Book B = 3n + M2. Copier en live/config_B.toml sur le VPS et adapter `terminal`.
+book = "B"
+terminal = 'C:\MT5_B\terminal64.exe'   # installation MT5 dédiée, connectée à l'essai FTMO du book B
+symbole = "US100.cash"
+magic = 26012
+nominal = 10000
+decalage_serveur_ny_h = 7
+dossier = "live/etat/B"
+annonces = "live/annonces.csv"
