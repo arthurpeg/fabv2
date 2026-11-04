@@ -1,0 +1,16 @@
+{
+ "nom": "book A",
+ "phase": "éval",
+ "P": 0.0,
+ "hi": 0.0,
+ "best": 0.0,
+ "f0": null,
+ "evals": 1,
+ "rewards": 0,
+ "rewards_pct": 0.0,
+ "jour": null,
+ "pnl_jour": 0.0,
+ "trade_jour": false,
+ "mort_jour": false,
+ "events": []
+}

@@ -1,0 +1,26 @@
+2026-11-04 13:00:38 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 10,000.00 USD
+2026-11-04 13:00:38 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:00:38 ET [B] barres M1 : 2026-10-05 11:55:00-04:00 → 2026-11-04 12:59:00-05:00 (29999) ; spread 1.45
+2026-11-04 13:00:39 ET [B] 3n nuit → 2026-11-04 : 3 nuits -39.7 bps → LONG
+2026-11-04 13:00:39 ET [B] M2 2026-11-04 : {'side': -1, 'm2': False, 'strength': 0.17499096608451845, 'reversal': 5.500368524691268, 'atr15': 82.82409223052456, 'ret_prev': -5.500368524691268}
+2026-11-04 13:00:39 ET [B] compte virtuel : CompteVirtuel(nom='book B', phase='éval', P=0.0, hi=0.0, best=0.0, f0=None, evals=1, rewards=0, rewards_pct=0.0, jour=None, pnl_jour=0.0, trade_jour=False, mort_jour=False, events=[])
+2026-11-04 13:04:26 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 10,000.00 USD
+2026-11-04 13:04:26 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:04:26 ET [B] démarrage ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
+2026-11-04 13:27:04 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 10,000.00 USD
+2026-11-04 13:27:04 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:27:04 ET [B] taille d'un trade réel maintenant : ATR M15 118.2 pts, stop 472.8 pts, spread 1.45, risque 2.5 % → 0.52 lots ; perte au stop 246.59 $ (2.47 %), gain à 2 R 490.92 $
+2026-11-04 13:27:04 ET [B] ordre test : 0.01 lot long à 28592.58 (ask 28592.58, bid 28591.13), ticket 577683115 ; SL 28119.81 (OK), TP 29538.11 (OK)
+2026-11-04 13:27:09 ET [B] fermeture test : {'profit': -0.02, 'exit_px': 28590.43, 'exit_time': '2026-11-04 13:27:09-05:00', 'raison': 'heure'}
+2026-11-04 13:27:09 ET [B] TEST OK
+2026-11-04 13:30:07 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
+2026-11-04 13:30:07 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:30:07 ET [B] démarrage (code e223d5e) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
+2026-11-04 13:31:58 ET [B] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-04 13:32:20 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
+2026-11-04 13:32:20 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:32:20 ET [B] démarrage (code 1d5db58) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
+2026-11-04 13:41:42 ET [B] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-04 13:41:59 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
+2026-11-04 13:41:59 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-04 13:41:59 ET [B] démarrage (code 4dbdd3f) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)

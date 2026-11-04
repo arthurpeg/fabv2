@@ -1,0 +1,5 @@
+﻿2026-11-04 19:31:58 mise a jour e223d5e -> 1d5db58, tests OK, bots relances : live/bot.py, live/broker.py
+2026-11-04 19:41:42 mise a jour 1d5db58 -> 4dbdd3f, tests OK, bots relances : live/bot.py, live/broker.py, live/pnl.py
+2026-11-04 19:46:38 mise a jour 4dbdd3f -> 7ead017, tests OK (code du bot inchange)
+2026-11-04 20:07:05 mise a jour 7ead017 -> 7a5b2f4, tests OK (code du bot inchange)
+2026-11-04 20:11:26 mise a jour 7a5b2f4 -> 232e3c7, tests OK (code du bot inchange)
