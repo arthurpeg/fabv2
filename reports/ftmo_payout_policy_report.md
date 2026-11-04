@@ -66,3 +66,16 @@ Avec l'attente, on ne trade que 91 à 94 % des nuits. Le délai de 14 jours est 
    - dans la simulation sur l'historique, le délai de 14 jours calendaires est approché par 10 nuits de bourse ;
    - le nouveau compte démarre la nuit qui suit le reward (FTMO met 1 à 2 jours ouvrés) ;
    - seul mom est testé, pas le trio.
+
+## Contrôle sans edge (ajouté le 2026-11-04)
+
+Script : [run_ftmo_payout_policy_sans_edge.py](../run_ftmo_payout_policy_sans_edge.py), sortie `results/ftmo_payout_policy/historique_sans_edge.csv`. Mêmes trades mom recentrés sur leur moyenne (R − μ, MFE − μ, plancher 0), même éval à 2,5 %, même financé, même graine, 20 000 comptes.
+
+| Période | Politique | Passage | Valeur du financé | P(≥ 1 reward) | Rewards | Reward moyen | Vie | EV 10k | EV 100k | EV / mois 100k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2016-2026 | actuel | 37,7 % | 5,15 % | 64 % | 1,22 | 4,21 % | 3,5 mois | +107 $ | +1 388 $ | +798 $ |
+| | cible + attente | 37,7 % | 5,84 % | 73 % | 1,79 | 3,27 % | 3,8 mois | +133 $ | +1 649 $ | +886 $ |
+| 2011-2015 | actuel | 35,3 % | 4,27 % | 63 % | 1,06 | 4,04 % | 2,9 mois | +64 $ | +957 $ | +658 $ |
+| | cible + attente | 35,3 % | 4,91 % | 73 % | 1,57 | 3,12 % | 3,2 mois | +86 $ | +1 183 $ | +760 $ |
+
+Sans edge, cible + attente ajoute 11 à 35 % d'EV partout : le gain vient du contrat (sécuriser un solde payable, puis ne plus le risquer). Avec mom sur 2016-2026, l'edge multiplie l'EV par tentative par 6,9 (10k) et l'EV par mois par 2,5.

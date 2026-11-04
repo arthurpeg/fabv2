@@ -38,7 +38,16 @@ p{margin:0 0 14px}
 table{width:100%;border-collapse:collapse;font-size:15px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-.tablewrap{overflow-x:auto}
+.tablewrap{overflow-x:auto;margin:12px 0 16px}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.hl td{background:var(--accent-soft);font-weight:600}
+tr.sub td{color:var(--muted)}
+.caption{font-size:14px;color:var(--muted);margin:-6px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:13px;color:var(--muted)}
+.kpi .d{font-size:12px;color:var(--muted)}
 ul{padding-left:20px;margin:0 0 14px}
 li{margin:4px 0}
 .note{border-left:3px solid var(--warn);padding:10px 14px;background:var(--surface);border-radius:0 8px 8px 0;margin:16px 0;color:var(--ink)}
@@ -176,18 +185,130 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
   <li><strong>Scaling up.</strong> Moving to the next account size only once rewards cover the worst historical drawdown of that size kept extra out-of-pocket money near zero. FTMO caps allocation per trader at 400k.</li>
 </ul>
 
-<h2>6. Caveats</h2>
+<h2>6. Metrics with no edge</h2>
+<p>Every figure below uses trades with <strong>no directional skill</strong>: either the direction is a coin flip, or a real trade list is re-centred so that its average R is exactly zero (same volatility, same streaks, zero mean). FTMO 1-Step, CFD spread charged, max loss reset after each reward. EV is net of the evaluation fee (10k ≈ $87, 100k ≈ $549).</p>
+
+<h3>6.1 Coin-flip trades on the NQ day session (pre-registration n° 18)</h3>
+<p>One trade per day, random direction, real 1-minute NQ paths 2016-2026. Evaluation: 2 % risk per trade, 4.9 % target. Funded: 1 % risk, 2 % target.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Stop and cost</th><th class="n">Pass</th><th class="n">Eval length</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards / account</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">Refusals tolerated</th></tr>
+<tr class="hl"><td>Stop 0.5 % of price, 1 bp cost (main result)</td><td class="n">40.7 %</td><td class="n">~15 sessions</td><td class="n">6.50 %</td><td class="n">61 %</td><td class="n">1.44</td><td class="n">+$178</td><td class="n">+$2,098</td><td class="n">67 % / 79 %</td></tr>
+<tr><td>ATR stop, 1.5 pt spread</td><td class="n">41.1 %</td><td class="n">~8.5 sessions</td><td class="n">6.04 %</td><td class="n">57 %</td><td class="n">1.29</td><td class="n">+$161</td><td class="n">+$1,933</td><td class="n">65 % / 78 %</td></tr>
+<tr><td>Tighter ATR stop, 1 bp cost</td><td class="n">36.4 %</td><td class="n">~8.7 sessions</td><td class="n">4.35 %</td><td class="n">50 %</td><td class="n">0.95</td><td class="n">+$71</td><td class="n">+$1,035</td><td class="n">45 % / 65 %</td></tr>
+<tr class="sub"><td>Same tight stop, zero cost (diagnostic)</td><td class="n">44.2 %</td><td class="n">—</td><td class="n">8.08 %</td><td class="n">—</td><td class="n">—</td><td class="n">+$270</td><td class="n">+$3,023</td><td class="n">—</td></tr>
+<tr class="sub"><td>Main result without max-loss reset</td><td class="n">40.7 %</td><td class="n">—</td><td class="n">4.77 %</td><td class="n">—</td><td class="n">—</td><td class="n">+$107</td><td class="n">+$1,395</td><td class="n">—</td></tr>
+<tr class="sub"><td>Binary control (win +k or lose −1)</td><td class="n">40.9 %</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">+$2,114</td><td class="n">—</td></tr>
+</table>
+</div>
+<p class="caption">Funded value is the expected total of rewards paid, in % of the account size. "Refusals tolerated" is the share of rewards FTMO could refuse before the EV reaches zero (10k / 100k). No cell of the 135-setting grid had a negative EV.</p>
+
+<h3>6.2 The mom plan with its edge removed</h3>
+<p>This uses the same trade list, sizing and FTMO engine as section 7, with every trade's R re-centred to a zero mean. Evaluation at 2.5 % risk, target shrunk to what is still needed. Funded at 1 % risk, 2 R target. 20,000 accounts.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Period</th><th>Funded policy</th><th class="n">Pass</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards</th><th class="n">Avg reward</th><th class="n">Funded life</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">EV / month, 100k</th></tr>
+<tr><td>2016-2026</td><td>Trade every night</td><td class="n">37.7 %</td><td class="n">5.15 %</td><td class="n">64 %</td><td class="n">1.22</td><td class="n">4.21 %</td><td class="n">3.5 mo</td><td class="n">+$107</td><td class="n">+$1,388</td><td class="n">+$798</td></tr>
+<tr class="hl"><td>2016-2026</td><td>Target + wait</td><td class="n">37.7 %</td><td class="n">5.84 %</td><td class="n">73 %</td><td class="n">1.79</td><td class="n">3.27 %</td><td class="n">3.8 mo</td><td class="n">+$133</td><td class="n">+$1,649</td><td class="n">+$886</td></tr>
+<tr><td>2011-2015</td><td>Trade every night</td><td class="n">35.3 %</td><td class="n">4.27 %</td><td class="n">63 %</td><td class="n">1.06</td><td class="n">4.04 %</td><td class="n">2.9 mo</td><td class="n">+$64</td><td class="n">+$957</td><td class="n">+$658</td></tr>
+<tr class="hl"><td>2011-2015</td><td>Target + wait</td><td class="n">35.3 %</td><td class="n">4.91 %</td><td class="n">73 %</td><td class="n">1.57</td><td class="n">3.12 %</td><td class="n">3.2 mo</td><td class="n">+$86</td><td class="n">+$1,183</td><td class="n">+$760</td></tr>
+</table>
+</div>
+<p class="caption">An evaluation lasts about 8 trading nights. Earlier zero-edge versions of the same stream (2011-2026) gave +$98 / +$1,295 per attempt with a 2.5 R funded target and +$153 / +$1,855 with a 2 R target. Source: <code>results/ftmo_payout_policy/historique_sans_edge.csv</code>.</p>
+<p>Without any edge, <strong>target + wait adds 11 to 35 % to the EV</strong> in every cell. The gain comes from the contract (securing a payable balance and then not risking it), so the policy is not a market effect.</p>
+
+<h3>6.3 Ten prop firms, random direction (100k or largest standard account)</h3>
+<div class="tablewrap">
+<table>
+<tr><th>Firm</th><th>Type</th><th class="n">Fee</th><th class="n">EV per evaluation, no edge</th></tr>
+<tr><td>FundingPips 1 Step Flex 100k</td><td>CFD</td><td class="n">$733</td><td class="n">+$3,413</td></tr>
+<tr class="hl"><td>FTMO 1-Step 100k</td><td>CFD</td><td class="n">$549</td><td class="n">+$1,712</td></tr>
+<tr><td>Smart Trader Funds 1 Phase 100k</td><td>CFD</td><td class="n">$599</td><td class="n">+$1,116</td></tr>
+<tr><td>FundedNext Stellar 1-Step 100k</td><td>CFD</td><td class="n">$570</td><td class="n">+$1,058</td></tr>
+<tr><td>Apex 50K EOD</td><td>Futures</td><td class="n">$119</td><td class="n">+$81</td></tr>
+<tr><td>The5ers Pro Growth 20k</td><td>CFD</td><td class="n">$189</td><td class="n">+$48</td></tr>
+<tr><td>Lucid LucidFlex 50K</td><td>Futures</td><td class="n">$130</td><td class="n">+$21</td></tr>
+<tr><td>Tradeify Growth 50K</td><td>Futures</td><td class="n">$145</td><td class="n">+$4</td></tr>
+<tr><td>MyFundedFutures Rapid 50K</td><td>Futures</td><td class="n">$125</td><td class="n">−$23</td></tr>
+<tr><td>Topstep 50K</td><td>Futures</td><td class="n">$49/mo + $149</td><td class="n">−$156</td></tr>
+</table>
+</div>
+<p class="caption">Rules read on each firm's website on 31 Oct 2026, with the risk grid chosen on 2011-2018. Only CFD firms whose max loss resets after a payout stay clearly positive without an edge.</p>
+
+<h2>7. Metrics with the mom edge, under the target + wait policy</h2>
+<p><strong>mom</strong> is one of the project's overnight NQ rules. Its definition is not given here. It trades on most nights, so a single account slot stays busy. The figures use the latest funded-account policy, <strong>target + wait</strong>, under FTMO's current best-day rule (accounts ordered since 12 Oct 2026: best day ≤ 50 % of net profit):</p>
+<ul>
+  <li><strong>Target</strong>: if the account is in profit and only the best-day rule blocks a reward, the next trade aims only at the missing amount (2 × best day − profit, + 0.01 %) instead of the usual 2 R. It counts as hit if the trade's maximum favourable excursion reaches it.</li>
+  <li><strong>Wait</strong>: as soon as the account is in profit and the rule holds, stop trading until the reward date (the 14th day after the cycle's first trade), then withdraw. A fresh account starts the next night.</li>
+</ul>
+<p>Evaluation at 2.5 % risk per trade with the target shrunk to what is still needed. Funded at 1 % risk, 2 R target. 1.5 pt CFD spread. 20,000 simulated accounts.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">49.5 %</div><div class="l">evaluations passed</div><div class="d">≈ 8 trading nights each</div></div>
+  <div class="kpi"><div class="v">87 %</div><div class="l">funded accounts with ≥ 1 reward</div><div class="d">5.8 rewards on average</div></div>
+  <div class="kpi"><div class="v">+$912</div><div class="l">EV per 10k attempt</div><div class="d">+$9,445 per 100k attempt</div></div>
+  <div class="kpi"><div class="v">+$2,201</div><div class="l">EV per month, one 100k slot</div><div class="d">2016-2026</div></div>
+</div>
+
+<div class="tablewrap">
+<table>
+<tr><th>Period</th><th>Funded policy</th><th class="n">Pass</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards</th><th class="n">Avg reward</th><th class="n">Funded life</th><th class="n">Nights traded</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">EV / month, 100k</th></tr>
+<tr><td>2016-2026</td><td>Trade every night</td><td class="n">49.5 %</td><td class="n">16.0 %</td><td class="n">83.0 %</td><td class="n">3.7</td><td class="n">4.33 %</td><td class="n">6.4 mo</td><td class="n">100 %</td><td class="n">+$707</td><td class="n">+$7,391</td><td class="n">+$2,044</td></tr>
+<tr class="hl"><td>2016-2026</td><td>Target + wait</td><td class="n">49.5 %</td><td class="n">20.2 %</td><td class="n">86.8 %</td><td class="n">5.8</td><td class="n">3.45 %</td><td class="n">7.8 mo</td><td class="n">94 %</td><td class="n">+$912</td><td class="n">+$9,445</td><td class="n">+$2,201</td></tr>
+<tr><td>2011-2015</td><td>Trade every night</td><td class="n">60.2 %</td><td class="n">33.6 %</td><td class="n">90.2 %</td><td class="n">7.6</td><td class="n">4.45 %</td><td class="n">8.8 mo</td><td class="n">100 %</td><td class="n">+$1,936</td><td class="n">+$19,684</td><td class="n">+$3,444</td></tr>
+<tr class="hl"><td>2011-2015</td><td>Target + wait</td><td class="n">60.2 %</td><td class="n">33.5 %</td><td class="n">93.2 %</td><td class="n">9.7</td><td class="n">3.44 %</td><td class="n">9.9 mo</td><td class="n">91 %</td><td class="n">+$1,927</td><td class="n">+$19,589</td><td class="n">+$3,047</td></tr>
+</table>
+</div>
+<p class="caption">Source: <code>reports/ftmo_payout_policy_report.md</code>, <code>results/ftmo_payout_policy/historique.csv</code>. "Target" alone and "wait" alone are in the report. Wait does most of the work; target alone is slightly worse than trading every night.</p>
+
+<h3>Edge versus no edge, same plan, same policy</h3>
+<div class="tablewrap">
+<table>
+<tr><th>2016-2026, target + wait</th><th class="n">No edge</th><th class="n">mom</th><th class="n">Multiple</th></tr>
+<tr><td>Evaluation pass rate</td><td class="n">37.7 %</td><td class="n">49.5 %</td><td class="n">×1.3</td></tr>
+<tr><td>Funded value (% of account)</td><td class="n">5.84 %</td><td class="n">20.2 %</td><td class="n">×3.5</td></tr>
+<tr><td>P(≥ 1 reward)</td><td class="n">73 %</td><td class="n">87 %</td><td class="n">—</td></tr>
+<tr><td>Rewards per funded account</td><td class="n">1.79</td><td class="n">5.8</td><td class="n">×3.3</td></tr>
+<tr><td>Funded account life</td><td class="n">3.8 mo</td><td class="n">7.8 mo</td><td class="n">×2.0</td></tr>
+<tr class="hl"><td>EV per 10k attempt</td><td class="n">+$133</td><td class="n">+$912</td><td class="n">×6.9</td></tr>
+<tr class="hl"><td>EV per 100k attempt</td><td class="n">+$1,649</td><td class="n">+$9,445</td><td class="n">×5.7</td></tr>
+<tr class="hl"><td>EV per month, one 100k slot</td><td class="n">+$886</td><td class="n">+$2,201</td><td class="n">×2.5</td></tr>
+</table>
+</div>
+<p>The edge matters most on the funded side. The pass rate rises by about a third, but a funded account is worth 3.5 times more because it keeps collecting a small positive drift for months.</p>
+
+<h3>When the policy helps and when it does not</h3>
+<ul>
+  <li><strong>Modest or uncertain edge (2016-2026)</strong>: +29 % EV per attempt and +8 % per month. Rewards are smaller (3.5 % against 4.3 %) but more frequent, and more accounts get paid.</li>
+  <li><strong>Strong edge (2011-2015)</strong>: neutral per attempt and −11 % per month. Waiting gives up nights with positive expectancy.</li>
+  <li><strong>Under the older best-day rule</strong> (≤ 50 % of winning days only, accounts ordered before 12 Oct 2026) the rule is already loose, and shrinking the target costs money.</li>
+</ul>
+
+<h3>Live replay: September 2026 starts</h3>
+<p>Real nights, current rules, evaluation started on each September trading day, followed to 3 Nov 2026:</p>
+<div class="tablewrap">
+<table>
+<tr><th>Starts that passed the evaluation (Consistency rule)</th><th class="n">Trade every night</th><th class="n">Target + wait</th></tr>
+<tr><td>01/09, 03/09, 04/09, 08/09</td><td class="n">0</td><td class="n">3.53 % reward each</td></tr>
+<tr><td>Other 8 starts</td><td class="n">0</td><td class="n">0</td></tr>
+</table>
+</div>
+<p>On the 01/09 start, the evaluation passed on 14/09. The funded account reached +3.78 % on 21/09 but was blocked by the best-day rule. On 22/09 a reduced target of +0.14 % was hit, and after waiting the reward of 3.53 % (≈ $353 on 10k, $3,530 on 100k) was taken on 28/09. Trading every night would have given nothing: the same losing stretch then took the account down. This window was seen before the official holdout and is descriptive only.</p>
+
+<h2>8. Caveats</h2>
 <div class="note"><strong>Not modelled, or only partly.</strong>
 <ul>
   <li>Reward refusals or bans (for example FTMO's rule against "account rolling"). In the base case the EV only turns negative if roughly 65 % (10k) to 78 % (100k) of rewards are refused.</li>
   <li>The news rule was added late. Earlier figures that ignore it are about 10 % too optimistic.</li>
   <li>The actual CFD spread and leverage at the firm are assumptions, not measurements.</li>
-  <li>Any figure that uses the project's own trade lists inherits the selection bias of those rules. Treat it as an upper bound.</li>
+  <li>Any figure that uses the project's own trade lists inherits the selection bias of those rules. Treat it as an upper bound. The mom rule was chosen on 2016-2026; 2011-2015 is its out-of-sample period.</li>
+  <li>In the policy simulation, the 14-day reward delay is approximated as 10 trading nights. The target is judged hit from 1-minute bars, and a new account is assumed to start the night after a reward.</li>
+  <li>Worst historical streaks (6 failed evaluations in a row, about 11 months without a reward in 2022) were measured with the earlier funded plan, not with target + wait.</li>
   <li>A live replay of September 2026 produced <em>no</em> reward under the current rules by 3 November. Historical averages hide long dry spells; the worst historical gap was about 11 months without a reward.</li>
 </ul>
 </div>
 
-<h2>7. Where things live</h2>
+<h2>9. Where things live</h2>
 <div class="tablewrap">
 <table>
 <tr><th>Path</th><th>Content</th></tr>
