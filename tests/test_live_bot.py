@@ -22,8 +22,9 @@ class FauxMT5:
 
     vpp = 1.0
 
-    def __init__(self, m1: pd.DataFrame, horloge):
+    def __init__(self, m1: pd.DataFrame, horloge, bascule=None):
         self.m1, self.h, self.pos, self.fermes, self.n = m1, horloge, {}, {}, itertools.count(1)
+        self.bascule = bascule  # instant du passage à un nouvel essai FTMO (nouveau login, solde remis à 10 000 $)
         self.info = type("I", (), dict(volume_step=0.01, volume_min=0.01, volume_max=1e4, digits=2))()
 
     def _vu(self):
@@ -42,6 +43,10 @@ class FauxMT5:
 
     def spread(self):
         return 1.0
+
+    def compte_info(self):
+        neuf = self.bascule is not None and self.h() >= self.bascule
+        return dict(login=222 if neuf else 111, serveur="FTMO-Demo", balance=10_000.0, equity=10_000.0, trade_ok=True)
 
     def controle_heure(self):
         return ""
@@ -86,18 +91,20 @@ class FauxMT5:
         return self.fermes.get(ticket)
 
 
-def rejoue(book, tmp_path, a="2026-07-26", z="2026-08-28", signe=1):
+def rejoue(book, tmp_path, a="2026-07-26", z="2026-08-28", signe=1, bascule=None):
     m = pd.read_parquet(NQ)
     m = m[~m.index.duplicated()].sort_index()
     m1 = m[(m.index >= "2026-06-01") & (m.index < "2026-08-29")].tz_convert(NY)
     clock = {"t": pd.Timestamp(a, tz=NY)}
     cfg = dict(book=book, dossier=str(tmp_path / book), mom_signe=signe, annonces="live/annonces.csv")
     bot = Bot(cfg, horloge=lambda: clock["t"])
-    bot.b = FauxMT5(m1, lambda: clock["t"])
+    bot.b = FauxMT5(m1, lambda: clock["t"], bascule)
     for minute in pd.date_range(pd.Timestamp(a, tz=NY), pd.Timestamp(z + " 17:00", tz=NY), freq="1min"):
         for sec in (1, 57):
             clock["t"] = minute + pd.Timedelta(seconds=sec)
             bot.pas()
+            if sec == 1 and minute.minute == 0:
+                bot.controle_compte()
     return pd.read_csv(tmp_path / book / "trades.csv")
 
 
@@ -133,3 +140,21 @@ def test_book_A_entre_chaque_nuit(tmp_path):
     s_bot = (t.dist / t.px_signal).values
     s_ref = ref.sort_values("night").risk.values
     assert np.allclose(s_bot, s_ref, rtol=0.01)
+
+
+def test_suivi_pnl_additionne_les_essais(tmp_path):
+    """Changement d'essai FTMO le samedi 15/08 : le bot le détecte, le P&L cumulé et le compte virtuel continuent,
+    et live/pnl.py additionne les deux essais comme un seul compte."""
+    from live import pnl
+    t = rejoue("B", tmp_path, bascule=pd.Timestamp("2026-08-15 12:00", tz=NY))
+    assert set(t.compte_mt5.astype(str)) == {"111", "222"}
+    log = (tmp_path / "B" / "bot.log").read_text(encoding="utf-8")
+    assert "NOUVEL ESSAI MT5 détecté : 222" in log
+    etat = __import__("json").loads((tmp_path / "B" / "etat.json").read_text(encoding="utf-8"))
+    assert etat["cumul"]["profit"] == pytest.approx(t.profit.sum()) and etat["cumul"]["trades"] == len(t)
+    r = pnl.rapport(tmp_path)
+    assert f"{t.profit.sum():+,.2f} $" in r and "| 111 |" in r and "| 222 |" in r
+    assert (tmp_path / "pnl.md").exists()  # régénéré par le bot après chaque trade
+    # le compte virtuel n'a pas été remis à zéro par le changement d'essai
+    c = __import__("json").loads((tmp_path / "B" / "compte.json").read_text(encoding="utf-8"))
+    assert c["P"] == pytest.approx(t.P_apres.iloc[-1])

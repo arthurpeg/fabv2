@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 19:28
+updated: 2026-11-04 19:39
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,14 +23,14 @@ updated: 2026-11-04 19:28
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | Probabilité de toucher un payout en démarrant le plan retenu avec deux comptes 10k (run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md, exploratoire, hors compteur) | 1re éval de chaque compte : au moins un payout 79 % (A 47 %, B 61 %) ; ≤ 2 évals par compte 97 % ; ≤ 3 évals 99,7 % ; ≤ 5 évals (dépôt 869 $) 100 % ; espérance / 2 : 62 / 84 / 94 / 99 % ; 1er payout médian en 30 séances
+- [2026-11-04] build | Bot de démo : suivi du P&L tous essais FTMO additionnés (live/pnl.py → live/etat/pnl.md : P&L cumulé, compte continu, creux, par stratégie et par essai, résultat FTMO virtuel), numéro d'essai MT5 sur chaque trade, alertes nouvel essai / trading désactivé / objectif de l'essai (5 %, 1-Step) / essai à −8 % | 13 tests verts (rejeu avec changement d'essai le 15/08 : cumul et compte virtuel continus)
 - [2026-11-04] fix | Bot de démo : stop et objectif posés au même prix moyen que le backtest (stop à dist + spread du prix d'exécution, objectif à k·dist − spread), après le test d'ordre réel sur les deux essais FTMO (taille 1,05 / 0,52 lot, perte au stop 2,50 / 2,47 %, SL / TP posés, P&L lu) | 9 tests verts ; déployé par la mise à jour automatique
 - [2026-11-04] build | Mise à jour automatique du bot sur le VPS : tâche planifiée toutes les 5 min (live/maj_auto.ps1), git pull en avance rapide, tests du bot avant d'adopter le code (retour arrière sinon), redémarrage propre des bots par drapeau ; option --test-ordre (ordre test au lot minimum) | testé sur un dépôt simulé : mise à jour valide appliquée, mise à jour cassée refusée et annulée, doc seule sans redémarrage
 - [2026-11-04] build | Bot de démo FTMO sur VPS : MT5 + Python, book A (mom) et B (3n + M2), compte FTMO virtuel, règle des annonces avec calendrier BLS / Fed relu (live/, tests/test_live.py, tests/test_live_bot.py) | signaux et compte identiques au backtest (78 tests verts) ; reste à installer sur le VPS Contabo (Windows requis) et à créer les deux essais FTMO
 - [2026-11-04] decision | Plan FTMO retenu par l'utilisateur : compte A = mom, compte B = 3n + M2 (M2 si 3n n'a pas tradé ou est sorti à 03:00), éval 2,5 % avec objectif réduit, financé 1 %, règle des annonces, cible + attente, scaling 10k → 400k (wiki/experiments/propfirm-ftmo-option.md, section « Plan retenu » ; mémoire ftmo-plan-retenu) | à utiliser par défaut dans les prochaines conversations
 - [2026-11-04] query | Métriques complètes de la montée en taille FTMO 10k → 100k (run_ftmo_scaling_metrics.py, reports/ftmo_scaling_report.md, section métriques) | 400k en 12,0 mois médian (MC historique) / 17,7 (edge / 2) ; ruine 0,2 % / 2,5 % ; cagnotte à 5 ans 375 k$ / 212 k$ ; revenu mensuel à 400k ≈ 7 700 $ / 5 000 $, mois négatifs 11 % / 22 % ; max DD de cagnotte médian −3 293 $ / −5 489 $ ; frais ≈ 18 k$ / 28 k$ sur 5 ans
 - [2026-11-04] query | Contrôle du moteur FTMO Python par vectorbt : compte A (mom) du chemin historique rejoué avec les tailles, stops, objectifs et coupes d'annonce décidés par le moteur (journal ajouté à Compte ; run_ftmo_verif_vbt.py, reports/ftmo_verif_vbt_report.md) | 3 639 / 3 646 trades identiques au centime ; 7 écarts (objectif réduit franchi par un gap : vectorbt exécute à l'ouverture, plus favorable, max 6,18 $) ; P&L total +32 724 $ (moteur) contre +32 746 $ (vectorbt) : moteur validé, légèrement prudent
-- [2026-11-04] query | Montée en taille FTMO : A mom + B 3n + M2, paliers 1/2/3 × 10k puis 1/2 × 100k par stratégie (400k), palier suivant quand la cagnotte (dépôt 869 $ + rewards − frais) couvre 10 évals par paire ; Compte de run_ftmo_deux_comptes.py paramétré (taille, prix, rachat) (run_ftmo_scaling.py, reports/ftmo_scaling_report.md, exploratoire, hors compteur) | 400k en ≈ 12 mois médian (historique) / 17,7 mois (edge / 2, 96 %) ; cagnotte à 5 ans médiane +375 k$ / +212 k$ ; vrai chemin : 400k le 25/04/2012, 1,31 M$ au 03/11/2026 ; risque concentré sur les 6 premiers mois (cagnotte à 0 dans 1 à 6 % des chemins)
-- [2026-11-04] query | Monte-Carlo des deux comptes FTMO 10k (A mom, B 3n + M2, règle des annonces + cible + attente), bootstrap stationnaire par blocs de 20 séances, 5 000 chemins de 3 ans, scénarios historique / 2019-2026 / espérance divisée par 2 (run_ftmo_monte_carlo.py, reports/ftmo_monte_carlo_report.md, exploratoire, hors compteur) | net à 3 ans médian +12 889 / +12 305 / +7 939 $, P(< 0) 0 % ; à 1 an P(< 0) 0,1 / 0,2 / 2,7 % ; max DD de trésorerie 99e c. −782 / −869 / −1 304 $ ; série d'évals sans reward A 95e c. 7 / 9 / 10, B 4 / 4 / 7
 
 ## Prochaines actions
 

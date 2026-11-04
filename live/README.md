@@ -87,6 +87,17 @@ Limites :
   - `compte.json` : le compte virtuel ;
   - `etat.json` : les positions suivies et les événements déjà traités.
 - **Redémarrage.** Le bot peut être arrêté et relancé à tout moment. Une position fermée pendant l'arrêt (stop ou objectif) est comptée au redémarrage. Une sortie à l'heure manquée est faite dès le redémarrage. En revanche, une entrée manquée de plus de 5 minutes est abandonnée.
+- **Suivi du P&L, tous essais additionnés.** Il est dans `live/etat/pnl.md`, régénéré après chaque trade fermé, ou à la demande avec `uv run python -m live.pnl`. Les essais sont additionnés comme un seul compte de 10 000 $ par book. Le suivi donne :
+  - le P&L cumulé, le compte continu et son plus gros creux ;
+  - le détail par stratégie et par essai MT5 ;
+  - le résultat FTMO virtuel (rewards − évals achetées).
+
+  Chaque ligne de `trades.csv` porte le numéro de l'essai (`compte_mt5`).
+- **Alertes du bot** (dans `bot.log`, contrôlées toutes les 60 s) :
+  - « NOUVEL ESSAI MT5 détecté » : le cumul continue ;
+  - « TRADING DÉSACTIVÉ » : objectif de l'essai atteint, perte max ou essai expiré. Il faut créer un nouvel essai ;
+  - « objectif de l'essai atteint » : l'essai gratuit 1-Step vise +5 %, alors que le compte virtuel garde le vrai objectif de +10 % ;
+  - essai à −8 %.
 - **Fin d'un essai (14 jours).** L'essai FTMO expire au bout de 14 jours. Il faut alors créer un nouvel essai et s'y connecter dans le **même** terminal (*Fichier → Se connecter*), de préférence le week-end, sans position ouverte. Le compte virtuel continue tel quel. Si l'essai est « perdu » chez FTMO (perte max de l'essai), le trading y est bloqué : même chose, il faut un nouvel essai.
 - **Calendrier des annonces.** Il est dans [annonces.csv](annonces.csv) : NFP et CPI relevés sur bls.gov et décisions de la Fed sur federalreserve.gov le 2026-11-04. Les minutes de la Fed et le PIB avancé de 2027 sont *supposés* et à vérifier. Le bot prévient dans `bot.log` quand il reste moins de 35 jours de calendrier.
 

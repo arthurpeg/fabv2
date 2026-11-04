@@ -1,0 +1,36 @@
+
+===== historique : 3394 départs, horizon 504 séances =====
+  ≤  1 éval(s) par compte (174 $ au plus) : P(reward A)  47.4 % ; P(reward B)  61.0 % ; P(au moins un)  78.9 % ; P(les deux)  29.4 %
+  ≤  2 éval(s) par compte (348 $ au plus) : P(reward A)  77.3 % ; P(reward B)  83.9 % ; P(au moins un)  96.6 % ; P(les deux)  64.5 %
+  ≤  3 éval(s) par compte (521 $ au plus) : P(reward A)  92.4 % ; P(reward B)  92.6 % ; P(au moins un)  99.7 % ; P(les deux)  85.3 %
+  ≤  5 éval(s) par compte (869 $ au plus) : P(reward A)  98.5 % ; P(reward B)  99.7 % ; P(au moins un) 100.0 % ; P(les deux)  98.2 %
+  ≤ 10 éval(s) par compte (1,738 $ au plus) : P(reward A) 100.0 % ; P(reward B) 100.0 % ; P(au moins un) 100.0 % ; P(les deux) 100.0 %
+  jamais de reward en 2 ans : A 0.0 %, B 0.0 %
+  délai du 1er reward A (séances) : médiane 35, 75e c. 58, 90e c. 83 ; si la 1re éval passe : médiane 24
+  délai du 1er reward B (séances) : médiane 54, 75e c. 85, 90e c. 124 ; si la 1re éval passe : médiane 43
+  délai du 1er reward, tous comptes (séances) : médiane 30, 75e c. 44, 90e c. 57 ; P(un reward en 3 mois) 93.0 %, 6 mois 100.0 %, 1 an 100.0 %
+  corrélation « 1re éval payée » A / B : +0.02
+
+===== mc_historique : 2000 départs, horizon 504 séances =====
+  ≤  1 éval(s) par compte (174 $ au plus) : P(reward A)  46.4 % ; P(reward B)  62.0 % ; P(au moins un)  78.8 % ; P(les deux)  29.6 %
+  ≤  2 éval(s) par compte (348 $ au plus) : P(reward A)  71.8 % ; P(reward B)  83.8 % ; P(au moins un)  94.8 % ; P(les deux)  60.7 %
+  ≤  3 éval(s) par compte (521 $ au plus) : P(reward A)  85.9 % ; P(reward B)  93.0 % ; P(au moins un)  98.8 % ; P(les deux)  80.0 %
+  ≤  5 éval(s) par compte (869 $ au plus) : P(reward A)  96.2 % ; P(reward B)  99.1 % ; P(au moins un) 100.0 % ; P(les deux)  95.3 %
+  ≤ 10 éval(s) par compte (1,738 $ au plus) : P(reward A)  99.9 % ; P(reward B) 100.0 % ; P(au moins un) 100.0 % ; P(les deux)  99.9 %
+  jamais de reward en 2 ans : A 0.0 %, B 0.0 %
+  délai du 1er reward A (séances) : médiane 36, 75e c. 61, 90e c. 93 ; si la 1re éval passe : médiane 24
+  délai du 1er reward B (séances) : médiane 52, 75e c. 87, 90e c. 132 ; si la 1re éval passe : médiane 40
+  délai du 1er reward, tous comptes (séances) : médiane 29, 75e c. 44, 90e c. 62 ; P(un reward en 3 mois) 90.2 %, 6 mois 99.8 %, 1 an 100.0 %
+  corrélation « 1re éval payée » A / B : +0.04
+
+===== mc_edge_2 : 2000 départs, horizon 504 séances =====
+  ≤  1 éval(s) par compte (174 $ au plus) : P(reward A)  34.4 % ; P(reward B)  44.2 % ; P(au moins un)  62.0 % ; P(les deux)  16.7 %
+  ≤  2 éval(s) par compte (348 $ au plus) : P(reward A)  57.4 % ; P(reward B)  66.5 % ; P(au moins un)  84.3 % ; P(les deux)  39.6 %
+  ≤  3 éval(s) par compte (521 $ au plus) : P(reward A)  74.7 % ; P(reward B)  79.7 % ; P(au moins un)  94.1 % ; P(les deux)  60.2 %
+  ≤  5 éval(s) par compte (869 $ au plus) : P(reward A)  89.8 % ; P(reward B)  93.4 % ; P(au moins un)  99.2 % ; P(les deux)  84.0 %
+  ≤ 10 éval(s) par compte (1,738 $ au plus) : P(reward A)  99.2 % ; P(reward B)  99.6 % ; P(au moins un) 100.0 % ; P(les deux)  98.7 %
+  jamais de reward en 2 ans : A 0.0 %, B 0.3 %
+  délai du 1er reward A (séances) : médiane 45, 75e c. 76, 90e c. 121 ; si la 1re éval passe : médiane 23
+  délai du 1er reward B (séances) : médiane 73, 75e c. 129, 90e c. 195 ; si la 1re éval passe : médiane 42
+  délai du 1er reward, tous comptes (séances) : médiane 35, 75e c. 57, 90e c. 83 ; P(un reward en 3 mois) 79.9 %, 6 mois 97.6 %, 1 an 99.9 %
+  corrélation « 1re éval payée » A / B : +0.06

@@ -115,6 +115,51 @@ class Bot:
             if pd.isna(z) or z < today + pd.Timedelta(days=35):
                 self.log(f"!! calendrier des annonces : plus de {typ} après {z:%Y-%m-%d} : compléter live/annonces.csv")
 
+    def compte_mt5(self) -> dict:
+        f = getattr(self.b, "compte_info", None)
+        try:
+            return f() if f else {}
+        except Exception:
+            return {}
+
+    def controle_compte(self) -> None:
+        """Nouvel essai FTMO détecté, trading bloqué par FTMO, objectif de l'essai atteint : alerte une fois par cas."""
+        c = self.compte_mt5()
+        if not c:
+            return
+        comptes = self.etat.setdefault("comptes", {})
+        k = str(c["login"])
+        if k not in comptes:
+            if comptes:
+                self.log(f"NOUVEL ESSAI MT5 détecté : {k} (solde {c['balance']:,.2f} $). Le P&L cumulé et le compte "
+                         f"virtuel continuent : on additionne comme si c'était le même compte")
+            comptes[k] = dict(debut=f"{self.maintenant():%Y-%m-%d %H:%M}", solde_initial=c["balance"], alertes=[])
+            self.save()
+        e = comptes[k]
+        gain = (c["equity"] / e["solde_initial"] - 1) * 100 if e["solde_initial"] else 0.0
+
+        def alerte(cle, msg):
+            if cle not in e["alertes"]:
+                e["alertes"].append(cle)
+                self.log(msg)
+                self.save()
+
+        if not c["trade_ok"]:
+            alerte("bloque", f"!! TRADING DÉSACTIVÉ sur l'essai {k} (objectif de l'essai atteint, perte max ou essai "
+                             f"expiré) : créer un nouvel essai FTMO et s'y connecter dans ce terminal")
+        if gain >= float(self.cfg.get("objectif_essai_pct", 5.0)):
+            alerte("objectif", f"objectif de l'essai atteint sur {k} ({gain:+.2f} %). Sans effet sur le plan : le "
+                               f"compte virtuel garde l'objectif réel de +10 %. Si FTMO bloque l'essai, en créer un neuf")
+        if gain <= -8.0:
+            alerte("perte", f"!! essai {k} à {gain:+.2f} % : proche de sa perte max (10 %), prévoir un nouvel essai")
+
+    def rapport(self) -> None:
+        try:
+            from live import pnl
+            pnl.ecrit_rapport(self.dir.parent)
+        except Exception:
+            self.log("rapport P&L non écrit :\n" + traceback.format_exc())
+
     # ------------------------------------------------------------------ signal mom
     def close_1600(self) -> pd.Series:
         h1 = self.b.barres("H1", 12_000)
@@ -165,7 +210,8 @@ class Bot:
         o = dict(strat=strat, seance=f"{seance:%Y-%m-%d}", ticket=fill.ticket, side=side, phase=c.phase,
                  heure_entree=f"{self.maintenant():%Y-%m-%d %H:%M:%S}", entry_px=fill.price, bid=fill.bid,
                  ask=fill.ask, spread=spread, dist=dist, risque=r, objectif_R=obj, volume=vol, sortie=str(sortie),
-                 px_signal=info.pop("px_signal", np.nan), info=json.dumps(info, default=float))
+                 px_signal=info.pop("px_signal", np.nan), compte_mt5=self.compte_mt5().get("login", ""),
+                 info=json.dumps(info, default=float))
         self.etat["ouverts"].append(o)
         self.log(f"OUVERT {strat} {'long' if side > 0 else 'short'} {vol} lots à {fill.price} ; SL {dist:.1f} pts, "
                  f"objectif {obj:.2f} R, risque {r:.2f} % ({c.phase} virtuel), sortie prévue {sortie:%d/%m %H:%M:%S}")
@@ -181,6 +227,13 @@ class Bot:
                 continue
             bil = self.b.bilan(o["ticket"])
             if bil is None:
+                login = self.compte_mt5().get("login")
+                if login and o.get("compte_mt5") and login != o["compte_mt5"] and not o.get("alerte_compte"):
+                    o["alerte_compte"] = True
+                    self.log(f"!! position {o['strat']} {o['ticket']} ouverte sur l'ancien essai {o['compte_mt5']} : "
+                             f"introuvable sur {login}. Se reconnecter à l'ancien essai jusqu'à sa clôture, puis "
+                             f"revenir au nouveau (changer d'essai sans position ouverte)")
+                    self.save()
                 continue
             pnl = bil["profit"] / self.nominal * 100
             R = bil["profit"] / (o["volume"] * self.b.vpp * o["dist"])
@@ -191,9 +244,15 @@ class Bot:
             self.ecrit("trades.csv", {**o, **bil, "pnl_pct": pnl, "R_net": R,
                                       "P_apres": self.compte.P, "phase_apres": self.compte.phase})
             self.etat["ouverts"].remove(o)
+            cum = self.etat.setdefault("cumul", {"profit": 0.0, "trades": 0})
+            cum["profit"] += bil["profit"]
+            cum["trades"] += 1
             self.log(f"FERMÉ {o['strat']} ({bil['raison']}) à {bil['exit_px']} : {bil['profit']:+.2f} $ "
-                     f"({pnl:+.2f} %, {R:+.2f} R) ; compte virtuel {self.compte.phase} {self.compte.P:+.2f} %")
+                     f"({pnl:+.2f} %, {R:+.2f} R) ; compte virtuel {self.compte.phase} {self.compte.P:+.2f} % ; "
+                     f"P&L cumulé tous essais {cum['profit']:+,.2f} $ sur {cum['trades']} trades "
+                     f"(compte continu {self.nominal + cum['profit']:,.2f} $)")
             self.save()
+            self.rapport()
 
     def debut(self, seance: pd.Timestamp) -> float | None:
         """Ouvre la journée FTMO virtuelle ; renvoie le risque de base de la journée (None si compte perdu)."""
@@ -348,7 +407,9 @@ class Bot:
         if msg:
             self.log(f"!! {msg}")
         self.controle_annonces()
+        self.controle_compte()
         dernier_controle = self.maintenant().date()
+        dernier_compte = time.monotonic()
         while True:
             if self.drapeau.exists():
                 self.drapeau.unlink(missing_ok=True)
@@ -357,6 +418,9 @@ class Bot:
                 raise SystemExit(0)
             try:
                 self.pas()
+                if time.monotonic() - dernier_compte > 60:
+                    dernier_compte = time.monotonic()
+                    self.controle_compte()
                 if self.maintenant().date() != dernier_controle:
                     dernier_controle = self.maintenant().date()
                     self.controle_annonces()

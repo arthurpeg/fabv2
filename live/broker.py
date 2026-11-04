@@ -46,6 +46,14 @@ class MT5:
         self.log(f"{symbole} : {self.vpp:g} $ par point et par lot, lot min {self.info.volume_min}, "
                  f"pas {self.info.volume_step}, digits {self.info.digits}")
 
+    def compte_info(self) -> dict:
+        """Compte MT5 connecté en ce moment (change à chaque nouvel essai FTMO)."""
+        a, t = self.mt5.account_info(), self.mt5.terminal_info()
+        if a is None:
+            return {}
+        return dict(login=int(a.login), serveur=a.server, balance=float(a.balance), equity=float(a.equity),
+                    trade_ok=bool(a.trade_allowed and a.trade_expert and (t is None or t.trade_allowed)))
+
     # ------------------------------------------------------------------ heure et données
     def serveur_vers_ny(self, t_sec: np.ndarray) -> pd.DatetimeIndex:
         naive = pd.to_datetime(t_sec, unit="s") - pd.Timedelta(hours=self.dec)

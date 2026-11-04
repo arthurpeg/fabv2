@@ -28,7 +28,8 @@ trials: 0
 **Repères** ([[reports/ftmo_scaling_report]], [[reports/ftmo_monte_carlo_report]], [[reports/ftmo_deux_comptes_historique_report]]) :
 - 400k atteints en ≈ 12 mois en médiane, ≈ 18 mois si l'espérance est divisée par 2 ;
 - ≈ 7 700 $/mois une fois à 400k ;
-- ruine (dépôt perdu) dans 0,2 à 2,5 % des chemins.
+- ruine (dépôt perdu) dans 0,2 à 2,5 % des chemins ;
+- au démarrage (deux 10k, rachat après échec ; [[reports/ftmo_proba_payout_report]]) : au moins un payout avec la 1re éval de chaque compte dans 79 % des départs (62 % avec l'espérance / 2), 97 % avec 2 évals par compte, ≈ 100 % avec 5 ; 1er payout médian en 30 séances.
 
 **Code** : `run_ftmo_deux_comptes.py` (`Compte`, `jambes_A`, `jambes_B`), `build_news_trades.py`, `run_ftmo_scaling.py`. Moteur validé contre vectorbt ([[reports/ftmo_verif_vbt_report]]).
 

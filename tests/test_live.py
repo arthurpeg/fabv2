@@ -166,3 +166,22 @@ def test_drapeau_de_mise_a_jour_arrete_le_bot_proprement(tmp_path):
     t.cancel()
     assert e.value.code == 0 and not bot.drapeau.exists()
     assert "ticket" in (tmp_path / "A" / "etat.json").read_text(encoding="utf-8")
+
+
+def test_suivi_pnl_deux_essais(tmp_path):
+    """live/pnl.py additionne les trades de deux essais MT5 comme un seul compte de 10 000 $ et lit le compte virtuel."""
+    from live import pnl
+    (tmp_path / "A").mkdir()
+    rows = pd.DataFrame(dict(strat="mom", seance=["2026-11-05", "2026-11-06", "2026-11-23"],
+                             compte_mt5=[111, 111, 222], profit=[494.9, -250.0, 120.0], R_net=[1.98, -1.0, 0.48],
+                             spread=1.45, raison=["TP", "SL", "heure"],
+                             exit_time=["2026-11-05 09:00:00-05:00", "2026-11-06 08:00:00-05:00",
+                                        "2026-11-23 09:29:57-05:00"]))
+    rows.to_csv(tmp_path / "A" / "trades.csv", index=False)
+    c = CompteVirtuel(nom="book A", P=3.649, evals=2, rewards=1, rewards_pct=3.0)
+    c.save(tmp_path / "A" / "compte.json")
+    r = pnl.rapport(tmp_path)
+    assert "+364.90 $" in r and "10,364.90 $" in r
+    assert "| 111 | 2 | +244.90 |" in r and "| 222 | 1 | +120.00 |" in r
+    assert f"{300 - 2 * pnl.FRAIS_EVAL:+,.2f} $" in r  # résultat FTMO virtuel = rewards − 2 évals
+    assert "-250.00 $" in r  # plus gros creux du compte continu
