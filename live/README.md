@@ -90,7 +90,7 @@ Limites :
 
 - **Dossier.** Tout est dans `live/etat/A` et `live/etat/B` (hors git) :
   - `bot.log` : tout ce que fait le bot, avec les erreurs ;
-  - `trades.csv` : une ligne par trade, avec le prix du signal, le prix d'exécution, le spread, le stop, l'objectif, le risque, la phase virtuelle, la raison de sortie, le P&L en $, en % et en R ;
+  - `trades.csv` : une ligne par trade, avec le prix du signal, le bid, l'ask et le prix d'exécution, le glissement, le spread à l'entrée (`spread_ordre`) et à la sortie (`spread_sortie`), le stop, l'objectif, le risque, la phase virtuelle, la raison de sortie, le P&L en $, en % et en R ;
   - `signaux.csv` : chaque signal calculé, y compris les jours sans trade ;
   - `compte.json` : le compte virtuel ;
   - `etat.json` : les positions suivies et les événements déjà traités.

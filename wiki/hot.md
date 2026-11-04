@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 20:20
+updated: 2026-11-04 21:52
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-04 20:20
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] build | Bot de démo : spread enregistré à l'entrée (bid / ask de l'ordre) et à la sortie (juste avant la fermeture à l'heure, ou barre M1 MT5 de la sortie au stop / à l'objectif), glissement d'entrée ; tableau spread / glissement par stratégie dans pnl.md | 14 tests verts
 - [2026-11-04] build | Publication des journaux du VPS (trades, signaux, compte virtuel, bot.log, pnl.md) sur la branche GitHub vps-journal, toutes les 5 min par live/maj_auto.ps1, commit seulement si changement ; lecture depuis le PC : git fetch origin vps-journal | testé sur dépôt simulé (création de la branche, nouveau trade → commit, rien → pas de commit)
 - [2026-11-04] query | Probabilité de valider l'éval au démarrage du plan retenu (ajout à run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md) | 1re éval : A 53 %, B 64 %, au moins un 82 % (73 % espérance / 2) ; ≤ 2 évals par compte 97 % ; éval réussie en 6 séances (A) / 14 (B) médian ; financé validé → reward A 89 %, B 96 %
 - [2026-11-04] query | Probabilité de toucher un payout en démarrant le plan retenu avec deux comptes 10k (run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md, exploratoire, hors compteur) | 1re éval de chaque compte : au moins un payout 79 % (A 47 %, B 61 %) ; ≤ 2 évals par compte 97 % ; ≤ 3 évals 99,7 % ; ≤ 5 évals (dépôt 869 $) 100 % ; espérance / 2 : 62 / 84 / 94 / 99 % ; 1er payout médian en 30 séances
@@ -30,7 +31,6 @@ updated: 2026-11-04 20:20
 - [2026-11-04] fix | Bot de démo : stop et objectif posés au même prix moyen que le backtest (stop à dist + spread du prix d'exécution, objectif à k·dist − spread), après le test d'ordre réel sur les deux essais FTMO (taille 1,05 / 0,52 lot, perte au stop 2,50 / 2,47 %, SL / TP posés, P&L lu) | 9 tests verts ; déployé par la mise à jour automatique
 - [2026-11-04] build | Mise à jour automatique du bot sur le VPS : tâche planifiée toutes les 5 min (live/maj_auto.ps1), git pull en avance rapide, tests du bot avant d'adopter le code (retour arrière sinon), redémarrage propre des bots par drapeau ; option --test-ordre (ordre test au lot minimum) | testé sur un dépôt simulé : mise à jour valide appliquée, mise à jour cassée refusée et annulée, doc seule sans redémarrage
 - [2026-11-04] build | Bot de démo FTMO sur VPS : MT5 + Python, book A (mom) et B (3n + M2), compte FTMO virtuel, règle des annonces avec calendrier BLS / Fed relu (live/, tests/test_live.py, tests/test_live_bot.py) | signaux et compte identiques au backtest (78 tests verts) ; reste à installer sur le VPS Contabo (Windows requis) et à créer les deux essais FTMO
-- [2026-11-04] decision | Plan FTMO retenu par l'utilisateur : compte A = mom, compte B = 3n + M2 (M2 si 3n n'a pas tradé ou est sorti à 03:00), éval 2,5 % avec objectif réduit, financé 1 %, règle des annonces, cible + attente, scaling 10k → 400k (wiki/experiments/propfirm-ftmo-option.md, section « Plan retenu » ; mémoire ftmo-plan-retenu) | à utiliser par défaut dans les prochaines conversations
 
 ## Prochaines actions
 

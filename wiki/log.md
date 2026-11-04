@@ -133,3 +133,5 @@ Historique antérieur au wiki (repris de git et des rapports) :
 ## [2026-11-04] query | Probabilité de valider l'éval au démarrage du plan retenu (ajout à run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md) | 1re éval : A 53 %, B 64 %, au moins un 82 % (73 % espérance / 2) ; ≤ 2 évals par compte 97 % ; éval réussie en 6 séances (A) / 14 (B) médian ; financé validé → reward A 89 %, B 96 %
 
 ## [2026-11-04] build | Publication des journaux du VPS (trades, signaux, compte virtuel, bot.log, pnl.md) sur la branche GitHub vps-journal, toutes les 5 min par live/maj_auto.ps1, commit seulement si changement ; lecture depuis le PC : git fetch origin vps-journal | testé sur dépôt simulé (création de la branche, nouveau trade → commit, rien → pas de commit)
+
+## [2026-11-04] build | Bot de démo : spread enregistré à l'entrée (bid / ask de l'ordre) et à la sortie (juste avant la fermeture à l'heure, ou barre M1 MT5 de la sortie au stop / à l'objectif), glissement d'entrée ; tableau spread / glissement par stratégie dans pnl.md | 14 tests verts

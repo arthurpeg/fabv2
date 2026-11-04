@@ -185,3 +185,16 @@ def test_suivi_pnl_deux_essais(tmp_path):
     assert "| 111 | 2 | +244.90 |" in r and "| 222 | 1 | +120.00 |" in r
     assert f"{300 - 2 * pnl.FRAIS_EVAL:+,.2f} $" in r  # résultat FTMO virtuel = rewards − 2 évals
     assert "-250.00 $" in r  # plus gros creux du compte continu
+
+
+def test_journal_trades_nouvelles_colonnes(tmp_path):
+    """Un trades.csv écrit par une version plus ancienne du bot reçoit les nouvelles colonnes sans se décaler."""
+    from live.bot import Bot
+    bot = Bot(dict(book="A", dossier=str(tmp_path / "A"), annonces="live/annonces.csv"), broker=None)
+    bot.ecrit("trades.csv", dict(strat="mom", profit=10.0, spread=1.4))
+    bot.ecrit("trades.csv", dict(strat="mom", profit=-5.0, spread=1.5, spread_ordre=1.5, spread_sortie=2.5,
+                                 glissement=0.2))
+    bot.ecrit("trades.csv", dict(strat="mom", profit=3.0, spread=1.5, spread_ordre=1.6, spread_sortie=1.7,
+                                 glissement=0.0))
+    t = pd.read_csv(tmp_path / "A" / "trades.csv")
+    assert list(t.profit) == [10.0, -5.0, 3.0] and np.isnan(t.spread_sortie[0]) and t.spread_sortie[1] == 2.5

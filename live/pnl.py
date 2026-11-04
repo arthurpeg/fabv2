@@ -76,11 +76,19 @@ def bloc_book(t: pd.DataFrame, v: dict, nom: str) -> list[str]:
               f"- Compte continu : {eq.iloc[-1]:,.2f} $ ; plus gros creux {dd:,.2f} $ ({ddp:.2f} %)",
               f"- Trades gagnants {gagnants:.0f} % ; R net moyen {t.R_net.mean():+.2f} ; "
               f"sorties : {', '.join(f'{k} {n}' for k, n in t.raison.value_counts().items())}", ""]
+        for c in ("spread_ordre", "spread_sortie", "glissement"):  # colonnes ajoutées le 2026-11-04
+            if c not in t:
+                t[c] = np.nan
+        t["spread_ordre"] = t.spread_ordre.fillna(t.spread)
         g = t.groupby("strat").agg(trades=("profit", "size"), pnl=("profit", "sum"), R_moyen=("R_net", "mean"),
-                                   spread=("spread", "mean"))
-        L += ["| Stratégie | Trades | P&L ($) | R net moyen | Spread moyen (pts) |", "|---|---|---|---|---|"]
-        L += [f"| {s} | {int(r.trades)} | {r.pnl:+,.2f} | {r.R_moyen:+.2f} | {r.spread:.2f} |" for s, r in g.iterrows()]
-        L += [""]
+                                   sp_in=("spread_ordre", "mean"), sp_out=("spread_sortie", "mean"),
+                                   sp_max=("spread_sortie", "max"), gl=("glissement", "mean"))
+        L += ["| Stratégie | Trades | P&L ($) | R net moyen | Spread entrée (pts) | Spread sortie (pts, max) "
+              "| Glissement entrée (pts) |", "|---|---|---|---|---|---|---|"]
+        L += [f"| {s} | {int(r.trades)} | {r.pnl:+,.2f} | {r.R_moyen:+.2f} | {r.sp_in:.2f} | {r.sp_out:.2f} "
+              f"({r.sp_max:.2f}) | {r.gl:+.2f} |" for s, r in g.iterrows()]
+        L += ["", "Spread et glissement en points d'indice (1,5 pt supposé dans le backtest) ; glissement > 0 = "
+              "exécuté plus cher que le prix affiché.", ""]
         e = t.groupby("compte_mt5", sort=False).agg(trades=("profit", "size"), pnl=("profit", "sum"),
                                                     debut=("sortie_t", "min"), fin=("sortie_t", "max"))
         L += ["| Essai MT5 | Trades | P&L ($) | Période |", "|---|---|---|---|"]

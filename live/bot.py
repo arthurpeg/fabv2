@@ -81,6 +81,13 @@ class Bot:
 
     def ecrit(self, nom: str, row: dict) -> None:
         p = self.dir / nom
+        if p.exists():  # nouvelles colonnes (mise à jour du bot) : réécrit le fichier avec l'union des colonnes
+            with open(p, encoding="utf-8") as f:
+                tete = f.readline().strip().split(",")
+            if tete != list(row):
+                old = pd.read_csv(p)
+                pd.concat([old, pd.DataFrame([row])], ignore_index=True).to_csv(p, index=False)
+                return
         neuf = not p.exists()
         with open(p, "a", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=list(row))
@@ -114,6 +121,17 @@ class Bot:
             z = self.annonces.date[self.annonces.annonce == typ].max()
             if pd.isna(z) or z < today + pd.Timedelta(days=35):
                 self.log(f"!! calendrier des annonces : plus de {typ} après {z:%Y-%m-%d} : compléter live/annonces.csv")
+
+    def spread_a(self, t: str) -> float:
+        """Spread (prix) de la barre M1 de l'instant t, d'après MT5 ; spread actuel si la barre n'est pas finie."""
+        try:
+            b = self.b.barres("M1", 600)
+            k = pd.Timestamp(t).tz_convert(NY).floor("min")
+            if "spread" in b and k in b.index:
+                return float(b.spread[k]) * float(self.b.info.point)
+            return float(self.b.spread())
+        except Exception:
+            return float("nan")
 
     def compte_mt5(self) -> dict:
         f = getattr(self.b, "compte_info", None)
@@ -210,10 +228,13 @@ class Bot:
         o = dict(strat=strat, seance=f"{seance:%Y-%m-%d}", ticket=fill.ticket, side=side, phase=c.phase,
                  heure_entree=f"{self.maintenant():%Y-%m-%d %H:%M:%S}", entry_px=fill.price, bid=fill.bid,
                  ask=fill.ask, spread=spread, dist=dist, risque=r, objectif_R=obj, volume=vol, sortie=str(sortie),
+                 spread_ordre=fill.ask - fill.bid,
+                 glissement=side * (fill.price - (fill.ask if side > 0 else fill.bid)),
                  px_signal=info.pop("px_signal", np.nan), compte_mt5=self.compte_mt5().get("login", ""),
                  info=json.dumps(info, default=float))
         self.etat["ouverts"].append(o)
-        self.log(f"OUVERT {strat} {'long' if side > 0 else 'short'} {vol} lots à {fill.price} ; SL {dist:.1f} pts, "
+        self.log(f"OUVERT {strat} {'long' if side > 0 else 'short'} {vol} lots à {fill.price} (bid {fill.bid}, ask "
+                 f"{fill.ask}, spread {fill.ask - fill.bid:.2f}, glissement {o['glissement']:+.2f} pts) ; SL {dist:.1f} pts, "
                  f"objectif {obj:.2f} R, risque {r:.2f} % ({c.phase} virtuel), sortie prévue {sortie:%d/%m %H:%M:%S}")
         self.save()
 
@@ -222,7 +243,8 @@ class Bot:
             pos = self.b.position(o["ticket"])
             if pos is not None:
                 if now >= pd.Timestamp(o["sortie"]):
-                    self.log(f"sortie à l'heure : {o['strat']} ticket {o['ticket']}")
+                    o["spread_sortie"] = self.b.spread()
+                    self.log(f"sortie à l'heure : {o['strat']} ticket {o['ticket']} (spread {o['spread_sortie']:.2f})")
                     self.b.ferme(o["ticket"])
                 continue
             bil = self.b.bilan(o["ticket"])
@@ -235,6 +257,8 @@ class Bot:
                              f"revenir au nouveau (changer d'essai sans position ouverte)")
                     self.save()
                 continue
+            if bil["raison"] != "heure" or "spread_sortie" not in o:
+                o["spread_sortie"] = self.spread_a(bil["exit_time"])
             pnl = bil["profit"] / self.nominal * 100
             R = bil["profit"] / (o["volume"] * self.b.vpp * o["dist"])
             self.compte.debut_jour(pd.Timestamp(o["seance"]))
