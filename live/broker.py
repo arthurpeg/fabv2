@@ -121,8 +121,13 @@ class MT5:
         px = pos.price_open if pos is not None else res.price
         ticket = pos.ticket if pos is not None else res.order
         d = self.info.digits
-        sl = round(px - side * dist_sl, d)
-        tp = round(px + side * dist_tp, d)
+        # Le backtest mesure stop et objectif sur le prix moyen ; ici l'entrée se fait à l'ask (achat) et la sortie se
+        # déclenche sur le bid. Pour que les niveaux tombent au même prix moyen que dans le backtest : stop à
+        # dist + spread du prix d'exécution, objectif à dist_tp − spread. Perte au stop = (dist + spread) × taille
+        # = risque prévu (lots()), gain à l'objectif = (k·dist − spread) × taille = risque × (k − c) / (1 + c).
+        s = float(tk.ask - tk.bid)
+        sl = round(px - side * (dist_sl + s), d)
+        tp = round(px + side * (dist_tp - s), d)
         self.modifie(ticket, sl, tp)
         return Fill(ticket=ticket, price=px, volume=volume, bid=tk.bid, ask=tk.ask)
 

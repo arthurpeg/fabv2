@@ -411,8 +411,9 @@ class Bot:
         vmin = self.b.info.volume_min
         fill = self.b.ouvre(1, vmin, dist, 2 * dist, "test ordre")
         p = self.b.position(fill.ticket)
-        ok_sl = p is not None and abs((fill.price - p.sl) - dist) < 1.0
-        ok_tp = p is not None and abs((p.tp - fill.price) - 2 * dist) < 1.0
+        s_f = fill.ask - fill.bid  # stop à dist + spread, objectif à 2 dist − spread (broker.ouvre)
+        ok_sl = p is not None and abs((fill.price - p.sl) - (dist + s_f)) < 0.05
+        ok_tp = p is not None and abs((p.tp - fill.price) - (2 * dist - s_f)) < 0.05
         self.log(f"ordre test : {vmin} lot long à {fill.price} (ask {fill.ask}, bid {fill.bid}), ticket {fill.ticket} ; "
                  f"SL {None if p is None else p.sl} ({'OK' if ok_sl else 'ÉCART'}), "
                  f"TP {None if p is None else p.tp} ({'OK' if ok_tp else 'ÉCART'})")
