@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 16:18
+updated: 2026-11-04 16:20
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-04 16:18
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | Métriques complètes de la montée en taille FTMO 10k → 100k (run_ftmo_scaling_metrics.py, reports/ftmo_scaling_report.md, section métriques) | 400k en 12,0 mois médian (MC historique) / 17,7 (edge / 2) ; ruine 0,2 % / 2,5 % ; cagnotte à 5 ans 375 k$ / 212 k$ ; revenu mensuel à 400k ≈ 7 700 $ / 5 000 $, mois négatifs 11 % / 22 % ; max DD de cagnotte médian −3 293 $ / −5 489 $ ; frais ≈ 18 k$ / 28 k$ sur 5 ans
 - [2026-11-04] query | Contrôle du moteur FTMO Python par vectorbt : compte A (mom) du chemin historique rejoué avec les tailles, stops, objectifs et coupes d'annonce décidés par le moteur (journal ajouté à Compte ; run_ftmo_verif_vbt.py, reports/ftmo_verif_vbt_report.md) | 3 639 / 3 646 trades identiques au centime ; 7 écarts (objectif réduit franchi par un gap : vectorbt exécute à l'ouverture, plus favorable, max 6,18 $) ; P&L total +32 724 $ (moteur) contre +32 746 $ (vectorbt) : moteur validé, légèrement prudent
 - [2026-11-04] query | Montée en taille FTMO : A mom + B 3n + M2, paliers 1/2/3 × 10k puis 1/2 × 100k par stratégie (400k), palier suivant quand la cagnotte (dépôt 869 $ + rewards − frais) couvre 10 évals par paire ; Compte de run_ftmo_deux_comptes.py paramétré (taille, prix, rachat) (run_ftmo_scaling.py, reports/ftmo_scaling_report.md, exploratoire, hors compteur) | 400k en ≈ 12 mois médian (historique) / 17,7 mois (edge / 2, 96 %) ; cagnotte à 5 ans médiane +375 k$ / +212 k$ ; vrai chemin : 400k le 25/04/2012, 1,31 M$ au 03/11/2026 ; risque concentré sur les 6 premiers mois (cagnotte à 0 dans 1 à 6 % des chemins)
 - [2026-11-04] query | Monte-Carlo des deux comptes FTMO 10k (A mom, B 3n + M2, règle des annonces + cible + attente), bootstrap stationnaire par blocs de 20 séances, 5 000 chemins de 3 ans, scénarios historique / 2019-2026 / espérance divisée par 2 (run_ftmo_monte_carlo.py, reports/ftmo_monte_carlo_report.md, exploratoire, hors compteur) | net à 3 ans médian +12 889 / +12 305 / +7 939 $, P(< 0) 0 % ; à 1 an P(< 0) 0,1 / 0,2 / 2,7 % ; max DD de trésorerie 99e c. −782 / −869 / −1 304 $ ; série d'évals sans reward A 95e c. 7 / 9 / 10, B 4 / 4 / 7
@@ -29,7 +30,6 @@ updated: 2026-11-04 16:18
 - [2026-11-04] query | Deux comptes FTMO (A mom, B 3n + M2) avec la règle des annonces (build_news_trades.py : mom coupé à 8:19 les jours NFP / CPI / PIB, M2 à 13:55 les jours de Fed ; dates sept.-oct. 2026 relevées sur BLS et Fed, PIB T3 supposé le 29/10) et la politique cible + attente ; horloge du reward corrigée (jours de bourse, tradés ou non) (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md) | 12 mois : +4 082 $ sans la règle, +3 843 $ avec, +3 864 $ avec cible + attente (10e c. +2 473 $, 12,9 rewards par an) ; départ 01/09/2026 : +598 / +685 / +740 $
 - [2026-11-04] query | Deux comptes FTMO 10k en même temps : A = mom, B = 3n + M2 (M2 si 3n sort ni au SL ni au TP, taille bornant la journée à −r / +2r) ; éval 2,5 % / financé 1 %, objectif 2 R ramené au reste à faire en éval, règles FTMO actuelles (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md, exploratoire, hors compteur) | 721 départs 2011-2025, 12 mois : net moyen +4 060 $ (A +2 469, B +1 591), 10e c. +2 096 $, aucun départ perdant, pire creux −782 $ ; départ réel 01/09/2026 : A −174 $, B +771 $ (2 rewards en octobre), total +598 $
 - [2026-11-04] query | Contrôle sans edge de la politique « cible + attente » (run_ftmo_payout_policy_sans_edge.py, reports/ftmo_payout_policy_report.md, exploratoire, hors compteur) ; page anglaise complétée avec les métriques sans edge et mom (reports/propfirm_ftmo_overview.html) | sans edge 2016-26 : +107 → +133 $ par tentative 10k, +798 → +886 $ par mois 100k ; 2011-15 : +64 → +86 $ ; la politique gagne aussi sans edge (effet de contrat) ; mom en cible + attente ×6,9 par tentative, ×2,5 par mois
-- [2026-11-04] doc | Page HTML en anglais présentant la branche propfirm-ftmo, sans les règles de trading (reports/propfirm_ftmo_overview.html) | contrat vu comme option, règles FTMO modélisées, simulateur, enseignements, limites
 
 ## Prochaines actions
 
