@@ -9,9 +9,10 @@ Paliers, pour chaque stratégie (un compte A et un compte B par « paire ») :
   4 : 1 x 100k (les comptes 10k continuent mais ne sont plus rachetés quand ils sautent)
   5 : 2 x 100k (les comptes 10k restants sont abandonnés : 4 x 100k = 400k, plafond FTMO hors plan de scaling)
 Cagnotte = dépôt de départ + rewards - frais d'éval. On passe au palier suivant dès que la cagnotte couvre la réserve du
-palier suivant. Réserve = 10 évals par compte de chaque stratégie (niveau à 99 % des séries d'évals ratées dans le
-Monte-Carlo, reports/ftmo_monte_carlo_report.md) : les comptes d'une même stratégie tradent les mêmes trades et sautent
-ensemble, la réserve s'additionne donc. Prix : 10k 79 € (86,90 $), 100k 499 € (548,90 $). Réserves : palier 1 869 $,
+palier suivant. Réserve = 10 évals par paire de comptes A + B de même taille (niveau à 99 % de la paire dans le
+Monte-Carlo, reports/ftmo_monte_carlo_report.md et run_ftmo_reserve_par_compte.py) : les comptes d'une même stratégie
+tradent les mêmes trades et sautent ensemble, la réserve s'additionne donc d'une paire à l'autre. Une première version
+(10 évals par compte, réserve double) est dans results/ftmo_scaling/run_reserve_20evals.log. Prix : 10k 79 € (86,90 $), 100k 499 € (548,90 $). Réserves : palier 1 869 $,
 2 1 738 $, 3 2 607 $, 4 5 489 $, 5 10 978 $. Dépôt de départ = réserve du palier 1 (869 $).
 Un compte perdu est racheté le jour suivant si la cagnotte paie l'éval (sinon l'emplacement attend). Rien n'est retiré ;
 « excédent » = cagnotte - réserve du palier atteint (ce qu'on pourrait retirer).
@@ -50,7 +51,7 @@ def say(s: str = "") -> None:
 
 
 def reserve(k: int) -> float:
-    return sum(2 * n * EVALS_RESERVE * PRIX[t] for t, n in PALIERS[k].items())
+    return sum(n * EVALS_RESERVE * PRIX[t] for t, n in PALIERS[k].items())  # 10 évals par paire (A + B) de comptes
 
 
 DEPOT = reserve(0)

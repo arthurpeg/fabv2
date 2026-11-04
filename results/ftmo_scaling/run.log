@@ -1,0 +1,39 @@
+Scaling FTMO, A = mom et B = 3n + M2, règle des annonces + cible + attente ; dépôt 869 $ ; réserves par palier : 1 : 869 $, 2 : 1,738 $, 3 : 2,607 $, 4 : 5,489 $, 5 : 10,978 $
+
+===== Vrai chemin 2011-07-01 → 2026-11-03 =====
+  2011-11-07 palier 2 : 2 x 10k + 0 x 100k par stratégie, cagnotte 1,683 $
+  2012-01-24 palier 3 : 3 x 10k + 0 x 100k par stratégie, cagnotte 2,484 $
+  2012-03-15 palier 4 : 0 x 10k + 1 x 100k par stratégie, cagnotte 4,439 $
+  2012-04-25 palier 5 : 0 x 10k + 2 x 100k par stratégie, cagnotte 10,354 $
+  cagnotte fin d'année ($) : 2011 1,950, 2012 72,626, 2013 160,863, 2014 279,115, 2015 372,894, 2016 440,805, 2017 537,960, 2018 626,280, 2019 713,423, 2020 802,029, 2021 892,591, 2022 952,530, 2023 1,014,378, 2024 1,092,742, 2025 1,188,975, 2026 1,308,914
+  à la fin : palier 5, cagnotte 1,308,914 $, excédent retirable 1,297,936 $ ; plus bas 695 $ ; jours-emplacement sans argent 0
+
+===== glissants : 130 chemins de 1260 séances (≈ 5 ans) =====
+  palier 2 atteint dans 100 % des chemins ; délai médian 4.0 mois (10e c. 2.4, 90e c. 6.2)
+  palier 3 atteint dans 100 % des chemins ; délai médian 6.0 mois (10e c. 4.0, 90e c. 9.0)
+  palier 4 atteint dans 100 % des chemins ; délai médian 9.4 mois (10e c. 6.6, 90e c. 12.3)
+  palier 5 atteint dans 100 % des chemins ; délai médian 11.9 mois (10e c. 9.0, 90e c. 15.4)
+  cagnotte à 1 an             : médiane +10,022 $ ; 10e c. +3,796 $ ; 90e c. +29,140 $ ; 5e c. +3,378 $
+  cagnotte à la fin           : médiane +345,622 $ ; 10e c. +298,297 $ ; 90e c. +395,855 $ ; 5e c. +290,924 $
+  excédent retirable à la fin : médiane +334,644 $ ; 10e c. +287,319 $ ; 90e c. +384,877 $ ; 5e c. +279,946 $
+  plus bas de la cagnotte : médiane 608 $ ; 5e c. 435 $ ; pire 261 $ ; jours-emplacement sans argent pour racheter : médiane 0, P(> 0) 0 %
+
+===== mc_historique : 1000 chemins de 1260 séances (≈ 5 ans) =====
+  palier 2 atteint dans 100 % des chemins ; délai médian 3.9 mois (10e c. 2.1, 90e c. 7.2)
+  palier 3 atteint dans 100 % des chemins ; délai médian 6.1 mois (10e c. 3.8, 90e c. 10.3)
+  palier 4 atteint dans 100 % des chemins ; délai médian 9.5 mois (10e c. 6.2, 90e c. 14.3)
+  palier 5 atteint dans 100 % des chemins ; délai médian 12.0 mois (10e c. 8.4, 90e c. 17.3)
+  cagnotte à 1 an             : médiane +9,642 $ ; 10e c. +3,091 $ ; 90e c. +37,395 $ ; 5e c. +2,413 $
+  cagnotte à la fin           : médiane +375,371 $ ; 10e c. +290,449 $ ; 90e c. +453,972 $ ; 5e c. +272,349 $
+  excédent retirable à la fin : médiane +364,393 $ ; 10e c. +279,471 $ ; 90e c. +442,994 $ ; 5e c. +261,371 $
+  plus bas de la cagnotte : médiane 608 $ ; 5e c. 347 $ ; pire 0 $ ; jours-emplacement sans argent pour racheter : médiane 0, P(> 0) 1 %
+
+===== mc_edge_2 : 1000 chemins de 1260 séances (≈ 5 ans) =====
+  palier 2 atteint dans 98 % des chemins ; délai médian 5.7 mois (10e c. 3.0, 90e c. 11.7)
+  palier 3 atteint dans 98 % des chemins ; délai médian 9.0 mois (10e c. 5.0, 90e c. 15.8)
+  palier 4 atteint dans 98 % des chemins ; délai médian 14.1 mois (10e c. 8.6, 90e c. 23.0)
+  palier 5 atteint dans 96 % des chemins ; délai médian 17.7 mois (10e c. 11.7, 90e c. 27.0)
+  cagnotte à 1 an             : médiane +3,447 $ ; 10e c. +1,260 $ ; 90e c. +10,330 $ ; 5e c. +808 $
+  cagnotte à la fin           : médiane +212,428 $ ; 10e c. +128,719 $ ; 90e c. +291,925 $ ; 5e c. +96,317 $
+  excédent retirable à la fin : médiane +201,450 $ ; 10e c. +117,741 $ ; 90e c. +280,947 $ ; 5e c. +85,339 $
+  plus bas de la cagnotte : médiane 521 $ ; 5e c. 60 $ ; pire 0 $ ; jours-emplacement sans argent pour racheter : médiane 0, P(> 0) 6 %
