@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 15:40
+updated: 2026-11-04 15:49
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-04 15:40
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | Monte-Carlo des deux comptes FTMO 10k (A mom, B 3n + M2, règle des annonces + cible + attente), bootstrap stationnaire par blocs de 20 séances, 5 000 chemins de 3 ans, scénarios historique / 2019-2026 / espérance divisée par 2 (run_ftmo_monte_carlo.py, reports/ftmo_monte_carlo_report.md, exploratoire, hors compteur) | net à 3 ans médian +12 889 / +12 305 / +7 939 $, P(< 0) 0 % ; à 1 an P(< 0) 0,1 / 0,2 / 2,7 % ; max DD de trésorerie 99e c. −782 / −869 / −1 304 $ ; série d'évals sans reward A 95e c. 7 / 9 / 10, B 4 / 4 / 7
 - [2026-11-04] query | Deux comptes FTMO 10k (A mom, B 3n + M2), un seul chemin du 2011-07-01 au 2026-11-03, règle des annonces + cible + attente (run_ftmo_deux_comptes_historique.py, reports/ftmo_deux_comptes_historique_report.md, exploratoire, hors compteur) | net +68 562 $ (+4 469 $/an), 52 évals, 217 rewards, aucune année négative, max DD de trésorerie −435 $, pire série sans reward 5 évals (A) / 3 (B), corrélation P&L +0,24, flux mensuels +0,01
 - [2026-11-04] query | Deux comptes FTMO (A mom, B 3n + M2) avec la règle des annonces (build_news_trades.py : mom coupé à 8:19 les jours NFP / CPI / PIB, M2 à 13:55 les jours de Fed ; dates sept.-oct. 2026 relevées sur BLS et Fed, PIB T3 supposé le 29/10) et la politique cible + attente ; horloge du reward corrigée (jours de bourse, tradés ou non) (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md) | 12 mois : +4 082 $ sans la règle, +3 843 $ avec, +3 864 $ avec cible + attente (10e c. +2 473 $, 12,9 rewards par an) ; départ 01/09/2026 : +598 / +685 / +740 $
 - [2026-11-04] query | Deux comptes FTMO 10k en même temps : A = mom, B = 3n + M2 (M2 si 3n sort ni au SL ni au TP, taille bornant la journée à −r / +2r) ; éval 2,5 % / financé 1 %, objectif 2 R ramené au reste à faire en éval, règles FTMO actuelles (run_ftmo_deux_comptes.py, reports/ftmo_deux_comptes_report.md, exploratoire, hors compteur) | 721 départs 2011-2025, 12 mois : net moyen +4 060 $ (A +2 469, B +1 591), 10e c. +2 096 $, aucun départ perdant, pire creux −782 $ ; départ réel 01/09/2026 : A −174 $, B +771 $ (2 rewards en octobre), total +598 $
@@ -29,7 +30,6 @@ updated: 2026-11-04 15:40
 - [2026-11-04] doc | Page HTML en anglais présentant la branche propfirm-ftmo, sans les règles de trading (reports/propfirm_ftmo_overview.html) | contrat vu comme option, règles FTMO modélisées, simulateur, enseignements, limites
 - [2026-11-04] query | Compte financé FTMO avec mom : viser juste ce qui manque pour la règle des 50 % puis attendre le 14e jour (run_ftmo_payout_policy.py, reports/ftmo_payout_policy_report.md, exploratoire, hors compteur) | septembre 2026 réel (Consistency) : départ 01/09 → objectif réduit le 22/09 (+0,14 %), reward 3,53 % le 28/09, au lieu de 0 ; historique 2016-26 : cible + attente +912 $ contre +707 $ par tentative 10k, +2 201 $ contre +2 044 $ par mois ; 2011-15 : neutre par tentative, −11 % par mois ; l'attente fait l'essentiel
 - [2026-11-04] query | Conditions de reward FTMO 1-Step relues sur ftmo.com (Trading Objectives, FAQ reward) et rejeu de septembre avec les règles exactes (run_ftmo_septembre.py, reports/ftmo_septembre_report.md) | meilleur jour ≤ 50 % du gain net pour les comptes commandés depuis le 12/10/2026 (= simulateur), ≤ 50 % des seuls jours gagnants avant (Legacy) ; reward dès le 14e jour après le 1er trade ; départ 01/09 en Legacy : reward 1,55 % le 28/09, net +68 $ / +998 $ ; en Consistency : 0 reward
-- [2026-11-04] query | Correction des simulations FTMO à liste de trades : objectif d'éval ramené au reste à faire avec le MFE de chaque trade (build_mfe_mom.py, run_propfirm_combo.simule, run_propfirm_trio / mix / eval_rapide corrigés ; reports/propfirm_correction_reste_report.md) | passage +1 à +7 points (mom seul 2016-26 : 43,6 → 50,7 % ; trio 59,8 → 64,7 % ; 3n + M2 60,5 → 65,5 %) ; EV par tentative +3 à +17 % ; classements inchangés ; vérification 2019-26 : trio 61 % en 19 séances, mom 2 % + M2 0,5 % 57,5 % en 15
 
 ## Prochaines actions
 
