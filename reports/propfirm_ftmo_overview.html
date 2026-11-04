@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prop Firm Branch</title>
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#1d1f23; --muted:#5d6370; --line:#e2e0d8;
+  --accent:#2f5d8a; --accent-soft:#e6eef6; --good:#2e7d4f; --bad:#b04a3a; --warn:#9a6a12;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --surface:#1d2026; --ink:#e7e8ea; --muted:#a0a6b1; --line:#2e323a;
+    --accent:#8fb6dc; --accent-soft:#223244; --good:#6cc28f; --bad:#e28a7b; --warn:#d9b061;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --surface:#1d2026; --ink:#e7e8ea; --muted:#a0a6b1; --line:#2e323a;
+  --accent:#8fb6dc; --accent-soft:#223244; --good:#6cc28f; --bad:#e28a7b; --warn:#d9b061;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px 16px 80px}
+header .kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-size:34px;line-height:1.2;margin:8px 0 12px}
+h2{font-size:22px;margin:48px 0 12px;padding-top:8px;border-top:1px solid var(--line)}
+h3{font-size:17px;margin:24px 0 8px}
+p{margin:0 0 14px}
+.lede{font-size:18px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0}
+.formula{font-family:ui-monospace,Consolas,monospace;font-size:17px;text-align:center;
+  background:var(--accent-soft);border-radius:8px;padding:14px;margin:16px 0;overflow-x:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid .card{margin:0}
+.grid .card h3{margin-top:0}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.tablewrap{overflow-x:auto}
+ul{padding-left:20px;margin:0 0 14px}
+li{margin:4px 0}
+.note{border-left:3px solid var(--warn);padding:10px 14px;background:var(--surface);border-radius:0 8px 8px 0;margin:16px 0;color:var(--ink)}
+.note strong{color:var(--warn)}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+svg{width:100%;height:auto;display:block}
+svg .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+svg .boxa{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+svg text{fill:var(--ink);font:14px system-ui,sans-serif}
+svg .small{fill:var(--muted);font-size:12px}
+svg .good{fill:var(--good)} svg .bad{fill:var(--bad)}
+svg .arrow{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#ah)}
+svg #ah path{fill:var(--muted)}
+footer{margin-top:56px;color:var(--muted);font-size:14px}
+@media (max-width:520px){h1{font-size:27px}.formula{font-size:15px}}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div class="kicker">fabv2 · branch <code>propfirm-ftmo</code></div>
+  <h1>Treating a prop-firm challenge as an option</h1>
+  <p class="lede">What this branch is for, how the simulator works, and what we learned about the contract itself. The trading signals that feed it are deliberately left out.</p>
+</header>
+
+<h2>1. The idea</h2>
+<p>A prop firm such as FTMO sells an <em>evaluation</em>. You pay a one-off fee, trade a simulated account, and if you hit the profit target without breaking the loss limits you get a <em>funded</em> account that pays out most of its profits (90 % at FTMO).</p>
+<p>The payoff is asymmetric. If the evaluation fails, the loss stops at the fee. If it passes, the funded account can keep paying, with no cap, for months. That looks like a call option. This branch asks one question: <strong>what is a challenge worth, in dollars, per attempt and per month?</strong></p>
+
+<div class="formula">EV per attempt = P(pass) × V(funded account) − fee</div>
+
+<p>The research on this branch evaluates <strong>a contract, not a market edge</strong>. That is why it sits outside the project's global trial counter. The first pre-registration (n° 18) used trades whose direction was a <em>coin flip</em>, to see how much of the value comes from the contract alone.</p>
+
+<h2>2. How a challenge plays out</h2>
+<div class="card">
+<svg viewBox="0 0 800 272" role="img" aria-label="Lifecycle: pay the fee, evaluation, then fail or funded account, rewards and reset">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="10" y="90" width="130" height="64" rx="8"/>
+  <text x="75" y="118" text-anchor="middle">Pay the fee</text>
+  <text x="75" y="138" text-anchor="middle" class="small">the only loss</text>
+
+  <rect class="boxa" x="190" y="90" width="150" height="64" rx="8"/>
+  <text x="265" y="118" text-anchor="middle">Evaluation</text>
+  <text x="265" y="138" text-anchor="middle" class="small">reach +10 %</text>
+
+  <rect class="box" x="400" y="10" width="150" height="56" rx="8"/>
+  <text x="475" y="34" text-anchor="middle" class="bad">Fail</text>
+  <text x="475" y="53" text-anchor="middle" class="small">fee is lost, retry</text>
+
+  <rect class="boxa" x="400" y="160" width="150" height="64" rx="8"/>
+  <text x="475" y="188" text-anchor="middle" class="good">Funded account</text>
+  <text x="475" y="208" text-anchor="middle" class="small">trade the firm's capital</text>
+
+  <rect class="box" x="610" y="160" width="180" height="64" rx="8"/>
+  <text x="700" y="188" text-anchor="middle">Reward (90 %)</text>
+  <text x="700" y="208" text-anchor="middle" class="small">then the account resets</text>
+
+  <path class="arrow" d="M140,122 L188,122"/>
+  <path class="arrow" d="M340,110 L398,48"/>
+  <path class="arrow" d="M340,134 L398,186"/>
+  <path class="arrow" d="M550,192 L608,192"/>
+  <path class="arrow" d="M700,160 C700,110 560,110 520,156"/>
+  <text x="640" y="118" class="small">next cycle</text>
+  <path class="arrow" d="M475,224 C475,248 300,248 270,156"/>
+  <text x="300" y="264" class="small">loss limit hit → back to a new evaluation</text>
+</svg>
+</div>
+
+<h2>3. The FTMO 1-Step rules we model</h2>
+<p>The rules were read on ftmo.com and checked again during the work. When the website and the simulator disagreed, the simulator was fixed.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Rule</th><th>What it means</th></tr>
+<tr><td>Profit target</td><td>+10 % of the starting balance to pass the evaluation. No minimum number of days, no time limit.</td></tr>
+<tr><td>Daily loss</td><td>Equity may not fall more than 3 % of the initial balance below the previous midnight balance.</td></tr>
+<tr><td>Max loss</td><td>10 %, trailing the highest end-of-day balance. On the 1-Step funded account it <strong>fully resets after each reward</strong>. This is the clause that makes the option valuable.</td></tr>
+<tr><td>Best-day rule</td><td>The best day may not exceed 50 % of the profit. Accounts ordered since 12 Oct 2026 measure this against <em>net</em> profit; older ones measure it against the sum of winning days only.</td></tr>
+<tr><td>Reward timing</td><td>On request, from the 14th calendar day after the cycle's first trade, if the account is in profit and the best-day rule holds.</td></tr>
+<tr><td>News rule (funded)</td><td>No order may execute, stops and targets included, within 2 minutes of major US releases (NFP, CPI, advance GDP, Fed). Breaking it closes the account.</td></tr>
+<tr><td>Fees</td><td>10k account €79, 100k account €499. The fee is not refunded.</td></tr>
+</table>
+</div>
+
+<h2>4. How the simulator works</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Rules engine</h3>
+    <p>Plain Python and numpy (<code>propfirm/ftmo.py</code>, <code>propfirm/generic.py</code>). Thousands of accounts run in parallel, all figures in % of the initial balance. Every rule above is applied at the end of each trade and each day.</p>
+  </div>
+  <div class="card">
+    <h3>Market paths</h3>
+    <p>Real 1-minute NQ futures bars. Each simulated account starts on a random historical day and then walks forward <em>in order</em>, so volatility clusters and losing streaks look like the real ones.</p>
+  </div>
+  <div class="card">
+    <h3>Execution</h3>
+    <p>One bracket trade per session. The stop fills at the worse of the stop price and the bar open. If the stop and target are hit in the same minute, it counts as a loss. CFD spread is charged on every trade.</p>
+  </div>
+  <div class="card">
+    <h3>Cross-check</h3>
+    <p>The market side was rebuilt with vectorbt (<code>Portfolio.from_signals</code>) and gave the same numbers. A binary control mode (win +k or lose −1) reproduces the closed-form case.</p>
+  </div>
+</div>
+
+<h3>Three trade sources</h3>
+<ul>
+  <li><span class="tag">baseline</span> <strong>Random direction</strong>: coin-flip long or short. It measures what the contract is worth with no skill at all.</li>
+  <li><span class="tag">research</span> <strong>Historical trade lists</strong>: the realised R of each trade from the project's own rules, replayed through the contract. These rules are not described here.</li>
+  <li><span class="tag">replay</span> <strong>Day-by-day replay</strong> of real recent sessions, to check one specific start date against the exact current rules.</li>
+</ul>
+
+<h3>What gets tuned</h3>
+<p>Only <em>money management</em> inside the contract: risk per trade on the evaluation, risk on the funded account, the reward-to-risk ratio, and how the target shrinks to the profit still needed. Settings are chosen on one period (for example 2011-2018) and reported on a later one (2019-2026).</p>
+
+<h3>What gets reported</h3>
+<ul>
+  <li>Pass rate and sessions needed per evaluation.</li>
+  <li>Value of a funded account and probability of at least one reward.</li>
+  <li>EV per attempt (10k and 100k), and EV per <em>month of account slot</em>, which matters more when you can only run a few accounts.</li>
+  <li>Worst streaks: failed evaluations in a row, longest stretch with no reward.</li>
+  <li>The reward-refusal rate at which the EV drops to zero.</li>
+</ul>
+
+<h2>5. What we learned about the contract</h2>
+<div class="card">
+  <p><strong>Even with zero skill, the attempt is worth something.</strong> With coin-flip trades the first study found about 41 % of evaluations passing and an EV of roughly +$160 per 10k attempt and +$1,900 per 100k attempt. The value comes from the capped downside and the max-loss reset.</p>
+</div>
+<ul>
+  <li><strong>Lower risk wins.</strong> Across ten firms, the lowest risk setting gave the highest EV almost everywhere. Aggressive sizing makes evaluations much shorter but costs 30 to 40 % of the EV. Speed comes from risk, not from skill.</li>
+  <li><strong>The contract matters more than the market.</strong> CFD firms with a max-loss reset after payout (FTMO, FundingPips) beat futures firms by a wide margin under the same trade stream.</li>
+  <li><strong>The funded plan matters more than the evaluation plan.</strong> How you trade once funded drives most of the value.</li>
+  <li><strong>Payout policy is a real lever.</strong> On the funded account, aim only for the profit the best-day rule still needs, then wait for the reward date instead of pushing further. Waiting does most of the work.</li>
+  <li><strong>Several accounts on the same signal do not diversify.</strong> They blow up together and re-synchronise. Accounts on different signals spread out the reward dates.</li>
+  <li><strong>The spread is a key assumption.</strong> With tight intraday stops, a CFD spread of 1 basis point can halve the EV.</li>
+  <li><strong>Scaling up.</strong> Moving to the next account size only once rewards cover the worst historical drawdown of that size kept extra out-of-pocket money near zero. FTMO caps allocation per trader at 400k.</li>
+</ul>
+
+<h2>6. Caveats</h2>
+<div class="note"><strong>Not modelled, or only partly.</strong>
+<ul>
+  <li>Reward refusals or bans (for example FTMO's rule against "account rolling"). In the base case the EV only turns negative if roughly 65 % (10k) to 78 % (100k) of rewards are refused.</li>
+  <li>The news rule was added late. Earlier figures that ignore it are about 10 % too optimistic.</li>
+  <li>The actual CFD spread and leverage at the firm are assumptions, not measurements.</li>
+  <li>Any figure that uses the project's own trade lists inherits the selection bias of those rules. Treat it as an upper bound.</li>
+  <li>A live replay of September 2026 produced <em>no</em> reward under the current rules by 3 November. Historical averages hide long dry spells; the worst historical gap was about 11 months without a reward.</li>
+</ul>
+</div>
+
+<h2>7. Where things live</h2>
+<div class="tablewrap">
+<table>
+<tr><th>Path</th><th>Content</th></tr>
+<tr><td><code>PREREGISTRATION_18.md</code></td><td>Protocol for the coin-flip study, written before any computation</td></tr>
+<tr><td><code>propfirm/</code></td><td>Rule engines (FTMO, generic multi-firm, Lucid, STF) and trade libraries</td></tr>
+<tr><td><code>run_propfirm_*.py</code>, <code>run_ftmo_*.py</code></td><td>One script per question: variants, streaks, scaling paths, payout policy, replay</td></tr>
+<tr><td><code>reports/propfirm_*.md</code>, <code>reports/ftmo_*.md</code></td><td>Results, in French</td></tr>
+<tr><td><code>wiki/experiments/propfirm-ftmo-option.md</code></td><td>Running summary and links</td></tr>
+<tr><td><code>tests/test_propfirm.py</code></td><td>Rule-engine tests</td></tr>
+</table>
+</div>
+
+<footer>Research notes, not financial advice. Numbers are historical simulations under stated assumptions; the source reports take precedence over this page.</footer>
+</main>
+</body>
+</html>
