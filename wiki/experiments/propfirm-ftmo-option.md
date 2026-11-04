@@ -1,7 +1,7 @@
 ---
 type: experiment
-updated: 2026-10-31
-status: done
+updated: 2026-11-04
+status: active
 verdict: EV positive sans edge (si les rewards sont versés)
 prereg: [18]
 trials: 0
@@ -10,6 +10,29 @@ trials: 0
 # Prop firm comme option : FTMO 1-Step avec des trades au hasard
 
 **Une phrase** : la perte d'une tentative est plafonnée au prix de l'éval alors que le compte financé paie sans plafond ; avec des trades NQ au sens tiré au hasard, entrée 9:50 ET, stop 1 ATR M15 et spread 1,5 point (avenant B), l'EV vaut ≈ +161 $ par éval 10k et ≈ +1 933 $ par éval 100k (41 % de passage, financé 6 % du capital, éval ~8,5 jours).
+
+## Plan retenu (choisi par l'utilisateur le 2026-11-04)
+
+**Deux comptes FTMO 1-Step en parallèle**, avec la même gestion :
+
+| | Compte A | Compte B |
+|---|---|---|
+| Stratégie | **mom** : momentum 12-1, entrée 20:00 ET, SL 2 ATR M15, TP 4 ATR (2 R), sortie 9:30 | **3n** : long 20:05 → 03:00 si la somme des 3 nuits ≤ 0, SL 2 / TP 4 ATR M15 ; **M2** : 9:35 → 15:55 (close 9:30 contre EMA12, force > 2,2 ATR ou retournement < −60 bps), SL 4 / TP 8 ATR M15, seulement si 3n n'a pas tradé ou est sorti à 03:00 ; taille de M2 = min(r + x, (2r − x)/2) |
+| Éval | 2,5 % de risque par trade ; objectif réduit au reste à faire (+10 % et meilleur jour) | idem |
+| Financé | 1 % de risque, TP 2 R | idem |
+| Règle des annonces | fermé à 8:19 ET les jours NFP / CPI / PIB avancé | M2 fermé à 13:55 les jours de Fed ; 3n non concerné |
+| Payout (cible + attente) | si seule la règle des 50 % bloque, viser 2 × meilleur jour − gain ; dès qu'elle est respectée (gain > 0), ne plus trader jusqu'au 14e jour après le 1er trade, puis demander le payout | idem |
+
+**Scaling** : dépôt de 869 $. On monte d'un palier quand la cagnotte couvre 10 évals par paire. Paliers par stratégie : 1 → 2 → 3 × 10k, puis 1 × 100k (les 10k ne sont plus rachetés), puis 2 × 100k (400k, les 10k sont abandonnés).
+
+**Repères** ([[reports/ftmo_scaling_report]], [[reports/ftmo_monte_carlo_report]], [[reports/ftmo_deux_comptes_historique_report]]) :
+- 400k atteints en ≈ 12 mois en médiane, ≈ 18 mois si l'espérance est divisée par 2 ;
+- ≈ 7 700 $/mois une fois à 400k ;
+- ruine (dépôt perdu) dans 0,2 à 2,5 % des chemins.
+
+**Code** : `run_ftmo_deux_comptes.py` (`Compte`, `jambes_A`, `jambes_B`), `build_news_trades.py`, `run_ftmo_scaling.py`. Moteur validé contre vectorbt ([[reports/ftmo_verif_vbt_report]]).
+
+**Réserves** : 3n et M2 ont échoué hors échantillon (n° 24, 25) ; holdout n° 26 à lire à partir du 2028-02-29 ; refus de payout et délais FTMO non modélisés.
 
 ## Résultat
 - ⚠️ **Règle FTMO des annonces en financé** (relue le 1er novembre) : aucune exécution, stop et objectif compris, 2 min autour du NFP, du CPI, du PIB avancé et de la Fed, sinon fermeture du compte. **Tous les chiffres FTMO antérieurs l'ignorent** (≈ 10 % trop optimistes). Avec sortie à 8:19 les jours d'annonce : plan FTMO, compte racheté 3 ans +63,2 k$ médiane (contre +73,1 k$) ; sur mesure (éval 2,5 %, financé 1 %, protection 4 %) 2019-2023 +59,3 à +66,3 k$ selon l'objectif d'éval (1,5 ou 2 R), FundingPips +56,9 k$ ([[reports/propfirm_multi]], section correction).
