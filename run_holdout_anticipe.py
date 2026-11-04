@@ -88,8 +88,9 @@ def t_hac(x: np.ndarray) -> tuple[float, float, float]:
     return m, t, float(stats.norm.sf(t))
 
 
-def h1_mom(p_adj: Path) -> pd.DataFrame:
-    """Règle NQ de nuit figée (compte 20:00), même enchaînement que run_prereg10 / run_nq_nuit_heures."""
+def h1_mom(p_adj: Path, tp: float = 5.0, cost: str = "net") -> pd.DataFrame:
+    """Règle NQ de nuit figée (compte 20:00), même enchaînement que run_prereg10 / run_nq_nuit_heures.
+    `tp` (en ATR) et `cost` (« net » ou « gross ») servent aux variantes ; défaut = règle figée (TP 5 ATR, net)."""
     import recolte1.engine as eng
     import recolte1.rules as rules
     keep = Path("results/recolte1_atr/run.log")
@@ -102,7 +103,7 @@ def h1_mom(p_adj: Path) -> pd.DataFrame:
     rules.END = FIN
     rules.sessions.cache_clear()
     rules.base.cache_clear()
-    A.VARIANTS = [("SL 2 ATR / TP 5 ATR", 2.0, 5.0)]
+    A.VARIANTS = [(f"SL 2 ATR / TP {tp:g} ATR", 2.0, tp)]
     b = rules.sessions()
     bb = rules.base("NQ")
     s = rules.next_month_sign(bb, rules.monthly(bb, "cc").shift(1).rolling(11, min_periods=11).sum())
@@ -111,7 +112,7 @@ def h1_mom(p_adj: Path) -> pd.DataFrame:
     _, e = A.entries_table("holdout")
     e = e[(e["clock"] == "20:00") & (pd.DatetimeIndex(e["night"]) >= DEBUT_SEANCE)]
     T = A.simulate("NQ", e)
-    T = T[T.cost == "net"].copy()
+    T = T[T.cost == cost].copy()
     df = eng.load("NQ").copy()
     df.attrs = {}
     atr = A.atr_m15(df)
@@ -119,6 +120,7 @@ def h1_mom(p_adj: Path) -> pd.DataFrame:
     t_in = idx[T.entry_idx.values] + pd.Timedelta(minutes=1)  # entrée = close de la barre 19:59 -> ATR connu à 20:00
     frac = atr.reindex(pd.DatetimeIndex(t_in).as_unit("ns"), method="ffill").values / df.close.values[T.entry_idx.values]
     T["R"] = T.ret.values / (2 * frac)
+    T["s"] = 2 * frac  # distance du stop en fraction du prix
     sig = s.reindex(b.index)
     say("Signe du momentum 12-1 par mois (holdout) : "
         + ", ".join(f"{p} {int(v):+d}" for p, v in sig[sig.index >= DEBUT_SEANCE].groupby(

@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-04 12:09
+updated: 2026-11-04 12:43
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -22,6 +22,7 @@ updated: 2026-11-04 12:09
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-04] query | FTMO 1-Step avec mom, départ en septembre 2026, rejeu jour par jour sur les vraies nuits jusqu'au 03/11 (run_ftmo_septembre.py, reports/ftmo_septembre_report.md, descriptif, fenêtre vue du holdout) ; h1_mom de run_holdout_anticipe.py paramétré (tp, cost) | départ 01/09 : éval validée le 18/09, financé perdu le 03/11 sans reward ; 21 départs de septembre : 0 reward, −174 à −348 $ par 10k ; mom −1,1 R brut sur 44 nuits, 61 % de SL
 - [2026-11-04] query | Performances de mom (règle NQ de nuit, compte 20:00) du 2011-07 au 2026-11-03, trades vectorbt existants + fenêtre vue du holdout (run_mom_perf.py, results/mom_perf/, descriptif) ; correction du R de H1 dans run_holdout_anticipe.py (ATR à 20:00, pas 19:59) | 3 831 nuits, +0,087 R/nuit, 21,7 R/an, Sharpe 1,01, max DD −25,4 R, t 4,0 ; 2011-15 +0,115 R, 2016-24 +0,072, 2025-08/2026 +0,102, fenêtre vue −0,023 (44 nuits) ; années négatives : 2011 (−1,0 R, demi-année) et 2022 (−1,7 R)
 - [2026-11-04] query | FTMO 1-Step, plan d'éval × plan financé (mom seul / trio ; run_propfirm_mix.py, reports/propfirm_mix_report.md, exploratoire, hors compteur) | 2016-2026 : mom → trio +1 451 $ / tentative 10k, +1 518 $ par mois 100k ; trio → trio +2 037 $ / +1 476 $ ; mom → mom +617 $ / +1 978 $ ; même ordre sur 2011-2015 et 2019-2026 ; le plan financé compte plus que celui de l'éval
 - [2026-11-04] query | Évals FTMO plus rapides : grille de 384 plans 3n / mom / M2 (perte du jour ≤ 2,5 %), choix sur 2011-2018, vérification sur 2019-2026 (run_propfirm_eval_rapide.py, reports/propfirm_eval_rapide_report.md, exploratoire, hors compteur) | aucun plan plus rapide à passage égal : trio 58 % en 21 séances (2019-26) ; choisi A 2,5/2,0/0 : 61 % → 48 % en ≈ 16 séances ; mom seul 2,5 % : 42 % en 9,5 séances ; vitesse = risque, pas edge
@@ -29,7 +30,6 @@ updated: 2026-11-04 12:09
 - [2026-11-04] query | FTMO 1-Step avec 3n + M2 combinées, un trade par jour, objectif 2 R, éval 2,5 % / financé 1 % (run_propfirm_combo.py, reports/propfirm_combo_report.md, exploratoire, hors compteur) | 2016-2026 : EV +2 123 $ (10k) / +21 546 $ (100k), passage 60 %, financé 37 %, +1 477 $ par mois d'emplacement 100k (3n seul +1 159, M2 seul +1 164, mom TP 2 R +1 989) ; 2010-2015 : +904 $ / +9 363 $ (sans edge +47 $) ; règle des annonces non modélisée pour M2
 - [2026-11-03] query | Combinaison 3n SL + M2 + stop, au plus 1 trade par jour avec priorité à la nuit (run_combo_3n_m2.py, reports/combo_3n_m2_report.md, descriptif, hors compteur) | corrélation journalière ≈ 0 ; 2016-24 : max 1/jour 24,9 R/an, Sharpe 1,59 contre 33,0 R/an, Sharpe 1,80 en prenant tout (M2 sautés +0,20 R chacun), même DD −18 R ; pire jour −1,2 contre −2,1 R ; 2010-15 : 0,17 contre 0,58 ; combinaison à pré-enregistrer avant usage
 - [2026-11-03] query | Lecture anticipée du holdout (avenant A), variante M2 + stop 4 × ATR M15 (reports/holdout_anticipe_report.md) | 9 trades, 1 stoppé (2026-10-29 short, −1 R au lieu de −0,55 R) ; +4 331 $ (+481 $/trade, t 1,75) contre +6 440 $ sans stop ; E[R] +0,21 ; sans verdict
-- [2026-11-03] query | N° 26 avenant A (commit 9f87d69) : lecture anticipée exploratoire du holdout 2026-08-31 → 2026-11-03, Databento + LSE raboutés (run_holdout_anticipe.py, reports/holdout_anticipe_report.md), compteur 1 738 → 1 742 ; holdout officiel décalé au 2026-11-04 | sans verdict : H1 mom −0,023 R/nuit (44 nuits, toutes longues) ; H2 M2 +716 $/trade sur 9 trades (C +625 $) ; H3 3n SL +0,379 R sur 23 trades (p 0,087) ; H4 rebond +19,8 bps d'écart sur 11 nuits (p 0,13) ; aucun roulement visible dans la série LSE en septembre (à vérifier avec Databento)
 
 ## Prochaines actions
 

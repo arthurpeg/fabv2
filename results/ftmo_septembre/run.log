@@ -1,0 +1,34 @@
+mom TP 4 ATR (2 R), R brut : 44 nuits du 31/08/2026 au 03/11/2026, 12 TP, 27 SL, R brut total -1.09
+
+Départ le 1er septembre (nuit du 31/08 au 01/09) :
+  01/09 : achat de l'éval n° 1
+  18/09 : éval n° 1 validée (+11.25 %) → compte financé
+  03/11 : financé perdu (-8.08 %)
+  03/11 : achat de l'éval n° 2
+  au 03/11 : éval en cours, solde +0.00 % ; rewards 0.00 % ; évals achetées 2
+  10k : frais 174 $, rewards 0 $, net encaissé -174 $ ; gain latent du compte en cours +0 $ (non versé)
+  100k : frais 1,098 $, rewards 0 $, net encaissé -1,098 $ ; gain latent du compte en cours +0 $ (non versé)
+
+Chaque jour de départ possible en septembre :
+    départ  évals phase_au_0311  solde_pct  rewards_pct  net 10k  net 100k
+2026-09-01      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-02      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-03      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-04      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-08      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-09      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-10      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-11      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-14      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-15      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-16      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-17      2          éval       0.00          0.0   -173.8   -1097.8
+2026-09-18      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-21      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-22      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-23      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-24      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-25      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-28      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-29      4          éval      -4.62          0.0   -347.6   -2195.6
+2026-09-30      3          éval      -4.62          0.0   -260.7   -1646.7
