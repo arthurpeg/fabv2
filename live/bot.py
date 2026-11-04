@@ -2,6 +2,7 @@
 
 uv run python -m live.bot --config live/config_A.toml             → tourne en continu
 uv run python -m live.bot --config live/config_A.toml --signaux   → calcule les signaux du moment, sans ordre, et sort
+uv run python -m live.bot --config live/config_A.toml --test-ordre → ordre test au lot minimum, fermé après 5 s
 
 Règles (plan retenu le 2026-11-04, wiki/experiments/propfirm-ftmo-option.md, section « Plan retenu ») :
   A  mom : 20:00 ET, sens = signe du momentum 12-1 du mois de la séance, SL 2 ATR M15, TP 4 ATR (2 R) ou objectif
@@ -371,19 +372,58 @@ class Bot:
             self.log(f"M2 {jour:%Y-%m-%d} : {S.signal_m2(m1, jour)}")
         self.log(f"compte virtuel : {self.compte}")
 
+    def test_ordre(self) -> None:
+        """Contrôle du chemin des ordres sur la démo : taille théorique d'un trade réel, puis un vrai ordre au lot
+        minimum avec stop et objectif, fermé après 5 s, et lecture du P&L réalisé. Ne touche pas au compte virtuel."""
+        now = self.maintenant()
+        m1 = self.b.barres("M1", 30_000)
+        atr = S.atr15_fin(m1, now, min_periods=14)
+        spread = self.b.spread()
+        k_sl = S.K_SL_NUIT if self.book == "A" else S.K_SL_M2
+        dist = k_sl * atr
+        r = self.compte.r()
+        vol = self.b.lots(r, self.nominal, dist, spread)
+        perte = vol * self.b.vpp * (dist + spread)
+        self.log(f"taille d'un trade réel maintenant : ATR M15 {atr:.1f} pts, stop {dist:.1f} pts, spread {spread:.2f}, "
+                 f"risque {r} % → {vol} lots ; perte au stop {perte:.2f} $ ({perte / self.nominal * 100:.2f} %), "
+                 f"gain à 2 R {vol * self.b.vpp * (2 * dist - spread):.2f} $")
+        vmin = self.b.info.volume_min
+        fill = self.b.ouvre(1, vmin, dist, 2 * dist, "test ordre")
+        p = self.b.position(fill.ticket)
+        ok_sl = p is not None and abs((fill.price - p.sl) - dist) < 1.0
+        ok_tp = p is not None and abs((p.tp - fill.price) - 2 * dist) < 1.0
+        self.log(f"ordre test : {vmin} lot long à {fill.price} (ask {fill.ask}, bid {fill.bid}), ticket {fill.ticket} ; "
+                 f"SL {None if p is None else p.sl} ({'OK' if ok_sl else 'ÉCART'}), "
+                 f"TP {None if p is None else p.tp} ({'OK' if ok_tp else 'ÉCART'})")
+        time.sleep(5)
+        self.b.ferme(fill.ticket, "test ordre")
+        for _ in range(20):
+            bil = self.b.bilan(fill.ticket)
+            if bil is not None:
+                break
+            time.sleep(0.5)
+        self.log(f"fermeture test : {bil}")
+        self.log("TEST OK" if (ok_sl and ok_tp and bil is not None) else "!! TEST EN ÉCHEC : me montrer ce journal")
+
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", required=True)
     ap.add_argument("--signaux", action="store_true", help="affiche les signaux du moment et sort, sans ordre")
+    ap.add_argument("--test-ordre", action="store_true", help="ordre test au lot minimum (démo), fermé après 5 s")
     a = ap.parse_args()
     cfg = tomllib.loads(Path(a.config).read_text(encoding="utf-8"))
     from live.broker import MT5
     bot = Bot(cfg)
     bot.b = MT5(cfg["terminal"], cfg.get("symbole", "US100.cash"), int(cfg["magic"]),
                 int(cfg.get("decalage_serveur_ny_h", 7)), log=bot.log)
-    bot.signaux() if a.signaux else bot.boucle()
+    if a.test_ordre:
+        bot.test_ordre()
+    elif a.signaux:
+        bot.signaux()
+    else:
+        bot.boucle()
 
 
 if __name__ == "__main__":
