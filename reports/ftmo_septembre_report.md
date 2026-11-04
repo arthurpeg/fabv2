@@ -62,3 +62,26 @@ Rejeu avec un objectif ramené au reste à faire (cible +10 % et règle du meill
 
 Sur cette période, le gain de l'éval ne change pas le bilan : les comptes financés perdent tous, parce que mom fait −1,1 R sur ces deux mois.
 
+## Conditions de reward du 1-Step, relues sur ftmo.com (2026-11-04)
+
+Sources : [Trading Objectives](https://ftmo.com/en/trading-objectives/), [1-Step Challenge](https://ftmo.com/en/1-step-challenge/), [How do I withdraw my reward?](https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/).
+
+| Règle | FTMO 1-Step | Simulateur (n° 18 et suivants) |
+|---|---|---|
+| Moment du reward | « on the 14th or any following day after the first trade is placed on the specific account », à la demande, positions fermées | tous les 10 jours tradés (≈ 14 jours calendaires) |
+| Part versée | 90 % du gain | 90 % |
+| Meilleur jour, comptes commandés **depuis le 12/10/2026** (« Consistency ») | meilleur jour ≤ 50 % du **gain total net** (somme des jours gagnants et perdants), sur trades fermés, journée de 00:00 à 00:00 CE(S)T ; vaut pour valider l'éval et pour avoir droit au reward ; un dépassement n'est pas une violation, il faut continuer à trader | identique |
+| Meilleur jour, comptes commandés **avant le 12/10/2026** (« Legacy ») | meilleur jour ≤ 50 % de la **somme des jours gagnants** seulement | non modélisé jusqu'ici |
+| Perte max | 10 % du capital, plancher suiveur au plus haut solde de 00:00 CE(S)T, ne baisse jamais ; remise à 90 % du capital après un reward (nouveau compte) | identique (le plus haut est mis à jour après chaque trade) |
+| Perte du jour | solde de 00:00 CE(S)T − 3 % du capital | identique |
+| Jours minimum | aucun pour le 1-Step | aucun |
+
+**Conséquence pour un départ en septembre.** Un compte acheté en septembre suit la règle **Legacy**, plus souple pour un compte qui a eu des jours perdants. Le 28/09, 14e jour après le 1er trade financé du 15/09, le compte était à +1,72 % net. Son meilleur jour (+1,95 %) ne dépassait pas 50 % de la somme des jours gagnants (17/09 +1,95, 18/09 +1,90, 21/09 +1,92, 25/09 +1,94 = 7,71 %). **Le reward était donc possible.**
+
+| Règle (éval avec objectif ramené au reste à faire) | Départ 01/09 | Départs de septembre avec reward | Net au 03/11, 10k / 100k (départ 01/09) |
+|---|---|---|---|
+| Simulateur / Consistency (comptes depuis le 12/10) | 0 reward ; financé perdu le 03/11 | 0 / 21 | −174 $ / −1 098 $ |
+| **Legacy (comptes avant le 12/10)** | **reward de 1,55 % le 28/09** (155 $ / 1 547 $), nouveau compte à −8,35 % le 03/11, encore ouvert | **5 / 21** (départs du 01 au 08/09) | **+68 $ / +998 $** |
+
+Les journaux sont dans `results/ftmo_septembre/journal_0109_reste_legacy.csv` et `journal_0109_reste_consistency.csv`. Les simulations générales (trio, mom, combinaisons) appliquent déjà la règle Consistency, celle des comptes commandés aujourd'hui.
+
