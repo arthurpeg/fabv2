@@ -77,6 +77,7 @@ class Compte:
         """`rachat=False` : un compte perdu n'est pas racheté ici (`mort` passe à True), le gestionnaire décide."""
         self.nom, self.calendaire, self.annonces, self.politique = nom, calendaire, annonces, politique
         self.size, self.fee, self.rachat, self.mort = size, fee, rachat, False
+        self.journal = None  # liste à fournir pour journaliser chaque trade (contrôle vectorbt)
         self.evals, self.cash, self.rewards, self.events = 1, -fee, 0, []
         self._nouveau("éval")
 
@@ -103,7 +104,8 @@ class Compte:
             return self._echec(d)
         pnl, traded = 0.0, False
         fin = self.phase == "financé"
-        for R, c, mfe, Rn, mfen, risk in legs(base, r):
+        for j, (R, c, mfe, Rn, mfen, risk) in enumerate(legs(base, r)):
+            R0, obj = R, TP_R
             if fin and self.annonces:  # règle des annonces : trade coupé avant la fenêtre interdite
                 R, mfe = Rn, mfen
             if fin and "attente" in self.politique and self.f0 is not None and self.P > 0 and                     max(self.best, pnl) <= 0.5 * self.P + 1e-9:
@@ -115,16 +117,23 @@ class Compte:
             if self.phase == "éval":  # objectif ramené au reste à faire
                 need = max(TARGET - self.P, 2 * max(self.best, pnl) - self.P, 0.01)
                 k = need * (1 + c) / risk + c
-                if k < TP_R and mfe >= k:
-                    R = k
+                if k < TP_R:
+                    obj = k
+                    if mfe >= k:
+                        R = k
             elif "cible" in self.politique and self.P > 0:  # viser juste ce qui manque pour la règle des 50 %
                 b = max(self.best, pnl)
                 need = 2 * b - self.P + 0.01
                 if b > 0.5 * self.P and need <= b + 1e-9:
                     k = need * (1 + c) / risk + c
-                    if k < TP_R and mfe >= k:
-                        R = k
+                    if k < TP_R:
+                        obj = k
+                        if mfe >= k:
+                            R = k
             leg = risk * (R - c) / (1 + c)
+            if self.journal is not None:
+                self.journal.append(dict(date=d, jambe=j, phase=self.phase, R_brut=R0, R=R, objectif=obj, risque=risk,
+                                         c=c, pnl=leg, coupe=fin and self.annonces and Rn != R0))
             self.P += leg
             pnl += leg
             if self.P <= floor + 1e-9 or pnl <= -DAILY:

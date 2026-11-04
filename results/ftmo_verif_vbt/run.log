@@ -1,0 +1,15 @@
+Moteur : compte A, 3646 trades du 2011-07-01 au 2026-08-28 ; 43 évals, 118 rewards ; objectif réduit sur 308 trades, coupe d'annonce sur 146
+
+vectorbt : 3646 trades ; P&L identique au centime près : 3639 / 3646 (99.81 %) ; écart absolu max 6.18 $ ; somme des écarts +21.22 $
+P&L total : moteur +32,724.48 $, vectorbt +32,745.69 $
+Trades qui diffèrent : 7 ; par objectif réduit 7, par coupe d'annonce 1, par sortie d'origine {'fin fenêtre': 4, 'SL': 3}
+      date   phase      reason  R_brut     R  objectif  risque  pnl_moteur  pnl_vbt  ecart
+2012-06-08 financé          SL  -1.000 0.053     0.053     1.0       2.939    5.269  2.331
+2012-08-20 financé fin fenêtre  -0.112 0.061     0.061     1.0       2.399    7.305  4.907
+2012-12-13 financé fin fenêtre  -0.262 0.642     0.642     1.0      60.405   63.606  3.201
+2013-07-16 financé fin fenêtre   1.326 0.349     0.349     1.0      27.321   33.503  6.182
+2014-01-16 financé          SL  -1.000 0.163     0.163     1.0      11.915   14.152  2.238
+2014-09-04 financé          SL  -1.000 0.209     0.209     1.0      16.086   16.829  0.743
+2017-01-30 financé fin fenêtre   0.032 0.555     0.555     1.0      49.795   51.413  1.617
+
+P&L de trading cumulé : écart max entre moteur et vectorbt sur un jour 21.22 $
