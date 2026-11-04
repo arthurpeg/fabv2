@@ -72,9 +72,12 @@ def bibliotheque() -> pd.DataFrame:
 class Compte:
     """Un emplacement FTMO : éval puis financé, racheté après chaque échec."""
 
-    def __init__(self, nom: str, calendaire: bool = False, annonces: bool = False, politique: str = "actuel"):
+    def __init__(self, nom: str, calendaire: bool = False, annonces: bool = False, politique: str = "actuel",
+                 size: int = SIZE, fee: float = FEE, rachat: bool = True):
+        """`rachat=False` : un compte perdu n'est pas racheté ici (`mort` passe à True), le gestionnaire décide."""
         self.nom, self.calendaire, self.annonces, self.politique = nom, calendaire, annonces, politique
-        self.evals, self.cash, self.rewards, self.events = 1, -FEE, 0, []
+        self.size, self.fee, self.rachat, self.mort = size, fee, rachat, False
+        self.evals, self.cash, self.rewards, self.events = 1, -fee, 0, []
         self._nouveau("éval")
 
     def _nouveau(self, phase: str):
@@ -89,9 +92,9 @@ class Compte:
         if self.phase == "financé" and self.f0 is not None:  # reward demandé avant de trader ce jour
             date_ok = (d - self.f0).days >= 13 if self.calendaire else self.cyc >= CYCLE
             if date_ok and self._regle_ok():
-                self.cash += SPLIT * self.P / 100 * SIZE
+                self.cash += SPLIT * self.P / 100 * self.size
                 self.rewards += 1
-                self.events.append((d, f"reward {SPLIT * self.P:.2f} % ({SPLIT * self.P / 100 * SIZE:,.0f} $)"))
+                self.events.append((d, f"reward {SPLIT * self.P:.2f} % ({SPLIT * self.P / 100 * self.size:,.0f} $)"))
                 self._nouveau("financé")
         r = R_EVAL if self.phase == "éval" else R_FUND
         floor = self.hi - MAXLOSS
@@ -139,9 +142,13 @@ class Compte:
         return pnl
 
     def _echec(self, d):
+        if not self.rachat:
+            self.events.append((d, f"{self.phase} perdu ({self.P:+.2f} %)"))
+            self.mort = True
+            return np.nan
         self.events.append((d, f"{self.phase} perdu ({self.P:+.2f} %) → nouvelle éval"))
         self.evals += 1
-        self.cash -= FEE
+        self.cash -= self.fee
         self._nouveau("éval")
         return np.nan
 
