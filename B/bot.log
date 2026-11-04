@@ -28,3 +28,4 @@
 2026-11-04 15:56:56 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
 2026-11-04 15:56:56 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
 2026-11-04 15:56:57 ET [B] démarrage (code 330cb7b) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
+2026-11-04 17:01:27 ET [B] !! TRADING DÉSACTIVÉ sur l'essai 1515191583 (objectif de l'essai atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter dans ce terminal

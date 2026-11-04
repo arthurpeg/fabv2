@@ -6,7 +6,9 @@
   "1515190763": {
    "debut": "2026-11-04 13:41",
    "solde_initial": 10000.02,
-   "alertes": []
+   "alertes": [
+    "bloque"
+   ]
   }
  }
 }
