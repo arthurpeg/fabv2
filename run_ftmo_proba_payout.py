@@ -39,19 +39,23 @@ def premier_reward(jours, idx, jambes, calendaire):
     """(numéro de l'éval du premier reward ou nan, séance du premier reward ou nan, jours calendaires)."""
     C = M.Compte("x", calendaire, True, "cible+attente")
     d0 = jours[idx[0]][0]
+    passe = (np.nan, np.nan)  # (numéro de l'éval validée en premier, séance)
     for t, i in enumerate(idx):
         d, row = jours[i]
         ev = C.evals
         C.jour(d, jambes(row))
+        if np.isnan(passe[0]) and C.phase == "financé" and C.evals == ev:
+            passe = (ev, t)
         if C.rewards > 0:
-            return ev, t, (d - d0).days
-    return np.nan, np.nan, np.nan
+            return ev, t, (d - d0).days, *passe
+    return np.nan, np.nan, np.nan, *passe
 
 
 def depart(jours, idx, calendaire):
-    ea, ta, ja = premier_reward(jours, idx, M.jambes_A, calendaire)
-    eb, tb, jb = premier_reward(jours, idx, M.jambes_B, calendaire)
-    return dict(evals_A=ea, seance_A=ta, jours_A=ja, evals_B=eb, seance_B=tb, jours_B=jb)
+    ea, ta, ja, pa, sa = premier_reward(jours, idx, M.jambes_A, calendaire)
+    eb, tb, jb, pb, sb = premier_reward(jours, idx, M.jambes_B, calendaire)
+    return dict(evals_A=ea, seance_A=ta, jours_A=ja, passe_A=pa, seance_passe_A=sa,
+                evals_B=eb, seance_B=tb, jours_B=jb, passe_B=pb, seance_passe_B=sb)
 
 
 def resume(nom, D):
@@ -64,6 +68,15 @@ def resume(nom, D):
         p2 = ((ea <= k) & (eb <= k)).mean()
         say(f"  ≤ {k:>2} éval(s) par compte ({2 * k * M.FEE:,.0f} $ au plus) : P(reward A) {100 * pa:5.1f} % ; "
             f"P(reward B) {100 * pb:5.1f} % ; P(au moins un) {100 * p1:5.1f} % ; P(les deux) {100 * p2:5.1f} %")
+    qa, qb = D.passe_A.fillna(99), D.passe_B.fillna(99)
+    for k in (1, 2, 3, 5):
+        say(f"  validation ≤ {k} éval(s) par compte : A {100 * (qa <= k).mean():5.1f} % ; B {100 * (qb <= k).mean():5.1f} % ; "
+            f"au moins un {100 * ((qa <= k) | (qb <= k)).mean():5.1f} % ; les deux {100 * ((qa <= k) & (qb <= k)).mean():5.1f} %")
+    for k in ("A", "B"):
+        f1 = D[f"passe_{k}"] == 1
+        say(f"  {k} : 1re éval validée → reward sur ce financé {100 * (D.loc[f1, f'evals_{k}'] == 1).mean():.1f} % ; "
+            f"durée de la 1re éval validée : médiane {D.loc[f1, f'seance_passe_{k}'].median():.0f} séances, "
+            f"90e c. {D.loc[f1, f'seance_passe_{k}'].quantile(.9):.0f}")
     say(f"  jamais de reward en 2 ans : A {100 * D.evals_A.isna().mean():.1f} %, B {100 * D.evals_B.isna().mean():.1f} %")
     for k in ("A", "B"):
         s = D[f"seance_{k}"].dropna()

@@ -30,6 +30,7 @@ trials: 0
 - ≈ 7 700 $/mois une fois à 400k ;
 - ruine (dépôt perdu) dans 0,2 à 2,5 % des chemins ;
 - au démarrage (deux 10k, rachat après échec ; [[reports/ftmo_proba_payout_report]]) : au moins un payout avec la 1re éval de chaque compte dans 79 % des départs (62 % avec l'espérance / 2), 97 % avec 2 évals par compte, ≈ 100 % avec 5 ; 1er payout médian en 30 séances.
+- validation de la 1re éval : A 53 %, B 64 %, au moins un des deux 82 % ; éval réussie en 6 séances (A) ou 14 (B) en médiane ; un financé validé paie au moins un reward dans 89 % (A) et 96 % (B) des cas.
 
 **Code** : `run_ftmo_deux_comptes.py` (`Compte`, `jambes_A`, `jambes_B`), `build_news_trades.py`, `run_ftmo_scaling.py`. Moteur validé contre vectorbt ([[reports/ftmo_verif_vbt_report]]).
 
