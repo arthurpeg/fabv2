@@ -32,3 +32,5 @@ Plans :
    - peu de comptes, ou envie de garder longtemps un compte financé sans racheter : **trio → trio** ;
    - **mom → trio** ne vaut que si la durée de l'éval compte en elle-même, par exemple pour accéder plus vite à un compte financé.
 5. **Réserves** : ce sont les mêmes que pour le trio. La règle FTMO des annonces n'est pas modélisée (mom traverse 8:30, M2 traverse 10:00 et 14:00). 3n et M2 ont échoué hors échantillon. Les rewards sont supposés versés sans refus.
+
+> **Correction du 2026-11-04** : en éval, l'objectif de chaque trade est désormais ramené au reste à faire. Les chiffres ci-dessus sont ceux de l'objectif fixe ; les chiffres corrigés sont dans [[reports/propfirm_correction_reste_report]] (passage +1 à +7 points, mêmes classements).

@@ -33,3 +33,5 @@ Pour le combiné 2016-2026 : P(reward) 95 %, 8,4 rewards par compte financé, pr
    - La période 2016-2026 est celle où les deux règles ont été choisies. Le chiffre réaliste se situe entre la ligne 2010-2015 et la ligne 2016-2026.
    - La **règle FTMO des annonces** n'est pas modélisée. 3n n'est jamais exposé (à plat à 03:00), mais M2 garde la position pendant les annonces de 10:00 et de 14:00 (FOMC). Un stop ou un objectif touché à moins de 2 minutes d'une annonce majeure ferme le compte financé.
    - Le moteur arrête un compte financé à 500 trades, soit environ 3 ans ici. Le partage des rewards est supposé sans refus. Le spread réel du CFD n'est pas mesuré.
+
+> **Correction du 2026-11-04** : en éval, l'objectif de chaque trade est désormais ramené au reste à faire. Les chiffres ci-dessus sont ceux de l'objectif fixe ; les chiffres corrigés sont dans [[reports/propfirm_correction_reste_report]] (passage +1 à +7 points, mêmes classements).

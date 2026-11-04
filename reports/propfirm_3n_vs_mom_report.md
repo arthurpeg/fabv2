@@ -48,3 +48,5 @@ Sans RAZ, les EV sur 10k sont : mom 2016-2026 +235 $, 3n +710 $, 3n 08h +450 $. 
 - **Le moteur arrête un compte financé à 500 trades.** C'est environ 4,6 ans pour 3n contre 2 ans pour mom, et ce plafond tronque une partie des comptes 3n. La valeur de 3n est donc un peu sous-estimée.
 - **Hypothèses reprises de l'avenant C :** RAZ de la perte max après chaque reward, et rewards versés sans refus. Le spread réel de nuit du CFD n'est pas vérifié.
 - **Trading de nuit :** 3n entre à 20:05 et sort à 03:00 ET. Il faut s'assurer que le compte FTMO autorise la position à ces heures et que les frais de swap éventuels ne sont pas comptés ici.
+
+> **Correction du 2026-11-04** : en éval, l'objectif de chaque trade est désormais ramené au reste à faire. Ce rapport (3n sans TP, mom TP 5 ATR) n'est **pas** recalculé : son passage est un peu pessimiste. Les plans corrigés comparables (objectif 2 R) sont dans [[reports/propfirm_correction_reste_report]].

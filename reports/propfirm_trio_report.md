@@ -39,3 +39,5 @@ L'éval dure entre 0,4 mois (mom seul) et 1,2 mois. 96-97 % des comptes financé
    - La **règle FTMO des annonces** n'est pas modélisée. mom traverse les annonces de 8:30 (NFP, CPI) jusqu'à 9:30, et M2 celles de 10:00 et de 14:00. Les chiffres de mom et du trio sont donc trop optimistes, d'environ 10 % pour mom (voir [[wiki/experiments/propfirm-ftmo-option]]). 3n n'est pas concerné.
    - 3n et M2 ont échoué hors échantillon (n° 24 et 25). Leurs lignes 2016-2026 sont dans leur période de sélection.
    - Rewards supposés versés sans refus, spread CFD non mesuré.
+
+> **Correction du 2026-11-04** : en éval, l'objectif de chaque trade est désormais ramené au reste à faire. Les chiffres ci-dessus sont ceux de l'objectif fixe ; les chiffres corrigés sont dans [[reports/propfirm_correction_reste_report]] (passage +1 à +7 points, mêmes classements).
