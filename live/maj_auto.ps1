@@ -6,6 +6,7 @@
 #    et ce commit n'est plus retente (live/etat/maj_refusee.txt) jusqu'au suivant.
 # 5. Si le code du bot a change : drapeau live/etat/redemarrer_A et _B ; chaque bot sort proprement entre deux pas
 #    de sa boucle et live/lancer.bat le relance avec le nouveau code.
+# 0. Avant tout : publication des journaux du VPS sur la branche vps-journal (Publie-Journal).
 # Journal : live/etat/maj_auto.log. Fichier volontairement en ASCII (PowerShell 5.1).
 
 $ErrorActionPreference = "Continue"
@@ -22,10 +23,44 @@ function Log([string]$m) {
     "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') $m" | Out-File -FilePath $log -Append -Encoding utf8
 }
 
+# Publication des journaux sur la branche vps-journal (separee du code : jamais de conflit avec la mise a jour).
+# Copie de travail dediee a cote du depot (..\fabv2-journal). Commit seulement si un fichier a change.
+# Le 1er push demande l'acces GitHub : lancer ce script une fois a la main dans un terminal (voir live/README.md).
+function Publie-Journal {
+    $jr = Join-Path (Split-Path -Parent $repo) "fabv2-journal"
+    if (-not (Test-Path (Join-Path $jr ".git"))) {
+        git fetch --quiet origin vps-journal 2>$null
+        if ($LASTEXITCODE -eq 0) { git worktree add --quiet -B vps-journal $jr origin/vps-journal 2>$null }
+        else { git worktree add --quiet --orphan -b vps-journal $jr 2>$null }
+        if (-not (Test-Path (Join-Path $jr ".git"))) { Log "journal : copie de travail $jr non creee"; return }
+    }
+    foreach ($b in "A", "B") {
+        $src = Join-Path $etat $b
+        if (-not (Test-Path $src)) { continue }
+        $dst = Join-Path $jr $b
+        New-Item -ItemType Directory -Force -Path $dst | Out-Null
+        foreach ($f in "trades.csv", "signaux.csv", "compte.json", "etat.json", "bot.log") {
+            $p = Join-Path $src $f
+            if (Test-Path $p) { Copy-Item -Force $p $dst }
+        }
+    }
+    foreach ($f in "pnl.md", "maj_auto.log", "relances_A.log", "relances_B.log") {
+        $p = Join-Path $etat $f
+        if (Test-Path $p) { Copy-Item -Force $p $jr }
+    }
+    git -C $jr add -A 2>$null
+    git -C $jr diff --cached --quiet
+    if ($LASTEXITCODE -eq 0) { return }
+    git -C $jr -c user.name="VPS fabv2" -c user.email="vps@fabv2.invalid" commit --quiet -m "journal VPS $(Get-Date -Format 'yyyy-MM-dd HH:mm')" 2>$null
+    git -C $jr push --quiet origin vps-journal 2>$null
+    if ($LASTEXITCODE -ne 0) { Log "journal : push en echec (acces GitHub ? lancer live\maj_auto.ps1 une fois a la main)" }
+}
+
 # une seule mise a jour a la fois (un verrou de plus de 30 min est considere comme abandonne)
 if ((Test-Path $verrou) -and ((Get-Item $verrou).LastWriteTime -gt (Get-Date).AddMinutes(-30))) { exit 0 }
 New-Item -ItemType File -Force -Path $verrou | Out-Null
 try {
+    try { Publie-Journal } catch { Log "journal : erreur $($_.Exception.Message)" }
     git fetch --quiet origin 2>$null
     if ($LASTEXITCODE -ne 0) { Log "git fetch en echec (reseau ou identifiants GitHub ?)"; exit 1 }
     $branche = (git rev-parse --abbrev-ref HEAD).Trim()

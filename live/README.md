@@ -69,7 +69,15 @@ Il y a un processus Python par book, et chaque processus a son propre terminal M
    - ce commit n'est plus retenté (il est noté dans `live/etat/maj_refusee.txt`), seul le suivant le sera.
 5. Si le code (`*.py`) ou le calendrier (`annonces.csv`) a changé, il pose les drapeaux `live/etat/redemarrer_A` et `_B`. Chaque bot sauve alors son état, sort entre deux pas de sa boucle, et `lancer.bat` le relance 10 s plus tard avec le nouveau code. Une position ouverte reste suivie après la relance.
 
-Le journal est dans `live/etat/maj_auto.log`. Pour créer la tâche, une fois, dans PowerShell :
+**Publication des journaux.** À chaque passage, avant la mise à jour, le script copie les journaux sur la branche **`vps-journal`** de GitHub et commite seulement si quelque chose a changé. Ce sont :
+- pour chaque book : `trades.csv`, `signaux.csv`, `compte.json`, `etat.json` et `bot.log` ;
+- en commun : `pnl.md`, `maj_auto.log` et les journaux de relance.
+
+La branche est séparée du code, donc sans conflit possible avec la mise à jour. Sur le VPS, la copie de travail est dans `C:\fabv2-journal`. Le dépôt est public, donc ces journaux le sont aussi : numéros des essais et P&L, jamais de mot de passe.
+- **Première fois.** Lancer le script à la main pour enregistrer l'accès GitHub : `powershell -ExecutionPolicy Bypass -File C:\fabv2\live\maj_auto.ps1`, puis accepter la fenêtre de connexion GitHub.
+- **Lecture depuis un autre poste** : `git fetch origin vps-journal`, puis par exemple `git show origin/vps-journal:pnl.md` ou `git show origin/vps-journal:A/trades.csv`.
+
+Le journal de la mise à jour est dans `live/etat/maj_auto.log`. Pour créer la tâche, une fois, dans PowerShell :
 ```
 $a = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\fabv2\live\maj_auto.ps1"'; $t = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Minutes 5); Register-ScheduledTask -TaskName "fabv2 - mise a jour du bot" -Action $a -Trigger $t -Settings (New-ScheduledTaskSettingsSet -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 20))
 ```
