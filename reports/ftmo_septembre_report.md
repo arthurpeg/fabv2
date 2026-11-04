@@ -44,3 +44,21 @@ Aucun reward n'a été versé. Le compte financé n'est jamais revenu au-dessus 
 - **Septembre-octobre 2026 est une mauvaise période pour mom** : −1,1 R brut sur 44 nuits, avec 61 % de stops (contre 52 % en moyenne historique). Sur 15 ans, mom ne fait jamais −10 R sur une année. Mais un compte FTMO financé à 1 % saute dès −10 R sous son plus haut, et c'est ce qui s'est passé ici.
 - **Ce résultat est dans la distribution attendue.** Sur 2016-2026, la simulation donnait 44 % de passage et une vie moyenne du financé d'environ 6 mois, avec 17 % des comptes financés sans aucun reward. Deux mois ne suffisent pas à juger : sur un emplacement, l'espérance se construit sur une trentaine d'évals.
 - **Le coût de ce scénario reste borné aux frais** : 174 à 348 $ par emplacement de 10k sur la période.
+
+## Correction : coût par trade et objectif ramené au reste à faire (2026-11-04)
+
+**Pourquoi 4 TP et 1 SL donnent +16,6 % et non +17,5 %.** Le coût CFD (1,5 point) vaut c = 0,02 à 0,035 R par trade, car le stop ne fait que 2 ATR M15, soit environ 0,3 % du prix. La taille est calculée pour qu'un stop, coût compris, coûte exactement le risque. Un TP rapporte donc risque × (2 − c) / (1 + c) = 4,75 à 4,88 % au lieu de 5 %, et un SL coûte −2,50 %. Du 04 au 11/09 : 4,75 + 4,76 + 4,80 − 2,50 + 4,81 = +16,62 %, soit −7,50 → +9,12 %.
+
+**L'objectif n'était pas ramené au reste à faire.** À +9,12 %, il ne manquait que +0,88 %. Avec 2,5 % de risque, il suffisait d'un objectif de 0,38 R. La nuit du 14/09 est montée jusqu'à **+0,88 R** avant de toucher le stop (`MFE_R`, barre du stop exclue). Avec un objectif ramené au reste à faire, **l'éval est validée le 14/09 à +10,00 %**, et non le 18/09. Toutes les simulations FTMO faites à partir d'une liste de trades (mom, trio, 3n + M2, évals rapides, éval/financé) gardaient l'objectif fixe à 2 R en éval. Elles sous-estiment donc un peu le passage et la vitesse de l'éval. Le moteur du n° 18 en mode « jours » ramenait bien l'objectif ; le mode « trades » ne le faisait pas.
+
+Rejeu avec un objectif ramené au reste à faire (cible +10 % et règle du meilleur jour) :
+
+| | Objectif fixe à 2 R | Objectif ramené au reste à faire |
+|---|---|---|
+| Départ 01/09 | validée le 18/09 ; financé perdu le 03/11 (−8,08 %) | **validée le 14/09** ; financé perdu le 03/11 (−6,22 %) |
+| Départs de septembre ayant validé une éval | 9 / 21 | **12 / 21** (08/09 validé le 10/09 au lieu du 11/09) |
+| Rewards au 03/11 | 0 | 0 |
+| Net 10k par départ | −174 à −348 $ | −87 à −348 $ (3 départs n'ont acheté qu'une éval, et leur compte financé est encore ouvert à −9,4 %) |
+
+Sur cette période, le gain de l'éval ne change pas le bilan : les comptes financés perdent tous, parce que mom fait −1,1 R sur ces deux mois.
+
