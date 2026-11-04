@@ -31,6 +31,7 @@ Sélectionnée sur NQ parmi les règles de la [[wiki/research/recoltes-ssrn|réc
 | 18 avenant D | Sur un compte LucidFlex 50K en MNQ (éval 400 $, financé 200 $) ? | EV +157 $ / éval au niveau de prix actuel (sans edge −55 $) ; 5 fois moins que FTMO | [[reports/prereg18_report]] |
 | 18 avenant E | FTMO, financé en RR 2 (TP 4 ATR, 1 %) ? | EV +1 009 $ / 10k (+14 % contre TP 5) ; R moyen TP 4 = +0,126 ; pire : 11 mois sans reward en 2022 | [[reports/prereg18_report]] |
 | heures (descriptif) | Entrée 19:00 / 20:00 / 21:00 recalculée avec vectorbt, corrélations | +0,076 / +0,088 / +0,083 R net, Sharpe 0,91 / 1,00 / 0,87 ; corrélation par nuit 0,85 (19/20), 0,78 (20/21), 0,70 (19/21) ; panier égal Sharpe 1,01 | [[reports/nq_nuit_heures_report]] |
+| Performances 2011-07 → 2026-11-03 (descriptif, vectorbt) | 3 831 nuits, +0,087 R/nuit, 21,7 R/an, Sharpe 1,01, max DD −25,4 R, t 4,0 ; fenêtre vue du holdout (31/08 → 03/11) −1,0 R sur 44 nuits | `results/mom_perf/` ([run_mom_perf.py](../../run_mom_perf.py)) |
 | SL range du soir (exploratoire) | SL au plus bas / plus haut de 17:00→20:00, TP 1 à 2,5 R ? | ❌ net −0,10 à −0,03 R/trade (réf. +0,088) ; stop médian 0,86 ATR, coûts ≈ 0,13 R | [[reports/nq_nuit_sl_range_report]] |
 
 ## Ce qu'on sait

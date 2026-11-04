@@ -116,7 +116,7 @@ def h1_mom(p_adj: Path) -> pd.DataFrame:
     df.attrs = {}
     atr = A.atr_m15(df)
     idx = df.index.as_unit("ns")
-    t_in = idx[T.entry_idx.values]
+    t_in = idx[T.entry_idx.values] + pd.Timedelta(minutes=1)  # entrée = close de la barre 19:59 -> ATR connu à 20:00
     frac = atr.reindex(pd.DatetimeIndex(t_in).as_unit("ns"), method="ffill").values / df.close.values[T.entry_idx.values]
     T["R"] = T.ret.values / (2 * frac)
     sig = s.reindex(b.index)

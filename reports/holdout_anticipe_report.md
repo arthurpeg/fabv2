@@ -45,3 +45,7 @@ Calculée à la demande, avec le même code (`run_nq_ema930_vbt.portefeuille` su
 
 La seule différence vient du **2026-10-29** (short). Il est stoppé à −1 R (−4 709 $), alors que sans stop il ressortait à −0,55 R (−2 600 $) en fin de séance. Les 8 autres trades sont identiques. Sur 9 trades, on ne peut rien en conclure.
 
+## Correction (2026-11-04)
+
+Le R de H1 lisait l'ATR M15 à 19:59, sur la barre d'entrée, au lieu de 20:00 comme dans le code figé (`run_prereg10.r_multiples`). Un TP valait donc 2,57 R au lieu d'environ 2,49. Après correction ([run_holdout_anticipe.py](../run_holdout_anticipe.py)), H1 fait **−0,0230 R par nuit** (t −0,13), contre −0,0231 avant ; rien d'autre ne change. Les performances complètes de mom jusqu'au 2026-11-03 sont dans `results/mom_perf/` ([run_mom_perf.py](../run_mom_perf.py)).
+
