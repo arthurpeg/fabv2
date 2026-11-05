@@ -23,6 +23,8 @@ trials: 0
 | Règle des annonces | fermé à 8:19 ET les jours NFP / CPI / PIB avancé | M2 fermé à 13:55 les jours de Fed ; 3n non concerné |
 | Payout (cible + attente) | si seule la règle des 50 % bloque, viser 2 × meilleur jour − gain ; dès qu'elle est respectée (gain > 0), ne plus trader jusqu'au 14e jour après le 1er trade, puis demander le payout | idem |
 
+**Anti-hedging** (règle FTMO, ajoutée le 2026-11-05) : une nuit où mom est short, pas de 3n long sur B ; M2 trade alors à pleine taille. 192 nuits sur 1 635 concernées, coût ≈ 2,6 % du gain total ([[reports/ftmo_anti_hedging_report]]). Tous les chiffres ci-dessous antérieurs au 2026-11-05 l'ignorent (écarts de 1 à 3 %).
+
 **Scaling** : dépôt de 869 $. On monte d'un palier quand la cagnotte couvre 10 évals par paire. Paliers par stratégie : 1 → 2 → 3 × 10k, puis 1 × 100k (les 10k ne sont plus rachetés), puis 2 × 100k (400k, les 10k sont abandonnés).
 
 **Repères** ([[reports/ftmo_scaling_report]], [[reports/ftmo_monte_carlo_report]], [[reports/ftmo_deux_comptes_historique_report]]) :

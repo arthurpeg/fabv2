@@ -14,7 +14,7 @@ Il y a un processus Python par book, et chaque processus a son propre terminal M
 
 - Le bot calcule les signaux sur les barres **US100.cash** du terminal, aux heures du backtest (heure de New York) :
   - mom : 20:00, sortie 9:30 ;
-  - 3n : 20:05, sortie 03:00 ;
+  - 3n : 20:05, sortie 03:00 ; pas de 3n une nuit où mom est short (règle anti-hedging de FTMO, le book B calcule lui-même le signe de mom) ;
   - M2 : 9:35, sortie 16:00.
 - Le stop et l'objectif sont posés chez le broker juste après l'entrée.
 - Le bot ferme lui-même la position à l'heure de sortie.

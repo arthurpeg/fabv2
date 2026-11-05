@@ -38,6 +38,10 @@ COST = 1.5 / 25_684.0
 R_EVAL, R_FUND, TP_R, CYCLE = 2.5, 1.0, 2.0, 10
 FEE = PRICES_EUR[10_000] * EUR
 SIZE = 10_000
+# Règle anti-hedging (FTMO interdit des positions opposées sur deux comptes, ajoutée le 2026-11-05) : une nuit où mom
+# est short (compte A), pas de 3n long sur le compte B ; M2 garde alors toute sa taille (pas de 3n ce jour-là).
+# Règle conservatrice : appliquée dès que le signal mom est short, même si le compte A ne trade pas ce soir-là.
+ANTI_HEDGE = True
 LOG: list[str] = []
 
 
@@ -50,7 +54,7 @@ def bibliotheque() -> pd.DataFrame:
     """Une ligne par trade : date (séance), strat, R brut, s (stop en fraction du prix), MFE en R."""
     m = pd.read_parquet("cache/propfirm/nq_nuit_tp4_mfe.parquet")
     m = pd.DataFrame({"date": pd.to_datetime(m.night), "strat": "mom", "R": m.R_brut,
-                      "s": m.risk.fillna(m.risk.median()), "MFE": m.MFE_R})
+                      "s": m.risk.fillna(m.risk.median()), "MFE": m.MFE_R, "dir": m.dir})
     t = pd.read_csv("results/propfirm_combo/trades_tp2.csv", parse_dates=["date"])
     t = t.rename(columns={"R_brut": "R", "MFE_R": "MFE"})[["date", "strat", "R", "s", "MFE"]]
     hist = pd.concat([m, t], ignore_index=True)
@@ -59,7 +63,7 @@ def bibliotheque() -> pd.DataFrame:
     import run_propfirm_combo as C
     w = C.trades("cache/holdout_anticipe/brut/NQ_v0_1m.parquet", "2026-08-31", "2026-11-03", "2026-11-04")
     w = w.rename(columns={"R_brut": "R", "MFE_R": "MFE"})[["date", "strat", "R", "s", "MFE"]]
-    mw = S.trades().rename(columns={"night": "date", "MFE_R": "MFE"})[["date", "R", "s", "MFE"]].assign(strat="mom")
+    mw = S.trades().rename(columns={"night": "date", "MFE_R": "MFE"})[["date", "R", "s", "MFE", "dir"]].assign(strat="mom")
     lib = pd.concat([hist, w, mw], ignore_index=True).sort_values("date").reset_index(drop=True)
     # règle des annonces en financé (build_news_trades.py) : trades mom coupés à 8:19, M2 coupés à 13:55
     news = pd.read_parquet("cache/propfirm/news_trades.parquet")[["date", "strat", "R_news", "MFE_news"]]
@@ -193,6 +197,8 @@ def tableau(lib: pd.DataFrame) -> list[tuple[pd.Timestamp, dict]]:
     for d, g in lib.groupby("date"):
         row = {s: (float(x.R), COST / float(x.s), float(x.MFE), float(x.R_news), float(x.MFE_news))
                for s, x in g.set_index("strat").iterrows()}
+        if ANTI_HEDGE and "3n" in row and (g.loc[g.strat == "mom", "dir"] < 0).any():
+            del row["3n"]  # mom short : pas de 3n long sur l'autre compte
         jours.append((d, row))
     return jours
 

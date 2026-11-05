@@ -124,6 +124,15 @@ def test_book_B_egal_backtest(tmp_path):
         assert r.dist == pytest.approx(x.dist, rel=1e-9)
 
 
+def test_book_B_anti_hedging(tmp_path):
+    """mom short (book A) : aucun 3n long, et M2 trade chaque fois qu'il a un signal (pas de 3n ce jour-là)."""
+    t = rejoue("B", tmp_path, signe=-1)
+    ref = pd.read_csv("results/propfirm_combo/trades_tp2.csv", parse_dates=["date"])
+    ref = ref[(ref.date >= "2026-07-27") & (ref.date <= "2026-08-28") & (ref.strat == "M2")]
+    assert (t.strat != "3n").all()
+    assert set(zip(pd.to_datetime(t.seance), t.strat, t.side)) == set(zip(ref.date, ref.strat, ref.side))
+
+
 def test_book_A_entre_chaque_nuit(tmp_path):
     t = rejoue("A", tmp_path, a="2026-08-02")
     ref = pd.read_parquet("cache/propfirm/nq_nuit_tp4_mfe.parquet")

@@ -385,6 +385,11 @@ class Bot:
         self.log(f"3n {seance:%Y-%m-%d} : somme des 3 nuits {r3:+.1f} bps → {'LONG' if sig else 'rien'}")
         if not sig or not np.isfinite(atr):
             return
+        # anti-hedging FTMO : pas de 3n long une nuit où le book A (mom) est short ; M2 trade alors à pleine taille
+        s_mom = self.signe_mom(self.prochaine_seance(now))[0]
+        if s_mom < 0:
+            self.log(f"3n {seance:%Y-%m-%d} : mom est short ce soir (book A), pas de 3n long (règle anti-hedging)")
+            return
         base = self.debut(seance)
         if base is None:
             return

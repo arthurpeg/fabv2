@@ -2,31 +2,31 @@ Monte-Carlo, deux comptes 10k (A mom, B 3n + M2), règle des annonces + cible + 
 R moyen par stratégie sur l'historique : 3n +0.160, M2 +0.137, mom +0.124
 
 ===== Scénario « historique » : 5000 chemins de 3 ans (3898 séances sources) =====
-  net à 1 an  : moyenne +3,934 $ ; médiane +3,916 $ ; 5e c. +1,680 $ ; 1er c. +849 $ ; P(< 0) 0.1 %
-  net à 3 ans : moyenne +12,978 $ ; médiane +12,889 $ ; 5e c. +8,798 $ ; 1er c. +7,243 $ ; P(< 0) 0.0 %
-  net à 3 ans par compte : A médiane +7,096 $ (P < 0 0.0 %), B médiane +5,827 $ (P < 0 0.0 %) ; corrélation des nets A / B +0.10
-  max DD de trésorerie : médiane -348 $ ; 95e c. -608 $ ; 99e c. -782 $ ; pire -1,477 $
+  net à 1 an  : moyenne +3,888 $ ; médiane +3,882 $ ; 5e c. +1,556 $ ; 1er c. +807 $ ; P(< 0) 0.1 %
+  net à 3 ans : moyenne +12,821 $ ; médiane +12,752 $ ; 5e c. +8,629 $ ; 1er c. +6,939 $ ; P(< 0) 0.0 %
+  net à 3 ans par compte : A médiane +7,096 $ (P < 0 0.0 %), B médiane +5,682 $ (P < 0 0.0 %) ; corrélation des nets A / B +0.11
+  max DD de trésorerie : médiane -348 $ ; 95e c. -608 $ ; 99e c. -797 $ ; pire -1,477 $
   pire série d'évals sans reward, compte A : médiane 3 ; 95e c. 7 ; 99e c. 9 ; max 15 ; P(≥ 6) 14.3 %
-  pire série d'évals sans reward, compte B : médiane 2 ; 95e c. 4 ; 99e c. 6 ; max 10 ; P(≥ 6) 1.8 %
-  plus longue période sans aucun reward (séances) : médiane 80 ; 95e c. 132 ; max 326 ; premier reward : médiane 30 séances, 95e c. 78
-  évals sur 3 ans : A 8.9, B 3.2 ; rewards sur 3 ans : 41.8
+  pire série d'évals sans reward, compte B : médiane 2 ; 95e c. 4 ; 99e c. 6 ; max 10 ; P(≥ 6) 1.9 %
+  plus longue période sans aucun reward (séances) : médiane 81 ; 95e c. 136 ; max 326 ; premier reward : médiane 30 séances, 95e c. 80
+  évals sur 3 ans : A 8.9, B 3.2 ; rewards sur 3 ans : 41.3
 
 ===== Scénario « récent » : 5000 chemins de 3 ans (2003 séances sources) =====
-  net à 1 an  : moyenne +3,708 $ ; médiane +3,649 $ ; 5e c. +1,420 $ ; 1er c. +649 $ ; P(< 0) 0.2 %
-  net à 3 ans : moyenne +12,328 $ ; médiane +12,305 $ ; 5e c. +8,092 $ ; 1er c. +6,420 $ ; P(< 0) 0.0 %
-  net à 3 ans par compte : A médiane +5,414 $ (P < 0 0.0 %), B médiane +6,811 $ (P < 0 0.0 %) ; corrélation des nets A / B +0.14
-  max DD de trésorerie : médiane -348 $ ; 95e c. -695 $ ; 99e c. -869 $ ; pire -1,304 $
+  net à 1 an  : moyenne +3,588 $ ; médiane +3,541 $ ; 5e c. +1,246 $ ; 1er c. +462 $ ; P(< 0) 0.3 %
+  net à 3 ans : moyenne +11,983 $ ; médiane +11,919 $ ; 5e c. +7,666 $ ; 1er c. +5,869 $ ; P(< 0) 0.0 %
+  net à 3 ans par compte : A médiane +5,414 $ (P < 0 0.0 %), B médiane +6,501 $ (P < 0 0.0 %) ; corrélation des nets A / B +0.19
+  max DD de trésorerie : médiane -348 $ ; 95e c. -695 $ ; 99e c. -956 $ ; pire -1,477 $
   pire série d'évals sans reward, compte A : médiane 4 ; 95e c. 9 ; 99e c. 12 ; max 17 ; P(≥ 6) 27.5 %
-  pire série d'évals sans reward, compte B : médiane 2 ; 95e c. 4 ; 99e c. 6 ; max 10 ; P(≥ 6) 1.4 %
-  plus longue période sans aucun reward (séances) : médiane 82 ; 95e c. 138 ; max 244 ; premier reward : médiane 30 séances, 95e c. 81
-  évals sur 3 ans : A 11.6, B 3.4 ; rewards sur 3 ans : 40.9
+  pire série d'évals sans reward, compte B : médiane 2 ; 95e c. 4 ; 99e c. 6 ; max 10 ; P(≥ 6) 1.7 %
+  plus longue période sans aucun reward (séances) : médiane 86 ; 95e c. 144 ; max 253 ; premier reward : médiane 31 séances, 95e c. 86
+  évals sur 3 ans : A 11.6, B 3.4 ; rewards sur 3 ans : 39.8
 
 ===== Scénario « edge / 2 » : 5000 chemins de 3 ans (3898 séances sources) =====
-  net à 1 an  : moyenne +2,354 $ ; médiane +2,301 $ ; 5e c. +327 $ ; 1er c. -384 $ ; P(< 0) 2.7 %
-  net à 3 ans : moyenne +7,963 $ ; médiane +7,939 $ ; 5e c. +4,175 $ ; 1er c. +2,730 $ ; P(< 0) 0.0 %
-  net à 3 ans par compte : A médiane +4,636 $ (P < 0 0.2 %), B médiane +3,213 $ (P < 0 0.6 %) ; corrélation des nets A / B +0.08
-  max DD de trésorerie : médiane -521 $ ; 95e c. -956 $ ; 99e c. -1,304 $ ; pire -2,781 $
+  net à 1 an  : moyenne +2,342 $ ; médiane +2,284 $ ; 5e c. +293 $ ; 1er c. -470 $ ; P(< 0) 2.8 %
+  net à 3 ans : moyenne +7,954 $ ; médiane +7,936 $ ; 5e c. +4,177 $ ; 1er c. +2,647 $ ; P(< 0) 0.0 %
+  net à 3 ans par compte : A médiane +4,636 $ (P < 0 0.2 %), B médiane +3,219 $ (P < 0 0.6 %) ; corrélation des nets A / B +0.10
+  max DD de trésorerie : médiane -521 $ ; 95e c. -956 $ ; 99e c. -1,311 $ ; pire -2,433 $
   pire série d'évals sans reward, compte A : médiane 5 ; 95e c. 10 ; 99e c. 14 ; max 26 ; P(≥ 6) 41.8 %
-  pire série d'évals sans reward, compte B : médiane 3 ; 95e c. 7 ; 99e c. 10 ; max 20 ; P(≥ 6) 15.4 %
-  plus longue période sans aucun reward (séances) : médiane 106 ; 95e c. 178 ; max 338 ; premier reward : médiane 36 séances, 95e c. 104
-  évals sur 3 ans : A 14.1, B 6.6 ; rewards sur 3 ans : 29.8
+  pire série d'évals sans reward, compte B : médiane 3 ; 95e c. 7 ; 99e c. 10 ; max 18 ; P(≥ 6) 13.7 %
+  plus longue période sans aucun reward (séances) : médiane 106 ; 95e c. 179 ; max 366 ; premier reward : médiane 36 séances, 95e c. 107
+  évals sur 3 ans : A 14.1, B 6.3 ; rewards sur 3 ans : 29.7

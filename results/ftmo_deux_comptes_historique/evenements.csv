@@ -52,8 +52,8 @@ A,2013-12-27,reward,reward 3.47 % (347 $)
 A,2014-01-10,reward,reward 3.43 % (343 $)
 A,2014-01-23,reward,reward 3.42 % (342 $)
 B,2014-01-29,reward,reward 3.52 % (352 $)
-B,2014-04-03,reward,reward 3.52 % (352 $)
 A,2014-04-03,reward,reward 3.51 % (351 $)
+B,2014-04-03,reward,reward 3.52 % (352 $)
 A,2014-04-17,reward,reward 3.54 % (354 $)
 A,2014-06-03,reward,reward 3.51 % (351 $)
 B,2014-07-09,reward,reward 3.50 % (350 $)
@@ -92,23 +92,23 @@ B,2016-02-11,reward,reward 3.57 % (357 $)
 B,2016-02-25,reward,reward 3.09 % (309 $)
 A,2016-03-02,échec,financé perdu (-9.07 %) → nouvelle éval
 A,2016-03-24,validée,éval n° 13 validée
+B,2016-03-29,reward,reward 3.56 % (356 $)
 A,2016-05-19,reward,reward 3.52 % (352 $)
 A,2016-06-20,reward,reward 3.49 % (349 $)
 A,2016-07-26,reward,reward 3.55 % (355 $)
 A,2016-09-05,reward,reward 3.41 % (341 $)
 A,2016-09-19,reward,reward 3.24 % (324 $)
-B,2016-11-25,reward,reward 3.59 % (359 $)
-B,2016-12-13,reward,reward 3.51 % (351 $)
-B,2016-12-29,reward,reward 3.54 % (354 $)
-B,2017-01-20,reward,reward 3.46 % (346 $)
+B,2016-12-01,reward,reward 3.59 % (359 $)
+B,2017-01-03,reward,reward 3.54 % (354 $)
 A,2017-01-31,reward,reward 3.55 % (355 $)
 A,2017-02-14,reward,reward 3.45 % (345 $)
-B,2017-04-12,échec,financé perdu (-10.00 %) → nouvelle éval
+B,2017-03-27,échec,financé perdu (-7.64 %) → nouvelle éval
+B,2017-04-12,échec,éval perdu (-2.10 %) → nouvelle éval
 A,2017-05-05,reward,reward 3.42 % (342 $)
 B,2017-05-25,échec,éval perdu (-3.56 %) → nouvelle éval
 A,2017-06-05,reward,reward 3.40 % (340 $)
 A,2017-06-19,reward,reward 3.40 % (340 $)
-B,2017-06-29,validée,éval n° 3 validée
+B,2017-06-29,validée,éval n° 4 validée
 A,2017-07-14,reward,reward 3.49 % (349 $)
 A,2017-08-18,reward,reward 3.45 % (345 $)
 B,2017-08-30,reward,reward 2.92 % (292 $)
@@ -136,17 +136,17 @@ A,2018-11-14,reward,reward 3.57 % (357 $)
 B,2018-11-20,reward,reward 3.59 % (359 $)
 B,2019-01-23,échec,financé perdu (-8.99 %) → nouvelle éval
 A,2019-01-31,reward,reward 3.57 % (357 $)
-B,2019-02-04,validée,éval n° 4 validée
+B,2019-02-04,validée,éval n° 5 validée
+B,2019-02-19,reward,reward 3.54 % (354 $)
 A,2019-02-25,échec,financé perdu (-6.80 %) → nouvelle éval
 A,2019-03-11,échec,éval perdu (-4.67 %) → nouvelle éval
-B,2019-03-12,reward,reward 3.49 % (349 $)
 A,2019-03-18,échec,éval perdu (-8.52 %) → nouvelle éval
 A,2019-03-26,validée,éval n° 18 validée
-B,2019-04-09,reward,reward 3.55 % (355 $)
 A,2019-05-20,échec,financé perdu (-8.61 %) → nouvelle éval
 A,2019-06-04,validée,éval n° 19 validée
-B,2019-06-12,reward,reward 3.56 % (356 $)
-B,2019-07-23,reward,reward 3.51 % (351 $)
+B,2019-06-06,reward,reward 3.56 % (356 $)
+B,2019-06-19,reward,reward 0.46 % (46 $)
+B,2019-07-10,reward,reward 3.51 % (351 $)
 B,2019-08-05,reward,reward 2.19 % (219 $)
 A,2019-08-21,reward,reward 3.57 % (357 $)
 A,2019-09-03,reward,reward 3.50 % (350 $)
@@ -154,35 +154,33 @@ A,2019-09-25,échec,financé perdu (-7.15 %) → nouvelle éval
 A,2019-10-09,échec,éval perdu (-10.00 %) → nouvelle éval
 A,2019-10-24,échec,éval perdu (-6.31 %) → nouvelle éval
 A,2019-11-05,validée,éval n° 22 validée
-B,2019-11-07,reward,reward 3.57 % (357 $)
+B,2019-11-26,reward,reward 3.57 % (357 $)
 A,2019-11-29,reward,reward 3.52 % (352 $)
-B,2019-11-29,reward,reward 3.48 % (348 $)
-B,2019-12-16,reward,reward 3.51 % (351 $)
+B,2019-12-10,reward,reward 3.51 % (351 $)
 A,2019-12-26,reward,reward 3.47 % (347 $)
-B,2019-12-30,reward,reward 3.47 % (347 $)
+B,2019-12-31,reward,reward 3.47 % (347 $)
 A,2020-01-10,reward,reward 3.56 % (356 $)
-B,2020-01-13,reward,reward 3.49 % (349 $)
+B,2020-01-22,reward,reward 3.56 % (356 $)
 A,2020-01-23,reward,reward 1.84 % (184 $)
-B,2020-01-27,reward,reward 0.97 % (97 $)
+B,2020-02-05,reward,reward 3.49 % (349 $)
 A,2020-02-06,reward,reward 3.52 % (352 $)
 A,2020-02-19,reward,reward 3.51 % (351 $)
-B,2020-03-06,reward,reward 3.52 % (352 $)
 A,2020-04-17,échec,financé perdu (-8.67 %) → nouvelle éval
+B,2020-04-20,reward,reward 3.59 % (359 $)
 A,2020-04-27,validée,éval n° 23 validée
-B,2020-06-03,reward,reward 3.59 % (359 $)
 A,2020-07-29,reward,reward 3.56 % (356 $)
 A,2020-09-17,reward,reward 3.58 % (358 $)
-B,2020-09-21,reward,reward 3.57 % (357 $)
 A,2020-10-09,reward,reward 3.55 % (355 $)
-B,2020-11-03,reward,reward 3.58 % (358 $)
-B,2020-11-24,reward,reward 3.57 % (357 $)
+B,2020-10-19,reward,reward 3.58 % (358 $)
+B,2020-11-05,reward,reward 3.58 % (358 $)
 A,2020-12-15,échec,financé perdu (-7.41 %) → nouvelle éval
 A,2020-12-18,validée,éval n° 24 validée
 A,2021-01-04,reward,reward 3.49 % (349 $)
 A,2021-02-12,reward,reward 3.57 % (357 $)
-B,2021-03-23,reward,reward 3.57 % (357 $)
-B,2021-04-16,reward,reward 3.55 % (355 $)
-B,2021-04-29,reward,reward 3.53 % (353 $)
+B,2021-03-16,reward,reward 3.57 % (357 $)
+B,2021-03-29,reward,reward 3.57 % (357 $)
+B,2021-04-19,reward,reward 3.52 % (352 $)
+B,2021-05-04,reward,reward 3.53 % (353 $)
 A,2021-05-12,échec,financé perdu (-10.00 %) → nouvelle éval
 A,2021-05-24,validée,éval n° 25 validée
 B,2021-06-03,reward,reward 3.57 % (357 $)
@@ -201,37 +199,34 @@ B,2022-04-14,reward,reward 3.59 % (359 $)
 B,2022-04-28,reward,reward 3.57 % (357 $)
 A,2022-05-25,échec,financé perdu (-9.02 %) → nouvelle éval
 A,2022-06-14,échec,éval perdu (-9.41 %) → nouvelle éval
-B,2022-06-17,reward,reward 3.57 % (357 $)
-B,2022-06-30,reward,reward 3.58 % (358 $)
+B,2022-06-28,reward,reward 3.58 % (358 $)
 A,2022-07-01,validée,éval n° 29 validée
 A,2022-07-18,reward,reward 3.54 % (354 $)
-B,2022-09-09,reward,reward 3.58 % (358 $)
-B,2022-12-14,reward,reward 3.60 % (360 $)
-B,2022-12-30,reward,reward 3.56 % (356 $)
+B,2022-10-31,reward,reward 3.59 % (359 $)
+B,2022-12-28,reward,reward 3.56 % (356 $)
 A,2023-01-26,reward,reward 3.57 % (357 $)
+B,2023-02-09,reward,reward 3.58 % (358 $)
 A,2023-02-13,reward,reward 3.53 % (353 $)
 A,2023-02-27,reward,reward 3.52 % (352 $)
 A,2023-04-11,reward,reward 3.58 % (358 $)
 A,2023-04-24,reward,reward 3.48 % (348 $)
-B,2023-05-31,échec,financé perdu (-8.02 %) → nouvelle éval
-B,2023-06-08,échec,éval perdu (-10.00 %) → nouvelle éval
-B,2023-06-30,échec,éval perdu (-2.47 %) → nouvelle éval
-B,2023-07-14,validée,éval n° 7 validée
+B,2023-06-01,échec,financé perdu (-10.00 %) → nouvelle éval
+B,2023-06-09,échec,éval perdu (-9.02 %) → nouvelle éval
+B,2023-06-16,validée,éval n° 7 validée
 A,2023-07-31,reward,reward 3.52 % (352 $)
-B,2023-08-24,reward,reward 3.53 % (353 $)
-B,2023-09-06,reward,reward 3.55 % (355 $)
+B,2023-08-25,reward,reward 3.56 % (356 $)
 A,2023-09-13,échec,financé perdu (-10.00 %) → nouvelle éval
 A,2023-09-20,échec,éval perdu (-7.29 %) → nouvelle éval
-B,2023-10-05,reward,reward 3.54 % (354 $)
 A,2023-10-05,échec,éval perdu (-7.67 %) → nouvelle éval
+B,2023-10-17,reward,reward 3.54 % (354 $)
 A,2023-10-17,échec,éval perdu (-10.00 %) → nouvelle éval
 A,2023-10-26,échec,éval perdu (-10.00 %) → nouvelle éval
 A,2023-11-09,validée,éval n° 34 validée
 A,2023-11-23,reward,reward 3.50 % (350 $)
 A,2024-02-27,reward,reward 3.50 % (350 $)
 A,2024-05-22,échec,financé perdu (-8.08 %) → nouvelle éval
-B,2024-05-27,reward,reward 3.56 % (356 $)
 A,2024-05-28,validée,éval n° 35 validée
+B,2024-05-28,reward,reward 3.56 % (356 $)
 B,2024-06-21,reward,reward 3.53 % (353 $)
 A,2024-07-02,reward,reward 3.49 % (349 $)
 B,2024-07-09,reward,reward 3.53 % (353 $)
@@ -242,8 +237,8 @@ B,2024-11-14,reward,reward 0.93 % (93 $)
 B,2024-11-29,reward,reward 3.54 % (354 $)
 A,2024-12-09,reward,reward 3.56 % (356 $)
 B,2024-12-16,reward,reward 3.51 % (351 $)
-B,2025-01-06,reward,reward 3.57 % (357 $)
 A,2025-01-06,reward,reward 3.55 % (355 $)
+B,2025-01-06,reward,reward 3.57 % (357 $)
 A,2025-01-23,reward,reward 3.54 % (354 $)
 B,2025-02-04,reward,reward 3.52 % (352 $)
 A,2025-03-10,échec,financé perdu (-7.39 %) → nouvelle éval
