@@ -35,3 +35,7 @@
 2026-11-05 04:16:59 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
 2026-11-05 04:16:59 ET [A] démarrage (code 8550720) ; compte virtuel éval -2.53 %, 0 position(s) suivie(s)
 2026-11-05 04:17:00 ET [A] trading de nouveau autorisé sur l'essai 1515190763
+2026-11-05 06:46:33 ET [A] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-05 06:46:48 ET [A] MT5 connecté : compte 1515190763 sur FTMO-Demo, solde 9,747.37 USD
+2026-11-05 06:46:48 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-05 06:46:49 ET [A] démarrage (code 2b46534) ; compte virtuel éval -2.53 %, 0 position(s) suivie(s)

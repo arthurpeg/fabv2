@@ -8,3 +8,4 @@
 2026-11-04 23:06:32 journal : push en echec (acces GitHub ? lancer live\maj_auto.ps1 une fois a la main)
 2026-11-05 10:16:38 mise a jour 330cb7b -> 8550720, tests OK, bots relances : live/bot.py, live/broker.py, live/pnl.py
 2026-11-05 12:16:35 mise a jour 8550720 -> 8b20b67, tests OK (code du bot inchange)
+2026-11-05 12:46:32 mise a jour 8b20b67 -> 2b46534, tests OK, bots relances : live/bot.py
