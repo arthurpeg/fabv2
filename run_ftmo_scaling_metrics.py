@@ -76,7 +76,7 @@ class Gestion(S.Gestion):
                 else:
                     self.idle += 1
         self.slots = [s for s in self.slots if s["compte"] is not None or s["rachat"]]
-        if self.palier < 4 and self.cagnotte >= S.reserve(self.palier + 1):
+        if self.palier < len(S.PALIERS) - 1 and self.cagnotte >= S.reserve(self.palier + 1):
             self._monte(t, d)
 
 
