@@ -28,3 +28,4 @@
 2026-11-04 15:56:57 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
 2026-11-04 15:56:57 ET [A] démarrage (code 330cb7b) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
 2026-11-04 17:01:24 ET [A] !! TRADING DÉSACTIVÉ sur l'essai 1515190763 (objectif de l'essai atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter dans ce terminal
+2026-11-04 20:00:03 ET [A] OUVERT mom long 1.76 lots à 28322.68 (bid 28320.63, ask 28322.58, spread 1.95, glissement +0.10 pts) ; SL 139.4 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 05/11 09:29:57
