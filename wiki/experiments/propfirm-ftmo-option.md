@@ -25,6 +25,8 @@ trials: 0
 
 **Anti-hedging** (règle FTMO, ajoutée le 2026-11-05) : une nuit où mom est short, pas de 3n long sur B ; M2 trade alors à pleine taille. 192 nuits sur 1 635 concernées, coût ≈ 2,6 % du gain total ([[reports/ftmo_anti_hedging_report]]). Tous les chiffres ci-dessous antérieurs au 2026-11-05 l'ignorent (écarts de 1 à 3 %).
 
+**Book C hypothétique** (2026-11-05, non retenu) : un trade au hasard chaque nuit chez FundingPips 1 Step Flex 10k ajoute ≈ +25 % au gain de A + B (≈ 1 000 $/an) et ≈ +50 % au creux de trésorerie ; seul, perdant sur 12 mois dans 20 % des cas ([[reports/book_c_report]]).
+
 **Scaling** : dépôt de 869 $. On monte d'un palier quand la cagnotte couvre 10 évals par paire. Paliers par stratégie : 1 → 2 → 3 × 10k, puis 1 × 100k (les 10k ne sont plus rachetés), puis 2 × 100k (400k, les 10k sont abandonnés).
 
 **Repères** ([[reports/ftmo_scaling_report]], [[reports/ftmo_monte_carlo_report]], [[reports/ftmo_deux_comptes_historique_report]]) :
