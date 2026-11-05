@@ -30,6 +30,7 @@ trials: 0
 **Repères** ([[reports/ftmo_scaling_report]], [[reports/ftmo_monte_carlo_report]], [[reports/ftmo_deux_comptes_historique_report]]) :
 - 400k atteints en ≈ 12 mois en médiane, ≈ 18 mois si l'espérance est divisée par 2 ;
 - ≈ 7 700 $/mois une fois à 400k ;
+- hypothèse 800k (non permise par FTMO aujourd'hui, [[reports/ftmo_scaling_800k_report]]) : 800k en ≈ 15 mois médian (21 avec l'espérance / 2), ≈ 15 300 $/mois ;
 - ruine (dépôt perdu) dans 0,2 à 2,5 % des chemins ;
 - au démarrage (deux 10k, rachat après échec ; [[reports/ftmo_proba_payout_report]]) : au moins un payout avec la 1re éval de chaque compte dans 79 % des départs (62 % avec l'espérance / 2), 97 % avec 2 évals par compte, ≈ 100 % avec 5 ; 1er payout médian en 30 séances.
 - validation de la 1re éval : A 53 %, B 64 %, au moins un des deux 82 % ; éval réussie en 6 séances (A) ou 14 (B) en médiane ; un financé validé paie au moins un reward dans 89 % (A) et 96 % (B) des cas.

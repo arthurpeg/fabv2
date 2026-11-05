@@ -1,0 +1,47 @@
+Réserves par palier : 1 : 869 $, 2 : 1,738 $, 3 : 2,607 $, 4 : 5,489 $, 5 : 10,978 $, 6 : 16,467 $, 7 : 21,956 $
+
+===== Vrai chemin 2011-07-01 → 2026-11-03 =====
+  2011-11-07 palier 2 : 2 x 10k + 0 x 100k par stratégie, cagnotte 1,683 $
+  2012-01-24 palier 3 : 3 x 10k + 0 x 100k par stratégie, cagnotte 2,484 $
+  2012-03-15 palier 4 : 0 x 10k + 1 x 100k par stratégie, cagnotte 4,439 $
+  2012-04-25 palier 5 : 0 x 10k + 2 x 100k par stratégie, cagnotte 10,354 $
+  2012-06-12 palier 6 : 0 x 10k + 3 x 100k par stratégie, cagnotte 16,244 $
+  2012-08-14 palier 7 : 0 x 10k + 4 x 100k par stratégie, cagnotte 24,060 $
+  cagnotte fin d'année ($) : 2011 1,950, 2012 106,717, 2013 283,185, 2014 519,688, 2015 707,247, 2016 829,077, 2017 1,021,542, 2018 1,198,183, 2019 1,346,419, 2020 1,505,658, 2021 1,700,953, 2022 1,792,158, 2023 1,918,276, 2024 2,075,006, 2025 2,267,471, 2026 2,507,350
+  revenu mensuel une fois à 800k : moyenne 14,472 $, médiane 14,016 $, mois négatifs 12 %, pire -6,587 $ (2025-05)
+
+===== glissants : 130 chemins de 1260 séances (5 ans) =====
+  400k atteint dans 100.0 % des chemins ; délai médian 12.0 mois (10e c. 9.0, 90e c. 15.9)
+  600k atteint dans 100.0 % des chemins ; délai médian 13.5 mois (10e c. 10.2, 90e c. 17.5)
+  800k atteint dans 100.0 % des chemins ; délai médian 14.7 mois (10e c. 11.2, 90e c. 19.4)
+  cagnotte à 12 mois : médiane +9,829 $ ; 10e c. +3,559 $ ; 90e c. +26,379 $
+  cagnotte à 24 mois : médiane +142,615 $ ; 10e c. +76,782 $ ; 90e c. +215,320 $
+  cagnotte à 36 mois : médiane +301,627 $ ; 10e c. +217,951 $ ; 90e c. +417,930 $
+  cagnotte à 60 mois : médiane +623,350 $ ; 10e c. +510,167 $ ; 90e c. +752,762 $
+  revenu mensuel moyen une fois à 400k : médiane 12,836 $ (10e c. 10,602, 90e c. 14,877) ; mois négatifs 12 % ; pire mois (médiane des chemins) -4,391 $
+  revenu mensuel moyen une fois à 800k : médiane 13,354 $ (10e c. 11,261, 90e c. 15,234) ; mois négatifs 11 % ; pire mois (médiane des chemins) -4,391 $
+  max DD de cagnotte : médiane -6,587 $, 10e c. -10,978 $, pire -10,978 $ ; ruine 0.0 % ; comptes 100k financés perdus sur 5 ans (médiane) 23 ; évals 100k achetées 58
+
+===== mc_historique : 1000 chemins de 1260 séances (5 ans) =====
+  400k atteint dans 99.8 % des chemins ; délai médian 12.4 mois (10e c. 8.5, 90e c. 17.5)
+  600k atteint dans 99.8 % des chemins ; délai médian 13.9 mois (10e c. 9.9, 90e c. 19.2)
+  800k atteint dans 99.8 % des chemins ; délai médian 15.0 mois (10e c. 10.7, 90e c. 20.5)
+  cagnotte à 12 mois : médiane +9,017 $ ; 10e c. +2,914 $ ; 90e c. +37,394 $
+  cagnotte à 24 mois : médiane +153,299 $ ; 10e c. +57,760 $ ; 90e c. +252,905 $
+  cagnotte à 36 mois : médiane +335,444 $ ; 10e c. +218,103 $ ; 90e c. +461,575 $
+  cagnotte à 60 mois : médiane +705,956 $ ; 10e c. +537,458 $ ; 90e c. +860,291 $
+  revenu mensuel moyen une fois à 400k : médiane 14,692 $ (10e c. 11,438, 90e c. 17,768) ; mois négatifs 12 % ; pire mois (médiane des chemins) -4,391 $
+  revenu mensuel moyen une fois à 800k : médiane 15,284 $ (10e c. 11,940, 90e c. 18,312) ; mois négatifs 11 % ; pire mois (médiane des chemins) -4,391 $
+  max DD de cagnotte : médiane -6,587 $, 10e c. -13,174 $, pire -32,934 $ ; ruine 1.1 % ; comptes 100k financés perdus sur 5 ans (médiane) 26 ; évals 100k achetées 58
+
+===== mc_edge_2 : 1000 chemins de 1260 séances (5 ans) =====
+  400k atteint dans 96.2 % des chemins ; délai médian 17.7 mois (10e c. 11.7, 90e c. 27.0)
+  600k atteint dans 96.2 % des chemins ; délai médian 19.8 mois (10e c. 13.1, 90e c. 29.9)
+  800k atteint dans 96.1 % des chemins ; délai médian 21.2 mois (10e c. 14.4, 90e c. 31.6)
+  cagnotte à 12 mois : médiane +3,391 $ ; 10e c. +1,162 $ ; 90e c. +10,625 $
+  cagnotte à 24 mois : médiane +37,550 $ ; 10e c. +3,798 $ ; 90e c. +124,925 $
+  cagnotte à 36 mois : médiane +156,887 $ ; 10e c. +33,898 $ ; 90e c. +269,966 $
+  cagnotte à 60 mois : médiane +394,603 $ ; 10e c. +220,347 $ ; 90e c. +550,144 $
+  revenu mensuel moyen une fois à 400k : médiane 9,382 $ (10e c. 6,385, 90e c. 12,442) ; mois négatifs 23 % ; pire mois (médiane des chemins) -6,587 $
+  revenu mensuel moyen une fois à 800k : médiane 10,070 $ (10e c. 6,908, 90e c. 13,341) ; mois négatifs 22 % ; pire mois (médiane des chemins) -6,587 $
+  max DD de cagnotte : médiane -10,978 $, 10e c. -19,760 $, pire -41,716 $ ; ruine 5.9 % ; comptes 100k financés perdus sur 5 ans (médiane) 36 ; évals 100k achetées 88

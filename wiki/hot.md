@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-05 18:39
+updated: 2026-11-05 18:41
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-05 18:39
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-05] query | Scaling FTMO hypothétique jusqu'à 800k (3 puis 4 × 100k par stratégie ; run_ftmo_scaling_800k.py, paliers généralisés dans run_ftmo_scaling*.py ; reports/ftmo_scaling_800k_report.md, exploratoire, hors compteur) | 800k en 15,0 mois médian (MC historique), 21,2 (edge / 2) ; revenu à 800k ≈ 15 300 $ / mois (10 100 edge / 2) ; cagnotte à 5 ans +706 k$ / +395 k$ ; max DD médian −6,6 k$ ; ruine 1,1 / 5,9 %
 - [2026-11-05] query | Sortie de mom avant les annonces de 8:30 (bot live/bot.py ev_mom) : en financé virtuel, sortie à 8:18:55 ET les jours NFP / CPI / PIB avancé de live/annonces.csv, sinon 9:29:57 ; en éval, pas de coupure (règle FTMO réservée au compte financé, comme le plan retenu) | vérifié par rejeu (test_book_A_finance_sort_avant_les_annonces : nuit allant à 9:29:57 fermée à 8:18:55 un jour d'annonce, autres nuits inchangées) ; nuit du 05 au 06/11 (NFP) en éval : gardée jusqu'à 9:29:57, conforme au plan
 - [2026-11-05] fix | Règle anti-hedging FTMO : pas de 3n long sur le compte B une nuit où mom est short (ANTI_HEDGE dans run_ftmo_deux_comptes.py, bot live/bot.py ev_3n + test), toutes les simulations FTMO A + B relancées (reports/ftmo_anti_hedging_report.md) | 192 nuits sur 1 635 (11,7 %, 2016/2019/2020/2022/2023, aucune en 2026) ; net historique 2011-2026 +68,6 k$ → +66,8 k$ ; 1re éval au moins un validé 82,3 → 80,6 % ; 400k en 12,4 mois médian (12,0) ; 17 tests du bot verts
 - [2026-11-05] query | 1er trade réel du bot de démo (book A, mom long 04/11 20:00 ET, journaux de la branche vps-journal) : signe +1, ATR M15 69,7 pts, stop 139,4 pts, 1,76 lot, spread 1,95 pt, entrée 20:00:03, stoppé à 20:16:58 avec 2,2 pts de glissement, −252,65 $ (−1,03 R) ; compte virtuel éval −2,53 % | tout conforme au plan ; 3 défauts corrigés : barres M1 périmées sur le terminal B (dernière 13:57 à 20:05) désormais refusées, fausse alerte « trading désactivé » à la pause de 17:00 ET, spread de sortie lu dans les ticks MT5 ; 16 tests verts
@@ -30,7 +31,6 @@ updated: 2026-11-05 18:39
 - [2026-11-04] build | Publication des journaux du VPS (trades, signaux, compte virtuel, bot.log, pnl.md) sur la branche GitHub vps-journal, toutes les 5 min par live/maj_auto.ps1, commit seulement si changement ; lecture depuis le PC : git fetch origin vps-journal | testé sur dépôt simulé (création de la branche, nouveau trade → commit, rien → pas de commit)
 - [2026-11-04] query | Probabilité de valider l'éval au démarrage du plan retenu (ajout à run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md) | 1re éval : A 53 %, B 64 %, au moins un 82 % (73 % espérance / 2) ; ≤ 2 évals par compte 97 % ; éval réussie en 6 séances (A) / 14 (B) médian ; financé validé → reward A 89 %, B 96 %
 - [2026-11-04] query | Probabilité de toucher un payout en démarrant le plan retenu avec deux comptes 10k (run_ftmo_proba_payout.py, reports/ftmo_proba_payout_report.md, exploratoire, hors compteur) | 1re éval de chaque compte : au moins un payout 79 % (A 47 %, B 61 %) ; ≤ 2 évals par compte 97 % ; ≤ 3 évals 99,7 % ; ≤ 5 évals (dépôt 869 $) 100 % ; espérance / 2 : 62 / 84 / 94 / 99 % ; 1er payout médian en 30 séances
-- [2026-11-04] build | Bot de démo : suivi du P&L tous essais FTMO additionnés (live/pnl.py → live/etat/pnl.md : P&L cumulé, compte continu, creux, par stratégie et par essai, résultat FTMO virtuel), numéro d'essai MT5 sur chaque trade, alertes nouvel essai / trading désactivé / objectif de l'essai (5 %, 1-Step) / essai à −8 % | 13 tests verts (rejeu avec changement d'essai le 15/08 : cumul et compte virtuel continus)
 
 ## Prochaines actions
 
