@@ -30,3 +30,8 @@
 2026-11-04 17:01:24 ET [A] !! TRADING DÉSACTIVÉ sur l'essai 1515190763 (objectif de l'essai atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter dans ce terminal
 2026-11-04 20:00:03 ET [A] OUVERT mom long 1.76 lots à 28322.68 (bid 28320.63, ask 28322.58, spread 1.95, glissement +0.10 pts) ; SL 139.4 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 05/11 09:29:57
 2026-11-04 20:16:59 ET [A] FERMÉ mom (SL) à 28179.13 : -252.65 $ (-2.53 %, -1.03 R) ; compte virtuel éval -2.53 % ; P&L cumulé tous essais -252.65 $ sur 1 trades (compte continu 9,747.35 $)
+2026-11-05 04:16:39 ET [A] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-05 04:16:59 ET [A] MT5 connecté : compte 1515190763 sur FTMO-Demo, solde 9,747.37 USD
+2026-11-05 04:16:59 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-05 04:16:59 ET [A] démarrage (code 8550720) ; compte virtuel éval -2.53 %, 0 position(s) suivie(s)
+2026-11-05 04:17:00 ET [A] trading de nouveau autorisé sur l'essai 1515190763
