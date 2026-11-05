@@ -1,0 +1,26 @@
+Book C : FundingPips 1 Step Flex 10k, prix supposé 116 $, sens au hasard, éval 2,5 % / financé 1 %, objectif 2 R
+
+===== Vrai chemin 2011-07-01 → 2026-08-28 (15.3 ans), 200 tirages des sens de C =====
+  A mom : +36,618 $ ; B 3n + M2 : +28,881 $ ; A + B : +65,498 $
+  C (sans edge) : médiane +17,199 $ (10e c. +12,253, 90e c. +21,909, P<0 0.0 %) ; par an +1,125 $
+  C : évals achetées 48 (frais 5,570 $), validées 25, retraits 103
+  A + B + C : médiane +82,697 $ (10e c. +77,751, 90e c. +87,408, P<0 0.0 %)
+  max DD de trésorerie : C -822 $ (pire -2,132) ; A + B -435 $ ; A + B + C -580 $ (pire -928)
+  mois négatifs : A + B 12 % ; A + B + C 13 % ; corrélation des flux mensuels C / A +0.10, C / B +0.03
+
+===== 721 départs glissants, 12 mois =====
+  A   : moyenne +2,232 $ ; médiane +2,122 $ ; 10e c. +877 $ ; pire +189 $ ; P(< 0) 0.0 %
+  B   : moyenne +1,565 $ ; médiane +1,491 $ ; 10e c. +698 $ ; pire +94 $ ; P(< 0) 0.0 %
+  C   : moyenne +828 $ ; médiane +779 $ ; 10e c. -342 $ ; pire -1,160 $ ; P(< 0) 20.7 %
+  AB  : moyenne +3,797 $ ; médiane +3,767 $ ; 10e c. +2,244 $ ; pire +908 $ ; P(< 0) 0.0 %
+  ABC : moyenne +4,625 $ ; médiane +4,604 $ ; 10e c. +2,635 $ ; pire +464 $ ; P(< 0) 0.0 %
+  max DD de trésorerie (médiane / pire) : C -348 / -1,277 $ ; A + B -261 / -695 $ ; A + B + C -429 / -1,218 $
+
+===== Monte-Carlo, 1000 chemins de 3 ans =====
+  C_1an  : moyenne +372 $ ; médiane +264 $ ; 5e c. -650 $ ; 1er c. -958 $ ; P(< 0) 34.3 %
+  AB_1an : moyenne +3,863 $ ; médiane +3,860 $ ; 5e c. +1,689 $ ; 1er c. +1,085 $ ; P(< 0) 0.0 %
+  ABC_1an: moyenne +4,235 $ ; médiane +4,223 $ ; 5e c. +1,591 $ ; 1er c. +941 $ ; P(< 0) 0.0 %
+  C      : moyenne +1,591 $ ; médiane +1,495 $ ; 5e c. -545 $ ; 1er c. -956 $ ; P(< 0) 14.1 %
+  AB     : moyenne +12,992 $ ; médiane +12,940 $ ; 5e c. +8,864 $ ; 1er c. +7,060 $ ; P(< 0) 0.0 %
+  ABC    : moyenne +14,583 $ ; médiane +14,388 $ ; 5e c. +9,529 $ ; 1er c. +7,601 $ ; P(< 0) 0.0 %
+  max DD de trésorerie (médiane / 99e c.) : C -464 / -1,535 $ ; A + B -348 / -782 $ ; A + B + C -493 / -1,218 $ ; corrélation des nets à 3 ans C / A + B +0.12

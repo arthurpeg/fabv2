@@ -59,16 +59,21 @@ def issue(i: int, side: int, k: float) -> float:
 
 
 class CompteFP:
-    def __init__(self):
+    def __init__(self, calendaire=True):
+        """calendaire=False (chemins tirés par blocs) : retrait après 10 séances au lieu de 14 jours calendaires."""
+        self.cal, self.n = calendaire, 0
         self.cash, self.evals, self.payouts, self.valides = -FEE_C, 1, 0, 0
         self._nouveau("éval", None)
 
     def _nouveau(self, phase, d):
-        self.phase, self.P, self.debut = phase, 0.0, d
+        self.phase, self.P, self.debut, self.n = phase, 0.0, d, 0
 
     def jour(self, d, side):
         i = POS.get(d)
-        if self.phase == "financé" and self.debut is not None and (d - self.debut).days >= 14 and self.P >= PAY_MIN:
+        if self.debut is not None:
+            self.n += 1
+        delai = ((d - self.debut).days >= 14 if self.cal else self.n > 10) if self.debut is not None else False
+        if self.phase == "financé" and delai and self.P >= PAY_MIN:
             self.cash += SPLIT_C * self.P / 100 * SIZE_C
             self.payouts += 1
             self._nouveau("financé", d)
@@ -99,7 +104,7 @@ def joue(jours, idx, rng, calendaire):
     """Les trois books sur la suite de séances idx ; renvoie les trajectoires de trésorerie et les comptes."""
     A = M.Compte("A", calendaire, True, "cible+attente")
     B = M.Compte("B", calendaire, True, "cible+attente")
-    C = CompteFP()
+    C = CompteFP(calendaire)
     tr = np.empty((len(idx), 3))
     for t, j in enumerate(idx):
         d, row = jours[j]
