@@ -35,3 +35,9 @@
 2026-11-05 04:17:01 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
 2026-11-05 04:17:01 ET [B] démarrage (code 8550720) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
 2026-11-05 04:17:01 ET [B] trading de nouveau autorisé sur l'essai 1515191583
+2026-11-05 06:11:13 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
+2026-11-05 06:11:13 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-05 06:11:13 ET [B] barres M1 : 2026-10-06 05:06:00-04:00 → 2026-11-05 06:10:00-05:00 (29999) ; spread 1.85
+2026-11-05 06:11:13 ET [B] 3n nuit → 2026-11-06 : 3 nuits +36.9 bps → rien
+2026-11-05 06:11:13 ET [B] M2 2026-11-05 : {'side': 0, 'm2': False, 'strength': nan, 'reversal': nan, 'atr15': nan, 'ret_prev': nan}
+2026-11-05 06:11:13 ET [B] compte virtuel : CompteVirtuel(nom='book B', phase='éval', P=0.0, hi=0.0, best=0.0, f0=None, evals=1, rewards=0, rewards_pct=0.0, jour='2026-11-05', pnl_jour=0.0, trade_jour=False, mort_jour=False, events=[])
