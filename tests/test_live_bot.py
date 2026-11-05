@@ -91,12 +91,17 @@ class FauxMT5:
         return self.fermes.get(ticket)
 
 
-def rejoue(book, tmp_path, a="2026-07-26", z="2026-08-28", signe=1, bascule=None):
+def rejoue(book, tmp_path, a="2026-07-26", z="2026-08-28", signe=1, bascule=None, annonces="live/annonces.csv",
+           phase=None):
     m = pd.read_parquet(NQ)
     m = m[~m.index.duplicated()].sort_index()
     m1 = m[(m.index >= "2026-06-01") & (m.index < "2026-08-29")].tz_convert(NY)
     clock = {"t": pd.Timestamp(a, tz=NY)}
-    cfg = dict(book=book, dossier=str(tmp_path / book), mom_signe=signe, annonces="live/annonces.csv")
+    cfg = dict(book=book, dossier=str(tmp_path / book), mom_signe=signe, annonces=annonces)
+    if phase is not None:  # compte virtuel déjà dans cette phase au départ
+        from live.compte import CompteVirtuel
+        (tmp_path / book).mkdir(parents=True, exist_ok=True)
+        CompteVirtuel(nom=f"book {book}", phase=phase).save(tmp_path / book / "compte.json")
     bot = Bot(cfg, horloge=lambda: clock["t"])
     bot.b = FauxMT5(m1, lambda: clock["t"], bascule)
     for minute in pd.date_range(pd.Timestamp(a, tz=NY), pd.Timestamp(z + " 17:00", tz=NY), freq="1min"):
@@ -167,3 +172,19 @@ def test_suivi_pnl_additionne_les_essais(tmp_path):
     # le compte virtuel n'a pas été remis à zéro par le changement d'essai
     c = __import__("json").loads((tmp_path / "B" / "compte.json").read_text(encoding="utf-8"))
     assert c["P"] == pytest.approx(t.P_apres.iloc[-1])
+
+
+def test_book_A_finance_sort_avant_les_annonces(tmp_path):
+    """Compte virtuel financé, annonce 8:30 (NFP fictif) le jeudi 13/08, nuit qui serait allée jusqu'à 9:29:57 :
+    elle est fermée à 8:18:55 ET, hors de la fenêtre FTMO interdite (8:28 → 8:32) ; les autres nuits sortent à 9:29:57."""
+    cal = tmp_path / "annonces.csv"
+    cal.write_text("date,annonce,heure,source\n2026-08-13,NFP,08:30,test\n", encoding="utf-8")
+    t = rejoue("A", tmp_path, a="2026-08-02", z="2026-08-14", annonces=str(cal), phase="financé")
+    t["s"] = t.seance.astype(str).str[:10]
+    prevue = pd.to_datetime(t.sortie).dt.strftime("%H:%M:%S")
+    assert (prevue[t.s == "2026-08-13"] == "08:18:55").all() and (prevue[t.s != "2026-08-13"] == "09:29:55").sum() == 0
+    assert (prevue[t.s != "2026-08-13"] == "09:29:57").all()
+    x = t[t.s == "2026-08-13"].iloc[0]
+    fin = pd.Timestamp(x.exit_time).tz_convert(NY)
+    assert x.raison == "heure" and pd.Timestamp("2026-08-13 08:18:55", tz=NY) <= fin < pd.Timestamp("2026-08-13 08:28", tz=NY)
+    assert (t.risque == 1.0).all()

@@ -1,11 +1,11 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:\"wiki/Failed Ideas\"",
@@ -64,16 +64,16 @@
       }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": -0.8,
   "nodeSizeMultiplier": 1.14501463414634,
   "lineSizeMultiplier": 1.60394146341463,
-  "collapse-forces": false,
+  "collapse-forces": true,
   "centerStrength": 0.58790243902439,
   "repelStrength": 9.63512195121951,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.5087618855792558,
+  "scale": 0.5087618855792552,
   "close": false
 }
