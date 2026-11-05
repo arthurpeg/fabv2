@@ -45,3 +45,5 @@
 2026-11-05 06:46:49 ET [B] MT5 connecté : compte 1515191583 sur FTMO-Demo, solde 9,999.98 USD
 2026-11-05 06:46:49 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
 2026-11-05 06:46:49 ET [B] démarrage (code 2b46534) ; compte virtuel éval +0.00 %, 0 position(s) suivie(s)
+2026-11-05 09:35:01 ET [B] M2 2026-11-05 : sens -1, force 4.93, retournement -51.8 bps → SIGNAL ; 3n de la nuit : None
+2026-11-05 09:35:01 ET [B] OUVERT M2 short 1.04 lots à 27864.93 (bid 27863.93, ask 27865.38, spread 1.45, glissement -1.00 pts) ; SL 238.8 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 05/11 15:59:57
