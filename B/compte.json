@@ -1,7 +1,7 @@
 {
  "nom": "book B",
  "phase": "éval",
- "P": 0.0,
+ "P": 4.9936,
  "hi": 0.0,
  "best": 0.0,
  "f0": null,
@@ -9,8 +9,8 @@
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-05",
- "pnl_jour": 0.0,
- "trade_jour": false,
+ "pnl_jour": 4.9936,
+ "trade_jour": true,
  "mort_jour": false,
  "events": []
 }
