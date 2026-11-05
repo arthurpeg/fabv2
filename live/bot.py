@@ -125,6 +125,10 @@ class Bot:
     def spread_a(self, t: str) -> float:
         """Spread (prix) de la barre M1 de l'instant t, d'après MT5 ; spread actuel si la barre n'est pas finie."""
         try:
+            f = getattr(self.b, "spread_au", None)
+            v = f(t) if f else None
+            if v is not None and np.isfinite(v):
+                return float(v)
             b = self.b.barres("M1", 600)
             k = pd.Timestamp(t).tz_convert(NY).floor("min")
             if "spread" in b and k in b.index:
@@ -132,6 +136,22 @@ class Bot:
             return float(self.b.spread())
         except Exception:
             return float("nan")
+
+    def m1_frais(self, strict: bool = True, essais: int = 15) -> pd.DataFrame | None:
+        """Barres M1 jusqu'à la minute précédente. Le terminal peut servir un historique en retard (vu le 2026-11-04 sur
+        le terminal B : dernière barre 13:57 à 20:05) : on réessaie, puis on refuse de trader sur des données périmées."""
+        for i in range(essais):
+            m1 = self.b.barres("M1", 30_000)
+            retard = (self.maintenant() - (m1.index[-1] + pd.Timedelta(minutes=1))).total_seconds()
+            if retard <= 90:
+                if i:
+                    self.log(f"barres M1 à jour après {i} nouvel(s) essai(s)")
+                return m1
+            time.sleep(1)
+        self.log(f"!! barres M1 EN RETARD : dernière barre {m1.index[-1]:%Y-%m-%d %H:%M} ET ({retard / 60:.0f} min) ; "
+                 f"{'PAS DE TRADE' if strict else 'résultat indicatif'}. Ouvrir un graphique M1 de US100.cash dans ce "
+                 f"terminal et le laisser ouvert")
+        return None if strict else m1
 
     def compte_mt5(self) -> dict:
         f = getattr(self.b, "compte_info", None)
@@ -162,9 +182,21 @@ class Bot:
                 self.log(msg)
                 self.save()
 
-        if not c["trade_ok"]:
-            alerte("bloque", f"!! TRADING DÉSACTIVÉ sur l'essai {k} (objectif de l'essai atteint, perte max ou essai "
-                             f"expiré) : créer un nouvel essai FTMO et s'y connecter dans ce terminal")
+        # pause quotidienne du serveur (vers 17:00 ET) : drapeaux de trading coupés quelques minutes, sans conséquence
+        # (fausse alerte du 2026-11-04 à 17:01). Alerte seulement après 5 contrôles d'affilée (≈ 5 min) hors pause.
+        h = self.maintenant()
+        pause = hms(h, 16, 55) <= h <= hms(h, 18, 15)
+        if c["trade_ok"]:
+            e["ko"] = 0
+            if "bloque" in e["alertes"]:
+                e["alertes"].remove("bloque")
+                self.log(f"trading de nouveau autorisé sur l'essai {k}")
+                self.save()
+        elif not pause:
+            e["ko"] = e.get("ko", 0) + 1
+            if e["ko"] >= 5:
+                alerte("bloque", f"!! TRADING DÉSACTIVÉ sur l'essai {k} depuis {e['ko']} min (objectif de l'essai "
+                                 f"atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter")
         if gain >= float(self.cfg.get("objectif_essai_pct", 5.0)):
             alerte("objectif", f"objectif de l'essai atteint sur {k} ({gain:+.2f} %). Sans effet sur le plan : le "
                                f"compte virtuel garde l'objectif réel de +10 %. Si FTMO bloque l'essai, en créer un neuf")
@@ -308,7 +340,9 @@ class Bot:
                 self.log(f"mom : marché fermé ce soir à 20:00, pas d'entrée")
             return
         self.marque(cle)
-        m1 = self.b.barres("M1", 30_000)
+        m1 = self.m1_frais()
+        if m1 is None:
+            return
         t20 = hms(now, 20, 0)
         px = float(m1.close.iloc[-1])
         atr = S.atr15_fin(m1, t20, min_periods=14)
@@ -340,7 +374,9 @@ class Bot:
             return
         self.compte.debut_jour(seance)  # reward virtuel vérifié chaque jour, même sans signal
         self.save()
-        m1 = self.b.barres("M1", 30_000)
+        m1 = self.m1_frais()
+        if m1 is None:
+            return
         sig, r3 = S.signal_3n(m1, seance)
         atr = S.atr15_fin(m1, hms(now, 20, 5))
         self.ecrit("signaux.csv", dict(heure=f"{now:%Y-%m-%d %H:%M:%S}", strat="3n", seance=f"{seance:%Y-%m-%d}",
@@ -370,7 +406,9 @@ class Bot:
             self.log("M2 : le 3n de la nuit est encore ouvert (?), pas de M2")
             return
         n3 = self.jour(ds).get("n3")
-        m1 = self.b.barres("M1", 30_000)
+        m1 = self.m1_frais()
+        if m1 is None:
+            return
         s = S.signal_m2(m1, seance)
         self.ecrit("signaux.csv", dict(heure=f"{now:%Y-%m-%d %H:%M:%S}", strat="M2", seance=ds,
                                        derniere_barre=str(m1.index[-1]), px=float(m1.close.iloc[-1]), atr15=s["atr15"],
@@ -465,7 +503,7 @@ class Bot:
     def signaux(self) -> None:
         """Calcule et affiche les signaux du moment, sans passer d'ordre."""
         now = self.maintenant()
-        m1 = self.b.barres("M1", 30_000)
+        m1 = self.m1_frais(strict=False)
         self.log(f"barres M1 : {m1.index[0]} → {m1.index[-1]} ({len(m1)}) ; spread {self.b.spread():.2f}")
         if self.book == "A":
             seance = self.prochaine_seance(now - pd.Timedelta(days=1 if now.hour < 10 else 0))  # nuit en cours ou à venir
@@ -485,7 +523,7 @@ class Bot:
         """Contrôle du chemin des ordres sur la démo : taille théorique d'un trade réel, puis un vrai ordre au lot
         minimum avec stop et objectif, fermé après 5 s, et lecture du P&L réalisé. Ne touche pas au compte virtuel."""
         now = self.maintenant()
-        m1 = self.b.barres("M1", 30_000)
+        m1 = self.m1_frais(strict=False)
         atr = S.atr15_fin(m1, now, min_periods=14)
         spread = self.b.spread()
         k_sl = S.K_SL_NUIT if self.book == "A" else S.K_SL_M2

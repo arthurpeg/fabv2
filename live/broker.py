@@ -82,6 +82,21 @@ class MT5:
         tk = self.mt5.symbol_info_tick(self.sym)
         return float(tk.ask - tk.bid)
 
+    def spread_au(self, t: str) -> float | None:
+        """Spread (ask − bid) du dernier tick à l'instant t (heure NY), d'après l'historique des ticks du terminal.
+        Les ticks MT5 sont horodatés en heure serveur (même convention que les barres)."""
+        from datetime import timezone
+        ts = pd.Timestamp(t).tz_convert(NY).tz_localize(None) + pd.Timedelta(hours=self.dec)  # heure serveur naïve
+        a = (ts - pd.Timedelta(seconds=30)).to_pydatetime().replace(tzinfo=timezone.utc)
+        z = (ts + pd.Timedelta(seconds=2)).to_pydatetime().replace(tzinfo=timezone.utc)
+        tk = self.mt5.copy_ticks_range(self.sym, a, z, self.mt5.COPY_TICKS_INFO)
+        if tk is None or len(tk) == 0:
+            return None
+        df = pd.DataFrame(tk)
+        cible = int((ts + pd.Timedelta(seconds=1)).replace(tzinfo=None).value // 10**6)  # ms serveur, fin de seconde
+        df = df[(df.time_msc <= cible) & (df.bid > 0) & (df.ask > 0)]
+        return float(df.ask.iloc[-1] - df.bid.iloc[-1]) if len(df) else None
+
     def barres(self, tf: str = "M1", n: int = 30_000) -> pd.DataFrame:
         """Barres TERMINÉES, indexées par l'heure de début en NY (la barre en cours de formation est retirée)."""
         code = {"M1": self.mt5.TIMEFRAME_M1, "H1": self.mt5.TIMEFRAME_H1, "D1": self.mt5.TIMEFRAME_D1}[tf]

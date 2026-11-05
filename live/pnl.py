@@ -117,10 +117,12 @@ def rapport(dossier: Path = Path("live/etat")) -> str:
         net_v = sum(v.get("net", 0.0) for v in V.values())
         L += [f"**Total A + B : {tout.profit.sum():+,.2f} $ de trading** sur {len(tout)} trades "
               f"(2 × 10 000 $ → {2 * NOMINAL + tout.profit.sum():,.2f} $) ; résultat FTMO virtuel {net_v:+,.2f} $.", ""]
-        j = tout.assign(jour=tout.sortie_t.dt.strftime("%Y-%m-%d")).pivot_table(
+        # journée FTMO = date de séance (minuit serveur = 17:00 ET) : la nuit mom du 04 au 05 compte pour le 05
+        jour = tout.seance.astype(str) if "seance" in tout else tout.sortie_t.dt.strftime("%Y-%m-%d")
+        j = tout.assign(jour=jour).pivot_table(
             index="jour", columns="book", values="profit", aggfunc="sum").fillna(0.0)
         j["total"] = j.sum(axis=1)
-        L += ["### Dix derniers jours ($)", "", "| Jour | " + " | ".join(j.columns) + " |",
+        L += ["### Dix dernières journées FTMO ($)", "", "| Jour | " + " | ".join(j.columns) + " |",
               "|---" * (len(j.columns) + 1) + "|"]
         L += [f"| {d} | " + " | ".join(f"{x:+,.2f}" for x in r.values) + " |" for d, r in j.tail(10).iterrows()]
         L += [""]

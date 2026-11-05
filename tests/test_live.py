@@ -198,3 +198,56 @@ def test_journal_trades_nouvelles_colonnes(tmp_path):
                                  glissement=0.0))
     t = pd.read_csv(tmp_path / "A" / "trades.csv")
     assert list(t.profit) == [10.0, -5.0, 3.0] and np.isnan(t.spread_sortie[0]) and t.spread_sortie[1] == 2.5
+
+
+class _StubMT5:
+    """Terminal minimal : barres M1 jusqu'à `fin`, drapeau de trading réglable."""
+
+    def __init__(self, fin, trade_ok=True):
+        idx = pd.date_range(end=fin, periods=200, freq="1min")
+        self.m1 = pd.DataFrame(dict(open=1.0, high=1.0, low=1.0, close=1.0), index=idx)
+        self.trade_ok = trade_ok
+
+    def barres(self, tf="M1", n=30_000):
+        return self.m1
+
+    def compte_info(self):
+        return dict(login=1, serveur="FTMO-Demo", balance=1e4, equity=1e4, trade_ok=self.trade_ok)
+
+
+def _bot(tmp_path, t, broker):
+    from live.bot import Bot
+    clock = {"t": pd.Timestamp(t, tz=NY)}
+    b = Bot(dict(book="B", dossier=str(tmp_path / "B"), annonces="live/annonces.csv"), broker=broker,
+            horloge=lambda: clock["t"])
+    return b, clock
+
+
+def test_barres_m1_perimees_refusees(tmp_path, monkeypatch):
+    """Vu sur le VPS le 2026-11-04 : terminal B servant des barres arrêtées à 13:57 à 20:05 → aucun trade."""
+    import live.bot as LB
+    monkeypatch.setattr(LB.time, "sleep", lambda s: None)
+    bot, _ = _bot(tmp_path, "2026-11-04 20:05:01", _StubMT5(pd.Timestamp("2026-11-04 13:57", tz=NY)))
+    assert bot.m1_frais() is None
+    assert "EN RETARD" in (tmp_path / "B" / "bot.log").read_text(encoding="utf-8")
+    bot2, _ = _bot(tmp_path, "2026-11-04 20:05:01", _StubMT5(pd.Timestamp("2026-11-04 20:04", tz=NY)))
+    assert bot2.m1_frais() is not None
+
+
+def test_pas_de_fausse_alerte_pendant_la_pause_du_serveur(tmp_path):
+    """Drapeaux de trading coupés de 17:00 à 17:10 ET (pause quotidienne) : pas d'alerte ; coupés 5 min à 11:00 : alerte,
+    puis « de nouveau autorisé » quand ils reviennent."""
+    st = _StubMT5(pd.Timestamp("2026-11-05 17:00", tz=NY), trade_ok=False)
+    bot, clock = _bot(tmp_path, "2026-11-05 17:00:30", st)
+    for m in range(10):
+        clock["t"] = pd.Timestamp("2026-11-05 17:00:30", tz=NY) + pd.Timedelta(minutes=m)
+        bot.controle_compte()
+    log = tmp_path / "B" / "bot.log"
+    assert not log.exists() or "DÉSACTIVÉ" not in log.read_text(encoding="utf-8")
+    for m in range(5):
+        clock["t"] = pd.Timestamp("2026-11-06 11:00", tz=NY) + pd.Timedelta(minutes=m)
+        bot.controle_compte()
+    assert "DÉSACTIVÉ" in log.read_text(encoding="utf-8")
+    st.trade_ok = True
+    bot.controle_compte()
+    assert "de nouveau autorisé" in log.read_text(encoding="utf-8")
