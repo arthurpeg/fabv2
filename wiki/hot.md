@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-06 12:48
+updated: 2026-11-06 12:54
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-06 12:48
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-06] query | Document overnight : ajout d'une section « L'hypothèse : une prime pour porter le risque de la nuit » (mécanisme de risque d'inventaire de Boyarchenko-Larsen-Whelan, 6 prédictions confrontées à nos résultats) | P1, P2 cohérents ; P3, P5 à surveiller ; P4 non démontré (n° 16, approximation VWAP) ; aucun nouveau calcul
 - [2026-11-06] query | Document de synthèse de la recherche overnight (Claude Docs « Recherche overnight : hypothèses, protocole et résultats », https://claude.ai/artifact/Rm8gtyyPCG6zuoVtsPtN2m) : cadre, protocole, hypothèses testées, phénomènes significatifs, échecs, suite | rédigé à partir du wiki, aucun nouveau calcul, hors compteur
 - [2026-11-05] query | Book C hypothétique sans edge (sens au hasard, nuits de mom, objectif 2 R) sur FundingPips 1 Step Flex 10k (prix supposé 116 $), en même temps que A et B chez FTMO (run_book_c.py, reports/book_c_report.md, exploratoire, hors compteur) | C seul : +1 125 $/an sur 2011-2026, perdant sur 12 mois dans 20 % des départs ; A + B + C : +24 % de gain (MC 3 ans +16,1 k$ contre +12,9 k$), max DD de trésorerie +50 % (99e c. −1 275 $ contre −782 $), corrélation C / A + B ≈ +0,1
 - [2026-11-05] query | Scaling FTMO hypothétique jusqu'à 800k (3 puis 4 × 100k par stratégie ; run_ftmo_scaling_800k.py, paliers généralisés dans run_ftmo_scaling*.py ; reports/ftmo_scaling_800k_report.md, exploratoire, hors compteur) | 800k en 15,0 mois médian (MC historique), 21,2 (edge / 2) ; revenu à 800k ≈ 15 300 $ / mois (10 100 edge / 2) ; cagnotte à 5 ans +706 k$ / +395 k$ ; max DD médian −6,6 k$ ; ruine 1,1 / 5,9 %
@@ -30,7 +31,6 @@ updated: 2026-11-06 12:48
 - [2026-11-05] fix | Règle anti-hedging FTMO : pas de 3n long sur le compte B une nuit où mom est short (ANTI_HEDGE dans run_ftmo_deux_comptes.py, bot live/bot.py ev_3n + test), toutes les simulations FTMO A + B relancées (reports/ftmo_anti_hedging_report.md) | 192 nuits sur 1 635 (11,7 %, 2016/2019/2020/2022/2023, aucune en 2026) ; net historique 2011-2026 +68,6 k$ → +66,8 k$ ; 1re éval au moins un validé 82,3 → 80,6 % ; 400k en 12,4 mois médian (12,0) ; 17 tests du bot verts
 - [2026-11-05] query | 1er trade réel du bot de démo (book A, mom long 04/11 20:00 ET, journaux de la branche vps-journal) : signe +1, ATR M15 69,7 pts, stop 139,4 pts, 1,76 lot, spread 1,95 pt, entrée 20:00:03, stoppé à 20:16:58 avec 2,2 pts de glissement, −252,65 $ (−1,03 R) ; compte virtuel éval −2,53 % | tout conforme au plan ; 3 défauts corrigés : barres M1 périmées sur le terminal B (dernière 13:57 à 20:05) désormais refusées, fausse alerte « trading désactivé » à la pause de 17:00 ET, spread de sortie lu dans les ticks MT5 ; 16 tests verts
 - [2026-11-04] build | Bot de démo : spread enregistré à l'entrée (bid / ask de l'ordre) et à la sortie (juste avant la fermeture à l'heure, ou barre M1 MT5 de la sortie au stop / à l'objectif), glissement d'entrée ; tableau spread / glissement par stratégie dans pnl.md | 14 tests verts
-- [2026-11-04] build | Publication des journaux du VPS (trades, signaux, compte virtuel, bot.log, pnl.md) sur la branche GitHub vps-journal, toutes les 5 min par live/maj_auto.ps1, commit seulement si changement ; lecture depuis le PC : git fetch origin vps-journal | testé sur dépôt simulé (création de la branche, nouveau trade → commit, rien → pas de commit)
 
 ## Prochaines actions
 
