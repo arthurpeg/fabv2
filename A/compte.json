@@ -3,14 +3,14 @@
  "phase": "éval",
  "P": -0.3668999999999998,
  "hi": 0.0,
- "best": 0.0,
+ "best": 2.1596,
  "f0": "2026-11-05",
  "evals": 1,
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-06",
  "pnl_jour": 2.1596,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": []
 }
