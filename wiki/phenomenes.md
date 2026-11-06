@@ -36,6 +36,8 @@ Heures en New York (ET). « Net ? » : ✅ survit au coût standard, ❌ non, �
 | 2026-11-02 | Un quart du prix du jour se fait avant 3:00 NY, autant que la part de variance | GC, SI, 17:00 → 3:00 | GC 26,5 %, SI 28,5 % (contribution pondérée) | Hausse en 2023-2026 (33 %) | — | Contredit Fattinger-Ziegler (≈ 0 en 2010-2013) | idem | Avec la reprise de l'or |
 | 2026-11-02 | Sauts ≈ 7-9 % de la variance journalière | GC 9,0 %, SI 7,3 % | IC [7,8 ; 10,2] / [5,9 ; 9,1] | Toutes sous-périodes | — | Fattinger-Ziegler | idem | — |
 | 2026-11-02 | Aux annonces (8:30, 10:00) et à 9:30, le volume monte plus que la volatilité | GC, SI | Excès de part de volume > 0, Holm 0,004 | GC et SI (8:20 et 13:30 : GC seul) | — | Fattinger-Ziegler | idem | Liquidité disponible au moment des annonces |
+| 2026-11-06 | Volatilité groupée (ARCH) et queues épaisses des rendements de nuit et de séance ; disparaît en R (stop en ATR M15) | ES, NQ, YM, sessions et mom | ARCH-LM(5) 144 à 379, p < 1e-28 ; kurtosis 5 à 15 ; mom OOS en R : ARCH p 0,47 | Toutes séries 2016-2026 | — | Relecture du document overnight | [[reports/inference_overnight_report]] | Toujours HAC ou bootstrap par blocs ; dimensionner en ATR |
+| 2026-11-06 | Autocorrélation négative d'ordre 1 des sessions Asie et US (≈ −0,13 / −0,10) | ES, NQ, YM | Ljung-Box(5) p < 1e-5 ; rend le t HAC plus grand que le t iid | 3 indices | ❌ (non testé comme règle) | Relecture du document overnight | [[reports/inference_overnight_report]] | Retournement jour à jour de la session Asie : à pré-enregistrer avant usage |
 
 ## À surveiller (significatif en brut, pas après correction, ou porté par une sous-période)
 

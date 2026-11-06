@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-06 15:37
+updated: 2026-11-06 15:44
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 738** (source : [[reports/holdout_anticipe_report]])
+- Compteur global d'essais : **1 742** (source : [[reports/inference_overnight_report]])
 - Dernier pré-enregistrement : n° 26 ([[PREREGISTRATION_26]])
 - Idées abandonnées au registre : 35 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-06
@@ -23,6 +23,7 @@ updated: 2026-11-06 15:37
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-06] query | Inférence des chiffres overnight (run_inference_overnight.py, reports/inference_overnight_report.md, exploratoire, compteur inchangé) : t HAC Newey-West, bootstrap par blocs, Ljung-Box, ARCH-LM, N effectif (Li & Ji), DSR avec N brut et effectif | t HAC > t iid partout (ρ1 négatif ; NQ close-to-open 3,12 → 3,51) ; ARCH massif en bp, absent en R ; N effectif ≈ 610 / 1 742 ; DSR mom 0,005 et NQ CTO 0,016 avec N ≈ 610 (≤ 0,53 avec V = 1/T) : la preuve de mom reste le hors échantillon du n° 11
 - [2026-11-06] query | Version anglaise du document overnight en PDF (reports/overnight_research_en.pdf, 5 pages, généré par reportlab depuis un script du scratchpad) | traduction fidèle du document Claude Docs, aucun nouveau calcul
 - [2026-11-06] query | Document overnight : ajout d'une section « L'hypothèse : une prime pour porter le risque de la nuit » (mécanisme de risque d'inventaire de Boyarchenko-Larsen-Whelan, 6 prédictions confrontées à nos résultats) | P1, P2 cohérents ; P3, P5 à surveiller ; P4 non démontré (n° 16, approximation VWAP) ; aucun nouveau calcul
 - [2026-11-06] query | Document de synthèse de la recherche overnight (Claude Docs « Recherche overnight : hypothèses, protocole et résultats », https://claude.ai/artifact/Rm8gtyyPCG6zuoVtsPtN2m) : cadre, protocole, hypothèses testées, phénomènes significatifs, échecs, suite | rédigé à partir du wiki, aucun nouveau calcul, hors compteur
@@ -30,7 +31,6 @@ updated: 2026-11-06 15:37
 - [2026-11-05] query | Scaling FTMO hypothétique jusqu'à 800k (3 puis 4 × 100k par stratégie ; run_ftmo_scaling_800k.py, paliers généralisés dans run_ftmo_scaling*.py ; reports/ftmo_scaling_800k_report.md, exploratoire, hors compteur) | 800k en 15,0 mois médian (MC historique), 21,2 (edge / 2) ; revenu à 800k ≈ 15 300 $ / mois (10 100 edge / 2) ; cagnotte à 5 ans +706 k$ / +395 k$ ; max DD médian −6,6 k$ ; ruine 1,1 / 5,9 %
 - [2026-11-05] query | Sortie de mom avant les annonces de 8:30 (bot live/bot.py ev_mom) : en financé virtuel, sortie à 8:18:55 ET les jours NFP / CPI / PIB avancé de live/annonces.csv, sinon 9:29:57 ; en éval, pas de coupure (règle FTMO réservée au compte financé, comme le plan retenu) | vérifié par rejeu (test_book_A_finance_sort_avant_les_annonces : nuit allant à 9:29:57 fermée à 8:18:55 un jour d'annonce, autres nuits inchangées) ; nuit du 05 au 06/11 (NFP) en éval : gardée jusqu'à 9:29:57, conforme au plan
 - [2026-11-05] fix | Règle anti-hedging FTMO : pas de 3n long sur le compte B une nuit où mom est short (ANTI_HEDGE dans run_ftmo_deux_comptes.py, bot live/bot.py ev_3n + test), toutes les simulations FTMO A + B relancées (reports/ftmo_anti_hedging_report.md) | 192 nuits sur 1 635 (11,7 %, 2016/2019/2020/2022/2023, aucune en 2026) ; net historique 2011-2026 +68,6 k$ → +66,8 k$ ; 1re éval au moins un validé 82,3 → 80,6 % ; 400k en 12,4 mois médian (12,0) ; 17 tests du bot verts
-- [2026-11-05] query | 1er trade réel du bot de démo (book A, mom long 04/11 20:00 ET, journaux de la branche vps-journal) : signe +1, ATR M15 69,7 pts, stop 139,4 pts, 1,76 lot, spread 1,95 pt, entrée 20:00:03, stoppé à 20:16:58 avec 2,2 pts de glissement, −252,65 $ (−1,03 R) ; compte virtuel éval −2,53 % | tout conforme au plan ; 3 défauts corrigés : barres M1 périmées sur le terminal B (dernière 13:57 à 20:05) désormais refusées, fausse alerte « trading désactivé » à la pause de 17:00 ET, spread de sortie lu dans les ticks MT5 ; 16 tests verts
 
 ## Prochaines actions
 
