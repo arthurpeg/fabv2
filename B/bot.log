@@ -59,3 +59,4 @@
 2026-11-09 09:35:01 ET [B] OUVERT M2 long 0.91 lots à 27369.78 (bid 27366.53, ask 27367.98, spread 1.45, glissement +1.80 pts) ; SL 271.2 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 09/11 15:59:57
 2026-11-09 09:36:04 ET [B] objectif de l'essai atteint sur 1515191583 (+5.34 %). Sans effet sur le plan : le compte virtuel garde l'objectif réel de +10 %. Si FTMO bloque l'essai, en créer un neuf
 2026-11-09 11:03:14 ET [B] FERMÉ M2 (TP) à 27911.03 : +492.54 $ (+4.93 %, +2.00 R) ; compte virtuel éval +9.92 % ; P&L cumulé tous essais +991.90 $ sur 2 trades (compte continu 10,991.90 $)
+2026-11-09 17:00:00 ET [B] fin de journée : éval virtuel +9.92 %, meilleur jour +4.99 %, rewards 0 (0.00 %)

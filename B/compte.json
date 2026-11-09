@@ -2,7 +2,7 @@
  "nom": "book B",
  "phase": "éval",
  "P": 9.919,
- "hi": 4.9936,
+ "hi": 9.919,
  "best": 4.9936,
  "f0": "2026-11-05",
  "evals": 1,
@@ -10,7 +10,7 @@
  "rewards_pct": 0.0,
  "jour": "2026-11-09",
  "pnl_jour": 4.9254,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": []
 }
