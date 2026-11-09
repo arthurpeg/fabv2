@@ -55,3 +55,6 @@
 2026-11-06 20:05:01 ET [B] 3n 2026-11-07 : marché fermé à 20:05
 2026-11-07 20:05:01 ET [B] 3n 2026-11-08 : marché fermé à 20:05
 2026-11-08 20:05:01 ET [B] 3n 2026-11-09 : somme des 3 nuits +105.3 bps → rien
+2026-11-09 09:35:01 ET [B] M2 2026-11-09 : sens +1, force 2.73, retournement -4.4 bps → SIGNAL ; 3n de la nuit : None
+2026-11-09 09:35:01 ET [B] OUVERT M2 long 0.91 lots à 27369.78 (bid 27366.53, ask 27367.98, spread 1.45, glissement +1.80 pts) ; SL 271.2 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 09/11 15:59:57
+2026-11-09 09:36:04 ET [B] objectif de l'essai atteint sur 1515191583 (+5.34 %). Sans effet sur le plan : le compte virtuel garde l'objectif réel de +10 %. Si FTMO bloque l'essai, en créer un neuf
