@@ -66,3 +66,5 @@
 2026-11-09 20:34:40 ET [B] !! TRADING DÉSACTIVÉ sur l'essai 1515191583 depuis 5 min (objectif de l'essai atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter
 2026-11-10 07:53:34 ET [B] NOUVEL ESSAI MT5 détecté : 1515245887 (solde 10,000.00 $). Le P&L cumulé et le compte virtuel continuent : on additionne comme si c'était le même compte
 2026-11-10 09:35:01 ET [B] M2 2026-11-10 : sens +1, force 0.56, retournement +198.3 bps → rien ; 3n de la nuit : {'raison': 'TP', 'pnl': 0.1705}
+2026-11-10 17:00:00 ET [B] COMPTE VIRTUEL : 2026-11-10 éval n° 1 validée → financé
+2026-11-10 17:00:00 ET [B] fin de journée : financé virtuel +0.00 %, meilleur jour +0.00 %, rewards 0 (0.00 %)

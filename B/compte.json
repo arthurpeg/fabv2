@@ -1,16 +1,18 @@
 {
  "nom": "book B",
- "phase": "éval",
- "P": 10.089500000000001,
- "hi": 9.919,
- "best": 4.9936,
- "f0": "2026-11-05",
+ "phase": "financé",
+ "P": 0.0,
+ "hi": 0.0,
+ "best": 0.0,
+ "f0": null,
  "evals": 1,
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-10",
  "pnl_jour": 0.1705,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
- "events": []
+ "events": [
+  "2026-11-10 éval n° 1 validée → financé"
+ ]
 }
