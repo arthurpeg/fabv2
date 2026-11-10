@@ -35,9 +35,10 @@
    "debut": "2026-11-04 13:41",
    "solde_initial": 9999.98,
    "alertes": [
-    "objectif"
+    "objectif",
+    "bloque"
    ],
-   "ko": 0
+   "ko": 5
   }
  },
  "cumul": {

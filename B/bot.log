@@ -63,3 +63,4 @@
 2026-11-09 20:05:02 ET [B] 3n 2026-11-10 : somme des 3 nuits -107.6 bps → LONG
 2026-11-09 20:05:11 ET [B] OUVERT 3n long 2.2 lots à 27938.28 (bid 27937.53, ask 27939.48, spread 1.95, glissement -1.20 pts) ; SL 111.2 pts, objectif 0.05 R, risque 2.50 % (éval virtuel), sortie prévue 10/11 03:00:01
 2026-11-09 20:05:19 ET [B] FERMÉ 3n (TP) à 27946.03 : +17.05 $ (+0.17 %, +0.07 R) ; compte virtuel éval +10.09 % ; P&L cumulé tous essais +1,008.95 $ sur 3 trades (compte continu 11,008.95 $)
+2026-11-09 20:34:40 ET [B] !! TRADING DÉSACTIVÉ sur l'essai 1515191583 depuis 5 min (objectif de l'essai atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter
