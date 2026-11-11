@@ -68,3 +68,5 @@
 2026-11-10 09:35:01 ET [B] M2 2026-11-10 : sens +1, force 0.56, retournement +198.3 bps → rien ; 3n de la nuit : {'raison': 'TP', 'pnl': 0.1705}
 2026-11-10 17:00:00 ET [B] COMPTE VIRTUEL : 2026-11-10 éval n° 1 validée → financé
 2026-11-10 17:00:00 ET [B] fin de journée : financé virtuel +0.00 %, meilleur jour +0.00 %, rewards 0 (0.00 %)
+2026-11-10 20:05:02 ET [B] 3n 2026-11-11 : somme des 3 nuits -85.4 bps → LONG
+2026-11-10 20:05:02 ET [B] OUVERT 3n long 0.82 lots à 27880.08 (bid 27879.33, ask 27881.28, spread 1.95, glissement -1.20 pts) ; SL 119.8 pts, objectif 2.00 R, risque 1.00 % (financé virtuel), sortie prévue 11/11 03:00:01
