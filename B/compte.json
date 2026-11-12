@@ -2,7 +2,7 @@
  "nom": "book B",
  "phase": "financé",
  "P": 2.1433,
- "hi": 1.9553,
+ "hi": 2.1433,
  "best": 1.9553,
  "f0": "2026-11-11",
  "evals": 1,
@@ -10,7 +10,7 @@
  "rewards_pct": 0.0,
  "jour": "2026-11-12",
  "pnl_jour": 0.18800000000000003,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": [
   "2026-11-10 éval n° 1 validée → financé"

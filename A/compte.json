@@ -10,7 +10,7 @@
  "rewards_pct": 0.0,
  "jour": "2026-11-12",
  "pnl_jour": -2.5141999999999998,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": []
 }
