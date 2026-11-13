@@ -7,3 +7,4 @@ nominal = 10000
 decalage_serveur_ny_h = 7
 dossier = "live/etat/B"
 annonces = "live/annonces.csv"
+objectif_essai_pct = 5                  # alerte « objectif atteint » : 5 sur l'essai gratuit, 10 sur un vrai 1-Step

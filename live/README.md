@@ -109,6 +109,32 @@ Limites :
 - **Fin d'un essai (14 jours).** L'essai FTMO expire au bout de 14 jours. Il faut alors créer un nouvel essai et s'y connecter dans le **même** terminal (*Fichier → Se connecter*), de préférence le week-end, sans position ouverte. Le compte virtuel continue tel quel. Si l'essai est « perdu » chez FTMO (perte max de l'essai), le trading y est bloqué : même chose, il faut un nouvel essai.
 - **Calendrier des annonces.** Il est dans [annonces.csv](annonces.csv) : NFP et CPI relevés sur bls.gov et décisions de la Fed sur federalreserve.gov le 2026-11-04. Les minutes de la Fed et le PIB avancé de 2027 sont *supposés* et à vérifier. Le bot prévient dans `bot.log` quand il reste moins de 35 jours de calendrier.
 
+## Passage aux vrais comptes FTMO (2 × 1-Step 10k)
+
+Les essais gratuits ont validé l'exécution (signaux, tailles, spreads, glissement, compte virtuel), pas l'edge : la décision repose sur le backtest ([[wiki/experiments/propfirm-ftmo-option]]). Sur un vrai compte, le compte virtuel joue le même rôle que sur la démo : il doit **suivre pas à pas l'état réel chez FTMO** (éval puis financé), d'où la remise à zéro au départ.
+
+**Avant d'acheter**
+- [ ] Budget : accepter de perdre le dépôt du plan (869 $ = 10 évals par paire, 79 € l'éval).
+- [ ] Relire les règles du 1-Step 10k du moment sur ftmo.com et les comparer à `live/compte.py` : objectif +10 %, perte max 10 % sous le plus haut solde de fin de journée, perte du jour 3 %, meilleur jour ≤ 50 % du gain, reward au 14e jour après le 1er trade, 90 % versés. Relire aussi les règles des annonces (financé seulement), du trading algorithmique, de l'anti-hedging entre comptes et de l'« account rolling ». **Tout écart → me le signaler avant de lancer** : le compte virtuel et les simulations seraient faux.
+- [ ] Compléter `live/annonces.csv` : minutes de la Fed et PIB avancé 2027 (supposés à ce jour).
+- [ ] Choisir le jour de bascule : un week-end, sans position ouverte. Attention à B : s'il est en attente du reward sur la démo, rien ne presse ; le perdre n'a pas d'importance (virtuel).
+
+**Bascule (sur le VPS, en RDP)**
+1. [ ] Acheter deux 1-Step 10k, plateforme **MT5**, un par book.
+2. [ ] Dans `C:\MT5_A` : *Fichier → Se connecter* au compte réel A (cocher « Enregistrer le mot de passe »). Idem `C:\MT5_B` avec le compte B. Vérifier dans chaque terminal le trading algorithmique autorisé, US100.cash affiché, graphiques H1 et M1 ouverts.
+3. [ ] Dans `live\config_A.toml` et `live\config_B.toml` : `objectif_essai_pct = 10` (alerte à l'objectif réel, au lieu des +5 % de l'essai gratuit).
+4. [ ] Réinitialiser les deux comptes virtuels : `uv run python -m live.reinit A B`. Le script refuse si une position est suivie. Chaque bot en marche se relance (≈ 10 s), archive son dossier dans `live\etat\archive\<book>_<horodatage>\` et repart d'une éval n° 1 à +0,00 %. Contrôler dans chaque `bot.log` la ligne « RÉINITIALISATION » puis « NOUVEL ESSAI MT5 détecté » avec le bon numéro de compte et 10 000 $ de solde.
+5. [ ] `uv run python -m live.bot --config live\config_A.toml --signaux` (et B) : barres reçues, spread, 12-1 de A non `nan`, compte virtuel en éval à +0,00 %.
+6. [ ] Ne **pas** lancer `--test-ordre` sur un compte réel (il passe un vrai ordre).
+7. [ ] Le lendemain : `git fetch origin vps-journal` puis `git show origin/vps-journal:pnl.md`. Les trades de la démo ne doivent plus y apparaître.
+
+**Ensuite, à chaque événement**
+- [ ] **Éval validée** (« COMPTE VIRTUEL : … validée → financé » et FTMO coupe le compte) : se connecter au compte financé dans le **même** terminal, sans réinitialiser. Le compte virtuel est déjà en financé, risque 1 %.
+- [ ] **Éval ou financé perdu** (« éval perdu ») : racheter une éval le jour même, s'y connecter dans le même terminal, sans réinitialiser (le virtuel a déjà compté le rachat).
+- [ ] **Reward** (« reward → demander le payout ») : demander le payout dans l'espace client FTMO. Si le virtuel et FTMO divergent (date du reward, gain, meilleur jour), me le signaler.
+- [ ] **Jamais de trade à la main** sur ces comptes : le compte virtuel ne le verrait pas et la règle des 50 % pourrait casser.
+- [ ] Vérifier chaque jour qu'aucune alerte « !! » n'est restée sans suite (trading désactivé, barres M1 en retard, heure du VPS).
+
 ## Écarts connus avec le backtest (à mesurer)
 
 - **Instrument.** Le bot trade le CFD US100.cash et non le future NQ :
@@ -120,4 +146,4 @@ Limites :
 
 ## Réserves
 
-Le bot est exploratoire et hors compteur d'essais. 3n et M2 ont échoué hors échantillon (n° 24 et 25), et le holdout n° 26 ne se lit qu'à partir du 2028-02-29. Le bot ne fait que la démo : ne pas le brancher sur un compte réel sans relire les règles FTMO du moment (annonces, trading algorithmique, « account rolling »).
+Le bot est exploratoire et hors compteur d'essais. 3n et M2 ont échoué hors échantillon (n° 24 et 25), et le holdout n° 26 ne se lit qu'à partir du 2028-02-29. Ne pas le brancher sur un compte réel sans suivre la checklist « Passage aux vrais comptes FTMO » ci-dessus, en particulier la relecture des règles FTMO du moment.

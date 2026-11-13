@@ -168,6 +168,41 @@ def test_drapeau_de_mise_a_jour_arrete_le_bot_proprement(tmp_path):
     assert "ticket" in (tmp_path / "A" / "etat.json").read_text(encoding="utf-8")
 
 
+def test_reinitialisation_archive_et_repart_de_zero(tmp_path, monkeypatch):
+    """live/reinit.py pose reinitialiser_<book> : au démarrage, le bot archive son dossier et repart d'un compte neuf ;
+    refusé si une position est suivie (et le drapeau est effacé dans les deux cas)."""
+    from live.bot import Bot
+    from live import reinit
+
+    d = tmp_path / "B"
+    d.mkdir()
+    CompteVirtuel(nom="book B", phase="financé", P=3.913, best=1.9553, f0="2026-11-11").save(d / "compte.json")
+    (d / "trades.csv").write_text("strat,profit\nM2,176.97\n", encoding="utf-8")
+    (d / "etat.json").write_text('{"ouverts": [{"strat": "3n"}], "faits": [], "jours": {}}', encoding="utf-8")
+    cfg = dict(book="B", dossier=str(d), annonces="live/annonces.csv")
+    horloge = lambda: pd.Timestamp("2026-11-14 12:00", tz=NY)  # noqa: E731
+
+    # position suivie : le script refuse, et le bot aussi si le drapeau est posé quand même
+    monkeypatch.setattr("sys.argv", ["reinit", "B", "--dossier", str(tmp_path)])
+    assert reinit.main() == 1 and not (tmp_path / "reinitialiser_B").exists()
+    (tmp_path / "reinitialiser_B").touch()
+    bot = Bot(cfg, horloge=horloge)
+    assert bot.compte.phase == "financé" and not (tmp_path / "reinitialiser_B").exists()
+    assert "REFUSÉE" in (d / "bot.log").read_text(encoding="utf-8")
+
+    # sans position : drapeaux posés, puis archive et compte neuf au démarrage
+    (d / "etat.json").write_text('{"ouverts": [], "faits": ["M2:2026-11-13"], "jours": {}}', encoding="utf-8")
+    assert reinit.main() == 0 and (tmp_path / "reinitialiser_B").exists() and (tmp_path / "redemarrer_B").exists()
+    bot = Bot(cfg, horloge=horloge)
+    assert (bot.compte.phase, bot.compte.P, bot.compte.evals, bot.compte.f0) == ("éval", 0.0, 1, None)
+    assert bot.etat["faits"] == [] and not (d / "trades.csv").exists()
+    arch = tmp_path / "archive" / "B_20261114_120000"
+    assert (arch / "trades.csv").exists() and "financé" in (arch / "compte.json").read_text(encoding="utf-8")
+    assert "RÉINITIALISATION" in (d / "bot.log").read_text(encoding="utf-8")
+    assert not (tmp_path / "reinitialiser_B").exists()
+    assert "Book B" in (tmp_path / "pnl.md").read_text(encoding="utf-8")
+
+
 def test_suivi_pnl_deux_essais(tmp_path):
     """live/pnl.py additionne les trades de deux essais MT5 comme un seul compte de 10 000 $ et lit le compte virtuel."""
     from live import pnl

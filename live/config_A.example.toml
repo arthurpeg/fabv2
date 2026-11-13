@@ -8,3 +8,4 @@ decalage_serveur_ny_h = 7               # serveur FTMO = heure de New York + 7 h
 mom_signe = 0                           # 0 = calculé sur le CFD ; +1 / -1 pour forcer (signe du NQ ajusté)
 dossier = "live/etat/A"
 annonces = "live/annonces.csv"
+objectif_essai_pct = 5                  # alerte « objectif atteint » : 5 sur l'essai gratuit, 10 sur un vrai 1-Step

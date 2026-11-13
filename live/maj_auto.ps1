@@ -42,6 +42,7 @@ function Publie-Journal {
         foreach ($f in "trades.csv", "signaux.csv", "compte.json", "etat.json", "bot.log") {
             $p = Join-Path $src $f
             if (Test-Path $p) { Copy-Item -Force $p $dst }
+            else { Remove-Item -Force (Join-Path $dst $f) -ErrorAction SilentlyContinue }  # apres live.reinit
         }
     }
     foreach ($f in "pnl.md", "maj_auto.log", "relances_A.log", "relances_B.log") {

@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import shutil
 import sys
 import time
 import tomllib
@@ -54,6 +55,7 @@ class Bot:
         self.dir = Path(cfg.get("dossier", f"live/etat/{self.book}"))
         self.dir.mkdir(parents=True, exist_ok=True)
         self.b = broker
+        self._reinit_msg = self.reinitialise_si_demande()
         self.compte = CompteVirtuel.load(self.dir / "compte.json", f"book {self.book}")
         p = self.dir / "etat.json"
         self.etat = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"ouverts": [], "faits": [], "jours": {}}
@@ -63,6 +65,30 @@ class Bot:
         self.matin = {f"{d:%Y-%m-%d}" for d in a.date[a.annonce.isin(["NFP", "CPI", "PIB avancé"])]}
         self.fed = {f"{d:%Y-%m-%d}" for d in a.date[a.annonce.isin(["FOMC décision", "FOMC minutes"])]}
         self._n_events = len(self.compte.events)
+        if self._reinit_msg:
+            self.log(self._reinit_msg)
+
+    def reinitialise_si_demande(self) -> str:
+        """Drapeau live/etat/reinitialiser_<book> (posé par live/reinit.py) : au démarrage, le dossier du book est
+        déplacé dans live/etat/archive/<book>_<horodatage>/ et le bot repart d'un compte virtuel neuf (éval n° 1, P = 0,
+        aucun trade, aucun essai connu). Refusé si une position est suivie. Le drapeau est effacé dans les deux cas."""
+        drap = self.dir.parent / f"reinitialiser_{self.book}"
+        if not drap.exists():
+            return ""
+        drap.unlink(missing_ok=True)
+        p = self.dir / "etat.json"
+        ouverts = json.loads(p.read_text(encoding="utf-8")).get("ouverts", []) if p.exists() else []
+        if ouverts:
+            return (f"!! RÉINITIALISATION REFUSÉE : {len(ouverts)} position(s) suivie(s) "
+                    f"({', '.join(str(o.get('strat')) for o in ouverts)}). Relancer live/reinit.py sans position ouverte")
+        if not any(self.dir.iterdir()):
+            return "réinitialisation demandée : dossier déjà vide, compte virtuel neuf"
+        arch = self.dir.parent / "archive" / f"{self.book}_{self.maintenant():%Y%m%d_%H%M%S}"
+        arch.parent.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(self.dir), str(arch))
+        self.dir.mkdir(parents=True, exist_ok=True)
+        self.rapport()
+        return f"RÉINITIALISATION : ancien état archivé dans {arch} ; compte virtuel neuf (éval n° 1, +0,00 %)"
 
     # ------------------------------------------------------------------ outils
     def log(self, s: str) -> None:
