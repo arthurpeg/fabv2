@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-13 17:14
+updated: 2026-11-13 17:19
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-13 17:14
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-13] query | Règles FTMO 1-Step 10k relues sur ftmo.com (Trading Objectives, page 1-Step, FAQ reward / annonces / stratégies / comptes / VPS, Forbidden Trading Practices), comparées à live/compte.py et au plan retenu | chiffres conformes (79 €, +10 %, 3 % jour, 10 % max fin de journée remis à zéro au nouveau compte, Consistency 50 % du gain total, reward au 14e jour, 90 %, 400 k$ max) ; annonces ±2 min en financé couvertes par les coupures 8:19 / 13:55 ; à vérifier : VPS hors US, et 3 points flous à poser au support (gap trading de mom en éval, exposition cumulée A + B long la même nuit, cible + attente) ; détail dans live/README.md
 - [2026-11-13] fix | Passage aux vrais comptes FTMO préparé : drapeau de réinitialisation du compte virtuel (live/reinit.py, Bot.reinitialise_si_demande : archive live/etat/<book> dans live/etat/archive/ puis éval n° 1 à zéro, refusé si position suivie), journal vps-journal nettoyé des fichiers disparus, option objectif_essai_pct dans les configs, checklist « Passage aux vrais comptes FTMO » dans live/README.md | démo au 13/11 : A −5,46 % (7 trades), B financé virtuel +3,91 %, en attente du reward (24/11) ; rien de lancé en réel
 - [2026-11-06] query | Inférence des chiffres overnight (run_inference_overnight.py, reports/inference_overnight_report.md, exploratoire, compteur inchangé) : t HAC Newey-West, bootstrap par blocs, Ljung-Box, ARCH-LM, N effectif (Li & Ji), DSR avec N brut et effectif | t HAC > t iid partout (ρ1 négatif ; NQ close-to-open 3,12 → 3,51) ; ARCH massif en bp, absent en R ; N effectif ≈ 610 / 1 742 ; DSR mom 0,005 et NQ CTO 0,016 avec N ≈ 610 (≤ 0,53 avec V = 1/T) : la preuve de mom reste le hors échantillon du n° 11
 - [2026-11-06] query | Version anglaise du document overnight en PDF (reports/overnight_research_en.pdf, 5 pages, généré par reportlab depuis un script du scratchpad) | traduction fidèle du document Claude Docs, aucun nouveau calcul
@@ -30,7 +31,6 @@ updated: 2026-11-13 17:14
 - [2026-11-06] query | Document de synthèse de la recherche overnight (Claude Docs « Recherche overnight : hypothèses, protocole et résultats », https://claude.ai/artifact/Rm8gtyyPCG6zuoVtsPtN2m) : cadre, protocole, hypothèses testées, phénomènes significatifs, échecs, suite | rédigé à partir du wiki, aucun nouveau calcul, hors compteur
 - [2026-11-05] query | Book C hypothétique sans edge (sens au hasard, nuits de mom, objectif 2 R) sur FundingPips 1 Step Flex 10k (prix supposé 116 $), en même temps que A et B chez FTMO (run_book_c.py, reports/book_c_report.md, exploratoire, hors compteur) | C seul : +1 125 $/an sur 2011-2026, perdant sur 12 mois dans 20 % des départs ; A + B + C : +24 % de gain (MC 3 ans +16,1 k$ contre +12,9 k$), max DD de trésorerie +50 % (99e c. −1 275 $ contre −782 $), corrélation C / A + B ≈ +0,1
 - [2026-11-05] query | Scaling FTMO hypothétique jusqu'à 800k (3 puis 4 × 100k par stratégie ; run_ftmo_scaling_800k.py, paliers généralisés dans run_ftmo_scaling*.py ; reports/ftmo_scaling_800k_report.md, exploratoire, hors compteur) | 800k en 15,0 mois médian (MC historique), 21,2 (edge / 2) ; revenu à 800k ≈ 15 300 $ / mois (10 100 edge / 2) ; cagnotte à 5 ans +706 k$ / +395 k$ ; max DD médian −6,6 k$ ; ruine 1,1 / 5,9 %
-- [2026-11-05] query | Sortie de mom avant les annonces de 8:30 (bot live/bot.py ev_mom) : en financé virtuel, sortie à 8:18:55 ET les jours NFP / CPI / PIB avancé de live/annonces.csv, sinon 9:29:57 ; en éval, pas de coupure (règle FTMO réservée au compte financé, comme le plan retenu) | vérifié par rejeu (test_book_A_finance_sort_avant_les_annonces : nuit allant à 9:29:57 fermée à 8:18:55 un jour d'annonce, autres nuits inchangées) ; nuit du 05 au 06/11 (NFP) en éval : gardée jusqu'à 9:29:57, conforme au plan
 
 ## Prochaines actions
 
