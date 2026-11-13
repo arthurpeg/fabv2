@@ -79,3 +79,4 @@
 2026-11-12 03:00:02 ET [B] FERMÉ 3n (heure) à 28124.03 : +18.80 $ (+0.19 %, +0.19 R) ; compte virtuel financé +2.14 % ; P&L cumulé tous essais +1,223.28 $ sur 5 trades (compte continu 11,223.28 $)
 2026-11-12 09:35:01 ET [B] M2 2026-11-12 : sens +1, force 1.56, retournement +48.2 bps → rien ; 3n de la nuit : {'raison': 'heure', 'pnl': 0.18800000000000003}
 2026-11-12 17:00:00 ET [B] fin de journée : financé virtuel +2.14 %, meilleur jour +1.96 %, rewards 0 (0.00 %)
+2026-11-12 20:05:01 ET [B] 3n 2026-11-13 : somme des 3 nuits +73.6 bps → rien
