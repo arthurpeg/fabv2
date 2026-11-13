@@ -82,3 +82,4 @@
 2026-11-12 20:05:01 ET [B] 3n 2026-11-13 : somme des 3 nuits +73.6 bps → rien
 2026-11-13 09:35:01 ET [B] M2 2026-11-13 : sens -1, force 2.66, retournement -64.9 bps → SIGNAL ; 3n de la nuit : None
 2026-11-13 09:35:02 ET [B] OUVERT M2 short 0.42 lots à 28224.73 (bid 28223.83, ask 28225.28, spread 1.45, glissement -0.90 pts) ; SL 234.2 pts, objectif 1.79 R, risque 1.00 % (financé virtuel), sortie prévue 13/11 15:59:57
+2026-11-13 10:10:33 ET [B] FERMÉ M2 (TP) à 27803.38 : +176.97 $ (+1.77 %, +1.80 R) ; compte virtuel financé +3.91 % ; P&L cumulé tous essais +1,400.25 $ sur 6 trades (compte continu 11,400.25 $)
