@@ -29,3 +29,4 @@
 2026-11-12 17:17:21 mise a jour 9409f4c -> 54cc636, tests OK (code du bot inchange)
 2026-11-13 17:02:42 mise a jour 54cc636 -> 4a2bfd2, tests OK (code du bot inchange)
 2026-11-13 17:06:58 mise a jour 4a2bfd2 -> 7caa0c0, tests OK (code du bot inchange)
+2026-11-13 17:16:35 mise a jour 7caa0c0 -> 0c4b75d, tests OK, bots relances : live/bot.py, live/reinit.py
