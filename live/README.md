@@ -119,17 +119,22 @@ Les essais gratuits ont validé l'exécution (signaux, tailles, spreads, glissem
 - [ ] **VPS hors des États-Unis** : FTMO interdit de se connecter à MT5 depuis une IP américaine (VPN / VPS compris). Vérifier la région du VPS Contabo dans son panneau.
 - [ ] **Points flous à faire confirmer par le support FTMO** (Forbidden Trading Practices) : (1) « gap trading » = ouvrir un trade quand une annonce macro majeure est prévue : en éval, mom est ouvert à 20:00 et gardé à travers le NFP / CPI de 8:30 (autorisé par la FAQ des annonces pour l'éval, mais la clause vaut aussi en éval) ; (2) exposition cumulée sur des comptes liés : A mom long et B 3n long sur US100.cash la même nuit (les positions opposées, elles, sont déjà exclues par l'anti-hedging) ; (3) « cible + attente » : objectif réduit pour respecter la Consistency, sans couverture ni clôture partielle, a priori hors de la clause anti-contournement.
 - [ ] Relire de nouveau les règles du 1-Step 10k juste avant l'achat sur ftmo.com et les comparer à `live/compte.py` : objectif +10 %, perte max 10 % sous le plus haut solde de fin de journée, perte du jour 3 %, meilleur jour ≤ 50 % du gain, reward au 14e jour après le 1er trade, 90 % versés. Relire aussi les règles des annonces (financé seulement), du trading algorithmique, de l'anti-hedging entre comptes et de l'« account rolling ». **Tout écart → me le signaler avant de lancer** : le compte virtuel et les simulations seraient faux.
-- [ ] Compléter `live/annonces.csv` : minutes de la Fed et PIB avancé 2027 (supposés à ce jour).
-- [ ] Choisir le jour de bascule : un week-end, sans position ouverte. Attention à B : s'il est en attente du reward sur la démo, rien ne presse ; le perdre n'a pas d'importance (virtuel).
+- [x] `live/annonces.csv` complété jusqu'à fin 2027 (2026-11-14) : NFP et CPI relus sur bls.gov, décisions de la Fed sur federalreserve.gov (2027 provisoire). Restent *supposés* : les minutes de la Fed (décision + 21 jours, écart vérifié sur les 6 minutes de 2026) et le PIB avancé 2027 (calendrier BEA non publié) : à relire quand ils sortent.
+- [x] **Bascule automatique armée** (`live/bascule.toml`, `arme = true`, 2026-11-14). Le VPS l'a reçue par la mise à jour auto.
+- [ ] **D'ici l'achat, ne plus connecter de nouvel essai gratuit** dans `C:\MT5_A` ni `C:\MT5_B` : n'importe quel nouveau compte déclencherait la bascule. Un essai qui expire laisse simplement le bot sans trade, sans conséquence.
 
-**Bascule (sur le VPS, en RDP)**
+**Bascule : la seule chose à faire (en RDP sur le VPS)**
 1. [ ] Acheter deux 1-Step 10k, plateforme **MT5**, un par book.
-2. [ ] Dans `C:\MT5_A` : *Fichier → Se connecter* au compte réel A (cocher « Enregistrer le mot de passe »). Idem `C:\MT5_B` avec le compte B. Vérifier dans chaque terminal le trading algorithmique autorisé, US100.cash affiché, graphiques H1 et M1 ouverts.
-3. [ ] Dans `live\config_A.toml` et `live\config_B.toml` : `objectif_essai_pct = 10` (alerte à l'objectif réel, au lieu des +5 % de l'essai gratuit).
-4. [ ] Réinitialiser les deux comptes virtuels : `uv run python -m live.reinit A B`. Le script refuse si une position est suivie. Chaque bot en marche se relance (≈ 10 s), archive son dossier dans `live\etat\archive\<book>_<horodatage>\` et repart d'une éval n° 1 à +0,00 %. Contrôler dans chaque `bot.log` la ligne « RÉINITIALISATION » puis « NOUVEL ESSAI MT5 détecté » avec le bon numéro de compte et 10 000 $ de solde.
-5. [ ] `uv run python -m live.bot --config live\config_A.toml --signaux` (et B) : barres reçues, spread, 12-1 de A non `nan`, compte virtuel en éval à +0,00 %.
-6. [ ] Ne **pas** lancer `--test-ordre` sur un compte réel (il passe un vrai ordre).
-7. [ ] Le lendemain : `git fetch origin vps-journal` puis `git show origin/vps-journal:pnl.md`. Les trades de la démo ne doivent plus y apparaître.
+2. [ ] **Choisir le moment, hors position** : un week-end, ou en semaine entre 16:00 et 19:55 heure de New York (22:00 → 01:55 heure de Paris), quand ni mom ni 3n ni M2 ne sont en position.
+3. [ ] Dans le terminal de A : *Fichier → Se connecter au compte de trading*, identifiants du compte A, serveur indiqué par FTMO, cocher « Enregistrer le mot de passe ». Idem dans le terminal de B avec le compte B. Les terminaux gardent leurs réglages (trading algorithmique, US100.cash, graphiques).
+
+C'est tout. Dans la minute, chaque bot voit le nouveau compte, écrit « BASCULE VERS LE COMPTE RÉEL <numéro> », archive la démo dans `live\etatrchive\<book>_<horodatage>\`, se relance (≈ 10 s) et repart d'une éval n° 1 à +0,00 % en mode réel (alerte d'objectif à +10 %). Si une position est encore suivie, il écrit « BASCULE EN ATTENTE » et ne trade plus : fermer la position ou me montrer le journal.
+
+**Contrôles (depuis n'importe quel poste)**
+- [ ] `git fetch origin vps-journal` puis `git show origin/vps-journal:B/bot.log` (et A) : lignes « BASCULE VERS LE COMPTE RÉEL », « RÉINITIALISATION (compte réel) », bon numéro de compte, solde 10 000 $, puis « démarrage … compte virtuel éval +0.00 % ».
+- [ ] `git show origin/vps-journal:pnl.md` : les trades de la démo n'y sont plus.
+- [ ] Ne **pas** lancer `--test-ordre` sur un compte réel (il passe un vrai ordre).
+- [ ] La réinitialisation manuelle reste possible : `uv run python -m live.reinit A B` (refusée si une position est suivie).
 
 **Ensuite, à chaque événement**
 - [ ] **Éval validée** (« COMPTE VIRTUEL : … validée → financé » et FTMO coupe le compte) : se connecter au compte financé dans le **même** terminal, sans réinitialiser. Le compte virtuel est déjà en financé, risque 1 %.

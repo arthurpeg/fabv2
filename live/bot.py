@@ -65,6 +65,7 @@ class Bot:
         self.matin = {f"{d:%Y-%m-%d}" for d in a.date[a.annonce.isin(["NFP", "CPI", "PIB avancé"])]}
         self.fed = {f"{d:%Y-%m-%d}" for d in a.date[a.annonce.isin(["FOMC décision", "FOMC minutes"])]}
         self._n_events = len(self.compte.events)
+        self.bascule_bloquee = False
         if self._reinit_msg:
             self.log(self._reinit_msg)
 
@@ -75,6 +76,7 @@ class Bot:
         drap = self.dir.parent / f"reinitialiser_{self.book}"
         if not drap.exists():
             return ""
+        reel = drap.read_text(encoding="utf-8").strip() == "reel"
         drap.unlink(missing_ok=True)
         p = self.dir / "etat.json"
         ouverts = json.loads(p.read_text(encoding="utf-8")).get("ouverts", []) if p.exists() else []
@@ -87,8 +89,20 @@ class Bot:
         arch.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(str(self.dir), str(arch))
         self.dir.mkdir(parents=True, exist_ok=True)
+        if reel:  # marque du mode réel : la bascule ne se refera plus, alerte d'objectif à +10 %
+            (self.dir / "etat.json").write_text(json.dumps(
+                {"ouverts": [], "faits": [], "jours": {}, "reel": f"{self.maintenant():%Y-%m-%d %H:%M}"}),
+                encoding="utf-8")
         self.rapport()
-        return f"RÉINITIALISATION : ancien état archivé dans {arch} ; compte virtuel neuf (éval n° 1, +0,00 %)"
+        return (f"RÉINITIALISATION{' (compte réel)' if reel else ''} : ancien état archivé dans {arch} ; "
+                f"compte virtuel neuf (éval n° 1, +0,00 %)")
+
+    def bascule_armee(self) -> bool:
+        p = Path(self.cfg.get("bascule", "live/bascule.toml"))
+        try:
+            return bool(tomllib.loads(p.read_text(encoding="utf-8")).get("arme", False))
+        except Exception:
+            return False
 
     # ------------------------------------------------------------------ outils
     def log(self, s: str) -> None:
@@ -193,6 +207,20 @@ class Bot:
             return
         comptes = self.etat.setdefault("comptes", {})
         k = str(c["login"])
+        if k not in comptes and comptes and self.bascule_armee() and not self.etat.get("reel"):
+            # 1er vrai compte FTMO connecté : remise à zéro par le chemin éprouvé (drapeaux + relance par lancer.bat)
+            if self.etat["ouverts"]:
+                if not self.bascule_bloquee:
+                    self.log(f"!! BASCULE EN ATTENTE : nouveau compte {k} détecté mais {len(self.etat['ouverts'])} "
+                             f"position(s) suivie(s) sur l'ancien. Aucun nouveau trade d'ici la bascule")
+                self.bascule_bloquee = True
+                return
+            self.log(f"BASCULE VERS LE COMPTE RÉEL {k} ({c.get('serveur', '?')}, solde {c['balance']:,.2f} $) : "
+                     f"archivage de la démo et compte virtuel neuf ; relance du bot")
+            (self.dir.parent / f"reinitialiser_{self.book}").write_text("reel", encoding="utf-8")
+            self.bascule_bloquee = True
+            self.drapeau.touch()
+            return
         if k not in comptes:
             if comptes:
                 self.log(f"NOUVEL ESSAI MT5 détecté : {k} (solde {c['balance']:,.2f} $). Le P&L cumulé et le compte "
@@ -223,7 +251,7 @@ class Bot:
             if e["ko"] >= 5:
                 alerte("bloque", f"!! TRADING DÉSACTIVÉ sur l'essai {k} depuis {e['ko']} min (objectif de l'essai "
                                  f"atteint, perte max ou essai expiré) : créer un nouvel essai FTMO et s'y connecter")
-        if gain >= float(self.cfg.get("objectif_essai_pct", 5.0)):
+        if gain >= float(self.cfg.get("objectif_essai_pct", 10.0 if self.etat.get("reel") else 5.0)):
             alerte("objectif", f"objectif de l'essai atteint sur {k} ({gain:+.2f} %). Sans effet sur le plan : le "
                                f"compte virtuel garde l'objectif réel de +10 %. Si FTMO bloque l'essai, en créer un neuf")
         if gain <= -8.0:
@@ -271,6 +299,9 @@ class Bot:
     def jambe(self, strat: str, seance: pd.Timestamp, side: int, dist: float, risque: float, sortie: pd.Timestamp,
               info: dict) -> None:
         c = self.compte
+        if self.bascule_bloquee:
+            self.log(f"{strat} {seance:%Y-%m-%d} : pas de trade (bascule vers le compte réel en cours)")
+            return
         spread = self.b.spread()
         plan = c.plan_jambe(risque, spread / dist)
         if plan is None:

@@ -92,21 +92,30 @@ class FauxMT5:
 
 
 def rejoue(book, tmp_path, a="2026-07-26", z="2026-08-28", signe=1, bascule=None, annonces="live/annonces.csv",
-           phase=None):
+           phase=None, reel=False):
     m = pd.read_parquet(NQ)
     m = m[~m.index.duplicated()].sort_index()
     m1 = m[(m.index >= "2026-06-01") & (m.index < "2026-08-29")].tz_convert(NY)
     clock = {"t": pd.Timestamp(a, tz=NY)}
-    cfg = dict(book=book, dossier=str(tmp_path / book), mom_signe=signe, annonces=annonces)
+    cfg = dict(book=book, dossier=str(tmp_path / book), mom_signe=signe, annonces=annonces, bascule="")
+    if reel:  # bascule vers le compte réel armée (live/bascule.toml)
+        (tmp_path / "bascule.toml").write_text("arme = true", encoding="utf-8")
+        cfg["bascule"] = str(tmp_path / "bascule.toml")
     if phase is not None:  # compte virtuel déjà dans cette phase au départ
         from live.compte import CompteVirtuel
         (tmp_path / book).mkdir(parents=True, exist_ok=True)
         CompteVirtuel(nom=f"book {book}", phase=phase).save(tmp_path / book / "compte.json")
     bot = Bot(cfg, horloge=lambda: clock["t"])
-    bot.b = FauxMT5(m1, lambda: clock["t"], bascule)
+    faux = FauxMT5(m1, lambda: clock["t"], bascule)
+    bot.b = faux
     for minute in pd.date_range(pd.Timestamp(a, tz=NY), pd.Timestamp(z + " 17:00", tz=NY), freq="1min"):
         for sec in (1, 57):
             clock["t"] = minute + pd.Timedelta(seconds=sec)
+            if bot.drapeau.exists():  # relance par lancer.bat
+                bot.drapeau.unlink()
+                bot.save()
+                bot = Bot(cfg, horloge=lambda: clock["t"])
+                bot.b = faux
             bot.pas()
             if sec == 1 and minute.minute == 0:
                 bot.controle_compte()
@@ -154,6 +163,26 @@ def test_book_A_entre_chaque_nuit(tmp_path):
     s_bot = (t.dist / t.px_signal).values
     s_ref = ref.sort_values("night").risk.values
     assert np.allclose(s_bot, s_ref, rtol=0.01)
+
+
+def test_bascule_vers_le_compte_reel(tmp_path):
+    """live/bascule.toml armé : au 1er nouveau login (samedi 15/08), le bot archive la démo, se relance et repart d'une
+    éval neuve en mode réel ; seuls les trades du nouveau compte restent dans le journal courant."""
+    import json
+    t = rejoue("B", tmp_path, bascule=pd.Timestamp("2026-08-15 12:00", tz=NY), reel=True)
+    assert set(t.compte_mt5.astype(str)) == {"222"} and (pd.to_datetime(t.seance) > "2026-08-15").all()
+    arch = list((tmp_path / "archive").iterdir())
+    assert len(arch) == 1 and arch[0].name.startswith("B_20260815_")
+    vieux = pd.read_csv(arch[0] / "trades.csv")
+    assert set(vieux.compte_mt5.astype(str)) == {"111"} and (pd.to_datetime(vieux.seance) <= "2026-08-15").all()
+    assert "BASCULE VERS LE COMPTE RÉEL 222" in (arch[0] / "bot.log").read_text(encoding="utf-8")
+    log = (tmp_path / "B" / "bot.log").read_text(encoding="utf-8")
+    assert "RÉINITIALISATION (compte réel)" in log and "NOUVEL ESSAI" not in log
+    etat = json.loads((tmp_path / "B" / "etat.json").read_text(encoding="utf-8"))
+    assert etat["reel"].startswith("2026-08-15") and list(etat["comptes"]) == ["222"]
+    c = json.loads((tmp_path / "B" / "compte.json").read_text(encoding="utf-8"))
+    assert c["evals"] >= 1 and c["P"] == pytest.approx(t.P_apres.iloc[-1])
+    assert t.phase.iloc[0] == "éval"
 
 
 def test_suivi_pnl_additionne_les_essais(tmp_path):
