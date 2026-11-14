@@ -36,3 +36,4 @@
 2026-11-13 17:36:45 mise a jour db1baf6 -> ce2bbca, tests OK (code du bot inchange)
 2026-11-14 13:16:42 mise a jour ce2bbca -> 3af1b9b, tests OK, bots relances : live/annonces.csv, live/bot.py
 2026-11-14 13:21:33 mise a jour 3af1b9b -> 36b761a, tests OK (code du bot inchange)
+2026-11-14 14:06:21 mise a jour 36b761a -> 131afb4, tests OK, bots relances : live/bot.py
