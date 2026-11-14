@@ -397,6 +397,13 @@ class Bot:
                 self.log(f"mom : marché fermé ce soir à 20:00, pas d'entrée")
             return
         self.marque(cle)
+        if self.compte.phase == "financé" and (seance - now.tz_localize(None).normalize()).days > 1:
+            # FTMO (FAQ « hold positions overnight or over the weekend », relue le 2026-11-14) : sur le compte financé,
+            # pas de position à travers une fermeture de plus de 2 h. Une nuit qui enjambe un jour férié (Thanksgiving,
+            # lundis fériés, veille de pont) traverserait la fermeture du férié : pas d'entrée. En éval, c'est permis.
+            self.log(f"mom séance {seance:%Y-%m-%d} : la nuit enjambe un jour férié, pas d'entrée en financé "
+                     f"(position interdite à travers une fermeture de plus de 2 h)")
+            return
         m1 = self.m1_frais()
         if m1 is None:
             return

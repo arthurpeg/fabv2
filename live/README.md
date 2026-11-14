@@ -149,6 +149,12 @@ C'est tout. Dans la minute, chaque bot voit le nouveau compte, écrit « BASCULE
   - le spread réel remplace l'hypothèse de 1,5 point ;
   - le signe du momentum est calculé sur le CFD, non ajusté du portage (≈ 3 à 4 %/an). Le bot prévient si |12-1| < 5 %. Dans ce cas, mettre `mom_signe = +1` ou `-1` dans la config d'après le NQ.
 - **Jours écourtés.** M2 sort à la clôture XNYS (13:00) au lieu de la dernière barre NQ.
+- **Jours fériés** (calendrier XNYS ; vérifié par rejeu des fêtes de fin 2025, 2026-11-14) :
+  - **férié en semaine** (Thanksgiving, Noël, 1er janvier, lundis fériés…) : pas de M2 ce jour-là. Marché CFD fermé le soir (veille de Noël, 31 décembre, vendredi) : ni mom ni 3n, le bot écrit « marché fermé ».
+  - **demi-séance** (lendemain de Thanksgiving, 24 décembre) : M2 sort à 12:59:57, avant la fermeture d'US100.cash (13:15 ET chez FTMO).
+  - **mom, nuit qui enjambe un férié** (par ex. mercredi 20:00 → vendredi 9:30 autour de Thanksgiving, dimanche → mardi pour un lundi férié) : en éval, la position traverse le férié, comme dans le backtest. **En financé, pas d'entrée** : FTMO interdit sur le compte financé de garder une position à travers une fermeture de plus de 2 h (FAQ relue le 2026-11-14 ; permis en éval). Environ 9 nuits par an (148 sur 3 981 séances de 2011 à 2026), absentes du backtest financé : coût non chiffré, faible.
+  - 3n sort toujours à 03:00, avant les fermetures de jour férié.
+  - Les horaires d'US100.cash des fêtes sont publiés par FTMO environ une semaine avant (page « Trading updates ») : les relire vers le 17/12.
 - **3n sorti à un objectif réduit en éval.** Il compte comme « TP », donc pas de M2 ce jour-là. Le moteur décide sur le R brut.
 - **Holdout n° 26.** Ne pas comparer les trades du bot à un backtest recalculé sur les données NQ de la même période avant le 2028-02-29 : ce serait lire le holdout. On ne mesure d'ici là que l'exécution, à partir des seuls journaux du bot (glissement = prix d'exécution − prix du signal, spread, respect des heures).
 

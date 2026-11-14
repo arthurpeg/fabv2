@@ -203,6 +203,22 @@ def test_suivi_pnl_additionne_les_essais(tmp_path):
     assert c["P"] == pytest.approx(t.P_apres.iloc[-1])
 
 
+@pytest.mark.parametrize("phase", ["éval", "financé"])
+def test_book_A_jour_ferie(tmp_path, phase):
+    """Vendredi 03/07/2026 férié (4 juillet) : la nuit du jeudi 02/07 va jusqu'à la séance du lundi 06/07. En éval, mom
+    y entre (garder une position à travers une fermeture est permis) ; en financé, pas d'entrée (FTMO interdit de
+    garder une position à travers une fermeture de plus de 2 h)."""
+    t = rejoue("A", tmp_path, a="2026-07-02", z="2026-07-08", phase=phase)
+    s = set(t.seance.astype(str).str[:10])
+    assert ("2026-07-06" in s) == (phase == "éval")
+    if phase == "éval":  # entrée le jeudi soir, sortie au plus tard le lundi 9:29:57
+        x = t[t.seance.astype(str).str[:10] == "2026-07-06"].iloc[0]
+        assert x.heure_entree.startswith("2026-07-02 20:00") and x.sortie.startswith("2026-07-06 09:29:57")
+    if phase == "financé":
+        assert "enjambe un jour férié" in (tmp_path / "A" / "bot.log").read_text(encoding="utf-8")
+        assert {"2026-07-07", "2026-07-08"} <= s  # les nuits suivantes reprennent
+
+
 def test_book_A_finance_sort_avant_les_annonces(tmp_path):
     """Compte virtuel financé, annonce 8:30 (NFP fictif) le jeudi 13/08, nuit qui serait allée jusqu'à 9:29:57 :
     elle est fermée à 8:18:55 ET, hors de la fenêtre FTMO interdite (8:28 → 8:32) ; les autres nuits sortent à 9:29:57."""
