@@ -1,13 +1,16 @@
 {
  "ouverts": [],
- "faits": [],
+ "faits": [
+  "mom-ferme:2026-11-14"
+ ],
  "jours": {},
  "reel": "2026-11-14 13:38",
  "comptes": {
   "511480419": {
    "debut": "2026-11-14 13:38",
    "solde_initial": 10000.0,
-   "alertes": []
+   "alertes": [],
+   "ko": 0
   }
  }
 }
