@@ -4,13 +4,13 @@
  "P": -2.4955000000000003,
  "hi": 0.0,
  "best": 0.0,
- "f0": null,
+ "f0": "2026-11-16",
  "evals": 1,
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-16",
  "pnl_jour": -2.4955000000000003,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": []
 }
