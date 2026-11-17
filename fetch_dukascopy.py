@@ -87,8 +87,8 @@ def fill_hours_from_ticks(pair: str, start: str, end: str) -> None:
     import requests
 
     point = 1e3 if pair.endswith("JPY") else 1e5
-    hours = [h for h in pd.date_range(start, end, freq="h", tz="UTC", inclusive="left")
-             if h.dayofweek < 5 or (h.dayofweek == 6 and h.hour >= 20)]
+    days_dir = RAW / "ticks" / pair  # un fichier par jour complet : relancer reprend là où on s'est arrêté
+    days_dir.mkdir(parents=True, exist_ok=True)
     session = requests.Session()
     session.headers["User-Agent"] = "Mozilla/5.0"
 
@@ -109,12 +109,30 @@ def fill_hours_from_ticks(pair: str, start: str, end: str) -> None:
             except Exception:
                 pass
             time.sleep(3 * (attempt + 1))
-        raise RuntimeError(f"échec définitif {url}")
+        return h, "ÉCHEC"
 
-    with ThreadPoolExecutor(4) as ex:
-        rows = {h: v for h, v in ex.map(one, hours) if v is not None}
-    df = pd.DataFrame.from_dict(rows, orient="index",
-                                columns=["open", "high", "low", "close", "ask_open", "ask_high", "ask_low", "ask_close", "volume"])
+    cols = ["open", "high", "low", "close", "ask_open", "ask_high", "ask_low", "ask_close", "volume"]
+    failed = []
+    for day in pd.date_range(start, end, freq="D", tz="UTC", inclusive="left"):
+        path = days_dir / f"{day.date()}.parquet"
+        if path.exists() or day.dayofweek == 5:
+            continue
+        hours = [day + pd.Timedelta(hours=k) for k in range(24)]
+        hours = [h for h in hours if h.dayofweek < 5 or h.hour >= 20]
+        with ThreadPoolExecutor(3) as ex:
+            res = list(ex.map(one, hours))
+        bad = [h for h, v in res if isinstance(v, str)]
+        if bad:
+            failed += bad
+            continue  # jour incomplet : pas enregistré, sera retenté à la prochaine relance
+        rows = {h: v for h, v in res if v is not None}
+        pd.DataFrame.from_dict(rows, orient="index", columns=cols).to_parquet(path)
+    if failed:
+        print(f"  {pair} : {len(failed)} heures en échec (jours non enregistrés), relancer : {failed[:5]}")
+        return
+    files = sorted(days_dir.glob("*.parquet"))
+    df = pd.concat(pd.read_parquet(f) for f in files)
+    df = df[(df.index >= pd.Timestamp(start, tz="UTC")) & (df.index < pd.Timestamp(end, tz="UTC"))]
     df.index = pd.DatetimeIndex(df.index, name="timestamp").as_unit("us")
     for y, g in df.groupby(df.index.year):
         out = RAW / "1h" / pair
@@ -122,7 +140,7 @@ def fill_hours_from_ticks(pair: str, start: str, end: str) -> None:
         a = g[["ask_open", "ask_high", "ask_low", "ask_close", "volume"]]
         a.columns = ["open", "high", "low", "close", "volume"]
         a.to_parquet(out / f"ask_{y}_ticks.parquet")
-    print(f"  {pair} : {len(df)} heures reconstruites depuis les ticks ({len(hours)} heures demandées)")
+    print(f"  {pair} : {len(df)} heures reconstruites depuis les ticks ({len(files)} jours)")
 
 
 def assemble(pair: str, freq: str) -> None:
