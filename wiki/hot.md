@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-17 15:42
+updated: 2026-11-17 16:47
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-17 15:42
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-17] query | Réponse du support FTMO aux points flous | générique : pas de validation préalable, contrôle sur les ordres réels, clause 7 (reproductible en réel), article gambling ; repère 20 % de marge et 1,5 % de risque par idée de trade ; écarts : éval 2,5 % par trade, financé A + B long la même nuit = 2 % sur une idée ; aucune modification du bot à ce stade
 - [2026-11-17] query | Contrôle du 1er trade M2 réel (book B) | SL 257,5 pts = 4 × ATR M15 (64,4 pts), conforme ; risque 2,14 % = risque dynamique après le 3n de la nuit (+0,73 %), 0,82 lot ; B éval +0,73 % avant ce trade
 - [2026-11-16] query | Premier jour des vrais comptes FTMO lu dans le journal vps-journal | A : mom long 1,32 lot dim. 15/11 20:00:04 ET à 28 090,18 (glissement −0,90 pt), SL touché à 20:11 (−249,55 $, −2,50 %, −1,02 R), éval −2,50 % ; B : 3n rien (+54,2 bps), M2 rien, éval +0,00 % ; exécution conforme, aucune position ouverte, aucune erreur
 - [2026-11-14] fix | Vrais comptes FTMO 1-Step 10k connectés sur le VPS, bascule automatique vérifiée dans le journal vps-journal | A : compte 511480419 (FTMO-Server) à 13:38 ET, B : 541521340 (FTMO-Server4) à 13:42 ET ; solde 10 000 $, démo archivée, éval n° 1 à +0,00 %, aucune position, code e9a8707 (avec le correctif des fériés) ; alerte « écart d'heure » normale le week-end
@@ -30,7 +31,6 @@ updated: 2026-11-17 15:42
 - [2026-11-14] fix | Bascule automatique vers les vrais comptes FTMO (live/bascule.toml armé ; Bot.controle_compte : au 1er nouveau login MT5, archivage de la démo, relance et compte virtuel neuf en mode réel, une seule fois par book, en attente si une position est suivie ; test_bascule_vers_le_compte_reel) et calendrier live/annonces.csv complété jusqu'à fin 2027 (NFP / CPI bls.gov, FOMC federalreserve.gov relus ; minutes = décision + 21 j, PIB avancé 2027 supposés) | il ne reste qu'à acheter les 2 × 1-Step 10k et se connecter dans les deux terminaux, hors position ; ne plus connecter d'essai gratuit d'ici là ; achat suspendu à la réponse du support FTMO sur A + B long la même nuit
 - [2026-11-13] query | Règles FTMO 1-Step 10k relues sur ftmo.com (Trading Objectives, page 1-Step, FAQ reward / annonces / stratégies / comptes / VPS, Forbidden Trading Practices), comparées à live/compte.py et au plan retenu | chiffres conformes (79 €, +10 %, 3 % jour, 10 % max fin de journée remis à zéro au nouveau compte, Consistency 50 % du gain total, reward au 14e jour, 90 %, 400 k$ max) ; annonces ±2 min en financé couvertes par les coupures 8:19 / 13:55 ; à vérifier : VPS hors US, et 3 points flous à poser au support (gap trading de mom en éval, exposition cumulée A + B long la même nuit, cible + attente) ; détail dans live/README.md
 - [2026-11-13] fix | Passage aux vrais comptes FTMO préparé : drapeau de réinitialisation du compte virtuel (live/reinit.py, Bot.reinitialise_si_demande : archive live/etat/<book> dans live/etat/archive/ puis éval n° 1 à zéro, refusé si position suivie), journal vps-journal nettoyé des fichiers disparus, option objectif_essai_pct dans les configs, checklist « Passage aux vrais comptes FTMO » dans live/README.md | démo au 13/11 : A −5,46 % (7 trades), B financé virtuel +3,91 %, en attente du reward (24/11) ; rien de lancé en réel
-- [2026-11-06] query | Inférence des chiffres overnight (run_inference_overnight.py, reports/inference_overnight_report.md, exploratoire, compteur inchangé) : t HAC Newey-West, bootstrap par blocs, Ljung-Box, ARCH-LM, N effectif (Li & Ji), DSR avec N brut et effectif | t HAC > t iid partout (ρ1 négatif ; NQ close-to-open 3,12 → 3,51) ; ARCH massif en bp, absent en R ; N effectif ≈ 610 / 1 742 ; DSR mom 0,005 et NQ CTO 0,016 avec N ≈ 610 (≤ 0,53 avec V = 1/T) : la preuve de mom reste le hors échantillon du n° 11
 
 ## Prochaines actions
 
