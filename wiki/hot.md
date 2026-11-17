@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-17 21:03
+updated: 2026-11-17 21:48
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -23,6 +23,7 @@ updated: 2026-11-17 21:03
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-17] query | Inventaire des cotations FX de la machine pour tester Zhang (2018) en intraday (fabv2/cache, D:/quant-data/Cotations, mean reversion, strategie trading) | futures CME 1 min 2016-01 → 2026-08 : 6E, 6B, 6J, 6A seulement (Databento) ; spot : Dukascopy M15 2013-2025 EURUSD, GBPUSD, USDJPY, GBPJPY (strategie trading), LSE 1 h USDJPY 2009-2011 seulement (mean reversion), yfinance 1 h 2023-2026 EUR/GBP ; cache/histdata = CFD d'indices, pas du FX ; pas de CHF, CAD, NZD, NOK, SEK en intraday ni de 2010-2012 ; session US de Zhang déjà testée sur 6E/6B/6J/6A (R5b, jambe longue 11:00 → 16:55 ET, ❌ net)
 - [2026-11-17] query | Lecture intégrale de Zhang (2018, FRL 27), SSRN 3138756 « Intraday Patterns in FX Returns and Realized Volatility » ; PDF déposé par l'utilisateur (papers/ssrn-3138756.pdf, ignoré par git), texte extrait dans papers/txt/zhang_fx_intraday_rv.txt | 16 devises, Datastream horaire 2010-05 → 2015-12 : devise domestique en baisse sur ses heures (13/16 négatives, 8 significatives), en hausse sur la session US 11:00-17:00 NY (12/16 positives, 6 significatives : DKK, EUR, GBP, INR, NOK, SEK) ; ordres de grandeur ≈ 2 bp par session ; régression sur la volatilité réalisée contemporaine (lag non significatif) : pas de signal prédictif ; aucune analyse de coût. La session US commence au fix de Londres : même effet que la saisonnalité des fixings (Krohn) déjà au registre, pas de nouvelle piste. Fiche du 02/11 corrigée (JPY)
 - [2026-11-17] query | Journal VPS du 17/11 | B : M2 short au TP à 10:51 ET (+424,72 $, +4,25 %, +2,01 R), éval +4,97 % ; A : éval −5,04 %, rien d'ouvert ; aucune erreur
 - [2026-11-17] query | Série de pertes de mom en live (book A, démo puis réel, 9 trades du 04/11 au 16/11) comparée au backtest 2011-07 → 2026-08 (cache/propfirm/nq_nuit_tp4_mfe.parquet, coût 0,02 R ; script jetable du scratchpad, hors compteur) | live : 2 gagnants sur 9, −4,27 R, 4 stops de suite ; backtest : 44 % de gagnants, +0,11 R par trade ; 8 % des fenêtres de 9 trades font ≤ −4,27 R, 15 % ont ≤ 2 gagnants ; ≥ 4 pertes de suite ≈ 10 fois par an, ≥ 6 ≈ 3 fois par an, record 15 ; pire creux −27 R : série banale, rien d'anormal
@@ -30,7 +31,6 @@ updated: 2026-11-17 21:03
 - [2026-11-17] query | Contrôle du 1er trade M2 réel (book B) | SL 257,5 pts = 4 × ATR M15 (64,4 pts), conforme ; risque 2,14 % = risque dynamique après le 3n de la nuit (+0,73 %), 0,82 lot ; B éval +0,73 % avant ce trade
 - [2026-11-16] query | Premier jour des vrais comptes FTMO lu dans le journal vps-journal | A : mom long 1,32 lot dim. 15/11 20:00:04 ET à 28 090,18 (glissement −0,90 pt), SL touché à 20:11 (−249,55 $, −2,50 %, −1,02 R), éval −2,50 % ; B : 3n rien (+54,2 bps), M2 rien, éval +0,00 % ; exécution conforme, aucune position ouverte, aucune erreur
 - [2026-11-14] fix | Vrais comptes FTMO 1-Step 10k connectés sur le VPS, bascule automatique vérifiée dans le journal vps-journal | A : compte 511480419 (FTMO-Server) à 13:38 ET, B : 541521340 (FTMO-Server4) à 13:42 ET ; solde 10 000 $, démo archivée, éval n° 1 à +0,00 %, aucune position, code e9a8707 (avec le correctif des fériés) ; alerte « écart d'heure » normale le week-end
-- [2026-11-14] fix | Jours fériés et demi-séances du bot FTMO : rejeu des fêtes de fin 2025 (Thanksgiving, Noël, 1er janvier), horaires FTMO de Thanksgiving 2026 et FAQ « positions à travers une fermeture » relus ; mom ne rentre plus en financé une nuit qui enjambe un férié (live/bot.py ev_mom, test_book_A_jour_ferie) | M2 sort à 12:59:57 les demi-séances, pas de trade les soirs fermés, 3n sort à 03:00 : conformes ; écart corrigé : FTMO interdit en financé de garder une position à travers une fermeture > 2 h (permis en éval), ce que faisait mom (≈ 9 nuits par an, 148 / 3 981 de 2011 à 2026) ; coût non chiffré
 
 ## Prochaines actions
 
