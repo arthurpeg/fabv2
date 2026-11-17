@@ -11,3 +11,5 @@
 2026-11-16 20:05:03 ET [B] OUVERT 3n long 1.65 lots à 27228.98 (bid 27227.03, ask 27228.98, spread 1.95, glissement +0.00 pts) ; SL 149.4 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 17/11 03:00:01
 2026-11-17 03:00:01 ET [B] sortie à l'heure : 3n ticket 183983121 (spread 1.95)
 2026-11-17 03:00:02 ET [B] FERMÉ 3n (heure) à 27272.93 : +72.52 $ (+0.73 %, +0.29 R) ; compte virtuel éval +0.73 % ; P&L cumulé tous essais +72.52 $ sur 1 trades (compte continu 10,072.52 $)
+2026-11-17 09:35:01 ET [B] M2 2026-11-17 : sens -1, force 2.55, retournement +92.0 bps → SIGNAL ; 3n de la nuit : {'raison': 'heure', 'pnl': 0.7252}
+2026-11-17 09:35:01 ET [B] OUVERT M2 short 0.82 lots à 27162.93 (bid 27162.43, ask 27163.88, spread 1.45, glissement -0.50 pts) ; SL 257.5 pts, objectif 2.00 R, risque 2.14 % (éval virtuel), sortie prévue 17/11 15:59:57
