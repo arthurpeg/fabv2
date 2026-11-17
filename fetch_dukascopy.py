@@ -73,14 +73,69 @@ def fetch_year(pair: str, side: str, year: int, freq: str) -> None:
     print(f"  {pair} {side} {year} {freq} : {len(df)} barres", flush=True)
 
 
+TICK_URL = "https://datafeed.dukascopy.com/datafeed/{pair}/{y}/{m:02d}/{d:02d}/{h:02d}h_ticks.bi5"
+
+
+def fill_hours_from_ticks(pair: str, start: str, end: str) -> None:
+    """Bougies horaires bid/ask reconstruites depuis les fichiers de ticks du datafeed, pour les mois
+    que fetch_candles ne sert pas (USDJPY : rien avant le 2010-10-01). Écrit <side>_<année>_ticks.parquet,
+    que assemble() fusionne en donnant la priorité aux bougies officielles."""
+    import lzma
+    import struct
+    from concurrent.futures import ThreadPoolExecutor
+
+    import requests
+
+    point = 1e3 if pair.endswith("JPY") else 1e5
+    hours = [h for h in pd.date_range(start, end, freq="h", tz="UTC", inclusive="left")
+             if h.dayofweek < 5 or (h.dayofweek == 6 and h.hour >= 20)]
+    session = requests.Session()
+    session.headers["User-Agent"] = "Mozilla/5.0"
+
+    def one(h: pd.Timestamp):
+        url = TICK_URL.format(pair=pair, y=h.year, m=h.month - 1, d=h.day, h=h.hour)  # mois 0-indexé
+        for attempt in range(8):
+            try:
+                r = session.get(url, timeout=30)
+                if r.status_code == 200:
+                    if not r.content:
+                        return h, None
+                    b = lzma.decompress(r.content)
+                    t = [struct.unpack(">3i2f", b[i:i + 20]) for i in range(0, len(b), 20)]
+                    ask = [x[1] / point for x in t]
+                    bid = [x[2] / point for x in t]
+                    vol = sum(x[4] for x in t)
+                    return h, (bid[0], max(bid), min(bid), bid[-1], ask[0], max(ask), min(ask), ask[-1], vol)
+            except Exception:
+                pass
+            time.sleep(3 * (attempt + 1))
+        raise RuntimeError(f"échec définitif {url}")
+
+    with ThreadPoolExecutor(4) as ex:
+        rows = {h: v for h, v in ex.map(one, hours) if v is not None}
+    df = pd.DataFrame.from_dict(rows, orient="index",
+                                columns=["open", "high", "low", "close", "ask_open", "ask_high", "ask_low", "ask_close", "volume"])
+    df.index = pd.DatetimeIndex(df.index, name="timestamp").as_unit("us")
+    for y, g in df.groupby(df.index.year):
+        out = RAW / "1h" / pair
+        g[["open", "high", "low", "close", "volume"]].to_parquet(out / f"bid_{y}_ticks.parquet")
+        a = g[["ask_open", "ask_high", "ask_low", "ask_close", "volume"]]
+        a.columns = ["open", "high", "low", "close", "volume"]
+        a.to_parquet(out / f"ask_{y}_ticks.parquet")
+    print(f"  {pair} : {len(df)} heures reconstruites depuis les ticks ({len(hours)} heures demandées)")
+
+
 def assemble(pair: str, freq: str) -> None:
     parts = {}
     for side in SIDES:
+        # bougies officielles d'abord (bid_2010.parquet trié avant bid_2010_ticks.parquet) : priorité aux bougies
         files = sorted((RAW / freq / pair).glob(f"{side}_*.parquet"))
-        if len(files) != len(YEARS[freq]):
-            print(f"  {pair} {freq} : {side} incomplet ({len(files)}/{len(YEARS[freq])} ans), pas assemblé")
+        years = {int(f.stem.split("_")[1]) for f in files}
+        if not set(YEARS[freq]) <= years:
+            print(f"  {pair} {freq} : {side} incomplet ({sorted(years)}), pas assemblé")
             return
-        parts[side] = pd.concat(pd.read_parquet(f) for f in files)
+        s = pd.concat(pd.read_parquet(f) for f in files)
+        parts[side] = s[~s.index.duplicated(keep="first")].sort_index()
     bid, ask = parts["bid"], parts["ask"]
     df = bid.join(ask.drop(columns="volume").add_prefix("ask_"), how="inner")
     # minutes sans cotation : volume nul et prix figé sur la minute
@@ -95,7 +150,10 @@ def assemble(pair: str, freq: str) -> None:
 
 
 def main() -> None:
-    if "--assemble" not in sys.argv:
+    if "--ticks" in sys.argv:  # --ticks USDJPY 2010-01-01 2010-10-01
+        i = sys.argv.index("--ticks")
+        fill_hours_from_ticks(*sys.argv[i + 1:i + 4])
+    elif "--assemble" not in sys.argv:
         for freq in ("1h", "1m"):
             for pair in PAIRS:
                 for year in YEARS[freq]:
