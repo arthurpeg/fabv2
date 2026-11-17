@@ -32,6 +32,8 @@
 > **Résumé (abstract paraphrasé) :** Sur 16 devises contre dollar en haute fréquence (2010-2015), les devises domestiques baissent pendant leur session et montent pendant la session US une fois Londres fermé. Le profil est significativement lié à la volatilité réalisée, qui reflète le risque du flux d'ordres et la sensibilité du marché à ce flux, chez soi et à l'étranger.
 >
 > **Pour nous :** c'est l'extension 2010-2015 de Breedon-Ranaldo (fourni le 2026-10-11). Pour EUR et GBP, le bloc à tester est **17:30 → 23:00 Paris** (après Londres, avant le rollover) : la devise européenne devrait y monter. Pour JPY et AUD, la session domestique est la **nuit** européenne : USDJPY devrait monter pendant Tokyo (yen qui baisse). ⚠️ La saisonnalité des fixings est déjà au registre (mouvements de 1 à 2,5 ticks pour un coût de 1,8 à 2 ticks) : vérifier que l'effet par bloc de plusieurs heures dépasse ce coût.
+>
+> **Correction du 2026-11-17 (texte intégral lu, [papers/txt/zhang_fx_intraday_rv.txt](papers/txt/zhang_fx_intraday_rv.txt)) :** la session US commence à **17:00 Paris** (11:00 NY = fix WM/R de 16:00 Londres), pas 17:30. Pour JPY, la phrase ci-dessus est fausse : le yen **ne baisse pas** pendant Tokyo (+0,0095 %, non significatif, tableau 1) ; il baisse pendant la session US (−0,0212 %, ***) et l'Europe (−0,0136 %, *).
 
 ### [2] Pricing Errors and the Geography of Trade in the Foreign Exchange Market
 
