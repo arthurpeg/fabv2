@@ -1,6 +1,6 @@
 ---
 type: registry
-updated: 2026-11-02
+updated: 2026-11-19
 ---
 
 # Registre des phénomènes confirmés
@@ -38,6 +38,7 @@ Heures en New York (ET). « Net ? » : ✅ survit au coût standard, ❌ non, �
 | 2026-11-02 | Aux annonces (8:30, 10:00) et à 9:30, le volume monte plus que la volatilité | GC, SI | Excès de part de volume > 0, Holm 0,004 | GC et SI (8:20 et 13:30 : GC seul) | — | Fattinger-Ziegler | idem | Liquidité disponible au moment des annonces |
 | 2026-11-06 | Volatilité groupée (ARCH) et queues épaisses des rendements de nuit et de séance ; disparaît en R (stop en ATR M15) | ES, NQ, YM, sessions et mom | ARCH-LM(5) 144 à 379, p < 1e-28 ; kurtosis 5 à 15 ; mom OOS en R : ARCH p 0,47 | Toutes séries 2016-2026 | — | Relecture du document overnight | [[reports/inference_overnight_report]] | Toujours HAC ou bootstrap par blocs ; dimensionner en ATR |
 | 2026-11-06 | Autocorrélation négative d'ordre 1 des sessions Asie et US (≈ −0,13 / −0,10) | ES, NQ, YM | Ljung-Box(5) p < 1e-5 ; rend le t HAC plus grand que le t iid | 3 indices | ❌ (non testé comme règle) | Relecture du document overnight | [[reports/inference_overnight_report]] | Retournement jour à jour de la session Asie : à pré-enregistrer avant usage |
+| 2026-11-19 | Le yen baisse contre le dollar pendant la session US (11:00-17:00 NY), constat *** de la Table 1 de Zhang (2018) | JPY (6J, spot), 11:00-17:00 NY | −1,72 bp/jour hors échantillon 2016-2026-08, t NW −4,3, Holm (28 cases) ≈ 5 × 10⁻⁴ ; −2,03 bp sur 2010-2015 | Négatif 16 années sur 17 ; moitiés −1,1 / −2,2 bp | ⚠️ 1 tick 0,57 bp, coût standard ≈ 1,1 bp : ≈ +0,6 bp net en short | Zhang (n° 27, observation rapportée, pas une hypothèse à verdict) | [[reports/zhang_fx_report]] | Même effet que la jambe 6J de la saisonnalité des fixings (R5b, registre) : ne pas compter deux fois ; timing d'exécution pour acheter/vendre du JPY |
 
 ## À surveiller (significatif en brut, pas après correction, ou porté par une sous-période)
 
@@ -48,3 +49,6 @@ Heures en New York (ET). « Net ? » : ✅ survit au coût standard, ❌ non, �
 | 2026-11-02 | Continuation : le mouvement 17:00 → 5:00 NY se prolonge le reste du jour | GC (b 1,13, Holm 0,02) ; SI (b ≈ 1,2, non significatif après Holm) | Pour 1 σ de nuit, ≈ +7 bp dans le même sens ensuite (GC) | Entièrement 2023-2026 ; trouvé parmi 23 coupures ; GC et SI très corrélés | [[reports/gc_fattinger_report]], [[reports/si_fattinger_report]] |
 | 2026-11-03 | Retour à la moyenne des nuits NQ : après 3 nuits (20:05 → 03:00) de somme ≤ 0, la nuit suivante est meilleure | NQ, 20:05 → 03:00 | Long filtré +0,14 R/trade, t NW 3,9 (2016-2024) contre +0,04 R non filtré ; OOS 2025-26 t 2,1 | Filtre choisi parmi plusieurs par l'auteur, non corrigé ; nul en 2022-2024 (t 1,1) | [[reports/nq_nuit_3n_vbt_report]] |
 | 2026-11-03 | Rebond de nuit après une forte baisse : décile le plus bas de r3 (somme des 3 nuits 20:05 → 03:00 ≲ −50 bps) → nuit suivante nettement positive | NQ, ES, YM, 20:05 → 03:00 | D1 : NQ +17,3 bps (t 3,7) / +6,8 (t 2,0, 2010-15) ; ES +15,9 (t 3,3) / +9,5 (t 3,0) ; YM +11,1 (t 2,5) / +8,7 (t 3,0) | Positif dans 6 échantillons sur 6 (dont 3 jamais vus), mais repéré en lisant les déciles, hors famille Holm ; à pré-enregistrer sur le holdout. Côté r3 > 0 : profil plat, pas de baisse (l'hypothèse « plus r3 est haut, plus la nuit baisse » est rejetée) | [[reports/nq_nuit_r3_pente_report]] |
+| 2026-11-19 | GBP en baisse pendant la session non-US (hors 08-16 Londres et 08-17 NY) | 6B, 2016-2026-08 | −1,49 bp, t NW −2,6 ; moitiés −1,9 / −1,1 | Ne passe pas Holm sur 28 cases ; trouvé dans un balayage de 28 cases | [[reports/zhang_fx_report]] |
+| 2026-11-19 | CAD en baisse pendant la session non-US (hors 08-17 NY) | USDCAD spot, 2016-2026-08 | −1,10 bp, t NW −2,4 ; moitiés −0,7 / −1,4 | Idem | [[reports/zhang_fx_report]] |
+| 2026-11-19 | CHF en hausse pendant LDN-NY (08-11 NY) | USDCHF spot, 2016-2026-08 | +1,48 bp, t NW 2,8 ; moitiés +1,5 / +1,4 | Idem ; demi-spread ≈ 1 bp | [[reports/zhang_fx_report]] |
