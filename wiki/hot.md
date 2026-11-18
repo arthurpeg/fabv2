@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-18 19:41
+updated: 2026-11-19 00:37
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -8,9 +8,9 @@ updated: 2026-11-18 19:41
 # État courant
 
 - Compteur global d'essais : **1 742** (source : [[reports/inference_overnight_report]])
-- Dernier pré-enregistrement : n° 26 ([[PREREGISTRATION_26]])
-- Idées abandonnées au registre : 35 ([[wiki/Failed Ideas/ledger]])
-- Dernière activité : 2026-11-18
+- Dernier pré-enregistrement : n° 27 ([[PREREGISTRATION_27]])
+- Idées abandonnées au registre : 36 ([[wiki/Failed Ideas/ledger]])
+- Dernière activité : 2026-11-19
 
 ## Expériences ouvertes
 
@@ -23,6 +23,7 @@ updated: 2026-11-18 19:41
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-19] experiment | N° 27 : Zhang (2018) sur les 7 majeures (PREREGISTRATION_27 commit fd5b243 avant calcul, run_zhang.py, reports/zhang_fx_report.md, results/zhang/), compteur 1 742 → 1 784 | Réplication 2010-2015 sur spot Dukascopy : moyennes au centième de bp de la Table 1 (EUR US +2,20 vs +2,21), 7 des 9 cases ** / *** retrouvées (échecs CHF : choc BNS du 2015-01-15) ; hors échantillon 2016-2026-08 : 0/14 pour H1 (domestique < 0) et H2 (US > 0), H3 (φ < 0) 0/14 partout (coefficients de la taille du papier, non significatifs) ; JPY en baisse en session US −1,72 bp, t −4,3, 16 ans sur 17 → phénomènes (pas une stratégie : jambe 6J des fixings) ; GBP non-US, CAD non-US, CHF LDN-NY à surveiller ; ligne ajoutée au registre
 - [2026-11-18] fix | Dukascopy prolongé jusqu'au 2026-08-28 pour les majeures sans future chez nous (USDCHF, USDCAD, NZDUSD ; fetch_dukascopy.py, SANS_FUTURE) ; décision : test Zhang limité aux 7 majeures (EUR, GBP, JPY, CHF, AUD, CAD, NZD), NOK/SEK et devises non majeures écartés pour leur spread | 1 h 2010-01 → 2026-08-28, 1 min 2012-01-11 → 2026-08-28 ; aucune barre le samedi, aucune barre vide, aucun spread négatif ; trous > 3 j seulement au Nouvel An ; spread médian 2017-2026 ≈ 1,0 bp (CHF), 0,9 (CAD), 1,7 (NZD) ; aucun calcul de rendement
 - [2026-11-18] query | mom long après une baisse du NQ (backtest 2011-07 → 2026-08, cache/propfirm/nq_nuit_tp4_mfe.parquet, coût 0,02 R, rendement 20 séances à la clôture 16:00 de la veille ; script jetable, exploratoire, hors compteur, 5 découpes regardées) | longs : +0,087 R (n = 2 134) ; après −5 % ou pire sur 20 séances +0,158 R (n = 222, 50 % gagnants) ; −5 à −2 % −0,012 R (n = 238) ; ±2 % +0,068 ; ≥ +2 % +0,106 ; repli ≥ 5 % du plus haut 20 j +0,135 R (n = 345) : aucune preuve qu'une baisse de quelques semaines dégrade mom long ; aucune modification
 - [2026-11-18] query | Journal VPS du 18/11 : 3e stop de mom sur le vrai compte A (long 1,09 lot 17/11 20:00:01 ET à 27 355,38, ATR M15 113,4, stop 226,7 pts, SL touché à 20:42:54, −255,33 $, −1,03 R, 5,6 pts de glissement au stop) | exécution conforme ; éval A −7,60 % (reste 2,40 % avant −10 %, prochain risque 2,40 %, un stop de plus = éval perdue, rachat prévu par le plan) ; live mom 11 trades, 2 gagnants, −6,33 R, 5 stops de suite : 2,5 % des fenêtres de 11 trades du backtest 2011-07 → 2026-08 font aussi mal, séries ≥ 5 stops ≈ 5 par an (script jetable, hors compteur)
@@ -30,7 +31,6 @@ updated: 2026-11-18 19:41
 - [2026-11-17] query | Qualité du spot Dukascopy (M15, bid seul, strategie trading/data_m15) contre les futures CME (cache/6x_adj) sur 2016-01-04 → 2025-06-30 ; script jetable du scratchpad, contrôle de données hors compteur | corrélation des rendements 15 min 0,996 (EUR), 0,993 (GBP), 0,994 (JPY) ; écart médian 0,25 à 0,41 bp par barre ; rendements des sessions 08-11 et 11-16:45 NY : corrélation journalière 1,000, même signe 98 % des jours, moyennes à ≤ 0,15 bp près ; barres plates ≤ 0,03 % (pire vers 21-22 h UTC, rollover). Dukascopy est utilisable pour combler 2010-2015 et CHF/CAD/NZD/NOK/SEK ; les futures restent la référence 2016-2026. ⚠️ Les moyennes brutes 2016-2025 de ces deux sessions ont été vues (EUR ≈ +0,5 bp, GBP ≈ +0,6, USDJPY +1,8 en session US) : à déclarer dans tout pré-enregistrement Zhang
 - [2026-11-17] query | Inventaire des cotations FX de la machine pour tester Zhang (2018) en intraday (fabv2/cache, D:/quant-data/Cotations, mean reversion, strategie trading) | futures CME 1 min 2016-01 → 2026-08 : 6E, 6B, 6J, 6A seulement (Databento) ; spot : Dukascopy M15 2013-2025 EURUSD, GBPUSD, USDJPY, GBPJPY (strategie trading), LSE 1 h USDJPY 2009-2011 seulement (mean reversion), yfinance 1 h 2023-2026 EUR/GBP ; cache/histdata = CFD d'indices, pas du FX ; pas de CHF, CAD, NZD, NOK, SEK en intraday ni de 2010-2012 ; session US de Zhang déjà testée sur 6E/6B/6J/6A (R5b, jambe longue 11:00 → 16:55 ET, ❌ net)
 - [2026-11-17] query | Lecture intégrale de Zhang (2018, FRL 27), SSRN 3138756 « Intraday Patterns in FX Returns and Realized Volatility » ; PDF déposé par l'utilisateur (papers/ssrn-3138756.pdf, ignoré par git), texte extrait dans papers/txt/zhang_fx_intraday_rv.txt | 16 devises, Datastream horaire 2010-05 → 2015-12 : devise domestique en baisse sur ses heures (13/16 négatives, 8 significatives), en hausse sur la session US 11:00-17:00 NY (12/16 positives, 6 significatives : DKK, EUR, GBP, INR, NOK, SEK) ; ordres de grandeur ≈ 2 bp par session ; régression sur la volatilité réalisée contemporaine (lag non significatif) : pas de signal prédictif ; aucune analyse de coût. La session US commence au fix de Londres : même effet que la saisonnalité des fixings (Krohn) déjà au registre, pas de nouvelle piste. Fiche du 02/11 corrigée (JPY)
-- [2026-11-17] query | Journal VPS du 17/11 | B : M2 short au TP à 10:51 ET (+424,72 $, +4,25 %, +2,01 R), éval +4,97 % ; A : éval −5,04 %, rien d'ouvert ; aucune erreur
 
 ## Prochaines actions
 
