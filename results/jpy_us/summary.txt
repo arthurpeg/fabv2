@@ -1,0 +1,40 @@
+== A. Futures 6J, short 11:00 → 16:55 ET, 2016-01 → 2026-08-28
+sans coût                              n  2694 | moy +2.03 bp | méd +2.19 | gagnants 54.6 % | Sharpe an. +1.37 | t +4.47
+   vectorbt : P&L total +52 644 $ sur 1 contrat  drawdown max -4.1% (sur 100 k$)  2694 trades
+1 tick + 5 $ (standard)                n  2694 | moy +0.90 bp | méd +0.93 | gagnants 52.7 % | Sharpe an. +0.61 | t +1.99
+   vectorbt : P&L total +22 336 $ sur 1 contrat  drawdown max -6.5% (sur 100 k$)  2694 trades
+2 ticks + 5 $                          n  2694 | moy +0.28 bp | méd +0.15 | gagnants 51.4 % | Sharpe an. +0.19 | t +0.61
+   vectorbt : P&L total +5 499 $ sur 1 contrat  drawdown max -11.5% (sur 100 k$)  2694 trades
+
+Par année (net standard, bp/trade ; $ pour 1 contrat) :
+  2016 : +1.19 bp    +3 897 $  gagnants 51 %
+  2017 : -0.35 bp      -682 $  gagnants 51 %
+  2018 : +1.24 bp    +3 504 $  gagnants 55 %
+  2019 : -0.27 bp      -760 $  gagnants 55 %
+  2020 : -0.08 bp      -213 $  gagnants 44 %
+  2021 : -0.52 bp    -1 556 $  gagnants 48 %
+  2022 : +2.19 bp    +5 422 $  gagnants 57 %
+  2023 : +1.81 bp    +4 188 $  gagnants 55 %
+  2024 : +0.13 bp      +329 $  gagnants 51 %
+  2025 : +3.08 bp    +6 670 $  gagnants 55 %
+  2026 : +1.72 bp    +2 296 $  gagnants 61 %
+
+P&L cumulé net (1 contrat) : +23 095 $ ; pire creux -7 074 $ ; durée du plus long creux 636 trades
+Pire jour -1 681 $  meilleur +1 948 $ ; écart type d'un jour 240 $
+Par jour de semaine (net bp, rapporté seulement, pas un filtre) : lun +1.22, mar +1.57, mer +1.76, jeu +0.82, ven -0.91
+
+== B. Spot USDJPY Dukascopy 2012-01-11 → 2015-12-31 (long USDJPY = short yen)
+mid, sans coût                         n  1030 | moy +2.34 bp | méd +2.62 | gagnants 58.9 % | Sharpe an. +1.52 | t +3.08
+spread réel bid/ask                    n  1030 | moy +1.55 bp | méd +1.70 | gagnants 56.5 % | Sharpe an. +1.01 | t +2.04
+spread réel + 0,5 bp de commission     n  1030 | moy +1.05 bp | méd +1.20 | gagnants 54.4 % | Sharpe an. +0.68 | t +1.38
+   coût médian du spread : 0.67 bp
+
+== C. Pistes d'explication (même fenêtre 11:00 → 16:55 ET, 2016-2026-08)
+  moyennes (bp) : yen -2.00, ES +2.48, euro +0.41 ; n 2656
+  corrélations : yen-ES -0.15, yen-euro +0.56, ES-euro +0.21
+  yen = -2.05 bp (t -5.71) + -0.091·ES (t -18.5) + +0.672·euro (t +40.0)
+  part expliquée par ES : -0.23 bp ; par l'euro : +0.27 bp
+  jours ES en hausse : yen -3.64 bp (n 1465)
+  jours ES en baisse : yen +0.01 bp (n 1191)
+  2016-2020 : yen sur 24 h +0.86 bp/jour, dont fenêtre US -1.17, reste de la journée +2.04
+  2021-2026 : yen sur 24 h -3.58 bp/jour, dont fenêtre US -2.65, reste de la journée -0.93
