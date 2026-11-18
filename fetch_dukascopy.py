@@ -1,7 +1,8 @@
 """Télécharge des barres 1 minute de FX au comptant (bid ET ask) depuis Dukascopy (gratuit, sans clé)
 et écrit un fichier par paire au format proche de Databento : index ts_event UTC (début de minute).
 
-uv run --with dukascopy-python python fetch_dukascopy.py              → 9 majeures : heures 2010 → 2016, minutes 2012-01-11 → 2016
+uv run --with dukascopy-python python fetch_dukascopy.py              → 9 paires : heures 2010 → 2016, minutes 2012-01-11 → 2016 ;
+                                                                         CHF, CAD, NZD (sans future chez nous) jusqu'au 2026-08-28
 uv run --with dukascopy-python python fetch_dukascopy.py --assemble   → reconstruit seulement les fichiers finaux
 
 But : vérifier Zhang (2018, SSRN 3138756) sur sa période (2010-05 → 2015-12) et sur les devises sans
@@ -42,6 +43,14 @@ PAIRS = {
 # La bibliothèque ne sert aucune minute avant le 2012-01-11 (vérifié le 2026-11-17 ; les fichiers
 # BID_candles_min_1.bi5 du datafeed répondent 503) : minutes 2012-2016, heures 2010-2016 (comme Zhang).
 YEARS = {"1m": range(2012, 2017), "1h": range(2010, 2017)}
+# Majeures sans future dans nos fichiers : prolongées jusqu'à la limite du holdout (après = holdout, non chargé).
+SANS_FUTURE = {"USDCHF", "USDCAD", "NZDUSD"}
+END = datetime(2026, 8, 29, tzinfo=timezone.utc)
+
+
+def years(pair: str, freq: str) -> range:
+    r = YEARS[freq]
+    return range(r.start, END.year + 1) if pair in SANS_FUTURE else r
 UNIT = {"1m": dk.TimeUnit.MINUTE, "1h": dk.TimeUnit.HOUR}
 SIDES = {"bid": dk.OfferSide.BID, "ask": dk.OfferSide.ASK}
 
@@ -51,7 +60,7 @@ def fetch_year(pair: str, side: str, year: int, freq: str) -> None:
     if path.exists():
         return
     a = datetime(year, 1, 1, tzinfo=timezone.utc)
-    b = datetime(year + 1, 1, 1, tzinfo=timezone.utc)
+    b = min(datetime(year + 1, 1, 1, tzinfo=timezone.utc), END)
     for attempt in range(4):
         try:
             df = dk.to_dataframe(dk.fetch_candles(PAIRS[pair], 1, UNIT[freq], SIDES[side], a, b))
@@ -148,9 +157,9 @@ def assemble(pair: str, freq: str) -> None:
     for side in SIDES:
         # bougies officielles d'abord (bid_2010.parquet trié avant bid_2010_ticks.parquet) : priorité aux bougies
         files = sorted((RAW / freq / pair).glob(f"{side}_*.parquet"))
-        years = {int(f.stem.split("_")[1]) for f in files}
-        if not set(YEARS[freq]) <= years:
-            print(f"  {pair} {freq} : {side} incomplet ({sorted(years)}), pas assemblé")
+        have = {int(f.stem.split("_")[1]) for f in files}
+        if not set(years(pair, freq)) <= have:
+            print(f"  {pair} {freq} : {side} incomplet ({sorted(have)}), pas assemblé")
             return
         s = pd.concat(pd.read_parquet(f) for f in files)
         parts[side] = s[~s.index.duplicated(keep="first")].sort_index()
@@ -174,7 +183,7 @@ def main() -> None:
     elif "--assemble" not in sys.argv:
         for freq in ("1h", "1m"):
             for pair in PAIRS:
-                for year in YEARS[freq]:
+                for year in years(pair, freq):
                     for side in SIDES:
                         fetch_year(pair, side, year, freq)
     for freq in ("1h", "1m"):
