@@ -1,7 +1,8 @@
 # Mise a jour automatique du bot sur le VPS (tache planifiee toutes les 5 minutes, voir live/README.md).
 # 1. git fetch ; rien a faire si la branche locale est a jour.
 # 2. Avance rapide seulement (jamais de fusion ni d'ecrasement de fichiers modifies a la main).
-# 3. uv sync si pyproject.toml / uv.lock ont change.
+# 3. uv sync si pyproject.toml / uv.lock ont change ET que les dependances du bot (uv export, groupes par defaut)
+#    ont change ; un changement limite au groupe ml (ou a la mise en forme) ne fait ni sync ni relance.
 # 4. Tests du bot (tests/test_live.py) : en cas d'echec, retour au commit precedent, le bot continue avec l'ancien code,
 #    et ce commit n'est plus retente (live/etat/maj_refusee.txt) jusqu'au suivant.
 # 5. Si le code du bot a change : drapeau live/etat/redemarrer_A et _B ; chaque bot sort proprement entre deux pas
@@ -21,6 +22,14 @@ $verrou = Join-Path $etat "maj_auto.lock"
 
 function Log([string]$m) {
     "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') $m" | Out-File -FilePath $log -Append -Encoding utf8
+}
+
+# Dependances installees pour le bot (groupes par defaut de pyproject.toml, donc sans le groupe ml), lues dans uv.lock
+# tel qu'il est sur le disque ; $null si uv export echoue (on retombe alors sur l'ancienne regle : sync et relance).
+function Deps-Bot {
+    $o = uv export --frozen --no-hashes --no-header --no-emit-project --no-annotate --quiet 2>$null
+    if ($LASTEXITCODE -ne 0) { return $null }
+    return ($o -join "`n")
 }
 
 # Publication des journaux sur la branche vps-journal (separee du code : jamais de conflit avec la mise a jour).
@@ -75,10 +84,19 @@ try {
     git merge-base --is-ancestor $local $distant
     if ($LASTEXITCODE -ne 0) { Log "avance rapide impossible ($local -> $distant) : rien fait"; exit 1 }
     $changes = @(git diff --name-only $local $distant)
+    $deps = $changes | Where-Object { $_ -eq "pyproject.toml" -or $_ -eq "uv.lock" }
+    if ($deps) { $depsAvant = Deps-Bot }
     git merge --ff-only --quiet $distant 2>$null
     if ($LASTEXITCODE -ne 0) { Log "mise a jour refusee par git (fichier suivi modifie sur le VPS ?) : git status"; exit 1 }
 
-    $deps = $changes | Where-Object { $_ -eq "pyproject.toml" -or $_ -eq "uv.lock" }
+    if ($deps) {
+        # pyproject.toml / uv.lock modifies hors des dependances du bot (ex. groupe ml) : ni uv sync ni relance
+        $depsApres = Deps-Bot
+        if ($null -ne $depsAvant -and $null -ne $depsApres -and $depsAvant -eq $depsApres) {
+            Log "pyproject.toml / uv.lock modifies, dependances du bot inchangees : ni uv sync ni relance"
+            $deps = @()
+        }
+    }
     if ($deps) { uv sync --quiet 2>&1 | Out-File -FilePath $log -Append -Encoding utf8 }
 
     $sortie = uv run python -m pytest tests/test_live.py -q -p no:cacheprovider 2>&1

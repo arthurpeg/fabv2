@@ -62,7 +62,7 @@ Il y a un processus Python par book, et chaque processus a son propre terminal M
 
 1. `git fetch`. Si rien n'est nouveau, il ne fait rien d'autre.
 2. Avance rapide seulement. Si un fichier suivi par git a été modifié à la main sur le VPS, rien n'est fait et l'incident est écrit dans le journal.
-3. `uv sync` si `pyproject.toml` ou `uv.lock` ont changé.
+3. `uv sync` si `pyproject.toml` ou `uv.lock` ont changé **et** que les dépendances du bot ont changé. Le script compare `uv export` (groupes par défaut) avant et après la mise à jour. Un changement limité au groupe `ml` (LightGBM…, jamais installé sur le VPS) ne fait ni `uv sync` ni relance des bots (règle du 2026-11-19).
 4. `tests/test_live.py`. En cas d'échec :
    - retour au commit précédent ;
    - les bots gardent l'ancien code ;
