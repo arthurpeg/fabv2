@@ -23,3 +23,5 @@
 2026-11-18 20:05:01 ET [B] 3n 2026-11-19 : somme des 3 nuits -60.6 bps → LONG
 2026-11-18 20:05:02 ET [B] OUVERT 3n long 1.4 lots à 27498.88 (bid 27496.43, ask 27498.38, spread 1.95, glissement +0.50 pts) ; SL 176.3 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 19/11 03:00:01
 2026-11-18 20:24:07 ET [B] FERMÉ 3n (SL) à 27320.43 : -249.83 $ (-2.50 %, -1.01 R) ; compte virtuel éval -0.02 % ; P&L cumulé tous essais -1.60 $ sur 4 trades (compte continu 9,998.40 $)
+2026-11-19 09:35:03 ET [B] M2 2026-11-19 : sens +1, force 2.23, retournement -6.4 bps → SIGNAL ; 3n de la nuit : {'raison': 'SL', 'pnl': -2.4983}
+2026-11-19 09:35:03 ET [B] M2 : 3n sorti au SL cette nuit, pas de M2
