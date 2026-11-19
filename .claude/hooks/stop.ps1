@@ -24,5 +24,17 @@ try {
         git commit --quiet -m ("auto: sync " + (Get-Date -Format 'yyyy-MM-dd HH:mm')) *> $null
         git push --quiet origin HEAD *> $null
     }
+
+    # Coffre Obsidian en lecture seule (..\fabv2-obsidian, worktree détaché sur
+    # propfirm-ftmo, la branche qui contient tout) : ramené sur origin/propfirm-ftmo.
+    $coffre = Join-Path (Split-Path (Get-Location) -Parent) 'fabv2-obsidian'
+    if (Test-Path (Join-Path $coffre '.git')) {
+        $env:GIT_TERMINAL_PROMPT = '0'
+        git fetch --quiet origin propfirm-ftmo *> $null
+        $cible = (git rev-parse origin/propfirm-ftmo 2>$null)
+        if ($cible -and ((git -C $coffre rev-parse HEAD 2>$null) -ne $cible)) {
+            git -C $coffre checkout --quiet --force --detach $cible *> $null
+        }
+    }
 } catch {}
 exit 0
