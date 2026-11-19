@@ -48,6 +48,8 @@
 >
 > **Pour nous :** fonde l'hypothèse « un mouvement de nuit asiatique sur EURUSD ou GBPUSD est en partie du bruit, corrigé à l'ouverture européenne » (H9 de la série 3). Sur USDJPY et AUDUSD, la nuit est au contraire la session la moins bruitée : ne pas les traiter comme EUR et GBP.
 
+> **Correction du 2026-11-19 (texte intégral lu, [papers/txt/piccotti_pricing_errors.txt](papers/txt/piccotti_pricing_errors.txt)) :** 14 paires dont 7 croisées (pas seulement contre dollar), cotations Gain Capital 2007-2010. Le chevauchement Europe-NY est **09:00-11:00 ET** (15:00-17:00 Paris). Le papier mesure la **variance** des erreurs de prix, pas un retour à la moyenne exploitable : il ne teste pas « mouvement asiatique corrigé à Londres ». Sa seule mesure de prévisibilité (autocorrélation des rendements 24 h, tableau 4) est **≥ 0** pour EUR/USD et GBP/USD à presque toutes les heures, et négative pour les paires yen et AUD (USD/JPY −0,04 à −0,09 en séance NY, −0,22 à 18:00 ET ; retournements 55-57 % en séance NY, tableau B3 de l'annexe). H13 n'a donc pas d'appui dans ce papier.
+
 ### [3] Where Does Price Discovery Occur in FX Markets?
 
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=966446
