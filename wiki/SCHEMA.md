@@ -104,8 +104,10 @@ Tableau « question → source qui fait foi ». Aucun chiffre recopié.
 1. Lire `index.md`, puis `Failed Ideas/ledger.md`, puis `hot.md`.
 2. Avant une nouvelle idée : chercher dans le registre une ligne similaire ; si elle existe, vérifier la condition de réouverture avant d'aller plus loin.
 
+**Nouvelle idée** : suivre [[PROTOCOLE]] (étapes 0 à 5). La fiche d'idée (étape 0) est la page `experiments/`, avec le statut `planned`.
+
 **Nouveau pré-enregistrement**
-1. Écrire `PREREGISTRATION_<n>.md` (source brute) et le commiter avant tout calcul.
+1. Écrire `PREREGISTRATION_<n>.md` (source brute) à partir de `templates/preregistration.md` et le commiter avant tout calcul.
 2. Créer ou mettre à jour la page `experiments/` (status `planned`), avec le compteur « X → Y ».
 3. Ligne dans `index.md` si nouvelle page ; entrée `prereg` dans `log.md`.
 

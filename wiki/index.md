@@ -27,6 +27,7 @@ updated: 2026-11-19
 - Expériences abandonnées (n° 5 à 9, récolte 1, contrôle pile ou face…) : voir [[wiki/Failed Ideas/ledger]]
 
 ## Concepts
+- [[wiki/concepts/protocole|Protocole de validation]] — étapes 0 à 5, barrières B1, C1-C4, F1-F3, K1-K2 ; source : PROTOCOLE.md · 2026-11-19
 - [[wiki/concepts/pre-enregistrement|Pré-enregistrement]] — protocole : tout est figé et commité avant calcul
 - [[wiki/concepts/compteur-essais|Compteur d'essais]] — N cumulé, sert au DSR ; 1 485 au n° 19
 - [[wiki/concepts/dsr|Deflated Sharpe Ratio]] — critère > 0,95

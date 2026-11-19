@@ -12,6 +12,8 @@ Recherche quantitative : backtests intraday et de nuit sur futures (indices, FX,
 
 4. **Réserve hors échantillon** : avant tout calcul de rendement sur un actif ou une période, lire `wiki/reserves.md`. Avant le premier calcul sur une tranche **vierge**, y déclarer une réserve (par défaut les 30 % les plus récents, au moins 3 ans), n'explorer que le reste, et n'ouvrir la réserve qu'une fois, par un pré-enregistrement commité. Sur une réserve, aucun contrôle de qualité ne calcule de moyenne de rendement. Mettre à jour l'état de la tranche (vierge → explorée / réservée → consommée) dès qu'il change. Détail : `wiki/concepts/is-oos.md`.
 
+5. **Protocole de validation** : toute nouvelle idée ou hypothèse suit `PROTOCOLE.md`, avec toujours les mêmes étapes : 0 fiche d'idée, 1 exploration (grille commitée avant calcul, variantes comptées, référence triviale), 2 pré-enregistrement (modèle `templates/preregistration.md`), 3 confirmation sur la réserve, 4 forward, 5 réel. On s'arrête à la première barrière ratée. Les statistiques et la fiche viennent de `fab/protocole.py` (`fiche`, `barriere_exploration`, `verdict_confirmation`), pas de copies locales.
+
 Règle d'immuabilité : le wiki **pointe** vers les sources brutes (pré-enregistrements, `RESULTS.md`, `reports/`, `results/`, code, données) et n'en recopie jamais le contenu comme source de vérité. En cas d'écart, la source a raison.
 
 Structure, modèles de page, procédures et lint : `wiki/SCHEMA.md`. `wiki/hot.md` est régénéré par `wiki/update_hot.py` (hook Stop) : ne pas l'éditer à la main, sauf son bloc « Prochaines actions ».
