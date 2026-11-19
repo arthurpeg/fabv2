@@ -149,6 +149,9 @@ def main() -> None:
         if merge(parent, enfant, courante, a.dry_run):
             modifiees.add(enfant)
 
+    for b in {MAIN, *(e for _, e in CASCADE)}:  # commits locaux pas encore poussés
+        if existe(b) and existe(f"origin/{b}") and git("rev-list", "--count", f"origin/{b}..{b}") != "0":
+            modifiees.add(b)
     if a.dry_run or a.no_push or not modifiees:
         print("rien poussé" if not modifiees else f"non poussé : {sorted(modifiees)}")
         return
