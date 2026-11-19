@@ -1,15 +1,15 @@
 ---
 type: experiment
 updated: 2026-11-19
-status: planned
-verdict: à faire (branche ml créée, aucun calcul)
+status: active
+verdict: 1er essai (filtre binaire sur mom) rejeté ; autres candidates à faire
 prereg: []
-trials: 1798
+trials: 1807
 ---
 
 # Machine learning sur les anomalies que les filtres classiques n'ont pas améliorées
 
-**Une phrase** : chercher si un modèle appris (arbres boostés, régression régularisée, classifieur de signe…) sélectionne ou dimensionne mieux les trades d'une anomalie déjà confirmée que les filtres à une variable déjà essayés. Branche git `ml` (voir CLAUDE.md, section « Branches »), code dans `ml/`. Aucun calcul fait au 2026-11-19.
+**Une phrase** : chercher si un modèle appris (arbres boostés, régression régularisée, classifieur de signe…) sélectionne ou dimensionne mieux les trades d'une anomalie déjà confirmée que les filtres à une variable déjà essayés. Branche git `ml` (voir CLAUDE.md, section « Branches »), code dans `ml/`. 1er essai le 2026-11-19 : filtre binaire sur mom, rejeté (voir ci-dessous).
 
 ## Origine
 
@@ -31,6 +31,14 @@ Demande de l'utilisateur du 2026-11-19. Les anomalies ci-dessous sont significat
 - Référence triviale obligatoire : la règle brute sans filtre, et le meilleur filtre classique déjà testé.
 - Variables connues à l'heure de décision seulement (contrôle d'alignement comme `tests/test_leakage.py`).
 
+## Essais
+
+| Date | Anomalie | Essai | Résultat | Source |
+|---|---|---|---|---|
+| 2026-11-19 | Règle NQ de nuit mom (TP 4 ATR, compte A FTMO) | Filtre binaire à taille fixe 1 R, garder 70 / 50 / 35 % des nuits ; logit L2 et LightGBM contraint sur 4 variables (mom continu, nuit d−1 Abdi, clôture − VWAP BLW, NFP/CPI) ; Purged K-Fold 5 blocs, embargo 5 ; jugé sur P(réussite) Monte Carlo (+10/−10 R, +8/−6 R, FTMO 2,5 %) ; 9 filtres (compteur 1 798 → 1 807) | ❌ AUC hors bloc 0,50-0,51 ; aucun filtre ML significatif (Holm 1,0), P(réussite) dans le bruit des filtres aléatoires et sous Abdi seule ; jours de passage × 1,4 à 2,9 ; tous les filtres négatifs sur 2023-2026 sauf logit 70 % | [[reports/ml_propfirm_filter_report]] (branche `ml`), [ml_propfirm_filter.py](../../experiments/ml_propfirm_filter/ml_propfirm_filter.py) |
+
+Leçon : à taille fixe, filtrer ne change P(réussite) que par l'E[R] par trade ; un filtre au hasard laisse P inchangée et allonge la durée en 1/q.
+
 ## Ouvert
 
 - Choix de la première anomalie et du jeu de variables (prix, volatilité réalisée, calendrier macro `config/`, VIX).
@@ -38,4 +46,4 @@ Demande de l'utilisateur du 2026-11-19. Les anomalies ci-dessous sont significat
 
 ## Sources brutes
 
-Aucune pour l'instant (branche `ml`, dossier `ml/`).
+- `reports/ml_propfirm_filter_report.md`, `experiments/ml_propfirm_filter/` (branche `ml`) : `git show ml:reports/ml_propfirm_filter_report.md` depuis une autre branche.
