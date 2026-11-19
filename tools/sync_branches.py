@@ -124,6 +124,8 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-push", action="store_true")
     a = ap.parse_args()
+    for s in (sys.stdout, sys.stderr):  # console Windows en cp1252
+        s.reconfigure(encoding="utf-8", errors="replace")
 
     courante = git("rev-parse", "--abbrev-ref", "HEAD")
     if courante == INTERDITE:
