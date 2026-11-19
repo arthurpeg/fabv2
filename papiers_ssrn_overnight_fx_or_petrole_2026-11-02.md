@@ -149,14 +149,15 @@
 
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2564688
 - **Actifs :** futures sur or SHFE et COMEX, or au comptant chinois
-- **Plage horaire / Session :** heures communes ; les deux marchés **se relaient**
-- **Date :** 2015 | **Auteurs :** Dong Zhang | **Citations :** 0
+- **Plage horaire / Session :** séance de jour chinoise (9:00-15:00 Pékin) pour SGE/SHFE et SHFE/COMEX ; séance de nuit SGE (21:00-2:30 Pékin, SHFE fermé) pour SGE/COMEX
+- **Date :** 2015 (données **2010-03-15 → 2012-03-15**, avant la séance de nuit du SHFE) | **Auteurs :** Dong Zhang | **Citations :** 0
+- **Relu en entier le 2026-11-19** (corrections : la période n'est pas 2014-2015 ; ce sont le SHFE et le COMEX qui se relaient pour mener le **comptant chinois SGE**, pas le SHFE et le COMEX entre eux).
 
-> **Mécanisme causal intraday (pourquoi et quand) : Quand** : selon les périodes, le meneur change. **Qui subit la contrainte** : le COMEX, qui suit le SHFE sur l'échantillon, contrairement à la littérature antérieure. **Effet sur les bougies** : le futur chinois contribue **plus** que le futur américain à la découverte du prix ; les deux marchés « prennent leur tour » comme meneur.
+> **Mécanisme causal intraday (pourquoi et quand) : Quand** : le jour à Pékin, le SHFE mène le SGE ; la nuit à Pékin (SHFE fermé), le COMEX mène le SGE. **Qui subit la contrainte** : le comptant chinois, et le COMEX pendant la séance de jour chinoise (VECM : seul le COMEX corrige l'écart, α 0,0002, p 0,04 ; SHFE p 0,42). **Effet sur les bougies** : mesure de qui incorpore l'information en premier sur des milieux bid/ask à 1 min, pas de prévisibilité des rendements ; aucun coefficient de retard ni R² publiés.
 
-> **Résumé (abstract paraphrasé) :** La Chine est devenue le premier consommateur d'or et son futur l'un des plus grands au monde. En combinant part d'information et part de composante (méthode de Yan-Zivot et Putniņš, robuste aux différences de bruit), l'auteur trouve que le futur chinois sert bien le comptant chinois et **mène le futur américain**. Les deux marchés alternent comme meneur.
+> **Résumé (abstract paraphrasé) :** VECM bivariés à 1 min, IS (Hasbrouck), CS (Gonzalo-Granger) et ILS (Yan-Zivot / Putniņš). SHFE/SGE : ILS SHFE 0,66. SHFE/COMEX : ILS SHFE 0,62 (IS très instable selon l'ordre, 0,39-0,81). SGE/COMEX de nuit : ILS COMEX 0,95. Entre contrats SGE, l'ILS inverse IS et CS (Au 99.99 0,98 contre Au(T+D) 0,02).
 >
-> **Pour nous :** argument pour une session asiatique informative sur l'or **depuis 2014**, cohérent avec Wei (série du 2026-10-21 : la hausse de l'or depuis 2024 est portée par l'Asie). Test : la corrélation entre le rendement GC de la séance de jour de Shanghai (2:30-8:30 Paris) et celui de la journée COMEX suivante, avant et après 2014.
+> **Pour nous :** contexte, pas de règle : explique peut-être nos phénomènes « plus de prix par contrat la nuit » et « un quart du prix avant 3:00 NY » (séance de jour chinoise = 20:00/21:00 → 2:00/3:00 NY), mais ne prédit aucune dérive ; la séance SGE est déjà nulle en rendement sur GC 2016-2026 ([[reports/gc_sessions_report]]). Un test meneur-suiveur exigerait des données SHFE minute, que nous n'avons pas.
 
 ### [11] Market Openness and Price Discovery in Gold Markets
 
