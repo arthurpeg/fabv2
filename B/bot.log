@@ -25,3 +25,7 @@
 2026-11-18 20:24:07 ET [B] FERMÉ 3n (SL) à 27320.43 : -249.83 $ (-2.50 %, -1.01 R) ; compte virtuel éval -0.02 % ; P&L cumulé tous essais -1.60 $ sur 4 trades (compte continu 9,998.40 $)
 2026-11-19 09:35:03 ET [B] M2 2026-11-19 : sens +1, force 2.23, retournement -6.4 bps → SIGNAL ; 3n de la nuit : {'raison': 'SL', 'pnl': -2.4983}
 2026-11-19 09:35:03 ET [B] M2 : 3n sorti au SL cette nuit, pas de M2
+2026-11-19 14:52:13 ET [B] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-19 14:52:47 ET [B] MT5 connecté : compte 541521340 sur FTMO-Server4, solde 9,998.40 USD
+2026-11-19 14:52:47 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-19 14:52:47 ET [B] démarrage (code de578a7) ; compte virtuel éval -0.02 %, 0 position(s) suivie(s)
