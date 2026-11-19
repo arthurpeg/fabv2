@@ -1,0 +1,88 @@
+
+===== 2010-06 → 2015-12 : 1425 séances ; jours avec les deux signaux : 184 (M2 sautés, +38.7 R et +8,487 $ laissés) =====
+                       3n SL seul  M2 + stop seul  les deux (tous les trades)  max 1 / jour (priorité à la nuit)
+Trades                    567.000         457.000                    1024.000                            840.000
+Trades/an                 100.269          80.817                     181.086                            148.547
+Moy./trade (R)              0.016           0.091                       0.050                              0.015
+Par an (R)                  1.648           7.353                       9.001                              2.157
+Sharpe (R journalier)       0.195           0.569                       0.581                              0.168
+Max DD (R)                -18.778         -15.556                     -20.730                            -26.194
+Moy./trade ($)              6.822          21.905                      13.553                              6.419
+Par an ($)                684.031        1770.318                    2454.349                            953.568
+Sharpe ($ journalier)       0.420           0.443                       0.576                              0.285
+Max DD ($)              -2217.730       -8732.302                   -5798.800                          -5227.173
+Win %                      51.675          42.232                      47.461                             47.738
+t NW (R)                    0.469           1.482                       1.477                              0.425
+Pire jour (R)              -1.257          -1.464                      -2.192                             -1.464
+Corrélation journalière 3n / M2 (R) : +0.007
+
+===== 2016-2024 : 2323 séances ; jours avec les deux signaux : 367 (M2 sautés, +74.9 R et +87,263 $ laissés) =====
+                       3n SL seul  M2 + stop seul  les deux (tous les trades)  max 1 / jour (priorité à la nuit)
+Trades                    984.000         899.000                    1883.000                           1516.000
+Trades/an                 106.745          97.524                     204.269                            164.456
+Moy./trade (R)              0.126           0.200                       0.162                              0.151
+Par an (R)                 13.466          19.533                      32.999                             24.874
+Sharpe (R journalier)       1.308           1.290                       1.804                              1.593
+Max DD (R)                -19.917         -18.475                     -17.951                            -17.976
+Moy./trade ($)            113.325         290.740                     198.028                            188.406
+Par an ($)              12096.844       28354.082                   40450.926                          30984.614
+Sharpe ($ journalier)       1.361           1.266                       1.659                              1.588
+Max DD ($)             -12418.346      -34200.428                  -26865.100                         -16647.885
+Win %                      53.455          42.825                      48.380                             49.868
+t NW (R)                    4.188           4.057                       5.685                              5.082
+Pire jour (R)              -1.144          -1.328                      -2.090                             -1.216
+Corrélation journalière 3n / M2 (R) : -0.002
+
+===== 2025-08/2026 : 427 séances ; jours avec les deux signaux : 75 (M2 sautés, +29.0 R et +99,186 $ laissés) =====
+                       3n SL seul  M2 + stop seul  les deux (tous les trades)  max 1 / jour (priorité à la nuit)
+Trades                    182.000         168.000                     350.000                            275.000
+Trades/an                 107.410          99.148                     206.557                            162.295
+Moy./trade (R)              0.144           0.241                       0.190                              0.137
+Par an (R)                 15.453          23.894                      39.347                             22.250
+Sharpe (R journalier)       1.450           1.786                       2.353                              1.626
+Max DD (R)                 -6.312         -12.499                     -16.119                            -12.691
+Moy./trade ($)            291.574         704.349                     489.706                            262.587
+Par an ($)              31317.889       69834.490                  101152.379                          42616.534
+Sharpe ($ journalier)       1.592           1.518                       2.007                              1.373
+Max DD ($)              -8300.518      -29937.559                  -31388.653                         -22555.234
+Win %                      55.495          52.381                      54.000                             54.182
+t NW (R)                    1.989           2.332                       3.045                              2.058
+Pire jour (R)              -1.022          -1.007                      -2.023                             -1.022
+Corrélation journalière 3n / M2 (R) : -0.045
+
+===== holdout vu 2026-08-31 → 11-03 : 46 séances ; jours avec les deux signaux : 5 (M2 sautés, -1.2 R et -4,744 $ laissés) =====
+                       3n SL seul  M2 + stop seul  les deux (tous les trades)  max 1 / jour (priorité à la nuit)
+Trades                     23.000           9.000                      32.000                             27.000
+Trades/an                 126.000          49.304                     175.304                            147.913
+Moy./trade (R)              0.379           0.212                       0.332                              0.437
+Par an (R)                 47.707          10.473                      58.180                             64.609
+Sharpe (R journalier)       3.200           1.873                       3.715                              4.224
+Max DD (R)                 -3.028          -1.002                      -3.028                             -3.028
+Moy./trade ($)            575.540         481.232                     549.016                            826.386
+Par an ($)              72518.101       23726.850                   96244.951                         122233.318
+Sharpe ($ journalier)       2.548           1.224                       2.761                              3.981
+Max DD ($)              -9324.587       -4708.908                  -11128.495                          -9324.587
+Win %                      56.522          44.444                      53.125                             59.259
+t NW (R)                    1.357           2.751                       1.611                              1.806
+Pire jour (R)              -1.016          -1.002                      -2.006                             -1.016
+Corrélation journalière 3n / M2 (R) : -0.049
+
+===== R net par année, max 1 / jour =====
+date
+2010   -12.1
+2011     5.7
+2012    -3.9
+2013     2.0
+2014     6.9
+2015    13.6
+2016    24.0
+2017     8.2
+2018    13.5
+2019    38.9
+2020    16.3
+2021    41.7
+2022    34.6
+2023     4.6
+2024    47.5
+2025    14.5
+2026    35.0

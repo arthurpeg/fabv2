@@ -1,0 +1,29 @@
+ES fait
+YM fait
+NQ fait
+                           0          1             2
+marché                    ES         YM            NQ
+rôle               sélection  sélection  confirmation
+nuits                   3788       3787          3787
+part_S_%              45.908     46.897        46.554
+R_trade_S              0.023      0.012         0.115
+S_lo                  -0.037      -0.05         0.055
+S_hi                   0.083      0.076         0.179
+R_trade_nonS          -0.003      0.039         0.065
+nonS_lo               -0.059     -0.021          0.01
+nonS_hi                 0.05      0.099         0.118
+diff                   0.025     -0.027         0.051
+p_H                    0.302      0.724         0.109
+H_ok                   False      False         False
+base_R_an              2.244      6.516        22.044
+base_dd               -61.81   -129.076       -25.403
+V1_R_an                2.588      1.351        13.427
+V1_R_an_vs_base_%    115.323     20.731        60.909
+V1_dd                -36.382     -70.57       -20.208
+V1_reduction_dd_%     41.139     45.327         20.45
+aleatoire_p95_%       50.155     68.689        24.957
+V1_c1                   True       True         False
+V1_c2                   True      False         False
+V1_c3                  False      False         False
+H : sélection False ; confirmée NQ False
+V1 : sélection False ; confirmée NQ False
