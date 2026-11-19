@@ -119,7 +119,7 @@ def vbt_check(df: pd.DataFrame, days: list[dict], atr_at: np.ndarray, k: float) 
         slf.loc[d["t_in"]] = k * atr_at[j] / d["p_in"]
     wm = w.index.hour * 60 + w.index.minute
     first_out = pd.Series(w.index[(wm >= 1015)], index=w.index[(wm >= 1015)])
-    exits.loc[first_out.groupby(first_out.index.date).first().values] = True
+    exits.loc[first_out.groupby(first_out.index.date).first().tolist()] = True
     pf = vbt.Portfolio.from_signals(
         close=w.close, open=w.open, high=w.high, low=w.low, price=w.open,
         short_entries=entries, short_exits=exits, sl_stop=slf, tp_stop=RR * slf,
@@ -155,10 +155,10 @@ def main() -> None:
             res.append(summarize(t, lab))
             if tf == "M15" and k == 2:
                 v = vbt_check(df, days, at, k)
-                both = pd.concat([t.gross_bp, v.rename("vbt")], axis=1, join="inner")
-                diff = (both.gross_bp - both.vbt).abs()
+                both = pd.concat([t.gross_bp, v.rename("vb")], axis=1, join="inner")
+                diff = (both.gross_bp - both.vb).abs()
                 print(f"  contrôle vectorbt ({lab}) : {len(both)} trades communs, brut moyen {both.gross_bp.mean():+.2f} "
-                      f"contre {both.vbt.mean():+.2f} bp, écart > 0,5 bp sur {(diff > 0.5).sum()} trades")
+                      f"contre {both.vb.mean():+.2f} bp, écart > 0,5 bp sur {(diff > 0.5).sum()} trades")
     g = pd.DataFrame(res)
     g.to_csv(OUT / "grid.csv", index=False)
     pd.set_option("display.width", 250)
