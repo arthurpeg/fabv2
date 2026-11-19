@@ -1,0 +1,44 @@
+---
+type: registry
+updated: 2026-11-19
+---
+
+# Registre des données : vierges, explorées, réservées, consommées
+
+> Lire avant tout calcul de rendement sur un actif ou une période. La règle est dans [[wiki/concepts/is-oos]] et dans `CLAUDE.md` (règle 4).
+>
+> **États** :
+> - **vierge** : aucun prix, rendement, signal ou P&L n'a été calculé. Les contrôles de qualité sont permis : comptes de barres, trous, spreads, corrélations, mais aucune moyenne de rendement.
+> - **explorée** : on y a regardé des rendements. Tout ce qu'on y trouve est en échantillon.
+> - **réservée** : une réserve hors échantillon déclarée ici avant le premier regard, attachée à une famille d'idées.
+> - **consommée** : une réserve ouverte une fois par un pré-enregistrement. Elle devient ensuite une donnée explorée pour toute nouvelle idée.
+>
+> On ajoute une ligne à chaque changement d'état, datée et avec sa source. On ne supprime jamais une ligne : on met à jour la colonne « État », et on garde l'ancien état dans « Historique ». L'inventaire ci-dessous date du 2026-11-19 et a été reconstitué à partir du journal et des pré-enregistrements. En cas de doute, la tranche est classée **explorée**.
+
+## Inventaire
+
+| Actif | Période | Source | État | Historique / qui l'a vue |
+|---|---|---|---|---|
+| ES, NQ, YM | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1 à 26, récolte 1, overnight, propfirm… |
+| ES, NQ, YM | 2010-06 → 2015-12 | Databento 1 min (`cache/databento_2010/`) | explorée | Réserve OOS des n° 11, 12, 19, 24, 25 : consommée plusieurs fois |
+| NQ | 2026-08-29 → 2026-11-03 | London Strategic Edge | explorée | Lecture anticipée du n° 26 (avenant A) |
+| NQ | à partir du 2026-11-04 | Databento (à acheter), LSE | **réservée** | Holdout du n° 26 (mom, M2, 3n SL, rebond) ; lectures 2028-02-29, 2029-08-31, 2031-08-29 |
+| ES, YM, autres indices | après le 2026-08-28 | — | vierge | Pas téléchargé |
+| FDAX, DAX (HistData, CFD) | historique disponible | Databento, HistData | explorée | n° 5 (gap d'ouverture) |
+| CL | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1, 3 (R7) |
+| GC | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1, 3 (R7), sessions de l'or, Fattinger-Ziegler |
+| SI | 2017-04 → 2026-08-28 | London Strategic Edge | explorée | Fattinger-Ziegler |
+| 6E, 6B, 6J, 6A | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1 à 4, R2, R5, R6, n° 27, 28 (référence), backtest du yen |
+| EUR, GBP, JPY, CHF, AUD, CAD, NZD spot | 2010-01 → 2015-12 | Dukascopy 1 h / 1 min | explorée | n° 27 (moyennes des 4 sessions de Zhang) ; règle du yen 2012-2015 ; les autres fenêtres horaires n'ont pas été regardées, mais la tranche est classée explorée par prudence |
+| CHF, CAD, NZD spot | 2016-01 → 2026-08-28 | Dukascopy 1 h / 1 min | explorée | n° 27 |
+| USDNOK, USDSEK spot | 2010-01 → 2016-12 | Dukascopy 1 h / 1 min | **vierge** | Contrôles de qualité seulement (spreads, couverture) |
+| EUR, GBP, JPY spot M15 (bid) | 2013 → 2025-06 | Dukascopy (`strategie trading`) | explorée | Contrôle de qualité du 2026-11-17 : moyennes de session vues |
+| Yen (6J, USDJPY, toute paire contre JPY) | à partir du 2026-08-29 | Databento (à acheter), Dukascopy | **réservée** | Holdout du n° 28 (short yen en session US), mêmes dates de lecture que le n° 26 |
+| Autres FX, CL, GC, SI | à partir du 2026-08-29 | — | vierge | Pas téléchargé |
+
+## Réserves déclarées pour des idées futures
+
+*Aucune pour l'instant. Avant le premier calcul sur une tranche vierge, on ajoute ici : la date, la tranche explorable, la réserve (par défaut les 30 % les plus récents, au moins 3 ans), et la famille d'idées concernée.*
+
+| Date | Actif | Tranche explorable | Réserve | Famille d'idées | État |
+|---|---|---|---|---|---|

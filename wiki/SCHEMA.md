@@ -29,6 +29,7 @@ Le wiki est la mémoire de travail de l'agent sur ce dépôt. L'agent l'écrit e
 | `reference/` | Pages d'aiguillage : liens vers la source qui fait foi, rien d'autre. |
 | `Failed Ideas/ledger.md` | Registre des idées abandonnées, avec la raison. |
 | `phenomenes.md` | Registre des phénomènes confirmés sur nos données (briques à combiner), et « À surveiller ». |
+| `reserves.md` | Registre des données : vierges, explorées, réservées (réserve hors échantillon déclarée avant le premier regard), consommées. |
 
 ## 2. Modèles de page
 

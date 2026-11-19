@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-10-31
+updated: 2026-11-19
 ---
 
 # Index du wiki
@@ -13,6 +13,7 @@ updated: 2026-10-31
 - [[wiki/log|Journal]] — chronologie append-only
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
 - [[wiki/phenomenes|Registre des phénomènes confirmés]] — ce qui se vérifie sur nos données, tradable seul ou non, pour combiner en stratégies · 2026-11-02
+- [[wiki/reserves|Registre des données (vierges, explorées, réservées, consommées)]] — à lire avant tout calcul de rendement ; réserve hors échantillon à déclarer avant le premier regard · 2026-11-19
 - [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 32 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
@@ -33,7 +34,7 @@ updated: 2026-10-31
 - [[wiki/concepts/cout-standard|Coût standard]] — 1 tick + 5 $ aller-retour
 - [[wiki/concepts/prime-de-nuit|Prime de nuit]] — l'effet le plus robuste trouvé
 - [[wiki/concepts/roulements|Roulements]] — ajustement en ratio ; piège de `fab.core.load`
-- [[wiki/concepts/is-oos|IS / OOS / holdout]] — découpages et holdout unique post-2026-08-28
+- [[wiki/concepts/is-oos|IS / OOS / holdout]] — découpages, holdout unique post-2026-08-28, règle de réserve par actif (2026-11-19)
 - [[wiki/concepts/histdata-fuseau|Fuseau HistData]] — décalage EU-DST, fichier DAX corrompu
 
 ## Recherche

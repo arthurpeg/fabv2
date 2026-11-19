@@ -1,11 +1,11 @@
 ---
 type: reference
-updated: 2026-11-18
+updated: 2026-11-19
 ---
 
 # Où sont les données
 
-Page d'aiguillage : elle ne fait que pointer vers la source qui fait foi.
+Page d'aiguillage : elle ne fait que pointer vers la source qui fait foi. Ce qui est vierge, exploré ou réservé dans chaque source : [[wiki/reserves]].
 
 | Donnée | Emplacement | Page qui explique |
 |---|---|---|

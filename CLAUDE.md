@@ -10,6 +10,8 @@ Recherche quantitative : backtests intraday et de nuit sur futures (indices, FX,
 2. **Avant de terminer** : mettre à jour la page de wiki concernée, ajouter une ligne datée à `wiki/log.md` (`## [AAAA-MM-JJ] <type> | <quoi> | <résultat>`), et ajouter une ligne au registre des échecs pour toute idée abandonnée.
 3. **Phénomènes confirmés** : chaque fois qu'une règle ou hypothèse (d'un papier ou à nous) se vérifie sur nos données, même non tradable seule, l'ajouter à `wiki/phenomenes.md` (critère d'entrée et colonnes en tête du fichier ; « À surveiller » si significatif en brut seulement). But : amasser des phénomènes à combiner en stratégies. Avant de combiner, vérifier qu'ils ne sont pas le même effet compté deux fois, et pré-enregistrer la combinaison.
 
+4. **Réserve hors échantillon** : avant tout calcul de rendement sur un actif ou une période, lire `wiki/reserves.md`. Avant le premier calcul sur une tranche **vierge**, y déclarer une réserve (par défaut les 30 % les plus récents, au moins 3 ans), n'explorer que le reste, et n'ouvrir la réserve qu'une fois, par un pré-enregistrement commité. Sur une réserve, aucun contrôle de qualité ne calcule de moyenne de rendement. Mettre à jour l'état de la tranche (vierge → explorée / réservée → consommée) dès qu'il change. Détail : `wiki/concepts/is-oos.md`.
+
 Règle d'immuabilité : le wiki **pointe** vers les sources brutes (pré-enregistrements, `RESULTS.md`, `reports/`, `results/`, code, données) et n'en recopie jamais le contenu comme source de vérité. En cas d'écart, la source a raison.
 
 Structure, modèles de page, procédures et lint : `wiki/SCHEMA.md`. `wiki/hot.md` est régénéré par `wiki/update_hot.py` (hook Stop) : ne pas l'éditer à la main, sauf son bloc « Prochaines actions ».

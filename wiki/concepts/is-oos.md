@@ -1,6 +1,6 @@
 ---
 type: concept
-updated: 2026-10-31
+updated: 2026-11-19
 ---
 
 # Découpage IS / OOS et holdout
@@ -13,4 +13,18 @@ updated: 2026-10-31
 
 **Hors échantillon « partiel »** : un autre actif sur la même période (ex. ES/YM au n° 10) ; utile mais faible, car les indices sont corrélés.
 
-**Voir aussi** : [[wiki/concepts/pre-enregistrement]]
+## Réserve hors échantillon par actif (règle depuis le 2026-11-19)
+
+Le but est de pouvoir confirmer un phénomène sur nos données sans attendre des données nouvelles en live.
+
+1. **Idée tirée d'un papier** : la période d'estimation du papier est son échantillon. Toute donnée postérieure à cet échantillon qui n'est pas encore consommée peut servir de hors échantillon, **une seule fois**, après un pré-enregistrement. Exemple : le n° 27 (Zhang, papier 2010-2015, test 2016-2026).
+2. **Phénomène trouvé par nous** : avant le premier calcul de rendement sur une tranche vierge, on déclare une réserve dans [[wiki/reserves]]. Par défaut, ce sont les 30 % les plus récents, au moins 3 ans. On explore librement le reste. La réserve s'ouvre une fois, par un pré-enregistrement commité, puis passe en « consommée ».
+3. **Une réserve ne sert qu'à une famille d'idées.** Une fois ouverte, elle devient une donnée explorée pour toutes les idées suivantes.
+4. **Contrôles de qualité sur une réserve** : comptes de barres, trous, spreads, corrélations. Jamais de moyenne de rendement par session ou par heure. Le contrôle du 2026-11-17 sur le FX a consommé 2016-2025 de cette manière, sans le vouloir.
+5. **Le holdout post-2026-08-28 reste le dernier recours**, pour les règles qu'on veut trader.
+
+**Limite (puissance)** : une réserve de 3 ans ne détecte qu'un effet fort, environ t 2,4 pour un Sharpe annuel de 1,4. Un effet net faible (Sharpe ≈ 0,6) ne s'y confirme presque jamais. Pour ceux-là, il faut un holdout long ou le live.
+
+**Piège** : une tranche regardée « juste pour voir » est consommée. En cas de doute, [[wiki/reserves]] la classe « explorée ».
+
+**Voir aussi** : [[wiki/concepts/pre-enregistrement]], [[wiki/reserves]]
