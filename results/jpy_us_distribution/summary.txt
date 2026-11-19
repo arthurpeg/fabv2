@@ -1,0 +1,114 @@
+
+== A/B. 6J short 11:00 → 16:55 ET, brut : n = 2694, 2016-01-04 00:00:00 → 2026-08-28 00:00:00
+  moyenne +2.03 bp (t NW +4.93), médiane +2.19, écart type 23.6, positives 54.6 %, asymétrie -0.09, kurtosis 14.5
+  moyennes tronquées symétriques : 1 % +2.07, 5 % +2.05, 10 % +2.10, 25 % +2.11 ; winsorisée 5 % +2.01
+  profil de décalage (q(p)+q(1−p))/2 [IC 95 %] :
+    p = 0.05 : +1.66 [-0.05 ; +3.78]
+    p = 0.10 : +1.68 [+0.50 ; +2.98]
+    p = 0.15 : +2.05 [+1.14 ; +2.98]
+    p = 0.20 : +2.10 [+1.39 ; +2.91]
+    p = 0.25 : +2.21 [+1.51 ; +2.93]
+    p = 0.30 : +2.18 [+1.47 ; +2.91]
+    p = 0.35 : +2.07 [+1.47 ; +2.74]
+    p = 0.40 : +2.03 [+1.44 ; +2.76]
+    p = 0.45 : +1.94 [+1.53 ; +2.59]
+  total +5463 bp ; 10 meilleures séances +1342, 10 pires -1343, 50 meilleures +4073, 50 pires -3923
+  sans les 1 % de séances les plus extrêmes en |r| : moyenne +2.01 (t NW +5.48), n = 2667
+  sans les 5 % de séances les plus extrêmes en |r| : moyenne +1.71 (t NW +5.41), n = 2559
+  par quintile de |r| (Q1 calme → Q5 agité) : Q1 moy +0.04, part du total +0 %, positives 44 % ; Q2 moy +0.91, part du total +9 %, positives 58 % ; Q3 moy +1.13, part du total +11 %, positives 55 % ; Q4 moy +3.52, part du total +35 %, positives 60 % ; Q5 moy +4.54, part du total +45 %, positives 56 %
+
+== A/B. Référence : même short de 16:55 → 11:00 suivant : n = 2693, 2016-01-04 00:00:00 → 2026-08-27 00:00:00
+  moyenne -0.94 bp (t NW -0.87), médiane +1.63, écart type 55.1, positives 51.1 %, asymétrie -0.81, kurtosis 8.7
+  moyennes tronquées symétriques : 1 % -0.34, 5 % +0.21, 10 % +0.79, 25 % +1.67 ; winsorisée 5 % -0.48
+  profil de décalage (q(p)+q(1−p))/2 [IC 95 %] :
+    p = 0.05 : -6.74 [-9.54 ; -1.88]
+    p = 0.10 : -2.88 [-5.97 ; +0.21]
+    p = 0.15 : -1.54 [-3.86 ; +1.03]
+    p = 0.20 : +0.20 [-1.62 ; +2.29]
+    p = 0.25 : +1.11 [-0.93 ; +2.93]
+    p = 0.30 : +1.53 [-0.40 ; +3.27]
+    p = 0.35 : +1.47 [-0.10 ; +3.49]
+    p = 0.40 : +2.34 [+0.40 ; +3.78]
+    p = 0.45 : +1.62 [+0.06 ; +3.38]
+  total -2520 bp ; 10 meilleures séances +2005, 10 pires -3147, 50 meilleures +7698, 50 pires -9660
+  sans les 1 % de séances les plus extrêmes en |r| : moyenne +0.33 (t NW +0.35), n = 2666
+  sans les 5 % de séances les plus extrêmes en |r| : moyenne +0.85 (t NW +1.01), n = 2558
+  par quintile de |r| (Q1 calme → Q5 agité) : Q1 moy -0.21, part du total +4 %, positives 45 % ; Q2 moy +1.31, part du total -28 %, positives 54 % ; Q3 moy +2.83, part du total -60 %, positives 55 % ; Q4 moy +4.08, part du total -87 %, positives 55 % ; Q5 moy -12.68, part du total +271 %, positives 46 %
+
+== C. Concentration dans le temps
+  par année : 2016 +2.17 (51 %) ; 2017 +0.66 (53 %) ; 2018 +2.23 (56 %) ; 2019 +0.71 (56 %) ; 2020 +0.88 (47 %) ; 2021 +0.47 (49 %) ; 2022 +3.37 (59 %) ; 2023 +3.06 (56 %) ; 2024 +1.49 (54 %) ; 2025 +4.42 (57 %) ; 2026 +3.15 (67 %)
+  trimestres : 43, positifs 36 ; dispersion χ² = 23.7 pour 42 ddl, p = 0.990 (H0 : moyenne constante)
+  meilleur trimestre 2025Q2 +6.74, pire 2021Q1 -2.20 ; total sans les 4 meilleurs trimestres : moyenne +1.62
+  blocs de 21 séances : 128, positifs 69 % (attendu iid 65 %), ratio de variance 0.69
+  blocs de 63 séances : 42, positifs 83 % (attendu iid 75 %), ratio de variance 0.66
+  autocorrélations 1-5 : -0.068, -0.030, -0.000, -0.026, -0.024 (± 0.039)
+
+== D. Calendrier
+
+  Annonces
+    annonce avant 11:00          n   897  moy  +1.03  méd  +1.11  t NW +1.46  positives 52.3 %  part du total   +17 %
+    aucune annonce               n  1621  moy  +2.62  méd  +2.34  t NW +5.16  positives 56.1 %  part du total   +78 %
+    décision FOMC 14:00          n    90  moy  -4.43  méd  -5.24  t NW -1.14  positives 44.4 %  part du total    -7 %
+    minutes FOMC 14:00           n    86  moy  +8.03  méd  +5.37  t NW +2.36  positives 60.5 %  part du total   +13 %
+    Welch F = 2.52, p = 0.059
+
+  Fin de mois (fixing 11:00 ET)
+    autres jours                 n  2566  moy  +2.04  méd  +2.17  t NW +4.79  positives 54.4 %  part du total   +96 %
+    dernier jour du mois         n   128  moy  +1.71  méd  +3.90  t NW +0.69  positives 58.6 %  part du total    +4 %
+    Welch F = 0.02, p = 0.885
+
+  Jour de semaine
+    1 lun                        n   521  moy  +2.35  méd  +2.14  t NW +3.10  positives 54.9 %  part du total   +22 %
+    2 mar                        n   551  moy  +2.69  méd  +2.21  t NW +2.87  positives 54.3 %  part du total   +27 %
+    3 mer                        n   550  moy  +2.88  méd  +3.21  t NW +2.32  positives 56.0 %  part du total   +29 %
+    4 jeu                        n   546  moy  +1.95  méd  +1.92  t NW +2.23  positives 54.0 %  part du total   +19 %
+    5 ven                        n   526  moy  +0.21  méd  +1.11  t NW +0.21  positives 53.8 %  part du total    +2 %
+    Welch F = 1.04, p = 0.385
+
+== E. Conditions
+
+  Volatilité ex ante (20 fenêtres précédentes)
+    Q1                           n   535  moy  +1.10  méd  +1.60  t NW +1.65  positives 54.4 %  part du total   +11 %
+    Q2                           n   535  moy  +2.40  méd  +2.19  t NW +3.27  positives 55.5 %  part du total   +23 %
+    Q3                           n   534  moy  +1.08  méd  +2.28  t NW +1.10  positives 55.8 %  part du total   +11 %
+    Q4                           n   535  moy  +2.46  méd  +2.24  t NW +2.18  positives 54.4 %  part du total   +24 %
+    Q5                           n   535  moy  +3.21  méd  +2.53  t NW +2.73  positives 53.3 %  part du total   +31 %
+    Welch F = 0.92, p = 0.453
+
+  Volatilité réalisée dans la fenêtre (1 min)
+    Q1                           n   539  moy  +1.53  méd  +1.62  t NW +3.91  positives 56.6 %  part du total   +15 %
+    Q2                           n   539  moy  +3.06  méd  +2.61  t NW +5.75  positives 58.4 %  part du total   +30 %
+    Q3                           n   538  moy  +3.67  méd  +3.67  t NW +5.10  positives 57.6 %  part du total   +36 %
+    Q4                           n   539  moy  +3.08  méd  +2.90  t NW +3.60  positives 54.2 %  part du total   +30 %
+    Q5                           n   539  moy  -1.20  méd  -3.72  t NW -0.70  positives 46.2 %  part du total   -12 %
+    Welch F = 3.86, p = 0.004
+
+  Rendement ES dans la même fenêtre
+    ES baisse                    n   886  moy  +0.01  méd  +0.00  t NW +0.01  positives 49.5 %  part du total    +0 %
+    ES neutre                    n   885  moy  +2.55  méd  +2.34  t NW +3.77  positives 57.6 %  part du total   +42 %
+    ES hausse                    n   885  moy  +3.45  méd  +3.22  t NW +3.39  positives 56.3 %  part du total   +57 %
+    Welch F = 4.57, p = 0.011
+
+  Mouvement du yen 00:00 → 11:00 ET
+    yen monte 00-11              n   898  moy  +2.65  méd  +3.43  t NW +2.82  positives 57.1 %  part du total   +44 %
+    neutre                       n   897  moy  +2.06  méd  +2.19  t NW +3.18  positives 55.9 %  part du total   +34 %
+    yen baisse 00-11             n   898  moy  +1.38  méd  +0.65  t NW +1.78  positives 50.8 %  part du total   +23 %
+    Welch F = 0.58, p = 0.559
+
+== A/B. F. Spot USDJPY 2012-2015 (prix d'exécution bid/ask, avant coûts fixes) : n = 1030, 2012-01-03 00:00:00 → 2015-12-31 00:00:00
+  moyenne +1.55 bp (t NW +2.06), médiane +1.70, écart type 24.3, positives 56.5 %, asymétrie -0.69, kurtosis 14.3
+  moyennes tronquées symétriques : 1 % +1.68, 5 % +1.88, 10 % +2.11, 25 % +2.12 ; winsorisée 5 % +1.72
+  profil de décalage (q(p)+q(1−p))/2 [IC 95 %] :
+    p = 0.05 : +0.26 [-3.52 ; +3.73]
+    p = 0.10 : +0.93 [-1.41 ; +2.93]
+    p = 0.15 : +2.52 [+0.38 ; +4.05]
+    p = 0.20 : +2.29 [+1.03 ; +3.49]
+    p = 0.25 : +2.18 [+0.96 ; +3.19]
+    p = 0.30 : +2.11 [+1.22 ; +2.97]
+    p = 0.35 : +2.35 [+1.43 ; +3.21]
+    p = 0.40 : +2.36 [+1.22 ; +3.32]
+    p = 0.45 : +1.96 [+0.89 ; +2.89]
+  total +1593 bp ; 10 meilleures séances +1017, 10 pires -1118, 50 meilleures +2921, 50 pires -3069
+  sans les 1 % de séances les plus extrêmes en |r| : moyenne +1.55 (t NW +2.23), n = 1019
+  sans les 5 % de séances les plus extrêmes en |r| : moyenne +1.80 (t NW +3.47), n = 978
+  par quintile de |r| (Q1 calme → Q5 agité) : Q1 moy +0.07, part du total +1 %, positives 53 % ; Q2 moy +0.16, part du total +2 %, positives 50 % ; Q3 moy +2.12, part du total +27 %, positives 62 % ; Q4 moy +4.96, part du total +64 %, positives 65 % ; Q5 moy +0.42, part du total +5 %, positives 52 %
