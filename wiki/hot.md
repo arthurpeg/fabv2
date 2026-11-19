@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-19 20:30
+updated: 2026-11-19 20:46
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,7 +24,7 @@ updated: 2026-11-19 20:30
 
 ## Dernières entrées du journal (8)
 
-- [2026-11-19] schema | Coffre Obsidian en lecture seule C:\Usersrthu
+- [2026-11-19] schema | Coffre Obsidian en lecture seule C:\Users\arthu\fabv2-obsidian (worktree détaché sur origin/propfirm-ftmo, qui contient tout), ramené à jour par le hook Stop ; jonction vers papers/ ; CLAUDE.md : synchro des branches après tout travail, y compris sur main | Aucun calcul
 - [2026-11-19] schema | Dépôt réparti en branches emboîtées : main (papiers, phénomènes, wiki, protocole, préregs, code commun) → strategies-vbt (backtests) → propfirm-ftmo (simulations propfirm + bot live) et ml (nouvelle, fiche wiki/experiments/ml-anomalies.md) ; vps-journal intacte ; règle de routage au début de chaque discussion dans CLAUDE.md ; tools/sync_branches.py remonte le socle commun vers main et merge en cascade | Aucun historique réécrit (avance rapide partout, le VPS suit propfirm-ftmo) ; aucun calcul, compteur inchangé 1 798
 - [2026-11-19] abandon | Retournement 24 h des paires yen (Piccotti, SSRN 2446584) abandonné à l'étape 0 sur décision de l'utilisateur ; ligne au registre des échecs, fiche wiki/experiments/fx-retournement-24h-yen.md en abandoned | Aucun calcul de rendement ; raison : intraday uniquement → brut attendu 0,4-2,5 bp contre ≈ 1,13 bp de coût, puissance net ≤ 29 % en 2031 ; run_jpy_reversal24.py reste suspendu ; compteur inchangé 1 798
 - [2026-11-19] decision | Retournement 24 h yen : grille 24 h de run_jpy_reversal24.py suspendue avant tout lancement (contrainte de l'utilisateur : intraday uniquement), version intraday (signal 24 h à H, sortie 16:55 ET le jour même) réévaluée à l'étape 0 | Parts de variance 6J (écarts types seuls) : 03:00 → 16:55 59 %, 08:00 41 %, 11:00 16 % ; sous l'hypothèse « retournement proportionnel à la variance », seule 03:00 → 16:55 avec ρ −0,09 dépasse 1,5 × coût (brut 2,5 bp, net +1,4), puissance net ≤ 29 % à L3 ; 11:00 → 16:55 exclue (brut < coût) ; compteur inchangé 1 798
