@@ -211,6 +211,8 @@
 > **Résumé (abstract paraphrasé) :** En plus des modèles GARCH, les auteurs utilisent l'estimateur de Garman-Klass (ouverture, plus haut, plus bas, clôture) pour mesurer la volatilité intraday et entre jours de l'or. La volatilité varie selon l'heure et le jour, comme le prévoit la microstructure, et dépend peu du nombre de transactions.
 >
 > **Pour nous :** méthode 100 % OHLCV utile pour comparer la volatilité de nuit et de jour de GC (calibrage des stops de nuit). Pas de signal directionnel.
+>
+> **Relu en entier le 2026-11-20** (14 pages, figures vues) : le résumé dit CBOT, mais les données sont le contrat COMEX proche, 8:20-15:30 NY seulement (criée 8:20-13:30 puis 2 h de Globex), en barres de 10 min, 1999-2005. **Aucune donnée de nuit** : le papier ne permet pas la comparaison nuit / jour. Figure 4 : volatilité maximale à 8:30-8:40 (≈ 7,4e-5), décroissante jusqu'à 13:30 (≈ 2,5e-5), petites bosses vers 9:30, 13:40 et 14:40, remontée à 15:30 ; ce n'est pas un vrai U pendant la criée, ce qui concorde avec nos phénomènes « pic de 8:30 » et « pas de U en séance COMEX » ([[reports/gc_fattinger_report]]). Les annonces de 8:30 ne sont pas évoquées. ARMA(2,2)-GARCH(1,1) sur 10 min : termes AR et MA presque égaux et de signe opposé (ils s'annulent), R² négatif. Corrélation Garman-Klass / nombre de cotations par heure : 0,10 à 0,52 selon l'heure et le jour. Aucun test formel de l'effet jour de la semaine sur la volatilité. Statistiques descriptives incohérentes (écart type des rendements à 10 min annoncé à 7,1e-6). Rien de neuf par rapport à notre étude Fattinger-Ziegler.
 
 ---
 
