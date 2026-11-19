@@ -6,20 +6,24 @@ dependencies = [
     "cryptography>=50.0.2",
     "databento>=0.89.0",
     "exchange-calendars>=4.13.2",
-    "lightgbm>=4.7.0",
     "matplotlib>=3.11.2",
     "metatrader5>=5.0.45 ; sys_platform == 'win32'",
     "numpy>=2.5.4",
     "pandas>=3.0.6",
     "pyarrow>=26.0.0",
     "pypdf>=6.20.1",
-    "scikit-learn>=1.9.1",
     "vectorbt>=1.1.2",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+]
+# Machine learning (branche ml) : groupe hors défaut, jamais installé sur le VPS. Lancer avec `uv run --group ml ...`.
+# Y ajouter une dépendance ne change pas l'environnement du bot (live/maj_auto.ps1 compare uv export) : pas de relance.
+ml = [
+    "lightgbm>=4.7.0",
+    "scikit-learn>=1.9.1",
 ]
 
 [tool.pytest.ini_options]
