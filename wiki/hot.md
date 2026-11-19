@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-19 11:09
+updated: 2026-11-19 11:16
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 742** (source : [[reports/inference_overnight_report]])
+- Compteur global d'essais : **1 798** (source : [[reports/jpy_us_sltp_report]])
 - Dernier pré-enregistrement : n° 28 ([[PREREGISTRATION_28]])
 - Idées abandonnées au registre : 37 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-19
@@ -23,6 +23,7 @@ updated: 2026-11-19 11:09
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-19] query | Short yen 11:00 → 16:55 ET avec SL/TP RR 2 en ATR (M5, M15, H1 × k = 1-4), grille figée et commitée avant calcul, exploratoire sur 6J 2016-2026-08 déjà vu (run_jpy_us_sltp.py, reports/jpy_us_sltp_report.md, results/jpy_us_sltp/), compteur 1 786 → 1 798 | aucune des 12 ne bat la règle sans stop (+0,88 bp net, Sharpe 0,59) : stops serrés destructeurs (SL 1 ATR M5 −0,79 bp, Sharpe −1,35 ; SL 1 ATR M15 −0,37), stops larges = référence (SL 3-4 ATR H1 +0,81, 95-97 % de sorties à 16:55) ; espérance ≤ +0,02 R ; effet = dérive lente de 2 bp sous 24 bp de bruit, TP 2R rarement atteint ; n° 28 inchangé
 - [2026-11-19] query | Journal VPS du 19/11 : éval réelle du compte A (511480419) perdue au 4e stop de mom (long 1,34 lot 18/11 20:00:02 ET à 27 487,58, risque réduit à 2,40 %, stop 176,3 pts, SL à 20:25:48, −241,54 $, −1,02 R) | solde 8 998,74 $ (−10,01 %, 1,26 $ sous le plancher à cause du glissement ; sans lui le compte était de toute façon perdu, risque restant < 0,05 %) ; compte virtuel passé à l'éval n° 2 (+0,00 %), FTMO a coupé le trading à 20:30 ; exécution conforme ; rachat d'un 1-Step 10k à connecter dans le terminal A (pas de nouvelle bascule : mode réel déjà marqué) ; mom live 12 trades, 2 gagnants, −7,35 R
 - [2026-11-19] schema | Nouvelle règle de projet : réserve hors échantillon par actif (CLAUDE.md règle 4, wiki/concepts/is-oos.md) et registre des données wiki/reserves.md (vierge / explorée / réservée / consommée), SCHEMA et index mis à jour | Inventaire reconstitué : presque tout 2016-2026-08 et ES/NQ/YM 2010-2015 sont explorés ; vierges : USDNOK/USDSEK spot 2010-2016 et tout ce qui est postérieur au 2026-08-28 hors NQ et yen ; réservés : NQ ≥ 2026-11-04 (n° 26), yen ≥ 2026-08-29 (n° 28)
 - [2026-11-19] query | Backtest historique (déjà vu, exploratoire, compteur inchangé) du short yen 11:00 → 16:55 ET du n° 28 + pistes d'explication (run_jpy_us_backtest.py, reports/jpy_us_backtest_report.md, results/jpy_us/) ; rien après le 2026-08-28 | 6J 2016-2026-08 vectorbt : brut +2,03 bp (Sharpe 1,37), net standard +0,90 bp (Sharpe 0,61, +22 300 $/contrat, creux −7 100 $, 2,5 ans), 2 ticks +0,28 ; spot 2012-2015 au bid/ask +1,55 bp ; explication : pas un artefact des futures, pas la hausse du dollar (euro +0,41 ; constante −2,05 bp t −5,7 après euro et ES), pas le risk-on moyen (ES n'explique que −0,23 bp), pas que la tendance (2016-2020 yen +0,86/j sur 24 h mais −1,17 en fenêtre US) ; restent flux, carry, taux US (non testables sans ZN ni données de flux)
@@ -30,7 +31,6 @@ updated: 2026-11-19 11:09
 - [2026-11-19] experiment | N° 27 : Zhang (2018) sur les 7 majeures (PREREGISTRATION_27 commit fd5b243 avant calcul, run_zhang.py, reports/zhang_fx_report.md, results/zhang/), compteur 1 742 → 1 784 | Réplication 2010-2015 sur spot Dukascopy : moyennes au centième de bp de la Table 1 (EUR US +2,20 vs +2,21), 7 des 9 cases ** / *** retrouvées (échecs CHF : choc BNS du 2015-01-15) ; hors échantillon 2016-2026-08 : 0/14 pour H1 (domestique < 0) et H2 (US > 0), H3 (φ < 0) 0/14 partout (coefficients de la taille du papier, non significatifs) ; JPY en baisse en session US −1,72 bp, t −4,3, 16 ans sur 17 → phénomènes (pas une stratégie : jambe 6J des fixings) ; GBP non-US, CAD non-US, CHF LDN-NY à surveiller ; ligne ajoutée au registre
 - [2026-11-18] fix | Dukascopy prolongé jusqu'au 2026-08-28 pour les majeures sans future chez nous (USDCHF, USDCAD, NZDUSD ; fetch_dukascopy.py, SANS_FUTURE) ; décision : test Zhang limité aux 7 majeures (EUR, GBP, JPY, CHF, AUD, CAD, NZD), NOK/SEK et devises non majeures écartés pour leur spread | 1 h 2010-01 → 2026-08-28, 1 min 2012-01-11 → 2026-08-28 ; aucune barre le samedi, aucune barre vide, aucun spread négatif ; trous > 3 j seulement au Nouvel An ; spread médian 2017-2026 ≈ 1,0 bp (CHF), 0,9 (CAD), 1,7 (NZD) ; aucun calcul de rendement
 - [2026-11-18] query | mom long après une baisse du NQ (backtest 2011-07 → 2026-08, cache/propfirm/nq_nuit_tp4_mfe.parquet, coût 0,02 R, rendement 20 séances à la clôture 16:00 de la veille ; script jetable, exploratoire, hors compteur, 5 découpes regardées) | longs : +0,087 R (n = 2 134) ; après −5 % ou pire sur 20 séances +0,158 R (n = 222, 50 % gagnants) ; −5 à −2 % −0,012 R (n = 238) ; ±2 % +0,068 ; ≥ +2 % +0,106 ; repli ≥ 5 % du plus haut 20 j +0,135 R (n = 345) : aucune preuve qu'une baisse de quelques semaines dégrade mom long ; aucune modification
-- [2026-11-18] query | Journal VPS du 18/11 : 3e stop de mom sur le vrai compte A (long 1,09 lot 17/11 20:00:01 ET à 27 355,38, ATR M15 113,4, stop 226,7 pts, SL touché à 20:42:54, −255,33 $, −1,03 R, 5,6 pts de glissement au stop) | exécution conforme ; éval A −7,60 % (reste 2,40 % avant −10 %, prochain risque 2,40 %, un stop de plus = éval perdue, rachat prévu par le plan) ; live mom 11 trades, 2 gagnants, −6,33 R, 5 stops de suite : 2,5 % des fenêtres de 11 trades du backtest 2011-07 → 2026-08 font aussi mal, séries ≥ 5 stops ≈ 5 par an (script jetable, hors compteur)
 
 ## Prochaines actions
 
