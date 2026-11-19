@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-19 11:45
+updated: 2026-11-19 18:19
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 798** (source : [[reports/jpy_us_sltp_report]])
+- Compteur global d'essais : **1 798** (source : [[reports/jpy_us_distribution_report]])
 - Dernier pré-enregistrement : n° 28 ([[PREREGISTRATION_28]])
 - Idées abandonnées au registre : 37 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-19
@@ -23,6 +23,7 @@ updated: 2026-11-19 11:45
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-19] query | Distribution du short yen 11:00 → 16:55 ET (6J 2016-2026-08 et spot 2012-2015, déjà vus) : 34 coupes figées avant calcul (run_jpy_us_distribution.py, reports/jpy_us_distribution_report.md, results/jpy_us_distribution/), compteur inchangé 1 798 | Effet constant : médiane +2,19 = moyenne +2,03, moyennes tronquées 1-25 % +2,05-2,11, profil (q(p)+q(1−p))/2 plat ≈ +2 bp, 10 meilleures et 10 pires séances s'annulent, 11 années positives sur 11, 36 trimestres sur 43, dispersion trimestrielle inférieure au hasard (χ² p 0,99) ; aucune coupe ex ante ne concentre l'effet ; nul quand ES baisse dans la fenêtre (+0,01) et dans le quintile de volatilité réalisée le plus haut (−1,20, Holm p 0,03), FOMC décision −4,4 (t −1,1) ; aucun filtre pour le n° 28
 - [2026-11-19] schema | Protocole de validation standard pour toute idée : PROTOCOLE.md (étapes 0 fiche → 1 exploration B1 → 2 prereg → 3 confirmation C1-C4 → 4 forward F1-F3 → 5 réel K1-K2), modèle templates/preregistration.md, module fab/protocole.py (nw_t, holm, dsr, fiche, barrières) + tests/test_protocole.py, CLAUDE.md règle 5, concept wiki/concepts/protocole.md | Illustration sur le short yen 2016-2026 (explorée, hors compteur) : B1 passe 6/6 avec n_famille = 1, mais DSR 0,48 avec n_famille = 28 (cases du n° 27) → pas de réserve possible, d'où l'étape 4 directe (n° 28)
 - [2026-11-19] query | Short yen 11:00 → 16:55 ET avec SL/TP RR 2 en ATR (M5, M15, H1 × k = 1-4), grille figée et commitée avant calcul, exploratoire sur 6J 2016-2026-08 déjà vu (run_jpy_us_sltp.py, reports/jpy_us_sltp_report.md, results/jpy_us_sltp/), compteur 1 786 → 1 798 | aucune des 12 ne bat la règle sans stop (+0,88 bp net, Sharpe 0,59) : stops serrés destructeurs (SL 1 ATR M5 −0,79 bp, Sharpe −1,35 ; SL 1 ATR M15 −0,37), stops larges = référence (SL 3-4 ATR H1 +0,81, 95-97 % de sorties à 16:55) ; espérance ≤ +0,02 R ; effet = dérive lente de 2 bp sous 24 bp de bruit, TP 2R rarement atteint ; n° 28 inchangé
 - [2026-11-19] query | Journal VPS du 19/11 : éval réelle du compte A (511480419) perdue au 4e stop de mom (long 1,34 lot 18/11 20:00:02 ET à 27 487,58, risque réduit à 2,40 %, stop 176,3 pts, SL à 20:25:48, −241,54 $, −1,02 R) | solde 8 998,74 $ (−10,01 %, 1,26 $ sous le plancher à cause du glissement ; sans lui le compte était de toute façon perdu, risque restant < 0,05 %) ; compte virtuel passé à l'éval n° 2 (+0,00 %), FTMO a coupé le trading à 20:30 ; exécution conforme ; rachat d'un 1-Step 10k à connecter dans le terminal A (pas de nouvelle bascule : mode réel déjà marqué) ; mom live 12 trades, 2 gagnants, −7,35 R
@@ -30,7 +31,6 @@ updated: 2026-11-19 11:45
 - [2026-11-19] query | Backtest historique (déjà vu, exploratoire, compteur inchangé) du short yen 11:00 → 16:55 ET du n° 28 + pistes d'explication (run_jpy_us_backtest.py, reports/jpy_us_backtest_report.md, results/jpy_us/) ; rien après le 2026-08-28 | 6J 2016-2026-08 vectorbt : brut +2,03 bp (Sharpe 1,37), net standard +0,90 bp (Sharpe 0,61, +22 300 $/contrat, creux −7 100 $, 2,5 ans), 2 ticks +0,28 ; spot 2012-2015 au bid/ask +1,55 bp ; explication : pas un artefact des futures, pas la hausse du dollar (euro +0,41 ; constante −2,05 bp t −5,7 après euro et ES), pas le risk-on moyen (ES n'explique que −0,23 bp), pas que la tendance (2016-2020 yen +0,86/j sur 24 h mais −1,17 en fenêtre US) ; restent flux, carry, taux US (non testables sans ZN ni données de flux)
 - [2026-11-19] decision | N° 28 : short du yen pendant la session US (short 6J 11:00 → 16:55 ET, 1 tick + 5 $), test sur données postérieures au 2026-08-28 seulement, lectures 2028-02-29 / 2029-08-31 / 2031-08-29 (PREREGISTRATION_28, run_prereg28.py), compteur 1 784 → 1 786 | R5b sur 6J = sens inverse (long yen, −0,88 tick brut/trade sur ses deux jambes) ; référence historique déjà vue 2016-2026-08 : +2,04 bp brut, +0,92 net, Sharpe net 0,61 (2016-2020 +0,34 net, 2021-2026 +1,44) ; puissance H1 brut 76 % à 3 ans, H2 net 37 % à 5 ans ; calculs sur le yen après le 2026-08-28 interdits entre les lectures ; ligne de réouverture au registre
 - [2026-11-19] experiment | N° 27 : Zhang (2018) sur les 7 majeures (PREREGISTRATION_27 commit fd5b243 avant calcul, run_zhang.py, reports/zhang_fx_report.md, results/zhang/), compteur 1 742 → 1 784 | Réplication 2010-2015 sur spot Dukascopy : moyennes au centième de bp de la Table 1 (EUR US +2,20 vs +2,21), 7 des 9 cases ** / *** retrouvées (échecs CHF : choc BNS du 2015-01-15) ; hors échantillon 2016-2026-08 : 0/14 pour H1 (domestique < 0) et H2 (US > 0), H3 (φ < 0) 0/14 partout (coefficients de la taille du papier, non significatifs) ; JPY en baisse en session US −1,72 bp, t −4,3, 16 ans sur 17 → phénomènes (pas une stratégie : jambe 6J des fixings) ; GBP non-US, CAD non-US, CHF LDN-NY à surveiller ; ligne ajoutée au registre
-- [2026-11-18] fix | Dukascopy prolongé jusqu'au 2026-08-28 pour les majeures sans future chez nous (USDCHF, USDCAD, NZDUSD ; fetch_dukascopy.py, SANS_FUTURE) ; décision : test Zhang limité aux 7 majeures (EUR, GBP, JPY, CHF, AUD, CAD, NZD), NOK/SEK et devises non majeures écartés pour leur spread | 1 h 2010-01 → 2026-08-28, 1 min 2012-01-11 → 2026-08-28 ; aucune barre le samedi, aucune barre vide, aucun spread négatif ; trous > 3 j seulement au Nouvel An ; spread médian 2017-2026 ≈ 1,0 bp (CHF), 0,9 (CAD), 1,7 (NZD) ; aucun calcul de rendement
 
 ## Prochaines actions
 
