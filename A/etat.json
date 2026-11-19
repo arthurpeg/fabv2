@@ -30,9 +30,10 @@
    "debut": "2026-11-14 13:38",
    "solde_initial": 10000.0,
    "alertes": [
-    "perte"
+    "perte",
+    "bloque"
    ],
-   "ko": 0
+   "ko": 5
   }
  },
  "mom": {
