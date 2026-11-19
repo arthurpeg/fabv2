@@ -2,6 +2,25 @@
 
 Recherche quantitative : backtests intraday et de nuit sur futures (indices, FX, or) avec vectorbt, sous protocole de pré-enregistrement (`PREREGISTRATION_<n>.md` commité avant tout calcul). Python ≥ 3.12, `uv` ; lancer avec `uv run python <script>.py`, tests avec `uv run pytest`. Docs et rapports en français.
 
+## Branches (à décider au début de chaque nouvelle discussion)
+
+Le dépôt est réparti en branches emboîtées : chaque branche fille contient tout ce que contient sa mère, plus son propre domaine.
+
+| Branche | Contenu propre | Mère |
+|---|---|---|
+| `main` | Recherche : papiers (`papiers_*.md`, `resumes_*`, `PAPER_SPECS.md`), phénomènes (`wiki/phenomenes.md` et leurs études : `run_zhang`, `run_gc_*`, `run_sessions`, `run_jpy_us_backtest/distribution`, `run_replications`, `run_recolte1*`, `run_inference_overnight`…), wiki, protocole, tous les `PREREGISTRATION*.md`, `RESULTS.md`, code commun (`fab/`, `recolte1/`, `config/`, `fetch_*`, `tools/`) | — |
+| `strategies-vbt` | Backtests de stratégies : `run_prereg*`, `run_nq_*`, `run_fx_*`, filtres, SL/TP, packages `gap/ asym/ fxreopen/ lab/…`, leurs `reports/` et `results/` | `main` |
+| `propfirm-ftmo` | Simulations prop firm (`run_propfirm_*`, `run_ftmo_*`, `propfirm/`) et bot `live/` | `strategies-vbt` (les simulations importent les backtests) |
+| `ml` | Machine learning pour améliorer les anomalies significatives que les filtres classiques n'ont pas améliorées (`ml/`, fiche [[wiki/experiments/ml-anomalies]]) | `strategies-vbt` |
+| `vps-journal` | Journaux publiés par le VPS. **Ne jamais y toucher** (lecture seule : `git fetch origin vps-journal`). | — |
+
+**Règle de routage, à appliquer au premier message de chaque nouvelle discussion**, avant tout fichier écrit :
+1. Lire la demande et choisir la branche : papier, lecture, phénomène, statistique descriptive, wiki ou protocole seul → `main` ; backtest ou filtre d'une règle de trading → `strategies-vbt` ; prop firm, FTMO, bot, VPS → `propfirm-ftmo` ; modèle appris (ML) → `ml`. En cas de doute, la branche la plus haute qui contient tout ce dont le travail a besoin (un script ne doit importer que des fichiers de sa branche).
+2. Annoncer en une ligne la branche choisie et pourquoi, puis `git switch <branche>` si ce n'est pas la branche courante (arbre propre requis ; le hook Stop commite sur la branche courante).
+3. Pré-enregistrements, `RESULTS.md` et wiki sont communs : on peut les écrire depuis n'importe quelle branche.
+4. **Avant de terminer** un travail hors de `main` : `uv run python tools/sync_branches.py`. Il remonte sur `main` les fichiers communs modifiés (wiki, pré-enregistrements, `RESULTS.md`…), puis merge en cascade `main → strategies-vbt → propfirm-ftmo / ml` et pousse. Jamais de force push : le VPS suit `propfirm-ftmo` en avance rapide et lance `tests/test_live.py` à chaque mise à jour, donc ne jamais réécrire son historique ni casser ce test.
+5. Un lien de wiki vers un rapport d'une autre branche ne s'ouvre pas sur `main` : le lire avec `git show strategies-vbt:reports/<nom>.md`.
+
 ## Wiki
 
 `wiki/` est la mémoire persistante de l'agent sur ce dépôt. Règles permanentes :

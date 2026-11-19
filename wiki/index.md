@@ -24,6 +24,7 @@ updated: 2026-11-19
 - [[wiki/experiments/m2-bande-bruit-nq|Bande de bruit M2 sur NQ]] — n° 1–3, 19 ; Sharpe 1,1 mais DSR 0,03 ; variante stop 1R ratée hors échantillon 2010–15 · `paper-trading` · 2026-10-31
 - [[wiki/experiments/propfirm-ftmo-option|Prop firm comme option (FTMO 1-Step)]] — **plan retenu le 2026-11-04 : A = mom, B = 3n + M2, annonces + cible + attente, scaling 10k → 400k** ; n° 18 ; trades au hasard sur NQ, entrée 9:50, stop 1 ATR M15, spread 1,5 pt : EV ≈ +161 $ / éval 10k, +1 933 $ / 100k si les rewards sont versés ; avec la règle NQ de nuit : +853 $ / +8 849 $ ; LucidFlex 50K : +157 $ (plan « 2 coups » : +66 $ / +234 $) ; Smart Trader Funds 1 Phase (à plat avant les annonces 8:30) : +390 $ / +4 512 $ ; 10 prop firms comparées : FundingPips et FTMO en tête · `active` · 2026-11-04
 - [[wiki/experiments/fx-retournement-24h-yen|Retournement 24 h des paires yen (Piccotti)]] — abandonnée à l'étape 0 : en intraday (sortie le jour même) le brut attendu (0,4-2,5 bp) ne couvre pas le coût sauf hypothèse haute ; pas de réserve · `abandoned` · 2026-11-19
+- [[wiki/experiments/ml-anomalies|ML sur les anomalies non améliorées par filtres]] — branche `ml` ; candidates : short yen US, règle NQ de nuit, reprise de l'or, enchère DAX · `planned` · 2026-11-19
 - [[wiki/experiments/fx-timing-execution|Timing d'exécution FX (X3)]] — n° 4 ; ≈ 0,2 pb par ordre, pas un alpha · `done` · 2026-10-31
 - Expériences abandonnées (n° 5 à 9, récolte 1, contrôle pile ou face…) : voir [[wiki/Failed Ideas/ledger]]
 
@@ -47,6 +48,7 @@ updated: 2026-11-19
 ## Référence (aiguillage)
 - [[wiki/reference/resultats|Où trouver les résultats]] — RESULTS.md, reports/, results/
 - [[wiki/reference/donnees|Où sont les données]] — Databento, cache, HistData, PDF
+- Branches git (main = recherche, strategies-vbt = backtests, propfirm-ftmo = propfirm + bot, ml) : voir CLAUDE.md, section « Branches » · 2026-11-19
 - [[wiki/reference/code|Où est le code]] — modules et scripts `run_*.py`
 
 ## Outils

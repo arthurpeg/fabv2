@@ -7,6 +7,8 @@ updated: 2026-10-31
 
 Page d'aiguillage : un module par famille de tests, un `run_*.py` par exécution.
 
+**Depuis le 2026-11-19, le code est réparti par branche** (CLAUDE.md, section « Branches ») : `fab/`, `recolte1/` et les études de phénomènes sur `main` ; `gap/`, `fxreopen/`, `fxfix/`, `asym/`, `letf/`, `lab/`, `coinflip/`, `strategies/` et les `run_prereg*`/`run_nq_*` sur `strategies-vbt` ; `propfirm/`, `live/`, `run_propfirm_*`, `run_ftmo_*` sur `propfirm-ftmo` ; `ml/` sur `ml`. Un lien ci-dessous ne s'ouvre que sur la branche qui contient le fichier.
+
 | Module | Rôle | Point d'entrée |
 |---|---|---|
 | `fab/` | chargement (`core.load`), stratégies du lot initial, réplications, DSR | [run_backtests.py](../../run_backtests.py), [run_replications.py](../../run_replications.py) |
