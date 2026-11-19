@@ -112,12 +112,13 @@
 - **Actifs :** or au comptant (SGE) et futures (SHFE)
 - **Plage horaire / Session :** trois sessions par jour, dont la **séance de nuit** (21:00-2:30 Pékin, soit 14:00-19:30 Paris)
 - **Date :** 2016 | **Auteurs :** Muzhao Jin, Youwei Li, Jian-Xin Wang, Yung Chiang Yang | **Citations :** 3
+- **Relu en entier le 2026-11-20** (version MPRA 71135, `papers/ssrn-2776581.pdf`). Données SGE Au(T+D) et SHFE, transactions, 2012-01-04 → 2013-10-18 (429 jours) ; nuit SHFE seulement depuis le 2013-07-05 (52-53 nuits). Aucun prix COMEX. Précisions : (1) ILS futur 61,7 % (IS 55,5 %, CS 48,4 % : le comptant l'emporte au CS) ; (2) la nuit, Johansen ne rejette pas « pas de cointégration » (p 0,15 / 0,46), mais le VECM est estimé quand même ; (3) les 59 % (comptant) et 45 % (futur) d'information de la nuit ne sont pas rapportés à la durée : la nuit fait 5,5 h sur 10 h de cotation, soit 55 % (remarque de notre part).
 
 > **Mécanisme causal intraday (pourquoi et quand) : Quand** : pendant chacune des trois sessions, et surtout pendant la **séance de nuit** chinoise. **Qui subit la contrainte** : le marché au comptant, qui suit le futur. **Effet sur les bougies** : la découverte du prix chinois se fait d'abord sur le **futur**, dans toutes les sessions ; la découverte séquentielle (d'une session à l'autre) se fait **davantage la nuit**, c'est-à-dire pendant l'après-midi européen et l'ouverture du COMEX.
 
 > **Résumé (abstract paraphrasé) :** Le futur domine la découverte du prix de l'or en Chine, quelle que soit la mesure (part d'information, part de composante, part de leadership). En découpant la journée en trois sessions, la domination du futur se retrouve partout. La découverte séquentielle sur les deux marchés se fait plus pendant la séance de nuit.
 >
-> **Pour nous :** la « nuit » chinoise coïncide avec **notre journée** (Londres après-midi, COMEX matin). Elle n'explique donc pas notre reprise 17:00 NY → 9:00 Shanghai ; elle explique plutôt que la séance de jour de Shanghai (2:30-8:30 Paris) apporte peu d'information neuve. Cohérent avec notre résultat : la session Asie SGE seule est nulle (registre, 2026-11-01).
+> **Pour nous :** la « nuit » chinoise coïncide avec **notre journée** (Londres après-midi, COMEX matin). Elle n'explique donc pas notre reprise 17:00 NY → 9:00 Shanghai. Le papier ne mesure que la Chine (comptant contre futur) et ne dit rien de l'apport de Shanghai au prix mondial ; rapportée à la durée, la nuit chinoise n'est pas plus informative que le jour. Cohérent, sans le démontrer, avec notre séance Asie SGE nulle sur GC (registre, 2026-11-01). Pas de règle de trading à en tirer.
 
 ### [8] Night Trading and Intraday Return Predictability: Evidence from Chinese Metal Futures Market
 
