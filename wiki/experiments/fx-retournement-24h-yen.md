@@ -2,7 +2,7 @@
 type: experiment
 updated: 2026-11-19
 status: planned
-verdict: fiche d'idée (étape 0), B0 passée, puissance faible
+verdict: étape 1 figée (grille commitée), pas encore calculée
 prereg: []
 trials: 1798
 ---
@@ -72,7 +72,9 @@ L'auteur ne chiffre aucun rendement de trading. Il voit dans le ρ négatif la m
 
 **B0** : l'idée n'est pas au registre, le découpage est écrit, la puissance est connue. **B0 est passée.**
 
-## Étape 1 proposée (à figer dans l'en-tête du script et à commiter avant tout calcul)
+## Étape 1 : grille figée le 2026-11-19 dans l'en-tête de [run_jpy_reversal24.py](../../run_jpy_reversal24.py), commitée avant tout calcul
+
+L'en-tête du script fait foi. Il précise : spot USDJPY/AUDUSD Dukascopy 1 min 2012-01-11 → 2015 (le spot horaire 2010-2011 n'est pas utilisé), 6J/6A 2016 → 2026-08-28 ajustés en ratio ; entrées lundi-jeudi ; choix = plus grand Sharpe net ; compteur 1 798 → 1 804. Ci-dessous, la proposition de la fiche.
 
 - **Règle** : à l'heure H, position = −signe(rendement de H la veille à H aujourd'hui), tenue jusqu'à H le lendemain. Coût standard. Les jours ouvrés seulement ; le lundi inclut le week-end, à traiter comme le papier (qui l'exclut) ou à part.
 - **Grille minimale** :
