@@ -1,0 +1,10 @@
+filtre,1 E[R] vs hasard,2 P vs base et p95,3 vs Abdi,4 stabilité,passe
+A logit L2 70%,False,False,False,True,False
+A logit L2 50%,False,False,False,False,False
+A logit L2 35%,False,False,False,False,False
+B LightGBM 70%,False,False,False,False,False
+B LightGBM 50%,False,False,False,True,False
+B LightGBM 35%,False,False,False,True,False
+Abdi seule 70%,False,False,,False,
+Abdi seule 50%,False,False,,False,
+Abdi seule 35%,False,False,,True,
