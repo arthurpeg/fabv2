@@ -716,14 +716,12 @@ dependencies = [
     { name = "cryptography" },
     { name = "databento" },
     { name = "exchange-calendars" },
-    { name = "lightgbm" },
     { name = "matplotlib" },
     { name = "metatrader5", marker = "sys_platform == 'win32'" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pyarrow" },
     { name = "pypdf" },
-    { name = "scikit-learn" },
     { name = "vectorbt" },
 ]
 
@@ -731,25 +729,31 @@ dependencies = [
 dev = [
     { name = "pytest" },
 ]
+ml = [
+    { name = "lightgbm" },
+    { name = "scikit-learn" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "cryptography", specifier = ">=50.0.2" },
     { name = "databento", specifier = ">=0.89.0" },
     { name = "exchange-calendars", specifier = ">=4.13.2" },
-    { name = "lightgbm", specifier = ">=4.7.0" },
     { name = "matplotlib", specifier = ">=3.11.2" },
     { name = "metatrader5", marker = "sys_platform == 'win32'", specifier = ">=5.0.45" },
     { name = "numpy", specifier = ">=2.5.4" },
     { name = "pandas", specifier = ">=3.0.6" },
     { name = "pyarrow", specifier = ">=26.0.0" },
     { name = "pypdf", specifier = ">=6.20.1" },
-    { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "vectorbt", specifier = ">=1.1.2" },
 ]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=9.1.1" }]
+ml = [
+    { name = "lightgbm", specifier = ">=4.7.0" },
+    { name = "scikit-learn", specifier = ">=1.9.1" },
+]
 
 [[package]]
 name = "fonttools"

@@ -11,7 +11,7 @@ Le dépôt est réparti en branches emboîtées : chaque branche fille contient 
 | `main` | Recherche : papiers (`papiers_*.md`, `resumes_*`, `PAPER_SPECS.md`), phénomènes (`wiki/phenomenes.md` et leurs études : `run_zhang`, `run_gc_*`, `run_sessions`, `run_jpy_us_backtest/distribution`, `run_replications`, `run_recolte1*`, `run_inference_overnight`…), wiki, protocole, tous les `PREREGISTRATION*.md`, `RESULTS.md`, code commun (`fab/`, `recolte1/`, `config/`, `fetch_*`, `tools/`) | — |
 | `strategies-vbt` | Backtests de stratégies : `run_prereg*`, `run_nq_*`, `run_fx_*`, filtres, SL/TP, packages `gap/ asym/ fxreopen/ lab/…`, leurs `reports/` et `results/` | `main` |
 | `propfirm-ftmo` | Simulations prop firm (`run_propfirm_*`, `run_ftmo_*`, `propfirm/`) et bot `live/` | `strategies-vbt` (les simulations importent les backtests) |
-| `ml` | Machine learning pour améliorer les anomalies significatives que les filtres classiques n'ont pas améliorées (`ml/`, fiche [[wiki/experiments/ml-anomalies]]) | `strategies-vbt` |
+| `ml` | Machine learning pour améliorer les anomalies significatives que les filtres classiques n'ont pas améliorées (`ml/`, fiche [[wiki/experiments/ml-anomalies]] ; dépendances dans le groupe uv `ml`, hors défaut : `uv add --group ml`, `uv run --group ml`, pour ne jamais toucher l'environnement du bot) | `strategies-vbt` |
 | `vps-journal` | Journaux publiés par le VPS. **Ne jamais y toucher** (lecture seule : `git fetch origin vps-journal`). | — |
 
 **Règle de routage, à appliquer au premier message de chaque nouvelle discussion**, avant tout fichier écrit :
