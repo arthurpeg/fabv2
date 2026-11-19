@@ -1,0 +1,11 @@
+Ferme FTMO 10k, règle NQ de nuit ; 758 fenêtres de 504 nuits ; gain net par emplacement sur 2 ans
+configuration                             moyenne écart-type P(perte) 5e centile     pire  mois sans reward (méd.)
+1 emplacement                               +4877       1985       0%      +2247    +1211                     67%
+5 synchrones (même départ)                  +4877       1985       0%      +2247    +1211                     67%
+5 décalés de 1 mois (21 nuits)              +5179       2023       0%      +2455    +1754                     62%
+5 décalés de 3 mois (63 nuits)              +5202       2037       0%      +2475    +1751                     62%
+5 indépendants (histoires différentes)      +4886        873       0%      +3576    +2809                     12%
+
+Synchronisation (5 emplacements décalés de 3 mois, fenêtres tous les 25 nuits) :
+achats d'éval : en moyenne 4.08 emplacements sur 5 rachètent la même nuit
+corrélation moyenne des flux trimestriels entre emplacements décalés de 3 mois : 0.97

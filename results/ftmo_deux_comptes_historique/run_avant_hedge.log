@@ -1,0 +1,36 @@
+Deux comptes 10k, 2011-07-01 → 2026-11-03 (15.3 ans), règle des annonces, cible + attente
+  A mom : 43 évals achetées (3,737 $), 21 validées, 119 rewards, net +36,971 $ (+2,410 $/an)
+  B 3n + M2 : 9 évals achetées (782 $), 5 validées, 98 rewards, net +31,592 $ (+2,059 $/an)
+  total : +68,562 $ (+4,469 $/an)
+
+Corrélation : P&L journalier de trading A / B +0.241 (2251 jours où les deux tradent) ; flux de trésorerie mensuels A / B +0.007 ; mois négatifs : A 16 %, B 4 %, total 13 % ; mois négatifs en même temps pour A et B 0 %
+
+Max DD de trésorerie (cumul rewards - frais, depuis un plus haut) :
+  A     : -435 $ ; du 2023-07-31 au 2023-10-26 ; retour au plus haut le 2024-02-27 (211 jours)
+  B     : -261 $ ; du 2022-12-30 au 2023-06-30 ; retour au plus haut le 2023-08-24 (237 jours)
+  total : -435 $ ; du 2025-04-29 au 2025-06-30 ; retour au plus haut le 2025-08-04 (97 jours)
+
+Séries sans reward (évals achetées entre deux rewards d'un même compte) :
+  A : pire série 5 évals (434 $), du 2023-07-31 au 2023-11-23 ; plus longue attente d'un reward 202 jours (du 2019-01-31 au 2019-08-21, 4 évals) ; répartition (évals entre deux rewards : nombre de fois) {0: np.int64(100), 1: np.int64(9), 2: np.int64(5), 3: np.int64(2), 4: np.int64(2), 5: np.int64(2)}
+  B : pire série 3 évals (261 $), du 2022-12-30 au 2023-08-24 ; plus longue attente d'un reward 310 jours (du 2012-06-13 au 2013-04-19, 0 évals) ; répartition (évals entre deux rewards : nombre de fois) {0: np.int64(94), 1: np.int64(2), 2: np.int64(2), 3: np.int64(1)}
+  la paire : plus longue période sans aucun reward (A ni B) : 98 jours, du 2012-12-17 au 2013-03-25
+
+Net par année civile ($) :
+      cash_A  cash_B    cash
+date                        
+2011   715.0   626.0  1341.0
+2012  5500.0  1555.0  7055.0
+2013  3157.0  1015.0  4172.0
+2014  3806.0  2107.0  5913.0
+2015  3297.0  1232.0  4529.0
+2016  1633.0  1730.0  3364.0
+2017  3631.0  1163.0  4794.0
+2018  1939.0  2413.0  4352.0
+2019  1154.0  2947.0  4101.0
+2020  2138.0  2228.0  4366.0
+2021  2358.0  2138.0  4496.0
+2022   363.0  2506.0  2869.0
+2023  2035.0   801.0  2836.0
+2024  1325.0  2561.0  3886.0
+2025  2433.0  2154.0  4588.0
+2026  1487.0  4414.0  5901.0

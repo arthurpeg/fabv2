@@ -1,0 +1,47 @@
+k                        0.10   0.20   0.33   0.50   1.00
+firm                                                     
+Apex 50K EOD (sans act   -114    438    783    832    832
+FTMO 1-Step 100k        16801  12041  10188  10188  10188
+FundedNext Stellar 1-S  11053   8264   6386   5325   5325
+FundingPips 1 Step Fle  24863  19760  17040  17040  17040
+LucidFlex 50K (DLL OFF    510    371    260    234    202
+MyFundedFutures Rapid    1242    944    708    651    584
+Smart Trader Funds 1 P  13151   9852   7971   6963   6179
+The5ers Pro Growth 20k   3552   2654   2050   1707   1707
+Topstep 50K (Standard)   1122   1040    824    765    692
+Tradeify Growth 50K      1871   1432   1084   1103   1148
+k                        0.10  0.20  0.33  0.50  1.00
+firm                                                 
+Apex 50K EOD (sans act   19.0  13.0   7.0   3.0   3.0
+FTMO 1-Step 100k         43.0  10.0   6.0   6.0   6.0
+FundedNext Stellar 1-S  129.0  29.0  28.0   4.0   4.0
+FundingPips 1 Step Fle   60.0  14.0   9.0   9.0   9.0
+LucidFlex 50K (DLL OFF  118.0  26.0   8.0   4.0   3.0
+MyFundedFutures Rapid   118.0  26.0   8.0   4.0   3.0
+Smart Trader Funds 1 P  114.0  66.0  24.0  10.0   6.0
+The5ers Pro Growth 20k  129.0  29.0  28.0   5.0   5.0
+Topstep 50K (Standard)  119.0  26.0   8.0   4.0   3.0
+Tradeify Growth 50K     118.0  26.0   8.0   3.0   2.0
+k                       0.10  0.20  0.33  0.50  1.00
+firm                                                
+Apex 50K EOD (sans act   2.5  3.00  2.50  3.00  3.00
+FTMO 1-Step 100k         2.0  2.50  1.50  1.50  1.50
+FundedNext Stellar 1-S   1.5  2.00  0.75  2.00  2.00
+FundingPips 1 Step Fle   1.5  2.00  2.00  2.00  2.00
+LucidFlex 50K (DLL OFF   3.0  2.00  2.00  1.50  0.75
+MyFundedFutures Rapid    3.0  2.00  2.00  1.50  0.75
+Smart Trader Funds 1 P   1.5  0.75  0.75  0.75  0.75
+The5ers Pro Growth 20k   1.5  2.00  0.75  2.00  2.00
+Topstep 50K (Standard)   3.0  2.00  2.00  1.50  0.75
+Tradeify Growth 50K      3.0  2.00  2.00  3.00  3.00
+                                      firm     k   rr             v       npay     p_pay
+128         Apex 50K EOD (sans activation)  0.20  2.5   2513.655731   1.493451  0.459945
+2                         FTMO 1-Step 100k  0.10  2.0  22740.937604   5.216570  0.871154
+42          FundedNext Stellar 1-Step 100k  0.10  2.0  13357.248136  17.269875  0.953701
+67   FundingPips 1 Step Flex 100k (+Swing)  0.20  2.0  29046.189478  10.249162  0.894913
+192          LucidFlex 50K (DLL OFF, 50 %)  0.33  2.0   1032.043449   0.783430  0.442278
+142              MyFundedFutures Rapid 50K  0.10  2.0   2202.866722   4.014012  0.653366
+22         Smart Trader Funds 1 Phase 100k  0.10  2.0  15910.844213   5.759062  0.916235
+82                  The5ers Pro Growth 20k  0.10  2.0   4298.680659   2.085288  0.862930
+118                 Topstep 50K (Standard)  0.50  2.5   2447.501085   1.404813  0.286628
+168                    Tradeify Growth 50K  0.20  2.5   3249.533143   1.599147  0.433140

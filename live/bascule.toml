@@ -1,0 +1,7 @@
+# Bascule des essais gratuits vers les vrais comptes FTMO (suivi par git, appliqué sur le VPS par la mise à jour auto).
+# arme = true : au premier compte MT5 NOUVEAU détecté dans le terminal d'un book (= le vrai 1-Step qu'on vient de
+# connecter), le bot archive l'état de la démo (live/etat/archive/<book>_<horodatage>/), repart d'un compte virtuel neuf
+# (éval n° 1, +0,00 %) et passe en mode réel (alerte d'objectif à +10 %). Une seule fois par book : les comptes
+# suivants (financé après l'éval, rachat après un échec) continuent le compte virtuel, sans remise à zéro.
+# Tant que c'est armé, NE PAS connecter de nouvel essai gratuit dans ces terminaux : il déclencherait la bascule.
+arme = true

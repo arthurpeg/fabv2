@@ -1,0 +1,336 @@
+Compte financé FTMO 1-Step avec mom : 4 politiques ; 20000 comptes pour l'historique, graine 1830
+
+[consistency] départ 01/09, financé dès le 15/09, politique « actuel » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 trade -1.00 R  solde +2.78 %
+  23/09 trade -1.00 R  solde +1.78 %
+  24/09 trade -1.00 R  solde +0.78 %
+  25/09 trade +2.00 R  solde +2.72 %
+  28/09 trade -1.00 R  solde +1.72 %
+  29/09 trade -1.00 R  solde +0.72 %
+  30/09 trade -1.00 R  solde -0.28 %
+  01/10 trade -1.00 R  solde -1.28 %
+  02/10 trade +2.00 R  solde +0.67 %
+  05/10 trade -1.00 R  solde -0.33 %
+  07/10 trade -1.00 R  solde -1.33 %
+  08/10 trade -1.00 R  solde -2.33 %
+  09/10 trade +2.00 R  solde -0.39 %
+  13/10 trade -1.00 R  solde -1.39 %
+  14/10 trade -1.68 R  solde -3.06 %
+  15/10 trade -1.00 R  solde -4.06 %
+  16/10 trade +2.00 R  solde -2.11 %
+  19/10 trade +1.09 R  solde -1.04 %
+  20/10 trade -1.00 R  solde -2.04 %
+  21/10 trade -1.00 R  solde -3.04 %
+  22/10 trade -1.00 R  solde -4.04 %
+  23/10 trade -0.47 R  solde -4.52 %
+  26/10 trade +0.76 R  solde -3.78 %
+  27/10 trade -1.00 R  solde -4.78 %
+  28/10 trade +1.03 R  solde -3.80 %
+  29/10 trade -1.00 R  solde -4.80 %
+  30/10 trade -1.00 R  solde -5.80 %
+  02/11 trade +0.19 R  solde -5.73 %
+  03/11 trade -1.00 R  solde -6.22 %
+  03/11 compte perdu   solde -6.22 %
+
+[consistency] départ 01/09, financé dès le 15/09, politique « cible » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 trade +0.18 R  solde +3.92 %
+  23/09 trade -1.00 R  solde +2.92 %
+  24/09 trade -1.00 R  solde +1.92 %
+  25/09 trade +2.00 R  solde +3.86 %
+  28/09 trade +0.08 R  solde +3.92 %
+  29/09 reward 3.53 %  solde +3.92 %
+  29/09 trade -1.00 R  solde -1.00 %
+  30/09 trade -1.00 R  solde -2.00 %
+  01/10 trade -1.00 R  solde -3.00 %
+  02/10 trade +2.00 R  solde -1.05 %
+  05/10 trade -1.00 R  solde -2.05 %
+  07/10 trade -1.00 R  solde -3.05 %
+  08/10 trade -1.00 R  solde -4.05 %
+  09/10 trade +2.00 R  solde -2.11 %
+  13/10 trade -1.00 R  solde -3.11 %
+  14/10 trade -1.68 R  solde -4.78 %
+  15/10 trade -1.00 R  solde -5.78 %
+  16/10 trade +2.00 R  solde -3.83 %
+  19/10 trade +1.09 R  solde -2.76 %
+  20/10 trade -1.00 R  solde -3.76 %
+  21/10 trade -1.00 R  solde -4.76 %
+  22/10 trade -1.00 R  solde -5.76 %
+  23/10 trade -0.47 R  solde -6.24 %
+  26/10 trade +0.76 R  solde -5.50 %
+  27/10 trade -1.00 R  solde -6.50 %
+  28/10 trade +1.03 R  solde -5.52 %
+  29/10 trade -1.00 R  solde -6.52 %
+  30/10 trade -1.00 R  solde -7.52 %
+  02/11 trade +0.19 R  solde -7.35 %
+  03/11 trade -1.00 R  solde -8.35 %
+
+[consistency] départ 01/09, financé dès le 15/09, politique « attente » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 trade -1.00 R  solde +2.78 %
+  23/09 trade -1.00 R  solde +1.78 %
+  24/09 trade -1.00 R  solde +0.78 %
+  25/09 trade +2.00 R  solde +2.72 %
+  28/09 trade -1.00 R  solde +1.72 %
+  29/09 trade -1.00 R  solde +0.72 %
+  30/09 trade -1.00 R  solde -0.28 %
+  01/10 trade -1.00 R  solde -1.28 %
+  02/10 trade +2.00 R  solde +0.67 %
+  05/10 trade -1.00 R  solde -0.33 %
+  07/10 trade -1.00 R  solde -1.33 %
+  08/10 trade -1.00 R  solde -2.33 %
+  09/10 trade +2.00 R  solde -0.39 %
+  13/10 trade -1.00 R  solde -1.39 %
+  14/10 trade -1.68 R  solde -3.06 %
+  15/10 trade -1.00 R  solde -4.06 %
+  16/10 trade +2.00 R  solde -2.11 %
+  19/10 trade +1.09 R  solde -1.04 %
+  20/10 trade -1.00 R  solde -2.04 %
+  21/10 trade -1.00 R  solde -3.04 %
+  22/10 trade -1.00 R  solde -4.04 %
+  23/10 trade -0.47 R  solde -4.52 %
+  26/10 trade +0.76 R  solde -3.78 %
+  27/10 trade -1.00 R  solde -4.78 %
+  28/10 trade +1.03 R  solde -3.80 %
+  29/10 trade -1.00 R  solde -4.80 %
+  30/10 trade -1.00 R  solde -5.80 %
+  02/11 trade +0.19 R  solde -5.73 %
+  03/11 trade -1.00 R  solde -6.22 %
+  03/11 compte perdu   solde -6.22 %
+
+[consistency] départ 01/09, financé dès le 15/09, politique « cible+attente » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 trade +0.18 R  solde +3.92 %
+  23/09 attente        solde +3.92 %
+  24/09 attente        solde +3.92 %
+  25/09 attente        solde +3.92 %
+  28/09 reward 3.53 %  solde +3.92 %
+  28/09 trade -1.00 R  solde -1.00 %
+  29/09 trade -1.00 R  solde -2.00 %
+  30/09 trade -1.00 R  solde -3.00 %
+  01/10 trade -1.00 R  solde -4.00 %
+  02/10 trade +2.00 R  solde -2.05 %
+  05/10 trade -1.00 R  solde -3.05 %
+  07/10 trade -1.00 R  solde -4.05 %
+  08/10 trade -1.00 R  solde -5.05 %
+  09/10 trade +2.00 R  solde -3.11 %
+  13/10 trade -1.00 R  solde -4.11 %
+  14/10 trade -1.68 R  solde -5.78 %
+  15/10 trade -1.00 R  solde -6.78 %
+  16/10 trade +2.00 R  solde -4.83 %
+  19/10 trade +1.09 R  solde -3.76 %
+  20/10 trade -1.00 R  solde -4.76 %
+  21/10 trade -1.00 R  solde -5.76 %
+  22/10 trade -1.00 R  solde -6.76 %
+  23/10 trade -0.47 R  solde -7.24 %
+  26/10 trade +0.76 R  solde -6.50 %
+  27/10 trade -1.00 R  solde -7.50 %
+  28/10 trade +1.03 R  solde -6.52 %
+  29/10 trade -1.00 R  solde -7.52 %
+  30/10 trade -1.00 R  solde -8.52 %
+  02/11 trade +0.19 R  solde -8.35 %
+  03/11 trade -1.00 R  solde -9.35 %
+
+[legacy] départ 01/09, financé dès le 15/09, politique « actuel » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 trade -1.00 R  solde +2.78 %
+  23/09 trade -1.00 R  solde +1.78 %
+  24/09 trade -1.00 R  solde +0.78 %
+  25/09 trade +2.00 R  solde +2.72 %
+  28/09 reward 2.45 %  solde +2.72 %
+  28/09 trade -1.00 R  solde -1.00 %
+  29/09 trade -1.00 R  solde -2.00 %
+  30/09 trade -1.00 R  solde -3.00 %
+  01/10 trade -1.00 R  solde -4.00 %
+  02/10 trade +2.00 R  solde -2.05 %
+  05/10 trade -1.00 R  solde -3.05 %
+  07/10 trade -1.00 R  solde -4.05 %
+  08/10 trade -1.00 R  solde -5.05 %
+  09/10 trade +2.00 R  solde -3.11 %
+  13/10 trade -1.00 R  solde -4.11 %
+  14/10 trade -1.68 R  solde -5.78 %
+  15/10 trade -1.00 R  solde -6.78 %
+  16/10 trade +2.00 R  solde -4.83 %
+  19/10 trade +1.09 R  solde -3.76 %
+  20/10 trade -1.00 R  solde -4.76 %
+  21/10 trade -1.00 R  solde -5.76 %
+  22/10 trade -1.00 R  solde -6.76 %
+  23/10 trade -0.47 R  solde -7.24 %
+  26/10 trade +0.76 R  solde -6.50 %
+  27/10 trade -1.00 R  solde -7.50 %
+  28/10 trade +1.03 R  solde -6.52 %
+  29/10 trade -1.00 R  solde -7.52 %
+  30/10 trade -1.00 R  solde -8.52 %
+  02/11 trade +0.19 R  solde -8.35 %
+  03/11 trade -1.00 R  solde -9.35 %
+
+[legacy] départ 01/09, financé dès le 15/09, politique « cible » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +0.09 R  solde +1.92 %
+  22/09 trade -1.00 R  solde +0.92 %
+  23/09 trade -1.00 R  solde -0.08 %
+  24/09 trade -1.00 R  solde -1.08 %
+  25/09 trade +2.00 R  solde +0.86 %
+  28/09 reward 0.77 %  solde +0.86 %
+  28/09 trade -1.00 R  solde -1.00 %
+  29/09 trade -1.00 R  solde -2.00 %
+  30/09 trade -1.00 R  solde -3.00 %
+  01/10 trade -1.00 R  solde -4.00 %
+  02/10 trade +2.00 R  solde -2.05 %
+  05/10 trade -1.00 R  solde -3.05 %
+  07/10 trade -1.00 R  solde -4.05 %
+  08/10 trade -1.00 R  solde -5.05 %
+  09/10 trade +2.00 R  solde -3.11 %
+  13/10 trade -1.00 R  solde -4.11 %
+  14/10 trade -1.68 R  solde -5.78 %
+  15/10 trade -1.00 R  solde -6.78 %
+  16/10 trade +2.00 R  solde -4.83 %
+  19/10 trade +1.09 R  solde -3.76 %
+  20/10 trade -1.00 R  solde -4.76 %
+  21/10 trade -1.00 R  solde -5.76 %
+  22/10 trade -1.00 R  solde -6.76 %
+  23/10 trade -0.47 R  solde -7.24 %
+  26/10 trade +0.76 R  solde -6.50 %
+  27/10 trade -1.00 R  solde -7.50 %
+  28/10 trade +1.03 R  solde -6.52 %
+  29/10 trade -1.00 R  solde -7.52 %
+  30/10 trade -1.00 R  solde -8.52 %
+  02/11 trade +0.19 R  solde -8.35 %
+  03/11 trade -1.00 R  solde -9.35 %
+
+[legacy] départ 01/09, financé dès le 15/09, politique « attente » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +2.00 R  solde +3.78 %
+  22/09 attente        solde +3.78 %
+  23/09 attente        solde +3.78 %
+  24/09 attente        solde +3.78 %
+  25/09 attente        solde +3.78 %
+  28/09 reward 3.40 %  solde +3.78 %
+  28/09 trade -1.00 R  solde -1.00 %
+  29/09 trade -1.00 R  solde -2.00 %
+  30/09 trade -1.00 R  solde -3.00 %
+  01/10 trade -1.00 R  solde -4.00 %
+  02/10 trade +2.00 R  solde -2.05 %
+  05/10 trade -1.00 R  solde -3.05 %
+  07/10 trade -1.00 R  solde -4.05 %
+  08/10 trade -1.00 R  solde -5.05 %
+  09/10 trade +2.00 R  solde -3.11 %
+  13/10 trade -1.00 R  solde -4.11 %
+  14/10 trade -1.68 R  solde -5.78 %
+  15/10 trade -1.00 R  solde -6.78 %
+  16/10 trade +2.00 R  solde -4.83 %
+  19/10 trade +1.09 R  solde -3.76 %
+  20/10 trade -1.00 R  solde -4.76 %
+  21/10 trade -1.00 R  solde -5.76 %
+  22/10 trade -1.00 R  solde -6.76 %
+  23/10 trade -0.47 R  solde -7.24 %
+  26/10 trade +0.76 R  solde -6.50 %
+  27/10 trade -1.00 R  solde -7.50 %
+  28/10 trade +1.03 R  solde -6.52 %
+  29/10 trade -1.00 R  solde -7.52 %
+  30/10 trade -1.00 R  solde -8.52 %
+  02/11 trade +0.19 R  solde -8.35 %
+  03/11 trade -1.00 R  solde -9.35 %
+
+[legacy] départ 01/09, financé dès le 15/09, politique « cible+attente » :
+  15/09 trade -1.00 R  solde -1.00 %
+  16/09 trade -1.00 R  solde -2.00 %
+  17/09 trade +2.00 R  solde -0.05 %
+  18/09 trade +2.00 R  solde +1.85 %
+  21/09 trade +0.09 R  solde +1.92 %
+  22/09 attente        solde +1.92 %
+  23/09 attente        solde +1.92 %
+  24/09 attente        solde +1.92 %
+  25/09 attente        solde +1.92 %
+  28/09 reward 1.73 %  solde +1.92 %
+  28/09 trade -1.00 R  solde -1.00 %
+  29/09 trade -1.00 R  solde -2.00 %
+  30/09 trade -1.00 R  solde -3.00 %
+  01/10 trade -1.00 R  solde -4.00 %
+  02/10 trade +2.00 R  solde -2.05 %
+  05/10 trade -1.00 R  solde -3.05 %
+  07/10 trade -1.00 R  solde -4.05 %
+  08/10 trade -1.00 R  solde -5.05 %
+  09/10 trade +2.00 R  solde -3.11 %
+  13/10 trade -1.00 R  solde -4.11 %
+  14/10 trade -1.68 R  solde -5.78 %
+  15/10 trade -1.00 R  solde -6.78 %
+  16/10 trade +2.00 R  solde -4.83 %
+  19/10 trade +1.09 R  solde -3.76 %
+  20/10 trade -1.00 R  solde -4.76 %
+  21/10 trade -1.00 R  solde -5.76 %
+  22/10 trade -1.00 R  solde -6.76 %
+  23/10 trade -0.47 R  solde -7.24 %
+  26/10 trade +0.76 R  solde -6.50 %
+  27/10 trade -1.00 R  solde -7.50 %
+  28/10 trade +1.03 R  solde -6.52 %
+  29/10 trade -1.00 R  solde -7.52 %
+  30/10 trade -1.00 R  solde -8.52 %
+  02/11 trade +0.19 R  solde -8.35 %
+  03/11 trade -1.00 R  solde -9.35 %
+
+Septembre réel, départs qui ont validé leur éval (rewards en % du capital au 03/11) :
+politique           actuel  cible  attente  cible+attente
+règle       départ                                       
+consistency 01/09     0.00   3.53     0.00           3.53
+            02/09     0.00   0.00     0.00           0.00
+            03/09     0.00   3.53     0.00           3.53
+            04/09     0.00   3.53     0.00           3.53
+            08/09     0.00   0.00     4.23           3.53
+            09/09     0.00   0.00     0.00           0.00
+            10/09     0.00   0.00     0.00           0.00
+            11/09     0.00   0.00     0.00           0.00
+            15/09     0.00   0.00     0.00           0.00
+            16/09     0.00   0.00     0.00           0.00
+            17/09     0.00   0.00     0.00           0.00
+            18/09     0.00   0.00     0.00           0.00
+legacy      01/09     2.45   0.77     3.40           1.73
+            02/09     1.55   0.00     2.50           0.83
+            03/09     2.43   2.43     1.60           1.60
+            04/09     2.43   2.43     1.60           1.60
+            08/09     2.43   0.76     2.50           0.83
+            09/09     0.00   0.00     0.00           0.00
+            10/09     0.00   0.00     0.00           0.00
+            11/09     0.00   0.00     0.00           0.00
+            15/09     0.00   0.00     0.00           0.00
+            16/09     0.00   0.00     0.00           0.00
+            17/09     0.00   0.00     0.00           0.00
+            18/09     0.00   0.00     0.00           0.00
+
+Historique de mom (éval 2,5 % puis financé 1 %, 20000 comptes) :
+          période     politique  passage_eval  valeur_financé  p_reward  rewards  reward_moyen  vie_mois  nuits_tradées_pct   EV 10k  EV/mois 10k   EV 100k  EV/mois 100k
+2016-01 → 2026-08        actuel         0.495          16.027     0.830    3.703         4.327     6.405            100.000  707.059      195.530  7390.692      2043.825
+2016-01 → 2026-08         cible         0.495          15.557     0.841    4.151         3.748     6.462            100.000  683.797      187.612  7158.075      1963.944
+2016-01 → 2026-08       attente         0.495          18.309     0.845    4.539         4.033     7.155             96.411  820.135      205.667  8521.450      2136.939
+2016-01 → 2026-08 cible+attente         0.495          20.173     0.868    5.845         3.451     7.766             93.686  912.479      212.673  9444.895      2201.333
+2011-07 → 2015-12        actuel         0.602          33.611     0.902    7.556         4.449     8.755            100.000 1936.342      338.827 19683.516      3444.286
+2011-07 → 2015-12         cible         0.602          31.675     0.909    7.952         3.983     8.725            100.000 1819.804      319.469 18518.139      3250.888
+2011-07 → 2015-12       attente         0.602          32.243     0.914    7.956         4.053     8.713             93.037 1853.992      325.859 18860.024      3314.855
+2011-07 → 2015-12 cible+attente         0.602          33.455     0.932    9.736         3.436     9.940             90.624 1926.904      299.761 19589.137      3047.406

@@ -1,0 +1,92 @@
+Avenant D — règle NQ de nuit sur LucidFlex 50K (MNQ) ; 20000 comptes par réglage, graine 1819
+  règle 2011-2026 : 3787 trades, R brut moyen +0.125, stop médian 21.0 pts = 42 $ par MNQ, coût médian 2.00 $ par MNQ (0.053 R), abandon sous 44 $ de marge
+  sans edge (R − moyenne) : 3787 trades, R brut moyen +0.000, stop médian 21.0 pts = 42 $ par MNQ, coût médian 2.00 $ par MNQ (0.053 R), abandon sous 44 $ de marge
+  règle 2011-2015 (OOS) : 1115 trades, R brut moyen +0.188, stop médian 7.1 pts = 14 $ par MNQ, coût médian 2.00 $ par MNQ (0.142 R), abandon sous 16 $ de marge
+  règle, prix actuels : 3787 trades, R brut moyen +0.125, stop médian 65.4 pts = 131 $ par MNQ, coût médian 2.00 $ par MNQ (0.017 R), abandon sous 133 $ de marge
+  sans edge, prix actuels : 3787 trades, R brut moyen +0.000, stop médian 65.4 pts = 131 $ par MNQ, coût médian 2.00 $ par MNQ (0.017 R), abandon sous 133 $ de marge
+
+=== règle 2011-2026 ===
+  éval consistance 40 %,   200 $ : passage 34.5% ± 0.7%, 104.0 séances si validé, 88.4 par tentative
+  éval consistance 40 %,   400 $ : passage 29.8% ± 0.6%, 22.3 séances si validé, 29.9 par tentative
+  éval consistance 40 %,   600 $ : passage 25.3% ± 0.6%, 11.8 séances si validé, 20.9 par tentative
+  éval consistance 40 %,   800 $ : passage 22.1% ± 0.6%, 11.4 séances si validé, 16.8 par tentative
+  éval consistance 40 %,  1000 $ : passage 19.5% ± 0.5%, 11.2 séances si validé, 17.8 par tentative
+  éval consistance 50 %,   200 $ : passage 34.9% ± 0.7%, 103.0 séances si validé, 87.8 par tentative
+  éval consistance 50 %,   400 $ : passage 29.9% ± 0.6%, 22.2 séances si validé, 30.1 par tentative
+  éval consistance 50 %,   600 $ : passage 29.6% ± 0.6%, 10.4 séances si validé, 19.5 par tentative
+  éval consistance 50 %,   800 $ : passage 26.6% ± 0.6%, 9.1 séances si validé, 15.2 par tentative
+  éval consistance 50 %,  1000 $ : passage 22.8% ± 0.6%, 8.2 séances si validé, 16.6 par tentative
+  financé   200 $ : valeur 603 $ ± 9  P(payout) 70%  1.05 payouts  5 payouts (passage en réel) 1%  vie 65 séances  1er payout méd. 25
+  financé   400 $ : valeur 710 $ ± 14  P(payout) 56%  0.83 payouts  5 payouts (passage en réel) 1%  vie 35 séances  1er payout méd. 12
+  financé   600 $ : valeur 758 $ ± 19  P(payout) 45%  0.68 payouts  5 payouts (passage en réel) 1%  vie 30 séances  1er payout méd. 10
+  financé   800 $ : valeur 773 $ ± 22  P(payout) 39%  0.62 payouts  5 payouts (passage en réel) 1%  vie 27 séances  1er payout méd. 10
+  financé  1000 $ : valeur 748 $ ± 22  P(payout) 37%  0.59 payouts  5 payouts (passage en réel) 2%  vie 27 séances  1er payout méd. 10
+
+=== sans edge (R − moyenne) ===
+  éval consistance 40 %,   200 $ : passage 4.0% ± 0.3%, 83.6 séances si validé, 68.0 par tentative
+  éval consistance 40 %,   400 $ : passage 13.1% ± 0.5%, 18.2 séances si validé, 24.4 par tentative
+  éval consistance 40 %,   600 $ : passage 16.6% ± 0.5%, 11.0 séances si validé, 15.9 par tentative
+  éval consistance 40 %,   800 $ : passage 14.0% ± 0.5%, 10.4 séances si validé, 13.4 par tentative
+  éval consistance 40 %,  1000 $ : passage 12.8% ± 0.5%, 9.8 séances si validé, 10.4 par tentative
+  financé   200 $ : valeur 261 $ ± 6  P(payout) 38%  0.47 payouts  5 payouts (passage en réel) 0%  vie 55 séances  1er payout méd. 22
+  financé   400 $ : valeur 362 $ ± 9  P(payout) 36%  0.46 payouts  5 payouts (passage en réel) 0%  vie 25 séances  1er payout méd. 11
+  financé   600 $ : valeur 415 $ ± 13  P(payout) 30%  0.40 payouts  5 payouts (passage en réel) 0%  vie 22 séances  1er payout méd. 10
+  financé   800 $ : valeur 406 $ ± 14  P(payout) 27%  0.36 payouts  5 payouts (passage en réel) 0%  vie 19 séances  1er payout méd. 9
+  financé  1000 $ : valeur 405 $ ± 15  P(payout) 24%  0.33 payouts  5 payouts (passage en réel) 0%  vie 17 séances  1er payout méd. 9
+
+=== règle 2011-2015 (OOS) ===
+  éval consistance 40 %,   200 $ : passage 44.8% ± 0.7%, 87.5 séances si validé, 67.8 par tentative
+  éval consistance 40 %,   400 $ : passage 30.7% ± 0.6%, 19.2 séances si validé, 18.6 par tentative
+  éval consistance 40 %,   600 $ : passage 28.3% ± 0.6%, 13.7 séances si validé, 12.9 par tentative
+  éval consistance 40 %,   800 $ : passage 25.7% ± 0.6%, 13.6 séances si validé, 12.6 par tentative
+  éval consistance 40 %,  1000 $ : passage 22.9% ± 0.6%, 12.3 séances si validé, 12.2 par tentative
+  financé   200 $ : valeur 671 $ ± 9  P(payout) 74%  1.12 payouts  5 payouts (passage en réel) 0%  vie 42 séances  1er payout méd. 23
+  financé   400 $ : valeur 797 $ ± 16  P(payout) 63%  0.95 payouts  5 payouts (passage en réel) 0%  vie 28 séances  1er payout méd. 14
+  financé   600 $ : valeur 835 $ ± 19  P(payout) 58%  0.87 payouts  5 payouts (passage en réel) 0%  vie 27 séances  1er payout méd. 13
+  financé   800 $ : valeur 848 $ ± 20  P(payout) 57%  0.87 payouts  5 payouts (passage en réel) 0%  vie 28 séances  1er payout méd. 13
+  financé  1000 $ : valeur 878 $ ± 21  P(payout) 57%  0.88 payouts  5 payouts (passage en réel) 1%  vie 27 séances  1er payout méd. 13
+
+=== règle, prix actuels ===
+  éval consistance 40 %,   200 $ : passage 50.5% ± 0.7%, 136.6 séances si validé, 125.0 par tentative
+  éval consistance 40 %,   400 $ : passage 39.5% ± 0.7%, 27.6 séances si validé, 25.9 par tentative
+  éval consistance 40 %,   600 $ : passage 31.0% ± 0.6%, 12.9 séances si validé, 12.9 par tentative
+  éval consistance 40 %,   800 $ : passage 23.5% ± 0.6%, 10.9 séances si validé, 10.3 par tentative
+  éval consistance 40 %,  1000 $ : passage 20.0% ± 0.6%, 9.7 séances si validé, 8.3 par tentative
+  éval consistance 50 %,   200 $ : passage 50.5% ± 0.7%, 134.8 séances si validé, 124.0 par tentative
+  éval consistance 50 %,   400 $ : passage 39.2% ± 0.7%, 27.5 séances si validé, 25.6 par tentative
+  éval consistance 50 %,   600 $ : passage 34.4% ± 0.7%, 10.5 séances si validé, 11.7 par tentative
+  éval consistance 50 %,   800 $ : passage 28.2% ± 0.6%, 7.9 séances si validé, 9.2 par tentative
+  éval consistance 50 %,  1000 $ : passage 24.9% ± 0.6%, 6.8 séances si validé, 7.2 par tentative
+  financé   200 $ : valeur 690 $ ± 10  P(payout) 76%  1.19 payouts  5 payouts (passage en réel) 3%  vie 70 séances  1er payout méd. 31
+  financé   400 $ : valeur 881 $ ± 17  P(payout) 61%  0.97 payouts  5 payouts (passage en réel) 2%  vie 25 séances  1er payout méd. 12
+  financé   600 $ : valeur 995 $ ± 25  P(payout) 43%  0.75 payouts  5 payouts (passage en réel) 3%  vie 18 séances  1er payout méd. 9
+  financé   800 $ : valeur 1 039 $ ± 30  P(payout) 33%  0.65 payouts  5 payouts (passage en réel) 4%  vie 15 séances  1er payout méd. 8
+  financé  1000 $ : valeur 1 001 $ ± 31  P(payout) 27%  0.59 payouts  5 payouts (passage en réel) 5%  vie 14 séances  1er payout méd. 8
+
+=== sans edge, prix actuels ===
+  éval consistance 40 %,   200 $ : passage 14.6% ± 0.5%, 128.4 séances si validé, 107.4 par tentative
+  éval consistance 40 %,   400 $ : passage 18.2% ± 0.5%, 22.6 séances si validé, 21.6 par tentative
+  éval consistance 40 %,   600 $ : passage 20.6% ± 0.6%, 11.5 séances si validé, 11.1 par tentative
+  éval consistance 40 %,   800 $ : passage 15.8% ± 0.5%, 9.8 séances si validé, 8.8 par tentative
+  éval consistance 40 %,  1000 $ : passage 13.6% ± 0.5%, 8.7 séances si validé, 6.4 par tentative
+  financé   200 $ : valeur 330 $ ± 6  P(payout) 47%  0.60 payouts  5 payouts (passage en réel) 0%  vie 74 séances  1er payout méd. 31
+  financé   400 $ : valeur 467 $ ± 11  P(payout) 43%  0.57 payouts  5 payouts (passage en réel) 0%  vie 20 séances  1er payout méd. 11
+  financé   600 $ : valeur 548 $ ± 16  P(payout) 32%  0.45 payouts  5 payouts (passage en réel) 0%  vie 13 séances  1er payout méd. 9
+  financé   800 $ : valeur 553 $ ± 18  P(payout) 24%  0.37 payouts  5 payouts (passage en réel) 1%  vie 11 séances  1er payout méd. 8
+  financé  1000 $ : valeur 516 $ ± 19  P(payout) 19%  0.32 payouts  5 payouts (passage en réel) 1%  vie 9 séances  1er payout méd. 8
+
+=== Espérance par éval achetée ===
+  règle 2011-2026            consistance 40 %  principal              éval   400 $ financé   200 $ (prix 115 $) : EV     +65 $ ± 5 (passage 29.8%, financé 603 $, refus max 36%)
+  règle 2011-2026            consistance 40 %  meilleur de la grille  éval   200 $ financé   800 $ (prix 115 $) : EV    +151 $ ± 9 (passage 34.5%, financé 773 $, refus max 57%)
+  règle 2011-2026            consistance 50 %  même réglage           éval   400 $ financé   200 $ (prix 130 $) : EV     +50 $ ± 5 (passage 29.9%, financé 603 $, refus max 28%)
+  règle 2011-2026            consistance 50 %  meilleur de la grille  éval   200 $ financé   800 $ (prix 130 $) : EV    +140 $ ± 9 (passage 34.9%, financé 773 $, refus max 52%)
+  sans edge (R − moyenne)    consistance 40 %  même réglage           éval   400 $ financé   200 $ (prix 115 $) : EV     -81 $ ± 1 (passage 13.1%, financé 261 $, refus max -237%)
+  sans edge (R − moyenne)    consistance 40 %  meilleur de la grille  éval   600 $ financé   600 $ (prix 115 $) : EV     -46 $ ± 3 (passage 16.6%, financé 415 $, refus max -67%)
+  règle 2011-2015 (OOS)      consistance 40 %  même réglage           éval   400 $ financé   200 $ (prix 115 $) : EV     +91 $ ± 5 (passage 30.7%, financé 671 $, refus max 44%)
+  règle 2011-2015 (OOS)      consistance 40 %  meilleur de la grille  éval   200 $ financé  1000 $ (prix 115 $) : EV    +279 $ ± 11 (passage 44.8%, financé 878 $, refus max 71%)
+  règle, prix actuels        consistance 40 %  même réglage           éval   400 $ financé   200 $ (prix 115 $) : EV    +157 $ ± 6 (passage 39.5%, financé 690 $, refus max 58%)
+  règle, prix actuels        consistance 40 %  meilleur de la grille  éval   200 $ financé   800 $ (prix 115 $) : EV    +410 $ ± 17 (passage 50.5%, financé 1 039 $, refus max 78%)
+  règle, prix actuels        consistance 50 %  même réglage           éval   400 $ financé   200 $ (prix 130 $) : EV    +140 $ ± 6 (passage 39.2%, financé 690 $, refus max 52%)
+  règle, prix actuels        consistance 50 %  meilleur de la grille  éval   200 $ financé   800 $ (prix 130 $) : EV    +395 $ ± 17 (passage 50.5%, financé 1 039 $, refus max 75%)
+  sans edge, prix actuels    consistance 40 %  même réglage           éval   400 $ financé   200 $ (prix 115 $) : EV     -55 $ ± 2 (passage 18.2%, financé 330 $, refus max -92%)
+  sans edge, prix actuels    consistance 40 %  meilleur de la grille  éval   600 $ financé   800 $ (prix 115 $) : EV      -1 $ ± 5 (passage 20.6%, financé 553 $, refus max -1%)

@@ -1,0 +1,48 @@
+Ferme FTMO 10k (éval 87 $), règle NQ de nuit, éval 2 % TP 5 / financé 1 % TP 4, rachat permanent ; 3812 nuits 2011-07-01 → 2026-08-28, fenêtres de 504 nuits
+  19:00 : 3769 nuits tradées, rendement net moyen TP 5 +3.27 pb, TP 4 +3.24 pb
+  20:00 : 3787 nuits tradées, rendement net moyen TP 5 +3.37 pb, TP 4 +3.31 pb
+  21:00 : 3791 nuits tradées, rendement net moyen TP 5 +2.84 pb, TP 4 +2.63 pb
+  corrélation des rendements par nuit (TP 4, nuits à 0 sans trade) :
+               ret_19:00_tp4  ret_20:00_tp4  ret_21:00_tp4
+ret_19:00_tp4          1.000          0.821          0.657
+ret_20:00_tp4          0.821          1.000          0.739
+ret_21:00_tp4          0.657          0.739          1.000
+
+Par compte, sur 2 ans (662 fenêtres) :
+configuration                        gain moy. écart-type P(perte)  5e cent.     pire creux moy. pire creux mois sans reward corr. trim.
+3 comptes, même signal (20:00)           +4766       1885     0.0%     +2087    +1622       -300       -608              58%        1.00
+3 comptes, 19:00 / 20:00 / 21:00         +4270       1880     0.0%     +2076    +1271       -238       -579              42%        0.56
+6 comptes, 2 par signal                  +4270       1880     0.0%     +2076    +1271       -238       -579              42%        0.65
+3 comptes indépendants (borne)           +4733       1101     0.0%     +3092    +1738       -164       -435              21%        0.06
+
+Historique complet, un compte par heure depuis le 2011-07-01 (gain net par compte) : 19:00 +33 518 $, 20:00 +40 046 $, 21:00 +34 618 $
+  corrélation des flux mensuels :
+       19:00  20:00  21:00
+19:00   1.00   0.59   0.44
+20:00   0.59   1.00   0.52
+21:00   0.44   0.52   1.00
+  corrélation des flux annuels :
+       19:00  20:00  21:00
+19:00   1.00   0.84   0.48
+20:00   0.84   1.00   0.71
+21:00   0.48   0.71   1.00
+  mois sans aucun reward : 20:00 seul 56% des mois ; les trois ensemble 38%
+  flux annuels ($) :
+      19:00  20:00  21:00  total
+day                             
+2011   1360    314    330   2004
+2012   4601   5287   2925  12813
+2013   1935   3229   3681   8846
+2014   4937   4463   5150  14549
+2015   2990   3676   2668   9335
+2016    104   1327    516   1947
+2017   4610   4236   2349  11194
+2018   2806   1925   1189   5919
+2019    295   1275    823   2393
+2020   2764   2639   2079   7481
+2021   1428   1842    375   3645
+2022    -77    596   2491   3010
+2023   1294   1665   2000   4959
+2024   1136   2602   2632   6370
+2025   1588   3517   4662   9767
+2026   1747   1454    749   3951

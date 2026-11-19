@@ -1,0 +1,26 @@
+Avenant E — FTMO 1-Step, éval 2 % (TP 5 ATR), financé 1 % ; 20000 comptes, graine 1820
+
+=== financé RR 2 (TP 4 ATR), coût 1,5 pt ===
+  éval : passage 51.6% ± 0.7%, 12.4 nuits si validée, 13.3 par tentative
+  financé : valeur 21.24 % ± 0.30 du capital, P(≥ 1 reward) 86%, 4.84 rewards, reward moyen 4.39 %, 1er reward méd. 17 nuits, vie moy. 148 (méd. 112) nuits, encore en vie à 500 nuits 1%, 14.3 pb du capital par nuit
+  EV : 10k +1 009 $ ± 21 (refus tolérés 92%) ; 100k +10 408 $ ± 212 (95%)
+
+=== financé RR 2 (TP 4 ATR), coût 3 pt ===
+  éval : passage 47.8% ± 0.7%, 12.9 nuits si validée, 13.8 par tentative
+  financé : valeur 16.71 % ± 0.24 du capital, P(≥ 1 reward) 82%, 3.92 rewards, reward moyen 4.26 %, 1er reward méd. 17 nuits, vie moy. 134 (méd. 101) nuits, encore en vie à 500 nuits 1%, 12.5 pb du capital par nuit
+  EV : 10k +711 $ ± 16 (refus tolérés 89%) ; 100k +7 428 $ ± 163 (93%)
+
+=== financé RR 2,5 (TP 5 ATR, avenant C), coût 1,5 pt ===
+  éval : passage 51.6% ± 0.7%, 12.7 nuits si validée, 13.5 par tentative
+  financé : valeur 18.80 % ± 0.32 du capital, P(≥ 1 reward) 80%, 3.45 rewards, reward moyen 5.45 %, 1er reward méd. 18 nuits, vie moy. 121 (méd. 84) nuits, encore en vie à 500 nuits 1%, 15.6 pb du capital par nuit
+  EV : 10k +883 $ ± 21 (refus tolérés 91%) ; 100k +9 152 $ ± 211 (94%)
+
+=== sans edge, financé RR 2, coût 1,5 pt ===
+  éval : passage 34.6% ± 0.7%, 12.4 nuits si validée, 12.8 par tentative
+  financé : valeur 6.94 % ± 0.13 du capital, P(≥ 1 reward) 63%, 1.71 rewards, reward moyen 4.06 %, 1er reward méd. 17 nuits, vie moy. 89 (méd. 57) nuits, encore en vie à 500 nuits 1%, 7.8 pb du capital par nuit
+  EV : 10k +153 $ ± 6 (refus tolérés 64%) ; 100k +1 855 $ ± 64 (77%)
+
+=== 2011-2015, financé RR 2, coût 1,5 pt ===
+  éval : passage 60.9% ± 0.7%, 13.2 nuits si validée, 13.5 par tentative
+  financé : valeur 33.34 % ± 0.39 du capital, P(≥ 1 reward) 90%, 7.48 rewards, reward moyen 4.45 %, 1er reward méd. 15 nuits, vie moy. 178 (méd. 124) nuits, encore en vie à 500 nuits 4%, 18.7 pb du capital par nuit
+  EV : 10k +1 944 $ ± 33 (refus tolérés 96%) ; 100k +19 762 $ ± 329 (97%)

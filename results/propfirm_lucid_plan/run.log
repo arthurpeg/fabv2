@@ -1,0 +1,21 @@
+Plan « 2 coups » LucidFlex 50K (DLL OFF, consistance 50 %), règle NQ de nuit en MNQ ; 3787 nuits 2011-07-01 → 2026-08-28 ; 3535 départs
+  stop 2 ATR au niveau actuel : médiane 65 points (133 $ par MNQ) ; risque 2 000 $ → 15 MNQ en médiane, plafond 40 atteint 0.7% des nuits, 20 (financé sous 1 000 $) 23.0% ; risque réel médian 1936 $
+  objectif 1 500 $ ≈ 0.77 R, 3 400 $ ≈ 1.79 R (médianes) ; trade à 150 $ : stop et objectif ≈ 74 points
+
+1. Un trade isolé (chaque nuit, toutes les nuits) :
+  éval 2 000 $ → +1 500 $ : objectif 58.0%, stop 39.5%, 9:30 2.6% ; P&L moyen +111 $ (sorties à 9:30 : -88 $), pire -2090 $
+  financé 2 000 $ → +3 400 $ (20 MNQ max) : stop 51.0%, objectif 26.4%, 9:30 22.6% ; P&L moyen +185 $ (sorties à 9:30 : +974 $), pire -2040 $
+  150 $ → +150 $ : objectif 44.7%, stop 40.0%, 9:30 15.3% ; P&L moyen +9 $ (sorties à 9:30 : +11 $), pire -155 $
+
+2. Une tentative par nuit de départ
+  règle, (a) un seul payout : passage 34.5% (nuits par éval : 2 médiane, validées 2) ; financé : P(≥ 1 payout) 36%, 0.36 payouts, valeur 569 $ (90 %) ; valeur par éval 196 $ ± 54 → EV +66 $ à 130 $, +46 $ à 150 $, -4 $ à 200 $, -54 $ à 250 $ ; prix d'équilibre 196 $
+    éval ratée : marge épuisée 99%, MLL 1% ; fin du financé : marge épuisée 63%, arrêt volontaire 36%, MLL (gros trade) 0%
+    1er payout : 1 740 $ brut en moyenne (2 000 $ dans 5% des cas), 8 nuits après l'ouverture du financé (75e centile 11) ; payouts : 0 : 64%, 1 : 36%
+  règle, (b) cycle répété jusqu'à 5 payouts : passage 34.5% (nuits par éval : 2 médiane, validées 2) ; financé : P(≥ 1 payout) 36%, 0.67 payouts, valeur 1 057 $ (90 %) ; valeur par éval 364 $ ± 121 → EV +234 $ à 130 $, +214 $ à 150 $, +164 $ à 200 $, +114 $ à 250 $ ; prix d'équilibre 364 $
+    éval ratée : marge épuisée 99%, MLL 1% ; fin du financé : marge épuisée 97%, 5 payouts (réel) 2%, MLL (gros trade) 0%
+    1er payout : 1 740 $ brut en moyenne (2 000 $ dans 5% des cas), 8 nuits après l'ouverture du financé (75e centile 11) ; payouts : 0 : 64%, 1 : 19%, 2 : 9%, 3 : 4%, 4 : 1%, 5 : 2%
+  sans edge (sens au hasard, 10 tirages), (a) : passage 30.8%, valeur du financé 525 $, valeur par éval 162 $ → EV +32 $ à 130 $
+  sans edge (sens au hasard, 10 tirages), (b) : passage 30.3%, valeur du financé 915 $, valeur par éval 277 $ → EV +147 $ à 130 $
+
+3. Un seul compte racheté à chaque échec, plan (a), départs toutes les 5 nuits, horizon 1 an (252 nuits)
+  à 130 $ l'éval : gain net sur 1 an médiane +3 738 $, 5e centile -2 538 $, pire -5 208 $ ; argent sorti avant remboursement médiane 988 $, 95e centile 3 918 $, pire 5 208 $ ; 60 évals par an ; pire série d'évals ratées 23

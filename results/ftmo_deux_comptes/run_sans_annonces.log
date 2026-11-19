@@ -1,0 +1,38 @@
+Calendrier : 3898 séances du 2011-07-01 au 2026-11-03 ; compte B : 3n 1635 nuits, M2 1441 setups
+
+12 mois à partir de chaque départ (721 départs, 2011-07 → 2025-08), deux comptes 10k :
+  net A     : moyenne +2,469 $ ; médiane +2,333 $, 10e c. +968 $, 90e c. +4,135 $, P(< 0) 0 %
+  net B     : moyenne +1,591 $ ; médiane +1,533 $, 10e c. +488 $, 90e c. +2,833 $, P(< 0) 0 %
+  net total : moyenne +4,060 $ ; médiane +3,856 $, 10e c. +2,096 $, 90e c. +6,197 $, P(< 0) 0 %
+  évals achetées par an : A 3.9, B 2.1 ; rewards : A 6.3, B 4.1
+  pire creux de trésorerie sur 12 mois (frais payés avant les rewards) : total médiane -261 $, pire -782 $ ; A pire -695 $, B pire -521 $
+  corrélation des nets A / B entre départs : +0.13
+
+Net moyen sur 12 mois selon l'année de départ ($) :
+        net_A   net_B  net_total
+année                           
+2011   3884.0  1604.0     5488.0
+2012   3067.0   711.0     3778.0
+2013   4547.0  1560.0     6107.0
+2014   3368.0  1163.0     4531.0
+2015   1852.0  1189.0     3041.0
+2016   2431.0   648.0     3079.0
+2017   3069.0  1926.0     4995.0
+2018    992.0  1511.0     2503.0
+2019   2759.0  2652.0     5412.0
+2020   1911.0  1992.0     3902.0
+2021   1181.0  1546.0     2727.0
+2022   2037.0   999.0     3036.0
+2023   1219.0  1016.0     2235.0
+2024   2588.0  2975.0     5563.0
+2025   3199.0  2777.0     5975.0
+
+Départ réel le 01/09/2026 (jusqu'au 03/11, reward au 14e jour calendaire) :
+  A mom : évals 2, rewards 0, net -174 $ ; phase au 03/11 éval, solde +0.00 %
+    14/09 éval n° 1 validée
+    03/11 financé perdu (-6.22 %) → nouvelle éval
+  B 3n + M2 : évals 1, rewards 2, net +771 $ ; phase au 03/11 financé, solde -2.71 %
+    09/09 éval n° 1 validée
+    15/10 reward 4.90 % (490 $)
+    29/10 reward 3.68 % (368 $)
+  total des deux comptes : +598 $

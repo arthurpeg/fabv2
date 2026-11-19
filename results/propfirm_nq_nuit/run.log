@@ -1,0 +1,156 @@
+Avenant C — règle NQ de nuit sur FTMO 1-Step ; 20000 comptes par réglage, graine 1818
+  règle 2011-2026 : 3787 trades, R brut moyen +0.125, stop médian 0.254% du prix, coût 1,5 pt 0.023 R, coût 3 pt 0.046 R
+  sans edge (R − moyenne) : 3787 trades, R brut moyen +0.000, stop médian 0.254% du prix, coût 1,5 pt 0.023 R, coût 3 pt 0.046 R
+  règle 2011-2015 (OOS) : 1115 trades, R brut moyen +0.188, stop médian 0.218% du prix, coût 1,5 pt 0.027 R, coût 3 pt 0.053 R
+
+=== règle 2011-2026, coût 1,5 pt ===
+  éval  0.5 % : passage 81.2% ± 0.5%, 149.0 trades si validé, 160.4 par tentative
+  éval  1.0 % : passage 62.0% ± 0.7%, 44.4 trades si validé, 45.8 par tentative
+  éval  1.5 % : passage 55.9% ± 0.7%, 21.3 trades si validé, 22.2 par tentative
+  éval  2.0 % : passage 50.8% ± 0.7%, 12.7 trades si validé, 13.5 par tentative
+  éval  2.5 % : passage 42.3% ± 0.7%, 10.0 trades si validé, 10.2 par tentative
+  financé 0.25 % RAZ : valeur 11.88 % ± 0.07, P(reward) 100%, 8.95 rewards, vie 500 trades, 1er reward méd. 25
+  financé  0.5 % RAZ : valeur 20.54 % ± 0.18, P(reward) 98%, 7.70 rewards, vie 407 trades, 1er reward méd. 23
+  financé  1.0 % RAZ : valeur 18.49 % ± 0.32, P(reward) 80%, 3.39 rewards, vie 120 trades, 1er reward méd. 19
+  financé  1.5 % RAZ : valeur 12.53 % ± 0.20, P(reward) 63%, 1.53 rewards, vie 53 trades, 1er reward méd. 15
+  financé  2.0 % RAZ : valeur 8.27 % ± 0.15, P(reward) 47%, 0.74 rewards, vie 25 trades, 1er reward méd. 12
+  financé 0.25 % sans RAZ : valeur 11.95 % ± 0.07, P(reward) 100%, 9.00 rewards, vie 500 trades, 1er reward méd. 24
+  financé  0.5 % sans RAZ : valeur 15.59 % ± 0.17, P(reward) 98%, 5.82 rewards, vie 276 trades, 1er reward méd. 23
+  financé  1.0 % sans RAZ : valeur 7.75 % ± 0.09, P(reward) 79%, 1.41 rewards, vie 49 trades, 1er reward méd. 18
+  financé  1.5 % sans RAZ : valeur 6.02 % ± 0.07, P(reward) 63%, 0.72 rewards, vie 22 trades, 1er reward méd. 15
+  financé  2.0 % sans RAZ : valeur 5.35 % ± 0.08, P(reward) 47%, 0.47 rewards, vie 15 trades, 1er reward méd. 12
+
+=== règle 2011-2026, coût 3 pt ===
+  éval  0.5 % : passage 76.2% ± 0.6%, 180.6 trades si validé, 188.1 par tentative
+  éval  1.0 % : passage 57.0% ± 0.7%, 47.6 trades si validé, 47.1 par tentative
+  éval  1.5 % : passage 52.7% ± 0.7%, 23.5 trades si validé, 23.3 par tentative
+  éval  2.0 % : passage 47.3% ± 0.7%, 12.9 trades si validé, 13.8 par tentative
+  éval  2.5 % : passage 40.8% ± 0.7%, 10.2 trades si validé, 10.3 par tentative
+  financé 0.25 % RAZ : valeur 9.24 % ± 0.06, P(reward) 100%, 7.21 rewards, vie 500 trades, 1er reward méd. 26
+  financé  0.5 % RAZ : valeur 15.76 % ± 0.14, P(reward) 96%, 6.14 rewards, vie 377 trades, 1er reward méd. 25
+  financé  1.0 % RAZ : valeur 15.34 % ± 0.26, P(reward) 77%, 2.95 rewards, vie 113 trades, 1er reward méd. 19
+  financé  1.5 % RAZ : valeur 10.53 % ± 0.17, P(reward) 60%, 1.34 rewards, vie 49 trades, 1er reward méd. 15
+  financé  2.0 % RAZ : valeur 7.35 % ± 0.14, P(reward) 45%, 0.68 rewards, vie 24 trades, 1er reward méd. 12
+  financé 0.25 % sans RAZ : valeur 9.21 % ± 0.06, P(reward) 100%, 7.18 rewards, vie 500 trades, 1er reward méd. 27
+  financé  0.5 % sans RAZ : valeur 12.23 % ± 0.14, P(reward) 96%, 4.75 rewards, vie 256 trades, 1er reward méd. 25
+  financé  1.0 % sans RAZ : valeur 7.28 % ± 0.09, P(reward) 76%, 1.38 rewards, vie 51 trades, 1er reward méd. 19
+  financé  1.5 % sans RAZ : valeur 5.56 % ± 0.07, P(reward) 60%, 0.70 rewards, vie 23 trades, 1er reward méd. 15
+  financé  2.0 % sans RAZ : valeur 4.89 % ± 0.08, P(reward) 45%, 0.45 rewards, vie 15 trades, 1er reward méd. 12
+
+=== sans edge (R − moyenne), coût 1,5 pt ===
+  éval  0.5 % : passage 21.6% ± 0.6%, 181.2 trades si validé, 163.2 par tentative
+  éval  1.0 % : passage 29.4% ± 0.6%, 48.1 trades si validé, 44.9 par tentative
+  éval  1.5 % : passage 34.6% ± 0.7%, 23.7 trades si validé, 21.4 par tentative
+  éval  2.0 % : passage 34.5% ± 0.7%, 12.2 trades si validé, 12.9 par tentative
+  éval  2.5 % : passage 30.6% ± 0.6%, 9.1 trades si validé, 9.5 par tentative
+  financé 0.25 % RAZ : valeur 2.85 % ± 0.05, P(reward) 74%, 2.24 rewards, vie 453 trades, 1er reward méd. 25
+  financé  0.5 % RAZ : valeur 5.55 % ± 0.09, P(reward) 71%, 2.18 rewards, vie 202 trades, 1er reward méd. 24
+  financé  1.0 % RAZ : valeur 5.34 % ± 0.09, P(reward) 55%, 1.04 rewards, vie 62 trades, 1er reward méd. 18
+  financé  1.5 % RAZ : valeur 5.18 % ± 0.10, P(reward) 44%, 0.66 rewards, vie 31 trades, 1er reward méd. 15
+  financé  2.0 % RAZ : valeur 4.38 % ± 0.10, P(reward) 32%, 0.41 rewards, vie 19 trades, 1er reward méd. 12
+  financé 0.25 % sans RAZ : valeur 2.89 % ± 0.05, P(reward) 74%, 2.27 rewards, vie 421 trades, 1er reward méd. 25
+  financé  0.5 % sans RAZ : valeur 4.79 % ± 0.08, P(reward) 71%, 1.88 rewards, vie 157 trades, 1er reward méd. 24
+  financé  1.0 % sans RAZ : valeur 4.08 % ± 0.06, P(reward) 57%, 0.79 rewards, vie 40 trades, 1er reward méd. 18
+  financé  1.5 % sans RAZ : valeur 3.87 % ± 0.07, P(reward) 45%, 0.49 rewards, vie 21 trades, 1er reward méd. 15
+  financé  2.0 % sans RAZ : valeur 3.48 % ± 0.07, P(reward) 32%, 0.33 rewards, vie 13 trades, 1er reward méd. 12
+
+=== sans edge (R − moyenne), coût 3 pt ===
+  éval  0.5 % : passage 11.4% ± 0.4%, 168.1 trades si validé, 147.1 par tentative
+  éval  1.0 % : passage 24.1% ± 0.6%, 53.7 trades si validé, 47.4 par tentative
+  éval  1.5 % : passage 27.9% ± 0.6%, 20.9 trades si validé, 21.8 par tentative
+  éval  2.0 % : passage 31.8% ± 0.6%, 12.9 trades si validé, 13.1 par tentative
+  éval  2.5 % : passage 29.6% ± 0.6%, 9.3 trades si validé, 9.5 par tentative
+  financé 0.25 % RAZ : valeur 1.94 % ± 0.03, P(reward) 64%, 1.63 rewards, vie 411 trades, 1er reward méd. 23
+  financé  0.5 % RAZ : valeur 3.54 % ± 0.06, P(reward) 64%, 1.48 rewards, vie 168 trades, 1er reward méd. 23
+  financé  1.0 % RAZ : valeur 4.27 % ± 0.07, P(reward) 52%, 0.86 rewards, vie 60 trades, 1er reward méd. 18
+  financé  1.5 % RAZ : valeur 4.14 % ± 0.08, P(reward) 40%, 0.54 rewards, vie 28 trades, 1er reward méd. 14
+  financé  2.0 % RAZ : valeur 4.02 % ± 0.10, P(reward) 31%, 0.39 rewards, vie 18 trades, 1er reward méd. 12
+  financé 0.25 % sans RAZ : valeur 1.96 % ± 0.03, P(reward) 65%, 1.65 rewards, vie 381 trades, 1er reward méd. 24
+  financé  0.5 % sans RAZ : valeur 3.38 % ± 0.06, P(reward) 63%, 1.41 rewards, vie 148 trades, 1er reward méd. 23
+  financé  1.0 % sans RAZ : valeur 3.53 % ± 0.06, P(reward) 52%, 0.70 rewards, vie 41 trades, 1er reward méd. 18
+  financé  1.5 % sans RAZ : valeur 3.31 % ± 0.06, P(reward) 40%, 0.43 rewards, vie 21 trades, 1er reward méd. 14
+  financé  2.0 % sans RAZ : valeur 3.16 % ± 0.07, P(reward) 30%, 0.31 rewards, vie 14 trades, 1er reward méd. 12
+
+=== règle 2011-2015 (OOS), coût 1,5 pt ===
+  éval  0.5 % : passage 100.0% ± 0.0%, 109.7 trades si validé, 109.7 par tentative
+  éval  1.0 % : passage 80.5% ± 0.5%, 39.0 trades si validé, 39.6 par tentative
+  éval  1.5 % : passage 69.7% ± 0.6%, 21.1 trades si validé, 20.7 par tentative
+  éval  2.0 % : passage 60.7% ± 0.7%, 13.2 trades si validé, 13.6 par tentative
+  éval  2.5 % : passage 49.2% ± 0.7%, 10.6 trades si validé, 10.5 par tentative
+  financé 0.25 % RAZ : valeur 18.08 % ± 0.06, P(reward) 100%, 13.44 rewards, vie 500 trades, 1er reward méd. 21
+  financé  0.5 % RAZ : valeur 36.15 % ± 0.12, P(reward) 100%, 13.44 rewards, vie 500 trades, 1er reward méd. 20
+  financé  1.0 % RAZ : valeur 34.77 % ± 0.46, P(reward) 89%, 6.26 rewards, vie 179 trades, 1er reward méd. 18
+  financé  1.5 % RAZ : valeur 19.01 % ± 0.25, P(reward) 73%, 2.28 rewards, vie 64 trades, 1er reward méd. 15
+  financé  2.0 % RAZ : valeur 11.81 % ± 0.18, P(reward) 57%, 1.03 rewards, vie 30 trades, 1er reward méd. 12
+  financé 0.25 % sans RAZ : valeur 18.07 % ± 0.06, P(reward) 100%, 13.43 rewards, vie 500 trades, 1er reward méd. 20
+  financé  0.5 % sans RAZ : valeur 25.27 % ± 0.21, P(reward) 100%, 9.26 rewards, vie 286 trades, 1er reward méd. 20
+  financé  1.0 % sans RAZ : valeur 10.86 % ± 0.10, P(reward) 89%, 1.92 rewards, vie 51 trades, 1er reward méd. 18
+  financé  1.5 % sans RAZ : valeur 7.43 % ± 0.08, P(reward) 73%, 0.87 rewards, vie 22 trades, 1er reward méd. 15
+  financé  2.0 % sans RAZ : valeur 6.58 % ± 0.09, P(reward) 58%, 0.58 rewards, vie 15 trades, 1er reward méd. 12
+
+=== règle 2011-2015 (OOS), coût 3 pt ===
+  éval  0.5 % : passage 96.1% ± 0.3%, 130.0 trades si validé, 129.0 par tentative
+  éval  1.0 % : passage 75.0% ± 0.6%, 40.3 trades si validé, 40.1 par tentative
+  éval  1.5 % : passage 67.4% ± 0.6%, 23.0 trades si validé, 22.1 par tentative
+  éval  2.0 % : passage 58.4% ± 0.7%, 14.3 trades si validé, 14.3 par tentative
+  éval  2.5 % : passage 48.3% ± 0.7%, 10.8 trades si validé, 10.6 par tentative
+  financé 0.25 % RAZ : valeur 14.69 % ± 0.05, P(reward) 100%, 11.26 rewards, vie 500 trades, 1er reward méd. 23
+  financé  0.5 % RAZ : valeur 26.55 % ± 0.14, P(reward) 99%, 10.12 rewards, vie 419 trades, 1er reward méd. 22
+  financé  1.0 % RAZ : valeur 28.21 % ± 0.38, P(reward) 85%, 5.36 rewards, vie 168 trades, 1er reward méd. 19
+  financé  1.5 % RAZ : valeur 16.28 % ± 0.22, P(reward) 71%, 2.03 rewards, vie 61 trades, 1er reward méd. 16
+  financé  2.0 % RAZ : valeur 10.60 % ± 0.17, P(reward) 56%, 0.96 rewards, vie 30 trades, 1er reward méd. 13
+  financé 0.25 % sans RAZ : valeur 14.74 % ± 0.05, P(reward) 100%, 11.29 rewards, vie 500 trades, 1er reward méd. 23
+  financé  0.5 % sans RAZ : valeur 20.57 % ± 0.17, P(reward) 99%, 7.82 rewards, vie 294 trades, 1er reward méd. 22
+  financé  1.0 % sans RAZ : valeur 10.64 % ± 0.11, P(reward) 86%, 1.98 rewards, vie 55 trades, 1er reward méd. 19
+  financé  1.5 % sans RAZ : valeur 7.20 % ± 0.08, P(reward) 71%, 0.88 rewards, vie 24 trades, 1er reward méd. 15
+  financé  2.0 % sans RAZ : valeur 6.17 % ± 0.08, P(reward) 55%, 0.56 rewards, vie 15 trades, 1er reward méd. 12
+
+=== Espérance par tentative (10k et 100k) ===
+  règle 2011-2026          1,5 pt RAZ      principal              éval 2.0  financé 1.0   10k : EV     +853 $ ± 21 (passage 50.8%, financé 18.49 %, refus max 91%)
+  règle 2011-2026          1,5 pt RAZ      principal              éval 2.0  financé 1.0  100k : EV   +8 849 $ ± 207 (passage 50.8%, financé 18.49 %, refus max 94%)
+  règle 2011-2026          1,5 pt RAZ      meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +1 580 $ ± 18 (passage 81.2%, financé 20.54 %, refus max 95%)
+  règle 2011-2026          1,5 pt RAZ      meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +16 121 $ ± 181 (passage 81.2%, financé 20.54 %, refus max 97%)
+  règle 2011-2026          1,5 pt sans RAZ principal              éval 2.0  financé 1.0   10k : EV     +307 $ ± 7 (passage 50.8%, financé 7.75 %, refus max 78%)
+  règle 2011-2026          1,5 pt sans RAZ principal              éval 2.0  financé 1.0  100k : EV   +3 390 $ ± 70 (passage 50.8%, financé 7.75 %, refus max 86%)
+  règle 2011-2026          1,5 pt sans RAZ meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +1 178 $ ± 16 (passage 81.2%, financé 15.59 %, refus max 93%)
+  règle 2011-2026          1,5 pt sans RAZ meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +12 105 $ ± 160 (passage 81.2%, financé 15.59 %, refus max 96%)
+  règle 2011-2026          3 pt   RAZ      même réglage           éval 2.0  financé 1.0   10k : EV     +638 $ ± 16 (passage 47.3%, financé 15.34 %, refus max 88%)
+  règle 2011-2026          3 pt   RAZ      même réglage           éval 2.0  financé 1.0  100k : EV   +6 700 $ ± 162 (passage 47.3%, financé 15.34 %, refus max 92%)
+  règle 2011-2026          3 pt   RAZ      meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +1 115 $ ± 14 (passage 76.2%, financé 15.76 %, refus max 93%)
+  règle 2011-2026          3 pt   RAZ      meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +11 465 $ ± 143 (passage 76.2%, financé 15.76 %, refus max 95%)
+  règle 2011-2026          3 pt   sans RAZ même réglage           éval 2.0  financé 1.0   10k : EV     +257 $ ± 7 (passage 47.3%, financé 7.28 %, refus max 75%)
+  règle 2011-2026          3 pt   sans RAZ même réglage           éval 2.0  financé 1.0  100k : EV   +2 890 $ ± 66 (passage 47.3%, financé 7.28 %, refus max 84%)
+  règle 2011-2026          3 pt   sans RAZ meilleur de la grille  éval 0.5  financé 0.5   10k : EV     +846 $ ± 13 (passage 76.2%, financé 12.23 %, refus max 91%)
+  règle 2011-2026          3 pt   sans RAZ meilleur de la grille  éval 0.5  financé 0.5  100k : EV   +8 778 $ ± 127 (passage 76.2%, financé 12.23 %, refus max 94%)
+  sans edge (R − moyenne)  1,5 pt RAZ      même réglage           éval 2.0  financé 1.0   10k : EV      +98 $ ± 5 (passage 34.5%, financé 5.34 %, refus max 53%)
+  sans edge (R − moyenne)  1,5 pt RAZ      même réglage           éval 2.0  financé 1.0  100k : EV   +1 295 $ ± 46 (passage 34.5%, financé 5.34 %, refus max 70%)
+  sans edge (R − moyenne)  1,5 pt RAZ      meilleur de la grille  éval 1.5  financé 0.5   10k : EV     +105 $ ± 5 (passage 34.6%, financé 5.55 %, refus max 55%)
+  sans edge (R − moyenne)  1,5 pt RAZ      meilleur de la grille  éval 1.5  financé 0.5  100k : EV   +1 374 $ ± 49 (passage 34.6%, financé 5.55 %, refus max 71%)
+  sans edge (R − moyenne)  1,5 pt sans RAZ même réglage           éval 2.0  financé 1.0   10k : EV      +54 $ ± 3 (passage 34.5%, financé 4.08 %, refus max 38%)
+  sans edge (R − moyenne)  1,5 pt sans RAZ même réglage           éval 2.0  financé 1.0  100k : EV     +858 $ ± 34 (passage 34.5%, financé 4.08 %, refus max 61%)
+  sans edge (R − moyenne)  1,5 pt sans RAZ meilleur de la grille  éval 1.5  financé 0.5   10k : EV      +79 $ ± 4 (passage 34.6%, financé 4.79 %, refus max 48%)
+  sans edge (R − moyenne)  1,5 pt sans RAZ meilleur de la grille  éval 1.5  financé 0.5  100k : EV   +1 109 $ ± 42 (passage 34.6%, financé 4.79 %, refus max 67%)
+  sans edge (R − moyenne)  3 pt   RAZ      même réglage           éval 2.0  financé 1.0   10k : EV      +49 $ ± 4 (passage 31.8%, financé 4.27 %, refus max 36%)
+  sans edge (R − moyenne)  3 pt   RAZ      même réglage           éval 2.0  financé 1.0  100k : EV     +808 $ ± 36 (passage 31.8%, financé 4.27 %, refus max 60%)
+  sans edge (R − moyenne)  3 pt   RAZ      meilleur de la grille  éval 2.0  financé 1.0   10k : EV      +49 $ ± 4 (passage 31.8%, financé 4.27 %, refus max 36%)
+  sans edge (R − moyenne)  3 pt   RAZ      meilleur de la grille  éval 2.0  financé 1.0  100k : EV     +808 $ ± 36 (passage 31.8%, financé 4.27 %, refus max 60%)
+  sans edge (R − moyenne)  3 pt   sans RAZ même réglage           éval 2.0  financé 1.0   10k : EV      +25 $ ± 3 (passage 31.8%, financé 3.53 %, refus max 22%)
+  sans edge (R − moyenne)  3 pt   sans RAZ même réglage           éval 2.0  financé 1.0  100k : EV     +572 $ ± 29 (passage 31.8%, financé 3.53 %, refus max 51%)
+  sans edge (R − moyenne)  3 pt   sans RAZ meilleur de la grille  éval 2.0  financé 1.0   10k : EV      +25 $ ± 3 (passage 31.8%, financé 3.53 %, refus max 22%)
+  sans edge (R − moyenne)  3 pt   sans RAZ meilleur de la grille  éval 2.0  financé 1.0  100k : EV     +572 $ ± 29 (passage 31.8%, financé 3.53 %, refus max 51%)
+  règle 2011-2015 (OOS)    1,5 pt RAZ      même réglage           éval 2.0  financé 1.0   10k : EV   +2 023 $ ± 36 (passage 60.7%, financé 34.77 %, refus max 96%)
+  règle 2011-2015 (OOS)    1,5 pt RAZ      même réglage           éval 2.0  financé 1.0  100k : EV  +20 551 $ ± 364 (passage 60.7%, financé 34.77 %, refus max 97%)
+  règle 2011-2015 (OOS)    1,5 pt RAZ      meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +3 528 $ ± 12 (passage 100.0%, financé 36.15 %, refus max 98%)
+  règle 2011-2015 (OOS)    1,5 pt RAZ      meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +35 602 $ ± 122 (passage 100.0%, financé 36.15 %, refus max 98%)
+  règle 2011-2015 (OOS)    1,5 pt sans RAZ même réglage           éval 2.0  financé 1.0   10k : EV     +572 $ ± 10 (passage 60.7%, financé 10.86 %, refus max 87%)
+  règle 2011-2015 (OOS)    1,5 pt sans RAZ même réglage           éval 2.0  financé 1.0  100k : EV   +6 045 $ ± 95 (passage 60.7%, financé 10.86 %, refus max 92%)
+  règle 2011-2015 (OOS)    1,5 pt sans RAZ meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +2 440 $ ± 21 (passage 100.0%, financé 25.27 %, refus max 97%)
+  règle 2011-2015 (OOS)    1,5 pt sans RAZ meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +24 724 $ ± 213 (passage 100.0%, financé 25.27 %, refus max 98%)
+  règle 2011-2015 (OOS)    3 pt   RAZ      même réglage           éval 2.0  financé 1.0   10k : EV   +1 561 $ ± 29 (passage 58.4%, financé 28.21 %, refus max 95%)
+  règle 2011-2015 (OOS)    3 pt   RAZ      même réglage           éval 2.0  financé 1.0  100k : EV  +15 928 $ ± 293 (passage 58.4%, financé 28.21 %, refus max 97%)
+  règle 2011-2015 (OOS)    3 pt   RAZ      meilleur de la grille  éval 0.5  financé 1.0   10k : EV   +2 623 $ ± 37 (passage 96.1%, financé 28.21 %, refus max 97%)
+  règle 2011-2015 (OOS)    3 pt   RAZ      meilleur de la grille  éval 0.5  financé 1.0  100k : EV  +26 553 $ ± 370 (passage 96.1%, financé 28.21 %, refus max 98%)
+  règle 2011-2015 (OOS)    3 pt   sans RAZ même réglage           éval 2.0  financé 1.0   10k : EV     +534 $ ± 10 (passage 58.4%, financé 10.64 %, refus max 86%)
+  règle 2011-2015 (OOS)    3 pt   sans RAZ même réglage           éval 2.0  financé 1.0  100k : EV   +5 665 $ ± 98 (passage 58.4%, financé 10.64 %, refus max 91%)
+  règle 2011-2015 (OOS)    3 pt   sans RAZ meilleur de la grille  éval 0.5  financé 0.5   10k : EV   +1 889 $ ± 18 (passage 96.1%, financé 20.57 %, refus max 96%)
+  règle 2011-2015 (OOS)    3 pt   sans RAZ meilleur de la grille  éval 0.5  financé 0.5  100k : EV  +19 212 $ ± 177 (passage 96.1%, financé 20.57 %, refus max 97%)
