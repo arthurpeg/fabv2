@@ -10,4 +10,4 @@ Règles (en plus de `PROTOCOLE.md`) :
 - toujours comparer à la règle brute et au meilleur filtre classique déjà testé ;
 - intraday uniquement : toute position ouverte un jour est fermée le même jour.
 
-Dépendances ML (scikit-learn, LightGBM…) : à ajouter à `pyproject.toml` sur cette branche seulement.
+Dépendances ML (scikit-learn, LightGBM…) : dans le groupe `ml` de `pyproject.toml` (`uv add --group ml <paquet>`), jamais dans les dépendances par défaut : le VPS ne les installe pas et ne relance pas les bots quand ce groupe change (`live/maj_auto.ps1`). Lancer les scripts avec `uv run --group ml python ...`.

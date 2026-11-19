@@ -1,7 +1,7 @@
 """Filtre ML binaire à taille fixe (1 R) sur la règle NQ de nuit mom, jugé sur la probabilité de passer un challenge
 prop firm. Étape 1 (exploration) du protocole, branche `ml`. Demande de l'utilisateur du 2026-11-19.
 
-uv run python experiments/ml_propfirm_filter/ml_propfirm_filter.py → experiments/ml_propfirm_filter/results/
+uv run --group ml python experiments/ml_propfirm_filter/ml_propfirm_filter.py → experiments/ml_propfirm_filter/results/
 
 GRILLE FIGÉE AVANT CALCUL (commitée avant le premier lancement ; ne rien changer après avoir vu un résultat)
 --------------------------------------------------------------------------------------------------------------
