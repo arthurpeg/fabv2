@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-19 20:32
+updated: 2026-11-20 00:07
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -9,7 +9,7 @@ updated: 2026-11-19 20:32
 
 - Compteur global d'essais : **1 798** (source : [[reports/jpy_us_distribution_report]])
 - Dernier pré-enregistrement : n° 28 ([[PREREGISTRATION_28]])
-- Idées abandonnées au registre : 38 ([[wiki/Failed Ideas/ledger]])
+- Idées abandonnées au registre : 39 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-19
 
 ## Expériences ouvertes
@@ -18,20 +18,20 @@ updated: 2026-11-19 20:32
 |---|---|---|
 | [[wiki/experiments/fade-gap-indices\|Fade de gap sur indices (\|z\| > 1, régime post-0DTE)]] | paper-trading | candidat (dépend du régime) |
 | [[wiki/experiments/m2-bande-bruit-nq\|Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ]] | paper-trading | rejeté (DSR), surveillé |
-| [[wiki/experiments/ml-anomalies\|Machine learning sur les anomalies que les filtres classiques n'ont pas améliorées]] | planned | à faire (branche ml créée, aucun calcul) |
+| [[wiki/experiments/ml-anomalies\|Machine learning sur les anomalies que les filtres classiques n'ont pas améliorées]] | active | 1er essai (filtre binaire sur mom) rejeté ; autres candidates à faire |
 | [[wiki/experiments/nq-nuit-momentum\|Règle NQ de nuit : momentum 12-1, entrée 20:00 ET]] | active | candidat |
 | [[wiki/experiments/propfirm-ftmo-option\|Prop firm comme option : FTMO 1-Step avec des trades au hasard]] | active | EV positive sans edge (si les rewards sont versés) |
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-19] ingest | Relecture complète de Zhang, « Price discovery in gold markets: China and the US » (SSRN 2564688) ; fiche [10] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md corrigée (données 2010-03 → 2012-03, avant la nuit SHFE ; SHFE et COMEX se relaient pour mener le comptant SGE, pas entre eux) | Aucun calcul, compteur inchangé 1 798 ; contexte de découverte du prix, pas de règle de trading
+- [2026-11-19] decision | Dépendances ML isolées du bot : LightGBM et scikit-learn passent dans le groupe uv `ml` (hors défaut, `uv run --group ml`) ; live/maj_auto.ps1 ne fait `uv sync` et ne relance les bots que si `uv export` (groupes par défaut) change avant / après la mise à jour | Cause : l'ajout de LightGBM aux dépendances par défaut avait relancé les bots A et B à 14:52 ET (sans position ouverte, état conservé) ; tests test_live 14/14 ; maj_auto testé sous PowerShell 5.1 (analyse sans erreur, comparaison des exports)
+- [2026-11-19] experiment | Filtre ML binaire à taille fixe 1 R sur mom (TP 4 ATR) pour le passage prop firm, branche ml : logit L2 et LightGBM contraint sur mom continu, nuit d−1 (Abdi), clôture − VWAP (BLW), NFP/CPI ; Purged K-Fold 5 × embargo 5 ; 70/50/35 % gardés ; Monte Carlo 10 000 chemins (+10/−10 R, +8/−6 R, FTMO 2,5 %) ; grille commitée avant calcul (2c9dcd6), reports/ml_propfirm_filter_report.md | ❌ AUC hors bloc 0,498 / 0,507 (Abdi seule 0,512) ; aucun filtre ML significatif (p brut ≥ 0,18, Holm 1,0), P(réussite) baseline 80,2 / 65,7 / 50,0 % contre ML ≤ 81,7 / 68,5 / 52,1 % (dans le p95 aléatoire) et Abdi seule 86,2 / 73,0 / 53,8 % à 35 % (non significative non plus) ; jours × 1,4-2,9 ; filtres négatifs sur 2023-2026 ; holdout non lu ; compteur 1 798 → 1 807
 - [2026-11-19] schema | Coffre Obsidian en lecture seule C:\Users\arthu\fabv2-obsidian (worktree détaché sur origin/propfirm-ftmo, qui contient tout), ramené à jour par le hook Stop ; jonction vers papers/ ; CLAUDE.md : synchro des branches après tout travail, y compris sur main | Aucun calcul
 - [2026-11-19] schema | Dépôt réparti en branches emboîtées : main (papiers, phénomènes, wiki, protocole, préregs, code commun) → strategies-vbt (backtests) → propfirm-ftmo (simulations propfirm + bot live) et ml (nouvelle, fiche wiki/experiments/ml-anomalies.md) ; vps-journal intacte ; règle de routage au début de chaque discussion dans CLAUDE.md ; tools/sync_branches.py remonte le socle commun vers main et merge en cascade | Aucun historique réécrit (avance rapide partout, le VPS suit propfirm-ftmo) ; aucun calcul, compteur inchangé 1 798
 - [2026-11-19] abandon | Retournement 24 h des paires yen (Piccotti, SSRN 2446584) abandonné à l'étape 0 sur décision de l'utilisateur ; ligne au registre des échecs, fiche wiki/experiments/fx-retournement-24h-yen.md en abandoned | Aucun calcul de rendement ; raison : intraday uniquement → brut attendu 0,4-2,5 bp contre ≈ 1,13 bp de coût, puissance net ≤ 29 % en 2031 ; run_jpy_reversal24.py reste suspendu ; compteur inchangé 1 798
 - [2026-11-19] decision | Retournement 24 h yen : grille 24 h de run_jpy_reversal24.py suspendue avant tout lancement (contrainte de l'utilisateur : intraday uniquement), version intraday (signal 24 h à H, sortie 16:55 ET le jour même) réévaluée à l'étape 0 | Parts de variance 6J (écarts types seuls) : 03:00 → 16:55 59 %, 08:00 41 %, 11:00 16 % ; sous l'hypothèse « retournement proportionnel à la variance », seule 03:00 → 16:55 avec ρ −0,09 dépasse 1,5 × coût (brut 2,5 bp, net +1,4), puissance net ≤ 29 % à L3 ; 11:00 → 16:55 exclue (brut < coût) ; compteur inchangé 1 798
 - [2026-11-19] schema | Grille de l'étape 1 du retournement 24 h yen figée dans l'en-tête de run_jpy_reversal24.py et commitée avant calcul (wiki/experiments/fx-retournement-24h-yen.md) | 6 variantes (USDJPY, AUDJPY synthétique × 11:00, 15:00, 16:55 ET), spot 2012-01-11 → 2015 + 6J/6A 2016 → 2026-08-28, référence toujours short yen, choix au Sharpe net, B1 net et brut ; réplication 2007-2010 impossible (données absentes) ; rien calculé, compteur 1 798 (→ 1 804 au lancement)
-- [2026-11-19] experiment | Fiche d'idée (étape 0) : retournement des rendements 24 h sur les paires yen (Piccotti, SSRN 2446584), wiki/experiments/fx-retournement-24h-yen.md | B0 passée (idée nouvelle) ; brut attendu 2,4-4,3 bp pour ρ −0,05 à −0,09 (σ quotidienne 6J 60 bp, écart type seul) contre ≈ 1,13 bp de coût ; aucune réserve (yen post-2026-08-28 = holdout n° 28) → étape 1 sur données explorées puis étape 4 aux dates de lecture du n° 28 ; puissance net 18-59 % à L3 ; grille proposée n_famille 6 (USD/JPY, AUD/JPY × 11:00, 15:00, 16:55), non commitée ; compteur inchangé 1 798
-- [2026-11-19] query | Lecture intégrale de Piccotti, « Pricing errors and the geography of trade in the FX market » (SSRN 2446584, 68 p., papers/txt/piccotti_pricing_errors.txt) ; correction du résumé du 2026-11-02 dans papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md | Papier de microstructure (variance des erreurs de prix, Gain Capital 2007-2010, 14 paires), aucune stratégie ni rendement ; H13 (fade du mouvement asiatique sur 6E) sans appui (ρ 24 h ≥ 0 sur EUR/USD, GBP/USD) ; piste : retournement des rendements 24 h sur les paires yen (USD/JPY ρ −0,04 à −0,09 en séance NY), à tester seulement sur données explorées (pas le yen après le 2026-08-28) ; aucun calcul, compteur inchangé
-- [2026-11-19] query | Distribution du short yen 11:00 → 16:55 ET (6J 2016-2026-08 et spot 2012-2015, déjà vus) : 34 coupes figées avant calcul (run_jpy_us_distribution.py, reports/jpy_us_distribution_report.md, results/jpy_us_distribution/), compteur inchangé 1 798 | Effet constant : médiane +2,19 = moyenne +2,03, moyennes tronquées 1-25 % +2,05-2,11, profil (q(p)+q(1−p))/2 plat ≈ +2 bp, 10 meilleures et 10 pires séances s'annulent, 11 années positives sur 11, 36 trimestres sur 43, dispersion trimestrielle inférieure au hasard (χ² p 0,99) ; aucune coupe ex ante ne concentre l'effet ; nul quand ES baisse dans la fenêtre (+0,01) et dans le quintile de volatilité réalisée le plus haut (−1,20, Holm p 0,03), FOMC décision −4,4 (t −1,1) ; aucun filtre pour le n° 28
 
 ## Prochaines actions
 
