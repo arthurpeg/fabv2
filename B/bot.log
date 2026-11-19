@@ -20,3 +20,5 @@
 2026-11-17 20:57:13 ET [B] FERMÉ 3n (SL) à 27069.63 : -249.01 $ (-2.49 %, -1.01 R) ; compte virtuel éval +2.48 % ; P&L cumulé tous essais +248.23 $ sur 3 trades (compte continu 10,248.23 $)
 2026-11-18 09:35:04 ET [B] M2 2026-11-18 : sens -1, force 1.13, retournement +59.4 bps → rien ; 3n de la nuit : {'raison': 'SL', 'pnl': -2.4901}
 2026-11-18 17:00:00 ET [B] fin de journée : éval virtuel +2.48 %, meilleur jour +4.97 %, rewards 0 (0.00 %)
+2026-11-18 20:05:01 ET [B] 3n 2026-11-19 : somme des 3 nuits -60.6 bps → LONG
+2026-11-18 20:05:02 ET [B] OUVERT 3n long 1.4 lots à 27498.88 (bid 27496.43, ask 27498.38, spread 1.95, glissement +0.50 pts) ; SL 176.3 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 19/11 03:00:01
