@@ -164,6 +164,9 @@ def trades(s: pd.DataFrame, spot: bool) -> pd.DataFrame:
 
 
 def main() -> None:
+    # SUSPENDU le 2026-11-19 avant tout lancement : l'utilisateur ne trade qu'en intraday (pas de position
+    # tenue 24 h). Voir wiki/experiments/fx-retournement-24h-yen.md. Ne pas retirer sans nouveau commit de grille.
+    raise SystemExit("Grille 24 h suspendue (contrainte intraday) : voir la fiche wiki, rien n'est calculé.")
     OUT.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
 

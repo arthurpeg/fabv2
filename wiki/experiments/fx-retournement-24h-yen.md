@@ -2,7 +2,7 @@
 type: experiment
 updated: 2026-11-19
 status: planned
-verdict: étape 1 figée (grille commitée), pas encore calculée
+verdict: grille 24 h suspendue (contrainte intraday) ; version intraday sous le seuil de taille sauf hypothèse haute
 prereg: []
 trials: 1798
 ---
@@ -10,6 +10,30 @@ trials: 1798
 # Retournement des rendements 24 h sur les paires yen (Piccotti)
 
 **Une phrase** : chaque jour à une heure fixe, prendre la position inverse du rendement des 24 h écoulées sur USD/JPY (et peut-être AUD/JPY), puis la garder 24 h. Le papier trouve une autocorrélation d'ordre 1 négative de ces rendements. Pour l'instant, c'est une fiche d'idée (étape 0 de [[PROTOCOLE]]) : aucun rendement n'a été calculé.
+
+## ⚠️ Contrainte intraday (2026-11-19) : la grille 24 h est suspendue
+
+L'utilisateur ne trade qu'en intraday : toute position ouverte un jour doit être fermée le même jour. La grille commitée dans `run_jpy_reversal24.py` (positions tenues 24 h) **n'a jamais été lancée**. Elle est suspendue : le script s'arrête avant tout calcul. Le compteur reste à 1 798.
+
+**Version intraday étudiée** : à l'heure H, le signal est le rendement des 24 h écoulées ; on prend la position inverse et on la ferme à 16:55 ET le même jour.
+
+**Hypothèse de taille** (la nôtre, pas celle du papier, qui ne dit pas à quel moment de la journée suivante le retournement se produit) : le retournement s'étale en proportion de la variance. Une fenêtre qui porte une part f de la variance d'un jour capte donc f fois l'effet 24 h.
+
+Parts de variance mesurées sur 6J 2016-2026-08 (écarts types seulement, aucune moyenne) : 03:00 → 16:55 = 59 %, 08:00 → 16:55 = 41 %, 09:30 → 16:55 = 27 %, 11:00 → 16:55 = 16 % (24 h : 59,5 bp).
+
+| Fenêtre | ρ supposé | Brut attendu | Net attendu | ≥ 1,5 × coût ? | Puissance brut L1 / L2 / L3 | Puissance net L1 / L2 / L3 |
+|---|---|---|---|---|---|---|
+| 03:00 → 16:55 | −0,05 | 1,40 bp | +0,27 | non | 15 / 21 / 29 % | 6 / 7 / 8 % |
+| 03:00 → 16:55 | −0,09 | 2,52 bp | +1,39 | oui | 28 / 45 / 62 % | 15 / 21 / 29 % |
+| 08:00 → 16:55 | −0,05 | 0,97 bp | −0,16 | non | 13 / 17 / 23 % | 4 % |
+| 08:00 → 16:55 | −0,09 | 1,75 bp | +0,62 | oui (de peu) | 23 / 35 / 49 % | 9 / 12 / 14 % |
+| 11:00 → 16:55 | −0,05 / −0,09 | 0,38 / 0,68 bp | négatif | non | ≤ 27 % | ≤ 2 % |
+
+**Lecture** :
+- Avec la contrainte intraday, seule la fenêtre 03:00 → 16:55 garde un net positif plausible, et seulement si ρ est en haut de la fourchette du papier.
+- Même dans ce cas, le holdout du yen ne pourrait pas trancher sur le net avant 2031 : la puissance plafonne à 29 %.
+- La fenêtre de la séance US (11:00 → 16:55, celle du n° 28) est exclue d'avance : son brut attendu est inférieur au coût.
+- Pour AUD/JPY, le coût double (deux jambes).
 
 ## Origine
 
