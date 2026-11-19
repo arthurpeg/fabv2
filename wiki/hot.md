@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-20 00:10
+updated: 2026-11-20 00:30
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,6 +24,7 @@ updated: 2026-11-20 00:10
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-20] ingest | Lecture complète de Batten et Lucey, « Volatility in the Gold Futures Market » (SSRN 996235) ; fiche [14] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md précisée (COMEX proche 8:20-15:30 NY, 1999-2005, sans nuit) | Aucun calcul, compteur inchangé 1 798 ; volatilité maximale à l'ouverture de la criée, décroissante ensuite, cohérente avec nos phénomènes Fattinger-Ziegler sur GC ; aucun signal
 - [2026-11-20] ingest | Lecture complète de Jin, Li, Wang, Yang, « Price Discovery in the Chinese Gold Market » (SSRN 2776581, PDF MPRA 71135 dans papers/ ; Xu-Zhang SSRN 2951302 introuvable en accès libre, publié payant au JFM 2019) ; fiche [7] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md précisée | Aucun calcul, compteur inchangé 1 798 ; découverte du prix interne à la Chine (futur SHFE > comptant SGE, ILS 61,7 %), sans COMEX : contexte seulement
 - [2026-11-19] ingest | Relecture complète de Zhang, « Price discovery in gold markets: China and the US » (SSRN 2564688) ; fiche [10] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md corrigée (données 2010-03 → 2012-03, avant la nuit SHFE ; SHFE et COMEX se relaient pour mener le comptant SGE, pas entre eux) | Aucun calcul, compteur inchangé 1 798 ; contexte de découverte du prix, pas de règle de trading
 - [2026-11-19] decision | Dépendances ML isolées du bot : LightGBM et scikit-learn passent dans le groupe uv `ml` (hors défaut, `uv run --group ml`) ; live/maj_auto.ps1 ne fait `uv sync` et ne relance les bots que si `uv export` (groupes par défaut) change avant / après la mise à jour | Cause : l'ajout de LightGBM aux dépendances par défaut avait relancé les bots A et B à 14:52 ET (sans position ouverte, état conservé) ; tests test_live 14/14 ; maj_auto testé sous PowerShell 5.1 (analyse sans erreur, comparaison des exports)
@@ -31,7 +32,6 @@ updated: 2026-11-20 00:10
 - [2026-11-19] schema | Coffre Obsidian en lecture seule C:\Users\arthu\fabv2-obsidian (worktree détaché sur origin/propfirm-ftmo, qui contient tout), ramené à jour par le hook Stop ; jonction vers papers/ ; CLAUDE.md : synchro des branches après tout travail, y compris sur main | Aucun calcul
 - [2026-11-19] schema | Dépôt réparti en branches emboîtées : main (papiers, phénomènes, wiki, protocole, préregs, code commun) → strategies-vbt (backtests) → propfirm-ftmo (simulations propfirm + bot live) et ml (nouvelle, fiche wiki/experiments/ml-anomalies.md) ; vps-journal intacte ; règle de routage au début de chaque discussion dans CLAUDE.md ; tools/sync_branches.py remonte le socle commun vers main et merge en cascade | Aucun historique réécrit (avance rapide partout, le VPS suit propfirm-ftmo) ; aucun calcul, compteur inchangé 1 798
 - [2026-11-19] abandon | Retournement 24 h des paires yen (Piccotti, SSRN 2446584) abandonné à l'étape 0 sur décision de l'utilisateur ; ligne au registre des échecs, fiche wiki/experiments/fx-retournement-24h-yen.md en abandoned | Aucun calcul de rendement ; raison : intraday uniquement → brut attendu 0,4-2,5 bp contre ≈ 1,13 bp de coût, puissance net ≤ 29 % en 2031 ; run_jpy_reversal24.py reste suspendu ; compteur inchangé 1 798
-- [2026-11-19] decision | Retournement 24 h yen : grille 24 h de run_jpy_reversal24.py suspendue avant tout lancement (contrainte de l'utilisateur : intraday uniquement), version intraday (signal 24 h à H, sortie 16:55 ET le jour même) réévaluée à l'étape 0 | Parts de variance 6J (écarts types seuls) : 03:00 → 16:55 59 %, 08:00 41 %, 11:00 16 % ; sous l'hypothèse « retournement proportionnel à la variance », seule 03:00 → 16:55 avec ρ −0,09 dépasse 1,5 × coût (brut 2,5 bp, net +1,4), puissance net ≤ 29 % à L3 ; 11:00 → 16:55 exclue (brut < coût) ; compteur inchangé 1 798
 
 ## Prochaines actions
 
