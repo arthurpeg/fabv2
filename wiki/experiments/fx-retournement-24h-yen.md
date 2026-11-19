@@ -1,8 +1,8 @@
 ---
 type: experiment
 updated: 2026-11-19
-status: planned
-verdict: grille 24 h suspendue (contrainte intraday) ; version intraday sous le seuil de taille sauf hypothèse haute
+status: abandoned
+verdict: ❌ abandonnée à l'étape 0 (intraday : taille < coût, puissance faible)
 prereg: []
 trials: 1798
 ---
@@ -10,6 +10,8 @@ trials: 1798
 # Retournement des rendements 24 h sur les paires yen (Piccotti)
 
 **Une phrase** : chaque jour à une heure fixe, prendre la position inverse du rendement des 24 h écoulées sur USD/JPY (et peut-être AUD/JPY), puis la garder 24 h. Le papier trouve une autocorrélation d'ordre 1 négative de ces rendements. Pour l'instant, c'est une fiche d'idée (étape 0 de [[PROTOCOLE]]) : aucun rendement n'a été calculé.
+
+**Abandonnée le 2026-11-19** (décision de l'utilisateur) : voir la ligne du [[wiki/Failed Ideas/ledger|registre]].
 
 ## ⚠️ Contrainte intraday (2026-11-19) : la grille 24 h est suspendue
 
