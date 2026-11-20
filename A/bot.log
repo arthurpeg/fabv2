@@ -30,3 +30,7 @@
 2026-11-19 17:00:00 ET [A] fin de journée : éval virtuel +0.00 %, meilleur jour +0.00 %, rewards 0 (0.00 %)
 2026-11-19 20:00:03 ET [A] OUVERT mom long 1.13 lots à 26392.88 (bid 26390.13, ask 26392.08, spread 1.95, glissement +0.80 pts) ; SL 217.9 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 20/11 09:29:57
 2026-11-20 02:25:22 ET [A] FERMÉ mom (SL) à 26172.83 : -248.66 $ (-2.49 %, -1.01 R) ; compte virtuel éval -2.49 % ; P&L cumulé tous essais -1,249.92 $ sur 5 trades (compte continu 8,750.08 $)
+2026-11-20 05:10:25 ET [A] MT5 connecté : compte 531542597 sur FTMO-Server3, solde 9,751.34 USD
+2026-11-20 05:10:25 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-20 05:10:25 ET [A] démarrage (code 8de24f6) ; compte virtuel éval -2.49 %, 0 position(s) suivie(s)
+2026-11-20 05:10:25 ET [A] règle d'arrêt de mom : 12 trades, cumul -7.34 R, frontière -9.87 R (marge +2.53 R) ; évals perdues d'affilée 1 / 6
