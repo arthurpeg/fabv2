@@ -1,0 +1,33 @@
+# Règle d'arrêt de mom (compte A), figée le 2026-11-20 avant le trade du soir (20:00 ET), à la demande de l'utilisateur.
+# NE PAS MODIFIER les paramètres après coup : toute modification = nouvelle règle, à justifier et dater dans le wiki.
+#
+# 1. Frontière statistique : après chaque trade de mom, à partir du n_min-ième, arrêt si
+#        cumul des R nets en live  <  mu * N  -  z * sd * sqrt(N)
+#    N = nombre de trades mom joués en live depuis le 2026-11-04 (démo comprise), R net = profit / (lots x stop).
+#    mu et sd : backtest 2011-07 -> 2026-08 (cache/propfirm/nq_nuit_tp4_mfe.parquet, coût 0,02 R ; 3 787 nuits).
+#    Calibrage (chemins historiques et bootstrap par blocs de 20) : fausse alarme ~3 % en 200 trades si l'espérance
+#    est celle du backtest ; arrêt en 200 trades 20 % si elle vaut 0 R, 37 % à -0,05 R, 58 % à -0,10 R.
+# 2. Garde-fou financier : arrêt si max_evals_perdues évals (ou comptes financés) du compte A sont perdues d'affilée
+#    sans reward (pire série historique : 5).
+# 3. Arrêt = le bot A ne passe plus d'ordre mom, définitivement (état collant dans etat.json) ; ne plus racheter
+#    d'éval A ; B continue. Reprise seulement par une nouvelle validation pré-enregistrée (au plus tôt la lecture du
+#    holdout NQ du 2028-02-29), en mettant actif = false ici et en effaçant "mom_arret" de live/etat/A/etat.json.
+
+actif = true
+mu = 0.106
+sd = 1.287
+z = 2.5
+n_min = 10
+max_evals_perdues = 6
+
+# Trades mom joués sur l'essai de démo (1515190763), archivés lors de la bascule du 2026-11-14 : ils comptent dans N
+# et dans le cumul. Les trades des vrais comptes sont lus dans live/etat/A/trades.csv.
+demo = [
+  { seance = "2026-11-05", R = -1.029959 },
+  { seance = "2026-11-06", R = 0.870080 },
+  { seance = "2026-11-09", R = -1.009959 },
+  { seance = "2026-11-10", R = -1.015463 },
+  { seance = "2026-11-11", R = 1.995079 },
+  { seance = "2026-11-12", R = -1.019753 },
+  { seance = "2026-11-13", R = -1.015092 },
+]

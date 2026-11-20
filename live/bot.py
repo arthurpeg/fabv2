@@ -366,6 +366,8 @@ class Bot:
                      f"(compte continu {self.nominal + cum['profit']:,.2f} $)")
             self.save()
             self.rapport()
+            if o["strat"] == "mom" and self.regle_arret() is not None and not self.mom_arrete():
+                self.log(self.etat_regle_mom())
 
     def debut(self, seance: pd.Timestamp) -> float | None:
         """Ouvre la journée FTMO virtuelle ; renvoie le risque de base de la journée (None si compte perdu)."""
@@ -377,6 +379,65 @@ class Bot:
                 return None
             j["base"] = self.compte.risque_base()
         return j["base"]
+
+    # ------------------------------------------------------------------ règle d'arrêt de mom
+    def regle_arret(self) -> dict | None:
+        p = Path(self.cfg.get("arret_mom", "live/arret_mom.toml"))
+        try:
+            r = tomllib.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            return None
+        return r if r.get("actif", False) and self.book == "A" else None
+
+    def bilan_mom(self, r: dict) -> tuple[int, float, float, int]:
+        """(N trades mom en live, cumul des R nets, seuil de la frontière, évals perdues d'affilée sans reward)."""
+        R = [float(d["R"]) for d in r.get("demo", [])]
+        p = self.dir / "trades.csv"
+        if p.exists():
+            t = pd.read_csv(p)
+            if len(t) and "R_net" in t:
+                R += t.loc[t.strat == "mom", "R_net"].astype(float).tolist()
+        n, cum = len(R), float(np.sum(R))
+        seuil = r["mu"] * n - r["z"] * r["sd"] * np.sqrt(n)
+        perdues = 0
+        for e in self.compte.events:
+            if "reward" in e:
+                perdues = 0
+            elif "perdu" in e:
+                perdues += 1
+        return n, cum, float(seuil), perdues
+
+    def mom_arrete(self, annonce: bool = True) -> bool:
+        """Vrai si la règle d'arrêt (live/arret_mom.toml) est déclenchée ; l'arrêt est collant (etat.json)."""
+        if self.etat.get("mom_arret"):
+            return True
+        r = self.regle_arret()
+        if r is None:
+            return False
+        n, cum, seuil, perdues = self.bilan_mom(r)
+        raison = ""
+        if n >= int(r["n_min"]) and cum < seuil:
+            raison = f"cumul {cum:+.2f} R sur {n} trades sous la frontière {seuil:+.2f} R"
+        elif perdues >= int(r["max_evals_perdues"]):
+            raison = f"{perdues} évals perdues d'affilée sans reward"
+        if not raison:
+            return False
+        self.etat["mom_arret"] = dict(date=f"{self.maintenant():%Y-%m-%d %H:%M}", raison=raison, n=n, cumul=cum)
+        self.save()
+        if annonce:
+            self.log(f"!! RÈGLE D'ARRÊT DE MOM DÉCLENCHÉE : {raison}. Plus aucun trade mom ; ne plus racheter d'éval A "
+                     f"(live/arret_mom.toml)")
+        return True
+
+    def etat_regle_mom(self) -> str:
+        r = self.regle_arret()
+        if r is None:
+            return "règle d'arrêt de mom : inactive"
+        if self.etat.get("mom_arret"):
+            return f"règle d'arrêt de mom : DÉCLENCHÉE le {self.etat['mom_arret']['date']} ({self.etat['mom_arret']['raison']})"
+        n, cum, seuil, perdues = self.bilan_mom(r)
+        return (f"règle d'arrêt de mom : {n} trades, cumul {cum:+.2f} R, frontière {seuil:+.2f} R "
+                f"(marge {cum - seuil:+.2f} R) ; évals perdues d'affilée {perdues} / {r['max_evals_perdues']}")
 
     # ------------------------------------------------------------------ événements
     def ev_mom(self, now: pd.Timestamp) -> None:
@@ -397,6 +458,9 @@ class Bot:
                 self.log(f"mom : marché fermé ce soir à 20:00, pas d'entrée")
             return
         self.marque(cle)
+        if self.mom_arrete():
+            self.log(f"mom {seance:%Y-%m-%d} : pas de trade, règle d'arrêt déclenchée ({self.etat['mom_arret']['raison']})")
+            return
         if self.compte.phase == "financé" and (seance - now.tz_localize(None).normalize()).days > 1:
             # FTMO (FAQ « hold positions overnight or over the weekend », relue le 2026-11-14) : sur le compte financé,
             # pas de position à travers une fermeture de plus de 2 h. Une nuit qui enjambe un jour férié (Thanksgiving,
@@ -534,6 +598,8 @@ class Bot:
         self.drapeau.unlink(missing_ok=True)  # on démarre déjà avec le code à jour
         self.log(f"démarrage (code {self.version()}) ; compte virtuel {self.compte.phase} {self.compte.P:+.2f} %, "
                  f"{len(self.etat['ouverts'])} position(s) suivie(s)")
+        if self.book == "A":
+            self.log(self.etat_regle_mom())
         msg = self.b.controle_heure()
         if msg:
             self.log(f"!! {msg}")
@@ -587,6 +653,8 @@ class Bot:
             jour = now.tz_localize(None).normalize()
             self.log(f"M2 {jour:%Y-%m-%d} : {S.signal_m2(m1, jour)}")
         self.log(f"compte virtuel : {self.compte}")
+        if self.book == "A":
+            self.log(self.etat_regle_mom())
 
     def test_ordre(self) -> None:
         """Contrôle du chemin des ordres sur la démo : taille théorique d'un trade réel, puis un vrai ordre au lot

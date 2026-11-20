@@ -143,6 +143,16 @@ C'est tout. Dans la minute, chaque bot voit le nouveau compte, écrit « BASCULE
 - [ ] **Jamais de trade à la main** sur ces comptes : le compte virtuel ne le verrait pas et la règle des 50 % pourrait casser.
 - [ ] Vérifier chaque jour qu'aucune alerte « !! » n'est restée sans suite (trading désactivé, barres M1 en retard, heure du VPS).
 
+## Règle d'arrêt de mom (compte A, figée le 2026-11-20)
+
+Paramètres et justification : `live/arret_mom.toml` (à ne pas modifier après coup). Le bot l'applique seul :
+
+- **Frontière** : après chaque trade de mom (démo du 04/11 comprise, à partir du 10e), arrêt si le cumul des R nets en live passe sous `0,106 × N − 2,5 × 1,287 × √N` (N = nombre de trades). Fausse alarme ≈ 3 % en 200 trades si mom vaut son backtest.
+- **Garde-fou** : arrêt si 6 évals ou comptes financés A sont perdus d'affilée sans reward.
+- **Arrêt** : `bot.log` affiche « RÈGLE D'ARRÊT DE MOM DÉCLENCHÉE », plus aucun ordre mom (état collant dans `live/etat/A/etat.json`, clé `mom_arret`). **Ne plus racheter d'éval A.** Le compte B continue.
+- **Suivi** : après chaque trade de mom et au démarrage, `bot.log` donne le cumul, la frontière et la marge ; aussi dans `--signaux`.
+- **Reprise** : seulement après une nouvelle validation pré-enregistrée (au plus tôt la lecture du holdout NQ du 2028-02-29).
+
 ## Écarts connus avec le backtest (à mesurer)
 
 - **Instrument.** Le bot trade le CFD US100.cash et non le future NQ :

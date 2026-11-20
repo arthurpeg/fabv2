@@ -286,3 +286,53 @@ def test_pas_de_fausse_alerte_pendant_la_pause_du_serveur(tmp_path):
     st.trade_ok = True
     bot.controle_compte()
     assert "de nouveau autorisé" in log.read_text(encoding="utf-8")
+
+
+def _bot_A(tmp_path, t="2026-11-20 20:00:01"):
+    from live.bot import Bot
+    clock = {"t": pd.Timestamp(t, tz=NY)}
+    return Bot(dict(book="A", dossier=str(tmp_path / "A"), annonces="live/annonces.csv"), broker=None,
+               horloge=lambda: clock["t"])
+
+
+def test_regle_arret_mom_etat_au_20_11(tmp_path):
+    """Règle figée le 2026-11-20 : 7 trades démo + 5 réels (−7,34 R sur 12) : pas d'arrêt ; il en faut 4 stops de plus."""
+    bot = _bot_A(tmp_path)
+    for R in (-1.015889, -1.033771, -1.033143, -1.022242, -1.009734):
+        bot.ecrit("trades.csv", dict(strat="mom", R_net=R))
+    r = bot.regle_arret()
+    assert r is not None and r["z"] == 2.5 and r["mu"] == 0.106 and r["sd"] == 1.287
+    n, cum, seuil, perdues = bot.bilan_mom(r)
+    assert n == 12 and cum == pytest.approx(-7.340, abs=1e-3) and seuil == pytest.approx(-9.874, abs=1e-3)
+    assert not bot.mom_arrete()
+    for k in range(3):
+        bot.ecrit("trades.csv", dict(strat="mom", R_net=-1.02))
+        assert not bot.mom_arrete(), k
+    bot.ecrit("trades.csv", dict(strat="M2", R_net=-5.0))  # autre stratégie : ignorée
+    assert not bot.mom_arrete()
+    bot.ecrit("trades.csv", dict(strat="mom", R_net=-1.02))
+    assert bot.mom_arrete()
+    log = (tmp_path / "A" / "bot.log").read_text(encoding="utf-8")
+    assert "RÈGLE D'ARRÊT DE MOM DÉCLENCHÉE" in log
+    # collant : un gain ensuite ne relance pas mom, et l'état survit au redémarrage
+    bot.ecrit("trades.csv", dict(strat="mom", R_net=5.0))
+    assert _bot_A(tmp_path).mom_arrete()
+
+
+def test_regle_arret_mom_evals_perdues(tmp_path):
+    bot = _bot_A(tmp_path)
+    bot.compte.events = ["2026-11-19 éval perdu (-10.01 %) → nouvelle éval virtuelle (79 €)"] * 5
+    assert not bot.mom_arrete()
+    bot.compte.events.append("2026-12-01 reward 3.00 % → demander le payout ; nouveau cycle financé")
+    bot.compte.events += ["2026-12-10 financé perdu (-10.00 %) → nouvelle éval virtuelle (79 €)"] * 5
+    assert not bot.mom_arrete()
+    bot.compte.events.append("2026-12-20 éval perdu (-10.00 %) → nouvelle éval virtuelle (79 €)")
+    assert bot.mom_arrete() and "6 évals perdues" in bot.etat["mom_arret"]["raison"]
+
+
+def test_regle_arret_mom_ne_touche_pas_B(tmp_path):
+    from live.bot import Bot
+    b = Bot(dict(book="B", dossier=str(tmp_path / "B"), annonces="live/annonces.csv"), broker=None)
+    for _ in range(30):
+        b.ecrit("trades.csv", dict(strat="mom", R_net=-1.0))
+    assert b.regle_arret() is None and not b.mom_arrete()
