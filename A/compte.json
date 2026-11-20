@@ -4,13 +4,13 @@
  "P": -2.4866,
  "hi": 0.0,
  "best": 0.0,
- "f0": null,
+ "f0": "2026-11-20",
  "evals": 2,
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-20",
  "pnl_jour": -2.4866,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": [
   "2026-11-19 éval perdu (-10.01 %) → nouvelle éval virtuelle (79 €)"
