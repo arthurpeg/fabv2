@@ -23,6 +23,8 @@ trials: 0
 | Règle des annonces | fermé à 8:19 ET les jours NFP / CPI / PIB avancé | M2 fermé à 13:55 les jours de Fed ; 3n non concerné |
 | Payout (cible + attente) | si seule la règle des 50 % bloque, viser 2 × meilleur jour − gain ; dès qu'elle est respectée (gain > 0), ne plus trader jusqu'au 14e jour après le 1er trade, puis demander le payout | idem |
 
+**Règle d'arrêt de mom** (figée le 2026-11-20, après 12 trades live à −7,34 R ; [live/arret_mom.toml](../../live/arret_mom.toml), section du [[live/README]]) : arrêt définitif de mom si le cumul des R nets live passe sous 0,106 N − 2,5 × 1,287 √N (N ≥ 10, démo comprise ; fausse alarme ≈ 3 % en 200 trades, arrêt en 200 trades 20 % si l'espérance vaut 0, 58 % si −0,10 R) ou après 6 évals A perdues d'affilée sans reward ; reprise seulement par une validation pré-enregistrée.
+
 **Anti-hedging** (règle FTMO, ajoutée le 2026-11-05) : une nuit où mom est short, pas de 3n long sur B ; M2 trade alors à pleine taille. 192 nuits sur 1 635 concernées, coût ≈ 2,6 % du gain total ([[reports/ftmo_anti_hedging_report]]). Tous les chiffres ci-dessous antérieurs au 2026-11-05 l'ignorent (écarts de 1 à 3 %).
 
 **Book C hypothétique** (2026-11-05, non retenu) : un trade au hasard chaque nuit chez FundingPips 1 Step Flex 10k ajoute ≈ +25 % au gain de A + B (≈ 1 000 $/an) et ≈ +50 % au creux de trésorerie ; seul, perdant sur 12 mois dans 20 % des cas ([[reports/book_c_report]]).
