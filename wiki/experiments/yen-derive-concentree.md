@@ -1,10 +1,10 @@
 ---
 type: experiment
 updated: 2026-11-21
-status: planned
-verdict: à faire (grille A + B figée)
+status: abandoned
+verdict: ❌ critère gain / bruit ≥ 0,15 non atteint (A 0,05, B 0,134)
 prereg: []
-trials: 1839
+trials: 1937
 ---
 
 # Dérive du yen en session US : la concentrer pour un format prop firm
@@ -41,7 +41,10 @@ trials: 1839
 ## Étape 1 : exploration
 
 - Grille A + B figée dans l'en-tête de [run_yen_derive_ab.py](../../run_yen_derive_ab.py), commitée avant le calcul.
-- Résultats : à venir.
+- Résultats : [[reports/yen_derive_ab_report]] (branche strategies-vbt), compteur 1 839 → 1 937.
+- **A** : aucune fenêtre courte ne bat 11:00 → 16:55. La meilleure (R4, 15:00 → 16:55) a un rapport gain / bruit de 0,051 contre 0,081 pour la fenêtre complète. La dernière heure 16:00 → 16:55 porte environ la moitié du brut (t 4,3) avec peu de bruit, mais pas assez pour payer 1 bp de coût.
+- **B** : le décile du haut de la hausse sur 3 jours fait +5,5 bp net (gain / bruit 0,18, t 3,0). Le meilleur seuil ex ante est q 0,8 : 17 % des jours, +3,6 bp, rapport 0,134, t 2,6, mais DSR 0,40 à N = 140.
+- **Verdict** : ❌, l'idée s'arrête. La réserve 2023-07 → 2026-08 n'est pas ouverte.
 
 ## Liens
 
