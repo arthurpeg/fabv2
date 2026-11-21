@@ -1,15 +1,15 @@
 ---
 type: hot
-updated: 2026-11-21 16:22
+updated: 2026-11-21 16:40
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 839** (source : [[reports/jpy_us_r4_stops_report]])
+- Compteur global d'essais : **1 937** (source : [[reports/yen_derive_ab_report]])
 - Dernier pré-enregistrement : n° 29 ([[PREREGISTRATION_29]])
-- Idées abandonnées au registre : 42 ([[wiki/Failed Ideas/ledger]])
+- Idées abandonnées au registre : 43 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-21
 
 ## Expériences ouvertes
@@ -24,6 +24,7 @@ updated: 2026-11-21 16:22
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-21] experiment | Dérive du yen concentrée pour la prop firm (fiche wiki/experiments/yen-derive-concentree, réserve par question 6J 2023-07-01 → 2026-08-28 déclarée et non ouverte) : grille A (18 tranches de 30 min × tous/R4, 24 fenêtres de 1 à 3 h × tous/R4) + B (déciles et 4 seuils glissants de la hausse du yen à 3 jours), figée avant calcul (run_yen_derive_ab.py, commit 068ce8a), exploration 6J 2016-01 → 2023-06, compteur 1 839 → 1 937 | ❌ critère gain / bruit ≥ 0,15 : A meilleure fenêtre R4 15:00 → 16:55 à 0,051 (< 0,081 pour 11:00 → 16:55 ; rien avant 11:00 ; 16:00 → 16:55 ≈ moitié du brut, t 4,3, mais −0,1 net) ; B décile haut +5,5 bp net (0,18, t 3,0), seuil q 0,8 à 0,134 (+3,6 bp, 17 % des jours), DSR 0,40 à N = 140 ; ligne au registre
 - [2026-11-21] query | Short yen filtré R4, SL k × ATR M15 (k = 2-5) avec TP 2R et 3R (run_jpy_us_r4_m15_tp.py, 8 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 831 → 1 839 | meilleur 4 ATR M15 + TP 2R +0,040 R (n° 29 : +0,041) ; TP touché 0,3-8 %, effet ±0,005 R ; SL 2 ATR M15 + TP 2R +0,017 R, creux −37 R ; seuil d'avenant +0,046 non atteint, n° 29 inchangé
 - [2026-11-21] query | Short yen filtré R4 avec SL k × ATR M15 sans TP, k = 2-5 (run_jpy_us_r4_m15.py, 4 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 827 → 1 831 | meilleur 4 ATR M15 (33 bp) +0,038 R contre +0,041 R pour 2 ATR H1 (n° 29) ; 2 ATR M15 (16,5 bp) +0,024 R, 32 % de SL, creux −34 R ; seuil d'avenant (+0,046 R) non atteint, n° 29 inchangé
 - [2026-11-21] query | Short yen filtré R4, SL 2 ATR H1 avec TP 2R au lieu de 3R (run_jpy_us_r4_tp2.py, 1 essai figé avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 826 → 1 827 | +0,043 R/trade (t NW 2,54) contre +0,042 avec TP 3R : TP touché 1,9 % des trades (21 sur 1 110, +1,95 R) contre 0,3 % ; SL 10,6 % (−1,04 R), sortie à 16:55 87 % (+0,13 R) ; écart négligeable, n° 29 inchangé (TP 3R figé)
@@ -31,7 +32,6 @@ updated: 2026-11-21 16:22
 - [2026-11-21] experiment | Short yen 11:00 → 16:55 ET filtré par jour (étape 1, données déjà vues 6J 2017-01 → 2026-08-28) : 4 filtres de volatilité ex ante (V1-V4) et 4 de retournement (yen en hausse sur la fenêtre de la veille, 3 fenêtres, la journée 16:55 → 16:55 de la veille, 3 journées : R1-R4), grille figée et commitée avant calcul (run_jpy_us_filtres.py, reports/jpy_us_filtres_report.md, results/jpy_us_filtres/, branche strategies-vbt), compteur 1 806 → 1 814 | Volatilité ❌ B1 (Sharpe quotidien 0,52-0,67 contre 0,64, t écart ≤ 1,6) → registre ; retournement ✅ B1 pour R1-R4, R4 la meilleure : net +2,09 bp les jours pris (46 %, t NW 3,5) contre −0,11 les autres (t 2,4), Sharpe quotidien 1,00, moitiés +1,80 / +2,38, 9/10 ans, DSR 0,98 à N = 42 → « À surveiller » ; condition de réouverture de Piccotti (retournement concentré en intraday) remplie ; pas de réserve : candidat à un pré-enregistrement n° 29 sur les données du n° 28 (non écrit)
 - [2026-11-21] query | Short yen 11:00 → 16:55 ET avec trailing stop k × ATR M15 / H1 (k = 1-4, sans TP), grille figée et commitée avant calcul, exploratoire sur 6J 2016-2026-08 déjà vu (run_jpy_us_trailing.py, reports/jpy_us_trailing_report.md, results/jpy_us_trailing/, branche strategies-vbt), compteur 1 798 → 1 806 | aucune des 8 ne bat la règle sans stop (+0,88 bp net, Sharpe 0,59) : trailing 1 ATR M15 −0,79 bp (97 % stoppés, Sharpe −1,18), 2 ATR M15 −0,47, 1 ATR H1 −0,29 ; larges = référence (4 ATR H1 +0,87, 4 % stoppés) ; trades stoppés à brut moyen négatif partout ; ligne au registre (stops sur le short yen, SL/TP + trailing) ; n° 28 inchangé
 - [2026-11-21] query | Short yen 11:00 → 16:55 ET : les SL sont-ils touchés par une hausse du yen qui « rechute » ensuite ? Comparaison des chemins réels 1 min (6J 2016-2026-08, déjà vus) aux mêmes minutes permutées dans la séance (même dérive, même volatilité), 5 combinaisons SL/TP de la grille déjà comptée ; script jetable, hors compteur (1 798) | Non : fréquence des SL identique au hasard (62 % contre 62 % pour SL 1 ATR M5, 31 % contre 31 % pour 2 ATR M15) et les trades stoppés finissent gagnants à 16:55 MOINS souvent que sur chemins permutés (38 % contre 44 % ; 14 % contre 18 %) : quand le yen monte assez pour toucher le stop, il continue plutôt (jours de stress) ; la perte des SL/TP est mécanique (sortie avant que la dérive de 2 bp s'accumule sous 24 bp de bruit), pas un motif intrajournalier
-- [2026-11-21] prereg | N° 21 : continuation de la nuit sur l'or hors échantillon dans le temps (or au comptant LSE 2003-05 → 2015-12, run_prereg21.py, reports/prereg21_report.md, results/prereg21/) ; avenant A (7fde669, avant calcul) : argent 2003-2017 indisponible (LSE limité à 10 ans, Dukascopy sans barres avant 2016), non testé, p = 1 dans Holm | ❌ ÉCHEC : 2 803 jours, pente c −0,0054 (b 0,995, t −0,09, p unilatéral 0,54, Holm 1,00), 2003-2008 c −0,10 / 2009-2015 c +0,08 ; règle nette −0,30 bp/jour (brut +1,39) ; registre des échecs, phénomène marqué contredit, réserve or au comptant consommée ; compteur inchangé (essais déjà comptés)
 
 ## Prochaines actions
 
