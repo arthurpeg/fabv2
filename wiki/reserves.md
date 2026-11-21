@@ -33,7 +33,8 @@ updated: 2026-11-19
 | CHF, CAD, NZD spot | 2016-01 → 2026-08-28 | Dukascopy 1 h / 1 min | explorée | n° 27 |
 | USDNOK, USDSEK spot | 2010-01 → 2016-12 | Dukascopy 1 h / 1 min | **vierge** | Contrôles de qualité seulement (spreads, couverture) |
 | EUR, GBP, JPY spot M15 (bid) | 2013 → 2025-06 | Dukascopy (`strategie trading`) | explorée | Contrôle de qualité du 2026-11-17 : moyennes de session vues |
-| Yen (6J, USDJPY, toute paire contre JPY) | à partir du 2026-08-29 | Databento (à acheter), Dukascopy | **réservée** | Holdout du n° 28 (short yen en session US), mêmes dates de lecture que le n° 26 |
+| Yen (6J, USDJPY, toute paire contre JPY) | à partir du 2026-08-29 | Databento (à acheter), Dukascopy | **réservée** | Holdout du n° 28 (short yen en session US), mêmes dates de lecture que le n° 26 ; aussi forward du n° 29 (R4 + SL 2 ATR H1), mêmes dates |
+| USDJPY comptant | début des ticks (2003-05) → 2009-12-31 | Dukascopy, ticks du datafeed → barres 1 min bid/ask | **réservée** | Vierge jusqu'au 2026-11-21 (disponibilité vérifiée par 3 codes HTTP, aucun prix lu) ; réserve du n° 29 (PREREGISTRATION_29), à télécharger puis à ouvrir une seule fois |
 | Autres FX, CL, GC, SI | à partir du 2026-08-29 | — | vierge | Pas téléchargé |
 | XAU/USD comptant (or) | 2003-05-05 → 2015-12-31 | London Strategic Edge 1 min (`cache/lse/XAU_lse_1m.parquet`) | consommée | Réserve du n° 21 (PREREGISTRATION_21, commit a2dc0b1 ; avenant A 7fde669), ouverte une fois le 2026-11-21 : échec ([[reports/prereg21_report]]) ; historique : réservée du 2026-11-02 au 2026-11-21 |
 | XAG/USD comptant (argent) | 2003-05-05 → 2017-03-31 | London Strategic Edge 1 min | indisponible | Réserve prévue au n° 21, jamais téléchargée : LSE limité à 10 ans (dès 2016-11-21), Dukascopy sans barres avant 2016 ; n° 21 mené sur l'or seul (avenant A) |

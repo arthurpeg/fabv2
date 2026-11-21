@@ -22,6 +22,7 @@ Le but est de pouvoir confirmer un phénomène sur nos données sans attendre de
 3. **Une réserve ne sert qu'à une famille d'idées.** Une fois ouverte, elle devient une donnée explorée pour toutes les idées suivantes.
 4. **Contrôles de qualité sur une réserve** : comptes de barres, trous, spreads, corrélations. Jamais de moyenne de rendement par session ou par heure. Le contrôle du 2026-11-17 sur le FX a consommé 2016-2025 de cette manière, sans le vouloir.
 5. **Le holdout post-2026-08-28 reste le dernier recours**, pour les règles qu'on veut trader.
+6. **Réserve par question** (2026-11-21) : une tranche explorée pour un effet de base garde ses 30 % récents pour une **couche nouvelle** (filtre, condition, stop), tant que ce découpage n'a jamais été calculé. Le verdict y porte sur l'écart avec la règle de base, pas sur le net seul. Détail : [PROTOCOLE.md](../../PROTOCOLE.md), étape 0, point 4.
 
 **Limite (puissance)** : une réserve de 3 ans ne détecte qu'un effet fort, environ t 2,4 pour un Sharpe annuel de 1,4. Un effet net faible (Sharpe ≈ 0,6) ne s'y confirme presque jamais. Pour ceux-là, il faut un holdout long ou le live.
 
