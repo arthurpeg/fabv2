@@ -1,0 +1,28 @@
+Échantillon commun : 2425 jours, 2017-01-30 → 2026-08-28
+Référence (tous les jours) : net +0.90 bp  brut +2.04  Sharpe 0.64  P&L +19 700 $
+
+V1 vol 20 > médiane 250 : ❌ t NW net ≥ 2,0 ; ❌ DSR (N = famille) ≥ 0,95 ; ❌ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+V2 vol 20 > tercile haut 250 : ❌ t NW net ≥ 2,0 ; ❌ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+V3 ATR H1 > médiane 250 : ✅ t NW net ≥ 2,0 ; ❌ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+V4 ATR H1 > tercile haut 250 : ✅ t NW net ≥ 2,0 ; ❌ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+R1 fenêtre veille yen ↑ : ✅ t NW net ≥ 2,0 ; ✅ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+R2 3 fenêtres yen ↑ : ✅ t NW net ≥ 2,0 ; ✅ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+R3 journée veille yen ↑ : ✅ t NW net ≥ 2,0 ; ✅ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+R4 3 journées yen ↑ : ✅ t NW net ≥ 2,0 ; ✅ DSR (N = famille) ≥ 0,95 ; ✅ bat la référence triviale (t écart ≥ 1,0) ; ✅ net > 0 dans les deux moitiés ; ✅ net > 0 sans la meilleure année ; ✅ net > 0 avec 1 tick de coût en plus
+
+                      filtre  jours_%    n  brut_pris  net_pris  net_sautes  t_pris_moins_sautes  t_nw_pris  sharpe_trade  sharpe_quotidien  pnl_usd  pire_creux_bp annees_pos  moitie1  moitie2  dsr_8  dsr_42    B1
+     V1 vol 20 > médiane 250    42.02 1019       2.47      1.31        0.60                 0.75       1.73          0.80              0.52 12961.25        -503.89       8/10     1.07     1.56   0.82    0.72 False
+V2 vol 20 > tercile haut 250    29.61  718       3.02      1.85        0.50                 1.19       1.92          1.06              0.58 12866.25        -483.01       7/10     1.65     2.05   0.89    0.82 False
+     V3 ATR H1 > médiane 250    42.72 1036       2.72      1.58        0.39                 1.25       2.10          0.96              0.62 16507.50        -364.50       6/10     1.05     2.11   0.90    0.82 False
+V4 ATR H1 > tercile haut 250    28.99  703       3.34      2.20        0.36                 1.59       2.27          1.24              0.67 15472.50        -399.81       7/10     1.48     2.93   0.94    0.89 False
+     R1 fenêtre veille yen ↑    42.60 1033       3.10      1.98        0.09                 2.07       3.03          1.40              0.91 18503.75        -354.12       7/10     0.50     3.46   0.98    0.96  True
+         R2 3 fenêtres yen ↑    40.33  978       2.78      1.67        0.38                 1.42       2.70          1.23              0.78 14828.75        -416.18       8/10     0.41     2.93   0.96    0.92  True
+     R3 journée veille yen ↑    45.53 1104       3.09      1.97        0.00                 2.16       2.88          1.34              0.90 20411.25        -325.25       8/10     0.83     3.11   0.98    0.96  True
+         R4 3 journées yen ↑    45.73 1109       3.22      2.09       -0.11                 2.43       3.50          1.48              1.00 22761.25        -356.26       9/10     1.80     2.38   0.99    0.98  True
