@@ -52,3 +52,15 @@ Rapportés en plus, sans valeur de décision : c winsorisé (1 % de chaque côt�
 ## Ce qui est interdit après calcul
 
 Changer les heures (17:00, 5:00, 17:00), les périodes, la règle de prix, le coût ; ajouter un filtre (tendance, volatilité, jour de semaine) ; exclure une année ; remplacer le comptant par un autre instrument.
+
+## Avenant A (2026-11-21, avant tout calcul de rendement sur ces données)
+
+**Cause** : les cours de l'argent au comptant 2003-05 → 2017-03 ne sont plus accessibles. London Strategic Edge limite désormais la formule gratuite à 10 ans d'historique (à partir du 2016-11-21, réponse « history-limit »), et Dukascopy ne renvoie aucune barre XAG/USD avant 2016 (sondages en minutes 2010, 2012, 2014 et en heures 2004, 2008, 2012). L'or au comptant 2003-05-05 → 2015-12-31 avait été téléchargé le 2026-11-02, avant la limite, et n'a jamais servi à un calcul de rendement.
+
+**Changements (seuls autorisés, décidés par l'utilisateur le 2026-11-21)** :
+1. H2 (argent) et la règle sur l'argent (test 4) ne sont **pas testés**. Pour la correction de Holm, chacun est compté avec **p = 1**. La famille reste de 2 tests : le p de l'or est donc multiplié par 2 (Holm et Bonferroni coïncident ici). De même pour les règles tradables (tests 3 et 4).
+2. **Verdict possible** : « succès partiel » si l'or remplit les critères 1 (p Holm < 0,05) et 2 (c > 0 sur 2003-05 → 2008-12 et sur 2009-01 → 2015-12) ; « échec » sinon. Le « succès principal » est impossible.
+3. Conséquences inchangées : succès partiel → la continuation reste « À surveiller » de [[wiki/phenomenes]], avec la mention « or 2003-2015 passe » ; échec → ligne au registre des échecs, effet traité comme propre au régime 2023-2026.
+4. Le compteur global n'est pas modifié (les 4 essais étaient déjà comptés : 1 685 → 1 689).
+
+Tout le reste (heures, période de l'or, règle de prix, statistique, coût, rapportés) est inchangé. `run_prereg21.py` est modifié uniquement pour retirer l'argent et appliquer le point 1.
