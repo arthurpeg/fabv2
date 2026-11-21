@@ -44,3 +44,23 @@ La règle est figée au [[PREREGISTRATION_29]].
 | SL 5 ATR M15 | 41,3 | 5,1 | +1,79 | +0,034 | +0,033 | +0,028 / +0,040 | −8,8 | 9/10 |
 
 **Lecture.** À distance égale, l'ATR M15 fait un peu moins bien que l'ATR H1 : +0,038 R pour 4 ATR M15 (33 bp) contre +0,041 R pour 2 ATR H1 (30 bp). Une ATR M15 mesure seulement les 3,5 dernières heures avant 11:00 : elle est plus bruitée et moins représentative de la fenêtre de 6 heures. La règle figée demandait +0,046 R pour écrire un avenant : le n° 29 reste inchangé.
+
+## Complément : SL en ATR M15 avec TP 2R ou 3R (2026-11-21)
+
+8 essais, figés avant calcul dans [run_jpy_us_r4_m15_tp.py](../run_jpy_us_r4_m15_tp.py). Compteur global : 1 839 (1 831 + 8).
+
+| Variante | Risque médian (bp) | % SL | % TP | R net | R avec glissement | Moitiés (R) | % gagnants | Pire creux (R) | Années + |
+|---|---|---|---|---|---|---|---|---|---|
+| SL 2 ATR M15, TP 2R | 16,5 | 31,4 | 8,2 | +0,017 | +0,004 | −0,004 / +0,037 | 49,5 | −36,9 | 6/10 |
+| SL 2 ATR M15, TP 3R | 16,5 | 31,6 | 2,7 | +0,019 | +0,007 | +0,001 / +0,038 | 49,1 | −36,3 | 6/10 |
+| SL 3 ATR M15, TP 2R | 24,8 | 16,1 | 3,2 | +0,033 | +0,029 | +0,016 / +0,051 | 52,8 | −18,9 | 8/10 |
+| SL 3 ATR M15, TP 3R | 24,8 | 16,1 | 0,8 | +0,038 | +0,034 | +0,021 / +0,055 | 52,8 | −18,9 | 7/10 |
+| SL 4 ATR M15, TP 2R | 33,0 | 8,7 | 1,4 | +0,040 | +0,039 | +0,033 / +0,048 | 54,0 | −11,5 | 8/10 |
+| SL 4 ATR M15, TP 3R | 33,0 | 8,7 | 0,3 | +0,039 | +0,037 | +0,031 / +0,046 | 54,0 | −11,5 | 8/10 |
+| SL 5 ATR M15, TP 2R | 41,3 | 5,1 | 0,4 | +0,034 | +0,033 | +0,027 / +0,040 | 54,3 | −8,8 | 9/10 |
+| SL 5 ATR M15, TP 3R | 41,3 | 5,1 | 0,3 | +0,036 | +0,035 | +0,030 / +0,042 | 54,3 | −8,8 | 9/10 |
+
+**Lecture.**
+- Le TP ne change presque rien : ±0,005 R au plus par rapport au même SL sans TP. Il n'est touché que dans 0,3 à 8 % des trades, et uniquement avec les stops serrés, où il coupe des gains.
+- La meilleure variante, 4 ATR M15 avec TP 2R (+0,040 R), égale la règle du n° 29 (+0,041 R) sans la dépasser. Le seuil d'avenant (+0,046 R) n'est pas atteint : le n° 29 reste inchangé.
+- Toutes les variantes de stops sur R4 testées (24 au total) se tiennent entre +0,03 et +0,04 R dès que la distance dépasse environ 25 bp. L'espérance vient de la dérive, pas de la gestion de la sortie.
