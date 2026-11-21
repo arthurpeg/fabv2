@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-21 16:11
+updated: 2026-11-21 16:14
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 831** (source : [[reports/jpy_us_r4_stops_report]])
+- Compteur global d'essais : **1 839** (source : [[reports/jpy_us_r4_stops_report]])
 - Dernier pré-enregistrement : n° 29 ([[PREREGISTRATION_29]])
 - Idées abandonnées au registre : 42 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-21
@@ -24,6 +24,7 @@ updated: 2026-11-21 16:11
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-21] query | Short yen filtré R4, SL k × ATR M15 (k = 2-5) avec TP 2R et 3R (run_jpy_us_r4_m15_tp.py, 8 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 831 → 1 839 | meilleur 4 ATR M15 + TP 2R +0,040 R (n° 29 : +0,041) ; TP touché 0,3-8 %, effet ±0,005 R ; SL 2 ATR M15 + TP 2R +0,017 R, creux −37 R ; seuil d'avenant +0,046 non atteint, n° 29 inchangé
 - [2026-11-21] query | Short yen filtré R4 avec SL k × ATR M15 sans TP, k = 2-5 (run_jpy_us_r4_m15.py, 4 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 827 → 1 831 | meilleur 4 ATR M15 (33 bp) +0,038 R contre +0,041 R pour 2 ATR H1 (n° 29) ; 2 ATR M15 (16,5 bp) +0,024 R, 32 % de SL, creux −34 R ; seuil d'avenant (+0,046 R) non atteint, n° 29 inchangé
 - [2026-11-21] query | Short yen filtré R4, SL 2 ATR H1 avec TP 2R au lieu de 3R (run_jpy_us_r4_tp2.py, 1 essai figé avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 826 → 1 827 | +0,043 R/trade (t NW 2,54) contre +0,042 avec TP 3R : TP touché 1,9 % des trades (21 sur 1 110, +1,95 R) contre 0,3 % ; SL 10,6 % (−1,04 R), sortie à 16:55 87 % (+0,13 R) ; écart négligeable, n° 29 inchangé (TP 3R figé)
 - [2026-11-21] decision | Protocole : réserve par question (PROTOCOLE.md étape 0 point 4, wiki/concepts/is-oos.md point 6) ; stops sur le short yen filtré R4 (run_jpy_us_r4_stops.py, reports/jpy_us_r4_stops_report.md, 8 essais figés avant calcul, compteur 1 814 → 1 822) ; n° 29 écrit et commité avant tout téléchargement (PREREGISTRATION_29.md, run_prereg29.py), compteur 1 822 → 1 826 | Stops R4 : SL 2 ATR H1 + TP 3R retenu par le critère figé (R net max) : +0,041 R/trade, 10,8 % de SL, TP 0,3 % (≈ SL seul ≈ 30 bp), pire creux −13 R ; SL 4 ATR H1 +2,02 bp sur +2,09 sans stop ; 1 σ20 s'effondre (+0,008 R) ; bougies dollar non testées (règle en temps, comptant sans volume). N° 29 : H1 écart jours R4 − autres > 0 (brut mid), H2 R net > 0, Holm sur 2 ; étape 3 sur USDJPY comptant Dukascopy 2003-05 → 2009-12 (vierge, ticks disponibles, déclarée réservée), étape 4 sur 6J aux dates du n° 28 ; puissance ≈ 44 % (H1) / 30 % (H2) → échec à écart positif = non concluant ; contrôle du code sur 6J déjà vu : R +0,042 (redonne S7)
@@ -31,7 +32,6 @@ updated: 2026-11-21 16:11
 - [2026-11-21] query | Short yen 11:00 → 16:55 ET avec trailing stop k × ATR M15 / H1 (k = 1-4, sans TP), grille figée et commitée avant calcul, exploratoire sur 6J 2016-2026-08 déjà vu (run_jpy_us_trailing.py, reports/jpy_us_trailing_report.md, results/jpy_us_trailing/, branche strategies-vbt), compteur 1 798 → 1 806 | aucune des 8 ne bat la règle sans stop (+0,88 bp net, Sharpe 0,59) : trailing 1 ATR M15 −0,79 bp (97 % stoppés, Sharpe −1,18), 2 ATR M15 −0,47, 1 ATR H1 −0,29 ; larges = référence (4 ATR H1 +0,87, 4 % stoppés) ; trades stoppés à brut moyen négatif partout ; ligne au registre (stops sur le short yen, SL/TP + trailing) ; n° 28 inchangé
 - [2026-11-21] query | Short yen 11:00 → 16:55 ET : les SL sont-ils touchés par une hausse du yen qui « rechute » ensuite ? Comparaison des chemins réels 1 min (6J 2016-2026-08, déjà vus) aux mêmes minutes permutées dans la séance (même dérive, même volatilité), 5 combinaisons SL/TP de la grille déjà comptée ; script jetable, hors compteur (1 798) | Non : fréquence des SL identique au hasard (62 % contre 62 % pour SL 1 ATR M5, 31 % contre 31 % pour 2 ATR M15) et les trades stoppés finissent gagnants à 16:55 MOINS souvent que sur chemins permutés (38 % contre 44 % ; 14 % contre 18 %) : quand le yen monte assez pour toucher le stop, il continue plutôt (jours de stress) ; la perte des SL/TP est mécanique (sortie avant que la dérive de 2 bp s'accumule sous 24 bp de bruit), pas un motif intrajournalier
 - [2026-11-21] prereg | N° 21 : continuation de la nuit sur l'or hors échantillon dans le temps (or au comptant LSE 2003-05 → 2015-12, run_prereg21.py, reports/prereg21_report.md, results/prereg21/) ; avenant A (7fde669, avant calcul) : argent 2003-2017 indisponible (LSE limité à 10 ans, Dukascopy sans barres avant 2016), non testé, p = 1 dans Holm | ❌ ÉCHEC : 2 803 jours, pente c −0,0054 (b 0,995, t −0,09, p unilatéral 0,54, Holm 1,00), 2003-2008 c −0,10 / 2009-2015 c +0,08 ; règle nette −0,30 bp/jour (brut +1,39) ; registre des échecs, phénomène marqué contredit, réserve or au comptant consommée ; compteur inchangé (essais déjà comptés)
-- [2026-11-20] query | Performances de mom depuis septembre 2026, sans rien recalculer sur le holdout NQ (≥ 2026-11-04, réservé n° 26) : fenêtre vue 2026-08-31 → 11-03 relue dans results/mom_perf/ (LSE, code figé) + trades live du bot (démo puis réel, 11-04 → 11-20) | backtest fenêtre vue : 44 nuits longues, −1,01 R (−0,023 R/nuit, 34 % gagnants, 64 % de stops, max DD −10,4 R, t −0,13) ; live : 12 trades, 2 gagnants, −7,34 R ; ensemble 56 trades −8,35 R (−0,15 R/trade) : 4,8 % des fenêtres de 56 trades du backtest 2011-07 → 2026-08 font aussi mal (script jetable, hors compteur) ; aucun calcul sur NQ après le 2026-11-03
 
 ## Prochaines actions
 
