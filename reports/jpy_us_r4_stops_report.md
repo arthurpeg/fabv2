@@ -31,3 +31,16 @@
    - Pour 8 essais de plus, le gain attendu est nul.
 
 La règle est figée au [[PREREGISTRATION_29]].
+
+## Complément : SL en ATR M15 (2026-11-21)
+
+4 essais, figés avant calcul dans [run_jpy_us_r4_m15.py](../run_jpy_us_r4_m15.py). Compteur global : 1 831 (1 827 + 4).
+
+| Variante (sans TP) | Risque médian (bp) | % SL | Net (bp) | R net | R avec glissement | Moitiés (R) | Pire creux (R) | Années + |
+|---|---|---|---|---|---|---|---|---|
+| SL 2 ATR M15 | 16,5 | 31,6 | +0,76 | +0,024 | +0,011 | +0,008 / +0,040 | −33,7 | 6/10 |
+| SL 3 ATR M15 | 24,8 | 16,1 | +1,35 | +0,036 | +0,032 | +0,020 / +0,052 | −18,9 | 7/10 |
+| SL 4 ATR M15 | 33,0 | 8,7 | +1,61 | +0,038 | +0,036 | +0,031 / +0,045 | −11,5 | 8/10 |
+| SL 5 ATR M15 | 41,3 | 5,1 | +1,79 | +0,034 | +0,033 | +0,028 / +0,040 | −8,8 | 9/10 |
+
+**Lecture.** À distance égale, l'ATR M15 fait un peu moins bien que l'ATR H1 : +0,038 R pour 4 ATR M15 (33 bp) contre +0,041 R pour 2 ATR H1 (30 bp). Une ATR M15 mesure seulement les 3,5 dernières heures avant 11:00 : elle est plus bruitée et moins représentative de la fenêtre de 6 heures. La règle figée demandait +0,046 R pour écrire un avenant : le n° 29 reste inchangé.
