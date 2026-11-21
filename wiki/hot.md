@@ -44,4 +44,5 @@ updated: 2026-11-21 15:42
 - Paper trading : fade de gap indices (avec interrupteur de régime) et M2 NQ.
 - ~~Or : continuation 17:00 → 5:00 NY sur le reste du jour~~ : ❌ échec du n° 21 le 2026-11-21 (or au comptant 2003-2015, pente nulle), voir [[reports/prereg21_report]].
 - **N° 28 (short yen en session US)** : aucun calcul sur le yen après le 2026-08-28 avant la lecture L1 du 2028-02-29 (acheter alors 6J.v.0 Databento avec NQ), puis `uv run python run_prereg28.py --lecture 2028-02-29`.
+- **N° 29 (R4 + SL 2 ATR H1 sur le short yen)** : télécharger les ticks USDJPY 2003-05 → 2009-12 (Dukascopy, barres 1 min bid/ask), contrôle de qualité sans moyenne de rendement, puis `uv run python -X utf8 run_prereg29.py --spot <fichier>` une seule fois ; forward aux dates du n° 28 (`--lecture`).
 <!-- NEXT-ACTIONS:END -->
