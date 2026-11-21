@@ -1,0 +1,17 @@
+
+=== XAU 2003-05-28 → 2015-12-31 : 2803 jours (sur 3304 jours ouvrés) ===
+N (17:00 veille → 5:00) : moyenne +3.80 bp, σ 59.4 ; D (5:00 → 17:00) : moyenne -0.93 bp, σ 106.9
+Pente c (principal) : -0.0054 (se 0.0585, t -0.09, p unilatéral 0.5365) → b = 0.995
+   2003-2008 : c -0.1015 (t -1.03, n 1066)
+   2009-2015 : c +0.0819 (t +1.35, n 1737)
+Rapportés : c winsorisé 1 % +0.0168 (t +0.39) ; corrélation de rang +0.0230 (p 0.2240)
+c par année : 2003 +0.047, 2004 +0.101, 2005 -0.162, 2006 +0.101, 2007 +0.184, 2008 -0.256, 2009 +0.098, 2010 +0.001, 2011 -0.007, 2012 -0.063, 2013 +0.249, 2014 +0.157, 2015 -0.054
+Règle gross : +1.39 bp/jour [-2.27 ; +5.20], t NW +0.70, p unilatéral 0.2535, Sharpe +0.21
+Règle net : -0.30 bp/jour [-3.97 ; +3.52], t NW -0.15, p unilatéral 0.5610, Sharpe -0.04
+Coût moyen aller-retour : 1.69 bp
+
+=== Décision (critères fixés dans PREREGISTRATION_21.md) ===
+XAU : c -0.0054, p unilatéral 0.5365, p Holm 1.0000 ; signe positif dans les 2 sous-périodes : False → ne remplit pas 1 et 2
+Argent (XAG) : non testé, données 2003-2017 indisponibles (avenant A), p = 1
+VERDICT : ÉCHEC
+Règle nette XAU (secondaire) : -0.30 bp/jour, p unilatéral Holm 1.0000

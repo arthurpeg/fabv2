@@ -35,8 +35,8 @@ updated: 2026-11-19
 | EUR, GBP, JPY spot M15 (bid) | 2013 → 2025-06 | Dukascopy (`strategie trading`) | explorée | Contrôle de qualité du 2026-11-17 : moyennes de session vues |
 | Yen (6J, USDJPY, toute paire contre JPY) | à partir du 2026-08-29 | Databento (à acheter), Dukascopy | **réservée** | Holdout du n° 28 (short yen en session US), mêmes dates de lecture que le n° 26 |
 | Autres FX, CL, GC, SI | à partir du 2026-08-29 | — | vierge | Pas téléchargé |
-| XAU/USD comptant (or) | 2003-05-05 → 2015-12-31 | London Strategic Edge 1 min (`cache/lse/XAU_lse_1m.parquet`) | **réservée** | Réserve du n° 21 (continuation de la nuit), déclarée le 2026-11-02 dans PREREGISTRATION_21 (commit a2dc0b1) ; téléchargé le 2026-11-02, aucun rendement calculé ; inscrite ici le 2026-11-21 avant l'ouverture |
-| XAG/USD comptant (argent) | 2003-05-05 → 2017-03-31 | London Strategic Edge 1 min | **réservée** | Réserve du n° 21, idem ; pas encore téléchargé au 2026-11-21 |
+| XAU/USD comptant (or) | 2003-05-05 → 2015-12-31 | London Strategic Edge 1 min (`cache/lse/XAU_lse_1m.parquet`) | consommée | Réserve du n° 21 (PREREGISTRATION_21, commit a2dc0b1 ; avenant A 7fde669), ouverte une fois le 2026-11-21 : échec ([[reports/prereg21_report]]) ; historique : réservée du 2026-11-02 au 2026-11-21 |
+| XAG/USD comptant (argent) | 2003-05-05 → 2017-03-31 | London Strategic Edge 1 min | indisponible | Réserve prévue au n° 21, jamais téléchargée : LSE limité à 10 ans (dès 2016-11-21), Dukascopy sans barres avant 2016 ; n° 21 mené sur l'or seul (avenant A) |
 
 ## Réserves déclarées pour des idées futures
 
