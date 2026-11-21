@@ -16,7 +16,7 @@ verdict: [[reports/gc_fattinger_report]], [[reports/si_fattinger_report]]
 - Se reproduit : pics de volatilité (8:30 domine, Tokyo, Europe, 8:20, 10:00, 13:30, Fed), pas de U, sauts ≈ 9 % dont 8:30 en tête (≈ 2 %), volume < volatilité la nuit, plus de prix par contrat la nuit.
 - **Contredit** : l'or fait aujourd'hui environ un quart de son prix avant 3:00 NY (autant que sa part de variance).
 - Non confirmé : début de Globex bruité (pente < 1 non significative), chute d'efficience avant l'Europe, 10:00 > Fed, pic à 16:00.
-- Nouveau, non validé : continuation du mouvement 17:00 → 5:00 sur le reste du jour, uniquement en 2023-2026.
+- Nouveau, non validé : continuation du mouvement 17:00 → 5:00 sur le reste du jour, uniquement en 2023-2026. ❌ Rejeté hors échantillon le 2026-11-21 (n° 21, or au comptant 2003-2015 : c −0,005, p Holm 1,00) : [[reports/prereg21_report]].
 
 **Argent (2017-2026, données London Strategic Edge)** : voir [[reports/si_fattinger_report]]. Même microstructure que l'or en plus bruyante (σ × 2,1) ; un quart du prix aussi avant 3:00 NY ; pas de pic à 13:30 ni de pic de volume aux anciennes heures de corbeille ; sauts 7,3 % (pas plus que l'or) ; profils de diffusion or/argent corrélés à 0,96 mais niveau × 2,2 ; continuation de nuit de même signe, non significative après Holm.
 
