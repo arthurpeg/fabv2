@@ -3,7 +3,8 @@
 
 uv run python run_prereg21.py   → results/prereg21/ (run.log, days_XAU.csv, days_XAG.csv, by_year.csv)
 
-Protocole figé dans PREREGISTRATION_21.md (commit a2dc0b1) ; rien n'est modifié ici.
+Protocole figé dans PREREGISTRATION_21.md (commit a2dc0b1) ; avenant A (commit 7fde669) : argent
+indisponible (2003-2017), non testé, compté p = 1 dans Holm ; or seul.
 Données : cache/lse/XAU_lse_1m.parquet, XAG_lse_1m.parquet (fetch_lse.py, marché commodities).
 """
 
@@ -21,7 +22,7 @@ from run_gc_sessions import NY, holm, nw_t
 OUT = Path("results/prereg21")
 ASSETS = {  # code : (fin de période, coût aller-retour en $/oz, coupure des sous-périodes)
     "XAU": ("2015-12-31", 0.15),
-    "XAG": ("2017-03-31", 0.006),
+    # "XAG": ("2017-03-31", 0.006),  # avenant A : données indisponibles, non testé (p = 1)
 }
 START = "2003-05-05"
 SPLIT = "2009-01-01"
@@ -108,8 +109,8 @@ def run(code: str, end: str, cost: float) -> dict:
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     res = {c: run(c, e, k) for c, (e, k) in ASSETS.items()}
-    p = np.array([res[c]["main"]["p1"] for c in ASSETS])
-    ph = holm(p)
+    p = np.array([res[c]["main"]["p1"] for c in ASSETS] + [1.0])  # avenant A : argent p = 1
+    ph = holm(p)[: len(ASSETS)]
     log("\n=== Décision (critères fixés dans PREREGISTRATION_21.md) ===")
     ok = {}
     for (c, r), h in zip(res.items(), ph):
@@ -118,8 +119,9 @@ def main():
         log(f"{c} : c {r['main']['c']:+.4f}, p unilatéral {r['main']['p1']:.4f}, p Holm {h:.4f} ; "
             f"signe positif dans les 2 sous-périodes : {sub_ok} → {'remplit' if ok[c] else 'ne remplit pas'} 1 et 2")
     n_ok = sum(ok.values())
+    log("Argent (XAG) : non testé, données 2003-2017 indisponibles (avenant A), p = 1")
     log("VERDICT : " + ("SUCCÈS" if n_ok == 2 else "SUCCÈS PARTIEL" if n_ok == 1 else "ÉCHEC"))
-    rp = holm(np.array([res[c]["rules"]["rule_net"]["p1"] for c in ASSETS]))
+    rp = holm(np.array([res[c]["rules"]["rule_net"]["p1"] for c in ASSETS] + [1.0]))[: len(ASSETS)]
     for (c, r), h in zip(res.items(), rp):
         log(f"Règle nette {c} (secondaire) : {r['rules']['rule_net']['moy_bp']:+.2f} bp/jour, p unilatéral Holm {h:.4f}")
     pd.concat([r["yr"] for r in res.values()]).round(5).to_csv(OUT / "by_year.csv", index=False)
