@@ -17,6 +17,7 @@ updated: 2026-11-19
 - [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 32 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
+- [[wiki/experiments/yen-derive-concentree|Dérive du yen concentrée (prop firm)]] — heures et intensité du short yen en session US, critère gain / bruit ≥ 0,15 non atteint · `abandoned` · 2026-11-21
 - [[wiki/experiments/nq-nuit-momentum|Règle NQ de nuit (momentum 12-1, 20:00 ET)]] — n° 10 à 13 ; validée OOS 2011–15, α +6 %/an, β 0,09 ; filtres anti-DD (prix, annonces, VIX, taille) et stop au range du soir rejetés · `active` · 2026-11-01
 - [[wiki/experiments/nq-nuit-3n-reversal|NQ overnight long 20:05 → 03:00, filtre 3 nuits (transmise)]] — refaite avec vectorbt : réplique exacte de l'original ; corrigée, 3n + SL 2 ATR M15 Sharpe 1,36 IS / 1,59 OOS ; ❌ hors échantillon 2010-2015 (n° 24 : +0,016 R, p 0,32 ; brut = prime de nuit) · `abandoned` · 2026-11-03
 - [[wiki/experiments/nq-ema930-m2|NQ intraday close 9:30 contre EMA12, modèle M2 (transmise)]] — refaite avec vectorbt : M2 + taille Sharpe 1,28 IS / 1,86 OOS (t 4,05) ; C seul 0,62 ; ❌ hors échantillon 2010-2012 (n° 25 : 5 bps/trade, p 0,19 ; filtre M2 sans effet) · `abandoned` · 2026-11-03

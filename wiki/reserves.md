@@ -29,6 +29,7 @@ updated: 2026-11-19
 | GC | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1, 3 (R7), sessions de l'or, Fattinger-Ziegler |
 | SI | 2017-04 → 2026-08-28 | London Strategic Edge | explorée | Fattinger-Ziegler |
 | 6E, 6B, 6J, 6A | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1 à 4, R2, R5, R6, n° 27, 28 (référence), backtest du yen |
+| 6J (réserve par question) | 2023-07-01 → 2026-08-28 | Databento 1 min | **réservée** (questions A et B seulement) | Réserve par question de [[wiki/experiments/yen-derive-concentree]] : profil par demi-heure 08:00-16:55 ET et seuils sur la hausse du yen à 3 jours, jamais calculés ; la tranche reste explorée pour tout le reste (effet de base, R4) |
 | EUR, GBP, JPY, CHF, AUD, CAD, NZD spot | 2010-01 → 2015-12 | Dukascopy 1 h / 1 min | explorée | n° 27 (moyennes des 4 sessions de Zhang) ; règle du yen 2012-2015 ; les autres fenêtres horaires n'ont pas été regardées, mais la tranche est classée explorée par prudence |
 | CHF, CAD, NZD spot | 2016-01 → 2026-08-28 | Dukascopy 1 h / 1 min | explorée | n° 27 |
 | USDNOK, USDSEK spot | 2010-01 → 2016-12 | Dukascopy 1 h / 1 min | **vierge** | Contrôles de qualité seulement (spreads, couverture) |
