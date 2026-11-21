@@ -1,16 +1,16 @@
 ---
 type: hot
-updated: 2026-11-21 14:33
+updated: 2026-11-21 15:28
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 798** (source : [[reports/jpy_us_distribution_report]])
+- Compteur global d'essais : **1 806** (source : [[reports/jpy_us_trailing_report]])
 - Dernier pré-enregistrement : n° 28 ([[PREREGISTRATION_28]])
-- Idées abandonnées au registre : 39 ([[wiki/Failed Ideas/ledger]])
-- Dernière activité : 2026-11-20
+- Idées abandonnées au registre : 41 ([[wiki/Failed Ideas/ledger]])
+- Dernière activité : 2026-11-21
 
 ## Expériences ouvertes
 
@@ -24,14 +24,14 @@ updated: 2026-11-21 14:33
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-21] query | Short yen 11:00 → 16:55 ET avec trailing stop k × ATR M15 / H1 (k = 1-4, sans TP), grille figée et commitée avant calcul, exploratoire sur 6J 2016-2026-08 déjà vu (run_jpy_us_trailing.py, reports/jpy_us_trailing_report.md, results/jpy_us_trailing/, branche strategies-vbt), compteur 1 798 → 1 806 | aucune des 8 ne bat la règle sans stop (+0,88 bp net, Sharpe 0,59) : trailing 1 ATR M15 −0,79 bp (97 % stoppés, Sharpe −1,18), 2 ATR M15 −0,47, 1 ATR H1 −0,29 ; larges = référence (4 ATR H1 +0,87, 4 % stoppés) ; trades stoppés à brut moyen négatif partout ; ligne au registre (stops sur le short yen, SL/TP + trailing) ; n° 28 inchangé
+- [2026-11-21] query | Short yen 11:00 → 16:55 ET : les SL sont-ils touchés par une hausse du yen qui « rechute » ensuite ? Comparaison des chemins réels 1 min (6J 2016-2026-08, déjà vus) aux mêmes minutes permutées dans la séance (même dérive, même volatilité), 5 combinaisons SL/TP de la grille déjà comptée ; script jetable, hors compteur (1 798) | Non : fréquence des SL identique au hasard (62 % contre 62 % pour SL 1 ATR M5, 31 % contre 31 % pour 2 ATR M15) et les trades stoppés finissent gagnants à 16:55 MOINS souvent que sur chemins permutés (38 % contre 44 % ; 14 % contre 18 %) : quand le yen monte assez pour toucher le stop, il continue plutôt (jours de stress) ; la perte des SL/TP est mécanique (sortie avant que la dérive de 2 bp s'accumule sous 24 bp de bruit), pas un motif intrajournalier
+- [2026-11-21] prereg | N° 21 : continuation de la nuit sur l'or hors échantillon dans le temps (or au comptant LSE 2003-05 → 2015-12, run_prereg21.py, reports/prereg21_report.md, results/prereg21/) ; avenant A (7fde669, avant calcul) : argent 2003-2017 indisponible (LSE limité à 10 ans, Dukascopy sans barres avant 2016), non testé, p = 1 dans Holm | ❌ ÉCHEC : 2 803 jours, pente c −0,0054 (b 0,995, t −0,09, p unilatéral 0,54, Holm 1,00), 2003-2008 c −0,10 / 2009-2015 c +0,08 ; règle nette −0,30 bp/jour (brut +1,39) ; registre des échecs, phénomène marqué contredit, réserve or au comptant consommée ; compteur inchangé (essais déjà comptés)
+- [2026-11-20] query | Performances de mom depuis septembre 2026, sans rien recalculer sur le holdout NQ (≥ 2026-11-04, réservé n° 26) : fenêtre vue 2026-08-31 → 11-03 relue dans results/mom_perf/ (LSE, code figé) + trades live du bot (démo puis réel, 11-04 → 11-20) | backtest fenêtre vue : 44 nuits longues, −1,01 R (−0,023 R/nuit, 34 % gagnants, 64 % de stops, max DD −10,4 R, t −0,13) ; live : 12 trades, 2 gagnants, −7,34 R ; ensemble 56 trades −8,35 R (−0,15 R/trade) : 4,8 % des fenêtres de 56 trades du backtest 2011-07 → 2026-08 font aussi mal (script jetable, hors compteur) ; aucun calcul sur NQ après le 2026-11-03
 - [2026-11-20] decision | Règle d'arrêt de mom en live figée avant le trade du soir (live/arret_mom.toml, live/bot.py regle_arret / bilan_mom / mom_arrete, live/README, 3 tests dans tests/test_live.py ; calibrage par script jetable sur cache/propfirm/nq_nuit_tp4_mfe.parquet, hors compteur) | frontière cumul R < 0,106 N − 2,5 × 1,287 √N (N ≥ 10, 7 trades démo + trades réels) ou 6 évals A perdues d'affilée ; fausse alarme ≈ 3 % en 200 trades (chemins historiques 3,2 %, bootstrap blocs 3,2 %), puissance en 200 trades 20 % (0 R) / 37 % (−0,05) / 58 % (−0,10) ; état au 20/11 : 12 trades, −7,34 R, frontière −9,87 R, marge +2,53 R (4 stops de plus déclenchent) ; arrêt collant, B non concerné ; correction : le décompte du 20/11 au matin (13 trades, −8,36 R) comptait un trade de trop
 - [2026-11-20] query | Journal VPS du 20/11 (nuit du 19 au 20) | A (nouvelle éval réelle 531542597, FTMO-Server3, détectée le 19/11 05:03 ET) : mom long 1,13 lot 20:00:03 à 26 392,88, stop 217,9 pts, SL à 02:25:22, −248,66 $ (−1,01 R), éval n° 2 −2,49 % ; B : 3n rien (+66,6 bps), éval −0,02 % (3n SL la nuit du 18 au 19, −249,83 $, efface le TP M2 du 17/11 ; pas de M2 le 19 : 3n au SL) ; exécution conforme ; mom live 13 trades, 2 gagnants, −8,36 R, 7 stops de suite : 0,8 % des fenêtres de 13 trades du backtest 2011-07 → 2026-08 font aussi mal (script jetable, hors compteur)
 - [2026-11-20] ingest | Lecture complète de Batten et Lucey, « Volatility in the Gold Futures Market » (SSRN 996235) ; fiche [14] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md précisée (COMEX proche 8:20-15:30 NY, 1999-2005, sans nuit) | Aucun calcul, compteur inchangé 1 798 ; volatilité maximale à l'ouverture de la criée, décroissante ensuite, cohérente avec nos phénomènes Fattinger-Ziegler sur GC ; aucun signal
 - [2026-11-20] ingest | Lecture complète de Jin, Li, Wang, Yang, « Price Discovery in the Chinese Gold Market » (SSRN 2776581, PDF MPRA 71135 dans papers/ ; Xu-Zhang SSRN 2951302 introuvable en accès libre, publié payant au JFM 2019) ; fiche [7] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md précisée | Aucun calcul, compteur inchangé 1 798 ; découverte du prix interne à la Chine (futur SHFE > comptant SGE, ILS 61,7 %), sans COMEX : contexte seulement
-- [2026-11-19] ingest | Relecture complète de Zhang, « Price discovery in gold markets: China and the US » (SSRN 2564688) ; fiche [10] de papiers_ssrn_overnight_fx_or_petrole_2026-11-02.md corrigée (données 2010-03 → 2012-03, avant la nuit SHFE ; SHFE et COMEX se relaient pour mener le comptant SGE, pas entre eux) | Aucun calcul, compteur inchangé 1 798 ; contexte de découverte du prix, pas de règle de trading
-- [2026-11-19] decision | Dépendances ML isolées du bot : LightGBM et scikit-learn passent dans le groupe uv `ml` (hors défaut, `uv run --group ml`) ; live/maj_auto.ps1 ne fait `uv sync` et ne relance les bots que si `uv export` (groupes par défaut) change avant / après la mise à jour | Cause : l'ajout de LightGBM aux dépendances par défaut avait relancé les bots A et B à 14:52 ET (sans position ouverte, état conservé) ; tests test_live 14/14 ; maj_auto testé sous PowerShell 5.1 (analyse sans erreur, comparaison des exports)
-- [2026-11-19] experiment | Filtre ML binaire à taille fixe 1 R sur mom (TP 4 ATR) pour le passage prop firm, branche ml : logit L2 et LightGBM contraint sur mom continu, nuit d−1 (Abdi), clôture − VWAP (BLW), NFP/CPI ; Purged K-Fold 5 × embargo 5 ; 70/50/35 % gardés ; Monte Carlo 10 000 chemins (+10/−10 R, +8/−6 R, FTMO 2,5 %) ; grille commitée avant calcul (2c9dcd6), reports/ml_propfirm_filter_report.md | ❌ AUC hors bloc 0,498 / 0,507 (Abdi seule 0,512) ; aucun filtre ML significatif (p brut ≥ 0,18, Holm 1,0), P(réussite) baseline 80,2 / 65,7 / 50,0 % contre ML ≤ 81,7 / 68,5 / 52,1 % (dans le p95 aléatoire) et Abdi seule 86,2 / 73,0 / 53,8 % à 35 % (non significative non plus) ; jours × 1,4-2,9 ; filtres négatifs sur 2023-2026 ; holdout non lu ; compteur 1 798 → 1 807
-- [2026-11-19] schema | Coffre Obsidian en lecture seule C:\Users\arthu\fabv2-obsidian (worktree détaché sur origin/propfirm-ftmo, qui contient tout), ramené à jour par le hook Stop ; jonction vers papers/ ; CLAUDE.md : synchro des branches après tout travail, y compris sur main | Aucun calcul
 
 ## Prochaines actions
 
