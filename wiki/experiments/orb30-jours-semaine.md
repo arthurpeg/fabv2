@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
 prereg: []
-trials: 2058
+trials: 2071
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -63,3 +63,6 @@ Demande de l'utilisateur : garder un objectif (prop firms) et faire fonctionner 
 ## Lundi-jeudi : biais EMA et réintégration (2026-11-22)
 
 Idée de l'utilisateur : biais de tendance par EMA 20/50 sur 15 min, 1 h, 4 h et jour (vote majoritaire) ; cassure dans le sens du biais (ordre stop), réintégration contre le biais (après une cassure contre le biais et une clôture de retour dans le range, ordre limite sur la borne cassée). Objectif 2R. Variantes choisies par l'utilisateur : stop de réintégration à 1 W ou au-delà de la mèche ; égalité 2-2 traitée de trois façons (pas de trade, ORB classique, le jour tranche) ; NQ seul. Décomposition : règle complète, cassure seule, réintégration seule. 13 essais ; grille figée dans l'en-tête de [run_orb30_biais.py](../../run_orb30_biais.py), commitée avant calcul ; n_famille = 73 ; compteur 2 058 → 2 071.
+
+**Résultat biais EMA et réintégration** ([[reports/orb30_biais_report]]) : ❌ B1. Meilleure variante : réintégration seule, stop 1 W, pas de trade si égalité, +0,045 R (t 1,40, DSR 0,009) ; règle complète +0,037 R (t 1,44) ; référence sans biais +0,015 R ; écarts avec la référence à t ≤ 0,55. Stop sous la mèche négatif. Un bug de sens (réintégrations à l'envers) a été trouvé à la vérification manuelle et corrigé avant lecture des résultats ; grille inchangée. Compteur 2 058 → 2 071.
+
