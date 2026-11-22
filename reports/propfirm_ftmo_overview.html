@@ -69,9 +69,9 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <main>
 
 <header>
-  <div class="kicker">fabv2 · branch <code>propfirm-ftmo</code></div>
+  <div class="kicker">fabv2 · branch <code>propfirm-ftmo</code> · updated 22 Nov 2026</div>
   <h1>Treating a prop-firm challenge as an option</h1>
-  <p class="lede">What this branch is for, how the simulator works, and what we learned about the contract itself. The trading signals that feed it are deliberately left out.</p>
+  <p class="lede">What this branch is for, how the simulator works, what we learned about the contract itself, the two-account plan we chose, and how it is doing on real FTMO accounts. The trading signals that feed it are deliberately left out.</p>
 </header>
 
 <h2>1. The idea</h2>
@@ -81,6 +81,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <div class="formula">EV per attempt = P(pass) × V(funded account) − fee</div>
 
 <p>The research on this branch evaluates <strong>a contract, not a market edge</strong>. That is why it sits outside the project's global trial counter. The first pre-registration (n° 18) used trades whose direction was a <em>coin flip</em>, to see how much of the value comes from the contract alone.</p>
+<p>The work then moved from simulation to execution. On 4 Nov 2026 we chose a <strong>two-account plan</strong> (section 8). A bot ran it on free FTMO trials from that day. Since <strong>14 Nov 2026 it trades two real FTMO 1-Step 10k evaluations</strong> (section 9).</p>
 
 <h2>2. How a challenge plays out</h2>
 <div class="card">
@@ -128,6 +129,9 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <tr><td>Best-day rule</td><td>The best day may not exceed 50 % of the profit. Accounts ordered since 12 Oct 2026 measure this against <em>net</em> profit; older ones measure it against the sum of winning days only.</td></tr>
 <tr><td>Reward timing</td><td>On request, from the 14th calendar day after the cycle's first trade, if the account is in profit and the best-day rule holds.</td></tr>
 <tr><td>News rule (funded)</td><td>No order may execute, stops and targets included, within 2 minutes of major US releases (NFP, CPI, advance GDP, Fed). Breaking it closes the account.</td></tr>
+<tr><td>No hedging across accounts</td><td>Opposite positions on two accounts of the same trader are forbidden (added to the model on 5 Nov 2026).</td></tr>
+<tr><td>Closures (funded)</td><td>No funded position may be held through a market closure longer than 2 hours, for example over a holiday. Allowed during the evaluation (added on 14 Nov 2026).</td></tr>
+<tr><td>Allocation cap</td><td>400k per trader or strategy.</td></tr>
 <tr><td>Fees</td><td>10k account €79, 100k account €499. The fee is not refunded.</td></tr>
 </table>
 </div>
@@ -295,7 +299,133 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 </div>
 <p>On the 01/09 start, the evaluation passed on 14/09. The funded account reached +3.78 % on 21/09 but was blocked by the best-day rule. On 22/09 a reduced target of +0.14 % was hit, and after waiting the reward of 3.53 % (≈ $353 on 10k, $3,530 on 100k) was taken on 28/09. Trading every night would have given nothing: the same losing stretch then took the account down. This window was seen before the official holdout and is descriptive only.</p>
 
-<h2>8. Caveats</h2>
+<h2>8. The plan we chose: two accounts, two signal families</h2>
+<p>Several accounts on the <em>same</em> signal blow up together (section 5), so the plan uses two accounts on <em>different</em> signals. It was chosen on 4 Nov 2026 after comparing single-signal, combined and three-signal plans.</p>
+<div class="grid">
+  <div class="card">
+    <h3>Account A</h3>
+    <p><strong>mom</strong>, the overnight NQ rule of section 7. Trades most nights, enters in the evening, exits before the US open.</p>
+  </div>
+  <div class="card">
+    <h3>Account B</h3>
+    <p><strong>3n</strong>, a short overnight long trade that fires on roughly 100 nights a year, and <strong>M2</strong>, a US day-session trend trade taken only when 3n did not trade or closed on time.</p>
+  </div>
+</div>
+<p>Both accounts share the same money management:</p>
+<ul>
+  <li><strong>Evaluation</strong>: 2.5 % risk per trade, target shrunk to what is still needed (+10 % and the best-day rule).</li>
+  <li><strong>Funded</strong>: 1 % risk, 2 R target, <strong>target + wait</strong> policy (section 7).</li>
+  <li><strong>News rule</strong> (funded only): A is flat by 8:19 ET on NFP, CPI and advance-GDP days; M2 is flat by 13:55 ET on Fed days. 3n is always flat by 03:00 and never exposed.</li>
+  <li><strong>Anti-hedging</strong> (FTMO forbids opposite positions across accounts, added 5 Nov): on a night when mom is short, B skips 3n and M2 trades at full size. This hits 192 of 1,635 3n nights (none in 2026) and costs about 2.6 % of the total gain.</li>
+  <li><strong>Holidays</strong> (funded only, added 14 Nov): FTMO forbids holding a funded position through a market closure longer than 2 hours, so mom skips the nights that span a holiday, about 9 a year. This cost is not yet measured.</li>
+</ul>
+
+<h3>Two 10k accounts, simulated</h3>
+<p>All figures include the news rule, target + wait and the anti-hedging rule. A failed account is bought again the next day. EV is net of evaluation fees ($86.90 per 10k).</p>
+<div class="kpis">
+  <div class="kpi"><div class="v">+$66.8k</div><div class="l">net, one real path 2011-07 → 2026-11</div><div class="d">≈ +$4,400 a year, no losing year</div></div>
+  <div class="kpi"><div class="v">80.6 %</div><div class="l">first evaluation: at least one account passes</div><div class="d">A 53 %, B 62 %</div></div>
+  <div class="kpi"><div class="v">96.5 %</div><div class="l">at least one reward with ≤ 2 evaluations per account</div><div class="d">first reward ≈ 30 sessions (median)</div></div>
+  <div class="kpi"><div class="v">+$7.9k</div><div class="l">3-year net, median, with half the edge</div><div class="d">+$12.8k with the full historical edge</div></div>
+</div>
+<div class="tablewrap">
+<table>
+<tr><th>Two 10k accounts, 3 years (5,000 block-bootstrap paths)</th><th class="n">Historical</th><th class="n">2019-2026 only</th><th class="n">Edge ÷ 2</th></tr>
+<tr class="hl"><td>Net after 3 years, median</td><td class="n">+$12,752</td><td class="n">+$11,919</td><td class="n">+$7,936</td></tr>
+<tr><td>P(net &lt; 0 after 1 year)</td><td class="n">0.1 %</td><td class="n">0.2 %</td><td class="n">2.7 %</td></tr>
+<tr><td>P(net &lt; 0 after 3 years)</td><td class="n">0 %</td><td class="n">0 %</td><td class="n">0 %</td></tr>
+<tr><td>Cash drawdown, 99th percentile</td><td class="n">−$797</td><td class="n">≈ −$870</td><td class="n">≈ −$1,300</td></tr>
+<tr><td>Worst run of failed A evaluations without a reward, 95th percentile</td><td class="n">7</td><td class="n">9</td><td class="n">10</td></tr>
+<tr><td>Correlation of A and B net results</td><td class="n">+0.10</td><td class="n">+0.14</td><td class="n">+0.08</td></tr>
+</table>
+</div>
+<p class="caption">"Edge ÷ 2" removes half of each signal's average R from every trade, keeping the volatility. It is the prudent case, because 3n and M2 failed their out-of-sample tests. Sources: <code>reports/ftmo_monte_carlo_report.md</code>, <code>reports/ftmo_deux_comptes_historique_report.md</code>, <code>reports/ftmo_proba_payout_report.md</code>, <code>reports/ftmo_anti_hedging_report.md</code>.</p>
+<p>On the single historical path, A and B almost never have a bad month together: their monthly cash flows are uncorrelated (+0.01) and no month is negative for both. Before the anti-hedging rule, the worst cash drawdown on that path was only −$435, and the longest stretch with no reward on either account was 98 days.</p>
+
+<h3>Scaling to the FTMO cap</h3>
+<p>We start with a <strong>$869 deposit</strong> (10 evaluations per pair of 10k accounts) and never add money. Rewards go into a pot. We move up one step when the pot covers 10 evaluations per pair at the next size: 1 → 2 → 3 × 10k per signal, then 1 × 100k, then 2 × 100k per signal, which is the <strong>400k FTMO cap</strong>.</p>
+<div class="tablewrap">
+<table>
+<tr><th>Scaling plan, 5-year simulation</th><th class="n">Historical</th><th class="n">Edge ÷ 2</th></tr>
+<tr class="hl"><td>Time to reach 400k, median</td><td class="n">12.4 months</td><td class="n">17.7 months</td></tr>
+<tr><td>Income per month once at 400k</td><td class="n">≈ $7,600</td><td class="n">≈ $5,000</td></tr>
+<tr><td>Pot after 5 years, median</td><td class="n">+$370k</td><td class="n">≈ +$210k</td></tr>
+<tr><td>Ruin (deposit lost)</td><td class="n" colspan="2">0.2 to 2.5 % of paths, depending on the scenario</td></tr>
+</table>
+</div>
+<p class="caption">Source: <code>reports/ftmo_scaling_report.md</code>. These are theoretical amounts: they assume the edge holds and every reward is paid. An 800k version (not allowed by FTMO today) and a third account at another firm with random trades (+24 % gain, +50 % drawdown) were studied and not kept.</p>
+
+<h2>9. Live: the bot and the first real accounts</h2>
+<h3>How it runs</h3>
+<div class="grid">
+  <div class="card">
+    <h3>One process per account</h3>
+    <p>A Python bot drives its own MetaTrader 5 terminal on a Windows VPS. It computes the signals on the broker's US100 CFD bars at the backtest times (New York time), places stop and target with the broker, and closes on time.</p>
+  </div>
+  <div class="card">
+    <h3>Virtual FTMO account</h3>
+    <p>The bot keeps its own copy of the FTMO account (the simulator's engine). It decides the risk, the shrunk target, the news cut, target + wait and the reward date, and says when to request a payout or buy a new evaluation.</p>
+  </div>
+  <div class="card">
+    <h3>Checked against the backtest</h3>
+    <p>Signals and stops match the backtest on truncated NQ bars, and a full replay of August 2026 with a fake terminal gives the same trades. Holidays, half days and the news calendar to end 2027 are covered by tests.</p>
+  </div>
+  <div class="card">
+    <h3>Safe updates, public journal</h3>
+    <p>Every 5 minutes the VPS pulls this branch, runs the live tests and restarts the bots only if they pass. It publishes its trades, logs and P&amp;L to a separate journal branch.</p>
+  </div>
+</div>
+
+<h3>Timeline</h3>
+<div class="tablewrap">
+<table>
+<tr><th>Date</th><th>Event</th></tr>
+<tr><td>4 Nov</td><td>Bot starts on two free FTMO trials (demo). First mom trade: stopped out after 17 minutes, as planned.</td></tr>
+<tr><td>5 Nov</td><td>Anti-hedging rule added. mom exits before 8:30 releases on funded accounts.</td></tr>
+<tr><td>13 Nov</td><td>FTMO rules re-read on ftmo.com: the numbers match the simulator. Three unclear points sent to support.</td></tr>
+<tr><td>14 Nov</td><td>Two real 1-Step 10k evaluations bought and connected. The bot archived the demo and started both accounts at 0 %.</td></tr>
+<tr><td>17 Nov</td><td>FTMO support answers in general terms (see caveats).</td></tr>
+<tr><td>19 Nov</td><td>Account A's first evaluation lost on mom's 4th straight stop. A new evaluation was bought the same day.</td></tr>
+<tr><td>20 Nov</td><td>A stop rule for mom is frozen before that evening's trade (below).</td></tr>
+</table>
+</div>
+
+<h3>Real-account trades so far (to 20 Nov)</h3>
+<div class="tablewrap">
+<table>
+<tr><th>Night / day</th><th>Account</th><th>Trade</th><th>Exit</th><th class="n">R</th><th class="n">$ (sim. 10k)</th></tr>
+<tr><td>15 → 16 Nov</td><td>A, eval 1</td><td>mom long</td><td>stop</td><td class="n">−1.02</td><td class="n">−250</td></tr>
+<tr><td>16 → 17 Nov</td><td>A, eval 1</td><td>mom long</td><td>stop</td><td class="n">−1.03</td><td class="n">−255</td></tr>
+<tr><td>16 → 17 Nov</td><td>B, eval 1</td><td>3n long</td><td>time (03:00)</td><td class="n">+0.29</td><td class="n">+73</td></tr>
+<tr><td>17 Nov</td><td>B, eval 1</td><td>M2 short</td><td>target</td><td class="n">+2.01</td><td class="n">+425</td></tr>
+<tr><td>17 → 18 Nov</td><td>A, eval 1</td><td>mom long</td><td>stop</td><td class="n">−1.03</td><td class="n">−255</td></tr>
+<tr><td>17 → 18 Nov</td><td>B, eval 1</td><td>3n long</td><td>stop</td><td class="n">−1.01</td><td class="n">−249</td></tr>
+<tr><td>18 → 19 Nov</td><td>A, eval 1</td><td>mom long (risk cut to 2.40 %)</td><td>stop → <strong>evaluation lost</strong></td><td class="n">−1.02</td><td class="n">−242</td></tr>
+<tr><td>18 → 19 Nov</td><td>B, eval 1</td><td>3n long</td><td>stop</td><td class="n">−1.01</td><td class="n">−250</td></tr>
+<tr><td>19 → 20 Nov</td><td>A, eval 2</td><td>mom long</td><td>stop</td><td class="n">−1.01</td><td class="n">−249</td></tr>
+</table>
+</div>
+<p class="caption">Evaluation P&amp;L is simulated money. The only real cash spent so far is three evaluation fees (≈ $261). State on 20 Nov: A on evaluation 2 at −2.49 %; B on evaluation 1 at −0.02 % (best day +4.97 %). No reward yet, as expected this early: the median first reward comes after about 30 sessions.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">1.95 pt</div><div class="l">overnight CFD spread</div><div class="d">1.5 pt assumed in the backtest; 1.45 pt for M2</div></div>
+  <div class="kpi"><div class="v">−1.8 pt</div><div class="l">average entry slippage, A</div><div class="d">negative = better than the signal price</div></div>
+  <div class="kpi"><div class="v">0</div><div class="l">execution errors on the real accounts</div><div class="d">times, sizes and stops as planned</div></div>
+</div>
+<p>Execution is as planned. The worst stop slippage was 5.6 points. On 19 Nov it pushed account A $1.26 past its −10 % floor, but with 2.40 % risk left, any stop would have lost the account anyway.</p>
+
+<h3>mom's bad start and its stop rule</h3>
+<p>Counting the demo, mom has played <strong>12 live trades: 2 winners, −7.34 R</strong>. The backtest averages +0.11 R a trade with 44 % winners. Runs like this one are rare but not abnormal. In the 2011-2026 backtest, 0.8 to 2.5 % of windows of the same length do as badly, and there are about 5 runs of 5 or more stops a year. Two checks found nothing to fix. A machine-learning filter on mom could not tell good nights from bad ones (out-of-sample AUC 0.50). mom's long trades do <em>not</em> get worse after a few weeks of NQ decline.</p>
+<p>So that the decision is not taken in the heat of a losing run, a stop rule was frozen on 20 Nov, before that evening's trade. The bot applies it by itself:</p>
+<div class="formula">stop mom for good if  cumulative live R  &lt;  0.106 N − 2.5 × 1.287 × √N   (N ≥ 10 trades)</div>
+<ul>
+  <li><strong>Calibration</strong> on the 2011-2026 backtest: about 3 % false alarms over 200 trades if mom is as good as its backtest. If its true expectancy is 0 R it stops within 200 trades 20 % of the time; at −0.10 R, 58 %.</li>
+  <li><strong>Financial guard</strong>: also stop after 6 lost A evaluations in a row without a reward. The worst historical run was 5.</li>
+  <li><strong>After a stop</strong>: no more A evaluations are bought, and B keeps running. mom only comes back after a new pre-registered validation, at the earliest when the NQ holdout is read on 29 Feb 2028.</li>
+  <li><strong>Now</strong> (12 trades): frontier −9.87 R, margin +2.53 R. Four more straight stops would trigger it.</li>
+</ul>
+
+<h2>10. Caveats</h2>
 <div class="note"><strong>Not modelled, or only partly.</strong>
 <ul>
   <li>Reward refusals or bans (for example FTMO's rule against "account rolling"). In the base case the EV only turns negative if roughly 65 % (10k) to 78 % (100k) of rewards are refused.</li>
@@ -305,10 +435,15 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
   <li>In the policy simulation, the 14-day reward delay is approximated as 10 trading nights. The target is judged hit from 1-minute bars, and a new account is assumed to start the night after a reward.</li>
   <li>Worst historical streaks (6 failed evaluations in a row, about 11 months without a reward in 2022) were measured with the earlier funded plan, not with target + wait.</li>
   <li>A live replay of September 2026 produced <em>no</em> reward under the current rules by 3 November. Historical averages hide long dry spells; the worst historical gap was about 11 months without a reward.</li>
+  <li><strong>FTMO's own guideline is tighter than our sizing.</strong> Support would not approve the strategy in advance. They pointed to the clause that simulated results must be reproducible in a real account, and gave a guideline: at most 20 % of margin and 1.5 % risk per trade idea. We risk 2.5 % per trade in evaluation, and 2 % on the same idea when A and B are both long on a funded night. Refused rewards remain the main unmodelled risk.</li>
+  <li><strong>Account B rests on weaker evidence.</strong> 3n and M2 failed their out-of-sample tests. Only mom has passed one, so the "edge ÷ 2" scenario is the honest one for B.</li>
+  <li><strong>The real overnight spread is 1.95 points</strong>, not the 1.5 points used in the simulations.</li>
+  <li><strong>The holiday rule</strong> (no funded position through a closure longer than 2 hours, about 9 mom nights a year) is not in the simulations.</li>
+  <li><strong>Holdout.</strong> Every live trade from 4 Nov 2026 falls inside the reserved NQ holdout. No backtest is recomputed on that period before 29 Feb 2028. Until then, the bot's journal measures execution, not edge.</li>
 </ul>
 </div>
 
-<h2>9. Where things live</h2>
+<h2>11. Where things live</h2>
 <div class="tablewrap">
 <table>
 <tr><th>Path</th><th>Content</th></tr>
@@ -316,12 +451,15 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <tr><td><code>propfirm/</code></td><td>Rule engines (FTMO, generic multi-firm, Lucid, STF) and trade libraries</td></tr>
 <tr><td><code>run_propfirm_*.py</code>, <code>run_ftmo_*.py</code></td><td>One script per question: variants, streaks, scaling paths, payout policy, replay</td></tr>
 <tr><td><code>reports/propfirm_*.md</code>, <code>reports/ftmo_*.md</code></td><td>Results, in French</td></tr>
-<tr><td><code>wiki/experiments/propfirm-ftmo-option.md</code></td><td>Running summary and links</td></tr>
-<tr><td><code>tests/test_propfirm.py</code></td><td>Rule-engine tests</td></tr>
+<tr><td><code>run_ftmo_deux_comptes*.py</code>, <code>run_ftmo_monte_carlo.py</code>, <code>run_ftmo_scaling*.py</code></td><td>The two-account plan: historical path, Monte Carlo, scaling</td></tr>
+<tr><td><code>wiki/experiments/propfirm-ftmo-option.md</code></td><td>Running summary and links, including the chosen plan</td></tr>
+<tr><td><code>live/</code></td><td>The bot: signals, virtual FTMO account, MT5 broker, news calendar, auto-update, mom stop rule (<code>arret_mom.toml</code>); setup and checklist in <code>live/README.md</code></td></tr>
+<tr><td>branch <code>vps-journal</code></td><td>Trades, logs and P&amp;L published by the VPS (read-only)</td></tr>
+<tr><td><code>tests/test_propfirm.py</code>, <code>tests/test_live*.py</code></td><td>Rule-engine and bot tests</td></tr>
 </table>
 </div>
 
-<footer>Research notes, not financial advice. Numbers are historical simulations under stated assumptions; the source reports take precedence over this page.</footer>
+<footer>Last updated 22 Nov 2026 (live figures to 20 Nov). Research notes, not financial advice. Numbers are historical simulations under stated assumptions; the source reports take precedence over this page.</footer>
 </main>
 </body>
 </html>
