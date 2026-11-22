@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 21:20
+updated: 2026-11-22 21:25
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
