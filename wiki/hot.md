@@ -46,5 +46,5 @@ updated: 2026-11-22 19:35
 - ~~Or : continuation 17:00 → 5:00 NY sur le reste du jour~~ : ❌ échec du n° 21 le 2026-11-21 (or au comptant 2003-2015, pente nulle), voir [[reports/prereg21_report]].
 - **N° 28 (short yen en session US)** : aucun calcul sur le yen après le 2026-08-28 avant la lecture L1 du 2028-02-29 (acheter alors 6J.v.0 Databento avec NQ), puis `uv run python run_prereg28.py --lecture 2028-02-29`.
 - **N° 29 (R4 + SL 2 ATR H1 sur le short yen)** : télécharger les ticks USDJPY 2003-05 → 2009-12 (Dukascopy, barres 1 min bid/ask), contrôle de qualité sans moyenne de rendement, puis `uv run python -X utf8 run_prereg29.py --spot <fichier>` une seule fois ; forward aux dates du n° 28 (`--lecture`).
-- **ORB 30 min NQ (Subhani)** : le vendredi réplique le papier (+0,19 R, t 3,50 ; objectif 2R +0,164 R) mais B1 ratée sur le DSR ; lundi-jeudi rien (règle seule, C1-C3, biais EMA). Réserve 2010-06 → 2015-12 **gardée en attente** d'autres papiers pour les autres jours ; famille N = 73. Voir [[wiki/experiments/orb30-jours-semaine]].
+- **ORB 30 min NQ (Subhani)** : clos le 2026-11-22. Vendredi rejeté sur la réserve 2010-2015 (n° 31 : +0,041 R, t 0,52) ; lundi-jeudi rien ; réserve consommée. Voir [[reports/prereg31_report]].
 <!-- NEXT-ACTIONS:END -->
