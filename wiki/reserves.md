@@ -21,6 +21,7 @@ updated: 2026-11-22
 |---|---|---|---|---|
 | ES, NQ, YM | 2016-01 → 2026-08-28 | Databento 1 min | explorée | n° 1 à 26, récolte 1, overnight, propfirm… |
 | ES, NQ, YM | 2010-06 → 2015-12 | Databento 1 min (`cache/databento_2010/`) | explorée | Réserve OOS des n° 11, 12, 19, 24, 25 : consommée plusieurs fois |
+| ES, YM (réserve par question) | 2021-10-01 → 2026-08-28 | Databento 1 min | **réservée** (question « sortie » seulement) | Déclarée le 2026-11-22, avant tout calcul, par la suite de [[wiki/experiments/nq-orb-bougie-sorties]] (run_orb_bougie_indices.py) : même question que la ligne NQ ci-dessous, sur ES et YM. R4 y a déjà été vu (Sharpe net 2023-2026 : ES −0,64, YM −0,81) |
 | NQ (réserve par question) | 2021-10-01 → 2026-08-28 | Databento 1 min | **réservée** (question « sortie » seulement) | Déclarée le 2026-11-22, avant tout calcul, par [[wiki/experiments/nq-orb-bougie-sorties]] : règle de la 1ʳᵉ bougie de Zarattini-Aziz avec d'autres sorties (sans stop ni objectif ; stop k × ATR et objectif RR × stop). Ces sorties n'ont jamais été calculées sur NQ. La tranche reste explorée pour tout le reste, y compris R4 (stop à l'extrême de la bougie, 10R), déjà vu jusqu'au 2026-08 |
 | NQ | 2026-08-29 → 2026-11-03 | London Strategic Edge | explorée | Lecture anticipée du n° 26 (avenant A) |
 | NQ | à partir du 2026-11-04 | Databento (à acheter), LSE | **réservée** | Holdout du n° 26 (mom, M2, 3n SL, rebond) ; lectures 2028-02-29, 2029-08-31, 2031-08-29 |
