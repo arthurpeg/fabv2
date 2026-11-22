@@ -40,3 +40,7 @@ Papiers lus : *Beat the Market* version du 22/09/2025 avec FAQ (SSRN 4824172), C
 - **Autres actifs (FAQ Q13, 33 futures, 2007-2024)** : Sharpe moyen 0,60 ; Nasdaq 1,23, S&P 500 1,32, MidCap 0,80, Russell 0,45 ; 21 matières premières anonymisées, de −0,30 à 1,11 (la plupart 0,2-0,6). QQQ 0,99, IWM 0,45 (Delgado).
 - **Variantes jugées utiles par les auteurs ou les répliques** : lookback 90 j (Sharpe 1,50 contre 1,35, FAQ Q6) ; multiplicateur 1,3-1,5 ; jambe courte plus faible (0,56 contre 0,90) ; taille continue selon le volume relatif cumulé (Delgado, seule modification qui améliore les quatre fenêtres). Maróy (Sharpe > 3) = optimisation de 7-11 paramètres sans hors échantillon : à ignorer.
 
+
+## Vérification de fidélité : VWAP à l'entrée (2026-11-22)
+
+Demande de l'utilisateur : voir si exiger le VWAP à l'entrée (code des auteurs) améliore M2, **sans rien publier vers le bot du VPS**. Script séparé [run_m2_vwap.py](../../run_m2_vwap.py) (copie de `m2_noise`, rien de modifié dans `fab/strategies.py`), grille commitée avant calcul : NQ, ES, YM × {1×, volatilité cible}, 6 essais, compteur 2 085 → 2 091. Ce n'est pas une réouverture : données 2016-2026 déjà explorées, aucun verdict B1.
