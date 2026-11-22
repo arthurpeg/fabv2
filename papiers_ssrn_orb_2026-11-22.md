@@ -48,9 +48,11 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 >
 > **Pour nous :** confirme que la règle publiée se reproduit **sur la période d'origine** (comme chez nous sur NQ 2016-2022), mais n'apporte **rien hors échantillon** : même période 2016-2023, pas de coûts de futures, et l'optimisation du stop est un ajustement après coup. Le point utile est l'échec sur les autres titres, qui va dans le sens du registre. 🔴 Aucune donnée après 2023, donc rien sur l'effondrement post-publication que nous avons mesuré.
 
-### [2] Regime-Conditional Alpha in SPY 0DTE Opening Range Breakout Strategies: A Filtering and Strike Selection Framework
+### [2] 🚫 Regime-Conditional Alpha in SPY 0DTE Opening Range Breakout Strategies: A Filtering and Strike Selection Framework
 
-- **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6355218
+> 🚫 **Retiré de SSRN** (constaté par l'utilisateur le 2026-11-22) : le lien ne mène plus au papier. OpenAlex et Crossref gardent la notice et le résumé ci-dessous, mais le texte n'est plus disponible. **À ne pas citer comme source.**
+
+- **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6355218 (retiré)
 - **Actifs :** SPY, via des **spreads verticaux d'options 0DTE** (2022-2025)
 - **Plage horaire / Session :** ouverture du cash US ; la cassure du range d'ouverture déclenche l'achat d'un spread qui expire le jour même
 - **Date :** 2026 | **Auteurs :** Justin Chuk | **Citations :** 0
