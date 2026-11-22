@@ -32,7 +32,7 @@ Tableau complet (Sharpe, gagnants, points, dollars, sous-périodes, DSR) : `resu
 
 ## Fiche de la règle choisie (meilleur Sharpe : NQ, vendredi)
 
-n 527 · brut +0,201 R · net **+0,190 R** (médiane +0,026) · écart-type 1,29 R · Sharpe 2,33 (annualisé sur ≈ 50 trades par an) · **t NW 3,50**, p 0,0002 · 50,7 % de gagnants · pire creux −9,5 R · 10/11 années positives · moitiés +0,099 / +0,280 · sans la meilleure année +0,162 · avec 1 tick de plus +0,184 · autres jours +0,019 (écart t 2,75) · **DSR (N = 45) 0,846**.
+n 527 · brut +0,201 R · net **+0,190 R** (médiane +0,026) · écart-type 1,29 R · Sharpe 0,147 par trade, soit ≈ 1,04 par an pour ≈ 50 trades par an (la colonne `sharpe_an` de grille.csv annualise par √252 et le surestime d’environ 2,2 fois ; corrigé le 2026-11-22) · **t NW 3,50**, p 0,0002 · 50,7 % de gagnants · pire creux −9,5 R · 10/11 années positives · moitiés +0,099 / +0,280 · sans la meilleure année +0,162 · avec 1 tick de plus +0,184 · autres jours +0,019 (écart t 2,75) · **DSR (N = 45) 0,846**.
 
 **B1 : ❌ ratée sur le seul DSR** (0,846 pour 0,95). Les cinq autres critères passent nettement.
 
