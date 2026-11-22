@@ -2,9 +2,9 @@
 type: experiment
 updated: 2026-11-22
 status: active
-verdict: en cours (étape 1)
+verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
 prereg: []
-trials: 2025
+trials: 2043
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -42,3 +42,6 @@ Vendredi, réserve : environ 280 trades. Effet du papier 0,2 R, écart-type ≈ 
 ## Étape 1 : exploration
 
 Grille figée dans l'en-tête de [run_orb30_jours.py](../../run_orb30_jours.py), commitée avant tout calcul. Résultats : [[reports/orb30_jours_report]].
+
+**Résultat (2026-11-22)** : la règle **réplique le papier** sur NQ (période du papier : vendredi +0,219 R, t 3,34, contre +0,199 R, t 3,05 sur QQQ). Sur 2016-2026, la meilleure case est NQ vendredi : +0,190 R (+244 $ par trade), t NW 3,50, 10 années positives sur 11, meilleure que les autres jours (écart t 2,75). ES vendredi +0,113 R (t 2,02), YM rien. **B1 ❌ sur le seul DSR (0,846, N = 45)** ; les cinq autres critères passent. Ligne « À surveiller » dans [[wiki/phenomenes]]. Réserve 2010-06 → 2015-12 non lue (puissance ≈ 80 %). Compteur 2 025 → 2 043.
+
