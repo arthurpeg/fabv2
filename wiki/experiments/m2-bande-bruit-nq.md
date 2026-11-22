@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: paper-trading
 verdict: rejeté (DSR), surveillé
 prereg: [1, 2, 3, 19]
-trials: 138
+trials: 2091
 ---
 
 # Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ
@@ -39,4 +39,11 @@ Papiers lus : *Beat the Market* version du 22/09/2025 avec FAQ (SSRN 4824172), C
 - **Après la publication** : bon jusqu'en août 2025 (Sharpe 1,06-1,28), puis SPY −8,1 % de septembre 2025 à août 2026 (Delgado) ; Paz : 0,39 sur mai 2024 → mars 2026, sans écart significatif des moyennes. Chuk sur NQ : 2025 faible (+3,38 $/jour) mais 2026 bon.
 - **Autres actifs (FAQ Q13, 33 futures, 2007-2024)** : Sharpe moyen 0,60 ; Nasdaq 1,23, S&P 500 1,32, MidCap 0,80, Russell 0,45 ; 21 matières premières anonymisées, de −0,30 à 1,11 (la plupart 0,2-0,6). QQQ 0,99, IWM 0,45 (Delgado).
 - **Variantes jugées utiles par les auteurs ou les répliques** : lookback 90 j (Sharpe 1,50 contre 1,35, FAQ Q6) ; multiplicateur 1,3-1,5 ; jambe courte plus faible (0,56 contre 0,90) ; taille continue selon le volume relatif cumulé (Delgado, seule modification qui améliore les quatre fenêtres). Maróy (Sharpe > 3) = optimisation de 7-11 paramètres sans hors échantillon : à ignorer.
+
+
+## Vérification de fidélité : VWAP à l'entrée (2026-11-22)
+
+Demande de l'utilisateur : voir si exiger le VWAP à l'entrée (code des auteurs) améliore M2, **sans rien publier vers le bot du VPS**. Script séparé [run_m2_vwap.py](../../run_m2_vwap.py) (copie de `m2_noise`, rien de modifié dans `fab/strategies.py`), grille commitée avant calcul : NQ, ES, YM × {1×, volatilité cible}, 6 essais, compteur 2 085 → 2 091. Ce n'est pas une réouverture : données 2016-2026 déjà explorées, aucun verdict B1.
+
+**Résultat** ([[reports/m2_vwap_report]]) : exiger le VWAP à l'entrée améliore un peu M2, surtout sur NQ à taille fixe : Sharpe net 1,16 → **1,23** sur 2016-2026 (IS 1,26, OOS 1,19), +0,7 pt par trade, 4 % de trades en moins, écart journalier +0,24 bp (t 2,27) ; ES 0,60 → 0,65 ; YM et volatilité cible dans le bruit. NQ corrigé = exactement le Sharpe des auteurs pour le future Nasdaq (1,23, FAQ Q13). Vérification de fidélité, pas une validation ; rien changé dans `fab/strategies.py` ni dans le bot. Compteur 2 085 → 2 091.
 
