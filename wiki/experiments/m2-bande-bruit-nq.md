@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: paper-trading
 verdict: rejeté (DSR), surveillé
 prereg: [1, 2, 3, 19]
-trials: 2109
+trials: 2127
 ---
 
 # BB : bande de bruit (« Beat the Market », Zarattini et al.) sur NQ
@@ -68,3 +68,6 @@ Demande de l'utilisateur : BB sur NQ avec SL = k × ATR14 et TP = RR × SL, surv
 ## BB un trade par jour et prop firm par convexité (2026-11-22, exploration)
 
 Demande de l'utilisateur : exploiter BB dans l'approche prop firm « convexe » (risque élevé en éval pour valider ou échouer vite) et limiter à un trade par jour. Étape 1 : [run_bb_1j.py](../../run_bb_1j.py), même grille SL / TP en ne gardant que le premier trade de la séance (18 essais, compteur 2 109 → 2 127), grille commitée avant calcul ; exporte les trades pour le simulateur FTMO. Étape 2 : simulation FTMO 1-Step sur la branche `propfirm-ftmo`.
+
+**Résultat un trade par jour + FTMO** ([[reports/propfirm_bb_report]]) : avec un trade par jour, le R par trade monte (mode A, SL 0,25 ATR, TP 3R : +0,148 R, t 4,4, ≈ 21 R par an) et le creux tombe à −14 R. En FTMO 1-Step, l'éval à 2-2,5 % se joue en 10-15 trades (passage 47-56 %), EV ≈ +1 450 à +1 560 $ par mois d'emplacement 100k : au niveau du plan 3n + M2 (+1 477 $), sous mom (+1 989 $). Témoin sans edge +406 $. Exploration sur données vues ; compteur 2 109 → 2 127.
+
