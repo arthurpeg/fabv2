@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-22 21:14
+updated: 2026-11-22 21:20
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **2 091** (source : [[reports/m2_vwap_report]])
+- Compteur global d'essais : **2 109** (source : [[reports/bb_sltp_report]])
 - Dernier pré-enregistrement : n° 31 ([[PREREGISTRATION_31]])
 - Idées abandonnées au registre : 54 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
@@ -24,6 +24,7 @@ updated: 2026-11-22 21:14
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] experiment | BB NQ avec SL k × ATR / TP RR × SL, modes A (suiveur gardé) et B (suiveur remplacé), 18 essais ; grille commitée (b217c32), 2 trades vérifiés, compteur 2 091 → 2 109 | Exploration : mode A SL 0,25 ATR TP 2R Sharpe 1,13 → 1,49, creux −39,3 k$ → −27,3 k$, ≈ 32,3 k$/an par contrat ; gain journalier pas significativement différent (t 0,75) ; SL 0,5-1 ATR ≈ BB ; confirmation seulement en forward
 - [2026-11-22] schema | Bande de bruit renommée BB dans le wiki (titre, index, liens nommés) ; sources antérieures inchangées (« M2 ») ; performances de référence de BB en dollars ajoutées (results/m2_vwap/bb_performances.txt) | NQ ≈ 29 300 $/an par contrat, Sharpe $ 1,13, creux −39 300 $ ; ES ≈ 9 900 $/an ; YM ≈ 0 ; descriptif, aucun nouvel essai
 - [2026-11-22] schema | Désambiguïsation des deux « M2 » (signalée par l'utilisateur) : bande de bruit de Zarattini (m2-bande-bruit-nq, m2_noise) ≠ M2 du bot FTMO (modèle M2 de la stratégie EMA 9:30, nq-ema930-m2) ; note en tête des deux pages | aucun calcul
 - [2026-11-22] experiment | M2 bande de bruit : VWAP exigé à l'entrée (code des auteurs) contre entrée actuelle, NQ/ES/YM × 1× et volatilité cible ; grille commitée (f59c2d5), vérification manuelle, rien vers le bot ; compteur 2 085 → 2 091 | Amélioration modeste : NQ 1× Sharpe 1,16 → 1,23 (écart t 2,27), ES 0,60 → 0,65, YM ≈ ; NQ corrigé = Sharpe des auteurs pour le future Nasdaq ; pas une validation
@@ -31,7 +32,6 @@ updated: 2026-11-22 21:14
 - [2026-11-22] prereg | N° 31 : ORB 30 min de Subhani le vendredi sur NQ (A sans objectif, B objectif 2R), réserve 2010-06 → 2015-12, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (c7fb825), une exécution ; compteur 2 079 → 2 085 | ❌ C1 et C3 pour A et B : +0,041 R (t 0,52), +0,038 R (t 0,54), Holm 0,59 ; placebo : vendredi au niveau du jeudi ; rejet, réserve consommée, phénomène annoté « contredit »
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi : clôture au-delà de la borne (1 et 5 min), heure de cassure, ordres limite sur les bords ; grille commitée (dd00ed2), 2 trades vérifiés à la main, compteur 2 073 → 2 079 | ❌ B1 : tout entre −0,024 et +0,022 R ; ligne au registre
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, régime RSI 5 jours (gamma, Zarattini-Aziz-Barbon 2024) : V1 filtre, V2 cassure/réintégration ; grille commitée (99a2573), 2 réintégrations vérifiées à la main, compteur 2 071 → 2 073 | ❌ B1 : V1 +0,018 R (t 0,48), V2 +0,006 R ; aucune pente par quintile de RSI ; ligne au registre
-- [2026-11-22] decision | ORB 30 min NQ : réserve 2010-06 → 2015-12 gardée en attente (décision de l'utilisateur, d'autres papiers pourraient aider les autres jours) | règles de réserve et de famille (N = 73) écrites dans wiki/experiments/orb30-jours-semaine ; prochaine action ajoutée à hot.md
 
 ## Prochaines actions
 
