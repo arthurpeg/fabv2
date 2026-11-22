@@ -24,7 +24,7 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 | **5 min** | Zarattini-Barbon-Aziz 2024 (4729284) | > 7 000 actions US | Sharpe 2,81 en ne tradant que les « stocks in play » (volume relatif anormal) | M3c (proxy volume 1,5 ×) : améliore la médiane, rien ne survit hors échantillon |
 | 5 / 15 / 30 / 60 min | Fetna 2026 (7428398) | 9 futures US, 2010-2026, grille pré-enregistrée de 225 cellules | 🔴 0 cellule sur 225 après 25 $ l'aller-retour ; **le 5 min est la pire fenêtre** ; la meilleure cellule échoue au test d'ancre aléatoire (expansion de volatilité, pas information de l'ouverture) | M3b (5 min) : confirme |
 | plusieurs | Mesfin 2026 (6709401) | MNQ 2021-2025, barres 5 min | 🔴 ORB et 13 autres familles : avantage brut 0,07 à 1,5 point contre 2 points de coût | — |
-| **30 min** | Subhani 2026 (7589980) | QQQ, SPY, 17 instruments, 2018-2026 | +0,44R par trade hors échantillon sur QQQ, **seulement les vendredis sans annonce** (NFP, CPI, FOMC, résultats des méga-capitalisations exclus) ; DSR 0,78 QQQ, 0,42 SPY | Non testé (filtre absent de M3) |
+| **30 min** | Subhani 2026 (7589980) | QQQ, SPY, 17 instruments, 2018-2026 | **Tous les vendredis, sans filtre d'annonce** (texte intégral ; le résumé d'une version antérieure disait « sans annonce »), stop = 1 largeur de range, sortie à la clôture : test 2024-2026 +0,338 R, échantillon complet t 3,05 ; DSR 0,999 ou 0,19-0,47 selon les essais comptés | Non testé (pas de filtre jour de la semaine dans M3) |
 | **30 min** | — | NQ | — | M3a : +0,06 en IS, +0,95 en OOS (régime 2023+) |
 | 1 à 5 min (optimisé) | Tsai et al. 2019 (IEEE) | futures d'indices | fenêtre de sondage optimisée en échantillon | non répliqué |
 | après cassure | Pineda 2026 (6745958) | QQQ 2017-2024 | descriptif : le délai avant le retest du niveau cassé est la variable la plus liée à l'issue | — |
@@ -61,7 +61,7 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 
 > **Résumé (abstract paraphrasé) :** Étude **par simulation Monte-Carlo calibrée** sur des paramètres tirés de la littérature, sur 756 jours possibles (2022-2025) dont 214 trades après filtres. Avec des sorties fixes à 25 % / 50 %, le taux de réussite d'équilibre est de 66,7 % : le taux filtré observé (65,4 %, intervalle de Wilson 58,8-71,5 %) est **au bord de la rentabilité** et très sensible au slippage. L'apport annoncé est le choix du strike : la distance entre le niveau de cassure et le strike change le coût et le point mort, et un strike long placé à environ 1-2 $ de la cassure maximise l'espérance simulée.
 >
-> **Pour nous :** 🔴🧪⚠️ trois réserves fortes : (1) **simulation, pas backtest sur prix réels** ; (2) filtre VIX et options 0DTE hors de notre périmètre OHLCV ; (3) même avec les filtres, l'avantage est nul à l'intervalle près. Seule idée réutilisable : le filtre « pas d'annonce macro », qui rejoint Subhani (7589980) et notre règle des annonces côté FTMO.
+> **Pour nous :** 🔴🧪⚠️ trois réserves fortes : (1) **simulation, pas backtest sur prix réels** ; (2) filtre VIX et options 0DTE hors de notre périmètre OHLCV ; (3) même avec les filtres, l'avantage est nul à l'intervalle près. Seule idée réutilisable : le filtre « pas d'annonce macro », qui rejoint notre règle des annonces côté FTMO (Subhani l'a essayé et rejeté, voir [18]).
 
 ### [3] Day Trading: Adapting to Change
 
@@ -139,7 +139,7 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 
 > **Résumé (abstract paraphrasé) :** Règle entièrement mécanique : stop à l'autre extrémité du range, objectif à 2,3R, exécution sur bid et ask séparés. 2 457 trades en dix ans, 29,5 % de réussite, espérance nette d'environ −0,03R par trade (cumul d'environ −73R), **non significativement différente de zéro** (t ≈ −0,98, p ≈ 0,33 ; intervalle à 95 % de −0,09R à +0,03R).
 >
-> **Pour nous :** ⚠️ hors indices, mais c'est un bon **test placebo** de l'ORB 15 min : à la même heure, sur un actif sans vraie ouverture, rien. Cohérent avec l'idée que l'avantage de l'ORB, s'il existe, vient de l'ouverture d'un marché fermé (indices cash) et non de l'heure elle-même. 🔴 Ne contredit pas Subhani (or positif certains vendredis) car le filtre n'est pas le même.
+> **Pour nous :** ⚠️ hors indices, mais c'est un bon **test placebo** de l'ORB 15 min : à la même heure, sur un actif sans vraie ouverture, rien. Cohérent avec l'idée que l'avantage de l'ORB, s'il existe, vient de l'ouverture d'un marché fermé (indices cash) et non de l'heure elle-même. 🔴 Ne contredit pas Subhani (GLD +0,09 R non significatif, mais GDX et SLV positifs, les vendredis seulement), car le filtre n'est pas le même.
 
 ---
 
@@ -285,6 +285,15 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 
 ### [18] Opening-Range Breakouts on Event-Free Fridays: A Search-Aware Replication and Stress Test
 
+> **Correction du 2026-11-22 (texte intégral lu, version du 15 novembre 2026, 38 pages, [papers/txt/subhani_orb_fridays.txt](papers/txt/subhani_orb_fridays.txt)) : la fiche ci-dessous, tirée d'un résumé d'une version antérieure, est fausse sur le point principal.** La version actuelle s'intitule *Opening-range breakouts on Fridays* et la règle trade **tous les vendredis, sans aucun filtre d'annonce** (« no session is excluded for scheduled news, earnings or any other reason ») ; les filtres d'annonces et de résultats ont été essayés puis **rejetés** (registre de l'auteur, lignes 6, 23, 38-39).
+> - **Règle** : QQQ (et SPY), barres 1 min, 1ᵉʳ mai 2018 → 12 juin 2026. Range = plus haut et plus bas des 30 premières minutes (9:30-10:00). Entrée par ordre stop posé sur la borne, dès qu'une barre la touche, à n'importe quelle heure ensuite, achat ou vente. **Stop à une largeur de range de l'entrée** (k = 1), fixe. Pas d'objectif ; sortie à la clôture. 1 R = largeur du range W. Coût 0,02 % du nominal (exécution réelle), médiane 0,035 R sur QQQ. Taille : 3 % du capital risqué par trade, levier médian 5,2× (jusqu'à 16,7×).
+> - **Résultats QQQ** : 410 trades. Entraînement (286) +0,139 R, facteur de profit 1,32 ; test chronologique à partir du 5 janvier 2024 (124) **+0,338 R**, PF 1,98, t 2,54 ; échantillon complet +0,199 R, t 3,05. Walk-forward : 366 trades, +0,209 R, 17 fenêtres sur 22 positives, mais **3 sur 6** parmi celles postérieures à la conception (100 trades, +0,250 R). SPY : test +0,245 R, échantillon complet t 1,88.
+> - **Le vendredi seul** : lundi à jeudi, même règle : entraînement −0,05 à +0,04 R, test −0,10 à +0,11 R, aucun t au-dessus de 1,05 ; vendredi : entraînement +0,139 (t 1,89), test +0,338 (t 2,54), échantillon complet t 3,05.
+> - **DSR** : 0,999 si l'on ne compte que les 17 essais antérieurs au choix (K = 3 grappes) ; **0,19 à 0,47** si l'on compte les 239 essais du projet. L'auteur laisse le lecteur choisir.
+> - **Autres actifs** (test, règle figée) : 4 sur 17 survivent à Benjamini-Hochberg à 5 % (XLK, QQQ, SMH, QQQM, qui se recouvrent) ; DIA (Dow) +0,11 R non significatif ; défensifs et TLT ≈ 0.
+> - **Mécanisme** : inconnu. Ni l'échéance mensuelle des options, ni le week-end, ni la compression de volatilité ne l'expliquent ; les 0DTE sont citées comme piste non testée. Les jours à range étroit rapportent plus en R (effet mécanique du dénominateur W).
+> - **À noter pour nous** : l'auteur a essayé une **entrée « sens de la bougie »** et une règle de momentum intraday publiée, toutes deux **rejetées** face à la cassure (registre, ligne (b)). Il a aussi rejeté un filtre de volume relatif et un filtre de régime de volatilité. Le test n'est pas vierge (variantes vues dessus avant de figer la règle). Rédaction assistée par Claude (déclaration de l'auteur).
+
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7589980
 - **Actifs :** QQQ, SPY et 15 autres instruments (secteurs, métaux…), données 1 minute, 2018-2026
 - **Plage horaire / Session :** **range de 30 minutes** (9:30-10:00 ET), seulement les **vendredis sans annonce** (NFP, CPI, FOMC, semaines de résultats des méga-capitalisations exclus)
@@ -382,5 +391,5 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 ## Bilan pour la suite
 
 1. **ORB classique (cassure du range 5/15/30/60 min) sur futures d'indices** : la littérature indépendante récente (Fetna, Mesfin, Wijesinghe, Donninger) et notre M3 disent la même chose : rien après coûts. La nouvelle réplication [1] ne porte que sur la période d'origine.
-2. **Les seules pistes non encore testées chez nous** viennent de papiers déjà fournis : le **filtre « vendredi sans annonce »** de Subhani (ORB 30 min) et la **règle de la 1ʳᵉ bougie de 5 min** de Zarattini-Aziz, qui n'est pas une cassure (M3b testait une cassure). Les deux supposent d'abord une condition de réouverture au registre.
+2. **Les seules pistes non encore testées chez nous** viennent de papiers déjà fournis : le **filtre « vendredi »** de Subhani (ORB 30 min, tous les vendredis ; le filtre d'annonces y a été rejeté) et la **règle de la 1ʳᵉ bougie de 5 min** de Zarattini-Aziz, qui n'est pas une cassure (M3b testait une cassure). Les deux supposent d'abord une condition de réouverture au registre.
 3. **La bande de bruit sur NQ** ([5]) est le résultat le plus proche de ce que nous avons en paper trading : le confronter à la page M2 au moment de la lecture du forward, sans recalcul d'ici là.
