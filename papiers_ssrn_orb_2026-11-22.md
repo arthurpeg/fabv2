@@ -104,6 +104,13 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 
 ### [5] Noise-band Intraday Momentum in Nasdaq-100 Futures
 
+> **Texte intégral lu le 2026-11-22** ([papers/txt/ssrn-7609644.txt](papers/txt/ssrn-7609644.txt), 7 pages, version d'octobre 2026). Points absents du résumé :
+> - **2014-2019 « vérifié et plat »** : l'auteur ne présente que 2020 → juillet 2026, parce que le comportement intraday de NQ « a changé vers 2020 ». C'est cohérent avec notre M2 (≈ 0,55 de Sharpe sur 2010-2015).
+> - Règle figée : bougies 5 min, entrées seulement à :00 et :30 (10:00-15:30), long si clôture > bande haute **et** > VWAP ; stop suiveur = la plus proche de la bande et du VWAP, recalculé toutes les 5 min ; sortie 15:55 ; 1 MNQ ; coût 2 $ aller-retour.
+> - Par année ($/jour, 1 MNQ) : 2020 +0,20 · 2021 +7,99 · 2022 +18,83 · 2023 +14,15 · 2024 +13,85 · **2025 +3,38** · 2026 (→ juillet) +16,23. Passage règle publiée 1 min → règle exécutable : −1,9 $/jour.
+> - Stress : 1 pt de glissement sur les stops −22 % ; retard d'une bougie + glissement −28 % (2024-2026 : 5,87 $/jour). Compte prop firm requis : 150 000 $ pour 1 MNQ (P(DD > 4 500 $) 1-3 % sur 3 ans).
+> - Corrélation 0,34 avec son ORB (papier compagnon « Regime-dependent opening range breakout… », non publié sur SSRN à notre connaissance). Forward papier depuis le 28/09/2026 avec seuils fixés d'avance (glissement moyen des stops < 0,5 pt après ~60 séances).
+
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7609644
 - **Actifs :** futures Nasdaq-100 (NQ), un micro-contrat, 2020 → juillet 2026
 - **Plage horaire / Session :** séance cash US ; entrée à la sortie d'une « zone de bruit » centrée sur l'ouverture, stop suiveur
@@ -116,6 +123,8 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 > **Pour nous :** directement lié à [wiki/experiments/m2-bande-bruit-nq.md](wiki/experiments/m2-bande-bruit-nq.md) (M2 sur NQ : +1,15 / +1,13 net chez nous, rejeté par le DSR, en paper trading). Résultat indépendant **du même ordre** sur NQ, avec la même faiblesse : 2 survivants sur 144 essais, tout en échantillon. Deux choses à reprendre sans recalcul : (a) la sensibilité au slippage des stops (22 % de l'avantage par point) pour dimensionner le suivi du paper trading ; (b) leur décomposition « règle publiée → règle exécutable ». ⚠️ Ce n'est pas un ORB au sens strict : la bande de bruit **remplace** le range d'ouverture.
 
 ### [6] Improvements to Intraday Momentum Strategies Using Parameter Optimization and Different Exit Strategies
+
+> **Texte intégral lu le 2026-11-22** ([papers/txt/ssrn-5095349.txt](papers/txt/ssrn-5095349.txt), 17 pages, janvier 2025). **Sans valeur de preuve** : optimisation Optuna de 7 à 11 paramètres (lookback 1-60 j, multiplicateur 0,1-10, heure de début, fréquence, échelle de stops et d'objectifs…) sur QQQ 2014-2024, **sans aucun hors échantillon** ; entrées évaluées sur le plus haut ou le plus bas de la barre de 1 s (optimiste). Sharpe « > 3 » à lire comme du surapprentissage. Seule donnée utile : sa réplication de base donne SPY 0,98 (contre 1,33 dans le papier) et **QQQ 1,11 (14 j) à 1,28 (90 j)** sur 2014-2024.
 
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5095349
 - **Actifs :** non précisé (résumé introuvable)
