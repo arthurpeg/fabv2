@@ -138,14 +138,14 @@ def simulate(O, H, L, C, hi, lo, end, bias, mode, stop_rei, tie):
                     side = (1 if (np.isfinite(cc[j]) and cc[j] >= (h0 + l0) / 2) else -1) if (up and dn) else (1 if up else -1)
                     o_j = oo[j] if np.isfinite(oo[j]) else (h0 if side == 1 else l0)
                     pe = max(h0, o_j) if side == 1 else min(l0, o_j)
-                    entry = (j, side, pe, W)
+                    entry = (j, side, pe, W, "classique")
                     break
                 continue
             if mode in ("complete", "cassure"):
                 if (b == 1 and hh[j] > h0) or (b == -1 and ll[j] < l0):
                     o_j = oo[j] if np.isfinite(oo[j]) else (h0 if b == 1 else l0)
                     pe = max(h0, o_j) if b == 1 else min(l0, o_j)
-                    entry = (j, b, pe, W)
+                    entry = (j, b, pe, W, "cassure")
                     break
             if mode in ("complete", "reint"):
                 lvl = h0 if b == -1 else l0  # borne contre le biais
@@ -159,7 +159,7 @@ def simulate(O, H, L, C, hi, lo, end, bias, mode, stop_rei, tie):
                         else:
                             dist = (wick + TICK - pe) if b == -1 else (pe - (wick - TICK))
                         if dist > 0:
-                            entry = (j, -b, pe, dist)
+                            entry = (j, b, pe, dist, "réintégration")  # même sens que le biais (corrigé : -b inversait le trade)
                         break
                 if b == -1:
                     if hh[j] > lvl:
@@ -175,7 +175,7 @@ def simulate(O, H, L, C, hi, lo, end, bias, mode, stop_rei, tie):
                         armed = True
         if entry is None:
             continue
-        j0, side, pe, dist = entry
+        j0, side, pe, dist, typ = entry
         st, tg = pe - side * dist, pe + side * TP * dist
         H_, L_, O_ = hh[j0:], ll[j0:], oo[j0:]
         if side == 1:
@@ -193,7 +193,7 @@ def simulate(O, H, L, C, hi, lo, end, bias, mode, stop_rei, tie):
         else:
             g = jt > 0 and np.isfinite(O_[jt]) and ((O_[jt] > tg) if side == 1 else (O_[jt] < tg))
             px, sortie = (O_[jt] if g else tg), "objectif"
-        typ = "classique" if classic else ("cassure" if side == b else "réintégration")
+        # type fixé à l'entrée (voir entry)
         net = side * (px - pe) - COUT
         rows.append({"date": d, "jour": d.dayofweek, "biais": b, "type": typ, "side": side, "W": W, "dist": dist,
                      "net_pts": net, "net_R": net / dist, "sortie": sortie, "minute": FIN_RANGE + j0})
