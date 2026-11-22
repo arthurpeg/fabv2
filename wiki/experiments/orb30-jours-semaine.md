@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
 prereg: []
-trials: 2043
+trials: 2055
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -49,3 +49,6 @@ Grille figée dans l'en-tête de [run_orb30_jours.py](../../run_orb30_jours.py),
 ## Objectifs 2R et 3R (2026-11-22)
 
 La règle de Subhani n'a pas d'objectif (il a essayé +2R et l'a rejeté). Demande de l'utilisateur : ajouter un objectif à 2R ou 3R. Grille figée dans l'en-tête de [run_orb30_tp.py](../../run_orb30_tp.py), commitée avant calcul : 3 actifs × {vendredi, tous les jours} × {2R, 3R} = 12 essais ; référence = même case sans objectif ; n_famille = 57 ; compteur 2 043 → 2 055. Exploration 2016-2026 seulement.
+
+**Résultat des objectifs** ([[reports/orb30_tp_report]]) : aucun gain. NQ vendredi : +0,164 R avec 2R ou 3R, contre +0,190 sans objectif (écart t −0,99 et −1,47). Seul ES vendredi 3R fait mieux que sans objectif (+0,033 R, t 1,66), dans le bruit. B1 ❌ pour la meilleure case (DSR 0,77 avec N = 57). La règle de référence reste NQ vendredi sans objectif. Correction : le « Sharpe 2,33 » du rapport précédent était annualisé par √252 ; avec ≈ 50 trades par an, c'est ≈ 1,04.
+
