@@ -1,0 +1,44 @@
+Réserve : 2021-10-01 → 2026-08-28, 1216 trades (séances : 1266), ATR14 moyen 282.7 pts
+== Règle n° 30 sur la réserve (référence C2 = R4, 1 contrat, mêmes jours)
+  n                          1216
+  debut                      2021-10-01
+  fin                        2026-08-28
+  brut_moy                   3.071
+  net_moy                    2.571
+  net_med                    -30
+  ecart_type                 155.9
+  sharpe_an                  0.2618
+  t_nw                       0.5836
+  p_unilateral               0.2797
+  gagnants_%                 46.13
+  pire_creux                 -3363
+  annees_pos                 4/6
+  net_moitie1                -2.16
+  net_moitie2                7.302
+  net_sans_meilleure_annee   1.311
+  net_cout_plus_1_tick       2.321
+  n_famille                  1
+  dsr_famille                0.7182
+  ref_net_moy                2.046
+  ecart_ref                  0.5254
+  t_ecart_ref                0.1482
+  ❌ C1 net > 0, p unilatéral (Holm) ≤ 0,05
+  ✅ C2 net > référence triviale
+  ✅ C3 net > 0 sans la meilleure année
+  ✅ C4 net > 0 avec 1 tick de coût en plus
+
+VERDICT : REJET
+
+Sorties : stop 41.1 %, objectif 11.3 %, 16:00 47.6 % | achats +2.76 (n 609) | ventes +2.38 (n 607)
+Référence non critère « toujours long », mêmes sorties : +2.61 pts/trade
+Net en $ par trade : +51.4 ; total 62,528 $ ; pire creux -67,253 $
+
+Par année (pts/trade) :
+      regle     R4  toujours_long    n
+d                                     
+2021 -21.70  -6.32          21.03   63
+2022   3.73   9.00           1.26  249
+2023  -1.05   0.27           9.70  245
+2024   1.83   6.38           2.18  249
+2025   6.58   2.63          -3.78  246
+2026  10.65 -10.10          -2.77  164
