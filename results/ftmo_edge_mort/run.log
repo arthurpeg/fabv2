@@ -1,0 +1,88 @@
+Hasard ou edge qui peut mourir : mom, edge live = h × edge historique ; 20000 comptes par scénario, graine 1840
+
+2016-01 → 2026-08 : 2672 nuits, edge historique +0.100 R brut par trade, 251 trades par an
+
+2011-07 → 2015-12 : 1115 nuits, edge historique +0.189 R brut par trade, 248 trades par an
+
+          période     politique     h  R_live  passage  p_reward  vie_mois    EV10k  IC10k    EV100k  EVmois100k
+2016-01 → 2026-08        actuel -1.00  -0.100    0.289     0.365     2.332  -10.805  2.484   212.054     193.808
+2016-01 → 2026-08 cible+attente -1.00  -0.100    0.289     0.461     2.415    0.421  2.637   324.307     290.026
+2016-01 → 2026-08        actuel -0.50  -0.050    0.345     0.464     2.776   41.698  3.572   737.079     534.475
+2016-01 → 2026-08 cible+attente -0.50  -0.050    0.345     0.556     2.922   56.865  3.783   888.749     621.668
+2016-01 → 2026-08        actuel -0.25  -0.025    0.372     0.527     3.114  103.237  5.001  1352.474     856.831
+2016-01 → 2026-08 cible+attente -0.25  -0.025    0.372     0.611     3.248  117.288  5.124  1492.980     916.856
+2016-01 → 2026-08        actuel  0.00   0.000    0.413     0.595     3.372  173.612  6.234  2056.222    1130.620
+2016-01 → 2026-08 cible+attente  0.00   0.000    0.413     0.663     3.541  190.304  6.427  2223.136    1177.240
+2016-01 → 2026-08        actuel  0.25   0.025    0.423     0.629     3.739  234.355  7.614  2663.650    1330.827
+2016-01 → 2026-08 cible+attente  0.25   0.025    0.423     0.704     3.992  255.485  7.767  2874.951    1363.541
+2016-01 → 2026-08        actuel  0.50   0.050    0.457     0.676     4.157  336.383  9.521  3683.930    1579.019
+2016-01 → 2026-08 cible+attente  0.50   0.050    0.457     0.745     4.454  351.553  9.521  3835.627    1553.700
+2016-01 → 2026-08        actuel  0.75   0.075    0.487     0.730     4.998  550.476 13.807  5824.858    2034.223
+2016-01 → 2026-08 cible+attente  0.75   0.075    0.487     0.783     5.395  555.687 13.797  5876.975    1922.785
+2016-01 → 2026-08        actuel  1.00   0.100    0.530     0.789     5.779  778.713 17.118  8107.227    2323.747
+2016-01 → 2026-08 cible+attente  1.00   0.100    0.530     0.837     6.258  782.767 16.764  8147.769    2176.951
+2011-07 → 2015-12        actuel -1.00  -0.189    0.208     0.207     1.777  -62.613  1.019  -306.026    -390.927
+2011-07 → 2015-12 cible+attente -1.00  -0.189    0.208     0.307     1.832  -54.695  1.207  -226.847    -285.672
+2011-07 → 2015-12        actuel -0.50  -0.094    0.299     0.380     2.345   -6.024  2.505   259.859     232.334
+2011-07 → 2015-12 cible+attente -0.50  -0.094    0.299     0.480     2.481    7.948  2.748   399.585     344.765
+2011-07 → 2015-12        actuel -0.25  -0.047    0.338     0.470     2.758   46.301  3.763   783.115     574.115
+2011-07 → 2015-12 cible+attente -0.25  -0.047    0.338     0.564     2.939   62.516  3.976   945.260     663.314
+2011-07 → 2015-12        actuel  0.00   0.000    0.397     0.568     3.242  137.722  5.557  1697.316     987.487
+2011-07 → 2015-12 cible+attente  0.00   0.000    0.397     0.653     3.431  157.416  5.842  1894.264    1056.015
+2011-07 → 2015-12        actuel  0.25   0.047    0.451     0.682     4.134  349.517  9.884  3815.273    1659.294
+2011-07 → 2015-12 cible+attente  0.25   0.047    0.451     0.737     4.447  361.149  9.966  3931.591    1610.847
+2011-07 → 2015-12        actuel  0.50   0.094    0.509     0.761     5.244  633.292 15.361  6653.023    2141.165
+2011-07 → 2015-12 cible+attente  0.50   0.094    0.509     0.817     5.894  672.397 15.767  7044.072    2048.890
+2011-07 → 2015-12        actuel  0.75   0.142    0.562     0.827     6.833 1206.204 25.324 12382.145    2899.761
+2011-07 → 2015-12 cible+attente  0.75   0.142    0.562     0.866     7.553 1206.351 24.666 12383.606    2649.346
+2011-07 → 2015-12        actuel  1.00   0.189    0.604     0.881     9.272 1980.130 37.067 20121.397    3343.048
+2011-07 → 2015-12 cible+attente  1.00   0.189    0.604     0.907    10.373 1963.313 36.105 19953.228    2985.238
+
+Seuils (par tentative 10k / par mois 100k) : q* = part de « edge morte » qui annule l'avantage de l'edge
+  2016-01 → 2026-08 actuel        EV10k      : edge intacte     +779 ; hasard     +174 ; scénario mort h=+0.0     +174 → hasard meilleur si P(mort) > 100%
+  2016-01 → 2026-08 actuel        EV10k      : edge intacte     +779 ; hasard     +174 ; scénario mort h=-0.5      +42 → hasard meilleur si P(mort) > 82%
+  2016-01 → 2026-08 actuel        EV10k      : edge intacte     +779 ; hasard     +174 ; scénario mort h=-1.0      -11 → hasard meilleur si P(mort) > 77%
+  2016-01 → 2026-08 actuel        EVmois100k : edge intacte    +2324 ; hasard    +1131 ; scénario mort h=+0.0    +1131 → hasard meilleur si P(mort) > 100%
+  2016-01 → 2026-08 actuel        EVmois100k : edge intacte    +2324 ; hasard    +1131 ; scénario mort h=-0.5     +534 → hasard meilleur si P(mort) > 67%
+  2016-01 → 2026-08 actuel        EVmois100k : edge intacte    +2324 ; hasard    +1131 ; scénario mort h=-1.0     +194 → hasard meilleur si P(mort) > 56%
+  2016-01 → 2026-08 cible+attente EV10k      : edge intacte     +783 ; hasard     +190 ; scénario mort h=+0.0     +190 → hasard meilleur si P(mort) > 100%
+  2016-01 → 2026-08 cible+attente EV10k      : edge intacte     +783 ; hasard     +190 ; scénario mort h=-0.5      +57 → hasard meilleur si P(mort) > 82%
+  2016-01 → 2026-08 cible+attente EV10k      : edge intacte     +783 ; hasard     +190 ; scénario mort h=-1.0       +0 → hasard meilleur si P(mort) > 76%
+  2016-01 → 2026-08 cible+attente EVmois100k : edge intacte    +2177 ; hasard    +1177 ; scénario mort h=+0.0    +1177 → hasard meilleur si P(mort) > 100%
+  2016-01 → 2026-08 cible+attente EVmois100k : edge intacte    +2177 ; hasard    +1177 ; scénario mort h=-0.5     +622 → hasard meilleur si P(mort) > 64%
+  2016-01 → 2026-08 cible+attente EVmois100k : edge intacte    +2177 ; hasard    +1177 ; scénario mort h=-1.0     +290 → hasard meilleur si P(mort) > 53%
+  2011-07 → 2015-12 actuel        EV10k      : edge intacte    +1980 ; hasard     +138 ; scénario mort h=+0.0     +138 → hasard meilleur si P(mort) > 100%
+  2011-07 → 2015-12 actuel        EV10k      : edge intacte    +1980 ; hasard     +138 ; scénario mort h=-0.5       -6 → hasard meilleur si P(mort) > 93%
+  2011-07 → 2015-12 actuel        EV10k      : edge intacte    +1980 ; hasard     +138 ; scénario mort h=-1.0      -63 → hasard meilleur si P(mort) > 90%
+  2011-07 → 2015-12 actuel        EVmois100k : edge intacte    +3343 ; hasard     +987 ; scénario mort h=+0.0     +987 → hasard meilleur si P(mort) > 100%
+  2011-07 → 2015-12 actuel        EVmois100k : edge intacte    +3343 ; hasard     +987 ; scénario mort h=-0.5     +232 → hasard meilleur si P(mort) > 76%
+  2011-07 → 2015-12 actuel        EVmois100k : edge intacte    +3343 ; hasard     +987 ; scénario mort h=-1.0     -391 → hasard meilleur si P(mort) > 63%
+  2011-07 → 2015-12 cible+attente EV10k      : edge intacte    +1963 ; hasard     +157 ; scénario mort h=+0.0     +157 → hasard meilleur si P(mort) > 100%
+  2011-07 → 2015-12 cible+attente EV10k      : edge intacte    +1963 ; hasard     +157 ; scénario mort h=-0.5       +8 → hasard meilleur si P(mort) > 92%
+  2011-07 → 2015-12 cible+attente EV10k      : edge intacte    +1963 ; hasard     +157 ; scénario mort h=-1.0      -55 → hasard meilleur si P(mort) > 89%
+  2011-07 → 2015-12 cible+attente EVmois100k : edge intacte    +2985 ; hasard    +1056 ; scénario mort h=+0.0    +1056 → hasard meilleur si P(mort) > 100%
+  2011-07 → 2015-12 cible+attente EVmois100k : edge intacte    +2985 ; hasard    +1056 ; scénario mort h=-0.5     +345 → hasard meilleur si P(mort) > 73%
+  2011-07 → 2015-12 cible+attente EVmois100k : edge intacte    +2985 ; hasard    +1056 ; scénario mort h=-1.0     -286 → hasard meilleur si P(mort) > 59%
+
+Priors (EV de « trader mom » contre « trader au hasard ») :
+          période     politique                                                     prior  EV10k  hasard10k  EVmois100k  hasard_mois100k
+2016-01 → 2026-08        actuel                      optimiste (70 % intacte, 30 % morte)  597.0      174.0      1966.0           1131.0
+2016-01 → 2026-08        actuel               McLean-Pontiff (edge live = 0,5 × backtest)  336.0      174.0      1579.0           1131.0
+2016-01 → 2026-08        actuel      pessimiste (25 % intacte, 50 % morte, 25 % inversée)  292.0      174.0      1280.0           1131.0
+2016-01 → 2026-08        actuel très pessimiste (10 % intacte, 60 % morte, 30 % inversée)  195.0      174.0      1071.0           1131.0
+2016-01 → 2026-08        actuel            catastrophe (50 % morte, 50 % inversée totale)   81.0      174.0       662.0           1131.0
+2016-01 → 2026-08 cible+attente                      optimiste (70 % intacte, 30 % morte)  605.0      190.0      1877.0           1177.0
+2016-01 → 2026-08 cible+attente               McLean-Pontiff (edge live = 0,5 × backtest)  352.0      190.0      1554.0           1177.0
+2016-01 → 2026-08 cible+attente      pessimiste (25 % intacte, 50 % morte, 25 % inversée)  305.0      190.0      1288.0           1177.0
+2016-01 → 2026-08 cible+attente très pessimiste (10 % intacte, 60 % morte, 30 % inversée)  210.0      190.0      1111.0           1177.0
+2016-01 → 2026-08 cible+attente            catastrophe (50 % morte, 50 % inversée totale)   95.0      190.0       734.0           1177.0
+2011-07 → 2015-12        actuel                      optimiste (70 % intacte, 30 % morte) 1427.0      138.0      2636.0            987.0
+2011-07 → 2015-12        actuel               McLean-Pontiff (edge live = 0,5 × backtest)  633.0      138.0      2141.0            987.0
+2011-07 → 2015-12        actuel      pessimiste (25 % intacte, 50 % morte, 25 % inversée)  562.0      138.0      1388.0            987.0
+2011-07 → 2015-12        actuel très pessimiste (10 % intacte, 60 % morte, 30 % inversée)  279.0      138.0       996.0            987.0
+2011-07 → 2015-12        actuel            catastrophe (50 % morte, 50 % inversée totale)   38.0      138.0       298.0            987.0
+2011-07 → 2015-12 cible+attente                      optimiste (70 % intacte, 30 % morte) 1422.0      157.0      2406.0           1056.0
+2011-07 → 2015-12 cible+attente               McLean-Pontiff (edge live = 0,5 × backtest)  672.0      157.0      2049.0           1056.0
+2011-07 → 2015-12 cible+attente      pessimiste (25 % intacte, 50 % morte, 25 % inversée)  572.0      157.0      1361.0           1056.0
+2011-07 → 2015-12 cible+attente très pessimiste (10 % intacte, 60 % morte, 30 % inversée)  293.0      157.0      1036.0           1056.0
+2011-07 → 2015-12 cible+attente            catastrophe (50 % morte, 50 % inversée totale)   51.0      157.0       385.0           1056.0
