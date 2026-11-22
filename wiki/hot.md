@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 17:06
+updated: 2026-11-22 17:31
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,6 +24,7 @@ updated: 2026-11-22 17:06
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : section E ajoutée, les 16 papiers ORB déjà fournis (Schulmeister, Holmberg, Sönnert, Tsai, Xin, Zarattini ×3, Pineda, Subhani, Ladia, Fetna, Mesfin, Wijesinghe, Mahadzva, Howard) remis au format de récolte avec nos résultats en regard | aucun calcul ; Subhani (ORB 30 min, vendredis sans annonce) noté comme la piste ORB la plus sérieuse non testée
 - [2026-11-22] research | Récolte SSRN sur l'opening range breakout (indices US, ranges 5/15/30 min) : papiers_ssrn_orb_2026-11-22.md, OpenAlex (429 fréquents) + Crossref, 57 requêtes, ~2 000 candidats | 8 papiers fournis (dont réplication de Zarattini-Aziz QQQ 5 min sur la seule période d'origine, bande de bruit NQ +10 $/jour 2 survivants sur 144 essais, ORB 15 min sur l'or nul), 8 écartés, carte des ORB déjà fournis par durée ; aucun calcul, compteur inchangé ; ORB toujours au registre sans condition de réouverture
 - [2026-11-22] experiment | Étape 1 de wiki/experiments/fx-exportateur-importateur : grille figée avant calcul (run_fx_balance.py, commit 5f8afd2), 12 devises hors majeures téléchargées (fetch_fx_balance.py, Dukascopy 1 h), contrôle de qualité → 7 gardées (NOK, SEK, PLN, MXN, ZAR, SGD, TRY), solde commercial Banque mondiale de l'année précédente, exploration 2010-01 → 2021-08, compteur 1 937 → 1 940 | ❌ B1 : T1 exportateurs − importateurs −0,60 bp (t −0,72) ; T2 fuseau européen +2,71 bp (t 2,09, Holm 0,054, DSR 0,89, une seule devise importatrice : PLN 2010-2013) ; T3 t 0,49 ; à la place, session domestique négative toutes devises −1,38 bp (t −2,36, sens Zhang H1) → « À surveiller » ; ligne au registre ; réserve 2021-09 → 2026-08 non ouverte
 - [2026-11-22] experiment | Fiche fx-exportateur-importateur corrigée : le poids du commerce (1-2 % du volume brut) n'est plus une objection décisive, car le prix suit le flux net directionnel (swaps et échanges entre banques ne poussent pas le prix) ; objection principale = couverture à terme des exportateurs | aucun calcul
@@ -31,7 +32,6 @@ updated: 2026-11-22 17:06
 - [2026-11-22] schema | Papier façon SSRN sur le FX en session US : reports/fx_us_session_paper.html + .pdf (9 pages A4, réplication de Zhang 2018 sur 2010-2015, échec hors échantillon 2016-2026, le yen en baisse en session US : coûts, forme, conditions, filtres de retournement, tests pré-enregistrés n° 28 et 29 à venir ; auteur Arthur Pegliasco) | aucun calcul, chiffres repris de reports/zhang_fx_report, jpy_us_backtest, jpy_us_distribution, jpy_us_filtres, yen_derive_ab ; aucune mention de stop ni d'objectif
 - [2026-11-22] schema | Papier overnight (reports/overnight_drift_paper.*) : toutes les mentions du stop et de l'objectif de mom retirées à la demande de l'utilisateur (règle décrite par l'entrée 20:00, la sortie au plus tard 9:30 et le momentum 12-1 ; lignes « stop sur le range du soir » retirées des tableaux 6 et A1) | aucun calcul ; l'ancien PDF reports/overnight_research_en.pdf et l'historique git les contiennent encore
 - [2026-11-22] schema | Version papier façon SSRN de la recherche overnight : reports/overnight_drift_paper.html + .pdf (11 pages A4, résumé, JEL, 6 tableaux + annexe A1, 22 références ; auteur Arthur Pegliasco), réécrite depuis reports/overnight_research_en.pdf du 2026-11-06 sans nom du dépôt ni chemins internes | aucun calcul, chiffres repris du PDF du 6 novembre (compteur 1 742 à cette date)
-- [2026-11-22] schema | Version papier façon SSRN de l'étude de convexité prop firm : reports/propfirm_convexity_paper.html + .pdf (9 pages A4, résumé, JEL, 7 tableaux, figure, références ; auteur Arthur Pegliasco), remplace propfirm_ftmo_overview.pdf | aucun calcul, chiffres repris de la présentation
 
 ## Prochaines actions
 
