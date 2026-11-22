@@ -45,3 +45,7 @@ Grille figée dans l'en-tête de [run_orb30_jours.py](../../run_orb30_jours.py),
 
 **Résultat (2026-11-22)** : la règle **réplique le papier** sur NQ (période du papier : vendredi +0,219 R, t 3,34, contre +0,199 R, t 3,05 sur QQQ). Sur 2016-2026, la meilleure case est NQ vendredi : +0,190 R (+244 $ par trade), t NW 3,50, 10 années positives sur 11, meilleure que les autres jours (écart t 2,75). ES vendredi +0,113 R (t 2,02), YM rien. **B1 ❌ sur le seul DSR (0,846, N = 45)** ; les cinq autres critères passent. Ligne « À surveiller » dans [[wiki/phenomenes]]. Réserve 2010-06 → 2015-12 non lue (puissance ≈ 80 %). Compteur 2 025 → 2 043.
 
+
+## Objectifs 2R et 3R (2026-11-22)
+
+La règle de Subhani n'a pas d'objectif (il a essayé +2R et l'a rejeté). Demande de l'utilisateur : ajouter un objectif à 2R ou 3R. Grille figée dans l'en-tête de [run_orb30_tp.py](../../run_orb30_tp.py), commitée avant calcul : 3 actifs × {vendredi, tous les jours} × {2R, 3R} = 12 essais ; référence = même case sans objectif ; n_famille = 57 ; compteur 2 043 → 2 055. Exploration 2016-2026 seulement.
