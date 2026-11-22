@@ -1,15 +1,15 @@
 ---
 type: hot
-updated: 2026-11-22 16:23
+updated: 2026-11-22 21:40
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **1 937** (source : [[reports/yen_derive_ab_report]])
-- Dernier pré-enregistrement : n° 29 ([[PREREGISTRATION_29]])
-- Idées abandonnées au registre : 43 ([[wiki/Failed Ideas/ledger]])
+- Compteur global d'essais : **2 127** (source : [[reports/propfirm_bb_report]])
+- Dernier pré-enregistrement : n° 31 ([[PREREGISTRATION_31]])
+- Idées abandonnées au registre : 54 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
 
 ## Expériences ouvertes
@@ -17,22 +17,21 @@ updated: 2026-11-22 16:23
 | Expérience | Statut | Verdict |
 |---|---|---|
 | [[wiki/experiments/fade-gap-indices\|Fade de gap sur indices (\|z\| > 1, régime post-0DTE)]] | paper-trading | candidat (dépend du régime) |
-| [[wiki/experiments/fx-exportateur-importateur\|Devise d'un pays exportateur en hausse pendant ses heures domestiques, devise d'un pays importateur en baisse]] | planned | — |
-| [[wiki/experiments/m2-bande-bruit-nq\|Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ]] | paper-trading | rejeté (DSR), surveillé |
+| [[wiki/experiments/m2-bande-bruit-nq\|BB : bande de bruit (« Beat the Market », Zarattini et al.) sur NQ]] | paper-trading | rejeté (DSR), surveillé |
 | [[wiki/experiments/ml-anomalies\|Machine learning sur les anomalies que les filtres classiques n'ont pas améliorées]] | active | 1er essai (filtre binaire sur mom) rejeté ; autres candidates à faire |
 | [[wiki/experiments/nq-nuit-momentum\|Règle NQ de nuit : momentum 12-1, entrée 20:00 ET]] | active | candidat |
 | [[wiki/experiments/propfirm-ftmo-option\|Prop firm comme option : FTMO 1-Step avec des trades au hasard]] | active | EV positive sans edge (si les rewards sont versés) |
 
 ## Dernières entrées du journal (8)
 
-- [2026-11-22] experiment | Fiche fx-exportateur-importateur corrigée : le poids du commerce (1-2 % du volume brut) n'est plus une objection décisive, car le prix suit le flux net directionnel (swaps et échanges entre banques ne poussent pas le prix) ; objection principale = couverture à terme des exportateurs | aucun calcul
-- [2026-11-22] experiment | Fiche d'idée (étape 0) wiki/experiments/fx-exportateur-importateur : la devise d'un pays exportateur monte pendant sa session domestique, celle d'un importateur baisse ; réserve 2021-09-01 → 2026-08-28 déclarée dans wiki/reserves.md sur des devises flottantes hors 7 majeures (exploration 2010-01 → 2021-08) | B0 ✅ ; aucun calcul, compteur inchangé 1 937 ; 7 majeures déjà vues (n° 27, indice défavorable à l'œil), parcours phénomène seulement (effet attendu < 1,5 × coût), puissance ≤ 55 % à 1 bp/jour
-- [2026-11-22] schema | Papier façon SSRN sur le FX en session US : reports/fx_us_session_paper.html + .pdf (9 pages A4, réplication de Zhang 2018 sur 2010-2015, échec hors échantillon 2016-2026, le yen en baisse en session US : coûts, forme, conditions, filtres de retournement, tests pré-enregistrés n° 28 et 29 à venir ; auteur Arthur Pegliasco) | aucun calcul, chiffres repris de reports/zhang_fx_report, jpy_us_backtest, jpy_us_distribution, jpy_us_filtres, yen_derive_ab ; aucune mention de stop ni d'objectif
-- [2026-11-22] schema | Papier overnight (reports/overnight_drift_paper.*) : toutes les mentions du stop et de l'objectif de mom retirées à la demande de l'utilisateur (règle décrite par l'entrée 20:00, la sortie au plus tard 9:30 et le momentum 12-1 ; lignes « stop sur le range du soir » retirées des tableaux 6 et A1) | aucun calcul ; l'ancien PDF reports/overnight_research_en.pdf et l'historique git les contiennent encore
-- [2026-11-22] schema | Version papier façon SSRN de la recherche overnight : reports/overnight_drift_paper.html + .pdf (11 pages A4, résumé, JEL, 6 tableaux + annexe A1, 22 références ; auteur Arthur Pegliasco), réécrite depuis reports/overnight_research_en.pdf du 2026-11-06 sans nom du dépôt ni chemins internes | aucun calcul, chiffres repris du PDF du 6 novembre (compteur 1 742 à cette date)
-- [2026-11-22] schema | Version papier façon SSRN de l'étude de convexité prop firm : reports/propfirm_convexity_paper.html + .pdf (9 pages A4, résumé, JEL, 7 tableaux, figure, références ; auteur Arthur Pegliasco), remplace propfirm_ftmo_overview.pdf | aucun calcul, chiffres repris de la présentation
-- [2026-11-22] schema | Présentation reports/propfirm_ftmo_overview.html préparée pour publication : nom du dépôt, branches et chemins de fichiers retirés, auteur Arthur Pegliasco + e-mail ajoutés, styles d'impression, export PDF reports/propfirm_ftmo_overview.pdf (7 pages A4) | aucun calcul
-- [2026-11-22] schema | Présentation reports/propfirm_ftmo_overview.html recentrée à la demande de l'utilisateur sur les seules études de convexité du payoff : retrait du bot, des vrais comptes, de la règle d'arrêt de mom, du scaling ; section 8 = deux comptes sur signaux différents, Monte-Carlo 3 ans (net > 0 dans tous les chemins même edge ÷ 2) | aucun calcul
+- [2026-11-22] experiment | BB un trade par jour (18 essais, run_bb_1j.py, grille e1f932a ; compteur 2 109 → 2 127) puis FTMO 1-Step (run_propfirm_bb.py, 18 versions × éval 1-2,9 %, financé 1 %, hors compteur) | Un trade par jour : +0,148 R/trade, creux −14 R ; FTMO à 2-2,5 % : passage 47-56 % en 10-15 trades, ≈ +1 450-1 560 $/mois en 100k, au niveau du plan 3n + M2, sous mom ; exploration
+- [2026-11-22] experiment | BB NQ avec SL k × ATR / TP RR × SL, modes A (suiveur gardé) et B (suiveur remplacé), 18 essais ; grille commitée (b217c32), 2 trades vérifiés, compteur 2 091 → 2 109 | Exploration : mode A SL 0,25 ATR TP 2R Sharpe 1,13 → 1,49, creux −39,3 k$ → −27,3 k$, ≈ 32,3 k$/an par contrat ; gain journalier pas significativement différent (t 0,75) ; SL 0,5-1 ATR ≈ BB ; confirmation seulement en forward
+- [2026-11-22] schema | Bande de bruit renommée BB dans le wiki (titre, index, liens nommés) ; sources antérieures inchangées (« M2 ») ; performances de référence de BB en dollars ajoutées (results/m2_vwap/bb_performances.txt) | NQ ≈ 29 300 $/an par contrat, Sharpe $ 1,13, creux −39 300 $ ; ES ≈ 9 900 $/an ; YM ≈ 0 ; descriptif, aucun nouvel essai
+- [2026-11-22] schema | Désambiguïsation des deux « M2 » (signalée par l'utilisateur) : bande de bruit de Zarattini (m2-bande-bruit-nq, m2_noise) ≠ M2 du bot FTMO (modèle M2 de la stratégie EMA 9:30, nq-ema930-m2) ; note en tête des deux pages | aucun calcul
+- [2026-11-22] experiment | M2 bande de bruit : VWAP exigé à l'entrée (code des auteurs) contre entrée actuelle, NQ/ES/YM × 1× et volatilité cible ; grille commitée (f59c2d5), vérification manuelle, rien vers le bot ; compteur 2 085 → 2 091 | Amélioration modeste : NQ 1× Sharpe 1,16 → 1,23 (écart t 2,27), ES 0,60 → 0,65, YM ≈ ; NQ corrigé = Sharpe des auteurs pour le future Nasdaq ; pas une validation
+- [2026-11-22] research | Bande de bruit : 5 textes intégraux lus (Beat the Market v. 22/09/2025 avec FAQ, Chuk 7609644, Paz 7290621, Delgado 7323419, Maróy 5095349) ; fiches corrigées, notes dans wiki/experiments/m2-bande-bruit-nq | Notre m2_noise n'exige pas le VWAP à l'entrée (le code des auteurs si) ; période ancienne faible partout ; faiblesse depuis sept. 2025 sur SPY ; FAQ : 33 futures, Sharpe moyen 0,60, Nasdaq 1,23 ; Maróy = surapprentissage ; aucun calcul
+- [2026-11-22] prereg | N° 31 : ORB 30 min de Subhani le vendredi sur NQ (A sans objectif, B objectif 2R), réserve 2010-06 → 2015-12, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (c7fb825), une exécution ; compteur 2 079 → 2 085 | ❌ C1 et C3 pour A et B : +0,041 R (t 0,52), +0,038 R (t 0,54), Holm 0,59 ; placebo : vendredi au niveau du jeudi ; rejet, réserve consommée, phénomène annoté « contredit »
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi : clôture au-delà de la borne (1 et 5 min), heure de cassure, ordres limite sur les bords ; grille commitée (dd00ed2), 2 trades vérifiés à la main, compteur 2 073 → 2 079 | ❌ B1 : tout entre −0,024 et +0,022 R ; ligne au registre
 
 ## Prochaines actions
 
