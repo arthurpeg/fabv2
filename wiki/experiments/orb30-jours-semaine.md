@@ -2,7 +2,7 @@
 type: experiment
 updated: 2026-11-22
 status: active
-verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
+verdict: NQ vendredi réplique le papier (+0,19 R, t 3,50) mais ❌ B1 (DSR) ; lundi-jeudi rien ; réserve 2010-2015 gardée en attente
 prereg: []
 trials: 2071
 ---
@@ -65,4 +65,12 @@ Demande de l'utilisateur : garder un objectif (prop firms) et faire fonctionner 
 Idée de l'utilisateur : biais de tendance par EMA 20/50 sur 15 min, 1 h, 4 h et jour (vote majoritaire) ; cassure dans le sens du biais (ordre stop), réintégration contre le biais (après une cassure contre le biais et une clôture de retour dans le range, ordre limite sur la borne cassée). Objectif 2R. Variantes choisies par l'utilisateur : stop de réintégration à 1 W ou au-delà de la mèche ; égalité 2-2 traitée de trois façons (pas de trade, ORB classique, le jour tranche) ; NQ seul. Décomposition : règle complète, cassure seule, réintégration seule. 13 essais ; grille figée dans l'en-tête de [run_orb30_biais.py](../../run_orb30_biais.py), commitée avant calcul ; n_famille = 73 ; compteur 2 058 → 2 071.
 
 **Résultat biais EMA et réintégration** ([[reports/orb30_biais_report]]) : ❌ B1. Meilleure variante : réintégration seule, stop 1 W, pas de trade si égalité, +0,045 R (t 1,40, DSR 0,009) ; règle complète +0,037 R (t 1,44) ; référence sans biais +0,015 R ; écarts avec la référence à t ≤ 0,55. Stop sous la mèche négatif. Un bug de sens (réintégrations à l'envers) a été trouvé à la vérification manuelle et corrigé avant lecture des résultats ; grille inchangée. Compteur 2 058 → 2 071.
+
+## Décision du 2026-11-22 : réserve gardée en attente
+
+L'utilisateur choisit de **ne pas ouvrir tout de suite** la réserve 2010-06 → 2015-12 : d'autres papiers pourraient apporter une idée utile pour les autres jours de la semaine. Conséquences, fixées dès maintenant :
+- la réserve reste **réservée** et ne sert qu'à cette famille d'idées (ORB 30 min et ses variantes par jour) ; aucune autre règle ne doit la lire ;
+- toute nouvelle variante se teste d'abord sur l'exploration 2016-2026, grille commitée avant calcul, et **s'ajoute à la famille** (N = 73 au 2026-11-22) ;
+- le jour où la réserve sera ouverte : un seul pré-enregistrement, avec toutes les règles retenues à la fois (Holm si plusieurs) et le N de la famille à cette date ;
+- candidate actuelle : NQ vendredi, range 9:30-10:00, cassure, stop 1 W, objectif 2R (+0,164 R, t 3,67 en exploration) ou sans objectif (+0,190 R).
 
