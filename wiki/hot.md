@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 19:13
+updated: 2026-11-22 19:16
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -20,11 +20,12 @@ updated: 2026-11-22 19:13
 | [[wiki/experiments/m2-bande-bruit-nq\|Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ]] | paper-trading | rejeté (DSR), surveillé |
 | [[wiki/experiments/ml-anomalies\|Machine learning sur les anomalies que les filtres classiques n'ont pas améliorées]] | active | 1er essai (filtre binaire sur mom) rejeté ; autres candidates à faire |
 | [[wiki/experiments/nq-nuit-momentum\|Règle NQ de nuit : momentum 12-1, entrée 20:00 ET]] | active | candidat |
-| [[wiki/experiments/orb30-jours-semaine\|ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM]] | active | ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue |
+| [[wiki/experiments/orb30-jours-semaine\|ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM]] | active | NQ vendredi réplique le papier (+0,19 R, t 3,50) mais ❌ B1 (DSR) ; lundi-jeudi rien ; réserve 2010-2015 gardée en attente |
 | [[wiki/experiments/propfirm-ftmo-option\|Prop firm comme option : FTMO 1-Step avec des trades au hasard]] | active | EV positive sans edge (si les rewards sont versés) |
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] decision | ORB 30 min NQ : réserve 2010-06 → 2015-12 gardée en attente (décision de l'utilisateur, d'autres papiers pourraient aider les autres jours) | règles de réserve et de famille (N = 73) écrites dans wiki/experiments/orb30-jours-semaine ; prochaine action ajoutée à hot.md
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, biais EMA 20/50 multi-unités + réintégration (idée de l'utilisateur), 13 variantes ; grille commitée (d6cf9d3), bug de sens corrigé après vérification manuelle, exploration 2016-2026, compteur 2 058 → 2 071 | ❌ B1 : meilleure +0,045 R (t 1,40) contre +0,015 sans biais ; stop mèche négatif ; ligne au registre
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi objectif 2R, conditions C1 (range étroit), C2 (NR7), C3 (annonces) ; grille commitée (d04655c), exploration 2016-2026, compteur 2 055 → 2 058 | ❌ B1 : base +0,011 R, meilleure C2 +0,044 R (t 0,76) ; seul le vendredi marche ; ligne au registre
 - [2026-11-22] experiment | ORB 30 min de Subhani avec objectif 2R / 3R (NQ, ES, YM × vendredi, tous les jours) ; grille commitée (4d51084), exploration 2016-2026, compteur 2 043 → 2 055 | Aucun gain : NQ vendredi +0,164 R (2R et 3R) contre +0,190 sans objectif ; ❌ B1 ; Sharpe du rapport précédent corrigé (≈ 1,04 par an, pas 2,33)
@@ -32,7 +33,6 @@ updated: 2026-11-22 19:13
 - [2026-11-22] research | Papier SSRN 7589980 (Subhani, ORB 30 min le vendredi) lu en entier (PDF fourni, 38 p., version du 15/11/2026) : fiche [18] de papiers_ssrn_orb_2026-11-22.md, recherche_causalite_intraday.md et wiki/research/litterature-intraday corrigés | Le résumé d'une version antérieure était faux : tous les vendredis, sans filtre d'annonce (rejeté) ; QQQ test 2024-2026 +0,338 R (t 2,54), complet t 3,05 ; DSR 0,999 (17 essais) ou 0,19-0,47 (239 essais) ; lundi-jeudi ≈ 0 ; entrée « sens de la bougie » essayée et rejetée par l'auteur
 - [2026-11-22] prereg | N° 30 : règle de la 1ʳᵉ bougie NQ stop 0,5 ATR / 2R sur la réserve 2021-10 → 2026-08, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (bade69c), une exécution ; compteur 2 024 → 2 025 | ❌ C1 : +2,57 pts/trade, t 0,58, p 0,28 ; « toujours long » +2,61 ; rejet ; réserve NQ « sortie » consommée
 - [2026-11-22] experiment | Filtres F1 (annonces 10:00/14:00), F2 (volume d'ouverture), F3 (corps de bougie) sur la règle NQ 1ʳᵉ bougie stop 0,5 ATR / 2R ; grille commitée (b97b69c), exploration 2010-06 → 2021-09, compteur 2 021 → 2 024 | ❌ B1 : F3 Sharpe 0,87, DSR 0,019 ; F1 porté par 2021 ; F2 inverse (t −2,55) ; réserve non lue
-- [2026-11-22] experiment | Suite de wiki/experiments/nq-orb-bougie-sorties : même grille sur ES et YM, stop 1 ATR / objectif 2-3 ATR sur les trois indices, détail stop 0,5 ATR / 2R et 3R ; réserve ES/YM 2021-10 → 2026-08 déclarée, grille commitée (40cfcc9), exploration 2010-06 → 2021-09, compteur 1 965 → 2 021 | ❌ B1 partout : ES V0 +0,68 pt (t 2,11, DSR 0,002), YM rien, NQ 0,5 ATR/2R +2,23 pts (t 2,17), NQ stop 1 ATR ≈ V0 ; DSR NQ 0,953 avec la famille NQ seule mais 0,02 avec la famille complète (81 variantes) ; réserve non lue
 
 ## Prochaines actions
 
