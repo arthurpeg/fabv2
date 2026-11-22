@@ -51,3 +51,7 @@ Grille figée dans l'en-tête de [run_nq_orb_bougie.py](../../run_nq_orb_bougie.
 - Le stop de la règle choisie ne fait que 5 à 6 ticks en 2010 : le résultat dépend d'un remplissage au prix du stop.
 
 La réserve 2021-10-01 → 2026-08-28 reste réservée, non lue. Compteur 1 940 → 1 965.
+
+## Suite : ES, YM et stop 1 ATR (2026-11-22)
+
+Demande de l'utilisateur : même grille sur ES et YM, détail de stop 0,5 ATR / objectif 2R et 3R, et stop 1 ATR / objectif 2 ou 3 ATR (2R, 3R) sur les trois indices. Réserve « sortie » 2021-10-01 → 2026-08-28 déclarée aussi pour ES et YM dans [[wiki/reserves]] avant calcul. Grille figée dans l'en-tête de [run_orb_bougie_indices.py](../../run_orb_bougie_indices.py), commitée avant calcul : 56 essais (ES 27, YM 27, NQ 2), compteur 1 965 → 2 021. Puissance sur ES et YM : même ordre que NQ (faible). Résultats : [[reports/orb_bougie_indices_report]].
