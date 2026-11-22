@@ -1,15 +1,15 @@
 ---
 type: hot
-updated: 2026-11-22 19:20
+updated: 2026-11-22 19:27
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **2 071** (source : [[reports/orb30_biais_report]])
+- Compteur global d'essais : **2 073** (source : [[reports/orb30_rsi_report]])
 - Dernier pré-enregistrement : n° 30 ([[PREREGISTRATION_30]])
-- Idées abandonnées au registre : 51 ([[wiki/Failed Ideas/ledger]])
+- Idées abandonnées au registre : 52 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
 
 ## Expériences ouvertes
@@ -25,6 +25,7 @@ updated: 2026-11-22 19:20
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, régime RSI 5 jours (gamma, Zarattini-Aziz-Barbon 2024) : V1 filtre, V2 cassure/réintégration ; grille commitée (99a2573), 2 réintégrations vérifiées à la main, compteur 2 071 → 2 073 | ❌ B1 : V1 +0,018 R (t 0,48), V2 +0,006 R ; aucune pente par quintile de RSI ; ligne au registre
 - [2026-11-22] decision | ORB 30 min NQ : réserve 2010-06 → 2015-12 gardée en attente (décision de l'utilisateur, d'autres papiers pourraient aider les autres jours) | règles de réserve et de famille (N = 73) écrites dans wiki/experiments/orb30-jours-semaine ; prochaine action ajoutée à hot.md
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, biais EMA 20/50 multi-unités + réintégration (idée de l'utilisateur), 13 variantes ; grille commitée (d6cf9d3), bug de sens corrigé après vérification manuelle, exploration 2016-2026, compteur 2 058 → 2 071 | ❌ B1 : meilleure +0,045 R (t 1,40) contre +0,015 sans biais ; stop mèche négatif ; ligne au registre
 - [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi objectif 2R, conditions C1 (range étroit), C2 (NR7), C3 (annonces) ; grille commitée (d04655c), exploration 2016-2026, compteur 2 055 → 2 058 | ❌ B1 : base +0,011 R, meilleure C2 +0,044 R (t 0,76) ; seul le vendredi marche ; ligne au registre
@@ -32,7 +33,6 @@ updated: 2026-11-22 19:20
 - [2026-11-22] experiment | Étapes 0-1 de wiki/experiments/orb30-jours-semaine : ORB 30 min de Subhani, 6 calendriers × NQ, ES, YM ; réserve 2010-06 → 2015-12 déclarée, grille commitée (f40b125), exploration 2016-01 → 2026-08, compteur 2 025 → 2 043 | Réplique le papier (NQ vendredi sur sa période +0,219 R, t 3,34) ; NQ vendredi 2016-2026 +0,190 R, t 3,50, 10/11 années ; ❌ B1 sur le seul DSR (0,846, N 45) ; « À surveiller » ; réserve non lue
 - [2026-11-22] research | Papier SSRN 7589980 (Subhani, ORB 30 min le vendredi) lu en entier (PDF fourni, 38 p., version du 15/11/2026) : fiche [18] de papiers_ssrn_orb_2026-11-22.md, recherche_causalite_intraday.md et wiki/research/litterature-intraday corrigés | Le résumé d'une version antérieure était faux : tous les vendredis, sans filtre d'annonce (rejeté) ; QQQ test 2024-2026 +0,338 R (t 2,54), complet t 3,05 ; DSR 0,999 (17 essais) ou 0,19-0,47 (239 essais) ; lundi-jeudi ≈ 0 ; entrée « sens de la bougie » essayée et rejetée par l'auteur
 - [2026-11-22] prereg | N° 30 : règle de la 1ʳᵉ bougie NQ stop 0,5 ATR / 2R sur la réserve 2021-10 → 2026-08, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (bade69c), une exécution ; compteur 2 024 → 2 025 | ❌ C1 : +2,57 pts/trade, t 0,58, p 0,28 ; « toujours long » +2,61 ; rejet ; réserve NQ « sortie » consommée
-- [2026-11-22] experiment | Filtres F1 (annonces 10:00/14:00), F2 (volume d'ouverture), F3 (corps de bougie) sur la règle NQ 1ʳᵉ bougie stop 0,5 ATR / 2R ; grille commitée (b97b69c), exploration 2010-06 → 2021-09, compteur 2 021 → 2 024 | ❌ B1 : F3 Sharpe 0,87, DSR 0,019 ; F1 porté par 2021 ; F2 inverse (t −2,55) ; réserve non lue
 
 ## Prochaines actions
 
