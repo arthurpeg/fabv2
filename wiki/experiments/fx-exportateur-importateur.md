@@ -32,11 +32,16 @@ trials: 0
 
 - **Qui paie l'effet** : les entreprises qui convertissent leurs flux commerciaux au comptant, pendant leurs heures de bureau et sans regarder le prix. Elles payent une petite concession de prix aux intermédiaires qui portent le stock jusqu'aux heures étrangères.
 - **Pourquoi ça ne s'arrête pas** : la conversion est une contrainte de trésorerie, pas un pari. Et le coût de cette concession est minuscule face à la marge commerciale de ces entreprises.
-- **Objections fortes, notées d'avance** :
-  - Le commerce mondial pèse environ 100 Md$ par jour, contre environ 7 500 Md$ de volume de change : à peine 1 à 2 % des flux.
-  - Une grande partie des exportateurs couvrent leurs flux à terme (forwards), à des dates qui ne suivent pas forcément les heures de bureau.
+- **Poids du commerce dans les flux (corrigé le 2026-11-22)** :
+  - En volume **brut**, le commerce mondial (environ 100 Md$ par jour) ne pèse que 1 à 2 % du volume de change (7 500 Md$ par jour en avril 2022, enquête triennale de la BRI, de mémoire, non revérifié).
+  - Mais l'essentiel de ce volume ne pousse pas le prix : environ la moitié sont des swaps de change (achat et revente simultanés, pour le financement), et environ 45 % sont des échanges entre banques qui se repassent le stock reçu des clients.
+  - Ce qui fait bouger un cours, c'est le flux **net** d'ordres directionnels (Evans et Lyons, 2002). Rapporté à ce flux net, le commerce pèse nettement plus que 1 à 2 %, et ses flux sont réguliers et insensibles au prix.
+  - La taille du commerce n'est donc **pas** une objection décisive.
+- **Objections qui restent, notées d'avance** :
+  - Une grande partie des exportateurs couvrent leurs flux à terme (forwards), à des dates et des heures qui ne suivent pas forcément leurs encaissements ni leurs heures de bureau. C'est le doute principal.
   - Breedon et Ranaldo (2013) trouvent le sens inverse pour toutes les devises, et l'attribuent aux flux des investisseurs, pas au commerce.
-  - L'effet attendu est donc faible, et il peut être noyé par les flux financiers.
+  - Les flux de portefeuille (achats de titres étrangers et leur couverture), le carry trade et les banques centrales peuvent dominer le flux net et noyer l'effet du commerce.
+  - L'effet attendu reste donc faible (point 3).
 
 ### 3. Taille attendue face au coût
 
@@ -86,4 +91,4 @@ Hypothèses :
 
 ## Liens
 
-[[reports/zhang_fx_report]] · [[PREREGISTRATION_27]] · [[wiki/reserves]] · [[wiki/Failed Ideas/ledger]] · Breedon et Ranaldo (2013), *Intraday patterns in FX returns and order flow*, JMCB 45(5) · Zhang (2018), SSRN 3138756
+[[reports/zhang_fx_report]] · [[PREREGISTRATION_27]] · [[wiki/reserves]] · [[wiki/Failed Ideas/ledger]] · Breedon et Ranaldo (2013), *Intraday patterns in FX returns and order flow*, JMCB 45(5) · Zhang (2018), SSRN 3138756 · Evans et Lyons (2002), *Order flow and exchange rate dynamics*, JPE 110(1)
