@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 17:43
+updated: 2026-11-22 17:45
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,6 +24,7 @@ updated: 2026-11-22 17:43
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] research | Papier SSRN 6833239 (Levine, Day Trading: Adapting to Change) lu en entier (PDF fourni par l'utilisateur) : fiche [3] de papiers_ssrn_orb_2026-11-22.md corrigée | ORB = range 8:00-8:15 ET + entrée au retest, discrétionnaire, 61 trades sur 23 jours (oct.-déc. 2025) ; chiffres incohérents (53 % annoncé, 64 % dans le tableau) ; aucune valeur de preuve
 - [2026-11-22] research | Recherche d'une autre copie du papier retiré SSRN 6355218 (Chuk, SPY 0DTE ORB) : OpenAlex, Crossref, arXiv, Wayback Machine, ORCID de l'auteur, web | introuvable ; l'ORCID de l'auteur ne le liste plus (retrait vraisemblablement volontaire)
 - [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : papier [2] (Chuk, SPY 0DTE ORB, SSRN 6355218) marqué retiré de SSRN, signalé par l'utilisateur ; note ajoutée au registre local | à ne plus citer
 - [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : section E ajoutée, les 16 papiers ORB déjà fournis (Schulmeister, Holmberg, Sönnert, Tsai, Xin, Zarattini ×3, Pineda, Subhani, Ladia, Fetna, Mesfin, Wijesinghe, Mahadzva, Howard) remis au format de récolte avec nos résultats en regard | aucun calcul ; Subhani (ORB 30 min, vendredis sans annonce) noté comme la piste ORB la plus sérieuse non testée
@@ -31,7 +32,6 @@ updated: 2026-11-22 17:43
 - [2026-11-22] experiment | Étape 1 de wiki/experiments/fx-exportateur-importateur : grille figée avant calcul (run_fx_balance.py, commit 5f8afd2), 12 devises hors majeures téléchargées (fetch_fx_balance.py, Dukascopy 1 h), contrôle de qualité → 7 gardées (NOK, SEK, PLN, MXN, ZAR, SGD, TRY), solde commercial Banque mondiale de l'année précédente, exploration 2010-01 → 2021-08, compteur 1 937 → 1 940 | ❌ B1 : T1 exportateurs − importateurs −0,60 bp (t −0,72) ; T2 fuseau européen +2,71 bp (t 2,09, Holm 0,054, DSR 0,89, une seule devise importatrice : PLN 2010-2013) ; T3 t 0,49 ; à la place, session domestique négative toutes devises −1,38 bp (t −2,36, sens Zhang H1) → « À surveiller » ; ligne au registre ; réserve 2021-09 → 2026-08 non ouverte
 - [2026-11-22] experiment | Fiche fx-exportateur-importateur corrigée : le poids du commerce (1-2 % du volume brut) n'est plus une objection décisive, car le prix suit le flux net directionnel (swaps et échanges entre banques ne poussent pas le prix) ; objection principale = couverture à terme des exportateurs | aucun calcul
 - [2026-11-22] experiment | Fiche d'idée (étape 0) wiki/experiments/fx-exportateur-importateur : la devise d'un pays exportateur monte pendant sa session domestique, celle d'un importateur baisse ; réserve 2021-09-01 → 2026-08-28 déclarée dans wiki/reserves.md sur des devises flottantes hors 7 majeures (exploration 2010-01 → 2021-08) | B0 ✅ ; aucun calcul, compteur inchangé 1 937 ; 7 majeures déjà vues (n° 27, indice défavorable à l'œil), parcours phénomène seulement (effet attendu < 1,5 × coût), puissance ≤ 55 % à 1 bp/jour
-- [2026-11-22] schema | Papier façon SSRN sur le FX en session US : reports/fx_us_session_paper.html + .pdf (9 pages A4, réplication de Zhang 2018 sur 2010-2015, échec hors échantillon 2016-2026, le yen en baisse en session US : coûts, forme, conditions, filtres de retournement, tests pré-enregistrés n° 28 et 29 à venir ; auteur Arthur Pegliasco) | aucun calcul, chiffres repris de reports/zhang_fx_report, jpy_us_backtest, jpy_us_distribution, jpy_us_filtres, yen_derive_ab ; aucune mention de stop ni d'objectif
 
 ## Prochaines actions
 
