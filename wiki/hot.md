@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 18:40
+updated: 2026-11-22 20:40
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -8,8 +8,8 @@ updated: 2026-11-22 18:40
 # État courant
 
 - Compteur global d'essais : **1 940** (source : [[reports/fx_balance_report]])
-- Dernier pré-enregistrement : n° 30 ([[PREREGISTRATION_30]])
-- Idées abandonnées au registre : 48 ([[wiki/Failed Ideas/ledger]])
+- Dernier pré-enregistrement : n° 31 ([[PREREGISTRATION_31]])
+- Idées abandonnées au registre : 54 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
 
 ## Expériences ouvertes
@@ -24,14 +24,14 @@ updated: 2026-11-22 18:40
 
 ## Dernières entrées du journal (8)
 
-- [2026-11-22] research | Papier SSRN 7589980 (Subhani, ORB 30 min le vendredi) lu en entier (PDF fourni, 38 p., version du 15/11/2026) : fiche [18] de papiers_ssrn_orb_2026-11-22.md, recherche_causalite_intraday.md et wiki/research/litterature-intraday corrigés | Le résumé d'une version antérieure était faux : tous les vendredis, sans filtre d'annonce (rejeté) ; QQQ test 2024-2026 +0,338 R (t 2,54), complet t 3,05 ; DSR 0,999 (17 essais) ou 0,19-0,47 (239 essais) ; lundi-jeudi ≈ 0 ; entrée « sens de la bougie » essayée et rejetée par l'auteur
-- [2026-11-22] prereg | N° 30 : règle de la 1ʳᵉ bougie NQ stop 0,5 ATR / 2R sur la réserve 2021-10 → 2026-08, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (bade69c), une exécution ; compteur 2 024 → 2 025 | ❌ C1 : +2,57 pts/trade, t 0,58, p 0,28 ; « toujours long » +2,61 ; rejet ; réserve NQ « sortie » consommée
-- [2026-11-22] experiment | Filtres F1 (annonces 10:00/14:00), F2 (volume d'ouverture), F3 (corps de bougie) sur la règle NQ 1ʳᵉ bougie stop 0,5 ATR / 2R ; grille commitée (b97b69c), exploration 2010-06 → 2021-09, compteur 2 021 → 2 024 | ❌ B1 : F3 Sharpe 0,87, DSR 0,019 ; F1 porté par 2021 ; F2 inverse (t −2,55) ; réserve non lue
-- [2026-11-22] experiment | Suite de wiki/experiments/nq-orb-bougie-sorties : même grille sur ES et YM, stop 1 ATR / objectif 2-3 ATR sur les trois indices, détail stop 0,5 ATR / 2R et 3R ; réserve ES/YM 2021-10 → 2026-08 déclarée, grille commitée (40cfcc9), exploration 2010-06 → 2021-09, compteur 1 965 → 2 021 | ❌ B1 partout : ES V0 +0,68 pt (t 2,11, DSR 0,002), YM rien, NQ 0,5 ATR/2R +2,23 pts (t 2,17), NQ stop 1 ATR ≈ V0 ; DSR NQ 0,953 avec la famille NQ seule mais 0,02 avec la famille complète (81 variantes) ; réserve non lue
-- [2026-11-22] experiment | Étape 0-1 de wiki/experiments/nq-orb-bougie-sorties : règle de la 1ʳᵉ bougie de Zarattini-Aziz sur NQ, sorties V0 (aucune) + 24 variantes stop k × ATR14 / objectif RR ; réserve 2021-10 → 2026-08 déclarée, grille commitée (a49ca1a), exploration 2010-06 → 2021-09, compteur 1 940 → 1 965 | ❌ B1 de justesse : meilleure variante (stop 0,05 ATR, clôture) +1,52 pt/trade, t 3,16, DSR 0,948 ; ≈ 0 avant 2016 ; V0 +2,83 pts/trade mais t 1,27 contre « toujours long » ; objectifs fixes moins bons ; ligne au registre ; réserve non lue
-- [2026-11-22] research | Papier SSRN 6833239 (Levine, Day Trading: Adapting to Change) lu en entier (PDF fourni par l'utilisateur) : fiche [3] de papiers_ssrn_orb_2026-11-22.md corrigée | ORB = range 8:00-8:15 ET + entrée au retest, discrétionnaire, 61 trades sur 23 jours (oct.-déc. 2025) ; chiffres incohérents (53 % annoncé, 64 % dans le tableau) ; aucune valeur de preuve
-- [2026-11-22] research | Recherche d'une autre copie du papier retiré SSRN 6355218 (Chuk, SPY 0DTE ORB) : OpenAlex, Crossref, arXiv, Wayback Machine, ORCID de l'auteur, web | introuvable ; l'ORCID de l'auteur ne le liste plus (retrait vraisemblablement volontaire)
-- [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : papier [2] (Chuk, SPY 0DTE ORB, SSRN 6355218) marqué retiré de SSRN, signalé par l'utilisateur ; note ajoutée au registre local | à ne plus citer
+- [2026-11-22] research | Bande de bruit : 5 textes intégraux lus (Beat the Market v. 22/09/2025 avec FAQ, Chuk 7609644, Paz 7290621, Delgado 7323419, Maróy 5095349) ; fiches corrigées, notes dans wiki/experiments/m2-bande-bruit-nq | Notre m2_noise n'exige pas le VWAP à l'entrée (le code des auteurs si) ; période ancienne faible partout ; faiblesse depuis sept. 2025 sur SPY ; FAQ : 33 futures, Sharpe moyen 0,60, Nasdaq 1,23 ; Maróy = surapprentissage ; aucun calcul
+- [2026-11-22] prereg | N° 31 : ORB 30 min de Subhani le vendredi sur NQ (A sans objectif, B objectif 2R), réserve 2010-06 → 2015-12, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (c7fb825), une exécution ; compteur 2 079 → 2 085 | ❌ C1 et C3 pour A et B : +0,041 R (t 0,52), +0,038 R (t 0,54), Holm 0,59 ; placebo : vendredi au niveau du jeudi ; rejet, réserve consommée, phénomène annoté « contredit »
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi : clôture au-delà de la borne (1 et 5 min), heure de cassure, ordres limite sur les bords ; grille commitée (dd00ed2), 2 trades vérifiés à la main, compteur 2 073 → 2 079 | ❌ B1 : tout entre −0,024 et +0,022 R ; ligne au registre
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, régime RSI 5 jours (gamma, Zarattini-Aziz-Barbon 2024) : V1 filtre, V2 cassure/réintégration ; grille commitée (99a2573), 2 réintégrations vérifiées à la main, compteur 2 071 → 2 073 | ❌ B1 : V1 +0,018 R (t 0,48), V2 +0,006 R ; aucune pente par quintile de RSI ; ligne au registre
+- [2026-11-22] decision | ORB 30 min NQ : réserve 2010-06 → 2015-12 gardée en attente (décision de l'utilisateur, d'autres papiers pourraient aider les autres jours) | règles de réserve et de famille (N = 73) écrites dans wiki/experiments/orb30-jours-semaine ; prochaine action ajoutée à hot.md
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi, biais EMA 20/50 multi-unités + réintégration (idée de l'utilisateur), 13 variantes ; grille commitée (d6cf9d3), bug de sens corrigé après vérification manuelle, exploration 2016-2026, compteur 2 058 → 2 071 | ❌ B1 : meilleure +0,045 R (t 1,40) contre +0,015 sans biais ; stop mèche négatif ; ligne au registre
+- [2026-11-22] experiment | ORB 30 min NQ lundi-jeudi objectif 2R, conditions C1 (range étroit), C2 (NR7), C3 (annonces) ; grille commitée (d04655c), exploration 2016-2026, compteur 2 055 → 2 058 | ❌ B1 : base +0,011 R, meilleure C2 +0,044 R (t 0,76) ; seul le vendredi marche ; ligne au registre
+- [2026-11-22] experiment | ORB 30 min de Subhani avec objectif 2R / 3R (NQ, ES, YM × vendredi, tous les jours) ; grille commitée (4d51084), exploration 2016-2026, compteur 2 043 → 2 055 | Aucun gain : NQ vendredi +0,164 R (2R et 3R) contre +0,190 sans objectif ; ❌ B1 ; Sharpe du rapport précédent corrigé (≈ 1,04 par an, pas 2,33)
 
 ## Prochaines actions
 
