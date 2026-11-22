@@ -1,0 +1,80 @@
+Réserve NQ : 2010-06-08 → 2015-12-31 ; trades A 1374, B 1374 ; vendredis A 271, W médian 14.25 pts, coût médian 0.0351 R
+
+== Règle A sans objectif, vendredis de la réserve (référence C2 = lundis-jeudis, même règle)
+  n                          271
+  debut                      2010-06-11
+  fin                        2015-12-18
+  brut_moy                   nan
+  net_moy                    0.0414
+  net_med                    -0.1282
+  ecart_type                 1.164
+  sharpe_an                  0.5646
+  t_nw                       0.5196
+  p_unilateral               0.3017
+  gagnants_%                 46.86
+  pire_creux                 -17.66
+  annees_pos                 3/6
+  net_moitie1                0.05388
+  net_moitie2                0.02901
+  net_sans_meilleure_annee   -0.0001083
+  net_cout_plus_1_tick       0.02241
+  n_famille                  1
+  dsr_famille                0.7241
+  ref_net_moy                -0.06225
+  ecart_ref                  0.1036
+  p de Holm (2 règles) : 0.5908
+  ❌ C1 net > 0, p unilatéral (Holm) ≤ 0,05
+  ✅ C2 net > référence triviale
+  ❌ C3 net > 0 sans la meilleure année
+  ✅ C4 net > 0 avec 1 tick de coût en plus
+  VERDICT A sans objectif : REJET
+  sorties : stop 38.7 % ; net +0.79 pts (+16 $) par trade
+
+== Règle B objectif 2R, vendredis de la réserve (référence C2 = lundis-jeudis, même règle)
+  n                          271
+  debut                      2010-06-11
+  fin                        2015-12-18
+  brut_moy                   nan
+  net_moy                    0.03814
+  net_med                    -0.125
+  ecart_type                 1.09
+  sharpe_an                  0.5556
+  t_nw                       0.5377
+  p_unilateral               0.2954
+  gagnants_%                 47.6
+  pire_creux                 -17.02
+  annees_pos                 4/6
+  net_moitie1                0.02391
+  net_moitie2                0.05226
+  net_sans_meilleure_annee   -0.004571
+  net_cout_plus_1_tick       0.01915
+  n_famille                  1
+  dsr_famille                0.7191
+  ref_net_moy                -0.04369
+  ecart_ref                  0.08183
+  p de Holm (2 règles) : 0.5908
+  ❌ C1 net > 0, p unilatéral (Holm) ≤ 0,05
+  ✅ C2 net > référence triviale
+  ❌ C3 net > 0 sans la meilleure année
+  ✅ C4 net > 0 avec 1 tick de coût en plus
+  VERDICT B objectif 2R : REJET
+  sorties : stop 38.4 %, objectif 11.4 % ; net +0.61 pts (+12 $) par trade
+
+Contrôle placebo (règle A, R net par jour de la semaine) :
+          count   mean    std      t
+jour                                
+lundi       260 -0.048  1.151 -0.677
+mardi       285 -0.176  1.113 -2.662
+mercredi    283 -0.068  1.217 -0.945
+jeudi       275  0.048  1.225  0.654
+vendredi    271  0.041  1.164  0.585
+
+Règle A, R net par année (vendredi / lundi-jeudi) :
+      vendredi  lun-jeu
+date                   
+2010    -0.239   -0.041
+2011     0.060   -0.011
+2012     0.225   -0.033
+2013    -0.059   -0.081
+2014    -0.002   -0.036
+2015     0.129   -0.159

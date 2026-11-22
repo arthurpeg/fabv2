@@ -1,10 +1,10 @@
 ---
 type: experiment
 updated: 2026-11-22
-status: active
-verdict: NQ vendredi réplique le papier (+0,19 R, t 3,50) mais ❌ B1 (DSR) ; lundi-jeudi rien ; réserve 2010-2015 gardée en attente
-prereg: []
-trials: 2079
+status: abandoned
+verdict: ❌ n° 31 (réserve 2010-2015 : vendredi +0,041 R, t 0,52) ; lundi-jeudi rien
+prereg: [31]
+trials: 2085
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -87,4 +87,8 @@ Source : Zarattini, Aziz, Barbon 2024 (*Beat the Market*, section 4.5) : RSI 5 j
 Demande de l'utilisateur : entrée sur clôture au-delà de la borne (bougie 1 min et 5 min, exécution à l'open qui suit), heure de la cassure (10:00-11:00, 11:00-13:00, 13:00-16:00), et ordres limite sur les bords du range (vente au haut, achat au bas, dès 10:00). NQ, objectif 2R, stop 1 W. 6 essais ; grille figée dans l'en-tête de [run_orb30_forme.py](../../run_orb30_forme.py), commitée avant calcul ; n_famille = 81 ; compteur 2 073 → 2 079.
 
 **Résultat** ([[reports/orb30_forme_report]]) : ❌ B1. Clôture 1 min +0,000 R, clôture 5 min −0,003 R, ordres limite sur les bords −0,024 R ; cassures 10:00-11:00 +0,022 R (t 0,96), plus tardives −0,07 à −0,08 R. Compteur 2 073 → 2 079 ; famille N = 81.
+
+## Confirmation : n° 31 (2026-11-22)
+
+Malgré B1 ratée, l'utilisateur a demandé d'ouvrir la réserve. [[PREREGISTRATION_31]] (commit `c7fb825`, écart au protocole écrit), une seule exécution ([[reports/prereg31_report]]) : 271 vendredis, **A +0,041 R (t 0,52), B objectif 2R +0,038 R (t 0,54), p de Holm 0,59 → ❌ C1 et C3, rejet des deux règles**. Placebo : le vendredi n'est plus à part (jeudi +0,048, mardi −0,176 R, t −2,66). L'effet vendredi n'existe pas avant 2016 sur NQ ; s'il existe, il est récent et non distinguable du hasard. Réserve consommée. Compteur 2 079 → 2 085.
 
