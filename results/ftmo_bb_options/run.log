@@ -1,0 +1,34 @@
+BB (mode A, SL 0.25 ATR, TP 2R, un trade par jour) : R brut moyen +0.140, MFE médian 0.75 R
+BB : 1545 trades ; 162 jours retirés pour l'anti-hedging (M2 du compte B de sens opposé)
+
+494 départs (2016-01 → 2025-08), 12 mois, comptes 10k, règle des annonces + cible + attente :
+
+  plan actuel (A mom, B 3n + M2)
+    total : moy. +3,502 $, méd. +3,331 $, 10e c. +2,075 $ ; P(< 0) 0.0 % ; pire creux de trésorerie médiane -261 $, pire -695 $
+    A : moy. +1,796 $, méd. +1,752 $, 10e c. +629 $ ; évals/an 4.1 ; rewards/an 6.3
+    B : moy. +1,705 $, méd. +1,689 $, 10e c. +725 $ ; rewards/an 5.7
+
+  option 1 : A = mom + BB
+    total : moy. +3,749 $, méd. +3,539 $, 10e c. +2,267 $ ; P(< 0) 0.0 % ; pire creux de trésorerie médiane -261 $, pire -782 $
+    A : moy. +2,044 $, méd. +1,787 $, 10e c. +895 $ ; évals/an 3.7 ; rewards/an 6.9
+    B : moy. +1,705 $, méd. +1,689 $, 10e c. +725 $ ; rewards/an 5.7
+
+  option 2 : + compte C = BB
+    total : moy. +4,971 $, méd. +4,930 $, 10e c. +3,485 $ ; P(< 0) 0.0 % ; pire creux de trésorerie médiane -348 $, pire -1,043 $
+    A : moy. +1,796 $, méd. +1,752 $, 10e c. +629 $ ; évals/an 4.1 ; rewards/an 6.3
+    B : moy. +1,705 $, méd. +1,689 $, 10e c. +725 $ ; rewards/an 5.7
+    C : moy. +1,469 $, méd. +1,579 $, 10e c. +446 $ ; évals/an 1.9 ; rewards/an 4.7
+
+Net total moyen sur 12 mois selon l'année de départ ($) :
+option  option 1 : A = mom + BB  option 2 : + compte C = BB  plan actuel (A mom, B 3n + M2)
+année                                                                                      
+2016                     3027.0                      3771.0                          3284.0
+2017                     5447.0                      6500.0                          4761.0
+2018                     2694.0                      4077.0                          2353.0
+2019                     3966.0                      5463.0                          4180.0
+2020                     3729.0                      5049.0                          3536.0
+2021                     3049.0                      4138.0                          2615.0
+2022                     3350.0                      4815.0                          2932.0
+2023                     2594.0                      4336.0                          2351.0
+2024                     4655.0                      6025.0                          4320.0
+2025                     5647.0                      5827.0                          5342.0
