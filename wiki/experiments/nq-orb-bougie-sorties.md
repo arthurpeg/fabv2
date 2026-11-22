@@ -3,8 +3,8 @@ type: experiment
 updated: 2026-11-22
 status: abandoned
 verdict: ❌ B1 sur NQ, ES, YM (DSR famille complète 0,02 ; ≈ 0 avant 2016)
-prereg: []
-trials: 2024
+prereg: [30]
+trials: 2025
 ---
 
 # NQ : règle de la 1ʳᵉ bougie de 5 minutes (Zarattini-Aziz) avec d'autres sorties
@@ -69,4 +69,8 @@ Demande de l'utilisateur : même grille sur ES et YM, détail de stop 0,5 ATR / 
 Demande de l'utilisateur, après la proposition de filtres justifiés par un mécanisme : F1 « pas d'annonce à 10:00 ou 14:00 » (Subhani), F2 « volume de la 1ʳᵉ bougie > 1,5 × médiane 20 j » (stocks in play ; voisin du filtre M3c déjà raté sur une cassure), F3 « corps de la bougie > 0,05 × ATR14 ». F4 (sens du gap) écarté : double comptage avec le fade de gap post-0DTE. Grille figée dans l'en-tête de [run_orb_bougie_filtres.py](../../run_orb_bougie_filtres.py), commitée avant calcul ; référence d'un filtre = jours sautés ; n_famille = 85 ; compteur 2 021 → 2 024. Barre attendue : il faut à peu près doubler le Sharpe (≈ 1,5 par an) pour un DSR ≥ 0,95.
 
 **Résultat des filtres** : ❌ **B1 pour F1, F2 et F3** ([[reports/orb_bougie_filtres_report]]). F3 (corps > 0,05 ATR), le meilleur : +2,91 pts/trade, Sharpe 0,87, 11 années positives sur 12, mais écart avec les jours sautés à t 1,23 et DSR 0,019. F1 (annonces) : +2,75, effet porté par 2021 seul. F2 (volume) : l'inverse de l'hypothèse, les jours à fort volume d'ouverture perdent (−3,49 pts, t −2,55), non versé aux phénomènes (1 essai sur 85, sens non prévu). Compteur 2 021 → 2 024. Réserve non lue.
+
+## Confirmation hors protocole : n° 30 (2026-11-22)
+
+Malgré B1 ratée, l'utilisateur a demandé le test sur la réserve de la variante stop 0,5 ATR / objectif 2R. [[PREREGISTRATION_30]] (commit `bade69c`, écart au protocole écrit), une seule exécution ([[reports/prereg30_report]]) : 1 216 trades, net +2,57 pts/trade, **t 0,58, p 0,28** → ❌ **C1, rejet**. « Toujours long » avec les mêmes sorties fait mieux (+2,61) ; Sharpe 0,26 contre 0,69 en exploration ; creux −67 000 $ par contrat. La réserve NQ « sortie » est consommée ; celle d'ES et YM reste réservée. Compteur 2 024 → 2 025.
 
