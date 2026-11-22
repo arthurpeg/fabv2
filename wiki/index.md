@@ -14,6 +14,7 @@ updated: 2026-11-19
 - [[wiki/lessons|Leçons]] — ce que toutes les expériences ont appris · 2026-10-31
 - [[wiki/phenomenes|Registre des phénomènes confirmés]] — ce qui se vérifie sur nos données, tradable seul ou non, pour combiner en stratégies · 2026-11-02
 - [[wiki/reserves|Registre des données (vierges, explorées, réservées, consommées)]] — à lire avant tout calcul de rendement ; réserve hors échantillon à déclarer avant le premier regard · 2026-11-19
+- [[wiki/book-multi-strategies|Stratégies pour un book multi-stratégies]] — règles à avantage réel mais trop lent ou trop petit pour la prop firm (yen, or, DAX, rebond de nuit, FX) · 2026-11-22
 - [[wiki/Failed Ideas/ledger|Registre des idées abandonnées]] — 32 idées, avec la raison et la condition de réouverture · 2026-11-02
 
 ## Expériences
