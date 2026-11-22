@@ -74,3 +74,7 @@ L'utilisateur choisit de **ne pas ouvrir tout de suite** la réserve 2010-06 →
 - le jour où la réserve sera ouverte : un seul pré-enregistrement, avec toutes les règles retenues à la fois (Holm si plusieurs) et le N de la famille à cette date ;
 - candidate actuelle : NQ vendredi, range 9:30-10:00, cassure, stop 1 W, objectif 2R (+0,164 R, t 3,67 en exploration) ou sans objectif (+0,190 R).
 
+
+## Lundi-jeudi : RSI 5 jours, approximation du gamma (2026-11-22)
+
+Source : Zarattini, Aziz, Barbon 2024 (*Beat the Market*, section 4.5) : RSI 5 jours bas → teneurs de marché probablement en gamma négatif → tendances prolongées. Demande de l'utilisateur : suivre la cassure quand le RSI est bas, et jouer la réintégration quand il est haut (gamma contre la cassure). V1 filtre (RSI5 de la veille < 50, sinon rien) et V2 (RSI < 50 cassure, RSI ≥ 50 réintégration des deux côtés, stop 1 W). Objectif 2R, NQ, lundi à jeudi. Grille figée dans l'en-tête de [run_orb30_rsi.py](../../run_orb30_rsi.py), commitée avant calcul ; n_famille = 75 ; compteur 2 071 → 2 073.
