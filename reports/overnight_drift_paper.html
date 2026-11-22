@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Overnight Drift in Index Futures</title>
+<style>
+@page{size:A4;margin:25mm 24mm 24mm;
+  @bottom-center{content:counter(page);font:10pt "Times New Roman",Times,serif;color:#000}}
+@page :first{@bottom-center{content:none}}
+:root{--ink:#111;--muted:#444;--rule:#000}
+*{box-sizing:border-box}
+html{background:#fff}
+body{margin:0;background:#fff;color:var(--ink);
+  font:11pt/1.45 "Times New Roman",Times,"Liberation Serif",serif;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+main{max-width:720px;margin:0 auto;padding:32px 16px 60px}
+p{margin:0 0 9px;text-indent:1.4em}
+p.noindent,h2+p,h3+p,.abstract p,.tablenote,.figcap,.refs p,.titleblock p{text-indent:0}
+h1{font-size:17pt;font-weight:bold;text-align:center;line-height:1.25;margin:40px 0 18px}
+h2{font-size:12pt;font-weight:bold;margin:22px 0 8px;break-after:avoid}
+h3{font-size:11pt;font-weight:bold;font-style:italic;margin:16px 0 6px;break-after:avoid}
+.titleblock{text-align:center;margin-bottom:26px}
+.titleblock p{margin:2px 0;text-align:center}
+.titleblock .author{font-size:12pt;margin-top:10px}
+.titleblock .date{margin-top:14px}
+.abstract{margin:22px 36px 14px;font-size:10pt}
+.abstract h4{text-align:center;font-size:10.5pt;margin:0 0 6px}
+.kw{margin:10px 36px 0;font-size:10pt;text-align:left}
+.kw p{text-indent:0;margin:2px 0}
+.firstpage{break-after:page}
+.eq{display:flex;justify-content:space-between;align-items:center;margin:10px 0 12px;font-style:italic}
+.eq span:first-child{flex:1;text-align:center}
+.eq span:last-child{font-style:normal}
+table{border-collapse:collapse;margin:4px auto 4px;font-size:9.5pt;text-align:left;width:100%}
+caption{caption-side:top;text-align:left;font-size:10pt;margin-bottom:5px}
+thead tr:first-child th{border-top:1.4px solid var(--rule)}
+thead th{border-bottom:.7px solid var(--rule);font-weight:normal;padding:4px 6px;vertical-align:bottom}
+tbody tr:last-child td{border-bottom:1.4px solid var(--rule)}
+td{padding:2.5px 6px;vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.sep td{border-top:.5px solid #888}
+.tbl{margin:14px 0 14px;break-inside:avoid}
+.tablenote{font-size:9pt;margin:5px 0 0;line-height:1.35}
+.figure{margin:14px 0;break-inside:avoid}
+.figcap{font-size:10pt;margin:6px 0 0}
+svg{width:100%;height:auto;display:block}
+svg rect{fill:#fff;stroke:#000;stroke-width:1}
+svg text{fill:#000;font:13px "Times New Roman",Times,serif}
+svg .s{font-size:11px;fill:#333}
+svg .ln{stroke:#000;stroke-width:1;fill:none;marker-end:url(#ah)}
+.refs p{padding-left:1.6em;text-indent:-1.6em;margin:0 0 5px;font-size:10pt;text-align:left}
+a{color:inherit;text-decoration:none}
+ol.plain{margin:0 0 9px;padding-left:22px}
+ol.plain li{margin:2px 0}
+@media (max-width:560px){.abstract,.kw{margin-left:0;margin-right:0}table{font-size:8.5pt}h1{font-size:15pt}}
+</style>
+</head>
+<body>
+<main>
+
+<div class="firstpage">
+<h1>The Overnight Drift in Index Futures: What Survives a Pre-Registered Protocol</h1>
+<div class="titleblock">
+  <p class="author">Arthur Pegliasco</p>
+  <p>Independent researcher</p>
+  <p><a href="mailto:arthur.peg2@gmail.com">arthur.peg2@gmail.com</a></p>
+  <p class="date">November 2026</p>
+</div>
+
+<div class="abstract">
+<h4>Abstract</h4>
+<p>US equity indices earn a large share of their return outside regular trading hours. I study this overnight drift on one-minute bars of Nasdaq-100, S&amp;P 500 and Dow Jones futures from 2016 to 2026, extended back to 2010 as a temporal out-of-sample period, under a protocol in which every confirmatory test is pre-registered and every rule tried is counted. The close-to-open return of NQ is +4.8 basis points a day (Newey–West t = 3.5), and nearly all of it accrues between the US close and the European open. A simple overnight rule on NQ, long or short according to 12-1 momentum, passes a pre-registered out-of-sample test on 2011–2015 (+0.116 R per trade, one-sided p = 0.0015) and carries an alpha of about 6 % a year with a beta of 0.09. Almost everything else fails. Of roughly twenty refinements and filters, none beats a random filter of the same size or survives out of sample, and neither the rule nor the raw drift passes a Deflated Sharpe Ratio test against the number of trials. The evidence is consistent with an inventory-risk premium, but the data available here cannot separate it from competing explanations.</p>
+</div>
+<div class="kw">
+<p><i>Keywords:</i> overnight returns, overnight drift, index futures, inventory risk, pre-registration, multiple testing, Deflated Sharpe Ratio</p>
+<p><i>JEL classification:</i> G12, G13, G14</p>
+</div>
+</div>
+
+<h2>1. Introduction</h2>
+<p>A well-documented feature of US equity markets is that returns accrue mostly overnight, between the close and the next open, while most trading volume and most public information arrive during the session (Lou, Polk and Skouras, 2019; Hendershott, Livdan and Rösch, 2020; Boyarchenko, Larsen and Whelan, 2023). A risk premium should be paid roughly in proportion to the risk borne, and the session carries most of the daily variance. Something specific to the night is therefore needed to explain why the night earns more.</p>
+<p>This paper asks two questions. Is the overnight drift present and stable in liquid index futures, measured on intraday data with realistic costs? And can it be traded more efficiently than by simply holding the index overnight? The second question is where most of the literature's trading rules live, and where the risk of finding something by chance is highest. I therefore work under a fixed protocol: every confirmatory test is written down and committed before any computation, every rule tried increments a global trial counter, filters are compared to random filters of the same size, and a single holdout period is reserved and frozen.</p>
+<p>The findings are short to state. The drift is present on all three index futures and is concentrated in the hours between the US close and the European open. One overnight rule on NQ passes a pre-registered out-of-sample test, and that is all; about twenty other ideas, taken from the literature or from the data, do not survive. A recurring pattern explains most of these failures: overnight, almost every rule that seems to work is the same drift counted again under another name.</p>
+<p>Section 2 sets out the hypothesis and its predictions. Section 3 describes the data and Section 4 the protocol and the statistical inference. Section 5 reports what is significant, Section 6 what is not, and Section 7 the effects left open for the holdout. Section 8 discusses limitations and Section 9 concludes.</p>
+
+<h2>2. Hypothesis: a premium for carrying overnight inventory</h2>
+<p>The working hypothesis is that overnight returns compensate those who agree to hold, through the night, inventory that others do not want to carry after the close. They provide liquidity for end-of-day rebalancing and then stay exposed during hours when unloading is expensive. The premium is the price of that service. The mechanism has four steps.</p>
+<ol class="plain">
+<li><i>Constrained closing flows.</i> At 16:00 ET some participants must trade at the close whatever the price: index funds and ETFs rebalancing, leveraged ETFs resetting their exposure, market-on-close orders. Arbitrageurs also cut positions before the night, because margin and borrowing costs are higher overnight (Bogousslavsky, 2021). On average this flow is net selling.</li>
+<li><i>Absorption by capital-constrained intermediaries.</i> Market makers and other overnight risk bearers take the other side and end up holding long inventory they did not choose.</li>
+<li><i>A night with no cheap exit.</i> Futures keep trading overnight, but liquidity is thin: the night's share of volatility exceeds its share of volume, and each contract moves the price more. Unloading before Europe, and then the US open, is costly, so the holder stays exposed to overnight news.</li>
+<li><i>Required return.</i> To accept this inventory and its risk, the intermediary buys at the close at a discount. The price recovers as liquidity returns, first with Europe and then at 9:30.</li>
+</ol>
+<p class="noindent">This is the inventory-risk channel of Boyarchenko, Larsen and Whelan (2023). Adrian, Capponi, Fleming, Vogt and Zhang (2020) provide a model in which an overnight inventory cost forces liquidation at the end of the session and creates a premium for whoever carries the risk. The mechanism yields six testable predictions, which Section 5.4 confronts with the data.</p>
+
+<h2>3. Data and setting</h2>
+<p>The main sample consists of one-minute bars of the Nasdaq-100 (NQ), S&amp;P 500 (ES) and Dow Jones (YM) E-mini futures from January 2016 to 28 August 2026, from Databento. Data for 2010–2015 were bought later and kept unseen as a temporal out-of-sample period. Gold (GC) and silver (SI) futures are used for a side study of metal sessions. Data after 28 August 2026 form the holdout and are not used for any computation of returns. All times are New York time (ET). Table 1 summarises the main choices.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 1.</b> Data and definitions</caption>
+<thead><tr><th style="width:22%">Item</th><th>Choice</th></tr></thead>
+<tbody>
+<tr><td>Data</td><td>Databento one-minute bars, January 2016 to 28 August 2026; 2010–2015 as unseen temporal out-of-sample period.</td></tr>
+<tr><td>Contract rolls</td><td>Ratio back-adjustment at each roll. An adjusted futures return is an excess return (index plus dividends minus the financing rate), not the price return of the cash index.</td></tr>
+<tr><td>Sessions</td><td>Asia: 16:00 ET to 08:00 London; Europe: 08:00 London to 9:30 ET; US: 9:30 to 16:00 ET. Asia plus Europe equals the close-to-open return.</td></tr>
+<tr><td>Overnight rule</td><td>Enters at 20:00 ET, exits at 9:30 ET, or earlier at a stop of 2 ATR or a target of 5 ATR (ATR on 15-minute bars).</td></tr>
+<tr><td>Trading cost</td><td>One tick plus $5 per round trip; variants with observed bid–ask spreads (bbo-1m), CFD spreads (2 points on NQ) and micro contracts.</td></tr>
+<tr><td>Unit of risk</td><td>1 R is the stop distance, 2 ATR at entry.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>4. Protocol and inference</h2>
+<h3>4.1 Protocol</h3>
+<p>Every confirmatory test is written down (rule, data, cost, statistic and threshold) and committed before any computation; anything else is labelled exploratory and cannot validate a rule. Every rule tested, confirmatory or exploratory, increments a global trial counter, which stood at 1,742 when this paper was written. That counter is the number of trials used in the Deflated Sharpe Ratio (Bailey and López de Prado, 2014), with a threshold of 0.95, and it indicates how many false positives to expect.</p>
+<p>Samples are split in three ways. The in-sample period is 2016–2022 and the first out-of-sample period runs from 2023 to August 2026. The years 2010–2015, bought later, serve as an unseen temporal out-of-sample period. Another index over the same years is treated only as weak evidence, because the three indices are highly correlated. Every overnight rule is compared to a plain long position over the same hours, and every filter to 500 random filters that skip the same number of nights. Within each family of tests, p-values are corrected with Holm (1979) or Benjamini and Hochberg (1995); White's (2000) Reality Check, the probability of backtest overfitting (Bailey, Borwein, López de Prado and Zhu, 2017) and bootstrap tests complement them.</p>
+<p>Finally, a single holdout is reserved: all data after 28 August 2026, with a plan of tests frozen in advance. A window from 29 August to 3 November 2026 was read early and is reported as exploratory, so the official holdout starts on 4 November 2026. It will be read on 29 February 2028 and 31 August 2029, with success only if z ≥ 3.0 (a Haybittle–Peto boundary; Haybittle, 1971; Peto et al., 1976), and a final verdict with Holm's correction on 29 August 2031. Until then, no signal or return is computed on these data.</p>
+
+<h3>4.2 Inference</h3>
+<p>Pre-registered tests of the overnight rule use confidence intervals and one-sided p-values from a circular moving-block bootstrap (blocks of ten trades or days, 2,000 draws); its alpha is tested by block bootstrap on the intercept and residuals. Other strategy tests use Newey and West (1987) standard errors with five lags. Session means were first estimated with a plain iid t-statistic; I re-estimate them here with Newey–West standard errors (Bartlett kernel, five lags and the automatic rule floor(4(T/100)<sup>2/9</sup>) = 8 lags) and with a block bootstrap.</p>
+<p>The series show the usual properties of intraday returns: strong volatility clustering (ARCH-LM(5) statistics between 144 and 1,035, p &lt; 10<sup>−28</sup>), excess kurtosis between 5 and 15, and weak but significant serial correlation in the Asian and US sessions (Ljung–Box(5) p &lt; 10<sup>−5</sup>), close to zero for the full close-to-open return. This is why HAC or block-bootstrap inference is required. Measured in R, however, the overnight rule shows no ARCH effect (p = 0.47) and no fat tails: sizing by ATR already normalises its risk, which is consistent with the failure of volatility-based sizing reported in Section 6.</p>
+
+<h2>5. Results</h2>
+<h3>5.1 The overnight drift</h3>
+<p>Over 2016–2026 the close-to-open return is positive and significant on all three indices (Table 2). On NQ it is +4.8 basis points a day. The US session is also positive on average, but not significantly so, and it is very unstable from one year to the next. On NQ, almost all of the overnight return accrues during the Asian session, between the US close and the European open (+4.35 bp, Newey–West t = 4.3); the European session adds close to nothing (+0.49 bp).</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 2.</b> Mean daily returns by session, 2016–2026: iid and HAC inference</caption>
+<thead><tr><th>Series</th><th class="n">Mean</th><th class="n">t (iid)</th><th class="n">t (NW, 8 lags)</th><th class="n">p (NW)</th><th class="n">p (block bootstrap)</th><th class="n">ρ<sub>1</sub></th></tr></thead>
+<tbody>
+<tr><td>NQ close-to-open</td><td class="n">+4.82 bp</td><td class="n">3.12</td><td class="n">3.51</td><td class="n">0.0004</td><td class="n">0.0005</td><td class="n">−0.03</td></tr>
+<tr><td>NQ Asian session</td><td class="n">+4.35 bp</td><td class="n">3.66</td><td class="n">4.27</td><td class="n">0.00002</td><td class="n">&lt; 0.0005</td><td class="n">−0.13</td></tr>
+<tr><td>NQ US session</td><td class="n">+3.02 bp</td><td class="n">1.42</td><td class="n">1.60</td><td class="n">0.11</td><td class="n">0.11</td><td class="n">−0.10</td></tr>
+<tr><td>ES close-to-open</td><td class="n">+3.45 bp</td><td class="n">2.80</td><td class="n">2.99</td><td class="n">0.003</td><td class="n">0.002</td><td class="n">−0.03</td></tr>
+<tr><td>YM close-to-open</td><td class="n">+3.28 bp</td><td class="n">2.74</td><td class="n">2.88</td><td class="n">0.004</td><td class="n">0.0045</td><td class="n">−0.02</td></tr>
+<tr class="sep"><td>Overnight rule, NQ (return per night)</td><td class="n">+3.18 bp</td><td class="n">2.92</td><td class="n">3.16</td><td class="n">0.0016</td><td class="n">0.0035</td><td class="n">−0.02</td></tr>
+<tr><td>Overnight rule, NQ, 2011–2015 (per trade)</td><td class="n">+0.116 R</td><td class="n">2.79</td><td class="n">2.87</td><td class="n">0.004</td><td class="n">0.0045</td><td class="n">−0.04</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Two-sided p-values. ρ<sub>1</sub> is the first-order autocorrelation. The HAC t-statistic exceeds the iid one in every row because first-order autocorrelation is negative, which lowers the long-run variance of the mean; the iid t was therefore conservative. Newey–West and the block bootstrap agree, and no conclusion changes.</p>
+</div>
+
+<h3>5.2 An overnight rule on NQ</h3>
+<p>Among the overnight rules suggested by a first batch of papers from the literature, one was retained after the fact: hold NQ from 20:00 to 9:30 ET, long when the 12-1 momentum of the index is positive and short otherwise (in the spirit of Moskowitz, Ooi and Pedersen, 2012), with a stop at 2 ATR and a target at 5 ATR. Because it was chosen after looking at the data, it was then submitted to three pre-registered tests, summarised in Table 3.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 3.</b> The NQ overnight rule</caption>
+<thead><tr><th>Test</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Out of sample, 2011–2015 (pre-registered)</td><td>+0.116 R per trade, one-sided p = 0.0015</td></tr>
+<tr><td>Alpha and beta against NQ (pre-registered)</td><td>α = +6.2 % a year [+2.5; +9.7], β = 0.09</td></tr>
+<tr><td>With observed bid–ask spreads</td><td>+0.076 R per trade [+0.033; +0.116]</td></tr>
+<tr><td>July 2011 to 3 November 2026</td><td>3,831 nights, +0.087 R per night, annual Sharpe ratio 1.01, t = 4.0, maximum drawdown −25.4 R</td></tr>
+<tr><td>Same rule on ES and YM (pre-registered)</td><td>Not significant (ES Holm p = 0.25); effect three to five times weaker; YM negative over 2021–2026</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Brackets are 95 % block-bootstrap confidence intervals.</p>
+</div>
+
+<p>An important caveat applies. Over 2011–2015 momentum was positive throughout, so all out-of-sample trades were long. What the test validates is therefore "long NQ overnight", not the momentum filter itself. The filter did reduce the 2022 loss (a drawdown of −10.7 % against −25.8 % for a rule that is always long), but this rests on 422 nights: consistent with the hypothesis, not proof of it.</p>
+
+<h3>5.3 Gold</h3>
+<p>A side study of metal sessions finds that gold also rises at a specific time of day. On GC, the session from 17:00 ET to 9:00 Shanghai time earns +2.0 bp a day gross (t = 3.5, Holm-adjusted p = 0.003) and is positive in each of three sub-periods. Net of costs, +1.1 bp remains (t = 2.0): real, but barely tradable. The London and COMEX sessions are flat.</p>
+
+<h3>5.4 Predictions of the inventory-risk mechanism</h3>
+<p>Table 4 confronts the predictions of the mechanism of Section 2 with the data. The first two are supported or consistent; the others are either unresolved or only partly supported.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 4.</b> Predictions of the mechanism and evidence</caption>
+<thead><tr><th style="width:32%">Prediction</th><th>Evidence</th><th style="width:16%">Status</th></tr></thead>
+<tbody>
+<tr><td>P1. Returns accrue overnight, not during the session</td><td>NQ close-to-open +4.8 bp a day (t = 3.1); US session +3.0 bp (t = 1.4), unstable</td><td>Supported</td></tr>
+<tr><td>P2. The premium grows with the risk borne (higher beta; Hendershott et al., 2020)</td><td>NQ +4.8 bp against ES +3.5 and YM +3.3; the overnight rule works on NQ only</td><td>Consistent</td></tr>
+<tr><td>P3. Asymmetry: strong rebound after heavy selling, little reversal after rallies</td><td>Lowest decile of the three-night return: next night positive in 6 samples out of 6; after rallies the night is flat, not negative</td><td>Watch list (uncorrected)</td></tr>
+<tr><td>P4. The premium tracks the closing sell imbalance</td><td>Proxy: close below the 15:15–16:15 VWAP. NQ +0.051 R (p = 0.11), ES p = 0.30, YM reversed</td><td>Not shown with this proxy</td></tr>
+<tr><td>P5. The premium is larger when overnight risk is larger</td><td>Nights before NFP or CPI releases: +0.30 R against +0.05 R</td><td>Watch list</td></tr>
+<tr><td>P6. Unloading happens when liquidity returns</td><td>On NQ most of the return comes from 16:00 to 3:00 ET (+4.35 bp, t = 3.7), which ends at the European open; Europe itself +0.49 bp</td><td>Partly supported</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>A direct test of P4 would require signed volume at the close, that is, tick-by-tick trades. Without it, inventory risk cannot be separated from other explanations that are also consistent with P1 and P2: a beta premium concentrated overnight (Hendershott et al., 2020), different clienteles trading overnight and intraday (Lou et al., 2019), or attention-driven buying at the open (Berkman, Koch, Tuttle and Zhang, 2012).</p>
+
+<h3>5.5 Multiple testing</h3>
+<p>With 1,742 trials, the question is not whether the results above are significant one at a time, but whether they survive the search that produced them. Daily return series are stored for 560 of the trials. On their correlation matrix, the eigenvalue method of Li and Ji (2005) gives an effective number of 196 independent tests (a ratio of 0.35), and that of Nyholt (2004) gives 535, a method known to overstate when average correlation is weak. Most pairs of trials are nearly independent (median |ρ| = 0.027), but a few clusters are highly redundant: the largest eigenvalue, 76, corresponds to the overnight drift tested at every hour and with every stop. Extrapolating the ratio gives about 610 effective trials out of 1,742.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 5.</b> Deflated Sharpe Ratio with the raw and the effective number of trials</caption>
+<thead><tr><th>Series</th><th class="n">Annual Sharpe</th><th class="n">N</th><th class="n">SR<sub>0</sub> (observed V)</th><th class="n">DSR</th><th class="n">SR<sub>0</sub> (V = 1/T)</th><th class="n">DSR</th></tr></thead>
+<tbody>
+<tr><td>Overnight rule, NQ, 2016–2026</td><td class="n">0.88</td><td class="n">1,742</td><td class="n">1.78</td><td class="n">0.001</td><td class="n">1.03</td><td class="n">0.30</td></tr>
+<tr><td></td><td class="n">0.88</td><td class="n">≈ 610</td><td class="n">1.63</td><td class="n">0.005</td><td class="n">0.94</td><td class="n">0.42</td></tr>
+<tr class="sep"><td>NQ close-to-open</td><td class="n">0.96</td><td class="n">1,742</td><td class="n">1.78</td><td class="n">0.004</td><td class="n">1.03</td><td class="n">0.41</td></tr>
+<tr><td></td><td class="n">0.96</td><td class="n">≈ 610</td><td class="n">1.63</td><td class="n">0.016</td><td class="n">0.94</td><td class="n">0.53</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> SR<sub>0</sub> is the expected maximum Sharpe ratio under the null, given N trials and the variance V of Sharpe ratios across trials. The last two columns, added as a control after the first computation, set V to the pure sampling variance of a Sharpe ratio.</p>
+</div>
+
+<p>Dividing the number of trials by three barely changes the threshold, because N enters it through a logarithmic term: SR<sub>0</sub> falls by only about 9 %. What drives the threshold is the dispersion of Sharpe ratios across trials. Neither the overnight rule nor the raw drift passes the test against the global counter, whether raw or effective. The evidence for the rule rests instead on the pre-registered out-of-sample test, a single hypothesis on unseen data for which the relevant N is one, and on the frozen holdout. A Romano–Wolf stepdown or Hansen's SPA test over a complete family, and an effective N over all 1,742 trials, could not be computed, because the return series of the earliest 927 tests were not stored.</p>
+
+<h2>6. What does not work</h2>
+<p>About twenty overnight hypotheses were tested between October and November 2026. They come from the literature, from two strategies passed on to the author, and from the author's own reading of the data; Table A1 in the appendix lists them all. Table 6 summarises the failures. The common lesson is that a filter adds something only if it beats the nights it skips, and none has done so robustly: overnight, almost everything that seems to work is the drift itself, counted again. In the first batch of ideas from the literature, 51 of the 56 net-positive results were the same premium, while about 23 false positives were expected among 927 tests.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 6.</b> Rejected ideas</caption>
+<thead><tr><th style="width:24%">Idea</th><th style="width:22%">Key figure</th><th>Why it failed</th><th style="width:20%">Worth revisiting if</th></tr></thead>
+<tbody>
+<tr><td>Same rule on ES and YM</td><td>ES Holm p = 0.25</td><td>Effect three to five times weaker than on NQ; YM negative 2021–2026</td><td>—</td></tr>
+<tr><td>Optimised stops and entry time</td><td>Sharpe +0.14 [−0.22; +0.50]</td><td>Improves the tail, not the Sharpe ratio; 20:00 wins through exposure time</td><td>The objective is tail risk</td></tr>
+<tr><td>"Stay flat" filters (Jones et al., 2022; Abdi, 2018; Berkman et al., 2012; Vojtko and Hanicova, 2021)</td><td>Below the 95th percentile of 500 random filters</td><td>None cuts the drawdown by 30 % while keeping 80 % of the return</td><td>A written rationale and a holdout test</td></tr>
+<tr><td>Avoid NFP and CPI nights</td><td>+0.30 R against +0.05 R</td><td>These are the best nights</td><td>Never in this direction</td></tr>
+<tr><td>VIX filters, volatility sizing (Donninger, 2014)</td><td>Drawdown −1 % only</td><td>The ATR stop already normalises risk</td><td>New data, neither price nor VIX</td></tr>
+<tr><td>Closing selling pressure (close below VWAP)</td><td>NQ +0.05 R, p = 0.11</td><td>ES not significant, YM reversed</td><td>Signed tick-level volume</td></tr>
+<tr><td>Stop at the 17:00–20:00 range</td><td>−0.10 to −0.03 R net</td><td>Median stop 0.86 ATR: 60 % stopped, cost 0.13 R</td><td>Near-zero costs</td></tr>
+<tr><td>Sign of one session predicts the next</td><td>Europe → US, r = −0.003</td><td>No exploitable correlation</td><td>Flow data with a mechanism</td></tr>
+<tr><td>Long 20:05–03:00 after three down nights</td><td>+0.016 R, p = 0.32 on 2010–2015</td><td>Skipped nights also earn +0.092 R: it is the drift, not the filter</td><td>Holdout, frozen rule</td></tr>
+<tr><td>High three-night return predicts a falling night</td><td>|t| ≤ 1.5, Holm p = 1.0</td><td>After rallies the night is flat, not negative</td><td>Never as a short</td></tr>
+<tr><td>Gold close-to-open with ATR stops</td><td>−0.9 bp per trade net</td><td>Negative in every variant</td><td>—</td></tr>
+<tr><td>Gold: fade early Globex (Fattinger and Ziegler, 2015)</td><td>Slope 0.68 at 19:00, Holm p = 0.97</td><td>No loss of price efficiency before Europe</td><td>Evening bid–ask data</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>7. Effects left open</h2>
+<p>Four effects are significant before correction but not after, or were found by looking at the data, and are therefore kept on a watch list rather than claimed.</p>
+<p>The most robust is a rebound after a sharp decline. When the sum of the three previous nights' returns is below about −50 bp (its lowest decile), the next night is positive in six samples out of six: NQ +17.3 bp (t = 3.7), ES +15.9 bp (t = 3.3) and YM +11.1 bp (t = 2.5) over 2016–2026, and also positive over 2010–2015. It was found by reading deciles, outside any pre-registered family, and is one of the hypotheses of the holdout. Second, nights before NFP and CPI releases earn +0.30 R against +0.05 R for the other nights of the overnight rule; about 40 % of the rule's return comes from 9 % of its nights. This was found by reversing a rejected hypothesis and does not extend to other announcements. Third, gold earns +1.4 bp net between 16:00 and 19:00 ET (t = 2.7), a window chosen after the fact and flat over 2016–2019. Fourth, the gold move between 17:00 and 5:00 ET continues through the rest of the day (slope 1.13, Holm p = 0.02), but only over 2023–2026, and it was found among 23 cut-off times.</p>
+<p>An early, exploratory read of the first two months after the main sample (31 August to 3 November 2026) gives −0.023 R per night for the overnight rule over 44 nights, +0.379 R per trade for the three-night rule over 23 trades (p = 0.087), and a rebound spread of +19.8 bp (p = 0.13). No conclusion is possible at this size.</p>
+
+<h2>8. Limitations</h2>
+<p>The main limitation is that the overnight rule was chosen after the fact among hundreds of candidates, and its out-of-sample validation covers long nights only. The sample contains a single real bear market (2022), so the behaviour of the momentum filter in a prolonged decline is not established. Returns are concentrated: about 40 % of the rule's return comes from 9 % of its nights, which makes the result depend on few events. The rule and the three-night strategy are correlated (+0.35 per night) and share the same mean reversion, so any combination of the two has to be pre-registered. Finally, the mechanism of Section 2 is not identified: without signed closing volume, inventory risk cannot be told apart from a beta premium or a clientele effect.</p>
+
+<h2>9. Conclusion</h2>
+<p>On liquid US index futures, the overnight drift is real, significant under HAC inference, and concentrated in the hours between the US close and the European open. A single rule that holds NQ overnight passes a pre-registered out-of-sample test, but what it validates is mainly the drift itself, and it does not pass a Deflated Sharpe Ratio test against the number of rules tried. Nearly every refinement fails, because skipping nights rarely beats the nights skipped. The honest conclusion is narrow: being long NQ overnight has earned a premium with little market beta, and the effects that could improve on it, the rebound after sharp declines first among them, are left to a frozen holdout whose first read is scheduled for February 2028.</p>
+
+<h2>References</h2>
+<div class="refs">
+<p>Abdi, F. (2018). Cycles of declines and reversals following overnight market declines. SSRN Working Paper 3287680.</p>
+<p>Adrian, T., Capponi, A., Fleming, M., Vogt, E. and Zhang, H. (2020). Intraday market making with overnight inventory costs. <i>Journal of Financial Markets</i>, 50, 100564.</p>
+<p>Bailey, D. H., Borwein, J., López de Prado, M. and Zhu, Q. J. (2017). The probability of backtest overfitting. <i>Journal of Computational Finance</i>, 20(4), 39–69.</p>
+<p>Bailey, D. H. and López de Prado, M. (2014). The deflated Sharpe ratio: Correcting for selection bias, backtest overfitting and non-normality. <i>Journal of Portfolio Management</i>, 40(5), 94–107.</p>
+<p>Benjamini, Y. and Hochberg, Y. (1995). Controlling the false discovery rate: A practical and powerful approach to multiple testing. <i>Journal of the Royal Statistical Society, Series B</i>, 57(1), 289–300.</p>
+<p>Berkman, H., Koch, P. D., Tuttle, L. and Zhang, Y. J. (2012). Paying attention: Overnight returns and the hidden cost of buying at the open. <i>Journal of Financial and Quantitative Analysis</i>, 47(4), 715–741.</p>
+<p>Bogousslavsky, V. (2021). The cross-section of intraday and overnight returns. <i>Journal of Financial Economics</i>, 141(1), 172–194.</p>
+<p>Boyarchenko, N., Larsen, L. C. and Whelan, P. (2023). The overnight drift. <i>Review of Financial Studies</i>, 36(9), 3502–3547.</p>
+<p>Donninger, C. (2014). Lovers by night, strangers by day? An investigation of simple overnight trading strategies. SSRN Working Paper 2495490.</p>
+<p>Fattinger, F. and Ziegler, A. (2015). Risk and return around the clock. SSRN Working Paper 2606706.</p>
+<p>Haybittle, J. L. (1971). Repeated assessment of results in clinical trials of cancer treatment. <i>British Journal of Radiology</i>, 44(526), 793–797.</p>
+<p>Hendershott, T., Livdan, D. and Rösch, D. (2020). Asset pricing: A tale of night and day. <i>Journal of Financial Economics</i>, 138(3), 635–662.</p>
+<p>Holm, S. (1979). A simple sequentially rejective multiple test procedure. <i>Scandinavian Journal of Statistics</i>, 6(2), 65–70.</p>
+<p>Jones, C. S., Pyun, S. and Wang, T. (2022). Return extrapolation and day/night effects. SSRN Working Paper 4181093.</p>
+<p>Li, J. and Ji, L. (2005). Adjusting multiple testing in multilocus analyses using the eigenvalues of a correlation matrix. <i>Heredity</i>, 95(3), 221–227.</p>
+<p>Lou, D., Polk, C. and Skouras, S. (2019). A tug of war: Overnight versus intraday expected returns. <i>Journal of Financial Economics</i>, 134(1), 192–213.</p>
+<p>Moskowitz, T. J., Ooi, Y. H. and Pedersen, L. H. (2012). Time series momentum. <i>Journal of Financial Economics</i>, 104(2), 228–250.</p>
+<p>Newey, W. K. and West, K. D. (1987). A simple, positive semi-definite, heteroskedasticity and autocorrelation consistent covariance matrix. <i>Econometrica</i>, 55(3), 703–708.</p>
+<p>Nyholt, D. R. (2004). A simple correction for multiple testing for single-nucleotide polymorphisms in linkage disequilibrium with each other. <i>American Journal of Human Genetics</i>, 74(4), 765–769.</p>
+<p>Peto, R., Pike, M. C., Armitage, P., Breslow, N. E., Cox, D. R., Howard, S. V., Mantel, N., McPherson, K., Peto, J. and Smith, P. G. (1976). Design and analysis of randomized clinical trials requiring prolonged observation of each patient. I. Introduction and design. <i>British Journal of Cancer</i>, 34(6), 585–612.</p>
+<p>Vojtko, R. and Hanicova, D. (2021). Market sentiment and an overnight anomaly. SSRN Working Paper 3829582.</p>
+<p>White, H. (2000). A reality check for data snooping. <i>Econometrica</i>, 68(5), 1097–1126.</p>
+</div>
+
+<h2>Appendix A. Hypotheses tested</h2>
+<div class="tbl" style="break-inside:auto">
+<table>
+<caption><b>Table A1.</b> Overnight hypotheses tested, October–November 2026</caption>
+<thead><tr><th style="width:44%">Hypothesis</th><th>Origin</th><th>Test</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Index returns accrue outside the session</td><td>Literature</td><td>Sessions 2016–2026, ES, NQ, YM</td><td>Confirmed</td></tr>
+<tr><td>Long or short NQ 20:00–9:30 by 12-1 momentum, stop 2 ATR, target 5 ATR</td><td>Literature, chosen after the fact</td><td>Pre-registered</td><td>Yes on NQ; no on ES and YM</td></tr>
+<tr><td>The rule is more than beta</td><td>Author</td><td>Pre-registered</td><td>Yes, α +6.2 % a year</td></tr>
+<tr><td>Optimised stops and entry time improve the rule</td><td>Author</td><td>Pre-registered</td><td>No</td></tr>
+<tr><td>"Stay flat" filters reduce drawdown</td><td>Literature</td><td>Pre-registered</td><td>No</td></tr>
+<tr><td>Avoid NFP and CPI nights</td><td>Author</td><td>Pre-registered</td><td>No, reversed</td></tr>
+<tr><td>VIX filters; volatility sizing</td><td>Literature</td><td>Pre-registered</td><td>No</td></tr>
+<tr><td>Close below VWAP 15:15–16:15 (selling pressure)</td><td>Boyarchenko et al. (2023)</td><td>Pre-registered</td><td>No</td></tr>
+<tr><td>VWAP execution</td><td>Author</td><td>Pre-registered</td><td>Not retained</td></tr>
+<tr><td>Stop at the evening range 17:00–20:00</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
+<tr><td>Sign of one session predicts the next</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
+<tr><td>Long NQ 20:05–03:00 if the previous three nights ≤ 0</td><td>Strategy passed on</td><td>Pre-registered</td><td>No, out of sample</td></tr>
+<tr><td>The higher the three-night return, the more the night falls</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
+<tr><td>Rebound after a sharp decline (three nights ≤ −50 bp)</td><td>Author, reading deciles</td><td>Exploratory</td><td>Watch list</td></tr>
+<tr><td>Gold: evening reopening 17:00 to 9:00 Shanghai</td><td>Literature</td><td>Exploratory</td><td>Yes gross, weak net</td></tr>
+<tr><td>Gold: noisy price before Europe (fade early Globex)</td><td>Fattinger and Ziegler (2015)</td><td>Exploratory</td><td>No</td></tr>
+<tr><td>Gold: the 17:00–5:00 move continues through the day</td><td>Fattinger and Ziegler (2015)</td><td>Exploratory</td><td>Watch list</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="noindent" style="margin-top:22px;font-size:9.5pt;text-align:left"><i>This paper is a research note. It is not investment advice. All figures are historical estimates under the assumptions stated above.</i></p>
+
+</main>
+</body>
+</html>
