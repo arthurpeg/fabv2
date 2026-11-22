@@ -46,7 +46,7 @@ updated: 2026-11-22
 
 | Date | Famille d'idées | Tranche explorable | Réserve | État |
 |---|---|---|---|---|
-| 2026-11-22 | Session domestique et solde commercial ([[wiki/experiments/fx-exportateur-importateur]]) | Devises flottantes hors 7 majeures (NOK, SEK, PLN, CZK, HUF, MXN, ZAR, SGD, TRY, ILS…, liste figée à l'étape 1), comptant Dukascopy, 2010-01-01 → 2021-08-31 | Mêmes devises, 2021-09-01 → 2026-08-28 (5 ans) | **réservée** ; tout vierge à cette date (contrôles de qualité seulement) |
+| 2026-11-22 | Session domestique et solde commercial ([[wiki/experiments/fx-exportateur-importateur]]) | Devises flottantes hors 7 majeures (NOK, SEK, PLN, CZK, HUF, MXN, ZAR, SGD, TRY, ILS…, liste figée à l'étape 1), comptant Dukascopy, 2010-01-01 → 2021-08-31 | Mêmes devises, 2021-09-01 → 2026-08-28 (5 ans) | **réservée**, non ouverte (idée abandonnée à l'étape 1 le 2026-11-22, [[reports/fx_balance_report]]) ; exploration 2010-01 → 2021-08 de NOK, SEK, PLN, MXN, ZAR, SGD, TRY : **explorée** ; spreads de la réserve vus (contrôle de qualité) |
 
 | Date | Actif | Tranche explorable | Réserve | Famille d'idées | État |
 |---|---|---|---|---|---|
