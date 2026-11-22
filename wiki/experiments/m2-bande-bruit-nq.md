@@ -9,6 +9,8 @@ trials: 2091
 
 # Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ
 
+> ⚠️ **Deux « M2 » dans le dépôt.** Cette page porte sur la **bande de bruit** de Zarattini, Aziz et Barbon (mécanisme M2 de [[PREREGISTRATION]], `fab/strategies.py::m2_noise`). Le **« M2 » du bot FTMO** (book B « 3n + M2 », `live/bot.py`) est une autre règle : le **modèle M2 de la stratégie transmise « close de 9:30 contre EMA12 »**, voir [[wiki/experiments/nq-ema930-m2]]. Les résultats de cette page ne disent rien du M2 du bot.
+
 **Une phrase** : Sharpe net +1,15 IS / +1,13 OOS sur ~2 300 trades, mais rejetée par le [[wiki/concepts/dsr|DSR]] (0,03) selon la règle fixée à l'avance.
 
 ## Tests
