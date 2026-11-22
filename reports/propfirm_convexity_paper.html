@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prop-Firm Challenges as Options</title>
+<style>
+@page{size:A4;margin:25mm 24mm 24mm;
+  @bottom-center{content:counter(page);font:10pt "Times New Roman",Times,serif;color:#000}}
+@page :first{@bottom-center{content:none}}
+:root{--ink:#111;--muted:#444;--rule:#000}
+*{box-sizing:border-box}
+html{background:#fff}
+body{margin:0;background:#fff;color:var(--ink);
+  font:11pt/1.45 "Times New Roman",Times,"Liberation Serif",serif;
+  text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+main{max-width:720px;margin:0 auto;padding:32px 16px 60px}
+p{margin:0 0 9px;text-indent:1.4em}
+p.noindent,h2+p,h3+p,.abstract p,.tablenote,.figcap,.refs p,.titleblock p{text-indent:0}
+h1{font-size:17pt;font-weight:bold;text-align:center;line-height:1.25;margin:40px 0 18px}
+h2{font-size:12pt;font-weight:bold;margin:22px 0 8px;break-after:avoid}
+h3{font-size:11pt;font-weight:bold;font-style:italic;margin:16px 0 6px;break-after:avoid}
+.titleblock{text-align:center;margin-bottom:26px}
+.titleblock p{margin:2px 0;text-align:center}
+.titleblock .author{font-size:12pt;margin-top:10px}
+.titleblock .date{margin-top:14px}
+.abstract{margin:22px 36px 14px;font-size:10pt}
+.abstract h4{text-align:center;font-size:10.5pt;margin:0 0 6px}
+.kw{margin:10px 36px 0;font-size:10pt;text-align:left}
+.kw p{text-indent:0;margin:2px 0}
+.firstpage{break-after:page}
+.eq{display:flex;justify-content:space-between;align-items:center;margin:10px 0 12px;font-style:italic}
+.eq span:first-child{flex:1;text-align:center}
+.eq span:last-child{font-style:normal}
+table{border-collapse:collapse;margin:4px auto 4px;font-size:9.5pt;text-align:left;width:100%}
+caption{caption-side:top;text-align:left;font-size:10pt;margin-bottom:5px}
+thead tr:first-child th{border-top:1.4px solid var(--rule)}
+thead th{border-bottom:.7px solid var(--rule);font-weight:normal;padding:4px 6px;vertical-align:bottom}
+tbody tr:last-child td{border-bottom:1.4px solid var(--rule)}
+td{padding:2.5px 6px;vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.sep td{border-top:.5px solid #888}
+.tbl{margin:14px 0 14px;break-inside:avoid}
+.tablenote{font-size:9pt;margin:5px 0 0;line-height:1.35}
+.figure{margin:14px 0;break-inside:avoid}
+.figcap{font-size:10pt;margin:6px 0 0}
+svg{width:100%;height:auto;display:block}
+svg rect{fill:#fff;stroke:#000;stroke-width:1}
+svg text{fill:#000;font:13px "Times New Roman",Times,serif}
+svg .s{font-size:11px;fill:#333}
+svg .ln{stroke:#000;stroke-width:1;fill:none;marker-end:url(#ah)}
+.refs p{padding-left:1.6em;text-indent:-1.6em;margin:0 0 5px;font-size:10pt;text-align:left}
+a{color:inherit;text-decoration:none}
+ol.plain{margin:0 0 9px;padding-left:22px}
+ol.plain li{margin:2px 0}
+@media (max-width:560px){.abstract,.kw{margin-left:0;margin-right:0}table{font-size:8.5pt}h1{font-size:15pt}}
+</style>
+</head>
+<body>
+<main>
+
+<div class="firstpage">
+<h1>Prop-Firm Challenges as Options: How Much Is the Convexity of the Payoff Worth?</h1>
+<div class="titleblock">
+  <p class="author">Arthur Pegliasco</p>
+  <p>Independent researcher</p>
+  <p><a href="mailto:arthur.peg2@gmail.com">arthur.peg2@gmail.com</a></p>
+  <p class="date">November 2026</p>
+</div>
+
+<div class="abstract">
+<h4>Abstract</h4>
+<p>Proprietary trading firms sell evaluations: the trader pays a fixed fee, trades a simulated account, and receives a share of profits on a funded account if the evaluation is passed. The loss of an attempt is capped at the fee, while the funded account can pay out repeatedly. I value this contract by simulation, using one-minute Nasdaq-100 futures paths and a rules engine that reproduces the FTMO 1-Step programme. With trades whose direction is a coin flip, an attempt has a positive expected value of roughly $160 to $180 on a 10k account and $1,900 to $2,100 on a 100k account, net of the fee; none of the 135 parameter sets I tested has a negative value. Most of this value comes from one clause, the reset of the maximum-loss limit after each payout. Across ten firms, only CFD firms with such a reset remain clearly profitable without skill. I then show that a simple payout policy (aim only for the profit the consistency rule still requires, then wait for the payout date) adds 11 to 35 % to the zero-edge value, and that a modest overnight edge multiplies the value of a funded account by about 3.5. All results assume that payouts are honoured.</p>
+</div>
+<div class="kw">
+<p><i>Keywords:</i> proprietary trading firms, funded accounts, option value, payoff convexity, Monte Carlo simulation, Nasdaq-100 futures</p>
+<p><i>JEL classification:</i> G11, G13, G17</p>
+</div>
+</div>
+
+<h2>1. Introduction</h2>
+<p>Retail "prop firms" have become a large business. Their offer is simple. A trader buys an evaluation for a one-off fee, trades a demo account under a set of loss limits, and, if a profit target is reached without breaching those limits, receives a funded account on which most of the profits are paid out. At FTMO, the firm studied here, the trader keeps 90 % of the profits of the funded account.</p>
+<p>Seen from the trader's side, the payoff is asymmetric. A failed evaluation costs the fee and nothing more. A passed evaluation opens an account that can keep paying for months, with no cap on the number of payouts. This is the shape of a call option, and a call option has value even when the underlying has no drift. The question I ask is therefore narrow: <i>what is an evaluation worth, in dollars, per attempt and per month of account slot, and how much of that value comes from the contract rather than from trading skill?</i></p>
+<p>Writing <i>p</i> for the probability of passing, <i>V</i> for the expected payouts of the funded account and <i>c</i> for the fee, the expected value of one attempt is</p>
+<div class="eq"><span>EV = p · V − c</span><span>(1)</span></div>
+<p class="noindent">Both <i>p</i> and <i>V</i> depend on the rules of the contract and on how the account is traded. Neither has a closed form once daily loss limits, trailing drawdowns and consistency rules interact, so I estimate them by simulation.</p>
+<p>The paper makes four points. First, with random-direction trades on real intraday paths the expected value of an attempt is positive, and stays positive over every parameter set tested. Second, the value comes from the contract: removing the reset of the maximum-loss limit after a payout cuts it by about a third, and futures firms without such a reset are worth little or nothing. Third, payout timing matters. A policy that stops trading once a payout is secured adds value with or without an edge, which makes it a property of the contract rather than of the market. Fourth, a modest edge is worth far more on the funded side than on the evaluation side.</p>
+<p>Because this is a valuation of a contract and not a test of a trading rule, the zero-edge study was pre-registered before any computation: the protocol, the parameter grid and the main specification were fixed in writing and committed first, to limit the multiple-testing problems that are common in empirical finance (Harvey, Liu and Zhu, 2016). The rest of the paper is organised as follows. Section 2 describes the contract. Section 3 presents the data and the simulator. Section 4 reports values without skill, Section 5 the payout policy, Section 6 the effect of an edge, and Section 7 the combination of two accounts. Section 8 discusses limitations and Section 9 concludes.</p>
+
+<h2>2. The contract</h2>
+<p>Figure 1 shows the life cycle of an attempt. The trader pays the fee and starts an evaluation. If the profit target is reached, the account becomes funded; if a loss limit is hit first, the fee is lost and the trader may buy a new evaluation. A funded account pays a reward on request once certain conditions are met, after which a new cycle starts on the same account. A breach of the loss limits on the funded account sends the trader back to a new evaluation.</p>
+
+<div class="figure">
+<svg viewBox="0 0 800 260" role="img" aria-label="Life cycle of a prop-firm attempt">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#000"/></marker></defs>
+  <rect x="10" y="90" width="130" height="60"/>
+  <text x="75" y="116" text-anchor="middle">Pay the fee</text>
+  <text x="75" y="134" text-anchor="middle" class="s">(maximum loss)</text>
+  <rect x="190" y="90" width="150" height="60"/>
+  <text x="265" y="116" text-anchor="middle">Evaluation</text>
+  <text x="265" y="134" text-anchor="middle" class="s">target +10 %</text>
+  <rect x="400" y="14" width="150" height="52"/>
+  <text x="475" y="36" text-anchor="middle">Failed</text>
+  <text x="475" y="54" text-anchor="middle" class="s">fee lost, retry</text>
+  <rect x="400" y="160" width="150" height="60"/>
+  <text x="475" y="186" text-anchor="middle">Funded account</text>
+  <text x="475" y="204" text-anchor="middle" class="s">firm's capital</text>
+  <rect x="610" y="160" width="180" height="60"/>
+  <text x="700" y="186" text-anchor="middle">Reward (90 %)</text>
+  <text x="700" y="204" text-anchor="middle" class="s">max-loss limit resets</text>
+  <path class="ln" d="M140,120 L188,120"/>
+  <path class="ln" d="M340,108 L398,48"/>
+  <path class="ln" d="M340,132 L398,184"/>
+  <path class="ln" d="M550,190 L608,190"/>
+  <path class="ln" d="M700,160 C700,112 560,112 522,158"/>
+  <text x="634" y="120" class="s">next cycle</text>
+  <path class="ln" d="M475,220 C475,246 300,246 268,152"/>
+  <text x="300" y="256" class="s">loss limit breached: new evaluation</text>
+</svg>
+<p class="figcap"><b>Figure 1.</b> Life cycle of an attempt. The only cash the trader puts at risk is the evaluation fee.</p>
+</div>
+
+<p>Table 1 lists the FTMO 1-Step rules implemented in the simulator. They were read on the firm's website in October and November 2026, and the simulator was corrected wherever the two disagreed. The rule that matters most is the treatment of the maximum loss on the funded account: on this programme it is fully reset after each reward, so a funded account that has paid out starts again with its full loss allowance.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 1.</b> FTMO 1-Step rules used in the simulations</caption>
+<thead><tr><th style="width:24%">Rule</th><th>Specification</th></tr></thead>
+<tbody>
+<tr><td>Profit target</td><td>+10 % of the initial balance to pass. No minimum number of days, no time limit.</td></tr>
+<tr><td>Daily loss</td><td>Equity may not fall more than 3 % of the initial balance below the previous midnight balance.</td></tr>
+<tr><td>Maximum loss</td><td>10 %, trailing the highest end-of-day balance. Fully reset after each reward on the funded account.</td></tr>
+<tr><td>Best-day rule</td><td>The best day may not exceed 50 % of the net profit of the cycle (accounts ordered since 12 October 2026; earlier accounts use the sum of winning days).</td></tr>
+<tr><td>Reward timing</td><td>On request, from the 14th calendar day after the first trade of the cycle, if the account is in profit and the best-day rule holds. 90 % paid to the trader.</td></tr>
+<tr><td>News rule</td><td>Funded accounts only: no execution, including stops and targets, within two minutes of major US releases (NFP, CPI, advance GDP, FOMC).</td></tr>
+<tr><td>Fees</td><td>€79 for a 10k account, €499 for a 100k account (≈ $87 and $549). Not refunded.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>3. Data and method</h2>
+<h3>3.1 Market paths</h3>
+<p>The market side uses one-minute bars of the front Nasdaq-100 E-mini futures contract (NQ). The zero-edge study covers the NYSE sessions from January 2016 to August 2026; studies based on overnight trades go back to July 2011. Each simulated account starts on a randomly drawn historical day and then walks forward through the data in calendar order. This keeps volatility clusters and losing streaks as they actually occurred, which matters for a contract whose payoff depends on the path.</p>
+
+<h3>3.2 Rules engine and execution</h3>
+<p>The engine is written in Python with NumPy and runs thousands of accounts in parallel, with all quantities expressed in percent of the initial balance. Every rule in Table 1 is checked at the end of each trade and each day. Trades are brackets: a stop and a target are attached at entry. A stop fills at the worse of the stop price and the bar's open, so gaps are charged in full. When a stop and a target are both touched within the same minute, the trade is counted as a loss. A CFD spread is charged on every trade, set to 1 basis point or 1.5 index points depending on the specification. Near the end of an evaluation the target of the next trade is reduced to the profit still needed, and to what the best-day rule requires.</p>
+<p>Two checks were run on the engine. The market side was rebuilt independently with the vectorbt library (<i>Portfolio.from_signals</i> on the same one-minute bars) and gave the same results, up to a single shifted event in a fifteen-year path. A binary mode, in which each trade either wins <i>k</i> or loses one unit, reproduces the closed-form value of the same contract.</p>
+
+<h3>3.3 Trade sources</h3>
+<p>Three kinds of trades are fed to the engine. The first is a random direction: each day, a coin flip decides between long and short, which measures the value of the contract with no skill at all. The second is a historical trade list from my own research, an overnight NQ rule referred to below as <i>mom</i>, whose definition is not part of this paper; its realised returns are replayed through the contract. To separate the contract from the edge, the same list is also re-centred so that its mean return is exactly zero while its volatility and its sequence of streaks are unchanged. The third is a day-by-day replay of recent sessions under the exact current rules.</p>
+<p>Only money management is tuned: risk per trade in the evaluation, risk on the funded account, the reward-to-risk ratio and the payout policy. When parameters are chosen, they are chosen on one period (2011 to 2018) and reported on a later one (2019 onwards). Expected values are net of the fee and assume that every reward requested is paid.</p>
+
+<h2>4. Value without skill</h2>
+<h3>4.1 Random-direction trades on the NQ day session</h3>
+<p>The pre-registered experiment places one trade per day, in a random direction, on real one-minute NQ paths from 2016 to 2026. During the evaluation each trade risks 2 % of the account with a target of 4.9 %; on the funded account the trade risks 1 % with a target of 2 %. Table 2 reports the main specification and its variants.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 2.</b> Random-direction trades, FTMO 1-Step, NQ day session 2016–2026</caption>
+<thead><tr><th>Specification</th><th class="n">Pass rate</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">Refusals tolerated</th></tr></thead>
+<tbody>
+<tr><td>Stop 0.5 % of price, 1 bp cost (pre-registered)</td><td class="n">40.7 %</td><td class="n">6.50 %</td><td class="n">61 %</td><td class="n">1.44</td><td class="n">+$178</td><td class="n">+$2,098</td><td class="n">67 / 79 %</td></tr>
+<tr><td>Stop 1 ATR (15 min), 1.5 pt spread</td><td class="n">41.1 %</td><td class="n">6.04 %</td><td class="n">57 %</td><td class="n">1.29</td><td class="n">+$161</td><td class="n">+$1,933</td><td class="n">65 / 78 %</td></tr>
+<tr><td>Tighter ATR stop, 1 bp cost</td><td class="n">36.4 %</td><td class="n">4.35 %</td><td class="n">50 %</td><td class="n">0.95</td><td class="n">+$71</td><td class="n">+$1,035</td><td class="n">45 / 65 %</td></tr>
+<tr class="sep"><td>Tighter ATR stop, zero cost</td><td class="n">44.2 %</td><td class="n">8.08 %</td><td class="n"></td><td class="n"></td><td class="n">+$270</td><td class="n">+$3,023</td><td class="n"></td></tr>
+<tr><td>Pre-registered, without max-loss reset</td><td class="n">40.7 %</td><td class="n">4.77 %</td><td class="n"></td><td class="n"></td><td class="n">+$107</td><td class="n">+$1,395</td><td class="n"></td></tr>
+<tr><td>Binary control (win +<i>k</i>, lose −1)</td><td class="n">40.9 %</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n">+$2,114</td><td class="n"></td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Funded value is the expected sum of rewards paid to the trader, in percent of the account size. Rewards is the mean number of rewards per funded account. EV is net of the fee. "Refusals tolerated" is the share of rewards the firm could refuse before the EV falls to zero, for the 10k and 100k accounts. An evaluation lasts about 15 sessions with the 0.5 % stop and about 8.5 with the ATR stops. None of the 135 parameter sets of the pre-registered grid has a negative EV.</p>
+</div>
+
+<p>Two in five random evaluations pass, which is close to what a symmetric random walk between a +10 % target and a −10 % floor would give. The funded account then pays on average 6 % of its nominal size before it is lost, and this is enough to make the attempt worth about twice its fee on a 10k account and about four times its fee on a 100k account. Removing the reset of the maximum loss lowers the value by roughly a third, from $178 to $107 on a 10k account. Transaction costs are the other sensitive input: with a tight stop, a cost of one basis point per trade takes 0.08 R and halves the value.</p>
+<p>The stop distance mainly sets the duration of the game. A stop at 0.5 % of price needs about fifteen sessions to decide an evaluation; at 1 % of price it takes about thirty-five, with a lower pass rate. Across the grid, lower risk per trade gives a higher value per attempt, but a slower one. Aggressive sizing shortens evaluations considerably and costs 30 to 40 % of the value. Speed comes from risk, not from skill.</p>
+
+<h3>4.2 Ten firms compared</h3>
+<p>The same random-direction stream was run through the rules of ten firms, read on their websites on 31 October 2026, with the risk grid chosen on 2011–2018. Table 3 gives the result for the 100k account or the largest standard account.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 3.</b> Expected value per evaluation without edge, ten firms</caption>
+<thead><tr><th>Programme</th><th>Market</th><th class="n">Fee</th><th class="n">EV per evaluation</th></tr></thead>
+<tbody>
+<tr><td>FundingPips 1 Step Flex 100k</td><td>CFD</td><td class="n">$733</td><td class="n">+$3,413</td></tr>
+<tr><td>FTMO 1-Step 100k</td><td>CFD</td><td class="n">$549</td><td class="n">+$1,712</td></tr>
+<tr><td>Smart Trader Funds 1 Phase 100k</td><td>CFD</td><td class="n">$599</td><td class="n">+$1,116</td></tr>
+<tr><td>FundedNext Stellar 1-Step 100k</td><td>CFD</td><td class="n">$570</td><td class="n">+$1,058</td></tr>
+<tr><td>Apex 50K EOD</td><td>Futures</td><td class="n">$119</td><td class="n">+$81</td></tr>
+<tr><td>The5ers Pro Growth 20k</td><td>CFD</td><td class="n">$189</td><td class="n">+$48</td></tr>
+<tr><td>Lucid LucidFlex 50K</td><td>Futures</td><td class="n">$130</td><td class="n">+$21</td></tr>
+<tr><td>Tradeify Growth 50K</td><td>Futures</td><td class="n">$145</td><td class="n">+$4</td></tr>
+<tr><td>MyFundedFutures Rapid 50K</td><td>Futures</td><td class="n">$125</td><td class="n">−$23</td></tr>
+<tr><td>Topstep 50K</td><td>Futures</td><td class="n">$49/mo + $149</td><td class="n">−$156</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Random-direction trades; risk parameters chosen on 2011–2018. Fees converted to US dollars.</p>
+</div>
+
+<p>The ranking follows the contracts, not the markets. The four programmes that stay clearly positive are CFD programmes whose maximum loss resets after a payout. Futures programmes, which typically lock the drawdown limit just above the starting balance and pay a smaller share of a smaller profit, are worth close to nothing without skill, and two of them are worth less than nothing.</p>
+
+<h2>5. Payout policy</h2>
+<p>The best-day rule creates a timing problem on the funded account. A single winning trade of 2 R at 1 % risk makes +2 % in one day, which by itself breaks the rule; the account must then earn at least as much again before a reward can be requested, while remaining exposed to losses. I compare two ways of trading the funded account. The baseline trades every night with the usual 2 R target. The alternative, which I call <i>target and wait</i>, works in two steps:</p>
+<ol class="plain">
+<li>if the account is in profit and only the best-day rule blocks a reward, the next trade aims only at the missing amount (twice the best day minus the profit, plus 0.01 %) instead of 2 R;</li>
+<li>as soon as the account is in profit and the rule holds, trading stops until the reward date, the reward is withdrawn, and a new cycle starts the following night.</li>
+</ol>
+<p class="noindent">Table 4 applies both policies to the <i>mom</i> trade list after its mean has been set to zero, so that no edge is left. The evaluation risks 2.5 % per trade with the target reduced to what is still needed; the funded account risks 1 % with a 2 R target. Each cell uses 20,000 simulated accounts.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 4.</b> Payout policy with a zero-mean trade stream</caption>
+<thead><tr><th>Period</th><th>Funded policy</th><th class="n">Pass rate</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards</th><th class="n">Mean reward</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">EV/month 100k</th></tr></thead>
+<tbody>
+<tr><td>2016–2026</td><td>Every night</td><td class="n">37.7 %</td><td class="n">5.15 %</td><td class="n">64 %</td><td class="n">1.22</td><td class="n">4.21 %</td><td class="n">+$107</td><td class="n">+$1,388</td><td class="n">+$798</td></tr>
+<tr><td></td><td>Target and wait</td><td class="n">37.7 %</td><td class="n">5.84 %</td><td class="n">73 %</td><td class="n">1.79</td><td class="n">3.27 %</td><td class="n">+$133</td><td class="n">+$1,649</td><td class="n">+$886</td></tr>
+<tr class="sep"><td>2011–2015</td><td>Every night</td><td class="n">35.3 %</td><td class="n">4.27 %</td><td class="n">63 %</td><td class="n">1.06</td><td class="n">4.04 %</td><td class="n">+$64</td><td class="n">+$957</td><td class="n">+$658</td></tr>
+<tr><td></td><td>Target and wait</td><td class="n">35.3 %</td><td class="n">4.91 %</td><td class="n">73 %</td><td class="n">1.57</td><td class="n">3.12 %</td><td class="n">+$86</td><td class="n">+$1,183</td><td class="n">+$760</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Trade returns re-centred to a zero mean, same volatility and ordering. "EV/month 100k" is the expected value per month of occupied account slot, which matters when only a few accounts can be run at once. An evaluation lasts about eight trading nights.</p>
+</div>
+
+<p>Without any edge, target and wait raises the value by 11 to 35 % in every cell. Rewards are smaller but more frequent, and nearly three funded accounts in four now pay at least once. Since the trade stream has a zero mean, the gain cannot come from the market. It comes from the contract: once a payable balance has been secured, every further trade only adds the risk of losing it before the reward date. Tested separately, the waiting step does most of the work, and the reduced target on its own is slightly worse than trading every night.</p>
+
+<h2>6. Adding a modest edge</h2>
+<p>Table 5 repeats the exercise with the original <i>mom</i> trades, under FTMO's current best-day rule and a 1.5-point spread. The rule was selected on 2016–2026, so 2011–2015 plays the role of an out-of-sample period.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 5.</b> Payout policy with the <i>mom</i> trade stream</caption>
+<thead><tr><th>Period</th><th>Funded policy</th><th class="n">Pass rate</th><th class="n">Funded value</th><th class="n">P(≥ 1 reward)</th><th class="n">Rewards</th><th class="n">Funded life</th><th class="n">EV 10k</th><th class="n">EV 100k</th><th class="n">EV/month 100k</th></tr></thead>
+<tbody>
+<tr><td>2016–2026</td><td>Every night</td><td class="n">49.5 %</td><td class="n">16.0 %</td><td class="n">83.0 %</td><td class="n">3.7</td><td class="n">6.4 mo</td><td class="n">+$707</td><td class="n">+$7,391</td><td class="n">+$2,044</td></tr>
+<tr><td></td><td>Target and wait</td><td class="n">49.5 %</td><td class="n">20.2 %</td><td class="n">86.8 %</td><td class="n">5.8</td><td class="n">7.8 mo</td><td class="n">+$912</td><td class="n">+$9,445</td><td class="n">+$2,201</td></tr>
+<tr class="sep"><td>2011–2015</td><td>Every night</td><td class="n">60.2 %</td><td class="n">33.6 %</td><td class="n">90.2 %</td><td class="n">7.6</td><td class="n">8.8 mo</td><td class="n">+$1,936</td><td class="n">+$19,684</td><td class="n">+$3,444</td></tr>
+<tr><td></td><td>Target and wait</td><td class="n">60.2 %</td><td class="n">33.5 %</td><td class="n">93.2 %</td><td class="n">9.7</td><td class="n">9.9 mo</td><td class="n">+$1,927</td><td class="n">+$19,589</td><td class="n">+$3,047</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Evaluation at 2.5 % risk per trade, funded account at 1 % risk with a 2 R target, 20,000 accounts per cell. Funded life is the mean time a funded account survives.</p>
+</div>
+
+<p>The policy helps most when the edge is modest or uncertain. Over 2016–2026 it adds 29 % per attempt and 8 % per month of slot. Over 2011–2015, when the rule performed much better, it is neutral per attempt and costs 11 % per month, because waiting gives up nights with a positive expectation. Under the older best-day rule, based on the sum of winning days, the constraint is already loose and reducing the target costs money.</p>
+<p>Table 6 sets the two streams side by side for 2016–2026 under target and wait. The edge raises the pass rate by about a third, but it multiplies the value of a funded account by 3.5. A funded account with a small positive drift survives longer, pays more often, and keeps collecting that drift for months; the convexity of the contract turns a small edge into a large difference in value.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 6.</b> Zero-mean stream against the original stream, 2016–2026, target and wait</caption>
+<thead><tr><th></th><th class="n">No edge</th><th class="n"><i>mom</i></th><th class="n">Ratio</th></tr></thead>
+<tbody>
+<tr><td>Evaluation pass rate</td><td class="n">37.7 %</td><td class="n">49.5 %</td><td class="n">1.3</td></tr>
+<tr><td>Funded value (% of account)</td><td class="n">5.84 %</td><td class="n">20.2 %</td><td class="n">3.5</td></tr>
+<tr><td>Probability of at least one reward</td><td class="n">73 %</td><td class="n">87 %</td><td class="n"></td></tr>
+<tr><td>Rewards per funded account</td><td class="n">1.79</td><td class="n">5.8</td><td class="n">3.3</td></tr>
+<tr><td>Funded account life</td><td class="n">3.8 mo</td><td class="n">7.8 mo</td><td class="n">2.0</td></tr>
+<tr><td>EV per 10k attempt</td><td class="n">+$133</td><td class="n">+$912</td><td class="n">6.9</td></tr>
+<tr><td>EV per 100k attempt</td><td class="n">+$1,649</td><td class="n">+$9,445</td><td class="n">5.7</td></tr>
+<tr><td>EV per month, one 100k slot</td><td class="n">+$886</td><td class="n">+$2,201</td><td class="n">2.5</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>A replay of real sessions illustrates the mechanism. I started an evaluation on each trading day of September 2026 and followed it to 3 November under the current rules. Four of the twelve starts passed. Trading the funded account every night, none of them was paid. With target and wait, each of the four received a reward of 3.53 %. On the start of 1 September, for instance, the evaluation passed on 14 September and the funded account reached +3.78 % on 21 September, but the best-day rule blocked a reward. A reduced target of +0.14 % was hit on 22 September, the account then stood aside, and the reward was taken on 28 September. Trading every night, the same account was dragged down by the losing stretch that followed. This window is short and was examined after the rule had been designed, so it is descriptive only.</p>
+
+<h2>7. Two accounts on different signals</h2>
+<p>Several accounts traded on the same signal do not diversify: in simulation they are lost together and re-synchronise, with a correlation of 0.97 between staggered copies of one rule. Accounts on different signals behave differently. I simulated two 10k accounts, one trading <i>mom</i> and one trading two other NQ rules from my research, with the evaluation and funded settings above, target and wait, the news rule, and FTMO's ban on opposite positions across accounts. A lost account is bought again the next day. Table 7 reports 5,000 three-year paths drawn by stationary block bootstrap (Politis and Romano, 1994) with a mean block length of about one month, which preserves streaks and the correlation between the two accounts.</p>
+
+<div class="tbl">
+<table>
+<caption><b>Table 7.</b> Two 10k accounts on different signals, three-year Monte Carlo</caption>
+<thead><tr><th></th><th class="n">Full history</th><th class="n">2019–2026 only</th><th class="n">Edge halved</th></tr></thead>
+<tbody>
+<tr><td>Net result after 3 years, median</td><td class="n">+$12,752</td><td class="n">+$11,919</td><td class="n">+$7,936</td></tr>
+<tr><td>Probability of a net loss after 1 year</td><td class="n">0.1 %</td><td class="n">0.2 %</td><td class="n">2.7 %</td></tr>
+<tr><td>Probability of a net loss after 3 years</td><td class="n">0 %</td><td class="n">0 %</td><td class="n">0 %</td></tr>
+<tr><td>Cash drawdown, 99th percentile</td><td class="n">−$797</td><td class="n">≈ −$870</td><td class="n">≈ −$1,300</td></tr>
+<tr><td>Correlation of the two accounts' results</td><td class="n">+0.10</td><td class="n">+0.14</td><td class="n">+0.08</td></tr>
+</tbody>
+</table>
+<p class="tablenote"><i>Notes:</i> Net result is rewards minus fees. "Edge halved" subtracts half of each rule's mean return from every trade, leaving volatility unchanged; it is the prudent case, because the two rules of the second account did not pass their own out-of-sample tests. Cash drawdown is the largest fall of cumulative rewards minus fees.</p>
+</div>
+
+<p>Even with the expected return of every trade cut in half, all three-year paths end with a profit. The fee bounds the loss of each attempt, the funded account has no cap, and an account slot that is bought back after each failure therefore ends up positive as long as the expectancy stays above zero. The cash needed to keep both slots running is small, about $800 to $900 in 99 % of historical paths. On the single historical path from 2011 to 2026, the monthly cash flows of the two accounts are uncorrelated (+0.01) and no month is negative for both.</p>
+
+<h2>8. Limitations</h2>
+<p>The main risk is not modelled: a firm may refuse a reward or close an account, for instance under rules against "account rolling" or gambling-like behaviour. Table 2 gives the share of refusals the zero-edge value can absorb, roughly 65 % on a 10k account and 78 % on a 100k account in the main specifications. FTMO does not approve strategies in advance, and the guidance it gives (at most 1.5 % risk per trade idea) is tighter than the 2.5 % used in the evaluation in Sections 5 to 7.</p>
+<p>Several inputs are assumptions. The CFD spread and the firm's leverage were not measured at the time of the simulations, and the value is sensitive to the spread when stops are tight. The news rule was added late; figures that ignore it are about 10 % too optimistic. In the payout-policy simulations, the 14-day reward delay is approximated by ten trading nights, a reduced target is judged on one-minute highs and lows, and a new cycle is assumed to start the night after a reward.</p>
+<p>Any result that uses my own trade lists inherits the selection bias of those rules and should be read as an upper bound; the zero-edge results do not have this problem. Finally, averages hide long dry spells. In the historical simulations, the worst stretches were six failed evaluations in a row and about eleven months without a reward (in 2022), both measured with an earlier funded-account plan.</p>
+
+<h2>9. Conclusion</h2>
+<p>A prop-firm evaluation is an option with a capped premium and an uncapped, path-dependent payoff. On the FTMO 1-Step programme, the option is worth more than its price even when trades carry no information, provided rewards are honoured. Most of that value sits in one clause, the reset of the loss limit after each payout, which is why the result does not carry over to most futures programmes. The way the funded account is traded matters as much as the evaluation: securing a payable balance and then not risking it adds value on its own, and a modest edge is worth several times more on the funded side than on the evaluation side. For a trader, the practical lessons are to choose contracts by their reset clause, to size conservatively, to manage payout timing deliberately, and to spread accounts across signals rather than copy one signal several times.</p>
+
+<h2>References</h2>
+<div class="refs">
+<p>FTMO (2026). <i>Trading Objectives</i>, <i>1-Step Challenge</i> and <i>FAQ</i>. ftmo.com, accessed 31 October and 13 November 2026.</p>
+<p>Harvey, C. R., Liu, Y. and Zhu, H. (2016). … and the cross-section of expected returns. <i>Review of Financial Studies</i>, 29(1), 5–68.</p>
+<p>Politis, D. N. and Romano, J. P. (1994). The stationary bootstrap. <i>Journal of the American Statistical Association</i>, 89(428), 1303–1313.</p>
+<p>Rules of FundingPips, Smart Trader Funds, FundedNext, Apex Trader Funding, The5ers, Lucid Trading, Tradeify, MyFundedFutures and Topstep, as published on each firm's website, accessed 31 October 2026.</p>
+</div>
+
+<p class="noindent" style="margin-top:22px;font-size:9.5pt;text-align:left"><i>This paper is a research note. It is not investment advice. All figures are historical simulations under the assumptions stated above.</i></p>
+
+</main>
+</body>
+</html>
