@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 13:55
+updated: 2026-11-22 14:23
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,6 +24,7 @@ updated: 2026-11-22 13:55
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] schema | Version papier façon SSRN de l'étude de convexité prop firm : reports/propfirm_convexity_paper.html + .pdf (9 pages A4, résumé, JEL, 7 tableaux, figure, références ; auteur Arthur Pegliasco), remplace propfirm_ftmo_overview.pdf | aucun calcul, chiffres repris de la présentation
 - [2026-11-22] schema | Présentation reports/propfirm_ftmo_overview.html préparée pour publication : nom du dépôt, branches et chemins de fichiers retirés, auteur Arthur Pegliasco + e-mail ajoutés, styles d'impression, export PDF reports/propfirm_ftmo_overview.pdf (7 pages A4) | aucun calcul
 - [2026-11-22] schema | Présentation reports/propfirm_ftmo_overview.html recentrée à la demande de l'utilisateur sur les seules études de convexité du payoff : retrait du bot, des vrais comptes, de la règle d'arrêt de mom, du scaling ; section 8 = deux comptes sur signaux différents, Monte-Carlo 3 ans (net > 0 dans tous les chemins même edge ÷ 2) | aucun calcul
 - [2026-11-22] schema | Présentation anglaise reports/propfirm_ftmo_overview.html mise à jour (sections 8 plan à deux comptes + scaling, 9 bot et vrais comptes au 20/11 + règle d'arrêt de mom, réserves : consigne du support FTMO, spread réel 1,95 pt, règle des fermetures, holdout ; règles anti-hedging / fermetures / plafond 400k au tableau des règles) | aucun calcul, chiffres repris des rapports (anti-hedging appliqué quand disponible) et du journal vps-journal ; signaux toujours non décrits
@@ -31,7 +32,6 @@ updated: 2026-11-22 13:55
 - [2026-11-21] experiment | Dérive du yen concentrée pour la prop firm (fiche wiki/experiments/yen-derive-concentree, réserve par question 6J 2023-07-01 → 2026-08-28 déclarée et non ouverte) : grille A (18 tranches de 30 min × tous/R4, 24 fenêtres de 1 à 3 h × tous/R4) + B (déciles et 4 seuils glissants de la hausse du yen à 3 jours), figée avant calcul (run_yen_derive_ab.py, commit 068ce8a), exploration 6J 2016-01 → 2023-06, compteur 1 839 → 1 937 | ❌ critère gain / bruit ≥ 0,15 : A meilleure fenêtre R4 15:00 → 16:55 à 0,051 (< 0,081 pour 11:00 → 16:55 ; rien avant 11:00 ; 16:00 → 16:55 ≈ moitié du brut, t 4,3, mais −0,1 net) ; B décile haut +5,5 bp net (0,18, t 3,0), seuil q 0,8 à 0,134 (+3,6 bp, 17 % des jours), DSR 0,40 à N = 140 ; ligne au registre
 - [2026-11-21] query | Short yen filtré R4, SL k × ATR M15 (k = 2-5) avec TP 2R et 3R (run_jpy_us_r4_m15_tp.py, 8 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 831 → 1 839 | meilleur 4 ATR M15 + TP 2R +0,040 R (n° 29 : +0,041) ; TP touché 0,3-8 %, effet ±0,005 R ; SL 2 ATR M15 + TP 2R +0,017 R, creux −37 R ; seuil d'avenant +0,046 non atteint, n° 29 inchangé
 - [2026-11-21] query | Short yen filtré R4 avec SL k × ATR M15 sans TP, k = 2-5 (run_jpy_us_r4_m15.py, 4 essais figés avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 827 → 1 831 | meilleur 4 ATR M15 (33 bp) +0,038 R contre +0,041 R pour 2 ATR H1 (n° 29) ; 2 ATR M15 (16,5 bp) +0,024 R, 32 % de SL, creux −34 R ; seuil d'avenant (+0,046 R) non atteint, n° 29 inchangé
-- [2026-11-21] query | Short yen filtré R4, SL 2 ATR H1 avec TP 2R au lieu de 3R (run_jpy_us_r4_tp2.py, 1 essai figé avant calcul, 6J 2017-01-30 → 2026-08-28 déjà vu), compteur 1 826 → 1 827 | +0,043 R/trade (t NW 2,54) contre +0,042 avec TP 3R : TP touché 1,9 % des trades (21 sur 1 110, +1,95 R) contre 0,3 % ; SL 10,6 % (−1,04 R), sortie à 16:55 87 % (+0,13 R) ; écart négligeable, n° 29 inchangé (TP 3R figé)
 
 ## Prochaines actions
 
