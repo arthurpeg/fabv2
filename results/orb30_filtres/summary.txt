@@ -1,0 +1,65 @@
+Base B (NQ, lun-jeu, objectif 2R) : 2106 trades, net +0.011 R (+0.76 pts), t 0.46 ; famille 33 Sharpe, N = 60
+
+C1 range étroit (W < 0,5 ATR14) — par jour (R net pris / exclus) :
+       pris  exclus  n_pris
+date                       
+lun  -0.019   0.040     328
+mar   0.037   0.076     364
+mer   0.002  -0.009     406
+jeu  -0.010  -0.006     336
+par année (R net pris) : 2016 -0.11 · 2017 +0.00 · 2018 -0.14 · 2019 +0.08 · 2020 -0.01 · 2021 +0.06 · 2022 -0.01 · 2023 +0.12 · 2024 +0.16 · 2025 -0.04 · 2026 -0.17
+
+C2 veille NR7 — par jour (R net pris / exclus) :
+       pris  exclus  n_pris
+date                       
+lun   0.113  -0.021      78
+mar   0.003   0.064     124
+mer   0.173  -0.027      72
+jeu  -0.103   0.005      66
+par année (R net pris) : 2016 -0.08 · 2017 -0.18 · 2018 +0.23 · 2019 +0.24 · 2020 +0.18 · 2021 -0.12 · 2022 +0.05 · 2023 +0.09 · 2024 -0.02 · 2025 +0.10 · 2026 -0.08
+
+C3 annonce à 10:00 ou 14:00 — par jour (R net pris / exclus) :
+       pris  exclus  n_pris
+date                       
+lun   0.112  -0.018      69
+mar   0.166   0.018     116
+mer  -0.089   0.061     221
+jeu  -0.324   0.026      52
+par année (R net pris) : 2016 -0.01 · 2017 -0.03 · 2018 -0.23 · 2019 -0.05 · 2020 +0.03 · 2021 +0.03 · 2022 -0.10 · 2023 -0.02 · 2024 +0.13 · 2025 -0.05 · 2026 +0.09
+
+===== Conditions (NQ, lundi-jeudi, objectif 2R) =====
+                      condition  pris  exclus  net_R_pris  net_R_exclus  t_ecart_R  t_nw_pris  sharpe_trade  pts_pris  pts_exclus  t_ecart_pts  objectif_%  2016-22  2023-26 annees_pos  dsr_60
+C1 range étroit (W < 0,5 ATR14)  1434     672       0.003         0.026     -0.504      0.118         0.003    -0.125       2.643       -0.523      14.714   -0.020    0.047       5/11   0.000
+                  C2 veille NR7   340    1766       0.044         0.004      0.621      0.757         0.041     0.337       0.839       -0.088      12.941    0.047    0.038       6/11   0.077
+    C3 annonce à 10:00 ou 14:00   458    1648      -0.021         0.019     -0.705     -0.432        -0.019     1.016       0.686        0.061      13.974   -0.048    0.032       4/11   0.002
+
+== Condition choisie (meilleur Sharpe net) : C2 veille NR7
+  n                          340
+  debut                      2016-02-16
+  fin                        2026-08-27
+  brut_moy                   nan
+  net_moy                    0.04378
+  net_med                    -0.1566
+  ecart_type                 1.076
+  sharpe_an                  0.646
+  t_nw                       0.7571
+  p_unilateral               0.2245
+  gagnants_%                 43.24
+  pire_creux                 -15.1
+  annees_pos                 6/11
+  net_moitie1                0.05552
+  net_moitie2                0.03205
+  net_sans_meilleure_annee   0.02264
+  net_cout_plus_1_tick       0.03799
+  n_famille                  60
+  dsr_famille                0.07728
+  ref_net_moy                0.004313
+  ecart_ref                  0.03947
+  t_ecart_ref                0.621
+B1 : ❌ ratée
+  ❌ t NW net ≥ 2,0
+  ❌ DSR (N = famille) ≥ 0,95
+  ❌ bat la référence triviale (t écart ≥ 1,0)
+  ✅ net > 0 dans les deux moitiés
+  ✅ net > 0 sans la meilleure année
+  ✅ net > 0 avec 1 tick de coût en plus
