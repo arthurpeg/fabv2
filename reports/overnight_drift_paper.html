@@ -105,9 +105,9 @@ ol.plain li{margin:2px 0}
 <tr><td>Data</td><td>Databento one-minute bars, January 2016 to 28 August 2026; 2010–2015 as unseen temporal out-of-sample period.</td></tr>
 <tr><td>Contract rolls</td><td>Ratio back-adjustment at each roll. An adjusted futures return is an excess return (index plus dividends minus the financing rate), not the price return of the cash index.</td></tr>
 <tr><td>Sessions</td><td>Asia: 16:00 ET to 08:00 London; Europe: 08:00 London to 9:30 ET; US: 9:30 to 16:00 ET. Asia plus Europe equals the close-to-open return.</td></tr>
-<tr><td>Overnight rule</td><td>Enters at 20:00 ET, exits at 9:30 ET, or earlier at a stop of 2 ATR or a target of 5 ATR (ATR on 15-minute bars).</td></tr>
+<tr><td>Overnight rule</td><td>Enters at 20:00 ET and is closed by 9:30 ET at the latest; exit rules within the night are not disclosed.</td></tr>
 <tr><td>Trading cost</td><td>One tick plus $5 per round trip; variants with observed bid–ask spreads (bbo-1m), CFD spreads (2 points on NQ) and micro contracts.</td></tr>
-<tr><td>Unit of risk</td><td>1 R is the stop distance, 2 ATR at entry.</td></tr>
+<tr><td>Unit of risk</td><td>1 R is the amount risked on a trade, fixed at entry.</td></tr>
 </tbody>
 </table>
 </div>
@@ -120,7 +120,7 @@ ol.plain li{margin:2px 0}
 
 <h3>4.2 Inference</h3>
 <p>Pre-registered tests of the overnight rule use confidence intervals and one-sided p-values from a circular moving-block bootstrap (blocks of ten trades or days, 2,000 draws); its alpha is tested by block bootstrap on the intercept and residuals. Other strategy tests use Newey and West (1987) standard errors with five lags. Session means were first estimated with a plain iid t-statistic; I re-estimate them here with Newey–West standard errors (Bartlett kernel, five lags and the automatic rule floor(4(T/100)<sup>2/9</sup>) = 8 lags) and with a block bootstrap.</p>
-<p>The series show the usual properties of intraday returns: strong volatility clustering (ARCH-LM(5) statistics between 144 and 1,035, p &lt; 10<sup>−28</sup>), excess kurtosis between 5 and 15, and weak but significant serial correlation in the Asian and US sessions (Ljung–Box(5) p &lt; 10<sup>−5</sup>), close to zero for the full close-to-open return. This is why HAC or block-bootstrap inference is required. Measured in R, however, the overnight rule shows no ARCH effect (p = 0.47) and no fat tails: sizing by ATR already normalises its risk, which is consistent with the failure of volatility-based sizing reported in Section 6.</p>
+<p>The series show the usual properties of intraday returns: strong volatility clustering (ARCH-LM(5) statistics between 144 and 1,035, p &lt; 10<sup>−28</sup>), excess kurtosis between 5 and 15, and weak but significant serial correlation in the Asian and US sessions (Ljung–Box(5) p &lt; 10<sup>−5</sup>), close to zero for the full close-to-open return. This is why HAC or block-bootstrap inference is required. Measured in R, however, the overnight rule shows no ARCH effect (p = 0.47) and no fat tails: its volatility-scaled sizing already normalises its risk, which is consistent with the failure of volatility-based sizing reported in Section 6.</p>
 
 <h2>5. Results</h2>
 <h3>5.1 The overnight drift</h3>
@@ -144,7 +144,7 @@ ol.plain li{margin:2px 0}
 </div>
 
 <h3>5.2 An overnight rule on NQ</h3>
-<p>Among the overnight rules suggested by a first batch of papers from the literature, one was retained after the fact: hold NQ from 20:00 to 9:30 ET, long when the 12-1 momentum of the index is positive and short otherwise (in the spirit of Moskowitz, Ooi and Pedersen, 2012), with a stop at 2 ATR and a target at 5 ATR. Because it was chosen after looking at the data, it was then submitted to three pre-registered tests, summarised in Table 3.</p>
+<p>Among the overnight rules suggested by a first batch of papers from the literature, one was retained after the fact: hold NQ from 20:00 to 9:30 ET, long when the 12-1 momentum of the index is positive and short otherwise (in the spirit of Moskowitz, Ooi and Pedersen, 2012). Its exit rules within the night are not disclosed here. Because it was chosen after looking at the data, it was then submitted to three pre-registered tests, summarised in Table 3.</p>
 
 <div class="tbl">
 <table>
@@ -187,7 +187,7 @@ ol.plain li{margin:2px 0}
 <p>A direct test of P4 would require signed volume at the close, that is, tick-by-tick trades. Without it, inventory risk cannot be separated from other explanations that are also consistent with P1 and P2: a beta premium concentrated overnight (Hendershott et al., 2020), different clienteles trading overnight and intraday (Lou et al., 2019), or attention-driven buying at the open (Berkman, Koch, Tuttle and Zhang, 2012).</p>
 
 <h3>5.5 Multiple testing</h3>
-<p>With 1,742 trials, the question is not whether the results above are significant one at a time, but whether they survive the search that produced them. Daily return series are stored for 560 of the trials. On their correlation matrix, the eigenvalue method of Li and Ji (2005) gives an effective number of 196 independent tests (a ratio of 0.35), and that of Nyholt (2004) gives 535, a method known to overstate when average correlation is weak. Most pairs of trials are nearly independent (median |ρ| = 0.027), but a few clusters are highly redundant: the largest eigenvalue, 76, corresponds to the overnight drift tested at every hour and with every stop. Extrapolating the ratio gives about 610 effective trials out of 1,742.</p>
+<p>With 1,742 trials, the question is not whether the results above are significant one at a time, but whether they survive the search that produced them. Daily return series are stored for 560 of the trials. On their correlation matrix, the eigenvalue method of Li and Ji (2005) gives an effective number of 196 independent tests (a ratio of 0.35), and that of Nyholt (2004) gives 535, a method known to overstate when average correlation is weak. Most pairs of trials are nearly independent (median |ρ| = 0.027), but a few clusters are highly redundant: the largest eigenvalue, 76, corresponds to the overnight drift tested at every hour and with every exit variant. Extrapolating the ratio gives about 610 effective trials out of 1,742.</p>
 
 <div class="tbl">
 <table>
@@ -214,16 +214,15 @@ ol.plain li{margin:2px 0}
 <thead><tr><th style="width:24%">Idea</th><th style="width:22%">Key figure</th><th>Why it failed</th><th style="width:20%">Worth revisiting if</th></tr></thead>
 <tbody>
 <tr><td>Same rule on ES and YM</td><td>ES Holm p = 0.25</td><td>Effect three to five times weaker than on NQ; YM negative 2021–2026</td><td>—</td></tr>
-<tr><td>Optimised stops and entry time</td><td>Sharpe +0.14 [−0.22; +0.50]</td><td>Improves the tail, not the Sharpe ratio; 20:00 wins through exposure time</td><td>The objective is tail risk</td></tr>
+<tr><td>Optimised exits and entry time</td><td>Sharpe +0.14 [−0.22; +0.50]</td><td>Improves the tail, not the Sharpe ratio; 20:00 wins through exposure time</td><td>The objective is tail risk</td></tr>
 <tr><td>"Stay flat" filters (Jones et al., 2022; Abdi, 2018; Berkman et al., 2012; Vojtko and Hanicova, 2021)</td><td>Below the 95th percentile of 500 random filters</td><td>None cuts the drawdown by 30 % while keeping 80 % of the return</td><td>A written rationale and a holdout test</td></tr>
 <tr><td>Avoid NFP and CPI nights</td><td>+0.30 R against +0.05 R</td><td>These are the best nights</td><td>Never in this direction</td></tr>
-<tr><td>VIX filters, volatility sizing (Donninger, 2014)</td><td>Drawdown −1 % only</td><td>The ATR stop already normalises risk</td><td>New data, neither price nor VIX</td></tr>
+<tr><td>VIX filters, volatility sizing (Donninger, 2014)</td><td>Drawdown −1 % only</td><td>The rule's volatility-scaled sizing already normalises risk</td><td>New data, neither price nor VIX</td></tr>
 <tr><td>Closing selling pressure (close below VWAP)</td><td>NQ +0.05 R, p = 0.11</td><td>ES not significant, YM reversed</td><td>Signed tick-level volume</td></tr>
-<tr><td>Stop at the 17:00–20:00 range</td><td>−0.10 to −0.03 R net</td><td>Median stop 0.86 ATR: 60 % stopped, cost 0.13 R</td><td>Near-zero costs</td></tr>
 <tr><td>Sign of one session predicts the next</td><td>Europe → US, r = −0.003</td><td>No exploitable correlation</td><td>Flow data with a mechanism</td></tr>
 <tr><td>Long 20:05–03:00 after three down nights</td><td>+0.016 R, p = 0.32 on 2010–2015</td><td>Skipped nights also earn +0.092 R: it is the drift, not the filter</td><td>Holdout, frozen rule</td></tr>
 <tr><td>High three-night return predicts a falling night</td><td>|t| ≤ 1.5, Holm p = 1.0</td><td>After rallies the night is flat, not negative</td><td>Never as a short</td></tr>
-<tr><td>Gold close-to-open with ATR stops</td><td>−0.9 bp per trade net</td><td>Negative in every variant</td><td>—</td></tr>
+<tr><td>Gold close-to-open with exit rules</td><td>−0.9 bp per trade net</td><td>Negative in every variant</td><td>—</td></tr>
 <tr><td>Gold: fade early Globex (Fattinger and Ziegler, 2015)</td><td>Slope 0.68 at 19:00, Holm p = 0.97</td><td>No loss of price efficiency before Europe</td><td>Evening bid–ask data</td></tr>
 </tbody>
 </table>
@@ -273,15 +272,14 @@ ol.plain li{margin:2px 0}
 <thead><tr><th style="width:44%">Hypothesis</th><th>Origin</th><th>Test</th><th>Verdict</th></tr></thead>
 <tbody>
 <tr><td>Index returns accrue outside the session</td><td>Literature</td><td>Sessions 2016–2026, ES, NQ, YM</td><td>Confirmed</td></tr>
-<tr><td>Long or short NQ 20:00–9:30 by 12-1 momentum, stop 2 ATR, target 5 ATR</td><td>Literature, chosen after the fact</td><td>Pre-registered</td><td>Yes on NQ; no on ES and YM</td></tr>
+<tr><td>Long or short NQ 20:00–9:30 by 12-1 momentum</td><td>Literature, chosen after the fact</td><td>Pre-registered</td><td>Yes on NQ; no on ES and YM</td></tr>
 <tr><td>The rule is more than beta</td><td>Author</td><td>Pre-registered</td><td>Yes, α +6.2 % a year</td></tr>
-<tr><td>Optimised stops and entry time improve the rule</td><td>Author</td><td>Pre-registered</td><td>No</td></tr>
+<tr><td>Optimised exits and entry time improve the rule</td><td>Author</td><td>Pre-registered</td><td>No</td></tr>
 <tr><td>"Stay flat" filters reduce drawdown</td><td>Literature</td><td>Pre-registered</td><td>No</td></tr>
 <tr><td>Avoid NFP and CPI nights</td><td>Author</td><td>Pre-registered</td><td>No, reversed</td></tr>
 <tr><td>VIX filters; volatility sizing</td><td>Literature</td><td>Pre-registered</td><td>No</td></tr>
 <tr><td>Close below VWAP 15:15–16:15 (selling pressure)</td><td>Boyarchenko et al. (2023)</td><td>Pre-registered</td><td>No</td></tr>
 <tr><td>VWAP execution</td><td>Author</td><td>Pre-registered</td><td>Not retained</td></tr>
-<tr><td>Stop at the evening range 17:00–20:00</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
 <tr><td>Sign of one session predicts the next</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
 <tr><td>Long NQ 20:05–03:00 if the previous three nights ≤ 0</td><td>Strategy passed on</td><td>Pre-registered</td><td>No, out of sample</td></tr>
 <tr><td>The higher the three-night return, the more the night falls</td><td>Author</td><td>Exploratory</td><td>No</td></tr>
