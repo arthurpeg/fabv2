@@ -9,6 +9,8 @@ trials: 1734
 
 # NQ intraday « close de 9:30 contre EMA12 », modèle M2 (stratégie transmise)
 
+> ⚠️ **Deux « M2 » dans le dépôt.** Cette page porte sur le **modèle M2 de la stratégie transmise EMA 9:30**, celui que trade le bot FTMO (book B « 3n + M2 », `live/bot.py`). À ne pas confondre avec la **bande de bruit** de Zarattini (mécanisme M2 de [[PREREGISTRATION]]), voir [[wiki/experiments/m2-bande-bruit-nq]].
+
 **Une phrase** : on suit le sens du close de 9:30 par rapport à l'EMA12, de 9:35 à 15:55, seulement les jours extrêmes (écart à l'EMA > 2,2 ATR M5, ou veille perdante de plus de 60 bps dans le sens du jour). Taille inverse à la volatilité. Refait avec vectorbt : Sharpe 1,28 sur 2016-2024 et 1,86 sur 2025 → 08/2026, t NW 4,05.
 
 ## Origine
