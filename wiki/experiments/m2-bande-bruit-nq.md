@@ -55,3 +55,7 @@ Demande de l'utilisateur : voir si exiger le VWAP à l'entrée (code des auteurs
 
 Calcul descriptif sur la règle déjà testée (pas un nouvel essai) : `results/m2_vwap/bb_performances.txt`. NQ 2016-01 → 2026-08 : 2 247 trades (206 par an, 56 % des séances), 39,4 % de gagnants (gain moyen 77 pts, perte moyenne −38 pts), **+7,1 pts (+142 $) par trade, ≈ 29 300 $ par an et par contrat NQ, Sharpe en dollars 1,13 (1,23 en rendement), pire creux −39 300 $** ; années : 2016 −4,7 k$, 2017 +6,7, 2018 +51,4, 2019 +0,9, 2020 +38,0, 2021 +27,4, 2022 +66,2, 2023 +47,7, 2024 +38,9, 2025 +35,0 (creux de l'année −30 k$), 2026 (→ août) +12,0. ES : +0,94 pt (+47 $) par trade, ≈ 9 900 $/an, Sharpe 0,69, creux −33 600 $, négatif en 2016, 2017, 2025, 2026. YM : ≈ 0.
 
+
+## BB avec SL et TP (2026-11-22, exploration)
+
+Demande de l'utilisateur : BB sur NQ avec SL = k × ATR14 et TP = RR × SL, surveillés à la minute ; mode A (stop suiveur de BB conservé) et mode B (stop suiveur remplacé). k ∈ {0,25 ; 0,5 ; 1}, RR ∈ {1, 2, 3} : 18 essais, compteur 2 091 → 2 109. Grille figée dans l'en-tête de [run_bb_sltp.py](../../run_bb_sltp.py), commitée avant calcul. Exploration seulement : aucune donnée NQ vierge avant le 2026-08-28.
