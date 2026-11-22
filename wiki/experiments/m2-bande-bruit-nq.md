@@ -7,8 +7,10 @@ prereg: [1, 2, 3, 19]
 trials: 2091
 ---
 
-# Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ
+# BB : bande de bruit (« Beat the Market », Zarattini et al.) sur NQ
 
+> **Nom : BB** (renommée le 2026-11-22, à la demande de l'utilisateur). Dans les documents antérieurs (pré-enregistrements n° 1-3 et 19, `RESULTS.md`, rapports, `results/`, `fab/strategies.py::m2_noise`), la même règle s'appelle **« M2 »** ; ces sources ne sont pas réécrites.
+>
 > ⚠️ **Deux « M2 » dans le dépôt.** Cette page porte sur la **bande de bruit** de Zarattini, Aziz et Barbon (mécanisme M2 de [[PREREGISTRATION]], `fab/strategies.py::m2_noise`). Le **« M2 » du bot FTMO** (book B « 3n + M2 », `live/bot.py`) est une autre règle : le **modèle M2 de la stratégie transmise « close de 9:30 contre EMA12 »**, voir [[wiki/experiments/nq-ema930-m2]]. Les résultats de cette page ne disent rien du M2 du bot.
 
 **Une phrase** : Sharpe net +1,15 IS / +1,13 OOS sur ~2 300 trades, mais rejetée par le [[wiki/concepts/dsr|DSR]] (0,03) selon la règle fixée à l'avance.
@@ -48,4 +50,8 @@ Papiers lus : *Beat the Market* version du 22/09/2025 avec FAQ (SSRN 4824172), C
 Demande de l'utilisateur : voir si exiger le VWAP à l'entrée (code des auteurs) améliore M2, **sans rien publier vers le bot du VPS**. Script séparé [run_m2_vwap.py](../../run_m2_vwap.py) (copie de `m2_noise`, rien de modifié dans `fab/strategies.py`), grille commitée avant calcul : NQ, ES, YM × {1×, volatilité cible}, 6 essais, compteur 2 085 → 2 091. Ce n'est pas une réouverture : données 2016-2026 déjà explorées, aucun verdict B1.
 
 **Résultat** ([[reports/m2_vwap_report]]) : exiger le VWAP à l'entrée améliore un peu M2, surtout sur NQ à taille fixe : Sharpe net 1,16 → **1,23** sur 2016-2026 (IS 1,26, OOS 1,19), +0,7 pt par trade, 4 % de trades en moins, écart journalier +0,24 bp (t 2,27) ; ES 0,60 → 0,65 ; YM et volatilité cible dans le bruit. NQ corrigé = exactement le Sharpe des auteurs pour le future Nasdaq (1,23, FAQ Q13). Vérification de fidélité, pas une validation ; rien changé dans `fab/strategies.py` ni dans le bot. Compteur 2 085 → 2 091.
+
+## Performances de référence de BB (2026-11-22, VWAP exigé à l'entrée, 1 contrat, coût standard)
+
+Calcul descriptif sur la règle déjà testée (pas un nouvel essai) : `results/m2_vwap/bb_performances.txt`. NQ 2016-01 → 2026-08 : 2 247 trades (206 par an, 56 % des séances), 39,4 % de gagnants (gain moyen 77 pts, perte moyenne −38 pts), **+7,1 pts (+142 $) par trade, ≈ 29 300 $ par an et par contrat NQ, Sharpe en dollars 1,13 (1,23 en rendement), pire creux −39 300 $** ; années : 2016 −4,7 k$, 2017 +6,7, 2018 +51,4, 2019 +0,9, 2020 +38,0, 2021 +27,4, 2022 +66,2, 2023 +47,7, 2024 +38,9, 2025 +35,0 (creux de l'année −30 k$), 2026 (→ août) +12,0. ES : +0,94 pt (+47 $) par trade, ≈ 9 900 $/an, Sharpe 0,69, creux −33 600 $, négatif en 2016, 2017, 2025, 2026. YM : ≈ 0.
 

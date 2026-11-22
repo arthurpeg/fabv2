@@ -21,7 +21,7 @@ trials: 96
 ## Réserves
 - Perdante sur 2016–2021 : c'est un pari sur la durée du régime 0DTE.
 - L'idée est venue de l'OOS du premier lot ; la validation reste sur 2023–2026 et sur des indices corrélés.
-- Corrélation avec [[wiki/experiments/m2-bande-bruit-nq|M2 sur NQ]] : 0,01.
+- Corrélation avec [[wiki/experiments/m2-bande-bruit-nq|BB (bande de bruit) sur NQ]] : 0,01.
 
 ## Usage prévu
 Paper trading avec interrupteur de régime (couper si le Sharpe glissant 12 mois redevient négatif).
