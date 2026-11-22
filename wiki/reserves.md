@@ -1,6 +1,6 @@
 ---
 type: registry
-updated: 2026-11-19
+updated: 2026-11-22
 ---
 
 # Registre des données : vierges, explorées, réservées, consommées
@@ -42,7 +42,11 @@ updated: 2026-11-19
 
 ## Réserves déclarées pour des idées futures
 
-*Aucune pour l'instant. Avant le premier calcul sur une tranche vierge, on ajoute ici : la date, la tranche explorable, la réserve (par défaut les 30 % les plus récents, au moins 3 ans), et la famille d'idées concernée.*
+*Avant le premier calcul sur une tranche vierge, on ajoute ici : la date, la tranche explorable, la réserve (par défaut les 30 % les plus récents, au moins 3 ans), et la famille d'idées concernée.*
+
+| Date | Famille d'idées | Tranche explorable | Réserve | État |
+|---|---|---|---|---|
+| 2026-11-22 | Session domestique et solde commercial ([[wiki/experiments/fx-exportateur-importateur]]) | Devises flottantes hors 7 majeures (NOK, SEK, PLN, CZK, HUF, MXN, ZAR, SGD, TRY, ILS…, liste figée à l'étape 1), comptant Dukascopy, 2010-01-01 → 2021-08-31 | Mêmes devises, 2021-09-01 → 2026-08-28 (5 ans) | **réservée** ; tout vierge à cette date (contrôles de qualité seulement) |
 
 | Date | Actif | Tranche explorable | Réserve | Famille d'idées | État |
 |---|---|---|---|---|---|
