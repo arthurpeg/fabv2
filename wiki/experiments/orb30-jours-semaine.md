@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: NQ vendredi réplique le papier (+0,19 R, t 3,50) mais ❌ B1 (DSR) ; lundi-jeudi rien ; réserve 2010-2015 gardée en attente
 prereg: []
-trials: 2073
+trials: 2079
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -80,4 +80,11 @@ L'utilisateur choisit de **ne pas ouvrir tout de suite** la réserve 2010-06 →
 Source : Zarattini, Aziz, Barbon 2024 (*Beat the Market*, section 4.5) : RSI 5 jours bas → teneurs de marché probablement en gamma négatif → tendances prolongées. Demande de l'utilisateur : suivre la cassure quand le RSI est bas, et jouer la réintégration quand il est haut (gamma contre la cassure). V1 filtre (RSI5 de la veille < 50, sinon rien) et V2 (RSI < 50 cassure, RSI ≥ 50 réintégration des deux côtés, stop 1 W). Objectif 2R, NQ, lundi à jeudi. Grille figée dans l'en-tête de [run_orb30_rsi.py](../../run_orb30_rsi.py), commitée avant calcul ; n_famille = 75 ; compteur 2 071 → 2 073.
 
 **Résultat RSI 5 jours** ([[reports/orb30_rsi_report]]) : ❌ B1. V1 (filtre RSI < 50) +0,018 R, t 0,48 ; V2 (cassure / réintégration) +0,006 R. Cassure +0,018 R sous 50 contre +0,013 au-dessus, aucune pente par quintile ; réintégration à RSI haut −0,000 R. Compteur 2 071 → 2 073. Famille N = 75.
+
+
+## Lundi-jeudi : forme et heure de la cassure, ordres limite (2026-11-22)
+
+Demande de l'utilisateur : entrée sur clôture au-delà de la borne (bougie 1 min et 5 min, exécution à l'open qui suit), heure de la cassure (10:00-11:00, 11:00-13:00, 13:00-16:00), et ordres limite sur les bords du range (vente au haut, achat au bas, dès 10:00). NQ, objectif 2R, stop 1 W. 6 essais ; grille figée dans l'en-tête de [run_orb30_forme.py](../../run_orb30_forme.py), commitée avant calcul ; n_famille = 81 ; compteur 2 073 → 2 079.
+
+**Résultat** ([[reports/orb30_forme_report]]) : ❌ B1. Clôture 1 min +0,000 R, clôture 5 min −0,003 R, ordres limite sur les bords −0,024 R ; cassures 10:00-11:00 +0,022 R (t 0,96), plus tardives −0,07 à −0,08 R. Compteur 2 073 → 2 079 ; famille N = 81.
 
