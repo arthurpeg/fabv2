@@ -50,7 +50,7 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 
 ### [2] 🚫 Regime-Conditional Alpha in SPY 0DTE Opening Range Breakout Strategies: A Filtering and Strike Selection Framework
 
-> 🚫 **Retiré de SSRN** (constaté par l'utilisateur le 2026-11-22) : le lien ne mène plus au papier. OpenAlex et Crossref gardent la notice et le résumé ci-dessous, mais le texte n'est plus disponible. **À ne pas citer comme source.**
+> 🚫 **Retiré de SSRN** (constaté par l'utilisateur le 2026-11-22) : le lien ne mène plus au papier. OpenAlex et Crossref gardent la notice et le résumé ci-dessous, mais le texte n'est plus disponible. **À ne pas citer comme source.** Recherche d'une autre copie le même jour, sans succès : OpenAlex ne connaît que la version SSRN ; aucune copie dans la Wayback Machine ; rien sur arXiv ni Crossref sous un autre DOI ; le profil ORCID de l'auteur (0009-0004-3521-9982) ne liste plus ce papier, seulement le 7609644 (bande de bruit NQ, [5]) et un papier de 2024 sur les AMM ; le web ne renvoie que l'ancienne page SSRN en cache et des pages de praticiens sans lien. Le retrait vient donc vraisemblablement de l'auteur.
 
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6355218 (retiré)
 - **Actifs :** SPY, via des **spreads verticaux d'options 0DTE** (2022-2025)
