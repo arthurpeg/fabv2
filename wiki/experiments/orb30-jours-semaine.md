@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: NQ vendredi réplique le papier (+0,19 R, t 3,50) mais ❌ B1 (DSR) ; lundi-jeudi rien ; réserve 2010-2015 gardée en attente
 prereg: []
-trials: 2071
+trials: 2073
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -73,4 +73,11 @@ L'utilisateur choisit de **ne pas ouvrir tout de suite** la réserve 2010-06 →
 - toute nouvelle variante se teste d'abord sur l'exploration 2016-2026, grille commitée avant calcul, et **s'ajoute à la famille** (N = 73 au 2026-11-22) ;
 - le jour où la réserve sera ouverte : un seul pré-enregistrement, avec toutes les règles retenues à la fois (Holm si plusieurs) et le N de la famille à cette date ;
 - candidate actuelle : NQ vendredi, range 9:30-10:00, cassure, stop 1 W, objectif 2R (+0,164 R, t 3,67 en exploration) ou sans objectif (+0,190 R).
+
+
+## Lundi-jeudi : RSI 5 jours, approximation du gamma (2026-11-22)
+
+Source : Zarattini, Aziz, Barbon 2024 (*Beat the Market*, section 4.5) : RSI 5 jours bas → teneurs de marché probablement en gamma négatif → tendances prolongées. Demande de l'utilisateur : suivre la cassure quand le RSI est bas, et jouer la réintégration quand il est haut (gamma contre la cassure). V1 filtre (RSI5 de la veille < 50, sinon rien) et V2 (RSI < 50 cassure, RSI ≥ 50 réintégration des deux côtés, stop 1 W). Objectif 2R, NQ, lundi à jeudi. Grille figée dans l'en-tête de [run_orb30_rsi.py](../../run_orb30_rsi.py), commitée avant calcul ; n_famille = 75 ; compteur 2 071 → 2 073.
+
+**Résultat RSI 5 jours** ([[reports/orb30_rsi_report]]) : ❌ B1. V1 (filtre RSI < 50) +0,018 R, t 0,48 ; V2 (cassure / réintégration) +0,006 R. Cassure +0,018 R sous 50 contre +0,013 au-dessus, aucune pente par quintile ; réintégration à RSI haut −0,000 R. Compteur 2 071 → 2 073. Famille N = 75.
 

@@ -1,0 +1,52 @@
+Jours lun-jeu avec RSI : 2120 ; RSI < 50 : 730 ; référence (cassure tous les jours) : 2035 trades, +0.015 R, +0.88 pts par jour ; famille 48 Sharpe, N = 75
+
+===== RSI 5 jours (NQ, lundi-jeudi, objectif 2R) =====
+                                   variante    n  net_R  t_nw  sharpe_trade  gagnants_%  net_pts   ref  ecart_ref  t_ecart_ref  objectif_%  2016-22  2023-26 annees_pos  dsr_75
+                         V1 filtre RSI < 50  706  0.018 0.482         0.017      46.317   -1.027 0.013      0.005        0.105      11.756    0.003    0.046       7/11   0.003
+V2 cassure si RSI < 50, réintégration sinon 1943  0.006 0.274         0.006      45.497    0.277 0.880     -0.626       -0.234      11.220    0.009    0.003       7/11   0.000
+
+Décomposition (non comptée), R net par trade :
+  cassure, RSI < 50          n  706  +0.018 R  t +0.45  (-1.03 pts)
+  cassure, RSI ≥ 50          n 1329  +0.013 R  t +0.45  (+1.95 pts)
+  réintégration, RSI < 50    n  656  +0.014 R  t +0.34  (-1.09 pts)
+  réintégration, RSI ≥ 50    n 1237  -0.000 R  t -0.01  (+1.02 pts)
+
+Cassure par quintile de RSI5 (R net) :
+                             count   mean
+rsi                                      
+(7.763999999999999, 38.344]    407  0.010
+(38.344, 53.195]               407  0.067
+(53.195, 64.735]               407 -0.016
+(64.735, 75.842]               407 -0.007
+(75.842, 96.918]               407  0.020
+
+== Règle choisie (meilleur Sharpe net) : V1 filtre RSI < 50
+  n                          706
+  debut                      2016-06-13
+  fin                        2026-08-27
+  brut_moy                   nan
+  net_moy                    0.01824
+  net_med                    -0.1931
+  ecart_type                 1.07
+  sharpe_an                  0.2706
+  t_nw                       0.4821
+  p_unilateral               0.3149
+  gagnants_%                 46.32
+  pire_creux                 -24.05
+  annees_pos                 7/11
+  net_moitie1                -0.009957
+  net_moitie2                0.04644
+  net_sans_meilleure_annee   -0.0002438
+  net_cout_plus_1_tick       0.01431
+  n_famille                  75
+  dsr_famille                0.003475
+  ref_net_moy                0.01304
+  ecart_ref                  0.005199
+  t_ecart_ref                0.1049
+B1 : ❌ ratée
+  ❌ t NW net ≥ 2,0
+  ❌ DSR (N = famille) ≥ 0,95
+  ❌ bat la référence triviale (t écart ≥ 1,0)
+  ❌ net > 0 dans les deux moitiés
+  ❌ net > 0 sans la meilleure année
+  ✅ net > 0 avec 1 tick de coût en plus
