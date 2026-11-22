@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "path:\"wiki/Failed Ideas\"",
@@ -18,7 +18,7 @@
       "query": "path:wiki/experiments",
       "color": {
         "a": 1,
-        "rgb": 14711609
+        "rgb": 13516257
       }
     },
     {
@@ -60,7 +60,7 @@
       "query": "path:reports",
       "color": {
         "a": 1,
-        "rgb": 15381256
+        "rgb": 4759806
       }
     }
   ],
@@ -69,11 +69,11 @@
   "textFadeMultiplier": -0.8,
   "nodeSizeMultiplier": 1.14501463414634,
   "lineSizeMultiplier": 1.60394146341463,
-  "collapse-forces": true,
+  "collapse-forces": false,
   "centerStrength": 0.58790243902439,
   "repelStrength": 9.63512195121951,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.3628873693012083,
+  "scale": 0.3628873693012082,
   "close": false
 }
