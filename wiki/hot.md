@@ -1,15 +1,15 @@
 ---
 type: hot
-updated: 2026-11-22 18:31
+updated: 2026-11-22 18:36
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **2 024** (source : [[reports/orb_bougie_filtres_report]])
-- Dernier pré-enregistrement : n° 29 ([[PREREGISTRATION_29]])
-- Idées abandonnées au registre : 47 ([[wiki/Failed Ideas/ledger]])
+- Compteur global d'essais : **2 025** (source : [[reports/prereg30_report]])
+- Dernier pré-enregistrement : n° 30 ([[PREREGISTRATION_30]])
+- Idées abandonnées au registre : 48 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
 
 ## Expériences ouvertes
@@ -24,6 +24,7 @@ updated: 2026-11-22 18:31
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] prereg | N° 30 : règle de la 1ʳᵉ bougie NQ stop 0,5 ATR / 2R sur la réserve 2021-10 → 2026-08, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (bade69c), une exécution ; compteur 2 024 → 2 025 | ❌ C1 : +2,57 pts/trade, t 0,58, p 0,28 ; « toujours long » +2,61 ; rejet ; réserve NQ « sortie » consommée
 - [2026-11-22] experiment | Filtres F1 (annonces 10:00/14:00), F2 (volume d'ouverture), F3 (corps de bougie) sur la règle NQ 1ʳᵉ bougie stop 0,5 ATR / 2R ; grille commitée (b97b69c), exploration 2010-06 → 2021-09, compteur 2 021 → 2 024 | ❌ B1 : F3 Sharpe 0,87, DSR 0,019 ; F1 porté par 2021 ; F2 inverse (t −2,55) ; réserve non lue
 - [2026-11-22] experiment | Suite de wiki/experiments/nq-orb-bougie-sorties : même grille sur ES et YM, stop 1 ATR / objectif 2-3 ATR sur les trois indices, détail stop 0,5 ATR / 2R et 3R ; réserve ES/YM 2021-10 → 2026-08 déclarée, grille commitée (40cfcc9), exploration 2010-06 → 2021-09, compteur 1 965 → 2 021 | ❌ B1 partout : ES V0 +0,68 pt (t 2,11, DSR 0,002), YM rien, NQ 0,5 ATR/2R +2,23 pts (t 2,17), NQ stop 1 ATR ≈ V0 ; DSR NQ 0,953 avec la famille NQ seule mais 0,02 avec la famille complète (81 variantes) ; réserve non lue
 - [2026-11-22] experiment | Étape 0-1 de wiki/experiments/nq-orb-bougie-sorties : règle de la 1ʳᵉ bougie de Zarattini-Aziz sur NQ, sorties V0 (aucune) + 24 variantes stop k × ATR14 / objectif RR ; réserve 2021-10 → 2026-08 déclarée, grille commitée (a49ca1a), exploration 2010-06 → 2021-09, compteur 1 940 → 1 965 | ❌ B1 de justesse : meilleure variante (stop 0,05 ATR, clôture) +1,52 pt/trade, t 3,16, DSR 0,948 ; ≈ 0 avant 2016 ; V0 +2,83 pts/trade mais t 1,27 contre « toujours long » ; objectifs fixes moins bons ; ligne au registre ; réserve non lue
@@ -31,7 +32,6 @@ updated: 2026-11-22 18:31
 - [2026-11-22] research | Recherche d'une autre copie du papier retiré SSRN 6355218 (Chuk, SPY 0DTE ORB) : OpenAlex, Crossref, arXiv, Wayback Machine, ORCID de l'auteur, web | introuvable ; l'ORCID de l'auteur ne le liste plus (retrait vraisemblablement volontaire)
 - [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : papier [2] (Chuk, SPY 0DTE ORB, SSRN 6355218) marqué retiré de SSRN, signalé par l'utilisateur ; note ajoutée au registre local | à ne plus citer
 - [2026-11-22] research | papiers_ssrn_orb_2026-11-22.md : section E ajoutée, les 16 papiers ORB déjà fournis (Schulmeister, Holmberg, Sönnert, Tsai, Xin, Zarattini ×3, Pineda, Subhani, Ladia, Fetna, Mesfin, Wijesinghe, Mahadzva, Howard) remis au format de récolte avec nos résultats en regard | aucun calcul ; Subhani (ORB 30 min, vendredis sans annonce) noté comme la piste ORB la plus sérieuse non testée
-- [2026-11-22] research | Récolte SSRN sur l'opening range breakout (indices US, ranges 5/15/30 min) : papiers_ssrn_orb_2026-11-22.md, OpenAlex (429 fréquents) + Crossref, 57 requêtes, ~2 000 candidats | 8 papiers fournis (dont réplication de Zarattini-Aziz QQQ 5 min sur la seule période d'origine, bande de bruit NQ +10 $/jour 2 survivants sur 144 essais, ORB 15 min sur l'or nul), 8 écartés, carte des ORB déjà fournis par durée ; aucun calcul, compteur inchangé ; ORB toujours au registre sans condition de réouverture
 
 ## Prochaines actions
 
