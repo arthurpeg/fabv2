@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: paper-trading
 verdict: rejeté (DSR), surveillé
 prereg: [1, 2, 3, 19]
-trials: 138
+trials: 2091
 ---
 
 # Bande de bruit M2 (« Beat the Market », Zarattini et al.) sur NQ
@@ -44,3 +44,6 @@ Papiers lus : *Beat the Market* version du 22/09/2025 avec FAQ (SSRN 4824172), C
 ## Vérification de fidélité : VWAP à l'entrée (2026-11-22)
 
 Demande de l'utilisateur : voir si exiger le VWAP à l'entrée (code des auteurs) améliore M2, **sans rien publier vers le bot du VPS**. Script séparé [run_m2_vwap.py](../../run_m2_vwap.py) (copie de `m2_noise`, rien de modifié dans `fab/strategies.py`), grille commitée avant calcul : NQ, ES, YM × {1×, volatilité cible}, 6 essais, compteur 2 085 → 2 091. Ce n'est pas une réouverture : données 2016-2026 déjà explorées, aucun verdict B1.
+
+**Résultat** ([[reports/m2_vwap_report]]) : exiger le VWAP à l'entrée améliore un peu M2, surtout sur NQ à taille fixe : Sharpe net 1,16 → **1,23** sur 2016-2026 (IS 1,26, OOS 1,19), +0,7 pt par trade, 4 % de trades en moins, écart journalier +0,24 bp (t 2,27) ; ES 0,60 → 0,65 ; YM et volatilité cible dans le bruit. NQ corrigé = exactement le Sharpe des auteurs pour le future Nasdaq (1,23, FAQ Q13). Vérification de fidélité, pas une validation ; rien changé dans `fab/strategies.py` ni dans le bot. Compteur 2 085 → 2 091.
+
