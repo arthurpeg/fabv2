@@ -1,0 +1,59 @@
+494 départs (2016-01 → 2025-08), 12 mois, comptes 10k, règle des annonces + cible + attente
+
+  2 comptes : A mom, B 3n + M2 (plan)
+    total : moy. +3,502 $, méd. +3,331 $, 10e c. +2,075 $, pire départ +803 $ ; évals/an 6.3, rewards/an 12.1 ; pire creux de trésorerie méd. -261 $, pire -695 $
+    A  : moy. +1,796 $, 10e c. +629 $, P(< 0) 0 %, évals/an 4.1, rewards/an 6.3
+    B  : moy. +1,705 $, 10e c. +725 $, P(< 0) 0 %, évals/an 2.3, rewards/an 5.7
+    corrélations des nets entre départs :
+       net_A  net_B
+net_A   1.00   0.01
+net_B   0.01   1.00
+
+  3 comptes : A, B, C = BB (option 2)
+    total : moy. +4,971 $, méd. +4,930 $, 10e c. +3,485 $, pire départ +1,661 $ ; évals/an 8.2, rewards/an 16.8 ; pire creux de trésorerie méd. -348 $, pire -1,043 $
+    A  : moy. +1,796 $, 10e c. +629 $, P(< 0) 0 %, évals/an 4.1, rewards/an 6.3
+    B  : moy. +1,705 $, 10e c. +725 $, P(< 0) 0 %, évals/an 2.3, rewards/an 5.7
+    C  : moy. +1,469 $, 10e c. +446 $, P(< 0) 0 %, évals/an 1.9, rewards/an 4.7
+    corrélations des nets entre départs :
+       net_A  net_B  net_C
+net_A   1.00   0.01  -0.43
+net_B   0.01   1.00   0.13
+net_C  -0.43   0.13   1.00
+
+  3 comptes : A, B1 = 3n, B2 = M2
+    total : moy. +3,659 $, méd. +3,534 $, 10e c. +1,955 $, pire départ +457 $ ; évals/an 8.1, rewards/an 13.2 ; pire creux de trésorerie méd. -348 $, pire -1,043 $
+    A  : moy. +1,796 $, 10e c. +629 $, P(< 0) 0 %, évals/an 4.1, rewards/an 6.3
+    B1 : moy. +643 $, 10e c. -174 $, P(< 0) 21 %, évals/an 1.7, rewards/an 2.8
+    B2 : moy. +1,220 $, 10e c. +280 $, P(< 0) 2 %, évals/an 2.3, rewards/an 4.1
+    corrélations des nets entre départs :
+        net_A  net_B1  net_B2
+net_A    1.00    0.20   -0.05
+net_B1   0.20    1.00   -0.26
+net_B2  -0.05   -0.26    1.00
+
+  4 comptes : A, B1 = 3n, B2 = M2, C = BB
+    total : moy. +5,129 $, méd. +5,010 $, 10e c. +3,474 $, pire départ +1,511 $ ; évals/an 9.9, rewards/an 17.9 ; pire creux de trésorerie méd. -434 $, pire -1,130 $
+    A  : moy. +1,796 $, 10e c. +629 $, P(< 0) 0 %, évals/an 4.1, rewards/an 6.3
+    B1 : moy. +643 $, 10e c. -174 $, P(< 0) 21 %, évals/an 1.7, rewards/an 2.8
+    B2 : moy. +1,220 $, 10e c. +280 $, P(< 0) 2 %, évals/an 2.3, rewards/an 4.1
+    C  : moy. +1,469 $, 10e c. +446 $, P(< 0) 0 %, évals/an 1.9, rewards/an 4.7
+    corrélations des nets entre départs :
+        net_A  net_B1  net_B2  net_C
+net_A    1.00    0.20   -0.05  -0.43
+net_B1   0.20    1.00   -0.26  -0.17
+net_B2  -0.05   -0.26    1.00   0.22
+net_C   -0.43   -0.17    0.22   1.00
+
+Net total moyen sur 12 mois selon l'année de départ ($) :
+config  2 comptes : A mom, B 3n + M2 (plan)  3 comptes : A, B, C = BB (option 2)  3 comptes : A, B1 = 3n, B2 = M2  4 comptes : A, B1 = 3n, B2 = M2, C = BB
+année                                                                                                                                                     
+2016                                 3284.0                               3771.0                           3573.0                                   4060.0
+2017                                 4761.0                               6500.0                           5076.0                                   6815.0
+2018                                 2353.0                               4077.0                           2601.0                                   4325.0
+2019                                 4180.0                               5463.0                           4442.0                                   5725.0
+2020                                 3536.0                               5049.0                           3922.0                                   5435.0
+2021                                 2615.0                               4138.0                           2675.0                                   4199.0
+2022                                 2932.0                               4815.0                           2696.0                                   4580.0
+2023                                 2351.0                               4336.0                           2170.0                                   4155.0
+2024                                 4320.0                               6025.0                           4688.0                                   6393.0
+2025                                 5342.0                               5827.0                           5360.0                                   5845.0
