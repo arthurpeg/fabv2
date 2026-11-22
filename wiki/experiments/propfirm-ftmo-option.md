@@ -1,6 +1,6 @@
 ---
 type: experiment
-updated: 2026-11-04
+updated: 2026-11-22
 status: active
 verdict: EV positive sans edge (si les rewards sont versés)
 prereg: [18]
@@ -91,4 +91,4 @@ trials: 0
 - Branche git `propfirm-ftmo`. Hors compteur d'essais (évaluation d'un contrat, pas d'une règle de marché).
 
 ## Sources brutes
-[[PREREGISTRATION_18]] · [[reports/prereg18_report]] · [run_propfirm_ftmo.py](../../run_propfirm_ftmo.py) · [propfirm/](../../propfirm/) · `results/propfirm/` · session « Hedge sim discussion » (scripts `ftmo_sim.py`, `ftmo_funded_cmp.py`, hors dépôt) · présentation en anglais sans les règles : [propfirm_ftmo_overview.html](../../reports/propfirm_ftmo_overview.html)
+[[PREREGISTRATION_18]] · [[reports/prereg18_report]] · [run_propfirm_ftmo.py](../../run_propfirm_ftmo.py) · [propfirm/](../../propfirm/) · `results/propfirm/` · session « Hedge sim discussion » (scripts `ftmo_sim.py`, `ftmo_funded_cmp.py`, hors dépôt) · présentation en anglais sans les règles : [propfirm_ftmo_overview.html](../../reports/propfirm_ftmo_overview.html) (mise à jour le 2026-11-22 : plan à deux comptes, scaling, bot, vrais comptes, règle d'arrêt de mom)
