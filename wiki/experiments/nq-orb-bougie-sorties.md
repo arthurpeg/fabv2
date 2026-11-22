@@ -63,3 +63,7 @@ Demande de l'utilisateur : même grille sur ES et YM, détail de stop 0,5 ATR / 
 - Le DSR de la règle NQ passe à 0,953 avec la famille de 28 propre à NQ, mais ce n'est qu'un effet de la dispersion de la famille. Avec la famille complète (81 variantes sur trois indices), il vaut **0,02**, et c'est ce chiffre qui fait foi.
 - Compteur 1 965 → 2 021. Réserve non lue.
 
+
+## Filtres F1-F3 sur la variante NQ stop 0,5 ATR / objectif 2R (2026-11-22)
+
+Demande de l'utilisateur, après la proposition de filtres justifiés par un mécanisme : F1 « pas d'annonce à 10:00 ou 14:00 » (Subhani), F2 « volume de la 1ʳᵉ bougie > 1,5 × médiane 20 j » (stocks in play ; voisin du filtre M3c déjà raté sur une cassure), F3 « corps de la bougie > 0,05 × ATR14 ». F4 (sens du gap) écarté : double comptage avec le fade de gap post-0DTE. Grille figée dans l'en-tête de [run_orb_bougie_filtres.py](../../run_orb_bougie_filtres.py), commitée avant calcul ; référence d'un filtre = jours sautés ; n_famille = 85 ; compteur 2 021 → 2 024. Barre attendue : il faut à peu près doubler le Sharpe (≈ 1,5 par an) pour un DSR ≥ 0,95.
