@@ -1,0 +1,36 @@
+NQ 1x : écart journalier VWAP − actuelle +0.24 bp, t NW 2.27
+NQ R3 : écart journalier VWAP − actuelle +0.17 bp, t NW 1.14
+ES 1x : écart journalier VWAP − actuelle +0.12 bp, t NW 1.45
+ES R3 : écart journalier VWAP − actuelle +0.09 bp, t NW 0.67
+YM 1x : écart journalier VWAP − actuelle +0.08 bp, t NW 0.67
+YM R3 : écart journalier VWAP − actuelle -0.15 bp, t NW -0.98
+
+===== M2 : entrée actuelle contre entrée avec VWAP (IS 2016-2022, OOS 2023 → 2026-08) =====
+actif   entree taille  trades  sharpe_net_IS  sharpe_net_OOS  sharpe_brut_IS  sharpe_brut_OOS  sharpe_net_total  pts_brut_trade  pts_net_trade  gagnants_%  compte
+   NQ actuelle     1x    2333          1.175           1.135           1.312            1.199             1.162           6.889          6.389      39.434   False
+   NQ actuelle     R3    2333          0.833           1.078           0.992            1.126             0.919           6.889          6.389      39.434   False
+   NQ     VWAP     1x    2247          1.257           1.186           1.390            1.247             1.233           7.614          7.114      39.430    True
+   NQ     VWAP     R3    2247          0.853           1.145           1.003            1.190             0.954           7.614          7.114      39.430    True
+   ES actuelle     1x    2380          0.668           0.453           0.997            0.692             0.602           1.198          0.848      36.849   False
+   ES actuelle     R3    2380          0.592           0.141           0.958            0.326             0.437           1.198          0.848      36.849   False
+   ES     VWAP     1x    2307          0.705           0.517           1.023            0.749             0.646           1.290          0.940      36.844    True
+   ES     VWAP     R3    2307          0.619           0.150           0.976            0.327             0.457           1.290          0.940      36.844    True
+   YM actuelle     1x    2379          0.061          -0.194           0.282            0.021            -0.008           2.110          0.110      35.099   False
+   YM actuelle     R3    2379         -0.121          -0.035           0.135            0.142            -0.093           2.110          0.110      35.099   False
+   YM     VWAP     1x    2303          0.094          -0.169           0.304            0.040             0.023           2.387          0.387      35.258    True
+   YM     VWAP     R3    2303         -0.153          -0.085           0.098            0.086            -0.130           2.387          0.387      35.258    True
+
+Sharpe net par année :
+      NQ actuelle 1x  NQ actuelle R3  NQ VWAP 1x  NQ VWAP R3  ES actuelle 1x  ES actuelle R3  ES VWAP 1x  ES VWAP R3  YM actuelle 1x  YM actuelle R3  YM VWAP 1x  YM VWAP R3
+d                                                                                                                                                                           
+2016           -0.62           -1.39       -0.66       -1.53           -1.47           -1.55       -1.35       -1.55           -0.79           -2.00       -0.82       -2.18
+2017            1.04            1.21        0.94        1.11           -1.43           -0.91       -1.32       -0.81           -0.77           -0.13       -0.63       -0.07
+2018            2.81            2.30        2.85        2.37            1.83            1.20        1.90        1.24            0.76            0.75        0.73        0.71
+2019            0.15            0.09        0.18        0.23            0.03            1.26        0.07        1.21            0.37            0.63        0.61        0.72
+2020            1.23            0.69        1.47        0.90            0.62            0.61        0.62        0.76           -0.24           -0.93       -0.19       -0.93
+2021            0.88            0.55        1.18        0.63            1.81            1.46        1.70        1.40            0.49           -1.24        0.20       -1.47
+2022            1.67            1.86        1.70        1.86            1.50            2.03        1.56        2.00            0.19            1.09        0.38        1.17
+2023            2.18            2.20        2.29        2.40            1.75            0.92        1.82        1.04            0.02            0.01        0.07        0.03
+2024            1.26            0.36        1.41        0.43            0.57           -0.22        0.65       -0.16           -0.75           -0.26       -0.51       -0.41
+2025            0.84            0.55        0.86        0.58            0.00           -0.29       -0.02       -0.45            0.21            0.28        0.08        0.25
+2026            0.44            2.22        0.46        2.17           -0.71            0.27       -0.47        0.40           -0.58           -0.42       -0.58       -0.42
