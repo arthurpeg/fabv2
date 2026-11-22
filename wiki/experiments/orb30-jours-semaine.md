@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
 prereg: []
-trials: 2055
+trials: 2058
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -51,4 +51,11 @@ Grille figée dans l'en-tête de [run_orb30_jours.py](../../run_orb30_jours.py),
 La règle de Subhani n'a pas d'objectif (il a essayé +2R et l'a rejeté). Demande de l'utilisateur : ajouter un objectif à 2R ou 3R. Grille figée dans l'en-tête de [run_orb30_tp.py](../../run_orb30_tp.py), commitée avant calcul : 3 actifs × {vendredi, tous les jours} × {2R, 3R} = 12 essais ; référence = même case sans objectif ; n_famille = 57 ; compteur 2 043 → 2 055. Exploration 2016-2026 seulement.
 
 **Résultat des objectifs** ([[reports/orb30_tp_report]]) : aucun gain. NQ vendredi : +0,164 R avec 2R ou 3R, contre +0,190 sans objectif (écart t −0,99 et −1,47). Seul ES vendredi 3R fait mieux que sans objectif (+0,033 R, t 1,66), dans le bruit. B1 ❌ pour la meilleure case (DSR 0,77 avec N = 57). La règle de référence reste NQ vendredi sans objectif. Correction : le « Sharpe 2,33 » du rapport précédent était annualisé par √252 ; avec ≈ 50 trades par an, c'est ≈ 1,04.
+
+
+## Lundi-jeudi : conditions C1-C3 (2026-11-22)
+
+Demande de l'utilisateur : garder un objectif (prop firms) et faire fonctionner l'ORB les autres jours. Pour limiter la recherche de données : NQ seul, lundi à jeudi regroupés, objectif 2R, trois conditions justifiées. C1 range d'ouverture étroit (W < 0,5 ATR14 ; tableau 9 de Subhani), C2 veille NR7 (Crabel), C3 jours d'annonce à 10:00 ou 14:00. Grille figée dans l'en-tête de [run_orb30_filtres.py](../../run_orb30_filtres.py), commitée avant calcul ; référence = jours exclus ; n_famille = 60 ; compteur 2 055 → 2 058.
+
+**Résultat C1-C3** ([[reports/orb30_filtres_report]]) : ❌ B1. Base lundi-jeudi objectif 2R : +0,011 R (t 0,46). C1 range étroit +0,003 R, C2 veille NR7 +0,044 R (t 0,76, DSR 0,08), C3 annonces −0,021 R ; aucun écart significatif avec les jours exclus. Le seul effet ORB 30 min sur NQ reste le vendredi. Compteur 2 055 → 2 058.
 
