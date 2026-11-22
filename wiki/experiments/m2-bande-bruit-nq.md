@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: paper-trading
 verdict: rejeté (DSR), surveillé
 prereg: [1, 2, 3, 19]
-trials: 2091
+trials: 2109
 ---
 
 # BB : bande de bruit (« Beat the Market », Zarattini et al.) sur NQ
@@ -59,3 +59,6 @@ Calcul descriptif sur la règle déjà testée (pas un nouvel essai) : `results/
 ## BB avec SL et TP (2026-11-22, exploration)
 
 Demande de l'utilisateur : BB sur NQ avec SL = k × ATR14 et TP = RR × SL, surveillés à la minute ; mode A (stop suiveur de BB conservé) et mode B (stop suiveur remplacé). k ∈ {0,25 ; 0,5 ; 1}, RR ∈ {1, 2, 3} : 18 essais, compteur 2 091 → 2 109. Grille figée dans l'en-tête de [run_bb_sltp.py](../../run_bb_sltp.py), commitée avant calcul. Exploration seulement : aucune donnée NQ vierge avant le 2026-08-28.
+
+**Résultat SL / TP** ([[reports/bb_sltp_report]]) : un SL serré améliore surtout le risque. Meilleure case : mode A (stop suiveur gardé), SL 0,25 ATR, TP 2R : Sharpe journalier 1,13 → **1,49**, pire creux −39 300 → **−27 300 $** par contrat, ≈ 32 300 $/an (BB : 29 300), 10 années positives sur 11, Sharpe 1,68 sur 2016-2022 et 1,27 sur 2023-2026. L'écart de gain journalier avec BB n'est pas significatif (t 0,75). SL 0,5-1 ATR : ≈ BB. Exploration sur données déjà vues, 18 essais ; confirmation seulement en forward. Compteur 2 091 → 2 109.
+
