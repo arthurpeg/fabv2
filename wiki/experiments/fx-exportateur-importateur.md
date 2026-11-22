@@ -1,10 +1,10 @@
 ---
 type: experiment
 updated: 2026-11-22
-status: planned
-verdict: —
+status: abandoned
+verdict: ❌ B1 (T1 −0,60 bp, t −0,72)
 prereg: []
-trials: 0
+trials: 1940
 ---
 
 # Devise d'un pays exportateur en hausse pendant ses heures domestiques, devise d'un pays importateur en baisse
@@ -85,9 +85,15 @@ Hypothèses :
 
 **B0** : ✅. L'idée n'est pas au registre, le découpage est écrit et la réserve est déclarée, la puissance est connue (faible) et le parcours est limité au phénomène.
 
-## Prochaine étape
+## Étape 1 : exploration (2026-11-22)
 
-Étape 1 : choisir les devises par contrôle de qualité. Ensuite, figer et commiter la grille (univers, source du solde commercial, les 3 tests, nombre d'essais), puis explorer 2010-01 → 2021-08 seulement.
+- Grille figée dans l'en-tête de [run_fx_balance.py](../../run_fx_balance.py), commitée avant tout calcul (`5f8afd2`). Rapport : [[reports/fx_balance_report]]. Compteur 1 937 → 1 940.
+- **Contrôle de qualité** (critère figé) : 7 devises gardées, NOK, SEK, PLN, MXN, ZAR, SGD, TRY. Écartées : HUF (trou de 188 h), CZK, RON, ILS, THB (pas de barres horaires avant 2016-2017).
+- **T1** (exportateurs − importateurs, tout l'univers) : −0,60 bp, t −0,72 ❌.
+- **T2** (fuseau européen) : +2,71 bp, t 2,09, Holm 0,054, DSR 0,89 ❌ B1. Un seul importateur, la Pologne de 2010 à 2013 (la Norvège en 2021 va dans le mauvais sens).
+- **T3** (Fama-MacBeth sur le rang du solde) : +0,16 bp, t 0,49 ❌.
+- **Ce qui ressort à la place** : toutes devises confondues, la session domestique est négative (−1,38 bp, t −2,36), dans le sens de Zhang H1 / Breedon-Ranaldo, pas dans celui du solde. Noté « À surveiller » dans [[wiki/phenomenes]].
+- **Verdict** : ❌, l'idée s'arrête. La réserve 2021-09 → 2026-08 n'est pas ouverte.
 
 ## Liens
 

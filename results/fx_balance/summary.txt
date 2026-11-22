@@ -1,0 +1,18 @@
+Exploration 2010-01-01 → 2021-08-31, devises gardées : NOK, SEK, PLN, MXN, ZAR, SGD, TRY
+
+                  test  n_jours  moyenne_bp    t_nw  p_unilateral  moitie1  moitie2 annees_pos  centile_permutation  p_holm
+     T1 tout l'univers     3043     -0.6017 -0.7170        0.7633   0.3552  -1.5580       5/12                0.245  0.7633
+    T2 fuseau européen     1216      2.7055  2.0948        0.0181   4.3930   1.0179        3/5                0.955  0.0543
+T3 Fama-MacBeth (rang)     3043      0.1646  0.4850        0.3138   0.5905  -0.2610       7/12                  NaN  0.6276
+
+Référence (a) moyenne domestique toutes devises : -1.380 bp, t NW -2.36
+
+           n  moyenne_bp  solde_moyen  part_exportateur   t_nw
+devise                                                        
+MXN     3042      -0.846       -1.297             0.057 -0.914
+NOK     3043      -1.561        8.238             0.943 -1.619
+PLN     3043      -2.664        1.053             0.657 -2.617
+SEK     3043      -1.065        3.499             1.000 -1.224
+SGD     3042       0.017       26.415             1.000  0.049
+TRY     3043      -2.816       -2.062             0.258 -2.445
+ZAR     3043      -0.724        0.137             0.657 -0.567
