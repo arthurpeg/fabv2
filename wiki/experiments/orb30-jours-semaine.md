@@ -52,3 +52,7 @@ La règle de Subhani n'a pas d'objectif (il a essayé +2R et l'a rejeté). Deman
 
 **Résultat des objectifs** ([[reports/orb30_tp_report]]) : aucun gain. NQ vendredi : +0,164 R avec 2R ou 3R, contre +0,190 sans objectif (écart t −0,99 et −1,47). Seul ES vendredi 3R fait mieux que sans objectif (+0,033 R, t 1,66), dans le bruit. B1 ❌ pour la meilleure case (DSR 0,77 avec N = 57). La règle de référence reste NQ vendredi sans objectif. Correction : le « Sharpe 2,33 » du rapport précédent était annualisé par √252 ; avec ≈ 50 trades par an, c'est ≈ 1,04.
 
+
+## Lundi-jeudi : conditions C1-C3 (2026-11-22)
+
+Demande de l'utilisateur : garder un objectif (prop firms) et faire fonctionner l'ORB les autres jours. Pour limiter la recherche de données : NQ seul, lundi à jeudi regroupés, objectif 2R, trois conditions justifiées. C1 range d'ouverture étroit (W < 0,5 ATR14 ; tableau 9 de Subhani), C2 veille NR7 (Crabel), C3 jours d'annonce à 10:00 ou 14:00. Grille figée dans l'en-tête de [run_orb30_filtres.py](../../run_orb30_filtres.py), commitée avant calcul ; référence = jours exclus ; n_famille = 60 ; compteur 2 055 → 2 058.
