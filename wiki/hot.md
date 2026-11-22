@@ -1,13 +1,13 @@
 ---
 type: hot
-updated: 2026-11-22 18:47
+updated: 2026-11-22 18:52
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
 
 # État courant
 
-- Compteur global d'essais : **2 043** (source : [[reports/orb30_jours_report]])
+- Compteur global d'essais : **2 055** (source : [[reports/orb30_tp_report]])
 - Dernier pré-enregistrement : n° 30 ([[PREREGISTRATION_30]])
 - Idées abandonnées au registre : 49 ([[wiki/Failed Ideas/ledger]])
 - Dernière activité : 2026-11-22
@@ -25,6 +25,7 @@ updated: 2026-11-22 18:47
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] experiment | ORB 30 min de Subhani avec objectif 2R / 3R (NQ, ES, YM × vendredi, tous les jours) ; grille commitée (4d51084), exploration 2016-2026, compteur 2 043 → 2 055 | Aucun gain : NQ vendredi +0,164 R (2R et 3R) contre +0,190 sans objectif ; ❌ B1 ; Sharpe du rapport précédent corrigé (≈ 1,04 par an, pas 2,33)
 - [2026-11-22] experiment | Étapes 0-1 de wiki/experiments/orb30-jours-semaine : ORB 30 min de Subhani, 6 calendriers × NQ, ES, YM ; réserve 2010-06 → 2015-12 déclarée, grille commitée (f40b125), exploration 2016-01 → 2026-08, compteur 2 025 → 2 043 | Réplique le papier (NQ vendredi sur sa période +0,219 R, t 3,34) ; NQ vendredi 2016-2026 +0,190 R, t 3,50, 10/11 années ; ❌ B1 sur le seul DSR (0,846, N 45) ; « À surveiller » ; réserve non lue
 - [2026-11-22] research | Papier SSRN 7589980 (Subhani, ORB 30 min le vendredi) lu en entier (PDF fourni, 38 p., version du 15/11/2026) : fiche [18] de papiers_ssrn_orb_2026-11-22.md, recherche_causalite_intraday.md et wiki/research/litterature-intraday corrigés | Le résumé d'une version antérieure était faux : tous les vendredis, sans filtre d'annonce (rejeté) ; QQQ test 2024-2026 +0,338 R (t 2,54), complet t 3,05 ; DSR 0,999 (17 essais) ou 0,19-0,47 (239 essais) ; lundi-jeudi ≈ 0 ; entrée « sens de la bougie » essayée et rejetée par l'auteur
 - [2026-11-22] prereg | N° 30 : règle de la 1ʳᵉ bougie NQ stop 0,5 ATR / 2R sur la réserve 2021-10 → 2026-08, hors protocole (B1 non franchie, demandé par l'utilisateur), commité avant calcul (bade69c), une exécution ; compteur 2 024 → 2 025 | ❌ C1 : +2,57 pts/trade, t 0,58, p 0,28 ; « toujours long » +2,61 ; rejet ; réserve NQ « sortie » consommée
@@ -32,7 +33,6 @@ updated: 2026-11-22 18:47
 - [2026-11-22] experiment | Suite de wiki/experiments/nq-orb-bougie-sorties : même grille sur ES et YM, stop 1 ATR / objectif 2-3 ATR sur les trois indices, détail stop 0,5 ATR / 2R et 3R ; réserve ES/YM 2021-10 → 2026-08 déclarée, grille commitée (40cfcc9), exploration 2010-06 → 2021-09, compteur 1 965 → 2 021 | ❌ B1 partout : ES V0 +0,68 pt (t 2,11, DSR 0,002), YM rien, NQ 0,5 ATR/2R +2,23 pts (t 2,17), NQ stop 1 ATR ≈ V0 ; DSR NQ 0,953 avec la famille NQ seule mais 0,02 avec la famille complète (81 variantes) ; réserve non lue
 - [2026-11-22] experiment | Étape 0-1 de wiki/experiments/nq-orb-bougie-sorties : règle de la 1ʳᵉ bougie de Zarattini-Aziz sur NQ, sorties V0 (aucune) + 24 variantes stop k × ATR14 / objectif RR ; réserve 2021-10 → 2026-08 déclarée, grille commitée (a49ca1a), exploration 2010-06 → 2021-09, compteur 1 940 → 1 965 | ❌ B1 de justesse : meilleure variante (stop 0,05 ATR, clôture) +1,52 pt/trade, t 3,16, DSR 0,948 ; ≈ 0 avant 2016 ; V0 +2,83 pts/trade mais t 1,27 contre « toujours long » ; objectifs fixes moins bons ; ligne au registre ; réserve non lue
 - [2026-11-22] research | Papier SSRN 6833239 (Levine, Day Trading: Adapting to Change) lu en entier (PDF fourni par l'utilisateur) : fiche [3] de papiers_ssrn_orb_2026-11-22.md corrigée | ORB = range 8:00-8:15 ET + entrée au retest, discrétionnaire, 61 trades sur 23 jours (oct.-déc. 2025) ; chiffres incohérents (53 % annoncé, 64 % dans le tableau) ; aucune valeur de preuve
-- [2026-11-22] research | Recherche d'une autre copie du papier retiré SSRN 6355218 (Chuk, SPY 0DTE ORB) : OpenAlex, Crossref, arXiv, Wayback Machine, ORCID de l'auteur, web | introuvable ; l'ORCID de l'auteur ne le liste plus (retrait vraisemblablement volontaire)
 
 ## Prochaines actions
 
