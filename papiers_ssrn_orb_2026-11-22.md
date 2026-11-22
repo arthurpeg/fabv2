@@ -76,6 +76,15 @@ Tous fournis le 2026-10-11 (revue de départ). **Leurs fiches complètes sont en
 >
 > **Pour nous :** 🔴🧪 anecdotique : un trimestre, exécution manuelle, taux de réussite sans espérance en R, pas de coûts. À ne pas compter comme preuve ; noté pour que personne ne le redonne.
 
+> **Correction du 2026-11-22 (texte intégral lu, 14 pages, [papers/txt/levine_day_trading.txt](papers/txt/levine_day_trading.txt) ; tableau de la figure 1 lu sur l'image) :**
+> - **L'ORB n'est pas celui de l'ouverture cash** : range = **bougie 8:00-8:15 ET** (pré-ouverture des actions), cassure attendue entre 8:15 et 9:30, puis **entrée au retour vers le milieu du range**, dans le sens de la cassure. Ce range précède les annonces macro de **8:30 ET** (CPI, emploi…) : une partie des cassures est donc la réaction à une annonce. L'entrée au retest rejoint Pineda [17].
+> - **Tout est discrétionnaire** : stop et objectif choisis à la main, stop ramené au point mort après la moitié du chemin, sorties anticipées « quand la tendance change ». Risque maximal 300 $ par trade. L'autre stratégie (« continuation », concepts ICT) repose sur des zones tracées par un indicateur TradingView (order blocks, zones de fort volume, fair value gaps, plus haut et plus bas de la veille), avec entrée au retournement sur ces zones.
+> - **Échantillon** : tableau du 20 octobre au 1ᵉʳ décembre 2025, 23 jours, **61 trades (39 gagnants, 22 perdants, soit 64 %)**, gain net d'environ +29 200 $ (gains moyens ≈ 900 $, pertes moyennes ≈ 270 $). Le texte annonce 53 % : **les chiffres ne concordent pas**. Le z = 1,68 se retrouve avec ORB 15/20 et continuation 21/40 (60 trades, 60 %), pas avec 53 %. La conclusion dit 73 % pour l'ORB, les résultats 75 %.
+> - **Statistique faible** : test unilatéral choisi pour passer sous 5 % (en bilatéral, p ≈ 0,09) ; il compare deux taux de réussite, pas deux espérances ; la conclusion le décrit comme un « t-test » ; l'hypothèse nulle est mal énoncée (« les deux à 50 % »).
+> - **Nature du document** : travail de type scolaire (revue de littérature tirée de sites grand public : FINRA, Schwab, ThinkMarkets, howtotrade.com), sans backtest ni données de prix. Le décrochage de décembre cité (Karpel) date de **2024**, alors que les trades sont de 2025.
+>
+> **Verdict après lecture :** 🔴 rien d'utilisable comme preuve. Seule idée à garder pour une éventuelle fiche : un range **8:00-8:15 ET** (avant les annonces de 8:30) avec **entrée au retest**, qui n'a jamais été testé chez nous et qui dépend en fait du calendrier d'annonces.
+
 ### [4] An Investigation of Simple Intraday Trading Strategies
 
 - **Lien SSRN :** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2488539
