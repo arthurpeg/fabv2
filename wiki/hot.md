@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-22 22:00
+updated: 2026-11-22 23:00
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,6 +24,7 @@ updated: 2026-11-22 22:00
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-22] experiment | FTMO jusqu'à 4 comptes (run_ftmo_4comptes.py, hors compteur) : plan, + C = BB, B séparé (B1 3n, B2 M2), 4 comptes | Plan +3 502 $ ; option 2 +4 971 $ ; B séparé +3 659 $ ; 4 comptes +5 129 $ ; C corrélé −0,43 avec A ; l'option 2 reste le meilleur compromis ; exploration
 - [2026-11-22] experiment | FTMO : ajouter BB au plan retenu (run_ftmo_bb_options.py, hors compteur) : option 1 A = mom + BB l'après-midi, option 2 compte C = BB ; 494 départs 2016-2025, 12 mois | Plan +3 502 $ ; option 1 +3 749 $ (+7 %) ; option 2 +4 971 $ (+42 %, C +1 469 $) ; creux −1 043 $ ; exploration, BB non validé (n° 32)
 - [2026-11-22] prereg | Statut de BB corrigé (n'était pas en paper trading, pas dans le n° 26 ; le 0,55 de 2010-2015 était la variante S1) ; n° 32 : forward de BB (H1 référence, H2 prop firm mode A SL 0,25 ATR TP 2R un trade par jour) sur NQ à partir du 2026-11-04, lectures 2028-02-29 / 2029-08-31 / 2031-08-29, fenêtre LSE 2026-08-29 → 11-03 exclue ; compteur 2 127 → 2 129 | aucun calcul
 - [2026-11-22] experiment | BB un trade par jour (18 essais, run_bb_1j.py, grille e1f932a ; compteur 2 109 → 2 127) puis FTMO 1-Step (run_propfirm_bb.py, 18 versions × éval 1-2,9 %, financé 1 %, hors compteur) | Un trade par jour : +0,148 R/trade, creux −14 R ; FTMO à 2-2,5 % : passage 47-56 % en 10-15 trades, ≈ +1 450-1 560 $/mois en 100k, au niveau du plan 3n + M2, sous mom ; exploration
@@ -31,7 +32,6 @@ updated: 2026-11-22 22:00
 - [2026-11-22] schema | Bande de bruit renommée BB dans le wiki (titre, index, liens nommés) ; sources antérieures inchangées (« M2 ») ; performances de référence de BB en dollars ajoutées (results/m2_vwap/bb_performances.txt) | NQ ≈ 29 300 $/an par contrat, Sharpe $ 1,13, creux −39 300 $ ; ES ≈ 9 900 $/an ; YM ≈ 0 ; descriptif, aucun nouvel essai
 - [2026-11-22] schema | Désambiguïsation des deux « M2 » (signalée par l'utilisateur) : bande de bruit de Zarattini (m2-bande-bruit-nq, m2_noise) ≠ M2 du bot FTMO (modèle M2 de la stratégie EMA 9:30, nq-ema930-m2) ; note en tête des deux pages | aucun calcul
 - [2026-11-22] experiment | M2 bande de bruit : VWAP exigé à l'entrée (code des auteurs) contre entrée actuelle, NQ/ES/YM × 1× et volatilité cible ; grille commitée (f59c2d5), vérification manuelle, rien vers le bot ; compteur 2 085 → 2 091 | Amélioration modeste : NQ 1× Sharpe 1,16 → 1,23 (écart t 2,27), ES 0,60 → 0,65, YM ≈ ; NQ corrigé = Sharpe des auteurs pour le future Nasdaq ; pas une validation
-- [2026-11-22] research | Bande de bruit : 5 textes intégraux lus (Beat the Market v. 22/09/2025 avec FAQ, Chuk 7609644, Paz 7290621, Delgado 7323419, Maróy 5095349) ; fiches corrigées, notes dans wiki/experiments/m2-bande-bruit-nq | Notre m2_noise n'exige pas le VWAP à l'entrée (le code des auteurs si) ; période ancienne faible partout ; faiblesse depuis sept. 2025 sur SPY ; FAQ : 33 futures, Sharpe moyen 0,60, Nasdaq 1,23 ; Maróy = surapprentissage ; aucun calcul
 
 ## Prochaines actions
 
