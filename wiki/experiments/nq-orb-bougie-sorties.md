@@ -2,9 +2,9 @@
 type: experiment
 updated: 2026-11-22
 status: abandoned
-verdict: ❌ B1 (DSR 0,948 < 0,95 ; ≈ 0 avant 2016)
+verdict: ❌ B1 sur NQ, ES, YM (DSR famille complète 0,02 ; ≈ 0 avant 2016)
 prereg: []
-trials: 1965
+trials: 2021
 ---
 
 # NQ : règle de la 1ʳᵉ bougie de 5 minutes (Zarattini-Aziz) avec d'autres sorties
@@ -51,3 +51,15 @@ Grille figée dans l'en-tête de [run_nq_orb_bougie.py](../../run_nq_orb_bougie.
 - Le stop de la règle choisie ne fait que 5 à 6 ticks en 2010 : le résultat dépend d'un remplissage au prix du stop.
 
 La réserve 2021-10-01 → 2026-08-28 reste réservée, non lue. Compteur 1 940 → 1 965.
+
+## Suite : ES, YM et stop 1 ATR (2026-11-22)
+
+Demande de l'utilisateur : même grille sur ES et YM, détail de stop 0,5 ATR / objectif 2R et 3R, et stop 1 ATR / objectif 2 ou 3 ATR (2R, 3R) sur les trois indices. Réserve « sortie » 2021-10-01 → 2026-08-28 déclarée aussi pour ES et YM dans [[wiki/reserves]] avant calcul. Grille figée dans l'en-tête de [run_orb_bougie_indices.py](../../run_orb_bougie_indices.py), commitée avant calcul : 56 essais (ES 27, YM 27, NQ 2), compteur 1 965 → 2 021. Puissance sur ES et YM : même ordre que NQ (faible). Résultats : [[reports/orb_bougie_indices_report]].
+
+**Résultat de la suite** : ❌ **B1 sur les trois indices**.
+- ES : meilleure variante V0 (+0,68 pt/trade, t 2,11), pas mieux que « toujours long » (t 1,24), DSR 0,002. Les stops serrés y perdent tous.
+- YM : rien (meilleur t 0,39).
+- NQ : stop 1 ATR et objectif 2 ou 3 ATR, +2,02 et +2,17 pts (t 1,75 et 1,87). C'est presque V0, car l'objectif n'est atteint que 0,2 à 1,3 % du temps. Stop 0,5 ATR / 2R : +2,23 pts (t 2,17), la plus régulière avant 2016 (+0,96).
+- Le DSR de la règle NQ passe à 0,953 avec la famille de 28 propre à NQ, mais ce n'est qu'un effet de la dispersion de la famille. Avec la famille complète (81 variantes sur trois indices), il vaut **0,02**, et c'est ce chiffre qui fait foi.
+- Compteur 1 965 → 2 021. Réserve non lue.
+
