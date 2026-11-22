@@ -62,3 +62,5 @@ Demande de l'utilisateur : BB sur NQ avec SL = k × ATR14 et TP = RR × SL, surv
 
 **Résultat SL / TP** ([[reports/bb_sltp_report]]) : un SL serré améliore surtout le risque. Meilleure case : mode A (stop suiveur gardé), SL 0,25 ATR, TP 2R : Sharpe journalier 1,13 → **1,49**, pire creux −39 300 → **−27 300 $** par contrat, ≈ 32 300 $/an (BB : 29 300), 10 années positives sur 11, Sharpe 1,68 sur 2016-2022 et 1,27 sur 2023-2026. L'écart de gain journalier avec BB n'est pas significatif (t 0,75). SL 0,5-1 ATR : ≈ BB. Exploration sur données déjà vues, 18 essais ; confirmation seulement en forward. Compteur 2 091 → 2 109.
 
+**En R** (1 R = distance au SL = k × ATR14, net de coût ; `results/bb_sltp/performances_R.txt`) : mode A, SL 0,25 ATR, TP 2R : 3 202 trades, **+0,10 R par trade (t 4,9), ≈ 29 R par an**, 40 % de gagnants (gain moyen +1,32 R, perte moyenne −0,72 R), pire creux −26 R, 15 pertes de suite au plus, **pire journée −5,25 R** (plusieurs SL le même jour). 2018 fait 102 R sur environ 320 ; 2019 −12,7 R ; 2025 +7,2 R ; 2026 (→ août) +9,4 R. Avec SL 1 ATR, ≈ +0,03-0,04 R par trade et ≈ 6 R par an.
+
