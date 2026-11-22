@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prop Firm Branch</title>
+<title>Prop-Firm Challenge as an Option</title>
 <style>
 :root{
   --bg:#f7f6f2; --surface:#ffffff; --ink:#1d1f23; --muted:#5d6370; --line:#e2e0d8;
@@ -61,7 +61,23 @@ svg .small{fill:var(--muted);font-size:12px}
 svg .good{fill:var(--good)} svg .bad{fill:var(--bad)}
 svg .arrow{stroke:var(--muted);stroke-width:1.5;fill:none;marker-end:url(#ah)}
 svg #ah path{fill:var(--muted)}
+a{color:var(--accent)}
+.author{margin:6px 0 0;font-size:15px}
 footer{margin-top:56px;color:var(--muted);font-size:14px}
+@page{size:A4;margin:14mm 12mm}
+@media print{
+  :root{--bg:#fff;--surface:#fff}
+  body{font-size:11pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  main{max-width:none;padding:0}
+  h2{margin-top:28px;break-after:avoid}
+  h3{break-after:avoid}
+  .tablewrap{overflow:visible}
+  table{font-size:8pt;table-layout:auto}
+  th{font-size:7pt;letter-spacing:0}
+  th,td{padding:4px 5px}
+  tr,.card,.kpi,.formula,.note{break-inside:avoid}
+  .grid{grid-template-columns:1fr 1fr}
+}
 @media (max-width:520px){h1{font-size:27px}.formula{font-size:15px}}
 </style>
 </head>
@@ -69,18 +85,19 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <main>
 
 <header>
-  <div class="kicker">fabv2 · branch <code>propfirm-ftmo</code> · updated 22 Nov 2026</div>
+  <div class="kicker">Research note · 22 Nov 2026</div>
   <h1>Treating a prop-firm challenge as an option</h1>
-  <p class="lede">What this branch is for, how the simulator works, and the studies showing that the convexity of the payoff can be exploited. The trading signals that feed it are deliberately left out.</p>
+  <p class="lede">What a prop-firm challenge is worth, how the simulator works, and the studies showing that the convexity of the payoff can be exploited. The trading signals that feed it are deliberately left out.</p>
+  <p class="author"><strong>Arthur Pegliasco</strong> · <a href="mailto:arthur.peg2@gmail.com">arthur.peg2@gmail.com</a></p>
 </header>
 
 <h2>1. The idea</h2>
 <p>A prop firm such as FTMO sells an <em>evaluation</em>. You pay a one-off fee, trade a simulated account, and if you hit the profit target without breaking the loss limits you get a <em>funded</em> account that pays out most of its profits (90 % at FTMO).</p>
-<p>The payoff is asymmetric. If the evaluation fails, the loss stops at the fee. If it passes, the funded account can keep paying, with no cap, for months. That looks like a call option. This branch asks one question: <strong>what is a challenge worth, in dollars, per attempt and per month?</strong></p>
+<p>The payoff is asymmetric. If the evaluation fails, the loss stops at the fee. If it passes, the funded account can keep paying, with no cap, for months. That looks like a call option. This study asks one question: <strong>what is a challenge worth, in dollars, per attempt and per month?</strong></p>
 
 <div class="formula">EV per attempt = P(pass) × V(funded account) − fee</div>
 
-<p>The research on this branch evaluates <strong>a contract, not a market edge</strong>. That is why it sits outside the project's global trial counter. The first pre-registration (n° 18) used trades whose direction was a <em>coin flip</em>, to see how much of the value comes from the contract alone.</p>
+<p>This research evaluates <strong>a contract, not a market edge</strong>. The first pre-registration (n° 18) used trades whose direction was a <em>coin flip</em>, to see how much of the value comes from the contract alone.</p>
 <h2>2. How a challenge plays out</h2>
 <div class="card">
 <svg viewBox="0 0 800 272" role="img" aria-label="Lifecycle: pay the fee, evaluation, then fail or funded account, rewards and reset">
@@ -135,7 +152,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <div class="grid">
   <div class="card">
     <h3>Rules engine</h3>
-    <p>Plain Python and numpy (<code>propfirm/ftmo.py</code>, <code>propfirm/generic.py</code>). Thousands of accounts run in parallel, all figures in % of the initial balance. Every rule above is applied at the end of each trade and each day.</p>
+    <p>Plain Python and numpy. Thousands of accounts run in parallel, all figures in % of the initial balance. Every rule above is applied at the end of each trade and each day.</p>
   </div>
   <div class="card">
     <h3>Market paths</h3>
@@ -154,7 +171,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <h3>Three trade sources</h3>
 <ul>
   <li><span class="tag">baseline</span> <strong>Random direction</strong>: coin-flip long or short. It measures what the contract is worth with no skill at all.</li>
-  <li><span class="tag">research</span> <strong>Historical trade lists</strong>: the realised R of each trade from the project's own rules, replayed through the contract. These rules are not described here.</li>
+  <li><span class="tag">research</span> <strong>Historical trade lists</strong>: the realised R of each trade from our own rules, replayed through the contract. These rules are not described here.</li>
   <li><span class="tag">replay</span> <strong>Day-by-day replay</strong> of real recent sessions, to check one specific start date against the exact current rules.</li>
 </ul>
 
@@ -212,7 +229,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <tr class="hl"><td>2011-2015</td><td>Target + wait</td><td class="n">35.3 %</td><td class="n">4.91 %</td><td class="n">73 %</td><td class="n">1.57</td><td class="n">3.12 %</td><td class="n">3.2 mo</td><td class="n">+$86</td><td class="n">+$1,183</td><td class="n">+$760</td></tr>
 </table>
 </div>
-<p class="caption">An evaluation lasts about 8 trading nights. Earlier zero-edge versions of the same stream (2011-2026) gave +$98 / +$1,295 per attempt with a 2.5 R funded target and +$153 / +$1,855 with a 2 R target. Source: <code>results/ftmo_payout_policy/historique_sans_edge.csv</code>.</p>
+<p class="caption">An evaluation lasts about 8 trading nights. Earlier zero-edge versions of the same stream (2011-2026) gave +$98 / +$1,295 per attempt with a 2.5 R funded target and +$153 / +$1,855 with a 2 R target.</p>
 <p>Without any edge, <strong>target + wait adds 11 to 35 % to the EV</strong> in every cell. The gain comes from the contract (securing a payable balance and then not risking it), so the policy is not a market effect.</p>
 
 <h3>6.3 Ten prop firms, random direction (100k or largest standard account)</h3>
@@ -257,7 +274,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <tr class="hl"><td>2011-2015</td><td>Target + wait</td><td class="n">60.2 %</td><td class="n">33.5 %</td><td class="n">93.2 %</td><td class="n">9.7</td><td class="n">3.44 %</td><td class="n">9.9 mo</td><td class="n">91 %</td><td class="n">+$1,927</td><td class="n">+$19,589</td><td class="n">+$3,047</td></tr>
 </table>
 </div>
-<p class="caption">Source: <code>reports/ftmo_payout_policy_report.md</code>, <code>results/ftmo_payout_policy/historique.csv</code>. "Target" alone and "wait" alone are in the report. Wait does most of the work; target alone is slightly worse than trading every night.</p>
+<p class="caption"> Tested separately, wait does most of the work; target alone is slightly worse than trading every night.</p>
 
 <h3>Edge versus no edge, same plan, same policy</h3>
 <div class="tablewrap">
@@ -305,7 +322,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
 <tr><td>Correlation of A and B net results</td><td class="n">+0.10</td><td class="n">+0.14</td><td class="n">+0.08</td></tr>
 </table>
 </div>
-<p class="caption">"Edge ÷ 2" removes half of each signal's average R from every trade, keeping the volatility. Sources: <code>reports/ftmo_monte_carlo_report.md</code>, <code>reports/ftmo_anti_hedging_report.md</code>.</p>
+<p class="caption">"Edge ÷ 2" removes half of each signal's average R from every trade, keeping the volatility.</p>
 <p><strong>Even with the expectancy cut in half, every 3-year path ends positive</strong> (1st percentile ≈ +$2,700 before the anti-hedging rule). The loss on each attempt is capped at the fee, while a funded account pays without a cap. As long as the signals keep a small positive expectancy, a slot that is bought again ends up winning. The cash reserve needed stays small: $800 to $900 in 99 % of historical paths. On the single historical path 2011-2026, the two accounts' monthly cash flows are uncorrelated (+0.01) and no month is negative for both.</p>
 
 <h2>9. Caveats</h2>
@@ -314,7 +331,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
   <li>Reward refusals or bans (for example FTMO's rule against "account rolling"). In the base case the EV only turns negative if roughly 65 % (10k) to 78 % (100k) of rewards are refused.</li>
   <li>The news rule was added late. Earlier figures that ignore it are about 10 % too optimistic.</li>
   <li>The actual CFD spread and leverage at the firm are assumptions, not measurements.</li>
-  <li>Any figure that uses the project's own trade lists inherits the selection bias of those rules. Treat it as an upper bound. The mom rule was chosen on 2016-2026; 2011-2015 is its out-of-sample period.</li>
+  <li>Any figure that uses our own trade lists inherits the selection bias of those rules. Treat it as an upper bound. The mom rule was chosen on 2016-2026; 2011-2015 is its out-of-sample period.</li>
   <li>In the policy simulation, the 14-day reward delay is approximated as 10 trading nights. The target is judged hit from 1-minute bars, and a new account is assumed to start the night after a reward.</li>
   <li>Worst historical streaks (6 failed evaluations in a row, about 11 months without a reward in 2022) were measured with the earlier funded plan, not with target + wait.</li>
   <li>A live replay of September 2026 produced <em>no</em> reward under the current rules by 3 November. Historical averages hide long dry spells; the worst historical gap was about 11 months without a reward.</li>
@@ -323,21 +340,7 @@ footer{margin-top:56px;color:var(--muted);font-size:14px}
       </ul>
 </div>
 
-<h2>10. Where things live</h2>
-<div class="tablewrap">
-<table>
-<tr><th>Path</th><th>Content</th></tr>
-<tr><td><code>PREREGISTRATION_18.md</code></td><td>Protocol for the coin-flip study, written before any computation</td></tr>
-<tr><td><code>propfirm/</code></td><td>Rule engines (FTMO, generic multi-firm, Lucid, STF) and trade libraries</td></tr>
-<tr><td><code>run_propfirm_*.py</code>, <code>run_ftmo_*.py</code></td><td>One script per question: variants, streaks, payout policy, replay</td></tr>
-<tr><td><code>reports/propfirm_*.md</code>, <code>reports/ftmo_*.md</code></td><td>Results, in French</td></tr>
-<tr><td><code>run_ftmo_deux_comptes*.py</code>, <code>run_ftmo_monte_carlo.py</code></td><td>Two accounts on different signals: historical path and Monte Carlo</td></tr>
-<tr><td><code>wiki/experiments/propfirm-ftmo-option.md</code></td><td>Running summary and links</td></tr>
-<tr><td><code>tests/test_propfirm.py</code></td><td>Rule-engine tests</td></tr>
-</table>
-</div>
-
-<footer>Last updated 22 Nov 2026. Research notes, not financial advice. Numbers are historical simulations under stated assumptions; the source reports take precedence over this page.</footer>
+<footer>Last updated 22 Nov 2026. Arthur Pegliasco · arthur.peg2@gmail.com · Research notes, not financial advice. Numbers are historical simulations under stated assumptions.</footer>
 </main>
 </body>
 </html>
