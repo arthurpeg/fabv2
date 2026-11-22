@@ -79,3 +79,18 @@ Demande de l'utilisateur : exploiter BB dans l'approche prop firm « convexe » 
 - Ce qui a été vu : n° 1 (IS 2016-2022 / OOS chronologique 2023 → 08/2026 : +1,15 / +1,13), rejet formel au n° 2 (DSR 0,03), puis toutes les explorations du 2026-11-22 sur 2016-2026.
 - **Forward pré-enregistré : [[PREREGISTRATION_32]]** (BB de référence et BB prop firm, NQ à partir du 2026-11-04, lectures 2028-02-29, 2029-08-31, 2031-08-29).
 
+## Bilan : que vaut la preuve hors échantillon de BB ? (2026-11-22)
+
+**Pour** :
+- BB a **passé son test hors échantillon chronologique** du n° 1 (pré-enregistré) : NQ Sharpe net +1,15 sur 2016-2022, **+1,13 sur 2023 → 2026-08**, au-dessus du seuil fixé d'avance (> 0,5 / > 0,3).
+- Depuis la publication du papier (mai 2024), BB reste positif sur NQ (version VWAP : Sharpe 1,41 en 2024, 0,86 en 2025, 0,46 sur 2026 jusqu'en août), et des répliques indépendantes le retrouvent (Delgado sur SPY et QQQ, Chuk sur NQ).
+- C'est, avec mom (validé au n° 11 sur 2011-2015), la meilleure preuve hors échantillon des stratégies utilisées pour la prop firm ; 3n et M2 (EMA 9:30) ont échoué la leur (n° 24, 25).
+
+**Contre**, et pourquoi ce n'est pas une validation au sens de [[PROTOCOLE]] :
+1. Le seuil du n° 1 ne corrigeait pas les tests multiples (93 règles : ≈ 5 survivants attendus par hasard). Le critère formel fixé d'avance au n° 2 (DSR) a **échoué** (0,03) : rejet, qu'on ne déplace pas après coup.
+2. 2023 → avril 2024 fait partie de la période sur laquelle les auteurs ont conçu la règle (SPY 2007 → avril 2024) : seule la période depuis mai 2024 est vraiment postérieure à la découverte.
+3. **La version utilisée en prop firm** (VWAP à l'entrée, SL 0,25 ATR, TP 2R, un trade par jour) a été choisie le 2026-11-22 parmi environ 70 variantes **en regardant 2016-2026, y compris 2023-2026** : pour elle, cette période est de l'échantillon.
+4. Plus aucune donnée vierge avant le 2026-08-28 (2010-2015 consommé par la variante S1 au n° 19).
+
+**Conclusion** : preuve hors échantillon partielle et encourageante pour BB de base ; aucune pour la version prop firm. Confirmation attendue du forward [[PREREGISTRATION_32]] (1re lecture le 2028-02-29).
+
