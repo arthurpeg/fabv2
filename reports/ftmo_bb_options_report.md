@@ -43,6 +43,6 @@ Net total moyen selon l'année de départ ($) :
 
 ## Réserves
 
-- **Les chiffres de BB sont en échantillon** (2016-2026, version choisie parmi 72 réglages), alors que ceux de mom, 3n et M2 sont aussi des trades historiques de règles qui ont échoué hors échantillon (n° 24, 25). Aucune de ces stratégies n'est validée sur des données neuves.
+- **Les chiffres de BB sont en échantillon** (2016-2026, version choisie parmi 72 réglages), et les autres sont aussi des trades historiques : mom a été **validé hors échantillon** sur NQ 2011-2015 (n° 11 : +0,116 R par trade, p 0,0015 ; en fait « long NQ la nuit », tous les trades hors échantillon étaient longs ; échec sur ES et YM au n° 10), alors que 3n et M2 (EMA 9:30) ont échoué hors échantillon (n° 24, 25) *(corrigé le 2026-11-22 : une version antérieure de ce rapport disait à tort que mom avait échoué)*. Aucune n'a encore été confirmée sur des données postérieures au 2026-08-28 (holdout n° 26).
 - **FTMO** : l'exposition cumulée sur des comptes liés (deux comptes longs NQ au même moment) attend toujours la réponse du support ; l'option 2 l'augmente.
 - Glissement sur les stops serrés de BB, refus de reward et délais FTMO non modélisés ; anti-hedging appliqué contre le M2 de B mais pas contre d'éventuels trades manuels.

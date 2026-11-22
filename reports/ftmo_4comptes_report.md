@@ -1,6 +1,6 @@
 # FTMO : compte B séparé en deux (3n, M2) et compte C = BB, jusqu'à 4 comptes
 
-*2026-11-22. Demande de l'utilisateur. Script [run_ftmo_4comptes.py](../run_ftmo_4comptes.py) (branche `propfirm-ftmo`), **exploratoire, hors compteur**. Même moteur, mêmes trades et mêmes réglages que [[reports/ftmo_bb_options_report]] : FTMO 1-Step 10k, éval 2,5 %, financé 1 %, objectif 2 R (réduit au reste à faire en éval), règle des annonces, cible + attente, coût CFD 1,5 pt ; 494 départs de 2016-01 à 2025-08, 12 mois. BB n'est pas validé hors échantillon (n° 32) ; mom, 3n et M2 ont échoué hors échantillon (n° 24, 25). Le bot n'est pas modifié. Sorties : `results/ftmo_4comptes/`.*
+*2026-11-22. Demande de l'utilisateur. Script [run_ftmo_4comptes.py](../run_ftmo_4comptes.py) (branche `propfirm-ftmo`), **exploratoire, hors compteur**. Même moteur, mêmes trades et mêmes réglages que [[reports/ftmo_bb_options_report]] : FTMO 1-Step 10k, éval 2,5 %, financé 1 %, objectif 2 R (réduit au reste à faire en éval), règle des annonces, cible + attente, coût CFD 1,5 pt ; 494 départs de 2016-01 à 2025-08, 12 mois. BB n'est pas validé hors échantillon (n° 32) ; mom a été **validé hors échantillon** sur NQ 2011-2015 (n° 11 : +0,116 R par trade, p 0,0015 ; en fait « long NQ la nuit », tous les trades hors échantillon étaient longs ; échec sur ES et YM au n° 10), alors que 3n et M2 (EMA 9:30) ont échoué hors échantillon (n° 24, 25) *(corrigé le 2026-11-22)*. Le bot n'est pas modifié. Sorties : `results/ftmo_4comptes/`.*
 
 ## Anti-hedging modélisé
 
