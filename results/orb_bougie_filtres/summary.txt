@@ -1,0 +1,84 @@
+Base B (stop 0,5 ATR, objectif 2R) : 2665 trades, net +2.219 pt, Sharpe 0.684 (famille : 84 Sharpe, N = 85)
+                                   filtre  pris  sautes  net_pris  net_sautes  t_ecart  t_nw_pris  sharpe_pris  dsr_85  2010-15  2016-21    2020 annees_pos
+             F1 pas d'annonce 10:00/14:00  2138     527     2.751       0.061    1.102      2.398        0.841   0.013    1.399    3.965  -2.536      10/12
+F2 volume 1re bougie > 1,5 × médiane 20 j   293    2372    -3.491       2.924   -2.547     -1.486       -1.424   0.001   -1.316   -6.626 -27.466       6/12
+                  F3 corps > 0,05 × ATR14  1981     684     2.905       0.232    1.234      2.315        0.872   0.019    0.917    4.682   0.610      11/12
+
+== Filtre choisi (meilleur Sharpe net) : F3 corps > 0,05 × ATR14
+  n                          1981
+  debut                      2010-07-07
+  fin                        2021-09-30
+  brut_moy                   3.405
+  net_moy                    2.905
+  net_med                    -2.5
+  ecart_type                 52.87
+  sharpe_an                  0.8721
+  t_nw                       2.315
+  p_unilateral               0.01031
+  gagnants_%                 48.06
+  pire_creux                 -1743
+  annees_pos                 11/12
+  net_moitie1                0.5906
+  net_moitie2                5.217
+  net_sans_meilleure_annee   1.967
+  net_cout_plus_1_tick       2.655
+  n_famille                  85
+  dsr_famille                0.01934
+  ref_net_moy                0.2319
+  ecart_ref                  2.673
+  t_ecart_ref                1.234
+B1 : ❌ ratée
+  ✅ t NW net ≥ 2,0
+  ❌ DSR (N = famille) ≥ 0,95
+  ✅ bat la référence triviale (t écart ≥ 1,0)
+  ✅ net > 0 dans les deux moitiés
+  ✅ net > 0 sans la meilleure année
+  ✅ net > 0 avec 1 tick de coût en plus
+
+F1 pas d'annonce 10:00/14:00 — net par année, jours pris / sautés (pts/trade) :
+       pris  sautes  n_pris
+d                          
+2010   0.95    4.44      99
+2011   2.30    0.52     179
+2012   0.02    0.41     179
+2013   2.08   -0.27     186
+2014   4.13   -0.28     180
+2015  -1.17   -6.98     189
+2016   0.74    5.24     192
+2017   2.90   -0.36     195
+2018   8.78    6.03     196
+2019   0.19   -2.44     198
+2020  -2.54   11.67     194
+2021  16.49  -20.91     151
+
+F2 volume 1re bougie > 1,5 × médiane 20 j — net par année, jours pris / sautés (pts/trade) :
+       pris  sautes  n_pris
+d                          
+2010   7.97    0.78      13
+2011  -0.39    2.44      40
+2012   0.02    0.11      37
+2013  -1.35    2.08      29
+2014   1.32    3.41      25
+2015 -10.70   -1.21      29
+2016  -5.96    2.33      21
+2017   2.82    2.28      26
+2018   3.21    8.98      32
+2019   7.50   -0.70      11
+2020 -27.47    2.98      20
+2021 -37.92   11.96      10
+
+F3 corps > 0,05 × ATR14 — net par année, jours pris / sautés (pts/trade) :
+       pris  sautes  n_pris
+d                          
+2010   1.15    2.85      91
+2011   1.91    1.99     166
+2012   1.28   -2.88     162
+2013   1.19    3.61     185
+2014   3.40    2.72     155
+2015  -2.94   -0.72     176
+2016   0.38    4.80     172
+2017   4.19   -2.43     170
+2018  12.23   -3.08     181
+2019   0.36   -2.63     190
+2020   0.61    0.23     184
+2021  11.58    0.31     149
