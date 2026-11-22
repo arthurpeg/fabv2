@@ -1,6 +1,6 @@
 ---
 type: experiment
-updated: 2026-10-31
+updated: 2026-11-22
 status: paper-trading
 verdict: rejeté (DSR), surveillé
 prereg: [1, 2, 3, 19]
@@ -30,3 +30,13 @@ Fichier `S1_R_stop.py` transmis (30 séances, bande 1,2 σ, filtre VWAP, stop du
 
 ## Sources brutes
 [[PREREGISTRATION]] · [[PREREGISTRATION_2]] · [[PREREGISTRATION_3]] · [[PREREGISTRATION_19]] · [[reports/prereg19_report]] · [[RESULTS]] · `results/m2_*`
+
+## Lectures du 2026-11-22 (textes intégraux, aucun calcul)
+
+Papiers lus : *Beat the Market* version du 22/09/2025 avec FAQ (SSRN 4824172), Chuk (7609644), Paz (7290621), Delgado (7323419), Maróy (5095349). Fiches : [[papiers_ssrn_orb_2026-11-22]] ([5], [6]) et [[recherche_causalite_intraday]].
+- **Écart de fidélité de notre M2** : `fab/strategies.py::m2_noise` utilise bien le VWAP au prix typique, mais **n'exige pas le VWAP à l'entrée** (entrée si clôture > bande seulement). Le code publié par les auteurs l'exige (Delgado : principale cause d'écart entre le texte et le code ; Chuk et Paz l'appliquent aussi). Nos chiffres M2 portent donc sur une version qui prend plus de signaux que l'originale. À corriger avant tout nouveau test ; aucune validation historique possible sur NQ (données explorées ou consommées), seulement le forward.
+- **La période ancienne est faible partout** : SPY 2000-2007 Sharpe 0,53 (Delgado), NQ 2014-2019 « plat » (Chuk), notre NQ 2010-2015 ≈ 0,55. L'effet est concentré sur 2018-2024.
+- **Après la publication** : bon jusqu'en août 2025 (Sharpe 1,06-1,28), puis SPY −8,1 % de septembre 2025 à août 2026 (Delgado) ; Paz : 0,39 sur mai 2024 → mars 2026, sans écart significatif des moyennes. Chuk sur NQ : 2025 faible (+3,38 $/jour) mais 2026 bon.
+- **Autres actifs (FAQ Q13, 33 futures, 2007-2024)** : Sharpe moyen 0,60 ; Nasdaq 1,23, S&P 500 1,32, MidCap 0,80, Russell 0,45 ; 21 matières premières anonymisées, de −0,30 à 1,11 (la plupart 0,2-0,6). QQQ 0,99, IWM 0,45 (Delgado).
+- **Variantes jugées utiles par les auteurs ou les répliques** : lookback 90 j (Sharpe 1,50 contre 1,35, FAQ Q6) ; multiplicateur 1,3-1,5 ; jambe courte plus faible (0,56 contre 0,90) ; taille continue selon le volume relatif cumulé (Delgado, seule modification qui améliore les quatre fenêtres). Maróy (Sharpe > 3) = optimisation de 7-11 paramètres sans hors échantillon : à ignorer.
+
