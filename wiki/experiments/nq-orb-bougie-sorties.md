@@ -1,10 +1,10 @@
 ---
 type: experiment
 updated: 2026-11-22
-status: active
-verdict: en cours (étape 1)
+status: abandoned
+verdict: ❌ B1 (DSR 0,948 < 0,95 ; ≈ 0 avant 2016)
 prereg: []
-trials: 1940
+trials: 1965
 ---
 
 # NQ : règle de la 1ʳᵉ bougie de 5 minutes (Zarattini-Aziz) avec d'autres sorties
@@ -43,3 +43,11 @@ R4 sur NQ : environ 9,7 ticks bruts par trade sur 2016-2026, pour un coût stand
 ## Étape 1 : exploration
 
 Grille figée dans l'en-tête de [run_nq_orb_bougie.py](../../run_nq_orb_bougie.py), commitée avant tout calcul. Résultats : [[reports/nq_orb_bougie_report]].
+
+**Résultat (2026-11-22)** : ❌ **B1 ratée de justesse**. La meilleure variante (stop 0,05 × ATR14, sortie à la clôture) fait +1,52 pt net par trade (t NW 3,16, Sharpe 1,00) sur 2010-06 → 2021-09, mais son DSR avec N = 26 vaut 0,948. Les cinq autres critères passent.
+- Avant 2016 (jamais vu par cette règle), presque rien : +0,23 pt/trade pour la règle choisie, −0,11 pour R4.
+- V0 (sans stop ni objectif) : +2,83 pts/trade, t 2,48, mais seulement t 1,27 contre « toujours long », et porté par 2018 et 2020.
+- Les objectifs fixes (RR 1 à 3) font toujours moins bien que RR 10 ou la clôture.
+- Le stop de la règle choisie ne fait que 5 à 6 ticks en 2010 : le résultat dépend d'un remplissage au prix du stop.
+
+La réserve 2021-10-01 → 2026-08-28 reste réservée, non lue. Compteur 1 940 → 1 965.
