@@ -4,7 +4,7 @@ updated: 2026-11-22
 status: active
 verdict: ❌ B1 sur le DSR seul (NQ vendredi +0,19 R, t 3,50, DSR 0,85) ; réplique le papier ; réserve non lue
 prereg: []
-trials: 2058
+trials: 2071
 ---
 
 # ORB 30 minutes, stop à une largeur de range, par jour de la semaine (Subhani 2026) sur NQ, ES, YM
@@ -58,4 +58,11 @@ La règle de Subhani n'a pas d'objectif (il a essayé +2R et l'a rejeté). Deman
 Demande de l'utilisateur : garder un objectif (prop firms) et faire fonctionner l'ORB les autres jours. Pour limiter la recherche de données : NQ seul, lundi à jeudi regroupés, objectif 2R, trois conditions justifiées. C1 range d'ouverture étroit (W < 0,5 ATR14 ; tableau 9 de Subhani), C2 veille NR7 (Crabel), C3 jours d'annonce à 10:00 ou 14:00. Grille figée dans l'en-tête de [run_orb30_filtres.py](../../run_orb30_filtres.py), commitée avant calcul ; référence = jours exclus ; n_famille = 60 ; compteur 2 055 → 2 058.
 
 **Résultat C1-C3** ([[reports/orb30_filtres_report]]) : ❌ B1. Base lundi-jeudi objectif 2R : +0,011 R (t 0,46). C1 range étroit +0,003 R, C2 veille NR7 +0,044 R (t 0,76, DSR 0,08), C3 annonces −0,021 R ; aucun écart significatif avec les jours exclus. Le seul effet ORB 30 min sur NQ reste le vendredi. Compteur 2 055 → 2 058.
+
+
+## Lundi-jeudi : biais EMA et réintégration (2026-11-22)
+
+Idée de l'utilisateur : biais de tendance par EMA 20/50 sur 15 min, 1 h, 4 h et jour (vote majoritaire) ; cassure dans le sens du biais (ordre stop), réintégration contre le biais (après une cassure contre le biais et une clôture de retour dans le range, ordre limite sur la borne cassée). Objectif 2R. Variantes choisies par l'utilisateur : stop de réintégration à 1 W ou au-delà de la mèche ; égalité 2-2 traitée de trois façons (pas de trade, ORB classique, le jour tranche) ; NQ seul. Décomposition : règle complète, cassure seule, réintégration seule. 13 essais ; grille figée dans l'en-tête de [run_orb30_biais.py](../../run_orb30_biais.py), commitée avant calcul ; n_famille = 73 ; compteur 2 058 → 2 071.
+
+**Résultat biais EMA et réintégration** ([[reports/orb30_biais_report]]) : ❌ B1. Meilleure variante : réintégration seule, stop 1 W, pas de trade si égalité, +0,045 R (t 1,40, DSR 0,009) ; règle complète +0,037 R (t 1,44) ; référence sans biais +0,015 R ; écarts avec la référence à t ≤ 0,55. Stop sous la mèche négatif. Un bug de sens (réintégrations à l'envers) a été trouvé à la vérification manuelle et corrigé avant lecture des résultats ; grille inchangée. Compteur 2 058 → 2 071.
 
