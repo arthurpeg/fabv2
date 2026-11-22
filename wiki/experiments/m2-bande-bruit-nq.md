@@ -64,3 +64,7 @@ Demande de l'utilisateur : BB sur NQ avec SL = k × ATR14 et TP = RR × SL, surv
 
 **En R** (1 R = distance au SL = k × ATR14, net de coût ; `results/bb_sltp/performances_R.txt`) : mode A, SL 0,25 ATR, TP 2R : 3 202 trades, **+0,10 R par trade (t 4,9), ≈ 29 R par an**, 40 % de gagnants (gain moyen +1,32 R, perte moyenne −0,72 R), pire creux −26 R, 15 pertes de suite au plus, **pire journée −5,25 R** (plusieurs SL le même jour). 2018 fait 102 R sur environ 320 ; 2019 −12,7 R ; 2025 +7,2 R ; 2026 (→ août) +9,4 R. Avec SL 1 ATR, ≈ +0,03-0,04 R par trade et ≈ 6 R par an.
 
+
+## BB un trade par jour et prop firm par convexité (2026-11-22, exploration)
+
+Demande de l'utilisateur : exploiter BB dans l'approche prop firm « convexe » (risque élevé en éval pour valider ou échouer vite) et limiter à un trade par jour. Étape 1 : [run_bb_1j.py](../../run_bb_1j.py), même grille SL / TP en ne gardant que le premier trade de la séance (18 essais, compteur 2 109 → 2 127), grille commitée avant calcul ; exporte les trades pour le simulateur FTMO. Étape 2 : simulation FTMO 1-Step sur la branche `propfirm-ftmo`.
