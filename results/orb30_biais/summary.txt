@@ -1,0 +1,64 @@
+Biais lun-jeu : 2120 jours ; haussier 1182, baissier 435, égalité 503 ; accord des 4 votes 33.2 %
+Référence (ORB 30 min objectif 2R, lun-jeu, mêmes jours) : 2035 trades, +0.015 R, +0.88 pts par jour
+
+===== Grille (NQ, lundi-jeudi, objectif 2R) =====
+    mode stop_reint egalite    n  net_R   t_nw  sharpe_trade  gagnants_%  net_pts  pts_par_jour_vs_base  t_vs_base  %_reint  R_cassure  R_reint  objectif_%  2016-22  2023-26 annees_pos  dsr_73
+complete          W       a 1493  0.037  1.439         0.035      48.426    3.390                 1.508      0.544   41.527      0.030    0.048      10.315    0.021    0.066       9/11   0.000
+complete          W       b 1985  0.015  0.680         0.015      46.851    1.506                 0.531      0.207   31.234      0.030    0.048      10.076   -0.004    0.050       6/11   0.000
+complete          W       c 1970  0.032  1.441         0.031      48.376    2.348                 1.302      0.464   42.284      0.022    0.046       9.848    0.019    0.056       8/11   0.000
+complete      meche       a 1492 -0.009 -0.302        -0.007      43.432    1.862                 0.431      0.228   41.488      0.030   -0.063      19.772   -0.067    0.098       4/11   0.000
+complete      meche       b 1984 -0.019 -0.792        -0.016      43.095    0.356                -0.546     -0.344   31.200      0.030   -0.063      17.188   -0.071    0.073       4/11   0.000
+complete      meche       c 1969 -0.028 -1.080        -0.023      42.763    1.114                 0.155      0.088   42.255      0.022   -0.097      19.147   -0.078    0.062       3/11   0.000
+ cassure          -       a 1099  0.033  1.111         0.032      49.136    2.918                 0.633      0.349    0.000      0.033      NaN       9.281    0.022    0.053       9/11   0.002
+ cassure          -       b 1591  0.007  0.282         0.007      46.952    0.714                -0.344     -0.231    0.000      0.033      NaN       9.302   -0.010    0.036       7/11   0.000
+ cassure          -       c 1453  0.033  1.368         0.033      49.277    2.183                 0.617      0.371    0.000      0.033      NaN       9.222    0.021    0.055       8/11   0.000
+   reint          W       a  931  0.045  1.396         0.043      48.443    5.119                 1.368      0.435  100.000        NaN    0.045      10.311    0.037    0.058       7/11   0.009
+   reint          W       c 1227  0.033  1.139         0.032      48.248    4.300                 1.609      0.479  100.000        NaN    0.033       9.698    0.018    0.059       7/11   0.001
+   reint      meche       a  930 -0.093 -2.081        -0.065      36.237    0.572                -0.629     -0.286  100.000        NaN   -0.093      32.258   -0.154    0.017       1/11   0.000
+   reint      meche       c 1226 -0.126 -3.349        -0.089      35.155    0.553                -0.560     -0.253  100.000        NaN   -0.126      31.077   -0.177   -0.038       1/11   0.000
+
+== Règle choisie (meilleur Sharpe net) : ('reint', 'W', 'a')
+  n                          931
+  debut                      2016-06-06
+  fin                        2026-08-19
+  brut_moy                   nan
+  net_moy                    0.04451
+  net_med                    -0.05164
+  ecart_type                 1.03
+  sharpe_an                  0.686
+  t_nw                       1.396
+  p_unilateral               0.08131
+  gagnants_%                 48.44
+  pire_creux                 -23.04
+  annees_pos                 7/11
+  net_moitie1                0.04534
+  net_moitie2                0.04368
+  net_sans_meilleure_annee   0.03185
+  net_cout_plus_1_tick       0.03875
+  n_famille                  73
+  dsr_famille                0.008887
+  ref_net_moy                0.8797
+  ecart_ref                  1.368
+  t_ecart_ref                0.4355
+B1 : ❌ ratée
+  ❌ t NW net ≥ 2,0
+  ❌ DSR (N = famille) ≥ 0,95
+  ❌ bat la référence triviale (t écart ≥ 1,0)
+  ✅ net > 0 dans les deux moitiés
+  ✅ net > 0 sans la meilleure année
+  ✅ net > 0 avec 1 tick de coût en plus
+
+Règle choisie, R net par année et par type :
+type  réintégration
+date               
+2016         -0.184
+2017          0.111
+2018          0.133
+2019          0.015
+2020          0.142
+2021         -0.192
+2022          0.137
+2023          0.164
+2024         -0.012
+2025         -0.028
+2026          0.152
