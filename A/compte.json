@@ -2,15 +2,15 @@
  "nom": "book A",
  "phase": "éval",
  "P": 2.4730999999999996,
- "hi": 0.0,
- "best": 0.0,
+ "hi": 2.4730999999999996,
+ "best": 4.9597,
  "f0": "2026-11-20",
  "evals": 2,
  "rewards": 0,
  "rewards_pct": 0.0,
  "jour": "2026-11-23",
  "pnl_jour": 4.9597,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": [
   "2026-11-19 éval perdu (-10.01 %) → nouvelle éval virtuelle (79 €)"
