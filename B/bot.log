@@ -45,3 +45,5 @@
 2026-11-22 20:05:01 ET [B] 3n 2026-11-23 : somme des 3 nuits +23.3 bps → rien
 2026-11-23 09:35:02 ET [B] M2 2026-11-23 : sens +1, force 1.11, retournement -390.1 bps → SIGNAL ; 3n de la nuit : None
 2026-11-23 09:35:04 ET [B] OUVERT M2 long 0.46 lots à 26654.38 (bid 26657.23, ask 26658.68, spread 1.45, glissement -4.30 pts) ; SL 538.7 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 23/11 15:59:57
+2026-11-23 15:59:57 ET [B] sortie à l'heure : M2 ticket 185786874 (spread 1.45)
+2026-11-23 15:59:58 ET [B] FERMÉ M2 (heure) à 26721.53 : +30.89 $ (+0.31 %, +0.12 R) ; compte virtuel éval +0.29 % ; P&L cumulé tous essais +29.29 $ sur 5 trades (compte continu 10,029.29 $)
