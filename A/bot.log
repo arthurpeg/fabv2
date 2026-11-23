@@ -38,3 +38,5 @@
 2026-11-20 20:00:01 ET [A] mom : marché fermé ce soir à 20:00, pas d'entrée
 2026-11-21 20:00:01 ET [A] mom : marché fermé ce soir à 20:00, pas d'entrée
 2026-11-22 20:00:02 ET [A] OUVERT mom long 0.83 lots à 25812.48 (bid 25811.13, ask 25813.08, spread 1.95, glissement -0.60 pts) ; SL 298.0 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 23/11 09:29:57
+2026-11-23 08:57:20 ET [A] FERMÉ mom (TP) à 26410.03 : +495.97 $ (+4.96 %, +2.01 R) ; compte virtuel éval +2.47 % ; P&L cumulé tous essais -753.95 $ sur 6 trades (compte continu 9,246.05 $)
+2026-11-23 08:57:21 ET [A] règle d'arrêt de mom : 13 trades, cumul -5.33 R, frontière -10.22 R (marge +4.89 R) ; évals perdues d'affilée 1 / 6
