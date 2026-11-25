@@ -45,3 +45,4 @@
 2026-11-24 03:55:05 ET [A] FERMÉ mom (SL) à 26585.63 : -256.35 $ (-2.56 %, -1.04 R) ; compte virtuel éval -0.09 % ; P&L cumulé tous essais -1,010.30 $ sur 7 trades (compte continu 8,989.70 $)
 2026-11-24 03:55:05 ET [A] règle d'arrêt de mom : 14 trades, cumul -6.38 R, frontière -10.55 R (marge +4.18 R) ; évals perdues d'affilée 1 / 6
 2026-11-24 17:00:00 ET [A] fin de journée : éval virtuel -0.09 %, meilleur jour +4.96 %, rewards 0 (0.00 %)
+2026-11-24 20:00:02 ET [A] OUVERT mom long 1.44 lots à 26110.18 (bid 26108.23, ask 26110.18, spread 1.95, glissement +0.00 pts) ; SL 170.9 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 25/11 09:29:57
