@@ -19,6 +19,7 @@ Synthèse de ce qui a été appris sur l'ensemble des expériences. Chaque leço
 7. **Toujours comparer à la référence triviale** : un long de mêmes heures, une entrée aléatoire, le contrarien ouverture → clôture (Valenti n'apportait rien, corrélation 0,90).
 8. **Regarder 2020 à part** : plusieurs résultats (LETF ES, Valenti, nuits) viennent surtout de 2020.
 9. Le DSR et le Reality Check peuvent diverger ; la règle fixée à l'avance tranche ([[wiki/concepts/pre-enregistrement]]).
+10 bis. **Un pré-enregistrement doit avoir son propre commit, avant tout calcul.** Les n° 10 à 17 sont entrés dans l'historique dans le même commit que leurs résultats (commits par lots jusqu'au 2026-10-31, puis commit de fin de tour qui prend le texte et le calcul ensemble) : leur ordre n'est pas vérifiable publiquement, ce qu'un relecteur des papiers a relevé (2026-11-25). Commiter et pousser le pré-enregistrement à part, puis lancer le calcul dans un tour suivant.
 10. Les SL/TP en ATR ne créent pas d'edge (contrôle pile ou face) ; ils changent la queue de distribution, pas le Sharpe.
 
 ## Sur les données
