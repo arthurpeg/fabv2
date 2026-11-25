@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-25 14:21
+updated: 2026-11-25 14:37
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -10,7 +10,7 @@ updated: 2026-11-25 14:21
 - Compteur global d'essais : **2 127** (source : [[reports/propfirm_bb_report]])
 - Dernier pré-enregistrement : n° 32 ([[PREREGISTRATION_32]])
 - Idées abandonnées au registre : 54 ([[wiki/Failed Ideas/ledger]])
-- Dernière activité : 2026-11-22
+- Dernière activité : 2026-11-25
 
 ## Expériences ouvertes
 
@@ -24,6 +24,7 @@ updated: 2026-11-25 14:21
 
 ## Dernières entrées du journal (8)
 
+- [2026-11-25] schema | Papiers publics (nuit, FX/yen, prop firm) passés en version complète après un avis de relecteur : règles divulguées (mom SL 2 ATR / TP 5 ATR, 3n, M2), annexe des pré-enregistrements avec commits GitHub, corrections (Holm sur 21 tests, 2 694 jours, réplication « au centième » nuancée, p 0,0015 = bootstrap pré-enregistré), citations Krohn-Mueller-Whelan 2024, Carpenter 2000, Goetzmann-Ingersoll-Ross 2003, figures (make_paper_figures.py), contrôle du carry du yen au comptant (run_jpy_spot_carry.py, hors compteur), continuation de l'or retirée de « à surveiller » (n° 21) | Comptant 2016-2025 +1,74 bp (t 3,9) contre 6J +1,90 : pas le carry ; profil par demi-heure de NQ : ≈ 2/3 de la nuit avant 02:00 ET, +0,7 bp l'heure de l'ouverture d'Eurex ; n° 10 à 17 commités avec leurs résultats, ordre invérifiable (leçon 10 bis)
 - [2026-11-22] schema | Bilan nuancé de la preuve hors échantillon de BB ajouté à sa page ; erreur corrigée dans les rapports ftmo_bb_options, ftmo_4comptes, ftmo_sans3n : mom a été validé hors échantillon (n° 11, NQ 2011-2015), seuls 3n et M2 (EMA 9:30) ont échoué (n° 24, 25) | aucun calcul
 - [2026-11-22] experiment | FTMO : hasard ou edge qui peut mourir en live (run_ftmo_edge_mort.py, hors compteur) : mom avec edge live = h × historique, h de −1 à 1, ré-échantillonnage pondéré | 2016-2026 cible+attente : intacte +783 $ / tentative 10k, morte (= hasard) +190 $, inversée −0,5 +57 $ ; le hasard ne gagne que si P(inversion) > 53-82 % ; garder les edges ; exploration
 - [2026-11-22] experiment | FTMO : remplacer 3n par BB (run_ftmo_sans3n.py, hors compteur) | Corrélation des R mom / 3n +0,45 ; 2 comptes : A mom + B (M2 puis BB) +3 894 $ contre plan +3 502 $ ; 3 comptes : option 2 (avec 3n) +4 971 $ contre +4 486 $ sans 3n ; exploration
@@ -31,7 +32,6 @@ updated: 2026-11-25 14:21
 - [2026-11-22] experiment | FTMO : ajouter BB au plan retenu (run_ftmo_bb_options.py, hors compteur) : option 1 A = mom + BB l'après-midi, option 2 compte C = BB ; 494 départs 2016-2025, 12 mois | Plan +3 502 $ ; option 1 +3 749 $ (+7 %) ; option 2 +4 971 $ (+42 %, C +1 469 $) ; creux −1 043 $ ; exploration, BB non validé (n° 32)
 - [2026-11-22] prereg | Statut de BB corrigé (n'était pas en paper trading, pas dans le n° 26 ; le 0,55 de 2010-2015 était la variante S1) ; n° 32 : forward de BB (H1 référence, H2 prop firm mode A SL 0,25 ATR TP 2R un trade par jour) sur NQ à partir du 2026-11-04, lectures 2028-02-29 / 2029-08-31 / 2031-08-29, fenêtre LSE 2026-08-29 → 11-03 exclue ; compteur 2 127 → 2 129 | aucun calcul
 - [2026-11-22] experiment | BB un trade par jour (18 essais, run_bb_1j.py, grille e1f932a ; compteur 2 109 → 2 127) puis FTMO 1-Step (run_propfirm_bb.py, 18 versions × éval 1-2,9 %, financé 1 %, hors compteur) | Un trade par jour : +0,148 R/trade, creux −14 R ; FTMO à 2-2,5 % : passage 47-56 % en 10-15 trades, ≈ +1 450-1 560 $/mois en 100k, au niveau du plan 3n + M2, sous mom ; exploration
-- [2026-11-22] experiment | BB NQ avec SL k × ATR / TP RR × SL, modes A (suiveur gardé) et B (suiveur remplacé), 18 essais ; grille commitée (b217c32), 2 trades vérifiés, compteur 2 091 → 2 109 | Exploration : mode A SL 0,25 ATR TP 2R Sharpe 1,13 → 1,49, creux −39,3 k$ → −27,3 k$, ≈ 32,3 k$/an par contrat ; gain journalier pas significativement différent (t 0,75) ; SL 0,5-1 ATR ≈ BB ; confirmation seulement en forward
 
 ## Prochaines actions
 
