@@ -1,6 +1,6 @@
 ---
 type: hot
-updated: 2026-11-26 16:45
+updated: 2026-11-26 16:52
 ---
 
 > **Généré automatiquement par `wiki/update_hot.py` (hook Stop). Ne pas éditer à la main**, sauf le bloc « Prochaines actions », conservé à chaque régénération.
@@ -24,7 +24,7 @@ updated: 2026-11-26 16:45
 
 ## Dernières entrées du journal (8)
 
-- [2026-11-26] decision | mom ne tient jamais plus d'une nuit : pas d'entrée sur une nuit qui enjambe un férié, en éval comme en financé (live/bot.py ev_mom ; garde-fou dans suivi : une position mom encore ouverte le lendemain de son entrée à 9:29:57 est fermée, « sortie ramenée » ; tests test_live 18/18, test_book_A_jour_ferie réécrit ; live/README) | Cause : position du 25/11 20:00 ET (1,19 lot, éval A) programmée jusqu'au 27/11 9:29:57 à travers Thanksgiving, contraire à la règle intraday de l'utilisateur ; fermée par le bot le 26/11 après la mise à jour (b0cdfcc) ; ≈ 9 nuits/an retirées (148 sur 3 981 séances 2011-2026), coût non chiffré
+- [2026-11-26] decision | mom ne tient jamais plus d'une nuit : pas d'entrée sur une nuit qui enjambe un férié, en éval comme en financé (live/bot.py ev_mom ; garde-fou dans suivi : une position mom encore ouverte le lendemain de son entrée à 9:29:57 est fermée, « sortie ramenée » ; tests test_live 18/18, test_book_A_jour_ferie réécrit ; live/README) | Cause : position du 25/11 20:00 ET (1,19 lot, éval A) programmée jusqu'au 27/11 9:29:57 à travers Thanksgiving, contraire à la règle intraday de l'utilisateur ; fermée par le bot le 26/11 à 10:48 ET après la mise à jour (b0cdfcc) à 26 221,53, +93,24 $ (+0,38 R), éval A −1,87 %, règle d.arrêt 16 trades −7,10 R (marge +4,07 R) ; ≈ 9 nuits/an retirées (148 sur 3 981 séances 2011-2026), coût non chiffré
 - [2026-11-25] schema | Papiers publics (nuit, FX/yen, prop firm) passés en version complète après un avis de relecteur : règles divulguées (mom SL 2 ATR / TP 5 ATR, 3n, M2), annexe des pré-enregistrements avec commits GitHub, corrections (Holm sur 21 tests, 2 694 jours, réplication « au centième » nuancée, p 0,0015 = bootstrap pré-enregistré), citations Krohn-Mueller-Whelan 2024, Carpenter 2000, Goetzmann-Ingersoll-Ross 2003, figures (make_paper_figures.py), contrôle du carry du yen au comptant (run_jpy_spot_carry.py, hors compteur), continuation de l'or retirée de « à surveiller » (n° 21) | Comptant 2016-2025 +1,74 bp (t 3,9) contre 6J +1,90 : pas le carry ; profil par demi-heure de NQ : ≈ 2/3 de la nuit avant 02:00 ET, +0,7 bp l'heure de l'ouverture d'Eurex ; n° 10 à 17 commités avec leurs résultats, ordre invérifiable (leçon 10 bis)
 - [2026-11-22] schema | Bilan nuancé de la preuve hors échantillon de BB ajouté à sa page ; erreur corrigée dans les rapports ftmo_bb_options, ftmo_4comptes, ftmo_sans3n : mom a été validé hors échantillon (n° 11, NQ 2011-2015), seuls 3n et M2 (EMA 9:30) ont échoué (n° 24, 25) | aucun calcul
 - [2026-11-22] experiment | FTMO : hasard ou edge qui peut mourir en live (run_ftmo_edge_mort.py, hors compteur) : mom avec edge live = h × historique, h de −1 à 1, ré-échantillonnage pondéré | 2016-2026 cible+attente : intacte +783 $ / tentative 10k, morte (= hasard) +190 $, inversée −0,5 +57 $ ; le hasard ne gagne que si P(inversion) > 53-82 % ; garder les edges ; exploration
