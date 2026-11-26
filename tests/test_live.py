@@ -336,3 +336,32 @@ def test_regle_arret_mom_ne_touche_pas_B(tmp_path):
     for _ in range(30):
         b.ecrit("trades.csv", dict(strat="mom", R_net=-1.0))
     assert b.regle_arret() is None and not b.mom_arrete()
+
+
+def test_mom_position_ouverte_sur_ferie_ramenee_a_une_nuit(tmp_path):
+    """Position mom ouverte le 25/11/2026 20:00 ET avec sortie au 27/11 9:29:57 (nuit qui enjambe Thanksgiving, avant la
+    règle du 2026-11-26) : le bot la ferme dès le 26/11 9:29:57 ; une nuit normale garde sa sortie."""
+    bot = _bot_A(tmp_path, "2026-11-26 10:45:00")
+    fermes = []
+
+    class Faux:
+        def position(self, ticket):
+            return object()
+
+        def spread(self):
+            return 1.95
+
+        def ferme(self, ticket, comment="sortie heure"):
+            fermes.append(ticket)
+            return True
+
+    bot.b = Faux()
+    bot.etat["ouverts"] = [
+        dict(strat="mom", ticket=1, seance="2026-11-27", heure_entree="2026-11-25 20:00:03",
+             sortie="2026-11-27 09:29:57-05:00"),
+        dict(strat="mom", ticket=2, seance="2026-11-27", heure_entree="2026-11-26 20:00:03",
+             sortie="2026-11-27 09:29:57-05:00"),
+    ]
+    bot.suivi(pd.Timestamp("2026-11-26 10:45:00", tz=NY))
+    assert fermes == [1]
+    assert "sortie ramenée" in (tmp_path / "A" / "bot.log").read_text(encoding="utf-8")

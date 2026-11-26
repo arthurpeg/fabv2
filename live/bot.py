@@ -331,7 +331,19 @@ class Bot:
         for o in list(self.etat["ouverts"]):
             pos = self.b.position(o["ticket"])
             if pos is not None:
-                if now >= pd.Timestamp(o["sortie"]):
+                sortie = pd.Timestamp(o["sortie"])
+                if o["strat"] == "mom":
+                    # intraday : jamais plus d'une nuit (décision du 2026-11-26) ; une position ouverte avant cette règle
+                    # sur une nuit qui enjambe un férié sort au plus tard le lendemain de l'entrée à 9:29:57
+                    lim = hms(pd.Timestamp(o["heure_entree"]) + pd.Timedelta(days=1), 9, 29, 57)
+                    if sortie > lim:
+                        sortie = lim
+                        if not o.get("sortie_ramenee"):
+                            o["sortie_ramenee"] = f"{lim}"
+                            self.log(f"mom ticket {o['ticket']} : sortie ramenée de {o['sortie']} à {lim} "
+                                     f"(pas plus d'une nuit)")
+                            self.save()
+                if now >= sortie:
                     o["spread_sortie"] = self.b.spread()
                     self.log(f"sortie à l'heure : {o['strat']} ticket {o['ticket']} (spread {o['spread_sortie']:.2f})")
                     self.b.ferme(o["ticket"])
@@ -461,12 +473,12 @@ class Bot:
         if self.mom_arrete():
             self.log(f"mom {seance:%Y-%m-%d} : pas de trade, règle d'arrêt déclenchée ({self.etat['mom_arret']['raison']})")
             return
-        if self.compte.phase == "financé" and (seance - now.tz_localize(None).normalize()).days > 1:
-            # FTMO (FAQ « hold positions overnight or over the weekend », relue le 2026-11-14) : sur le compte financé,
-            # pas de position à travers une fermeture de plus de 2 h. Une nuit qui enjambe un jour férié (Thanksgiving,
-            # lundis fériés, veille de pont) traverserait la fermeture du férié : pas d'entrée. En éval, c'est permis.
-            self.log(f"mom séance {seance:%Y-%m-%d} : la nuit enjambe un jour férié, pas d'entrée en financé "
-                     f"(position interdite à travers une fermeture de plus de 2 h)")
+        if (seance - now.tz_localize(None).normalize()).days > 1:
+            # Une nuit qui enjambe un jour férié (Thanksgiving, lundis fériés, veille de pont) durerait plus de 24 h :
+            # pas d'entrée, en éval comme en financé (intraday uniquement, décision du 2026-11-26 ; en financé, FTMO
+            # interdit aussi une position à travers une fermeture de plus de 2 h, FAQ relue le 2026-11-14).
+            self.log(f"mom séance {seance:%Y-%m-%d} : la nuit enjambe un jour férié, pas d'entrée "
+                     f"(jamais plus d'une nuit)")
             return
         m1 = self.m1_frais()
         if m1 is None:
