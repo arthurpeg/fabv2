@@ -158,3 +158,4 @@
 2026-11-25 14:28:13 mise a jour b0c31c2 -> a6f8655, tests OK (code du bot inchange)
 2026-11-25 14:41:53 mise a jour a6f8655 -> 8d9e0bf, tests OK (code du bot inchange)
 2026-11-25 20:11:43 mise a jour 8d9e0bf -> 8b09334, tests OK (code du bot inchange)
+2026-11-26 16:47:47 mise a jour 8b09334 -> 126c08b, tests OK, bots relances : live/bot.py

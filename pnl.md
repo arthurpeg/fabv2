@@ -1,8 +1,8 @@
-# Suivi P&L des books FTMO (démo), au 26/11/2026 03:00 ET
+# Suivi P&L des books FTMO (démo), au 26/11/2026 10:48 ET
 
 Tous les essais FTMO sont additionnés comme un seul compte de 10 000 $ par book (tailles calculées sur ce nominal). Source : `live/etat/<book>/trades.csv` et `compte.json`.
 
-**Total A + B : -1,513.23 $ de trading** sur 15 trades (2 × 10 000 $ → 18,486.77 $) ; résultat FTMO virtuel -260.70 $.
+**Total A + B : -1,419.99 $ de trading** sur 16 trades (2 × 10 000 $ → 18,580.01 $) ; résultat FTMO virtuel -260.70 $.
 
 ### Dix dernières journées FTMO ($)
 
@@ -17,25 +17,26 @@ Tous les essais FTMO sont additionnés comme un seul compte de 10 000 $ par book
 | 2026-11-24 | -256.35 | +0.00 | -256.35 |
 | 2026-11-25 | -271.37 | -248.18 | -519.55 |
 | 2026-11-26 | +0.00 | -12.67 | -12.67 |
+| 2026-11-27 | +93.24 | +0.00 | +93.24 |
 
 ## Book A (mom)
 
-- **P&L cumulé, tous essais : -1,281.67 $** (-12.82 %) sur 8 trades, du 15/11/2026 au 24/11/2026
-- Compte continu : 8,718.33 $ ; plus gros creux -1,281.67 $ (-12.82 %)
-- Trades gagnants 12 % ; R net moyen -0.66 ; sorties : SL 7, TP 1
+- **P&L cumulé, tous essais : -1,188.43 $** (-11.88 %) sur 9 trades, du 15/11/2026 au 26/11/2026
+- Compte continu : 8,811.57 $ ; plus gros creux -1,281.67 $ (-12.82 %)
+- Trades gagnants 22 % ; R net moyen -0.54 ; sorties : SL 7, TP 1, heure 1
 
 | Stratégie | Trades | P&L ($) | R net moyen | Spread entrée (pts) | Spread sortie (pts, max) | Glissement entrée (pts) |
 |---|---|---|---|---|---|---|
-| mom | 8 | -1,281.67 | -0.66 | 1.95 | 1.95 (1.95) | -0.98 |
+| mom | 9 | -1,188.43 | -0.54 | 1.95 | 1.89 (1.95) | -0.76 |
 
 Spread et glissement en points d'indice (1,5 pt supposé dans le backtest) ; glissement > 0 = exécuté plus cher que le prix affiché.
 
 | Essai MT5 | Trades | P&L ($) | Période |
 |---|---|---|---|
 | 511480419 | 4 | -1,001.26 | 15/11 → 18/11 |
-| 531542597 | 4 | -280.41 | 20/11 → 24/11 |
+| 531542597 | 5 | -187.17 | 20/11 → 26/11 |
 
-- **Compte FTMO virtuel** : éval, cycle -2.80 % (meilleur jour +4.96 %), évals achetées 2, rewards 0 (0.00 $) → **résultat FTMO virtuel -173.80 $** (rewards − frais d'éval)
+- **Compte FTMO virtuel** : éval, cycle -1.87 % (meilleur jour +4.96 %), évals achetées 2, rewards 0 (0.00 $) → **résultat FTMO virtuel -173.80 $** (rewards − frais d'éval)
   - 2026-11-19 éval perdu (-10.01 %) → nouvelle éval virtuelle (79 €)
 
 ## Book B (3n + M2)

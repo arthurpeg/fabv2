@@ -50,3 +50,12 @@
 2026-11-24 21:19:18 ET [A] règle d'arrêt de mom : 15 trades, cumul -7.48 R, frontière -10.87 R (marge +3.39 R) ; évals perdues d'affilée 1 / 6
 2026-11-25 17:00:00 ET [A] fin de journée : éval virtuel -2.80 %, meilleur jour +4.96 %, rewards 0 (0.00 %)
 2026-11-25 20:00:03 ET [A] OUVERT mom long 1.19 lots à 26143.18 (bid 26140.23, ask 26142.18, spread 1.95, glissement +1.00 pts) ; SL 207.8 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 27/11 09:29:57
+2026-11-26 10:47:47 ET [A] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-26 10:48:11 ET [A] MT5 connecté : compte 531542597 sur FTMO-Server3, solde 9,719.59 USD
+2026-11-26 10:48:11 ET [A] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-26 10:48:11 ET [A] démarrage (code 126c08b) ; compte virtuel éval -2.80 %, 1 position(s) suivie(s)
+2026-11-26 10:48:11 ET [A] règle d'arrêt de mom : 15 trades, cumul -7.48 R, frontière -10.87 R (marge +3.39 R) ; évals perdues d'affilée 1 / 6
+2026-11-26 10:48:11 ET [A] mom ticket 203868677 : sortie ramenée de 2026-11-27 09:29:57-05:00 à 2026-11-26 09:29:57-05:00 (pas plus d'une nuit)
+2026-11-26 10:48:11 ET [A] sortie à l'heure : mom ticket 203868677 (spread 1.45)
+2026-11-26 10:48:12 ET [A] FERMÉ mom (heure) à 26221.53 : +93.24 $ (+0.93 %, +0.38 R) ; compte virtuel éval -1.87 % ; P&L cumulé tous essais -1,188.43 $ sur 9 trades (compte continu 8,811.57 $)
+2026-11-26 10:48:13 ET [A] règle d'arrêt de mom : 16 trades, cumul -7.10 R, frontière -11.17 R (marge +4.07 R) ; évals perdues d'affilée 1 / 6

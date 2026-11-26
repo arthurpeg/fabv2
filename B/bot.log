@@ -61,3 +61,7 @@
 2026-11-25 20:05:02 ET [B] OUVERT 3n long 1.19 lots à 26173.28 (bid 26172.53, ask 26174.48, spread 1.95, glissement -1.20 pts) ; SL 207.8 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 26/11 03:00:01
 2026-11-26 03:00:01 ET [B] sortie à l'heure : 3n ticket 186847360 (spread 1.95)
 2026-11-26 03:00:02 ET [B] FERMÉ 3n (heure) à 26162.63 : -12.67 $ (-0.13 %, -0.05 R) ; compte virtuel éval -2.32 % ; P&L cumulé tous essais -231.56 $ sur 7 trades (compte continu 9,768.44 $)
+2026-11-26 10:47:47 ET [B] mise à jour du code reçue : arrêt propre, relance par lancer.bat
+2026-11-26 10:48:10 ET [B] MT5 connecté : compte 541521340 sur FTMO-Server4, solde 9,768.44 USD
+2026-11-26 10:48:10 ET [B] US100.cash : 1 $ par point et par lot, lot min 0.01, pas 0.01, digits 2
+2026-11-26 10:48:11 ET [B] démarrage (code 126c08b) ; compte virtuel éval -2.32 %, 0 position(s) suivie(s)
