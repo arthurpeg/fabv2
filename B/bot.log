@@ -59,3 +59,5 @@
 2026-11-25 17:00:00 ET [B] fin de journée : éval virtuel -2.19 %, meilleur jour +4.97 %, rewards 0 (0.00 %)
 2026-11-25 20:05:01 ET [B] 3n 2026-11-26 : somme des 3 nuits -121.9 bps → LONG
 2026-11-25 20:05:02 ET [B] OUVERT 3n long 1.19 lots à 26173.28 (bid 26172.53, ask 26174.48, spread 1.95, glissement -1.20 pts) ; SL 207.8 pts, objectif 2.00 R, risque 2.50 % (éval virtuel), sortie prévue 26/11 03:00:01
+2026-11-26 03:00:01 ET [B] sortie à l'heure : 3n ticket 186847360 (spread 1.95)
+2026-11-26 03:00:02 ET [B] FERMÉ 3n (heure) à 26162.63 : -12.67 $ (-0.13 %, -0.05 R) ; compte virtuel éval -2.32 % ; P&L cumulé tous essais -231.56 $ sur 7 trades (compte continu 9,768.44 $)
