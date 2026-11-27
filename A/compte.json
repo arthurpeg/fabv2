@@ -10,7 +10,7 @@
  "rewards_pct": 0.0,
  "jour": "2026-11-27",
  "pnl_jour": 0.9323999999999999,
- "trade_jour": true,
+ "trade_jour": false,
  "mort_jour": false,
  "events": [
   "2026-11-19 éval perdu (-10.01 %) → nouvelle éval virtuelle (79 €)"
